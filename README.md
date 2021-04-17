@@ -1,15 +1,22 @@
 # #100DaysOfCode with Python
 
-My log :clipboard: and notes​ :notebook: for thethe **TalkPython** [#100DaysofCode with Python](https://training.talkpython.fm/courses/details/100-days-of-code-in-python) :snake: course.
+My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCode with Python** :snake: course.
 
 ---
 
+## Resources:
 
+:star: TalkPython [course materials](https://training.talkpython.fm/courses/details/100-days-of-code-in-python).
+
+:star:**#100DaysofCode** with Python [Git repository](https://github.com/talkpython/100daysofcode-with-python-course).
+
+---
 
 ## :calendar: Day 0 - 4/17/2020
 
-- [x] Committed to complete **#100DaysOfCode**.
-- [x] Purchased **#100DaysofCode with Python Course**.
+:white_check_mark: Committed to complete **#100DaysOfCode**.
+
+:white_check_mark: Purchased **#100DaysofCode with Python Course**.
 
 
 
@@ -17,5 +24,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython** [#100Daysof
 
 ## :calendar: Day 1 - 4/17/2021
 
-- [x] Setup Git repository.
-- [ ] Complete daily lesson.
+:white_check_mark: Setup Git repository.
+
+:white_large_square: Complete daily lesson.
+
