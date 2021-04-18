@@ -1,4 +1,4 @@
-## :calendar: Day N - 0/0/0000
+## :calendar: Day N: 0/0/0000
 
 ---
 

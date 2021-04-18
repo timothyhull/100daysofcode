@@ -1,4 +1,4 @@
-## :calendar: Day 0 - 4/16/2020
+## :calendar: Day 0: 4/16/2020
 
 ---
 

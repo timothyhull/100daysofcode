@@ -1,4 +1,4 @@
-## :calendar: Day 1 - 4/17/2021
+## :calendar: Day 1: 4/18/2021
 
 ---
 

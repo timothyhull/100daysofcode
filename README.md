@@ -14,6 +14,6 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 ## :calendar: Daily Log
 
-:date: [Day 0](tree/main/days/day-0)
+:date: [Day 0](days/day-0): 4/17/21
 
-:date: [Day 1](tree/main/days/day-0)
+:date: [Day 1](days/day-1): 4/18/21
