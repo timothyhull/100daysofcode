@@ -4,9 +4,11 @@
 
 ## Resources:
 
-:star: TBD
+:star: N/A
 
 ---
+
+## Tasks
 
 :white_check_mark: Committed to complete **#100DaysOfCode**.
 
