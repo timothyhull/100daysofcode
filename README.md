@@ -17,14 +17,3 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 :white_check_mark: Committed to complete **#100DaysOfCode**.
 
 :white_check_mark: Purchased **#100DaysofCode with Python Course**.
-
-
-
----
-
-## :calendar: Day 1 - 4/17/2021
-
-:white_check_mark: Setup Git repository.
-
-:white_large_square: Complete daily lesson.
-
