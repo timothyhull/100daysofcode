@@ -1,6 +1,8 @@
 # VS Code Python Development Container
 FROM python:3.9-slim-buster
 
+EXPOSE 8888
+
 WORKDIR /code
 
 RUN apt-get update && \
