@@ -1,1 +1,22 @@
-ipython
+# all notebooks
+jupyterlab
+# jupyter # (replaced with 'jupyterlab')
+ipykernel
+# list comprehensions
+requests
+# twitter API
+matplotlib
+numpy
+Pillow
+tweepy
+wordcloud
+# github api
+PyGithub
+# selenium
+selenium
+# data viz
+feedparser
+plotly
+# pytest
+pytest
+pytest-cov
