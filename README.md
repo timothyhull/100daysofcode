@@ -8,7 +8,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 :star: TalkPython [course materials](https://training.talkpython.fm/courses/details/100-days-of-code-in-python).
 
-:star:**#100DaysofCode** with Python [Git repository](https://github.com/talkpython/100daysofcode-with-python-course).
+:star: **#100DaysofCode** with Python [Git repository](https://github.com/talkpython/100daysofcode-with-python-course).
 
 ---
 
