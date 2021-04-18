@@ -5,10 +5,9 @@
 ## Resources:
 
 :star: TBD
+
 ---
 
 ## Tasks:
 
-:white_check_mark: TBD
-
-:white_large_square: TBD
+:white_large_square: Start chapter 2.
