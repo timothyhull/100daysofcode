@@ -12,8 +12,8 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 ---
 
-## :calendar: Day 0 - 4/17/2020
+## :calendar: Daily Log
 
-:white_check_mark: Committed to complete **#100DaysOfCode**.
+:date: [Day 0](tree/main/days/day-0)
 
-:white_check_mark: Purchased **#100DaysofCode with Python Course**.
+:date: [Day 1](tree/main/days/day-0)
