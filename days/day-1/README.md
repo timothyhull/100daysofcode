@@ -28,7 +28,7 @@
 
 :notebook: The **datetime​** module is part of the *Python Standard Library* :snake:.
 
-:notebook: [Jupyter notebook](datetime.ipynb) for **datetime** objects.
+:telescope: [Jupyter notebook](datetime.ipynb) for **datetime** objects.
 
 :notebook: Use **==**, **!=**, **<=**, **=>**, **<**, **>** operators when comparing dates to each other (not **is** or **is not**).
 
