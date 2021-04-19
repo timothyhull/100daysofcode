@@ -1,4 +1,10 @@
-## :calendar: Day 0: 4/16/2020
+## :calendar: Course Start: 4/16/2020
+
+---
+
+## Topics:
+
+:clipboard: N/A
 
 ---
 
