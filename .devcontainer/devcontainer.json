@@ -1,7 +1,8 @@
 {
     "name": "#!00DaysofCode Dev Container",
     "build": {
-        "dockerfile": "Dockerfile"
+        "dockerfile": "../Dockerfile",
+        "context": ".."
     },
     "mounts": [
         "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
