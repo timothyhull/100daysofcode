@@ -2,9 +2,15 @@
 
 ---
 
+## Topics:
+
+:clipboard: TBD
+
+---
+
 ## Resources:
 
-:star: N/A
+:star: TBD
 
 ---
 
@@ -14,3 +20,8 @@
 
 :white_large_square: TBD
 
+---
+
+## Notes:
+
+:notebook: TBD
