@@ -6,17 +6,21 @@
 
 :clipboard: **datetime** objects
 
+:clipboard: **timedelta** objects
+
 ---
 
 ## Resources:
 
-:star: TBD
+:star: N/A
 
 ---
 
 ## Tasks:
 
-:white_check_mark: Watch chapter 2 videos
+:white_check_mark: Watch chapter 2 videos.
+
+:white_check_mark: Work with **datetime** and **timedelta** objects in an interactive shell.
 
 ---
 
