@@ -52,7 +52,7 @@ def convert_to_datetime(line):
     date_value_ints = [int(d) for d in date_value_list]
     time_value_ints = [int(t) for t in time_value_list]
 
-    # Create a datetime object
+    # Create a datetime object with list unpacking
     date_time = datetime(*date_value_ints, *time_value_ints)
     
     return (date_time)
