@@ -2,6 +2,14 @@
 
 ---
 
+## Topics:
+
+:clipboard: VS Code Development Containers
+
+:clipboard: Course introduction videos
+
+---
+
 ## Resources:
 
 :star: VS Code [Development Containers](https://code.visualstudio.com/docs/remote/create-dev-container)
@@ -21,3 +29,9 @@
 :white_check_mark: Setup a VS Code Development Container.
 
 :white_check_mark: Watch chapter 1 videos.
+
+---
+
+## Notes:
+
+:notebook: N/A
