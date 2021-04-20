@@ -20,5 +20,6 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 :date: [Day 1: 4/18/21](days/day-1)
 
-:date: [Day 1: 4/19/21](days/day-2)
+:date: [Day 2: 4/19/21](days/day-2)
 
+:date: [Day 2a: 4/20/21](days/day-2)
