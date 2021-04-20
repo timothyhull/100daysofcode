@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# Reference: https://codechalleng.es/bites/7
+
 # Imports
 from datetime import datetime, timedelta
 import os
