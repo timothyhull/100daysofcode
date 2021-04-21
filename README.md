@@ -18,7 +18,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 <details><summary>Getting Started</summary>
 
-- [Course Start: 4/16/21](days/_course_start)
+- Course Start: [4/16/21](days/_course_start)
 
 </details>
 
