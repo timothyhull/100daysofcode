@@ -1,10 +1,10 @@
-## :calendar: Day 2: 4/19/2020 - 4/20/2020
+## :calendar: Day 2: 4/19/2020 - 4/21/2020
 
 ---
 
 ## Topics:
 
-:clipboard: **datetime** objects
+:clipboard: `datetime` objects
 
 ---
 
@@ -34,7 +34,7 @@
 
 ## Notes:
 
-:notebook: **strptime** - creates a **datetime** object from a **string** representing a date/time, with a corresponding **format string**:
+:notebook: `strptime` - creates a `datetime` object from a **string** representing a date/time, with a corresponding **format string**:
 
 ```python
 from datetime import datetime
@@ -48,7 +48,7 @@ print(date_object)
 
 
 
-:notebook: **strftime** - creates a **string** from a **date**, **datetime**, or **time** object, with a format string:
+:notebook: `strftime` - creates a **string** from a `date`, `datetime`, or `time` object, with a format string:
 
 ```python
 from datetime import date
