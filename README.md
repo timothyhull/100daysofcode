@@ -18,6 +18,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 <details><summary>Day 0: Getting Started</summary>
 
+
 * [Course Start: 4/16/21](days/_course_start)
 
 </details>
@@ -29,6 +30,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 *  [Day 1: 4/18/21](days/1)
 
 *  [Day 2: 4/19/21](days/2)
+
 *  [Day 2a: 4/20/21](days/2)
 
 </details>
