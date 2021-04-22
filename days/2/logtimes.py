@@ -9,11 +9,7 @@ import re
 import urllib.request
 
 # Constants
-DATE_PATTERN = r'\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])'
-DATE_RE = re.compile(DATE_PATTERN)
 SHUTDOWN_EVENT = 'Shutdown initiated'
-TIME_PATTERN = r'([0-1][0-9]|2[0-4])(:([0-5][0-9]|60)){2}'
-TIME_RE = re.compile(TIME_PATTERN)
 URL = 'https://bites-data.s3.us-east-2.amazonaws.com/messages.log'
 
 # prep: read in the log file
@@ -25,9 +21,9 @@ urllib.request.urlretrieve(
 )
 
 with open(logfile,
-    mode='rt',
-    encoding='utf-8') as f:
-    loglines = f.readlines()
+          mode='rt',
+          encoding='utf-8') as f:
+          loglines = f.readlines()
 
 
 # coding exercise
@@ -40,24 +36,15 @@ def convert_to_datetime(line):
        datetime(2014, 7, 3, 23, 27, 51)
     """
 
-    # Find and extract the date string
-    date_match_object = DATE_RE.search(line)
-    date_string = date_match_object.group(0)
-    date_value_list = date_string.split('-')
+    # Split the log line on each space and iterate over each block of text
+    for block in line.split():
+        # Try to convert each block to a datetime object from ISO time format
+        try:
+            date_time = datetime.fromisoformat(block)
+        except ValueError:
+            continue
 
-    # Find and extract the time string
-    time_match_object = TIME_RE.search(line)
-    time_string = time_match_object.group(0)
-    time_value_list = time_string.split(':')
-
-    # Convert each date & time value to an integer
-    date_value_ints = [int(d) for d in date_value_list]
-    time_value_ints = [int(t) for t in time_value_list]
-
-    # Create a datetime object with list unpacking
-    date_time = datetime(*date_value_ints, *time_value_ints)
-    
-    return (date_time)
+    return date_time
 
 
 def time_between_shutdowns(loglines):
