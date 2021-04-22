@@ -20,3 +20,5 @@ plotly
 # pytest
 pytest
 pytest-cov
+# formatting
+autopep8
