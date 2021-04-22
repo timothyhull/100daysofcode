@@ -1,13 +1,20 @@
 {
-    "name": "#!00DaysofCode Dev Container",
     "build": {
         "dockerfile": "../Dockerfile",
         "context": ".."
     },
-    "forwardPorts": [8888],
     "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-azuretools.vscode-docker"
-    ]
+    ],
+    "forwardPorts": [8888],
+    "name": "100DaysofCode Dev Container",
+    "settings": {
+        "python.pythonPath": "/usr/local/bin/python3",
+        "python.formatting.provider": "autopep8",
+        "python.linting.pylintEnabled": false,
+        "python.linting.flake8Enabled": true,
+        "python.linting.enabled": true
+    }
 }
