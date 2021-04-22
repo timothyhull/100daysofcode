@@ -22,17 +22,21 @@
 
 :star: [datetime.fromisoformat reference](https://docs.python.org/3/library/datetime.html#datetime.datetime.fromisoformat)
 
+:tomato: [Pomodoro timer](https://en.wikipedia.org/wiki/Pomodoro_Technique)
+
 ---
 
 ## Tasks:
 
-:white_check_mark: Complete PyBite 7
+:white_check_mark: Complete PyBite 7 - **4/19/21**
 
-:white_check_mark: Complete PyBite 67
+:white_check_mark: Complete PyBite 67 - **4/20/21**
 
-:white_check_mark: Complete PyBite 128
+:white_check_mark: Complete PyBite 128 - **4/21/21**
 
-:white_check_mark: Revise PyBite 7 using `datetime.fromisoformat` method
+:white_check_mark: Revise PyBite 7 using `datetime.fromisoformat` method - **4/21/21**
+
+:white_large_square: Create Pomodoro timer - **4/21/21-TBD**
 
 ---
 
