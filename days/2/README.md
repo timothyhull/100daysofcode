@@ -22,10 +22,6 @@
 
 :star: [datetime.fromisoformat reference](https://docs.python.org/3/library/datetime.html#datetime.datetime.fromisoformat)
 
-:star: [String Formatting Mini-Language Specification](https://docs.python.org/2/library/string.html#formatspec)
-
-:tomato: [Pomodoro timer](https://en.wikipedia.org/wiki/Pomodoro_Technique)
-
 ---
 
 ## Tasks:
@@ -37,8 +33,6 @@
 :white_check_mark: Complete PyBite 128 - **4/21/21**
 
 :white_check_mark: Revise PyBite 7 using `datetime.fromisoformat` method - **4/21/21**
-
-:white_large_square: Create Pomodoro timer - **4/21/21-TBD**
 
 ---
 
@@ -94,15 +88,4 @@ datetime.datetime(2011, 11, 4, 0, 5, 23,
     tzinfo=datetime.timezone(datetime.timedelta(seconds=14400)))
 ```
 
-
-
-:notebook: Format a single digit **integer** as a two-digit **integer** (eg. convert 1 to  01):
-
-```python
-# Use Python String Formatting Mini-Language Specification (see reference above)
-number = 5
-print(f'{number:02d}')
-
-# Output: 05
-```
 
