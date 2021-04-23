@@ -7,6 +7,11 @@
 
 # Reference - https://en.wikipedia.org/wiki/Pomodoro_Technique
 
+# Imports
+import sys
+import termios
+import tty
+
 # Declare timer constants for work and break time
 # Constants
 WORK_MINUTES = 25
@@ -17,8 +22,10 @@ MAX_SHORT_BREAKS = 4
 
 # Banner generator
 def generate_banner(message: str) -> str:
-    print(f'\n{message}\n'
-          f'{"-" * len(message)}\n')
+    banner_border = f'{"-" * len(message)}'
+    print(f'\n{banner_border}\n'
+          f'{message}\n'
+          f'{banner_border}\n')
 
 
 # Display intro
@@ -27,14 +34,53 @@ def display_intro() -> None:
 
 
 # Graceful exit
-def end_pomodoro() -> None:
-    generate_banner('*** End Pomodoro Timer ***')
+def end_pomodoro(exception: None = None) -> None:
+    if exception is None:
+        generate_banner('*** End Pomodoro Timer ***')
+    else:
+        generate_banner(f'*** {exception!r} ***')
+
+    sys.exit(0)
+
+
+# Get single keystroke input
+def get_keystroke() -> str:
+    # Get the underlying file descriptor, if one exists
+    file_descriptor = sys.stdin.fileno()
+
+    # Save a copy of the original terminal attributes
+    original_terminal_attributes = termios.tcgetattr(file_descriptor)
+
+    # Try to collect a keystroke
+    try:
+        # Put the terminal in raw mode
+        tty.setraw(file_descriptor)
+
+        # Collect exactly one keystroke
+        keystroke = sys.stdin.read(1)
+    finally:
+        # Always restore original attributes after keystroke input attempt
+        termios.tcsetattr(
+            file_descriptor,
+            termios.TCSADRAIN,
+            original_terminal_attributes
+        )
+
+        return keystroke
 
 
 # Display instructions
 def display_instructions() -> None:
-    prompt = 'Press Return/Enter to start or any other key to exit.'
+    # Prompt for keystroke input
+    print('Press Return/Enter to start or any other key to exit: ')
 
+    # Get keystroke
+    keystroke = get_keystroke()
+    print(f'You pressed {keystroke!r}')
+
+    if keystroke != '\r':
+        end_pomodoro()
+        
 
 # Prompt to start a timer by pressing a specific key
     # Exit the program for any other key
@@ -57,6 +103,7 @@ def start_prompt() -> None:
 
 def main() -> None:
     display_intro()
+    display_instructions()
 
 
 if __name__ == '__main__':
