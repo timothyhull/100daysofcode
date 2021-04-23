@@ -29,5 +29,6 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 -  Day 2: [4/19/21](days/2)
 -  Day 2a: [4/20/21](days/2)
 -  Day 2b: [4/21/21](days/2)
+-  Day 2c: [4/22/21](days/2)
 
 </details>
