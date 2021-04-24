@@ -16,7 +16,10 @@
 
 ## Tasks:
 
-:white_check_mark: Create Pomodoro timer - **4/21/21-4/23/21**
+:white_check_mark: Start Pomodoro timer app - **4/21/21**
+:white_check_mark: Add banner function - **4/22/21**
+:white_check_mark: Add keystroke input function - **4/22/21**
+:white_check_mark: Complete and test app - **4/23/21**
 
 ---
 
