@@ -16,7 +16,7 @@
 
 ## Tasks:
 
-:white_check_box: Create Pomodoro timer - **4/21/21-4/23/21**
+:white_check_mark: Create Pomodoro timer - **4/21/21-4/23/21**
 
 ---
 
