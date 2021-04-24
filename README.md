@@ -19,12 +19,12 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 <details><summary>Getting Started</summary>
 
 - Course Start: [4/16/21](days/_course_start)
+-  Day 0: [4/17/21](days/0)
 
 </details>
 
 <details><summary>Days 1-3: Dealing with Datetimes</summary>
 
--  Day 0: [4/17/21](days/0)
 -  Day 1: [4/18/21](days/1)
 -  Day 2: [4/19/21](days/2)
 -  Day 2a: [4/20/21](days/2)
