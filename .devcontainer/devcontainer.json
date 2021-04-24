@@ -1,4 +1,5 @@
 {
+    "name": "100DaysofCode Dev Container",
     "build": {
         "dockerfile": "../Dockerfile",
         "context": ".."
@@ -9,7 +10,6 @@
         "ms-azuretools.vscode-docker"
     ],
     "forwardPorts": [8888],
-    "name": "100DaysofCode Dev Container",
     "settings": {
         "python.pythonPath": "/usr/local/bin/python3",
         "python.formatting.provider": "autopep8",
