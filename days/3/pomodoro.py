@@ -3,9 +3,13 @@
 """A fun project would be to create yourself a Pomodoro Timer
    that incorporates datetime rather than just the time module.
    Have it display timestamps.
+
+    Usage:
+        ./pomodoro.py [work_minutes short_break_minutes long_break_minutes]
 """
 
 # Reference - https://en.wikipedia.org/wiki/Pomodoro_Technique
+# Standard timer values - work:25, short break:4, long break:15
 
 # Imports
 from datetime import datetime, timedelta
@@ -14,12 +18,31 @@ import sys
 import termios
 import tty
 
-# Declare timer constants for work and break time
 # Constants
-WORK_MINUTES = 1
-SHORT_BREAK_MINUTES = 5
-LONG_BREAK_MINUTES = 15
+if len(sys.argv) == 4:
+    WORK_TIME = float(sys.argv[1])
+    SHORT_BREAK_TIME = float(sys.argv[2])
+    LONG_BREAK_TIME = float(sys.argv[3])
+else:
+    WORK_TIME = 25
+    SHORT_BREAK_TIME = 4
+    LONG_BREAK_TIME = 15
+
 MAX_SHORT_BREAKS = 4
+TIMERS = {
+    'work': {
+        'name': 'Work',
+        'time': WORK_TIME
+    },
+    'short_break': {
+        'name': 'Short break',
+        'time': SHORT_BREAK_TIME
+    },
+    'long_break': {
+        'name': 'Long break',
+        'time': LONG_BREAK_TIME
+    }
+}
 
 
 def generate_banner(message: str) -> None:
@@ -31,7 +54,16 @@ def generate_banner(message: str) -> None:
     Returns:
         None
     """
-    banner_border = f'{"-" * len(message)}'
+
+    # Set the border width
+    new_line_position = message.find('\n')
+    if new_line_position > 0:
+        banner_width = new_line_position
+    else:
+        banner_width = len(message)
+
+    # Display banner
+    banner_border = f'{"-" * banner_width}'
     print(f'\n{banner_border}\n'
           f'{message}\n'
           f'{banner_border}\n')
@@ -57,7 +89,7 @@ def end_pomodoro(exception: None = None) -> None:
     if exception is None:
         generate_banner('*** End Pomodoro Timer ***')
     else:
-        generate_banner(f'*** {exception!r} ***')
+        generate_banner(f'*** Exit due to "{exception!r}" ***')
 
     sys.exit(0)
 
@@ -93,20 +125,33 @@ def get_keystroke() -> str:
         )
 
         return keystroke
+    
 
-
-def start_prompt() -> None:
+def timer(timer_type: str, count: int) -> None:
     """Prompt to start a timer by pressing a specific key
        Exit the program for any other key
 
     Args:
-        None
+        timer_type: string declaring the type of timer which triggers
+                    the corresponding countdown time.
+        timer_count: integer declaring the number of iterations for
+                     a given timer.
 
     Returns:
         None
     """
+
+    # Set timer type and time interval
+    timer = TIMERS.get(timer_type)
+    time_interval = 'minutes'
+    if timer.get('time') == 1:
+        time_interval = time_interval[0:-1]
+
     # Prompt for keystroke input
-    print('Press Return/Enter to start or any other key to exit: ')
+    print('Press Return/Enter to start '
+          f'{timer.get("name").lower()} '
+          f'timer # {count} ({timer.get("time")} {time_interval}) ' 
+          'or any other key to exit: ')
 
     # Get keystroke
     keystroke = get_keystroke()
@@ -115,24 +160,19 @@ def start_prompt() -> None:
     # End the program if the keystroke is not Return/Enter
     if keystroke != '\r':
         end_pomodoro()
-    
 
-def work_timer() -> None:
-    """Timer for working time
 
-    Args:
-        None
-
-    Returns:
-        None
-    """
-
-    # Set and displaythe start and end times
+    # Set and timer type, start time, and end time
     start_time = datetime.now()
-    end_time = start_time + timedelta(minutes=WORK_MINUTES)
+    end_time = start_time + timedelta(minutes=timer.get('time'))
 
-    print(f'Timer started at {start_time.strftime("%A, %b %d at %H:%M:%S")}')
-    print(f'Timer ends at {end_time.strftime("%A, %b %d at %H:%M:%S")}')
+    # Display timer type, start time, and end time banner
+    generate_banner(
+        f'{timer.get("name")} '
+        f'timer started at {start_time.strftime("%A, %b %d at %H:%M:%S")}\n'
+        f'{timer.get("name")} '
+        f'timer ends at {end_time.strftime("%A, %b %d at %H:%M:%S")}'
+    )
 
     try:
         while end_time >= datetime.now():
@@ -147,24 +187,39 @@ def work_timer() -> None:
     except KeyboardInterrupt as e:
         end_pomodoro(e)
     finally:
-        print('\a')
+        print('\n')
 
-
-# Display the number of minutes and seconds remaining
-
-# Display an alert with audio when the work timer expires
 
 # Display the number of breaks and the break duration when the timer expires
 
-# Display an alert with audio when the timer expires and the work timer starts
-
-# Handle ctrl-c events to gracefully exit
-
 
 def main() -> None:
+    """Main program
+    """
+
+    # Display intro at program start
     display_intro()
-    start_prompt()
-    work_timer()
+
+    # Initialize main program loop counters
+    work_count = 1
+    short_break_count = 1
+    long_break_count = 1
+
+    # Start main program loop
+    while True:
+        # Work timer
+        timer('work', work_count)
+        work_count += 1
+    
+        # Long break timer runs after MAX_SHORT_BREAKS short break cycles
+        if short_break_count % MAX_SHORT_BREAKS == 0:
+            timer('long_break', long_break_count)
+            long_break_count += 1
+            continue
+
+        # Short break timer
+        timer('short_break', short_break_count)
+        short_break_count += 1
 
 
 if __name__ == '__main__':
