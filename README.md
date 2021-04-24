@@ -23,7 +23,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 </details>
 
-<details><summary>Days 1-3: Dealing with Datetimes</summary>
+<details><summary>Days 1-3: Playing with Datetimes</summary>
 
 -  Day 1: [4/18/21](days/1)
 -  Day 2: [4/19/21](days/2)
@@ -33,4 +33,12 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 -  Day 3b: [4/23/21](days/3)
 
 </details>
+
+<details><summary>Days 4-6: Collections module</summary>
+
+- Day 4: [4/24/21](days/4)
+
+</details>
+
+
 
