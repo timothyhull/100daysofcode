@@ -30,6 +30,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 -  Day 2a: [4/20/21](days/2)
 -  Day 3: [4/21/21](days/3)
 -  Day 3a: [4/22/21](days/3)
+-  Day 3b: [4/23/21](days/3)
 
 </details>
 

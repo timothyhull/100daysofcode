@@ -1,4 +1,4 @@
-## :calendar: Day 3: 4/21/2020 - TBD
+## :calendar: Day 3: 4/21/2020 - 4/23/2021
 
 ---
 
@@ -16,7 +16,7 @@
 
 ## Tasks:
 
-:white_large_square: Create Pomodoro timer - **4/21/21-TBD**
+:white_check_box: Create Pomodoro timer - **4/21/21-4/23/21**
 
 ---
 
