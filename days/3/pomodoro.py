@@ -125,7 +125,7 @@ def get_keystroke() -> str:
         )
 
         return keystroke
-    
+
 
 def timer(timer_type: str, count: int) -> None:
     """Prompt to start a timer by pressing a specific key
@@ -150,7 +150,7 @@ def timer(timer_type: str, count: int) -> None:
     # Prompt for keystroke input
     print('Press Return/Enter to start '
           f'{timer.get("name").lower()} '
-          f'timer # {count} ({timer.get("time")} {time_interval}) ' 
+          f'timer # {count} ({timer.get("time")} {time_interval}) '
           'or any other key to exit: ')
 
     # Get keystroke
@@ -160,7 +160,6 @@ def timer(timer_type: str, count: int) -> None:
     # End the program if the keystroke is not Return/Enter
     if keystroke != '\r':
         end_pomodoro()
-
 
     # Set and timer type, start time, and end time
     start_time = datetime.now()
@@ -210,7 +209,7 @@ def main() -> None:
         # Work timer
         timer('work', work_count)
         work_count += 1
-    
+
         # Long break timer runs after MAX_SHORT_BREAKS short break cycles
         if short_break_count % MAX_SHORT_BREAKS == 0:
             timer('long_break', long_break_count)
