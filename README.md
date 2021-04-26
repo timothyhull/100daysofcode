@@ -37,6 +37,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 <details><summary>Days 4-6: Collections module</summary>
 
 - Day 4: [4/24/21](days/4)
+- Day 4a: [4/25/21](days/4)
 
 </details>
 
