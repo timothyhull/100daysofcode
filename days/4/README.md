@@ -1,4 +1,4 @@
-## :calendar: Day 4: 4/24/21-4/2N/21
+## :calendar: Day 4: 4/24/21-4/26/21
 
 ---
 
@@ -6,13 +6,21 @@
 
 :clipboard: `collections` module
 
-:clipboard: `namedtuple` and `defaultdict` data types
+:clipboard: `namedtuple` ,  `defaultdict`, `Counter`, and `deque` data types
 
 ---
 
 ## Resources:
 
-:star: N/A
+:star:  `collections` [documentation](https://docs.python.org/3/library/collections.html)
+
+:star:  `namedtuple` [documentation](https://docs.python.org/3/library/collections.html#collections.namedtuple)
+
+:star:  `defaultdict` [documentation](https://docs.python.org/3/library/collections.html#collections.defaultdict)
+
+:star:  `Counter` [documentation](https://docs.python.org/3/library/collections.html#collections.Counter)
+
+:star:  `deque` [documentation](https://docs.python.org/3/library/collections.html#collections.deque)
 
 ---
 
@@ -26,7 +34,7 @@
 
 :white_check_mark: Watch and take Jupyter notes for `Counter` video - **4/25/21**
 
-:white_large_square: Watch and take Jupyter notes for `deque` video
+:white_check_mark: Watch and take Jupyter notes for `deque` video - **4/26/21**
 
 ---
 
