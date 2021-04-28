@@ -38,7 +38,8 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 - Day 4: [4/24/21](days/4)
 - Day 4a: [4/25/21](days/4)
-- Day 4b: [4/25/21](days/4)
+- Day 4b: [4/26/21](days/4)
+- Day 5: [4/27/21](days/5)
 
 </details>
 
