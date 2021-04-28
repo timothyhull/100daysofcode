@@ -3,9 +3,8 @@
 # Reference: https://codechalleng.es/bites/7
 
 # Imports
-from datetime import datetime, timedelta
+from datetime import datetime
 import os
-import re
 import urllib.request
 
 # Constants
@@ -21,9 +20,9 @@ urllib.request.urlretrieve(
 )
 
 with open(logfile,
-          mode='rt',
-          encoding='utf-8') as f:
-          loglines = f.readlines()
+     mode='rt',
+     encoding='utf-8') as f:
+    loglines = f.readlines()
 
 
 # coding exercise
