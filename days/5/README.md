@@ -24,10 +24,28 @@
 
 :white_check_mark: Start work on PyByte #13 - **4/27/21**
 
+:white_check_mark: Review `get_movies_by_director` function in PyBite #13
+
+:white_check_mark: Create `top_n_directors_by_movie_count` function in PyBite #13
+
 :white_large_square: Complete PyBite #13
 
 ---
 
 ## Notes:
 
-:notebook: TBD
+:notebook: `Counter` objects support standalone creation and can support adding tuples using the augmented assignment operators `+=` (to add additional values) to evaluate with the `most_common` method:
+
+```python
+# Create a standalone Counter object
+c = Counter()
+
+# Add some tuples
+c['Tim'] += 41
+c['Sara'] += 40
+c['Lily'] += 13
+c['Ella'] += 10
+
+# Use the most_common method to display the N tuples with the biggest numbers
+c.most_common(3)
+```
