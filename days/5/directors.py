@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Imports
-from collections import defaultdict, namedtuple
+from collections import defaultdict, namedtuple, Counter
 from csv import DictReader
 from urllib.request import urlretrieve
 
@@ -42,3 +42,24 @@ def get_movies_by_director(data=DATA_SET_FILE_NAME):
             directors[director].append(m)
 
     return directors
+
+
+def top_n_directors_by_movie_count(directors: dict, count: int = 5):
+    """Function to display the top number of directors from a dictionary of
+    dictionaries where keys are director names and values are namedtuples
+    with movie title, release year, and IMDB score.
+    """
+
+    # Create a Counter object to store the directors dictionary keys/values
+    c = Counter()
+
+    # Populate the Counter object with with tuples
+    # The first tuple index is the director name
+    # The second tuple index is the length of the movies list for that director
+    for director, movies in directors.items():
+        c[director] += len(movies)
+
+    # Count the top N directors, by number of movies
+    top_n = c.most_common(count)
+
+    return top_n
