@@ -1,4 +1,4 @@
-## :calendar: Day 5: 4/27/21 - 4/29/21
+## :calendar: Day 5: 4/27/21 - 4/30/21
 
 ---
 
@@ -24,13 +24,15 @@
 
 :white_check_mark: Start work on PyByte #13 - **4/27/21**
 
-:white_check_mark: Review `get_movies_by_director` function in PyBite #13
+:white_check_mark: Review `get_movies_by_director` function in PyBite #13 **4/28/21**
 
-:white_check_mark: Create `top_n_directors_by_movie_count` function in PyBite #13
+:white_check_mark: Create `top_n_directors_by_movie_count` function in PyBite #13 **4/28/21**
 
-:white_check_mark: Create `top_n_directors_by_movie_count_and_le_year` function in PyBite #13
+:white_check_mark: Create `top_n_directors_by_movie_count_and_le_year` function in PyBite #13 **4/28/21**
 
-:white_check_mark: Create `top_20_rated_directors_desc_order` function in PyBite #13
+:white_check_mark: Create `top_20_rated_directors_desc_order` function in PyBite #13 **4/29/21**
+
+:white_check_mark: Update `top_20_rated_directors_desc_order` function in PyBite #13 **4/30/21**
 
 :white_large_square: Complete PyBite #13
 
@@ -38,7 +40,7 @@
 
 ## Notes:
 
-:notebook: `Counter` objects support standalone creation and can support adding tuples using the augmented assignment operators `+=` (to add additional values) to evaluate with the `most_common` method:
+:notebook: **4/27/21** - `Counter` objects support standalone creation and can support adding tuples using the augmented assignment operators `+=` (to add additional values) to evaluate with the `most_common` method:
 
 ```python
 # Create a standalone Counter object
@@ -53,3 +55,6 @@ c['Ella'] += 10
 # Use the most_common method to display the N tuples with the biggest numbers
 c.most_common(3)
 ```
+
+:rage: **4/30/21** - When working with multiple and/or complex data sets, it may be helpful to draw out or have a reference for what the structured data sets looks like to know if they are `dictionaries`, `lists`, `Counters`, etc., in order to access the nested data objects with more simplicity, and less frustration.
+
