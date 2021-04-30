@@ -32,7 +32,7 @@ def get_movies_by_director(data=DATA_SET_FILE_NAME):
         for line in DictReader(file):
             try:
                 director = line['director_name']
-                movie = line['movie_title'].replace('`\xa0`', '')
+                movie = line['movie_title'].replace('\xa0', '')
                 year = int(line['title_year'])
                 score = float(line['imdb_score'])
             except ValueError:
@@ -132,12 +132,37 @@ def top_20_rated_directors_desc_order(directors: dict):
         top_20_directors[index] = DirAvgScore(*value)
 
     # Loop over the Counter and print each director and their average score
+    print()
     for index, value in enumerate(top_20_directors):
         print(f'{index + 1:02d}. {value.director:<50}'
               f'{value.avg_score:.2f}\n'
               f'{"-" * 58}')
 
-        # Display director movie data, from the directors dictionary
-        for movies in directors[value.director]:
-            print(f'{movies.year}] {movies.title:<48}{movies.score:.2f}')
+        # Sort movies for any director with more than one film
+        # Look up the number of movies for the current director by length
+        # of the list of movies in the 'directors' object
+        if len(directors[value.director]) > 1:
+            # Create a default dictionary to store movies and their scores
+            movie_scores = defaultdict(float)
+            for movies in directors[value.director]:
+                movie_scores[movies.title] = movies.score
+
+            # Convert movie_scores to a Counter object and sort by score
+            # using the most_common method
+            movies_counter = Counter(movie_scores).most_common()
+
+            # Loop over the counter and display the year for the current
+            # iteration by looking up the list movie index for the current
+            # director ## THIS IS NOT THE CORRECT YEAR, ONLY THE YEAR FOR ONE
+            # OF THE MOVIES, OUT OF ORDER, IN THE DIRECTORS LIST OF MOVIES###
+            for i, movie in enumerate(movies_counter):
+                # Display the movie year, title, and average score, from the
+                # movie_counters Counter
+                print(f'{directors[value.director][i].year}] '
+                      f'{movie[0]:<48}{movie[1]:.2f}')
+        #
+        else:
+            # Display director movie data, from the directors dictionary
+            for movies in directors[value.director]:
+                print(f'{movies.year}] {movies.title:<48}{movies.score:.2f}')
         print()
