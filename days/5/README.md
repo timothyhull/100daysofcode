@@ -1,4 +1,4 @@
-## :calendar: Day 5: 4/27/21
+## :calendar: Day 5: 4/27/21 - 4/29/21
 
 ---
 
@@ -27,6 +27,10 @@
 :white_check_mark: Review `get_movies_by_director` function in PyBite #13
 
 :white_check_mark: Create `top_n_directors_by_movie_count` function in PyBite #13
+
+:white_check_mark: Create `top_n_directors_by_movie_count_and_le_year` function in PyBite #13
+
+:white_check_mark: Create `top_20_rated_directors_desc_order` function in PyBite #13
 
 :white_large_square: Complete PyBite #13
 
