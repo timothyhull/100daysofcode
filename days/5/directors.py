@@ -63,3 +63,81 @@ def top_n_directors_by_movie_count(directors: dict, count: int = 5):
     top_n = c.most_common(count)
 
     return top_n
+
+
+def top_n_directors_by_movie_count_and_le_year(
+    directors: dict,
+    year: int,
+    count: int = 5,
+):
+    """Function to display the top number of directors from a dictionary of
+    dictionaries where keys are director names and values are namedtuples
+    with movie title, release year, and IMDB score.  Filter by operator
+    of less than or equal to a specific year.
+    """
+
+    # Create a Counter object to store the directors dictionary keys/values
+    c = Counter()
+
+    # Populate the Counter object with with tuples
+    for director, movies in directors.items():
+        # Loop over the list of Movies namedtuples for each director
+        for m in movies:
+            # Filter any movies that do not match the criteria
+            if m.year <= year:
+                # The first tuple index is the director name
+                # The second tuple index is the number of movies
+                # for that director that match the comparision criteria
+                c[director] += 1
+
+    # Count the top N directors, by number of movies that met the criteria
+    top_n = c.most_common(count)
+
+    return top_n
+
+
+def top_20_rated_directors_desc_order(directors: dict):
+    """Print the top 20 highest rated directors with their movies ordered
+    desc on rating."""
+
+    # Create a Counter to score a tuple of director and their average score
+    director_avg = Counter()
+
+    # Loop over the directors dictionary
+    for director, movies in directors.items():
+        # Calculate the total score as the sum of every score for each movie
+        # Loop over the movies list to calcualte the sum
+        total_score = sum(m.score for m in movies)
+
+        # Calculate the total movies as the length of the movies list
+        total_movies = len(movies)
+
+        # Divide the total score by the total movies and round to two decimals
+        avg_score = round(total_score / total_movies, 2)
+
+        # Add a key/value to the director_average counter
+        director_avg[director] += avg_score
+
+    # Get the top 20 directors from the counter
+    top_20_directors = director_avg.most_common(20)
+
+    # Convert the Counter tuples to namedtuples
+    DirAvgScore = namedtuple('DirAvgScore', 'director avg_score')
+
+    # Loop over the Counter (list of tuples) with enumeration, to indices
+    for index, value in enumerate(top_20_directors):
+        # Convert each tuple to a namedtuple by passing each unpacked
+        # list item (a tuple) as arguments to the DirAvgScore namedtuple
+        # e.g. top_20_directors[0] = DirAvgScore(value[0], value[1])
+        top_20_directors[index] = DirAvgScore(*value)
+
+    # Loop over the Counter and print each director and their average score
+    for index, value in enumerate(top_20_directors):
+        print(f'{index + 1:02d}. {value.director:<50}'
+              f'{value.avg_score:.2f}\n'
+              f'{"-" * 58}')
+
+        # Display director movie data, from the directors dictionary
+        for movies in directors[value.director]:
+            print(f'{movies.year}] {movies.title:<48}{movies.score:.2f}')
+        print()
