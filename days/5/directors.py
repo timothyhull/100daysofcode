@@ -152,17 +152,24 @@ def top_20_rated_directors_desc_order(directors: dict):
             movies_counter = Counter(movie_scores).most_common()
 
             # Loop over the counter and display the year for the current
-            # iteration by looking up the list movie index for the current
-            # director ## THIS IS NOT THE CORRECT YEAR, ONLY THE YEAR FOR ONE
-            # OF THE MOVIES, OUT OF ORDER, IN THE DIRECTORS LIST OF MOVIES###
-            for i, movie in enumerate(movies_counter):
+            # iteration by looking up the year based on the movie title
+            for movie in movies_counter:
+                # Loop through the director's list of movies
+                for i, mov in enumerate(directors[value.director]):
+                    # Try to find the list index of the current movie title
+                    if movie[0] in mov:
+                        # When the list index is matched, extract the
+                        # matching year from the directors object, using
+                        # the matched index
+                        year = directors[value.director][i].year
                 # Display the movie year, title, and average score, from the
                 # movie_counters Counter
-                print(f'{directors[value.director][i].year}] '
+                print(f'{year}] '
                       f'{movie[0]:<48}{movie[1]:.2f}')
-        #
+
+        # For directors with only one film
+        # Display director movie data, from the directors dictionary
         else:
-            # Display director movie data, from the directors dictionary
             for movies in directors[value.director]:
                 print(f'{movies.year}] {movies.title:<48}{movies.score:.2f}')
         print()
