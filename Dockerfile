@@ -3,7 +3,7 @@ FROM python:3.9-slim-buster
 
 EXPOSE 8888
 
-WORKDIR /worksapces
+WORKDIR /workspaces
 
 RUN apt-get update && \
     apt-get install -y git
