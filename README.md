@@ -34,7 +34,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 </details>
 
-<details><summary>Days 4-6: Collections module</summary>
+<details><summary>Days 4-6: Collections module (part 1)</summary>
 
 - Day 4: [4/24/21](days/4)
 - Day 4a: [4/25/21](days/4)
@@ -47,5 +47,10 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 </details>
 
+<details><summary>Days DCAUTO: Exam Prep</summary>
 
+:bangbang: ​Taking a two-week break from **100DaysOfCode** exercises to study for the Cisco **DCAUTO** exam :mortar_board:.  Each day of study that includes writing Python will continue the days of code streak.
 
+- Day 4: [5/2/21](days/_dcauto/1#notebook-5121)
+
+</details>
