@@ -51,6 +51,6 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 :bangbang: ​Taking a two-week break from **100DaysOfCode** exercises to study for the Cisco **DCAUTO** exam :mortar_board:.  Each day of study that includes writing Python will continue the days of code streak.
 
-- Day 4: [5/2/21](days/_dcauto/1#notebook-5121)
+- Day 1: [5/2/21](_dcauto/days/1#notebook-5121)
 
 </details>
