@@ -1,4 +1,4 @@
-## :calendar: Day 6: 5/2/2021
+## :calendar: Day 6: N/N/NNNN
 
 ---
 
