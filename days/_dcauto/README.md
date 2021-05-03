@@ -12,6 +12,8 @@
 
 ## Resources:
 
+:desktop_computer: [DevNet Always-On APIC](https://sandboxapicdc.cisco.com)
+
 :snake: [COBRA Documentation](https://cobra.readthedocs.io/en/latest/)
 
 :octocat: [DCAUTO COBRA Challenge GitHub Repo](https://github.com/wwt/cisco-aci-sdk)
@@ -19,6 +21,8 @@
 :notebook: [ACI MIT Reference Image](https://www.cisco.com/c/dam/en/us/td/i/500001-600000/500001-510000/501001-502000/501289.jpg)
 
 :octocat: [DCAUTO Ansible Challenge GitHub Repo](https://github.com/wwt/cisco-aci-ansible)
+
+:milky_way: [Cisco ACI on Ansible Galaxy](https://galaxy.ansible.com/cisco/aci)
 
 ---
 
