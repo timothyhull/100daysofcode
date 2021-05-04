@@ -50,3 +50,15 @@
 
 :notebook: [Ansible Inventory File Reference](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)
 
+
+
+#### :notebook: 5/3/21
+
+:book: Work through COBRA SDK challenge again
+
+- Augment challenge with **vz** prefix objects (Filter, Entry, Subject, Contract, etc.)
+
+:book: Complete [Cisco Ansible DevNet learning lab](https://developer.cisco.com/learning/tracks/aci-programmability/ansible-aci-intro/aci_ansible_part2/step/1)
+
+- Augment Ansible playbook with additional modules (Filter, Entry, Subject, Contract, etc)
+
