@@ -12,6 +12,8 @@
 
 ## Resources:
 
+#### ACI
+
 :desktop_computer: [DevNet Always-On APIC](https://sandboxapicdc.cisco.com)
 
 :snake: [COBRA Documentation](https://cobra.readthedocs.io/en/latest/)
@@ -24,6 +26,22 @@
 
 :milky_way: [Cisco ACI on Ansible Galaxy](https://galaxy.ansible.com/cisco/aci)
 
+
+
+#### UCS
+
+:snake: [**ucsmsdk** Documentation](https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk_ug.html#management-information-model)
+
+:computer: [UCS DevNet Programmability Learning Labs](https://developer.cisco.com/learning/tracks/ucs-compute-prog)
+
+:cloud: [dCloud UCS Programmability and Automation Lab](https://dcloud2-sjc.cisco.com/content/demo/4158)
+
+:notebook_with_decorative_cover: [Intersight API Documentation](https://intersight.com/apidocs/introduction/overview/)
+
+:milky_way: [Ansible Galaxy UCSM Collection](https://galaxy.ansible.com/cisco/ucs)
+
+:milky_way: [Ansible Galaxy Intersight Collection](https://galaxy.ansible.com/cisco/ucs)
+
 ---
 
 ## Tasks:
@@ -31,6 +49,20 @@
 :white_check_mark: Create and complete ACI COBRA SDK challenge Jupyter notebook - **5/2/21**
 
 :white_check_mark: Review Ansible study group recording - **5/2/21**
+
+:white_check_mark: Retake COBRA SDK exercise - **5/3/21**
+
+:white_check_mark: Start UCS study - **5/4/21**
+
+:white_large_square: Retake ACI exercises - **5/5/21**
+
+:white_large_square: DevNet UCS Learning Labs - **5/5/21**
+
+:white_large_square: Intersight UCS Learning Labs - **5/6/21**
+
+:white_large_square: dCloud UCS Labs - **5/7/21**
+
+:white_large_square: DCNM & UCS Director - **5/8/21**
 
 ---
 
@@ -62,3 +94,11 @@
 
 - Augment Ansible playbook with additional modules (Filter, Entry, Subject, Contract, etc)
 
+
+
+#### :notebook: 5/4/21
+
+:computer: Watch DCAUTO UCS/Intersight video
+
+- Write sample code with the Python `uscmsdk` to manage **blade** objects.
+- Write sample code with the Python `ucsmsdk` to setup a UCSM environment.
