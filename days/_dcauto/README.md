@@ -52,6 +52,12 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 - 192.168.72.4
 
+:computer: UCS Director (UCSD) Guides:
+
+- [REST API - Getting Started](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/ucs-director/rest-api-getting-started-guide/6-5/cisco-ucs-director-REST-API-getting-started-65.html)
+- [REST API - Cookbook](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/ucs-director/rest-api-cookbook/6-5/cisco-ucs-director-REST-API-cookbook-65.html)
+- [Orchestration Guide](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/ucs-director/orchestration-guide/6-8/cisco-ucs-director-orchestration-68.html)
+
 
 
 #### Nexus 9000
@@ -75,13 +81,19 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 :white_check_mark: Start UCS study - **5/4/21**
 
-:white_check_mark: DevNet UCS PowerTool Learning Labs - **5/5/21**
+:white_check_mark: DevNet UCS PowerTool Beginning Learning Labs - **5/5/21**
 
-:white_check_mark: DevNet UCS Director Learning Labs - **5/5/21**
+:white_check_mark: DevNet UCS Director Learning Labs - **5/6/21**
 
-:white_large_square: Retake ACI exercises - **5/6/21**
+:white_check_mark: DevNet Python SDK Learning Labs - **5/6/21**
 
-:white_large_square: Intersight UCS Learning Labs - **5/6/21**
+:white_large_square: DevNet Python SDK Learning Labs - **5/7/21**
+
+:white_large_square: DevNet UCS PowerTool Intermediate Learning Labs - **5/7/21**
+
+:white_large_square: Retake ACI exercises - **5/7/21**
+
+:white_large_square: Intersight UCS Learning Labs - **5/7/21**
 
 :white_large_square: dCloud UCS Labs - **5/7/21**
 
@@ -107,6 +119,10 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 
 
+---
+
+
+
 #### :notebook: 5/3/21
 
 :book: Work through COBRA SDK challenge again
@@ -119,12 +135,20 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 
 
+---
+
+
+
 #### :notebook: 5/4/21
 
 :computer: Watch DCAUTO UCS/Intersight video
 
 - Write sample code with the Python `uscmsdk` to manage **blade** objects.
 - Write sample code with the Python `ucsmsdk` to setup a UCSM environment.
+
+
+
+---
 
 
 
@@ -189,6 +213,10 @@ Get-UcsBlade | Where-Object {$_.NumOfCpus -eq 4} | Select-Object Dn, TotalMemory
 # % = foreach
 
 ```
+
+
+
+---
 
 
 
@@ -597,10 +625,182 @@ userAPIModifyLoginProfilePassword
 * Modify a user password
 
 ```raw
-# Construct a payload
+# Construct a payload, spaces are optional
 {param0: {"oldPassword": "ciscopsdt", "newPassword": "new-password"}}
 
 # Set the endpoint
 https://{{ucsd}}/app/api/rest?formatType=json&opName=userAPIModifyLoginProfile?opData={param0: {"oldPassword": "ciscopsdt", "newPassword": "ciscopsdt1"}}
+```
+
+
+
+---
+
+
+
+#### :notebook: 5/5/21
+
+##### UCS Director, continued
+
+- Automatically update the Postman environment variable for the **api_key** using automated test code (in the **Tests** tab of a request)
+
+```javascript
+// The environment variable to update is "api_key"
+if (request.url.includes(getRESTKey)) {
+  postman.setEnvironmentVariable("api_key", responseBody.replace(/"g, ""))
+}
+```
+
+
+
+* UCSD Custom Workflow Task Script
+
+```javascript
+var input1 = input.firstInput;
+var input2 = input.secondInput;
+
+var outputMsg = "OUTPUT :" +input1 + " " +input2;
+output.firstOutput=outputMsg;
+```
+
+* Invoke a UCSD Workflow via REST API
+
+```json
+// API Endpoint
+// userAPISubmitWorkflowServiceRequest
+// opData JSON payload (unformatted)
+{param0: "InvokeCustTask", param1: {"list": [{"name": "First Input", "value": "Babs"}, {"name": "Second Input", "value": "Skip"}]}, param2: -1}
+
+// formatted
+{
+  param0: "InvokeCustTask",
+  param1: {
+    "list": [
+      {
+        "name": "firstInput",
+        "value": "Babs"
+      },
+      {
+        "name": "secondInput",
+        "value": "Skip"
+      }
+    ]
+  },
+  param2: -1
+}
+```
+
+
+
+##### :snake: Python SDK
+
+```python
+# Connect to UCS
+from ucsmsdk.ucshandle import UcsHandle
+
+UCSM = '192.168.72.4'
+USER = 'admin'
+PWD = 'admin'
+
+handle = UcsHandle(UCSM, USER, PWD)
+handle.login()
+```
+
+```python
+# Review handle object attributes
+vars(handle)
+
+handle.ip
+handle.ucs
+handle.cookie
+```
+
+```python
+# Query and display all compute blade objects
+blades = handle.query_classid('computeBlade')
+
+for blade in blades:
+  print(blade)
+```
+
+```python
+# Display specific blade attributes
+for blade in blades:
+  print(blade.dn, blade.num_of_cpus, blade.available_memory)
+```
+
+
+
+- SDK Query Methods
+
+```python
+# Get objects from a single class
+query_classid # returns a list of objects
+handle.query_classid('computeBlade')
+
+# Get objects from multiple classes
+query_classids # returns a dictionary where classid is the key and objects are value
+handle.query_classids('computeBlade', 'computeRackUnit')
+
+# Get a single object by DN
+query_dn # Returns an object
+handle.query_dn('sys/chassis-3/blade-1')
+
+# Get multiple objects by DN
+query_dns # Returns a dictionary where the DN is the key and the object is the value
+handle.query_dn('sys/chassis-3/blade-1', 'sys/chassis-3/blade-3')
+
+# Get child objects for a specific object
+query_children # Returns a list
+handle.query_children(handle.query_dn('sys/chassis-3/blade-1'))
+```
+
+
+
+* Get Server DN and LED State
+
+```python
+# Get all server objects, using classes
+servers = handle.query_children('computeBlade', 'computeRackUnit')
+
+# Loop over all servers
+for server_class in servers.values():
+    # Loop over each server class object
+    for server in server_class:
+      # Assign the equipmentLocatorLed class data to a variable
+      led = handle.query_children(server, class_id='equipmentLocatorLed')
+      print(server.dn, led[0].oper_state)
+```
+
+- Chanege the state of all LEDs
+
+```python
+# Get a list of all server objects, by class
+# Each class becomes its own dictionary key
+server_classes = handle.query_classids('computeBlade', 'computeRackUnit')
+
+# Loop over each server class object list (computeBlade and computeRackUnit)
+for server_list in server_classes.values():
+      # Loop over each server object within the list
+      for server in server_list:
+        # Get server LED status
+        led = handle.query_children(server, class_id='equipmentLocatorLed')
+        # Set previous LED status
+        prev_led_status = led[0].oper_state
+
+        # Set the new LED status
+        if led[0].oper_state == 'off':
+            led[0].admin_state = 'on'
+        else:
+          led[0].admin_state = 'off'
+
+        # Set the handle MO value and commit the change
+        handle.set_mo(led[0])
+        handle.commit()
+        
+        # Display output
+        print(f'DN {server.dn}:\n'
+              f'\tPrevious - {prev_led_status}\n'
+              f'\tNew - {led[0].admin_state}')
 ```
 
