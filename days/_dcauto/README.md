@@ -87,17 +87,17 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 :white_check_mark: DevNet Python SDK Learning Labs - **5/6/21**
 
-:white_large_square: DevNet Python SDK Learning Labs - **5/7/21**
+:white_check_mark: DevNet Python SDK Learning Labs - **5/7/21**
 
-:white_large_square: DevNet UCS PowerTool Intermediate Learning Labs - **5/7/21**
+:white_check_mark: DevNet UCS PowerTool & Python SDK Intermediate Learning Labs - **5/7/21**
 
-:white_large_square: Retake ACI exercises - **5/7/21**
+:white_large_square: UCS Ansible - just 5/8/21
 
-:white_large_square: Intersight UCS Learning Labs - **5/7/21**
+:white_large_square: Retake ACI exercises - **5/8/21**
 
-:white_large_square: dCloud UCS Labs - **5/7/21**
+:white_large_square: Intersight UCS Learning Labs - **5/8/21**
 
-:white_large_square: DCNM & UCS Director - **5/8/21**
+:white_large_square: DCNM - **5/12/21**
 
 ---
 
@@ -638,7 +638,7 @@ https://{{ucsd}}/app/api/rest?formatType=json&opName=userAPIModifyLoginProfile?o
 
 
 
-#### :notebook: 5/5/21
+#### :notebook: 5/6/21
 
 ##### UCS Director, continued
 
@@ -698,11 +698,14 @@ output.firstOutput=outputMsg;
 # Connect to UCS
 from ucsmsdk.ucshandle import UcsHandle
 
-UCSM = '192.168.72.4'
-USER = 'admin'
-PWD = 'admin'
+UCS_CONN = {
+  'ip': '192.168.72.4',
+	'username': 'admin',
+	'password': 'admin',
+  'secure': False
+}
 
-handle = UcsHandle(UCSM, USER, PWD)
+handle = UcsHandle(**UCS_CONN)
 handle.login()
 ```
 
@@ -802,5 +805,477 @@ for server_list in server_classes.values():
         print(f'DN {server.dn}:\n'
               f'\tPrevious - {prev_led_status}\n'
               f'\tNew - {led[0].admin_state}')
+```
+
+
+
+---
+
+
+
+#### :notebook: 5/7/21
+
+##### :snake: Python SDK, continued
+
+*  Query the locator LED status for all servers, reverse the setting, and display results
+
+```python
+# Get lists of all servers (returns a dict)
+servers = handle.query_classids('computeBlade', 'computeRackUnit')
+
+# Loop over each of the dict values (separate lists of server classes)
+for server_classes in servers.values():
+  # Loop over each individual server class
+
+  for server in server_classes:
+  	# Get the LED subclass status for each server
+	  led = handle.query_children(server, class_id='EquipmentLocatorLed')
+
+    # Get the current LED properties
+    led_dn = led[0].dn
+    led_oper_state = led[0].oper_state
+
+    # Reverse the LED state
+    if led_oper_state == 'off':
+    	led[0].admin_state = 'on'
+    else:
+      led[0].admin_state = 'off'
+     
+		# Set the new LED state
+    handle.set_mo(led[0])
+    handle.commit()
+
+    # Get the updated status
+    led_new_props = handle.query_dn(led_dn)
+
+    # Display the results
+    print(f'Locator LED State for {server.dn}:\n'
+          f'\tPrevious state - {led_oper_state}\n'
+          f'\tNew state - {led_new_props.admin_state}')
+```
+
+
+
+* Create a new VLAN
+
+```python
+# Import the UcsHandle and FabricVlan modules
+from ucsmsdk.ucshandle import UcsHandle
+from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
+
+# Connect to the UCSM
+UCSM_CONN = {
+  'ip': '192.168.72.4',
+  'username': 'admin',
+  'password': 'admin',
+  'secure': False
+}
+
+handle = UcsHandle(**UCSM_CONN)
+handle.login()
+
+# Get the FabricLanCloud class
+lan_cloud = handle.query_classid('FabricLanCloud')
+
+# Display the lan_cloud DN
+# lan_cloud[0].dn
+
+# Create a MO for the VLAN
+vlan_mo = FabricVlan(lan_cloud[0].dn, name='vlan100', id='100')
+
+# Add the VLAN MO to the UCS
+handle.add_mo(vlan_mo)
+# handle.add_mo(mo=vlan_mo, modify_present=True)
+handle.commit()
+```
+
+
+
+* Create multiple VLANs in a transaction
+
+```python
+# Import the UcsHandle and FabricVlan modules
+from ucsmsdk.ucshandle import UcsHandle
+from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
+
+# Connect to the UCSM
+UCSM_CONN = {
+  'ip': '192.168.72.4',
+  'username': 'admin',
+  'password': 'admin',
+  'secure': False
+}
+
+handle = UcsHandle(**UCSM_CONN)
+handle.login()
+
+# Create a FabricLanCloud MO
+lan_cloud = handle.query_classid('FabricLanCloud')
+
+# Loop over a range of VLAN numbers
+for vlan in range (300, 303):
+  # Create a MO for each VLAN
+  vlan_mo = FabricVlan(
+    parent_mo_or_dn=lan_cloud[0].dn,
+    name=f'vlan{vlan}',
+    id=str(vlan)
+  )
+
+  # Add each MO to the handle object
+  handle.add_mo(vlan_mo)
+
+# Commit the changes to UCSM
+handle.commit()
+```
+
+
+
+* Delete multiple VLANs in a transaction
+
+```python
+# Import modules
+from ucsmsdk.ucshandle import UcsHandle
+from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
+
+# Log in
+CONN = {
+  'ip': '192.168.72.4',
+  'username': 'admin',
+  'password': 'admin',
+  'secure': False
+}
+
+handle = UcsHandle(**CONN)
+handle.login()
+
+# Create a MO for all VLANs
+vlans_mo = handle.query_classid('FabricVlan')
+
+# Loop over the list of VLANs (in the vlans_mo), and remove them, except for VLAN 1
+for vlan_mo in vlans_mo:
+  if vlan_mo.id != '1':
+	  handle.add_mo(vlan_mo)
+
+handle.commit()
+```
+
+
+
+##### :computer: UCS PowerTool Intermediate
+
+- Time zones, NTP, & DNS
+
+```powershell
+# Get UCSM properties
+Get-UcsTimeZone
+Get-UcsNtpServer
+Get-UcsDns # Specifies system domain name
+
+```
+
+```powershell
+# Set UCSM time zone
+# First, get the time zone object to update and pipe it to the Set-UcsTimeZone Cmdlet
+Get-UcsTimezone | Set-UcsTimezone -Timezone America/Los_Angeles -Force
+```
+
+```powershell
+# Add an NTP server
+# Pipe the current time zone object to the Add-UcsNtpServer command in order to send
+# a 'Cisco.Ucsm.CommDateTime' object to the Cmdlet (a System.String for the time zone)
+# will not work.
+
+Get-UcsTimezone | Add-UcsNtpServer -name 172.16.20.5
+
+# Remove an NTP server
+Get-UcsNtpServer -Name 172.16.20.5 | Remove-UcsNtpServer -Force
+```
+
+```powershell
+# Add a DNS server by piping it to the UcsDns object
+Get-UcsDns | Add-UcsDnsServer -Name 8.8.8.8
+
+# Remove a DNS server
+Get-UcsDnsServer -Name 8.8.8.8 | Remove-UcsDnsServer
+```
+
+
+
+- Export and Import UCSM configurations
+  - Four types of backups
+    - Full-state - not available with PowerTool
+    - All configuration - all system and logical configuration settings
+    - System configuration - usernames, roles, locales, etc.
+    - Logical configuration - service profiles, VLANs, VSANs, pools, policies, etc.
+
+```powershell
+# Backup all configuration
+Backup-Ucs -Type config-all -PathPattern ./config-all.xml
+
+# Backup with a PathPattern which includes variables
+Backup-Ucs -Type config-logical -PathPattern ./${ucs}-${yyyy}${MM}${dd}-${HH}${mm}-config-logical.xml
+
+ucs - Name of the UCS System
+yyyy - Four-digit year
+MM - Two-digit month
+dd - Two-digit day
+HH - Two-digit hour (24-hour clock)
+mm - Two-digit minute
+```
+
+```powershell
+# Import UCS configuration
+Import-UcsBackup -Merge -LiteralPath ./config-all.xml
+```
+
+
+
+:snake: UCS Python SDK Intermediate
+
+* UCSM time zone and NTP settings
+
+```python
+# Import UcsHandle
+from ucsmsdk.ucshandle import UcsHandle
+
+# Login
+UCSM = {
+  'ip': '192.168.72.4',
+  'username': 'admin',
+  'password': 'admin',
+  'secure': 'false'
+}
+
+handle = UcsHandle(**UCSM)
+handle.login()
+```
+
+- Get time zones
+
+```python
+# Import the CommDateTime class
+from ucsmsdk.mometa.comm.CommDateTime import CommDateTime
+
+# Query the CommDateTime DN that is a reference to the 'Timezone-managed' object
+timezone_mo = handle.query_dn('sys/svc-ext/datetime-svc')
+# timezone_mo = handle.query_classid('CommDatTime') # Also works the same way
+```
+
+* Get NTP
+
+```python
+# Import the CommNtpProvider class
+from ucsmsdk.mometa.comm.CommNtpProvider import CommNtpProvider
+
+# Create a MO for the NTP objects
+ntp_mos = handle.query_classid('CommNtpProvider')
+
+# Display NTP object details
+for n in ntp_mos:
+  print(n)
+```
+
+* Get DNS
+
+```python
+# Import classes and create MOs
+from ucsmsdk.mometa.comm.CommDns import CommDns
+dns_mo = handle.query_classid('CommDns')
+print(dns_mo[0])
+
+from ucsmsdk.mometa.comm.CommDnsProvider import CommDnsProvider
+dns_mos = handle.query_classid('CommDnsProvider')
+print(dns_mos[0])
+```
+
+- Set time zones
+
+```python
+# Create a time zone variable
+tz = 'America/Chicago'
+
+# Update the time zone MO with the new value
+timezone_mo[0].timezone = tz
+
+# Update the MO
+handle.set_mo(timezone_mo[0])
+```
+
+
+
+- Add and remove NTP servers
+
+```python
+# Create NTP server veriable
+ntp_server = '172.16.20.5'
+
+# Create an NTP parent MO
+datetime_mo = handle.query_dn('sys/svc-ext/datetime-svc')
+
+# Create an NTP MO
+ntp_mo = CommNtpProvider(
+	datetime_mo,
+  name='172.16.20.5'
+)
+
+# Add and commit the MO
+handle.add_mo(
+	mo=ntp_mo,
+  modify_present=True
+)
+handle.commit()
+
+# Get a new MO for the new NTP provider
+ntp_class = handle.query_classid('CommNtpProvider')
+ntp_mo = ntp_class[0]
+
+# Remove the NTP provider
+handle.remove_mo(ntp_mo)
+handle.commit()
+```
+
+
+
+- Add and remove DNS servers
+
+```python
+# Get parent DNS service object
+dns_svc_mo = handle.query_dn('sys/svc-ext/dns-svc')
+
+# Create a DNS provider MO
+dns_provider_mo = CommDnsProvider(dns_svc_mo, name='8.8.8.8')
+
+# Add and commit the MO to UCSM
+handle.add_mo(dns_provider_mo, True)
+handle.commit()
+
+# Remove the DNS Provider
+dns_providers_mo = handle.query_classid('CommDnsProvider')
+
+### Option #1, loop ###
+# Loop over the DNS providers and remove the entry for 8.8.8.8
+for dns_server in dns_providers_mo:
+  if dns_server.name == '8.8.8.8':
+    dns_server_mo = dns_server
+    handle.remove_mo(dns_server_mo)
+    handle.commit()
+    
+### Option #2, user a filter string in the query_classid method ###
+dns_provider_mos = handle.query_classid(
+  class_id='CommDnsProvider',
+  filter_str='(dn, "sys/svc-ext/dns-svc/*", type="re")'
+)
+```
+
+* Handle query filter
+
+```raw
+handle.query_classid(
+    class_id=None,
+    filter_str=None,
+    hierarchy=False,
+    need_response=False,
+    timeout=None,
+)
+Docstring:
+Finds an object using it's class id.
+
+Args:
+    class_id (str): class id of the object to be queried for.
+    filter_str(str): query objects with specific property with specific value or pattern specifying value.
+
+              (property_name, "property_value, type="filter_type")
+
+              property_name: Name of the Property
+              ## example, dn (without quotes) ##
+
+              property_value: Value of the property (str or regular expression)
+              ## example, "sys/svc-ext/dns-svc/*" (with quotes) ##
+
+              filter_type: eq - equal to
+
+                           ne - not equal to
+
+                           ge - greater than or equal to
+
+                           gt - greater than
+
+                           le - less than or equal to
+
+                           lt - less than
+
+                           re - regular expression
+
+							## example, "re" (with quotes) ##
+
+              logical filter type: not, and, or
+```
+
+
+
+* Backup UCS configuration
+
+```python
+# Import the backup_ucs class
+from ucsmsdk.utils.ucsbackup import backup_ucs
+
+# Perform the backup
+backup_ucs(
+  handle,
+  'config-all',
+  './',
+  'py-sdk-config-all.xml'
+)
+```
+
+```raw
+# backup_ucs doc string
+backup_ucs(
+    handle,
+    backup_type,
+    file_dir,
+    file_name,
+    timeout_in_sec=600,
+    preserve_pooled_values=False,
+)
+Docstring:
+backup_ucs helps create and download Ucs backups.
+
+Args:
+    handle (UcsHandle): Ucs Connection handle
+    backup_type (str): type of backup
+                    i.e. fullstate/config-logical/config-system/config-all
+    file_dir (str): directory to download ucs backup file to
+    file_name (str): name for the backup file
+                     (supported file extension are '.tar.gz' and '.xml')
+    timeout_in_sec (number) : time in seconds for which method waits
+                          for the backUp file to generate before it exits.
+    preserve_pooled_values (boolean): True/False,
+                                        False - by default
+
+Example:
+    file_dir = "/home/user/backup"
+
+    file_name = "config_backup.xml"
+
+    backup_ucs(handle, backup_type="config-logical",
+                file_dir=file_dir, file_name=file_name)
+```
+
+
+
+- Import UCS configuration
+
+```python
+# Import UCS configuration
+from ucsmsdk.utils.ucsbackup import import_ucs_backup
+
+# Import configuration
+import_ucs_backup(
+	handle,
+  './',
+  'py-sdk-config-all.xml',
+  merge=True
+)
 ```
 
