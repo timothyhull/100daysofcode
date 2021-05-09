@@ -91,11 +91,11 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 :white_check_mark: DevNet UCS PowerTool & Python SDK Intermediate Learning Labs - **5/7/21**
 
-:white_large_square: UCS Ansible - just 5/8/21
+:white_check_mark: Intersight UCS Learning Labs - **5/8/21**
 
-:white_large_square: Retake ACI exercises - **5/8/21**
+:white_check_mark: UCS Ansible - **5/8/21**
 
-:white_large_square: Intersight UCS Learning Labs - **5/8/21**
+:white_check_mark: Retake ACI exercises - **5/8/21**
 
 :white_large_square: DCNM - **5/12/21**
 
@@ -1278,4 +1278,88 @@ import_ucs_backup(
   merge=True
 )
 ```
+
+
+
+---
+
+
+
+#### :notebook: 5/8/21
+
+##### UCS Intersight
+
+* Authentication
+  * Use Intersight to generate an RSA **private key** with a **string identifier**
+  
+  * Download the private key
+  
+  * HTTP API requests require the private key and string identifier to **hash** and **sign** each request
+    * A cryptographic **digest** of the **body** of the HTTP request is calculated using one of the supported cryptographic hash algorithms.
+      * The value of the digest is base-64 encoded in the `Digest` HTTP header.
+    * A **signature** is calculated as specified in the HTTP signature scheme, and the signature is added to the `Authorization` HTTP request header.
+      * Not possible with Python Requests library alone
+      * Requires special Intersight plug-in/SDK
+```json
+// Example headers
+{
+  "User-Agent": "python-requests/2.25.1",
+  "Accept-Encoding": "gzip, deflate",
+  "Accept": "*/*",
+  "Connection": "keep-alive",
+  "Digest": "SHA-256=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+  "Date": "Sat, 08 May 2021 22:09:29 GMT",
+  "Authorization": "Signature keyId=\"6096c31c7564612d339be0f9/6096c31c7564612d339be0fd/6096c3557564612d339be2cb\",algorithm=\"rsa-sha256\",headers=\"(request-target) date host content-type digest\", signature=\"Pz9uysAzcfywgqBQ1pEq6ruM45ba9KUwZV5Ax2fSAKE0++wCuSqahVdld+9b/MsbnLxnzrThZNSP3fHgEtFV1cRS/YkGn5qwddOa4cmGKsv9FNpNbigy2aAUCUQYdTNGgPcBsyWb3DUMHb1Ai00Fm0rFXTMM1mPwAHC6U1z+6lYYUZsPjWjyWgAiopA31h1aF6NNfPHdm6jMdnGHB9x+IO7g8ngN9/VzSe50+KV3QYAy8k70Lr1wqBk56dZ23UqjBuDVoQjBBreFNW5BiexHljYOmfnyLXMzw8KSRd7GGp4i52qVueTPiGW/zIap41Y02DLwhLw8t+DEKG4Gro0XNw==\"",
+  "Host": "www.intersight.com",
+  "Content-Type": "application/json"
+}
+```
+
+
+
+##### :snake: Intersight Python SDK Setup
+
+- Example Python code and Postman requests Git repository:
+
+```bash
+git clone https://github.com/movinalot/intersight-rest-api
+```
+
+
+
+- Create an authentication object using the **IntersightAuth** `class` in the file, **intersight_auth.py**.
+
+```python
+AUTH = IntersightAuth(
+    secret_key_filename='../api_keys/keySecret.txt',
+    api_key_id='6096c31c7564612d339be0f9/6096c31c7564612d339be0fd/6096c3557564612d339be2cb'
+    )
+```
+
+
+
+- Create requests to manage the following items using **GET**, **POST**, **PATCH**, & **DELETE** plus [**query parameters**](https://www.intersight.com/apidocs/introduction/query/) using **intersight_helper.py**:
+  1. Server policies
+  2. Service Profiles
+  3. Firmware updates
+  4. Physical policies
+  5. NTP servers
+  
+  ```python
+  # New NTP policy
+  # /api/v1/ntp/Policies
+  ntp_policy = {
+      'Description': 'Python NTP Policy',
+      'Name': 'Python_NTP_Policy',
+      'NtpServers': [
+          'pool.ntp.org',
+          'time.windows.com'
+      ],
+      'Timezone': 'America/Los_Angeles',
+      'Enabled': True
+  }
+  ```
+  
+  6. DNS servers
+  7. Users
 
