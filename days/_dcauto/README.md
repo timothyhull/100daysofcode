@@ -4,9 +4,21 @@
 
 ## Topics:
 
+:clipboard: ACI REST API
+
 :clipboard: ACI COBRA SDK
 
-:clipboard: ACI Ansible
+:clipboard::exclamation: ACI Ansible
+
+:clipboard: UCS PowerTool
+
+:clipboard: UCS Python SDK
+
+:clipboard: UCS Intersight REST API
+
+:clipboard::exclamation: UCS Ansible
+
+:clipboard: NXOS TBD
 
 ---
 
@@ -62,12 +74,28 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 #### Nexus 9000
 
+:notebook: [Open NX-OS Programmability Guide](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.html)
+
+:notebook: [NX-OS POAP Configuration Guide](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/92x/fundamentals/configuration/guide/b-cisco-nexus-9000-nx-os-fundamentals-configuration-guide-92x/b-cisco-nexus-9000-nx-os-fundamentals-configuration-guide-92x_chapter_0100.html)
+
+:notebook: [NX-OS Programmability DevNet Learning Labs](https://developer.cisco.com/learning/tracks/nxos-programmability)
+
 :notebook: [Best Practics and Useful Scripts for EEM](https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/ios-xe-16/216091-best-practices-and-useful-scripts-for-ee.html)
 
 :computer: ATC CML Nexus 9000:
 
 - 10.255.70.238
 - admin/admin
+
+:octocat: [DCAUTO NX-OS On-Box Bash/Containers Challenge](https://github.com/wwt/devnet-nexus-onbox-bash-containers)
+
+:telephone: [gNMI & OpenConfig White Paper](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/white-paper-c11-744191.html)
+
+:telephone: [gNMI & NETCONF Overview](https://blogs.cisco.com/datacenter/telemetry-in-action-netconf-and-gnmi-with-a-custom-built-collector)
+
+:telephone::snake::octocat: [Cisco gNMI Python Client](https://github.com/cisco-ie/cisco-gnmi-python)
+
+
 
 ---
 
@@ -96,6 +124,16 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 :white_check_mark: UCS Ansible - **5/8/21**
 
 :white_check_mark: Retake ACI exercises - **5/8/21**
+
+:white_check_mark: Watch DCAUTO NXOS POAP/iPXE and Telemetry Overview Recording - **5/9/21**
+
+:white_check_mark: Watch DCAUTO NXOS Bash/Containers Recording - **5/9/21**
+
+:white_large_square: Draw ACI MO Relationships Diagram - **5/9/21**
+
+:white_large_square: DCAUTO NXOS Bash/Containers Challenge - **5/10/21**
+
+:white_large_square: Retake UCS PowerTool and Python DevNet Learning Labs - **5/10/21**
 
 :white_large_square: DCNM - **5/12/21**
 
@@ -1338,6 +1376,11 @@ AUTH = IntersightAuth(
 
 
 
+- The **PATCH** method requires the header `"Content-Type": "application/json-patch+json"` and a specially-formatted document ([RFC6901]([RFC6901](https://tools.ietf.org/html/rfc6901))):
+  - https://intersight.com/apidocs/introduction/methods/#contenttype-applicationjsonpatchjson
+
+
+
 - Create requests to manage the following items using **GET**, **POST**, **PATCH**, & **DELETE** plus [**query parameters**](https://www.intersight.com/apidocs/introduction/query/) using **intersight_helper.py**:
   1. Server policies
   2. Service Profiles
@@ -1362,4 +1405,159 @@ AUTH = IntersightAuth(
   
   6. DNS servers
   7. Users
+
+
+
+---
+
+
+
+#### :notebook: 5/9/21
+
+##### NX-OS POAP (Cisco proprietary)
+
+* Events which invoke POAP:
+  1. First boot.
+  2. Device configuration erased and reloaded.
+  3. Enter `boot poap enable`, save the configuration, and reload the switch.
+     - Command automatically removed after reload.
+
+* Discovery process.
+
+  * Switch first discovers USB devices to determine if configuration script and software inage are available.
+
+    * Software image can be obtained via DHCP discovery process, even if configuration script is on a USB drive.
+* If USB discovery fails, DHCP discovery occurrs:
+    * Minimum DHCP lease time is 3600 seconds (1 hour)
+  * **Option 150** specifies the **SCP (default), FTP, SFTP, FTP, TFTP, HTTP or HTTPS server** which contains the configuration script.
+    * **Option 67** specifies the **Python script name**.
+  * The **Python script** contains a **mode** parameter determines how the switch will identify itself for unique configuration purposes.
+* :octocat: [**Python POAP Script on GitHub**](https://github.com/datacenter/nexus9000/blob/master/nx-os/poap/poap.py)
+
+The options are **serial number (default), MAC of the switch interface, or location and hostname specified by the DHCP server**.
+
+```python
+# script_timeout=1800
+# --- Start of user editable settings ---
+# Host name and user credentials
+options = {
+   "username": "root",
+   "password": "password",
+   "hostname": "2.1.1.1",
+   "transfer_protocol": "scp",
+   "mode": "hostname",
+   "target_system_image": "nxos.7.0.3.I4.4.bin",
+}
+```
+
+- POAP can also copy other files, scripts, agents, etc. to the switch as part of the configuration process.
+  - If a file is in **.tar** format, POAP can, if required, extract and or delete the file.
+
+```python
+download_user_app("/source", "filename.tar","/destination", unpack=True, delete_after_unpack=True)
+```
+
+
+
+##### NX-OS iPXE
+
+- Supports deployment of **software images only**.
+- Configurable with **boot** order commands and also runs when no OS is present.
+- Based on open standard gPXE with certain features removed, for security/stability reasons.
+- Requirements:
+  - DHCP server
+    - Cisco devices send **options 60** (**vendor**) and **61** (**device serial number**) in the DHCP request.
+    - DHCP server replies with **next-server (si-addr)** and **bootfile (file)** options which provide a complete URL to download the OS.
+      - Alternatively, the DHCP server can respond with the full URL an operating system file, as one string.
+  - TFTP or HTTP server with software images.
+
+
+
+##### NX-OS Telemetry Overview
+
+* Dial-out
+  * Enabled with `feature telemetry` command.
+  * Uses a **gRPC** agent.
+    * Uses **GPB** (Google Protocol Buffers) over **HTTPS**, **port** **50051**.
+* Dial-in
+  * Enabled with the `feature gnmi`command.
+  * Uses a **gNMI** agent (gRPC Network Management Interface).
+* gNMI Operations:
+  * **CapabilityRequest**
+    * Similar to NETCONF Hello message.
+    * Server declares which YANG models and encodings it supports.
+  * **SetRequest**
+    * Create, update, replace, or delete configuration with **atomic** operations.
+  * **SubscribeRequest**
+    * **Once** - send the data once.
+    * **Poll** - send data when a change occurrs (on-change).
+    * **Stream** - send at regular time intervals.
+    * SubscribeRequest is preferred over GetRequest
+  * **GetRequest**
+    * Useful when retreiving small amounts of data
+
+
+
+##### NX-OS On-Box Programmability (Shells)
+
+* Conventional NX-OS CLI interface is **VSH** or **Virtual Shell**.
+* Underlying OS CLI uses **Bash**.
+* Access **Bash** from **VSH**:
+  * User requires a **role** of either **network-admin** or **devops**.
+  * Default shell may be set per-user:
+
+```shell
+username tim password cisco role dev-ops
+username time shelltype bash
+```
+
+```shell
+# Example 1 - enter into Bash
+run bash
+
+# Example 2 - Run a single command from bash as the logged-on user
+run bash whoami
+
+# Example 3 - Run a single command from bash as the root user
+run bash sudo whoami
+
+# Example 4 - Enter the bash shell as the root user
+run bash sudo su -
+```
+
+* Access VSH from Bash:
+
+```shell
+# Run an NX-OS command from Bash
+vsh -c "show vrf"
+```
+
+* The Bash `watch` command may be a good way to watch for a change to occur (as opposed to pressing the up arrow/Enter, repeatedly).
+
+
+
+##### NX-OS On-Box Programmability (Namespaces & CGROUPS)
+
+- **guestshell** is a separate, isolated CentOS 7 container within its own **namespace** and **CGROUP**.
+  - **CGROUPs** limit how many resources can be consumed, by the group.
+    - **CGROUP-1** / **Namespace Global** is for the Linux subsystem (core NX-OS platform).
+    - **CGROUP-2** / **Namespace guestshell** is for guestshell.
+  - **Namespaces** limit what resources within the namespace can see.
+
+
+
+##### NX-OS On-Box Programmability (Docker & LXC)
+
+- NX-OS 9.2(1) and later supports **Docker** (previously only supported **LXC**).
+- Docker disabled by default.
+- Docker requirements:
+  - Name-server, to resolve repository servers
+  - Correct time (NTP), to support certificates
+  - Enable `feature bash-shell`
+
+```shell
+sudo service docker start
+sudo service docker status
+sudo chkconfig --add docker
+```
 
