@@ -18,7 +18,11 @@
 
 :clipboard::exclamation: UCS Ansible
 
-:clipboard: NXOS TBD
+:clipboard: NXOS On-Box
+
+:clipboard: NXOS Off-Box
+
+
 
 ---
 
@@ -80,6 +84,10 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 :notebook: [NX-OS Programmability DevNet Learning Labs](https://developer.cisco.com/learning/tracks/nxos-programmability)
 
+:notebook: [NX-OS Guest Shell (guestshell) Reference](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/programmability/guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Guide_7x/Guest_Shell.html)
+
+:notebook: [NX-OS Docker Reference (including activation and resizing commands)](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/92x/programmability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-92x/b-cisco-nexus-9000-series-nx-os-programmability-guide-92x_chapter_010010.html#id_70950)
+
 :notebook: [Best Practics and Useful Scripts for EEM](https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/ios-xe-16/216091-best-practices-and-useful-scripts-for-ee.html)
 
 :computer: ATC CML Nexus 9000:
@@ -129,11 +137,21 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 :white_check_mark: Watch DCAUTO NXOS Bash/Containers Recording - **5/9/21**
 
-:white_large_square: Draw ACI MO Relationships Diagram - **5/9/21**
+:white_check_mark: ACI MO Relationships Diagram & Payload Construction - **5/10/21**
 
-:white_large_square: DCAUTO NXOS Bash/Containers Challenge - **5/10/21**
+:white_check_mark: DCAUTO NXOS Bash/Containers Challenge - **5/10/21**
+
+:white_check_mark: NX-OS On-Box (LXC, Guest Shell, EEM, Python) - **5/10/21**
 
 :white_large_square: Retake UCS PowerTool and Python DevNet Learning Labs - **5/10/21**
+
+:white_large_square: NX-OS Off-Box (NX-API REST, NX-API CLI) - **5/11/21**
+
+:white_large_square: NX-OS Off-Box (NETCONF Native & OpenConfig) - **5/12/21**
+
+:white_large_square: NX-OS Off-Box (MDT) - **5/12/21**
+
+:white_large_square: NX-OS Off-Box (Ansible) - **5/12/21**
 
 :white_large_square: DCNM - **5/12/21**
 
@@ -1500,6 +1518,7 @@ download_user_app("/source", "filename.tar","/destination", unpack=True, delete_
 
 ##### NX-OS On-Box Programmability (Shells)
 
+* Open NX-OS is based on a **64-bit Yocto-based Wind River Linux kernel**.
 * Conventional NX-OS CLI interface is **VSH** or **Virtual Shell**.
 * Underlying OS CLI uses **Bash**.
 * Access **Bash** from **VSH**:
@@ -1546,7 +1565,7 @@ vsh -c "show vrf"
 
 
 
-##### NX-OS On-Box Programmability (Docker & LXC)
+##### NX-OS On-Box Programmability (Docker)
 
 - NX-OS 9.2(1) and later supports **Docker** (previously only supported **LXC**).
 - Docker disabled by default.
@@ -1559,5 +1578,152 @@ vsh -c "show vrf"
 sudo service docker start
 sudo service docker status
 sudo chkconfig --add docker
+```
+
+
+
+##### NX-OS On-Box Programmability (Guestshell/LXC)
+
+* View **guestshell** and other LXC resource utlization with the following **VSH** commands:
+
+```
+show virtual-service
+
+show virtual-service list
+```
+
+
+
+* Isolated LXC with the following capabilities:
+  * Access to the network over Linux interfaces.
+  * Access to the NXOS boot flash.
+  * Access to the NXOS volitile **tmpfs**.
+  * Access to the NXAPI REST interface.
+  * Install and run Python scripts.
+  * Install and run 32 and 64-bit Linux apps.
+* Run commands in **guestshell** with the following syntax (similar to **bash**):
+
+```shell
+run guestshell whoami
+
+run guestshell sudo whoami
+
+run guestshell sudo su -
+
+run guestshell sudo ls -l /bootflash
+```
+
+* Run **VSH** commands in **guestshell** with the **dohost** command prefix:
+
+```shell
+dohost "show ip route"
+
+# Separate multiple commands with a semicolon, surrounded by spaces
+dohost "conf t ; ip name-server 8.8.8.8 ; sh run | i name-server"
+```
+
+
+
+---
+
+
+
+##### :notebook: 5/10/21
+
+##### NX-OS On-Box Programmability
+
+- NX-OS (VSH) VRFs are **Namespaces** in the underlying Linux OS.
+
+```shell
+# From VSH
+VRF-Name                           VRF-ID State   Reason                        
+default                                 1 Up      --                            
+management                              2 Up      --    
+
+# From Bash
+ip netns list
+management (id: 1)
+default (id: 0)
+vnicBank (id: 200)
+```
+
+- NX-OS IP addresses listed from **bash** and **vsh**
+
+```shell
+bash-4.3$ vsh -c "sh ip int br | ex unass"
+
+IP Interface Status for VRF "default"(1)
+Interface            IP Address      Interface Status
+Vlan100              172.16.100.1    protocol-down/link-down/admin-up   
+Vlan101              172.16.101.1    protocol-down/link-down/admin-up   
+Vlan102              172.16.102.1    protocol-down/link-down/admin-up   
+Vlan103              172.16.103.1    protocol-down/link-down/admin-up   
+Vlan104              172.16.104.1    protocol-down/link-down/admin-up   
+Vlan105              172.16.105.1    protocol-down/link-down/admin-up   
+Lo1                  172.16.0.1      protocol-up/link-up/admin-up       
+Eth1/5               172.16.1.1      protocol-up/link-up/admin-up       
+
+bash-4.3$ ifconfig | grep inet
+          inet addr:172.16.1.1  Bcast:172.16.1.3  Mask:255.255.255.252
+          inet addr:172.16.0.1  Mask:255.255.255.255
+          inet addr:127.1.2.1  Bcast:127.1.255.255  Mask:255.255.0.0
+          inet addr:127.0.0.1  Mask:255.255.0.0
+          inet addr:127.1.254.1  Bcast:127.255.255.255  Mask:255.0.0.0
+          inet addr:127.1.254.27  Bcast:127.255.255.255  Mask:255.0.0.0
+          inet addr:127.1.254.28  Bcast:127.255.255.255  Mask:255.0.0.0
+          inet addr:127.1.1.27  Bcast:127.1.255.255  Mask:255.255.0.0
+          inet addr:127.1.1.254  Bcast:127.255.255.255  Mask:255.0.0.0
+```
+
+- NX-OS IP addresses listed from **bash** and **vsh** only for the **Management VRF**
+
+```shell
+sbx-n9kv# show ip int br vrf management
+
+IP Interface Status for VRF "management"(2)
+Interface            IP Address      Interface Status
+mgmt0                10.10.20.58     protocol-up/link-up/admin-up
+
+bash-4.3$ ip netns exec management ifconfig | grep inet
+          inet addr:10.10.20.58  Bcast:10.10.20.255  Mask:255.255.255.0
+          inet addr:127.0.0.1  Mask:255.0.0.0
+```
+
+- Access NX-OS VRFs from within a **Docker container** which is running in **Bash**:
+
+```bash
+# This should expose all NX-OS VRFs to the Docker container, by way of the ip netns command
+ip netns exec management docker run --rm -itv /var/run/netns:/var/run/netns wwt01/alpine/network-dev
+```
+
+* Run on-box :snake: **Python** with the `python` or `python3` commands:
+
+```python
+# Import the CLI package to issue CLI commands
+from cli import *
+from pprint import pprint as pp
+import json
+
+# The cli() method returns data as a string
+ip_int_br = cli('show ip interface brief vrf management')
+pp(ip_int_br)
+('\n'
+ 'IP Interface Status for VRF "management"(2)\n'
+ 'Interface            IP Address      Interface Status\n'
+ 'mgmt0                10.10.20.58     protocol-up/link-up/admin-up       \n')
+
+
+# The clid() method returs data as a JSON-formatted string
+ip_int_br_json = clid('show ip interface brief vrf management')
+pp(json.loads(ip_int_br_json))
+{'TABLE_intf': {'ROW_intf': {'admin-state': 'up',
+                             'intf-name': 'mgmt0',
+                             'iod': '9',
+                             'ip-disabled': 'FALSE',
+                             'link-state': 'up',
+                             'prefix': '10.10.20.58',
+                             'proto-state': 'up',
+                             'vrf-name-out': 'management'}}}'
+>>> 
 ```
 
