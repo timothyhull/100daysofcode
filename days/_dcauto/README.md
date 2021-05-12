@@ -88,6 +88,8 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 :notebook: [NX-OS Docker Reference (including activation and resizing commands)](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/92x/programmability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-92x/b-cisco-nexus-9000-series-nx-os-programmability-guide-92x_chapter_010010.html#id_70950)
 
+:notebook: [NX-API REST DME Model API Reference](https://developer.cisco.com/site/nxapi-dme-model-reference-api/)
+
 :notebook: [Best Practics and Useful Scripts for EEM](https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/ios-xe-16/216091-best-practices-and-useful-scripts-for-ee.html)
 
 :computer: ATC CML Nexus 9000:
@@ -143,9 +145,15 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 :white_check_mark: NX-OS On-Box (LXC, Guest Shell, EEM, Python) - **5/10/21**
 
-:white_large_square: Retake UCS PowerTool and Python DevNet Learning Labs - **5/10/21**
+:white_check_mark: Retake UCS PowerTool and Python DevNet Learning Labs - **5/10/21**
 
-:white_large_square: NX-OS Off-Box (NX-API REST, NX-API CLI) - **5/11/21**
+:white_check_mark: NX-OS Off-Box (NX-API REST, NX-API CLI) - **5/11/21**
+
+:white_large_square: Review ACI MIT - **5/11/21**
+
+:white_large_square: NX-OS EEM - **5/11/21**
+
+:white_large_square: Review Intersight REST API - **5/11/21**
 
 :white_large_square: NX-OS Off-Box (NETCONF Native & OpenConfig) - **5/12/21**
 
@@ -154,6 +162,8 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 :white_large_square: NX-OS Off-Box (Ansible) - **5/12/21**
 
 :white_large_square: DCNM - **5/12/21**
+
+:white_large_square: Ansible Review - **5/12/21**
 
 ---
 
@@ -685,7 +695,7 @@ userAPIModifyLoginProfilePassword
 {param0: {"oldPassword": "ciscopsdt", "newPassword": "new-password"}}
 
 # Set the endpoint
-https://{{ucsd}}/app/api/rest?formatType=json&opName=userAPIModifyLoginProfile?opData={param0: {"oldPassword": "ciscopsdt", "newPassword": "ciscopsdt1"}}
+https://{{ucsd}}/app/api/rest?formatType=json&opName=userAPIModifyLoginProfile&opData={param0: {"oldPassword": "ciscopsdt", "newPassword": "ciscopsdt1"}}
 ```
 
 
@@ -1026,6 +1036,7 @@ handle.commit()
 Get-UcsTimeZone
 Get-UcsNtpServer
 Get-UcsDns # Specifies system domain name
+Get-UcsDnsServer # Specifies configured DNS servers
 
 ```
 
@@ -1114,7 +1125,7 @@ from ucsmsdk.mometa.comm.CommDateTime import CommDateTime
 
 # Query the CommDateTime DN that is a reference to the 'Timezone-managed' object
 timezone_mo = handle.query_dn('sys/svc-ext/datetime-svc')
-# timezone_mo = handle.query_classid('CommDatTime') # Also works the same way
+# timezone_mo = handle.query_classid('CommDateTime') # Also works the same way
 ```
 
 * Get NTP
@@ -1351,7 +1362,7 @@ import_ucs_backup(
   * Download the private key
   
   * HTTP API requests require the private key and string identifier to **hash** and **sign** each request
-    * A cryptographic **digest** of the **body** of the HTTP request is calculated using one of the supported cryptographic hash algorithms.
+    * A cryptographic **digest** of the **body** of the HTTP request is calculated using one of the supported cryptographic hash algorithms.   
       * The value of the digest is base-64 encoded in the `Digest` HTTP header.
     * A **signature** is calculated as specified in the HTTP signature scheme, and the signature is added to the `Authorization` HTTP request header.
       * Not possible with Python Requests library alone
@@ -1628,7 +1639,7 @@ dohost "conf t ; ip name-server 8.8.8.8 ; sh run | i name-server"
 
 
 
-##### :notebook: 5/10/21
+#### :notebook: 5/10/21
 
 ##### NX-OS On-Box Programmability
 
@@ -1725,5 +1736,133 @@ pp(json.loads(ip_int_br_json))
                              'proto-state': 'up',
                              'vrf-name-out': 'management'}}}'
 >>> 
+```
+
+
+
+---
+
+
+
+#### :notebook:  5/11/21
+
+##### NX-API CLI
+
+- Enabled with the `feature nxapi` command
+  - Uses NGINX with HTTP basic or client certificate authentication
+  - The URL to access the NX-API is https://nx-os_hostname_or_ip_address/ins
+- All commands sent as **POST**
+- Multiple **message format** options with different **command type** options:
+  - **Command types** dictate the format of the response only
+  - JSON-RPC
+    - All POST messages prefixed by `configure terminal`
+    - Command types of **cli**, **cli_ascii**, and **cli_array**
+  - JSON or XML
+    - Command types of **cli**, **cli_ascii**, **cli_array**, **cli_conf**, and **bash**
+- Separate multiple commands as follows:
+
+```shell
+# JSON and XML formats only (not JSON-RPC)
+command_1 ; command_2 ; command_3
+```
+
+- Use the prefix command `terminal dont-ask` for interactive commands (JSON & XML only)
+  - Prevents timeout while waiting for confirmation
+
+```shell
+terminal dont-ask ; command_1 ; command 2
+```
+
+
+
+- JSON-RPC commands are separate **objects** (dicts) within an **array** (list)
+
+
+
+- Restrict access to NX-API using either **ACLs** or **iptables** rules.
+  - Only use ACLs if **not** using the command `nx-api use-vrf` because the ACLs will not restrict HTTP/HTTPS access.
+    - Instead, use **iptables**:
+
+```shell
+# Check iptables rules (from bash)
+ip netns exec management iptables -L
+
+# Add a rule to block all TCP 80 access
+ip netns exec management iptables -A INPUT -p tcp --dport 80 -j DROP
+
+# Add a rule to block all TCP 80 access from 10.155.0.0/24
+ip netns exec management iptables -A INPUT -s 10.155.0.0/24 -p tcp --dport 80 -j DROP
+
+# Remove the first previously-applied rule
+ip netns exec management iptables -D INPUT 1
+```
+
+* **iptables** rules created in **bash** are **not** persistent across reboots.
+  * Persistence requires that you create an **[iptables service](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010011.html#id_92107)**
+
+
+
+* Redirect structured data output to a file and then display the file contents with the **cat** command:
+
+```shell
+show vrf | json-pretty > json_pretty_vrf ; run bash cat /bootflash/json_pretty_vrf
+```
+
+
+
+* The `json native` and `json-pretty native` output formats preserve integers (instead of converting them to strings) and also display output faster and more efficiently.
+
+
+
+##### NX-API REST
+
+* Leverages an MIT in a similar structure to that of ACI.
+  * Uses the same authentication URL and `{APIC-cookie: token}` cookie for subsequent authentications.
+
+```python
+# NX-OS Authentication and sata query
+import requests
+requests.packages.urllib3.disable_warnings()
+
+# Set credentials and endpoint
+NXOS = 'https://10.10.20.58/api'
+NAME = 'admin'
+PWD = 'Cisco123'
+
+# Authentication payload
+json = {
+    'aaaUser': {
+        'attributes': {
+            'name': NAME,
+            'pwd': PWD
+        }
+    }
+}
+
+# Set URL and send login request
+url = f'{NXOS}/aaaLogin.json'
+r = requests.post(
+    url=url,
+    json=json,
+    verify=False,
+    timeout=5
+)
+
+# Parse response for token, set and print cookie value
+token = r.json()['imdata'][0]['aaaLogin']['attributes']['token']
+cookie = {'APIC-cookie': token}
+print(cookie)
+
+# Set URL and send data GET request
+url = f'{NXOS}/mo/sys/veth.json'
+r = requests.get(
+    url=url,
+    cookies=cookie,
+    verify=False,
+    timeout=5
+)
+
+# Display response
+r.json()
 ```
 
