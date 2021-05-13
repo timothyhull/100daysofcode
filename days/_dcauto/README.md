@@ -54,6 +54,8 @@
 
 :notebook_with_decorative_cover: [Intersight API Documentation](https://intersight.com/apidocs/introduction/overview/)
 
+:earth_americas: [Intersight Managed Object Browser](https://intersight.com/mobrowser)
+
 :milky_way: [Ansible Galaxy UCSM Collection](https://galaxy.ansible.com/cisco/ucs)
 
 :milky_way: [Ansible Galaxy Intersight Collection](https://galaxy.ansible.com/cisco/ucs)
@@ -98,6 +100,8 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 - admin/admin
 
 :octocat: [DCAUTO NX-OS On-Box Bash/Containers Challenge](https://github.com/wwt/devnet-nexus-onbox-bash-containers)
+
+:notebook: [NX-OS OpenConfig Artifact Repository](https://devhub.cisco.com/artifactory/open-nxos-agents/)
 
 :telephone: [gNMI & OpenConfig White Paper](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/white-paper-c11-744191.html)
 
@@ -149,13 +153,15 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 :white_check_mark: NX-OS Off-Box (NX-API REST, NX-API CLI) - **5/11/21**
 
-:white_large_square: Review ACI MIT - **5/11/21**
+:white_check_mark: Review ACI MIT - **5/11/21**
 
-:white_large_square: NX-OS EEM - **5/11/21**
+:white_check_mark: NX-OS EEM - **5/11/21**
 
-:white_large_square: Review Intersight REST API - **5/11/21**
+:white_check_mark: Review Intersight REST API - **5/11/21**
 
-:white_large_square: NX-OS Off-Box (NETCONF Native & OpenConfig) - **5/12/21**
+:white_check_mark: Review Intersight REST API Query Parameters - **5/12/21**
+
+:white_check_mark: NX-OS Off-Box (NETCONF Native & OpenConfig) - **5/12/21**
 
 :white_large_square: NX-OS Off-Box (MDT) - **5/12/21**
 
@@ -164,6 +170,8 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 :white_large_square: DCNM - **5/12/21**
 
 :white_large_square: Ansible Review - **5/12/21**
+
+:white_large_square: Git Review - **5/12/21**
 
 ---
 
@@ -1437,6 +1445,126 @@ AUTH = IntersightAuth(
 
 
 
+- Query Parameters
+
+```python
+# Start intersight_helper.py in interactive mode
+ipython -i intersight_helper.py
+
+# Filter options include:
+# eq, ne, gt, lt, ge, le
+# and, or, not ($filter=NumCpus ge 4 and NumCpus le 8)
+# in ($filter=Model in ('HX220C-M5SX', 'UCSC-C240-M5SN')
+# contains ($filter=contains(Model, B200))
+# startswith ($filter=startswith(Model, UCSC))
+# endswith ($filter=endswith(Model, M5))
+# tolower/toupper ($filter=contains(Model, toupper(b200)))
+
+# Filter for specific resources, using matching criteria
+r = intersight(
+	method='GET',
+  endpoint='/compute/Blades',
+  params='$filter=NumCpus ge 4'
+)
+
+# Return/select only certain matching properties
+r = intersight(
+	method='GET',
+  endpoint='/compute/Blades',
+  params='$select=Name,Dn,Model'
+)
+
+# Pagination, return the top N results only
+r = intersight(
+	method='GET',
+  endpoint='/compute/Blades',
+  params='$top=3'
+)
+
+# Pagination, skip the first N results
+r = intersight(
+	method='GET',
+  endpoint='/compute/Blades',
+  params='$skip=3'
+)
+
+# Pagination, skip the first N results and return only the top X remaining results
+r = intersight(
+	method='GET',
+  endpoint='/compute/Blades',
+  params='$skip=3&$top=5'
+)
+
+# Return objects in a certain order (select only certain properties)
+r = intersight(
+	method='GET',
+  endpoint='/compute/Blades',
+  params='$orderby=Serial&$select=Dn,Name,Serial,Model'
+)
+
+# Return only a count of the matching objects, no objects or their properties
+r = intersight(
+	method='GET',
+  endpoint='/compute/Blades',
+  params='$count=true'
+)
+
+# Return a count of matching objects with objects and their properties
+r = intersight(
+	method='GET',
+  endpoint='/compute/Blades',
+  params='$inlinecount=allpages&$select=Dn,Name'
+)
+
+# Group objects by properties and aggregate results by values
+# Group all servers by Model and display the average number of CPUs per model
+# Supported aggregates include
+# min, max, average, and sum
+r = intersight(
+	method='GET',
+  endpoint='/compute/Blades',
+  params='$apply=groupby((Model), aggregate(NumCpus with average as AverageCpuCount))'
+)
+
+# Group objects by the total count of a value
+# Group all servers by Model and display the total number of servers for each Model
+r = intersight(
+	method='GET',
+  endpoint='/compute/Blades',
+  params='$apply=groupby((Model), aggregate($count as TotalCountOfServerModel))'
+)
+
+# Sort grouped objects with the $orderby parameter (using the 'desc' keword as an example)
+# Group all servers by Model and display the total number of servers for each Model
+r = intersight(
+	method='GET',
+  endpoint='/compute/Blades',
+  params='$apply=groupby((Model), aggregate($count as TotalCountOfServerModel))&$orderby=TotalCountOfServerModel desc'
+)
+
+# Include related resources with the queried resources
+r = intersight(
+	method='GET',
+  endpoint='/compute/Blades',
+  params='$expand=Parent'
+)
+
+# Search for resources
+# Allows the use of $top, $skip, $orderby, $filter, $select, & $count
+r = intersight(
+	method='GET',
+  endpoint='/search/SearchItems',
+  # Single quotes required on the search string
+  # Outer double quotes will work also, without escaping inner single quotes
+  params='$filter=endswith(Dn,\'5\')'
+)
+
+```
+
+
+
+
+
 ---
 
 
@@ -1866,3 +1994,96 @@ r = requests.get(
 r.json()
 ```
 
+
+
+##### :notebook: Embedded Event Manager (EEM)
+
+- Environment variables
+
+```shell
+# Create an environment variable
+config t
+													# var name # var value
+event manager environment py_script /bootflash/eem_1.py
+
+# Display EEM environment variables
+show event manager environment all
+#                     py_script : /bootflash/eem_1.py
+```
+
+
+
+* User script definition (CLI)
+
+```shell
+# Create an event to track the show clock command and run a Python script as an action
+event manager applet test
+  event cli match "show clock"
+  action 1.0 event-default
+  action 1.1 cli local run bash python3 $py_script
+```
+
+
+
+---
+
+
+
+#### :notebook:  5/12/21
+
+##### NX-OS Off-Box
+
+- Model-Driven Telemetry
+  - Supports JSON and GPB encoding.
+    - JSON encoding over HTTP.
+    - GPB encoding over gRPC.
+      - Default port of 50051.
+      - GPB encoding uses **protobufs** which requires that a receiver have a copy of the **.proto file** from [Cisco's Git repository.](https://github.com/CiscoDevNet/nx-telemetry-proto)
+  - Telemetry can consume up to 20% of the CPU resource.
+- Configure Dial-In Telemetry
+
+```shell
+# Install the OpenConfig RPM from Cisco's Artifactory site (see references above)
+
+# Feature preparation (NX-OS vsh)
+configure terminal
+feature grpc # for dial-in
+feature bash-shell # to generate a certificate
+
+# Generate a certificate (NX-OS bash)
+run bash sudo su -
+cd /bootflash
+openssl req -newkey rsa:2048 -nodes -keyout gnmi.key -x509 -days 1000 -out gnmi.pem
+# Leave all values except for the CN blank
+# The CN needs to be the switch hostname or FQDN
+openssl pkcs12 -export -out gnmi.pfx -inkey gnmi.key -in gnmi.pem -certfile gnmi.pem \
+-password pass:Cisco123
+exit
+
+# Import the certificate (NX-OS vsh)
+crypto ca trustpoint gnmicert
+crypto ca import gnmicert pkcs12 gnmi.pfx Cisco123
+grpc certificate gnmicert
+
+# Download the certificate (gNMI client machine shell)
+ssh admin@10.10.20.58:gnmi.pem ./gnmi.pem
+
+# Test the configuration with the Cisco gNMI CLI-client
+pip install cisco-gnmi
+
+# Option #1, make sure the -ssl_target_override value is the switch hostname/certificate CN
+cisco-gnmi capabilities -os NX-OS -root_certificates ./gnmi.pem \
+-ssl_target_override sbx-n9kv 10.10.20.58:50051
+
+# Option #1, use the -auto_ssl_target_override value to auto-choose the hostname/certificate CN
+cisco-gnmi capabilities -os NX-OS -root_certificates ./gnmi.pem \
+-auto_ssl_target_override 10.10.20.58:50051
+```
+
+
+
+* Sample `cisco-gnmi` **subscription** from the CLI:
+
+```shell
+cisco-gnmi subscribe -xpath 'components/component[name="cpu0"]/cpu/utilization/state/instant' -interval 2 -mode SAMPLE -req_mode STREAM -dump_json -encoding JSON -os NX-OS -root_certificates ./gnmi.pem -auto_ssl_target_override 10.10.20.58:50051
+```
