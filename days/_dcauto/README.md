@@ -163,15 +163,17 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 :white_check_mark: NX-OS Off-Box (NETCONF Native & OpenConfig) - **5/12/21**
 
-:white_large_square: NX-OS Off-Box (MDT) - **5/12/21**
+:white_check_mark: NX-OS Off-Box (MDT) - **5/12/21**
 
-:white_large_square: NX-OS Off-Box (Ansible) - **5/12/21**
+:white_large_square: NX-OS Off-Box (Ansible) - **5/13/21**
 
-:white_large_square: DCNM - **5/12/21**
+:white_large_square: DCNM - **5/13/21**
 
-:white_large_square: Ansible Review - **5/12/21**
+:white_large_square: Ansible Review - **5/13/21**
 
-:white_large_square: Git Review - **5/12/21**
+:white_large_square: Git Review - **5/13/21**
+
+:white_large_square: Final Note Review - **5/13/21**
 
 ---
 
@@ -1696,11 +1698,11 @@ vsh -c "show vrf"
 
 ##### NX-OS On-Box Programmability (Namespaces & CGROUPS)
 
-- **guestshell** is a separate, isolated CentOS 7 container within its own **namespace** and **CGROUP**.
+- **guestshell** is a separate, isolated CentOS 7 LXC container within its own **namespace** and **CGROUP**.
   - **CGROUPs** limit how many resources can be consumed, by the group.
     - **CGROUP-1** / **Namespace Global** is for the Linux subsystem (core NX-OS platform).
     - **CGROUP-2** / **Namespace guestshell** is for guestshell.
-  - **Namespaces** limit what resources within the namespace can see.
+  - **Namespaces** limit what the resources within a namespace can see.
 
 
 
@@ -1775,6 +1777,7 @@ dohost "conf t ; ip name-server 8.8.8.8 ; sh run | i name-server"
 
 ```shell
 # From VSH
+show vrf
 VRF-Name                           VRF-ID State   Reason                        
 default                                 1 Up      --                            
 management                              2 Up      --    
@@ -1879,6 +1882,7 @@ pp(json.loads(ip_int_br_json))
 - Enabled with the `feature nxapi` command
   - Uses NGINX with HTTP basic or client certificate authentication
   - The URL to access the NX-API is https://nx-os_hostname_or_ip_address/ins
+  - Authentication is **HTTP Basic**
 - All commands sent as **POST**
 - Multiple **message format** options with different **command type** options:
   - **Command types** dictate the format of the response only
@@ -1948,7 +1952,7 @@ show vrf | json-pretty > json_pretty_vrf ; run bash cat /bootflash/json_pretty_v
   * Uses the same authentication URL and `{APIC-cookie: token}` cookie for subsequent authentications.
 
 ```python
-# NX-OS Authentication and sata query
+# NX-OS Authentication and data query
 import requests
 requests.packages.urllib3.disable_warnings()
 
@@ -2087,3 +2091,73 @@ cisco-gnmi capabilities -os NX-OS -root_certificates ./gnmi.pem \
 ```shell
 cisco-gnmi subscribe -xpath 'components/component[name="cpu0"]/cpu/utilization/state/instant' -interval 2 -mode SAMPLE -req_mode STREAM -dump_json -encoding JSON -os NX-OS -root_certificates ./gnmi.pem -auto_ssl_target_override 10.10.20.58:50051
 ```
+
+
+
+---
+
+
+
+#### :notebook:  5/13/21
+
+##### ACI Application Hosting
+
+* Download pre-built apps from https://dcappcenter.cisco.com/
+* Stateless Applications
+  * Simple HTML, CSS, or JS front-end that is run within the APIC UI.
+    * Runs as an iFrame either as its own tab or via the Apps tab
+  * State is not shared between multiple instances of the app.
+  * Commonly used for data visualization
+  * Queries the APIC using Northbound REST APIs
+* Stateful Applications
+  * Containerized Docker back-end applications.
+    * Docker runs within the APIC.
+    * Can run any language within the Docker environment.
+  * Can store state and provide both a front-end and a back-end
+    * Neither are required.
+    * If no front-end is part of the app, it is interacted with using REST APIs.
+  * Interacts with the APIC via REST APIs
+* Front-end communicates with back-end via the API Endpoint:
+  * `appcenter/vendordomain/unique_app_id/api.json`
+
+
+
+##### ACI Kubernetes Integration Benefits
+
+-  The APIC can provide all networking needs for the workloads in the cluster. Kubernetes workloads become fabric endpoints, just like Virtual Machines or Bare Metal endpoints. The Cisco ACI CNI plugin is 100% Open Source and relies on the Opflex Protocol to program Open vSwitch instances running on the Kubernetes nodes.
+
+  A CNI plugin is implemented as a binary file accompanied by the necessary control elements and configuration objects. The CNI binaries are typically placed under /opt/cni/bin/ although a different location can be used, if specified by the kubelet configuration parameter cni-bin-dir. We can see in the example below the content of the opflex-agent-cni plugin directory that it uses when running the Cisco ACI CNI plugin:
+
+- The configuration file along with the opflex-agent-cni binary must exist in every node in a cluster. This binary allows the APIC to provide networking, security and load balancing services to the workloads in the cluster.
+
+  **The Cisco ACI CNI plugin implements the following features:**
+
+  - IP Address Management for Pods and Services
+
+  - Distributed Routing and Switching with integrated VXLAN overlays implemented fabric wide and on Open vSwitch
+
+  - Distributed Load Balancing for ClusterIP services
+
+  - Hardware-accelerated Load Balancing for External LoadBalancer services
+
+  - Distributed Firewall for implementing Network Policies
+
+  - EPG-level segmentation for Kubernetes objects using annotations
+
+  - Consolidated visibility of Kubernetes networking via APIC VMM Integration
+
+
+
+##### DCNM API
+
+- Multiple APIs
+  - LAN Fabric
+  - L4-L7 Services
+  - Endpoint Locator
+  - Media Controller (DCNM control plane)
+    - SAN Management
+- Supports GET, POST, PUT, & DELETE operations
+- Endpoint - /logon
+- Auth - HTTP basic auth
+- Returns a token which must be sent in subsequent requests a  with the header
+  - **{"DCNM-Token": token}**
