@@ -1,4 +1,4 @@
-## :calendar: Day DCAUTO 1: 5/2/2021-5/14/2021
+## :calendar: Day DCAUTO 1: 5/2/2021-5/13/2021
 
 ---
 
@@ -165,15 +165,15 @@ docker run -it --rm ciscodevnet/ucs-powertool-core:latest
 
 :white_check_mark: NX-OS Off-Box (MDT) - **5/12/21**
 
-:white_large_square: NX-OS Off-Box (Ansible) - **5/13/21**
+:white_check_mark: NX-OS Off-Box (Ansible) - **5/13/21**
 
-:white_large_square: DCNM - **5/13/21**
+:white_check_mark: DCNM - **5/13/21**
 
-:white_large_square: Ansible Review - **5/13/21**
+:white_check_mark: Ansible Review - **5/13/21**
 
-:white_large_square: Git Review - **5/13/21**
+:white_check_mark: Git Review - **5/13/21**
 
-:white_large_square: Final Note Review - **5/13/21**
+:white_check_mark: Final Note Review - **5/13/21**
 
 ---
 
@@ -1875,7 +1875,7 @@ pp(json.loads(ip_int_br_json))
 
 
 
-#### :notebook:  5/11/21
+#### :notebook: 5/11/21
 
 ##### NX-API CLI
 
@@ -2033,7 +2033,7 @@ event manager applet test
 
 
 
-#### :notebook:  5/12/21
+#### :notebook: 5/12/21
 
 ##### NX-OS Off-Box
 
@@ -2098,7 +2098,7 @@ cisco-gnmi subscribe -xpath 'components/component[name="cpu0"]/cpu/utilization/s
 
 
 
-#### :notebook:  5/13/21
+#### :notebook: 5/13/21
 
 ##### ACI Application Hosting
 
