@@ -24,10 +24,17 @@
 
 ## Notes:
 
-:notebook: Replace `lambda` function in Smart Meeting Light with `collection` object(s) that simplify the code:
+#### :notebook: 5/14/21
+
+​Replace `lambda` function in Smart Meeting Light with `collection` object(s) that simplify the code:
 
 ```python
 # Sort the dictionary of light IDs by the light names
     all_lights = sorted(all_lights.items(), key=lambda x: x[1]['name'])
 ```
 
+
+
+#### :notebook: 5/15/21
+
+Complete the [implementation of doc strings](https://github.com/wwt/smart-meeting-light/pull/110) and function parameter typing in the Smart Meeting Light app.
