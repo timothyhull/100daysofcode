@@ -1,0 +1,1852 @@
+{
+    "1": {
+        "state": {
+            "on": false,
+            "bri": 254,
+            "hue": 14988,
+            "sat": 141,
+            "effect": "none",
+            "xy": [
+                0.4575,
+                0.4101
+            ],
+            "ct": 366,
+            "alert": "select",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-16T23:00:01"
+        },
+        "type": "Extended color light",
+        "name": "Entry 1",
+        "modelid": "LCT001",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 600,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "mixed",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:b4:d7:05-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "2": {
+        "state": {
+            "on": false,
+            "bri": 254,
+            "hue": 14988,
+            "sat": 141,
+            "effect": "none",
+            "xy": [
+                0.4575,
+                0.4101
+            ],
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-16T22:59:57"
+        },
+        "type": "Extended color light",
+        "name": "Entry 2",
+        "modelid": "LCT001",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 600,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "mixed",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:b4:fa:3e-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "3": {
+        "state": {
+            "on": false,
+            "bri": 254,
+            "hue": 14988,
+            "sat": 141,
+            "effect": "none",
+            "xy": [
+                0.4575,
+                0.4101
+            ],
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-16T23:00:08"
+        },
+        "type": "Extended color light",
+        "name": "Entry 3",
+        "modelid": "LCT001",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 600,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "mixed",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:b8:02:c1-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "4": {
+        "state": {
+            "on": false,
+            "bri": 62,
+            "hue": 13524,
+            "sat": 200,
+            "effect": "none",
+            "xy": [
+                0.5017,
+                0.4152
+            ],
+            "ct": 443,
+            "alert": "lselect",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-14T23:00:09"
+        },
+        "type": "Extended color light",
+        "name": "Sara's Bedside",
+        "modelid": "LCT001",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 600,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "mixed",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:b5:d2:82-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "6": {
+        "state": {
+            "on": true,
+            "bri": 195,
+            "hue": 13524,
+            "sat": 200,
+            "effect": "none",
+            "xy": [
+                0.5017,
+                0.4152
+            ],
+            "ct": 443,
+            "alert": "select",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": false
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2019-07-26T21:35:43"
+        },
+        "type": "Extended color light",
+        "name": "Lily’s Lamp",
+        "modelid": "LCT001",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 600,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "mixed",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:ba:ab:10-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "7": {
+        "state": {
+            "on": false,
+            "bri": 144,
+            "hue": 13524,
+            "sat": 200,
+            "effect": "none",
+            "xy": [
+                0.5017,
+                0.4152
+            ],
+            "ct": 443,
+            "alert": "select",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-14T23:01:54"
+        },
+        "type": "Extended color light",
+        "name": "Great Room Fireplace",
+        "modelid": "LCT002",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 630,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "mixed",
+            "direction": "downwards",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:bb:3f:ec-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "8": {
+        "state": {
+            "on": false,
+            "bri": 144,
+            "hue": 13524,
+            "sat": 200,
+            "effect": "none",
+            "xy": [
+                0.5017,
+                0.4152
+            ],
+            "ct": 443,
+            "alert": "select",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-14T23:01:49"
+        },
+        "type": "Extended color light",
+        "name": "Great Room Back Door",
+        "modelid": "LCT002",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 630,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "mixed",
+            "direction": "downwards",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:bb:0e:d1-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "9": {
+        "state": {
+            "on": false,
+            "bri": 144,
+            "hue": 13524,
+            "sat": 200,
+            "effect": "none",
+            "xy": [
+                0.5017,
+                0.4152
+            ],
+            "ct": 443,
+            "alert": "select",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-16T23:00:06"
+        },
+        "type": "Extended color light",
+        "name": "Great Room Wine Closet",
+        "modelid": "LCT002",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 630,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "mixed",
+            "direction": "downwards",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:e0:4f:97-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "10": {
+        "state": {
+            "on": false,
+            "bri": 144,
+            "hue": 13524,
+            "sat": 200,
+            "effect": "none",
+            "xy": [
+                0.5017,
+                0.4152
+            ],
+            "ct": 443,
+            "alert": "select",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-14T23:01:39"
+        },
+        "type": "Extended color light",
+        "name": "Great Room Staircase",
+        "modelid": "LCT002",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 630,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "mixed",
+            "direction": "downwards",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:bb:32:cf-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "11": {
+        "state": {
+            "on": true,
+            "bri": 63,
+            "hue": 14988,
+            "sat": 141,
+            "effect": "none",
+            "xy": [
+                0.4575,
+                0.4101
+            ],
+            "ct": 366,
+            "alert": "select",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": false
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2019-05-13T21:35:23"
+        },
+        "type": "Extended color light",
+        "name": "Ella's Lamp",
+        "modelid": "LCT001",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 600,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "mixed",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:bc:00:b0-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "12": {
+        "state": {
+            "on": true,
+            "bri": 22,
+            "hue": 13524,
+            "sat": 200,
+            "effect": "none",
+            "xy": [
+                0.5017,
+                0.4152
+            ],
+            "ct": 443,
+            "alert": "lselect",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-14T23:01:33"
+        },
+        "type": "Extended color light",
+        "name": "Tim's Bedside",
+        "modelid": "LCT001",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 600,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "mixed",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:12:4b:00:02:33:df:b3-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "14": {
+        "state": {
+            "on": false,
+            "bri": 254,
+            "hue": 14957,
+            "sat": 141,
+            "effect": "none",
+            "xy": [
+                0.4576,
+                0.4099
+            ],
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-14T23:00:06"
+        },
+        "type": "Extended color light",
+        "name": "Kitchen 2",
+        "modelid": "LCT002",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 630,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "mixed",
+            "direction": "downwards",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:fb:82:2f-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "15": {
+        "state": {
+            "on": false,
+            "bri": 254,
+            "hue": 14957,
+            "sat": 141,
+            "effect": "none",
+            "xy": [
+                0.4576,
+                0.4099
+            ],
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-14T23:01:23"
+        },
+        "type": "Extended color light",
+        "name": "Kitchen 3",
+        "modelid": "LCT002",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 630,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "mixed",
+            "direction": "downwards",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:fb:80:61-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "16": {
+        "state": {
+            "on": false,
+            "bri": 254,
+            "hue": 14957,
+            "sat": 141,
+            "effect": "none",
+            "xy": [
+                0.4576,
+                0.4099
+            ],
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-14T23:01:17"
+        },
+        "type": "Extended color light",
+        "name": "Kitchen 4",
+        "modelid": "LCT002",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 630,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "mixed",
+            "direction": "downwards",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:fb:85:9e-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "17": {
+        "state": {
+            "on": false,
+            "bri": 254,
+            "hue": 14957,
+            "sat": 141,
+            "effect": "none",
+            "xy": [
+                0.4576,
+                0.4099
+            ],
+            "ct": 366,
+            "alert": "select",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-14T23:01:14"
+        },
+        "type": "Extended color light",
+        "name": "Kitchen 5",
+        "modelid": "LCT002",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 630,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "mixed",
+            "direction": "downwards",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:e2:21:eb-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "18": {
+        "state": {
+            "on": false,
+            "bri": 254,
+            "hue": 14957,
+            "sat": 141,
+            "effect": "none",
+            "xy": [
+                0.4576,
+                0.4099
+            ],
+            "ct": 366,
+            "alert": "select",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-14T23:01:09"
+        },
+        "type": "Extended color light",
+        "name": "Kitchen 6",
+        "modelid": "LCT002",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 630,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "mixed",
+            "direction": "downwards",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:fb:81:1f-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "19": {
+        "state": {
+            "on": false,
+            "bri": 254,
+            "hue": 14957,
+            "sat": 141,
+            "effect": "none",
+            "xy": [
+                0.4576,
+                0.4099
+            ],
+            "ct": 366,
+            "alert": "select",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2018-12-14T23:00:14"
+        },
+        "type": "Extended color light",
+        "name": "Kitchen 7",
+        "modelid": "LCT002",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 5000,
+                "maxlumen": 630,
+                "colorgamuttype": "B",
+                "colorgamut": [
+                    [
+                        0.6750,
+                        0.3220
+                    ],
+                    [
+                        0.4090,
+                        0.5180
+                    ],
+                    [
+                        0.1670,
+                        0.0400
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "mixed",
+            "direction": "downwards",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:00:fb:7f:f9-0b",
+        "swversion": "5.127.1.26581"
+    },
+    "20": {
+        "state": {
+            "on": true,
+            "bri": 254,
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": false
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2020-03-25T21:57:25"
+        },
+        "type": "Color temperature light",
+        "name": "Dining 3",
+        "modelid": "LTW004",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue ambiance lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 1000,
+                "maxlumen": 800,
+                "ct": {
+                    "min": 153,
+                    "max": 454
+                }
+            },
+            "streaming": {
+                "renderer": false,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "functional",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:02:04:f9:e5-0b",
+        "swversion": "5.130.1.30000"
+    },
+    "21": {
+        "state": {
+            "on": true,
+            "bri": 254,
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": false
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2020-03-25T21:57:22"
+        },
+        "type": "Color temperature light",
+        "name": "Dining 4",
+        "modelid": "LTW004",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue ambiance lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 1000,
+                "maxlumen": 800,
+                "ct": {
+                    "min": 153,
+                    "max": 454
+                }
+            },
+            "streaming": {
+                "renderer": false,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "functional",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:02:04:f8:1e-0b",
+        "swversion": "5.130.1.30000"
+    },
+    "22": {
+        "state": {
+            "on": true,
+            "bri": 254,
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": false
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2020-03-25T21:57:19"
+        },
+        "type": "Color temperature light",
+        "name": "Dining 1",
+        "modelid": "LTW004",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue ambiance lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 1000,
+                "maxlumen": 800,
+                "ct": {
+                    "min": 153,
+                    "max": 454
+                }
+            },
+            "streaming": {
+                "renderer": false,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "functional",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:02:04:fc:d7-0b",
+        "swversion": "5.130.1.30000"
+    },
+    "23": {
+        "state": {
+            "on": true,
+            "bri": 254,
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": false
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2020-03-25T21:57:16"
+        },
+        "type": "Color temperature light",
+        "name": "Dining 2",
+        "modelid": "LTW004",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue ambiance lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 1000,
+                "maxlumen": 800,
+                "ct": {
+                    "min": 153,
+                    "max": 454
+                }
+            },
+            "streaming": {
+                "renderer": false,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "functional",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:02:04:f9:a3-0b",
+        "swversion": "5.130.1.30000"
+    },
+    "25": {
+        "state": {
+            "on": false,
+            "bri": 254,
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2020-06-07T21:35:08"
+        },
+        "type": "Color temperature light",
+        "name": "Entry 4",
+        "modelid": "LTW011",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue ambiance downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 1000,
+                "maxlumen": 680,
+                "ct": {
+                    "min": 153,
+                    "max": 454
+                }
+            },
+            "streaming": {
+                "renderer": false,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "functional",
+            "direction": "downwards",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:02:f2:97:62-0b",
+        "swversion": "1.50.2_r30933",
+        "swconfigid": "190673FE",
+        "productid": "Philips-LTW011-1-BR30CTv1"
+    },
+    "26": {
+        "state": {
+            "on": false,
+            "bri": 254,
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2020-06-07T21:35:04"
+        },
+        "type": "Color temperature light",
+        "name": "Entry 5",
+        "modelid": "LTW011",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue ambiance downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 1000,
+                "maxlumen": 680,
+                "ct": {
+                    "min": 153,
+                    "max": 454
+                }
+            },
+            "streaming": {
+                "renderer": false,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "functional",
+            "direction": "downwards",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:02:e5:3e:de-0b",
+        "swversion": "1.50.2_r30933",
+        "swconfigid": "190673FE",
+        "productid": "Philips-LTW011-1-BR30CTv1"
+    },
+    "27": {
+        "state": {
+            "on": true,
+            "bri": 254,
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": false
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2020-03-25T21:57:10"
+        },
+        "type": "Color temperature light",
+        "name": "Dining 5",
+        "modelid": "LTW015",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue ambiance lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 1000,
+                "maxlumen": 800,
+                "ct": {
+                    "min": 153,
+                    "max": 454
+                }
+            },
+            "streaming": {
+                "renderer": false,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "functional",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:03:7b:79:4a-0b",
+        "swversion": "1.50.2_r30933",
+        "swconfigid": "72630961",
+        "productid": "Philips-LTW015-1-A19CTv2"
+    },
+    "29": {
+        "state": {
+            "on": false,
+            "bri": 254,
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2021-01-25T22:48:33"
+        },
+        "type": "Color temperature light",
+        "name": "Kitchen 1",
+        "modelid": "LTB002",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue ambiance downlight",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 200,
+                "maxlumen": 650,
+                "ct": {
+                    "min": 153,
+                    "max": 454
+                }
+            },
+            "streaming": {
+                "renderer": false,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "floodbulb",
+            "function": "functional",
+            "direction": "downwards",
+            "startup": {
+                "mode": "safety",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:06:c9:95:8e-0b",
+        "swversion": "1.76.10",
+        "swconfigid": "D20EBD6A",
+        "productid": "Philips-LTB002-1-BR30CTv2"
+    },
+    "30": {
+        "state": {
+            "on": false,
+            "bri": 90,
+            "hue": 25600,
+            "sat": 254,
+            "effect": "none",
+            "xy": [
+                0.1700,
+                0.7000
+            ],
+            "ct": 153,
+            "alert": "select",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2020-11-03T22:23:45"
+        },
+        "type": "Extended color light",
+        "name": "Work Status Bar",
+        "modelid": "LCT024",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue play",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 100,
+                "maxlumen": 540,
+                "colorgamuttype": "C",
+                "colorgamut": [
+                    [
+                        0.6915,
+                        0.3083
+                    ],
+                    [
+                        0.1700,
+                        0.7000
+                    ],
+                    [
+                        0.1532,
+                        0.0475
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": true
+            }
+        },
+        "config": {
+            "archetype": "hueplay",
+            "function": "decorative",
+            "direction": "upwards",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:04:2e:04:e7-0b",
+        "swversion": "1.50.2_r30933",
+        "swconfigid": "949259E6",
+        "productid": "3241-3127-7871-LS00"
+    },
+    "31": {
+        "state": {
+            "on": false,
+            "bri": 2,
+            "hue": 8418,
+            "sat": 140,
+            "effect": "none",
+            "xy": [
+                0.4573,
+                0.4100
+            ],
+            "ct": 366,
+            "alert": "lselect",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2021-01-27T22:29:12"
+        },
+        "type": "Extended color light",
+        "name": "Bookshelf Status",
+        "modelid": "LCA003",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue color Lamp",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 200,
+                "maxlumen": 800,
+                "colorgamuttype": "C",
+                "colorgamut": [
+                    [
+                        0.6915,
+                        0.3083
+                    ],
+                    [
+                        0.1700,
+                        0.7000
+                    ],
+                    [
+                        0.1532,
+                        0.0475
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": true
+            }
+        },
+        "config": {
+            "archetype": "sultanbulb",
+            "function": "mixed",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:09:51:02:02-0b",
+        "swversion": "1.76.6",
+        "swconfigid": "598716A0",
+        "productid": "Philips-LCA003-1-A19ECLv6"
+    },
+    "32": {
+        "state": {
+            "on": false,
+            "alert": "lselect",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2021-01-25T22:47:08"
+        },
+        "type": "On/Off plug-in unit",
+        "name": "Lamp",
+        "modelid": "LOM004",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue Smart plug",
+        "capabilities": {
+            "certified": true,
+            "control": {},
+            "streaming": {
+                "renderer": false,
+                "proxy": false
+            }
+        },
+        "config": {
+            "archetype": "plug",
+            "function": "functional",
+            "direction": "omnidirectional",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:08:05:83:8c-0b",
+        "swversion": "1.76.10",
+        "swconfigid": "383D83B9",
+        "productid": "SmartPlug_OnOff_v01-00_04"
+    },
+    "33": {
+        "state": {
+            "on": false,
+            "bri": 89,
+            "hue": 40417,
+            "sat": 32,
+            "effect": "none",
+            "xy": [
+                0.3524,
+                0.3609
+            ],
+            "ct": 211,
+            "alert": "select",
+            "colormode": "ct",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2021-01-25T22:46:34"
+        },
+        "type": "Extended color light",
+        "name": "Desk Right",
+        "modelid": "440400982841",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue Play",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 100,
+                "maxlumen": 560,
+                "colorgamuttype": "C",
+                "colorgamut": [
+                    [
+                        0.6915,
+                        0.3083
+                    ],
+                    [
+                        0.1700,
+                        0.7000
+                    ],
+                    [
+                        0.1532,
+                        0.0475
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": true
+            }
+        },
+        "config": {
+            "archetype": "hueplay",
+            "function": "decorative",
+            "direction": "upwards",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:09:1a:cd:bd-0b",
+        "swversion": "1.76.10",
+        "swconfigid": "A12C9B6F",
+        "productid": "3241-3127-7871_HC04_PSG03"
+    },
+    "34": {
+        "state": {
+            "on": false,
+            "bri": 89,
+            "hue": 40355,
+            "sat": 28,
+            "effect": "none",
+            "xy": [
+                0.3559,
+                0.3631
+            ],
+            "ct": 214,
+            "alert": "select",
+            "colormode": "xy",
+            "mode": "homeautomation",
+            "reachable": true
+        },
+        "swupdate": {
+            "state": "noupdates",
+            "lastinstall": "2021-01-25T22:47:02"
+        },
+        "type": "Extended color light",
+        "name": "Desk Left",
+        "modelid": "440400982841",
+        "manufacturername": "Signify Netherlands B.V.",
+        "productname": "Hue Play",
+        "capabilities": {
+            "certified": true,
+            "control": {
+                "mindimlevel": 100,
+                "maxlumen": 560,
+                "colorgamuttype": "C",
+                "colorgamut": [
+                    [
+                        0.6915,
+                        0.3083
+                    ],
+                    [
+                        0.1700,
+                        0.7000
+                    ],
+                    [
+                        0.1532,
+                        0.0475
+                    ]
+                ],
+                "ct": {
+                    "min": 153,
+                    "max": 500
+                }
+            },
+            "streaming": {
+                "renderer": true,
+                "proxy": true
+            }
+        },
+        "config": {
+            "archetype": "hueplay",
+            "function": "decorative",
+            "direction": "upwards",
+            "startup": {
+                "mode": "powerfail",
+                "configured": true
+            }
+        },
+        "uniqueid": "00:17:88:01:09:1a:ce:d1-0b",
+        "swversion": "1.76.10",
+        "swconfigid": "A12C9B6F",
+        "productid": "3241-3127-7871_HC04_PSG03"
+    }
+}

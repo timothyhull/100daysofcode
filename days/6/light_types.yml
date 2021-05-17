@@ -1,0 +1,34 @@
+---
+lights:
+  hue:
+    types:
+      enhanced:
+        names:
+          - Extended color light
+          - Color light
+        modes:
+          - basic
+          - basic+color
+          - enhanced
+      basic:
+        modes:
+          - basic
+
+    modes:
+      basic:
+        name:
+          Basic
+        description:
+          Your light or accessory is off when you are available
+          and on when you are busy.
+      basic+color:
+        name:
+          Basic+Color
+        description:
+          Your light is off when you are available and on when you are busy,
+          changing colors to match your status.
+      enhanced:
+        name:
+          Enhanced
+        description:
+          Your light is always on, changing colors to match your status.
