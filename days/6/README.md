@@ -1,4 +1,4 @@
-## :calendar: Day 6: 5/14/2021
+## :calendar: Day 6: 5/14/2021-5/16/2021
 
 ---
 
@@ -16,9 +16,11 @@
 
 ## Tasks:
 
-:white_check_mark: Identify data set to work with ([see notes](#notes))
+:white_check_mark: Identify data set to work with ([see notes](#notes)).
 
-:white_large_square: Gather data set and review `collections` module options to more simply sort/manager the data.
+:white_check_mark: Gather data set and review `collections` module options to more simply sort/manager the data.
+
+:white_large_square: Sort data and produce formatted output.
 
 ---
 
