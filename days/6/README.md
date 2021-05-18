@@ -187,54 +187,38 @@ Counter(lights).most_common()
 * Using `Counter` on only the dictionary keys performs the correct sort operation although there are no corresponding values:
 
 ```python
-[('30',
-  LightData(name='Work Status Bar', modes=['basic', 'basic+color', 'enhanced'])),
- ('12',
-  LightData(name="Tim's Bedside", modes=['basic', 'basic+color', 'enhanced'])),
- ('4',
-  LightData(name="Sara's Bedside", modes=['basic', 'basic+color', 'enhanced'])),
- ('6',
-  LightData(name='Lily’s Lamp', modes=['basic', 'basic+color', 'enhanced'])),
- ('32', LightData(name='Lamp', modes=['basic'])),
- ('19',
-  LightData(name='Kitchen 7', modes=['basic', 'basic+color', 'enhanced'])),
- ('18',
-  LightData(name='Kitchen 6', modes=['basic', 'basic+color', 'enhanced'])),
- ('17',
-  LightData(name='Kitchen 5', modes=['basic', 'basic+color', 'enhanced'])),
- ('16',
-  LightData(name='Kitchen 4', modes=['basic', 'basic+color', 'enhanced'])),
- ('15',
-  LightData(name='Kitchen 3', modes=['basic', 'basic+color', 'enhanced'])),
- ('14',
-  LightData(name='Kitchen 2', modes=['basic', 'basic+color', 'enhanced'])),
- ('29', LightData(name='Kitchen 1', modes=['basic'])),
- ('9',
-  LightData(name='Great Room Wine Closet', modes=['basic', 'basic+color', 'enhanced'])),
- ('10',
-  LightData(name='Great Room Staircase', modes=['basic', 'basic+color', 'enhanced'])),
- ('7',
-  LightData(name='Great Room Fireplace', modes=['basic', 'basic+color', 'enhanced'])),
- ('8',
-  LightData(name='Great Room Back Door', modes=['basic', 'basic+color', 'enhanced'])),
- ('26', LightData(name='Entry 5', modes=['basic'])),
- ('25', LightData(name='Entry 4', modes=['basic'])),
- ('3', LightData(name='Entry 3', modes=['basic', 'basic+color', 'enhanced'])),
- ('2', LightData(name='Entry 2', modes=['basic', 'basic+color', 'enhanced'])),
- ('1', LightData(name='Entry 1', modes=['basic', 'basic+color', 'enhanced'])),
- ('11',
-  LightData(name="Ella's Lamp", modes=['basic', 'basic+color', 'enhanced'])),
- ('27', LightData(name='Dining 5', modes=['basic'])),
- ('21', LightData(name='Dining 4', modes=['basic'])),
- ('20', LightData(name='Dining 3', modes=['basic'])),
- ('23', LightData(name='Dining 2', modes=['basic'])),
- ('22', LightData(name='Dining 1', modes=['basic'])),
- ('33',
-  LightData(name='Desk Right', modes=['basic', 'basic+color', 'enhanced'])),
- ('34',
-  LightData(name='Desk Left', modes=['basic', 'basic+color', 'enhanced'])),
- ('31',
-  LightData(name='Bookshelf Status', modes=['basic', 'basic+color', 'enhanced']))]
+Counter(lights.keys())
+
+Counter({'1': 1,
+         '2': 1,
+         '3': 1,
+         '4': 1,
+         '6': 1,
+         '7': 1,
+         '8': 1,
+         '9': 1,
+         '10': 1,
+         '11': 1,
+         '12': 1,
+         '14': 1,
+         '15': 1,
+         '16': 1,
+         '17': 1,
+         '18': 1,
+         '19': 1,
+         '20': 1,
+         '21': 1,
+         '22': 1,
+         '23': 1,
+         '25': 1,
+         '26': 1,
+         '27': 1,
+         '29': 1,
+         '30': 1,
+         '31': 1,
+         '32': 1,
+         '33': 1,
+         '34': 1})
 ```
 
 
@@ -242,8 +226,8 @@ Counter(lights).most_common()
 - The `sorted` method did not help:
 
 ```python
-In [7]: sorted(lights.items())
-Out[7]: 
+sorted(lights.items())
+
 [('1', LightData(name='Entry 1', modes=['basic', 'basic+color', 'enhanced'])),
  ('10',
   LightData(name='Great Room Staircase', modes=['basic', 'basic+color', 'enhanced'])),
@@ -294,7 +278,7 @@ Out[7]:
   LightData(name='Great Room Wine Closet', modes=['basic', 'basic+color', 'enhanced']))]
 ```
 
-
-
 ---
+
+#### :notebook: 5/17/21
 

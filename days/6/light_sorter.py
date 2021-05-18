@@ -7,8 +7,9 @@ Usage: python3 light_serter.py
 """
 
 # Imports
-from json import load, dump
-from collections import Counter, defaultdict, namedtuple
+from json import load
+from collections import namedtuple
+# from collections import Counter, defaultdict
 from yaml import safe_load
 
 # Constants
@@ -32,21 +33,45 @@ with open(file=SOURCE_DATA_FILE,
     all_lights = load(file)
 
 # Create namedtuple class to store data for a light
-LightData = namedtuple('LightData', 'name modes')
+LightData = namedtuple('LightData', 'id name modes')
 
-# Create defaultdict object to store namedtuples of light data
-#  lights = defaultdict(LightData)
-lights = {}
+# Create a list object to store namedtuples of light data
+lights = []
 
-# Loop over the data set and populate the lights defaultdict with namedtuples
+# Loop over the data set and populate the lights list with namedtuples
 for key, value in all_lights.items():
+    # Determine whether or not the light supports enhanced modes
     if value['type'] in light_types['enhanced']['names']:
         light_modes = light_types['enhanced']['modes']
     else:
         light_modes = light_types['basic']['modes']
-    lights[key] = LightData(
+
+    # Add a namedtuple of light data to the 'lights' list
+    lights.append(
+        LightData(
+            id=key,
             name=value.get('name', None),
             modes=light_modes
         )
+    )
 
-from pprint import pprint as pp; pp(lights)
+# Find the light with the longest name, to format the output
+name_len = []
+for light_name in lights:
+    name_len.append(len(light_name.name))
+spaces = max(name_len) + 1
+
+# Display an output header banner
+header_banner = '** Choose a light for availability monitoring **'
+print(f'\n{header_banner}\n')
+
+# Display column headers
+header = f'No:  {"Name:":<{spaces}} {"Modes:":<28}'
+print(header)
+print(f'{"-" * len(header)}')
+
+# Display list of lights and modes
+for index, light in enumerate(lights):
+    print(f'{index + 1:>2}.  '
+          f'{light.name:<{spaces}} '
+          f'{", ".join(light.modes)}')
