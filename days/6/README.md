@@ -442,13 +442,39 @@ No:  Name:                   Modes:
 </td>
 <td>
 
-```json
-{
-  "id": 5,
-  "username": "mary",
-  "email": "mary@example.com",
-  "order_id": "f7177da"
-}
+```bash
+		No:  Name:                   Modes:                      
+	---------------------------------------------------------
+	 1.  Entry 1                 basic, basic+color, enhanced
+	 2.  Entry 2                 basic, basic+color, enhanced
+	 3.  Entry 3                 basic, basic+color, enhanced
+	 4.  Sara's Bedside          basic, basic+color, enhanced
+	 5.  Lily’s Lamp             basic, basic+color, enhanced
+	 6.  Great Room Fireplace    basic, basic+color, enhanced
+	 7.  Great Room Back Door    basic, basic+color, enhanced
+	 8.  Great Room Wine Closet  basic, basic+color, enhanced
+	 9.  Great Room Staircase    basic, basic+color, enhanced
+	10.  Ella's Lamp             basic, basic+color, enhanced
+	11.  Tim's Bedside           basic, basic+color, enhanced
+	12.  Kitchen 2               basic, basic+color, enhanced
+	13.  Kitchen 3               basic, basic+color, enhanced
+	14.  Kitchen 4               basic, basic+color, enhanced
+	15.  Kitchen 5               basic, basic+color, enhanced
+	16.  Kitchen 6               basic, basic+color, enhanced
+	17.  Kitchen 7               basic, basic+color, enhanced
+	18.  Dining 3                basic
+	19.  Dining 4                basic
+	20.  Dining 1                basic
+	21.  Dining 2                basic
+	22.  Entry 4                 basic
+	23.  Entry 5                 basic
+	24.  Dining 5                basic
+	25.  Kitchen 1               basic
+	26.  Work Status Bar         basic, basic+color, enhanced
+	27.  Bookshelf Status        basic, basic+color, enhanced
+	28.  Lamp                    basic
+	29.  Desk Right              basic, basic+color, enhanced
+	30.  Desk Left               basic, basic+color, enhanced
 ```
 
 </td>
