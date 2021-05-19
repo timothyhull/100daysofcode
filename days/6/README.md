@@ -382,8 +382,8 @@ No:  Name:                   Modes:
 		
 		</td>
 		<td>
-		
-		```bash
+
+```bash
 		No:  Name:                   Modes:                      
 	---------------------------------------------------------
 	 1.  Entry 1                 basic, basic+color, enhanced
@@ -416,11 +416,41 @@ No:  Name:                   Modes:
 	28.  Lamp                    basic
 	29.  Desk Right              basic, basic+color, enhanced
 	30.  Desk Left               basic, basic+color, enhanced
-		```
-		
+```
+
 		</td>
 	</tr>
 </table>
 
 ---
 
+<table>
+<tr>
+<th>Json 1</th>
+<th>Markdown</th>
+</tr>
+<tr>
+<td>
+<pre>
+{
+  "id": 1,
+  "username": "joe",
+  "email": "joe@example.com",
+  "order_id": "3544fc0"
+}
+</pre>
+</td>
+<td>
+
+```json
+{
+  "id": 5,
+  "username": "mary",
+  "email": "mary@example.com",
+  "order_id": "f7177da"
+}
+```
+
+</td>
+</tr>
+</table>
