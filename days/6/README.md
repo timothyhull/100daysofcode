@@ -22,7 +22,9 @@
 
 :white_check_mark: Sort data and produce formatted output.
 
-:white_large_square: Update SML source code with new, simplified code
+:white_check_mark: Update SML source code with new, simplified code
+
+:white_large_square: Review `defaultdict` objects
 
 ---
 
@@ -324,4 +326,101 @@ No:  Name:                   Modes:
 29.  Desk Right              basic, basic+color, enhanced
 30.  Desk Left               basic, basic+color, enhanced
 ```
+
+---
+
+#### :notebook: 5/18/21
+
+* Transposed new code into application.
+* Updated Hue remote (OAuth) API authentication to v2
+* Formatting requires capitalization of **modes** column values plus alphabetical sorting by light name
+* Old and new format comparison, side by side:
+
+<table>
+	<tr>
+		<th align="center">Old</th>
+		<th align="center">New</th>
+	</tr>
+	<tr>
+		<td>
+
+
+		```bash
+	No:  Name:                   Modes:                      
+	---------------------------------------------------------
+	 1.  Bookshelf Status        Basic, Basic+Color, Enhanced
+	 2.  Desk Left               Basic, Basic+Color, Enhanced
+	 3.  Desk Right              Basic, Basic+Color, Enhanced
+	 4.  Dining 1                Basic
+	 5.  Dining 2                Basic
+	 6.  Dining 3                Basic
+	 7.  Dining 4                Basic
+	 8.  Dining 5                Basic
+	 9.  Ella's Lamp             Basic, Basic+Color, Enhanced
+	10.  Entry 1                 Basic, Basic+Color, Enhanced
+	11.  Entry 2                 Basic, Basic+Color, Enhanced
+	12.  Entry 3                 Basic, Basic+Color, Enhanced
+	13.  Entry 4                 Basic
+	14.  Entry 5                 Basic
+	15.  Great Room Back Door    Basic, Basic+Color, Enhanced
+	16.  Great Room Fireplace    Basic, Basic+Color, Enhanced
+	17.  Great Room Staircase    Basic, Basic+Color, Enhanced
+	18.  Great Room Wine Closet  Basic, Basic+Color, Enhanced
+	19.  Kitchen 1               Basic
+	20.  Kitchen 2               Basic, Basic+Color, Enhanced
+	21.  Kitchen 3               Basic, Basic+Color, Enhanced
+	22.  Kitchen 4               Basic, Basic+Color, Enhanced
+	23.  Kitchen 5               Basic, Basic+Color, Enhanced
+	24.  Kitchen 6               Basic, Basic+Color, Enhanced
+	25.  Kitchen 7               Basic, Basic+Color, Enhanced
+	26.  Lamp                    Basic
+	27.  Lily’s Lamp             Basic, Basic+Color, Enhanced
+	28.  Sara's Bedside          Basic, Basic+Color, Enhanced
+	29.  Tim's Bedside           Basic, Basic+Color, Enhanced
+	30.  Work Status Bar         Basic, Basic+Color, Enhanced	
+		```
+		
+		</td>
+		<td>
+		
+		```bash
+		No:  Name:                   Modes:                      
+	---------------------------------------------------------
+	 1.  Entry 1                 basic, basic+color, enhanced
+	 2.  Entry 2                 basic, basic+color, enhanced
+	 3.  Entry 3                 basic, basic+color, enhanced
+	 4.  Sara's Bedside          basic, basic+color, enhanced
+	 5.  Lily’s Lamp             basic, basic+color, enhanced
+	 6.  Great Room Fireplace    basic, basic+color, enhanced
+	 7.  Great Room Back Door    basic, basic+color, enhanced
+	 8.  Great Room Wine Closet  basic, basic+color, enhanced
+	 9.  Great Room Staircase    basic, basic+color, enhanced
+	10.  Ella's Lamp             basic, basic+color, enhanced
+	11.  Tim's Bedside           basic, basic+color, enhanced
+	12.  Kitchen 2               basic, basic+color, enhanced
+	13.  Kitchen 3               basic, basic+color, enhanced
+	14.  Kitchen 4               basic, basic+color, enhanced
+	15.  Kitchen 5               basic, basic+color, enhanced
+	16.  Kitchen 6               basic, basic+color, enhanced
+	17.  Kitchen 7               basic, basic+color, enhanced
+	18.  Dining 3                basic
+	19.  Dining 4                basic
+	20.  Dining 1                basic
+	21.  Dining 2                basic
+	22.  Entry 4                 basic
+	23.  Entry 5                 basic
+	24.  Dining 5                basic
+	25.  Kitchen 1               basic
+	26.  Work Status Bar         basic, basic+color, enhanced
+	27.  Bookshelf Status        basic, basic+color, enhanced
+	28.  Lamp                    basic
+	29.  Desk Right              basic, basic+color, enhanced
+	30.  Desk Left               basic, basic+color, enhanced
+		```
+		
+		</td>
+	</tr>
+</table>
+
+---
 
