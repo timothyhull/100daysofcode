@@ -426,19 +426,47 @@ No:  Name:                   Modes:
 
 <table>
 <tr>
-<th>Json 1</th>
-<th>Markdown</th>
+<th>Old</th>
+<th>New</th>
 </tr>
 <tr>
 <td>
-<pre>
-{
-  "id": 1,
-  "username": "joe",
-  "email": "joe@example.com",
-  "order_id": "3544fc0"
-}
-</pre>
+
+```bash
+	No:  Name:                   Modes:                      
+	---------------------------------------------------------
+	 1.  Bookshelf Status        Basic, Basic+Color, Enhanced
+	 2.  Desk Left               Basic, Basic+Color, Enhanced
+	 3.  Desk Right              Basic, Basic+Color, Enhanced
+	 4.  Dining 1                Basic
+	 5.  Dining 2                Basic
+	 6.  Dining 3                Basic
+	 7.  Dining 4                Basic
+	 8.  Dining 5                Basic
+	 9.  Ella's Lamp             Basic, Basic+Color, Enhanced
+	10.  Entry 1                 Basic, Basic+Color, Enhanced
+	11.  Entry 2                 Basic, Basic+Color, Enhanced
+	12.  Entry 3                 Basic, Basic+Color, Enhanced
+	13.  Entry 4                 Basic
+	14.  Entry 5                 Basic
+	15.  Great Room Back Door    Basic, Basic+Color, Enhanced
+	16.  Great Room Fireplace    Basic, Basic+Color, Enhanced
+	17.  Great Room Staircase    Basic, Basic+Color, Enhanced
+	18.  Great Room Wine Closet  Basic, Basic+Color, Enhanced
+	19.  Kitchen 1               Basic
+	20.  Kitchen 2               Basic, Basic+Color, Enhanced
+	21.  Kitchen 3               Basic, Basic+Color, Enhanced
+	22.  Kitchen 4               Basic, Basic+Color, Enhanced
+	23.  Kitchen 5               Basic, Basic+Color, Enhanced
+	24.  Kitchen 6               Basic, Basic+Color, Enhanced
+	25.  Kitchen 7               Basic, Basic+Color, Enhanced
+	26.  Lamp                    Basic
+	27.  Lily’s Lamp             Basic, Basic+Color, Enhanced
+	28.  Sara's Bedside          Basic, Basic+Color, Enhanced
+	29.  Tim's Bedside           Basic, Basic+Color, Enhanced
+	30.  Work Status Bar         Basic, Basic+Color, Enhanced
+```
+
 </td>
 <td>
 
