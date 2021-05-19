@@ -338,12 +338,11 @@ No:  Name:                   Modes:
 
 <table>
 	<tr>
-		<th align="center">Old</th>
-		<th align="center">New</th>
+		<th>Old</th>
+		<th>New</th>
 	</tr>
 	<tr>
 		<td>
-
 
 		```bash
 	No:  Name:                   Modes:                      
