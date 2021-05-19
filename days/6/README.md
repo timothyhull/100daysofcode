@@ -344,7 +344,7 @@ No:  Name:                   Modes:
 	<tr>
 		<td>
 
-		```bash
+```bash
 	No:  Name:                   Modes:                      
 	---------------------------------------------------------
 	 1.  Bookshelf Status        Basic, Basic+Color, Enhanced
@@ -377,7 +377,7 @@ No:  Name:                   Modes:
 	28.  Sara's Bedside          Basic, Basic+Color, Enhanced
 	29.  Tim's Bedside           Basic, Basic+Color, Enhanced
 	30.  Work Status Bar         Basic, Basic+Color, Enhanced	
-		```
+```
 		
 		</td>
 		<td>
