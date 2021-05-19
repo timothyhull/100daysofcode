@@ -337,12 +337,12 @@ No:  Name:                   Modes:
 * Old and new format comparison, side by side:
 
 <table>
-	<tr>
-		<th>Old</th>
-		<th>New</th>
-	</tr>
-	<tr>
-		<td>
+<tr>
+<th>Old</th>
+<th>New</th>
+</tr>
+<tr>
+<td>
 
 ```bash
 	No:  Name:                   Modes:                      
@@ -378,9 +378,9 @@ No:  Name:                   Modes:
 	29.  Tim's Bedside           Basic, Basic+Color, Enhanced
 	30.  Work Status Bar         Basic, Basic+Color, Enhanced	
 ```
-		
-		</td>
-		<td>
+
+</td>
+<td>
 
 ```bash
 		No:  Name:                   Modes:                      
@@ -417,8 +417,8 @@ No:  Name:                   Modes:
 	30.  Desk Left               basic, basic+color, enhanced
 ```
 
-		</td>
-	</tr>
+</td>
+</tr>
 </table>
 
 ---
