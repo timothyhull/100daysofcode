@@ -22,9 +22,11 @@
 
 :white_check_mark: Sort data and produce formatted output.
 
-:white_check_mark: Update SML source code with new, simplified code
+:white_check_mark: Update SML source code with new, simplified code.
 
-:white_large_square: Review `defaultdict` objects
+:white_check_mark: Sort SML lights by name, alphabetically and correct capitalization.
+
+:white_large_square: Review `defaultdict` objects.
 
 ---
 
@@ -422,3 +424,110 @@ No:  Name:                   Modes:
 </table>
 
 ---
+
+#### :notebook: 5/19/21
+
+- Sorted list of lights by making **name** the first attribute in the **lights** `namedtuple` and then using the `sort()` method on the **lights** object.
+- Capitalized the first letter in each mode name using the `title()` method on the output strings.
+
+```python
+### Code changes ###
+# Create namedtuple class to store data for a light
+LightData = namedtuple('LightData', 'name id modes')
+
+# Create a list object to store namedtuples of light data
+lights = []
+
+# Loop over the data set and populate the lights list with namedtuples
+for key, value in all_lights.items():
+    # Determine whether or not the light supports enhanced modes
+    if value['type'] in light_types['enhanced']['names']:
+        light_mode = light_types['enhanced']['modes']
+    else:
+        light_mode = light_types['basic']['modes']
+
+    # Add a namedtuple of light data to the 'lights' list
+    lights.append(
+        LightData(
+            name=value.get('name', None),
+            id=key,
+            modes=light_mode
+        )
+    )
+
+# Sort the list by the first attribute name in the LightData (name)
+lights.sort()
+
+# Display list of lights and modes
+for index, light in enumerate(lights):
+    print(f'{index + 1:>2}.  '
+          f'{light.name:<{spaces}} '
+          f'{", ".join(light.modes).title()}')
+```
+
+```python
+### Change result ###
+No:  Name:                   Modes:                      
+---------------------------------------------------------
+ 1.  Bookshelf Status        Basic, Basic+Color, Enhanced
+ 2.  Desk Left               Basic, Basic+Color, Enhanced
+ 3.  Desk Right              Basic, Basic+Color, Enhanced
+ 4.  Dining 1                Basic
+ 5.  Dining 2                Basic
+ 6.  Dining 3                Basic
+ 7.  Dining 4                Basic
+ 8.  Dining 5                Basic
+ 9.  Ella's Lamp             Basic, Basic+Color, Enhanced
+10.  Entry 1                 Basic, Basic+Color, Enhanced
+11.  Entry 2                 Basic, Basic+Color, Enhanced
+12.  Entry 3                 Basic, Basic+Color, Enhanced
+13.  Entry 4                 Basic
+14.  Entry 5                 Basic
+15.  Great Room Back Door    Basic, Basic+Color, Enhanced
+16.  Great Room Fireplace    Basic, Basic+Color, Enhanced
+17.  Great Room Staircase    Basic, Basic+Color, Enhanced
+18.  Great Room Wine Closet  Basic, Basic+Color, Enhanced
+19.  Kitchen 1               Basic
+20.  Kitchen 2               Basic, Basic+Color, Enhanced
+21.  Kitchen 3               Basic, Basic+Color, Enhanced
+22.  Kitchen 4               Basic, Basic+Color, Enhanced
+23.  Kitchen 5               Basic, Basic+Color, Enhanced
+24.  Kitchen 6               Basic, Basic+Color, Enhanced
+25.  Kitchen 7               Basic, Basic+Color, Enhanced
+26.  Lamp                    Basic
+27.  Lily’s Lamp             Basic, Basic+Color, Enhanced
+28.  Sara's Bedside          Basic, Basic+Color, Enhanced
+29.  Tim's Bedside           Basic, Basic+Color, Enhanced
+30.  Work Status Bar         Basic, Basic+Color, Enhanced
+```
+
+
+
+- Updated the expressions that assign attribute values from the selected light to the old, `dictionary` key index format to the new, `namedtuple` attribute index format:
+
+```python
+### Code changes ###
+light = {}
+if light_input in range(1, len(lights) + 1):
+    # Assign the chosen light's list index to a variable
+    light_index = lights[light_input - 1]
+
+    # Extract the ID, name, and modes from the 'lights' namedtuple list
+    light.update(
+        {'light_id': light_index.id}
+    )
+    light.update(
+        {'light_name': light_index.name}
+    )
+    light.update(
+        {'light_modes': light_index.modes}
+    )
+```
+
+```python
+### Change result ###
+{'light_id': '31',
+ 'light_name': 'Bookshelf Status',
+ 'light_modes': ['basic', 'basic+color', 'enhanced']}
+```
+
