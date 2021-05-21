@@ -26,7 +26,7 @@
 
 :white_check_mark: Sort SML lights by name, alphabetically and correct capitalization.
 
-:white_large_square: Review `defaultdict` objects.
+:white_check_mark: Review `collections` objects [Jupyter Notebook](4/collections.ipynb).
 
 ---
 
@@ -428,6 +428,7 @@ No:  Name:                   Modes:
 #### :notebook: 5/19/21
 
 - Sorted list of lights by making **name** the first attribute in the **lights** `namedtuple` and then using the `sort()` method on the **lights** object.
+  - The `sort()` method appears to sort `namedtuple` objects using the first attribute as the sort key.
 - Capitalized the first letter in each mode name using the `title()` method on the output strings.
 
 ```python
@@ -503,24 +504,24 @@ No:  Name:                   Modes:
 
 
 
-- Updated the expressions that assign attribute values from the selected light to the old, `dictionary` key index format to the new, `namedtuple` attribute index format:
+- Updated the expressions that assigns attribute values from the selected light to the old, `dictionary` key index format to the new, `namedtuple` attribute index format:
 
 ```python
 ### Code changes ###
 light = {}
 if light_input in range(1, len(lights) + 1):
-    # Assign the chosen light's list index to a variable
-    light_index = lights[light_input - 1]
+    # Assign the chosen light's list item to a variable
+    light_item = lights[light_input - 1]
 
     # Extract the ID, name, and modes from the 'lights' namedtuple list
     light.update(
-        {'light_id': light_index.id}
+        {'light_id': light_item.id}
     )
     light.update(
-        {'light_name': light_index.name}
+        {'light_name': light_item.name}
     )
     light.update(
-        {'light_modes': light_index.modes}
+        {'light_modes': light_item.modes}
     )
 ```
 
@@ -530,4 +531,12 @@ if light_input in range(1, len(lights) + 1):
  'light_name': 'Bookshelf Status',
  'light_modes': ['basic', 'basic+color', 'enhanced']}
 ```
+
+
+
+---
+
+#### :notebook: 5/20/21
+
+* Conducted review of `collections` object [Jupyter Notebook notes.](../4/collections.ipynb)
 
