@@ -34,7 +34,8 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 </details>
 
-<details><summary>Days 4-6: Collections module (part 1)</summary>
+<details><summary>Days 4-6: Collections module</summary>
+
 
 - Day 4: [4/24/21](days/4)
 - Day 4a: [4/25/21](days/4)
@@ -51,6 +52,12 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 - Day 6d: [5/18/21](days/6#notebook-51821)
 - Day 6e: [5/19/21](days/6#notebook-51921)
 - Day 6f: [5/20/21](days/6#notebook-52021)
+
+</details>
+
+<details><summary>Days 7-9: Python Data structures</summary>
+
+- Day 7: [5/21/21](days/7#notebook-52121)
 
 </details>
 
