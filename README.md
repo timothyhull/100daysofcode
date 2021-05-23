@@ -58,6 +58,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 <details><summary>Days 7-9: Python Data structures</summary>
 
 - Day 7: [5/21/21](days/7#notebook-52121)
+- Day 7a: [5/22/21](days/7#notebook-52221)
 
 </details>
 
