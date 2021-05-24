@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# Imports
+from copy import deepcopy
+
 # Cars dictionary
 cars = {
     'Ford': ['Falcon', 'Focus', 'Festiva', 'Fairlane'],
@@ -44,9 +47,8 @@ def get_all_matching_models(cars=cars, grep='trail'):
 def sort_car_models(cars=cars):
     """return a copy of the cars dict with the car models (values)
        sorted alphabetically"""
-    cars_sorted = {}
-    for make, models in cars.items():
-        cars_sorted[make] = [m for m in models]
-        cars_sorted[make].sort()
+    cars_sorted = deepcopy(cars)
+    for models in cars_sorted.values():
+        models.sort()
 
     return cars_sorted
