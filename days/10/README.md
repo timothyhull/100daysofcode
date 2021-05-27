@@ -20,7 +20,9 @@
 
 :white_check_mark: Watch videos 1-4
 
-:white_large_square: Watch videos 5-8
+:white_check_mark: Watch video 5
+
+:white_large_square: Watch next video(s)
 
 ---
 
@@ -29,4 +31,25 @@
 #### :notebook: 5/25/21
 
 :telescope: [Jupyter Notebook](pytest.ipynb) for introduction to `unittest` and `pytest`
+
+
+
+---
+
+#### :notebook: 5/26/21
+
+Defining `pytest` tests for a file with multiple functions.
+
+* **VIM** fast-switching shortcuts
+  * While in **VIM**, `ctrl-z` switches back to the terminal, without exiting (suspending VIM only)
+  * To return to **VIM**, type `fg` (foreground)
+
+* Test for `pytest` coverage in a given file
+  * Understand which lines of code are and are note tested
+
+```bash
+# The last argument is the directory to check test files for coverage
+# Test files are those that start with 'test'
+pytest --cov-report term-missing --cov='.'
+```
 
