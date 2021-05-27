@@ -38,7 +38,7 @@
 
 #### :notebook: 5/26/21
 
-Defining `pytest` tests for a file with multiple functions.
+:telescope: [Jupyter Notebook](10a/pytest_2.ipynb) for defining `pytest` tests for a file with multiple functions.
 
 * **VIM** fast-switching shortcuts
   * While in **VIM**, `ctrl-z` switches back to the terminal, without exiting (suspending VIM only)
