@@ -1,4 +1,4 @@
-## :calendar: Day 10: 5/25/21
+## :calendar: Day 10: 5/25/21-5/28/21
 
 ---
 
@@ -23,6 +23,10 @@
 :white_check_mark: Watch video 5
 
 :white_check_mark: Review video 5 `pytest` and `pytest-cov` exercises
+
+:white_check_mark: Watch video 6 
+
+:white_check_mark: Review video 6 `pytest` and `pytest-cov` exercises
 
 :white_large_square: Watch next video(s)
 
@@ -92,5 +96,31 @@ def test_function():
   with pytest.raise(ValueError):
     function_to_test()
 
+```
+
+
+
+---
+
+#### :notebook: 5/27/21
+
+* Build coin flip guesing function to produce a boolean.
+
+```python
+# Check for heads/tauks abd return a boolean (True/False)
+def coin_flip(choice):
+    choices = [
+        'heads',
+        'tails'
+    ]
+    print(str(choice.lower()))
+    if str(choice).lower() not in choices:
+        raise ValueError('Enter "heads" or "tails"')
+
+    coin = random.choice(choices)
+    if coin == choice.lower():
+        return True
+    else:
+        return False
 ```
 
