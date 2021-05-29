@@ -33,3 +33,20 @@ def get_user_input():
         raise ValueError('The number is out of range')
 
     return user_input
+
+
+# Return a boolean (True/False)
+def coin_flip(choice):
+    choices = [
+        'heads',
+        'tails'
+    ]
+    print(str(choice.lower()))
+    if str(choice).lower() not in choices:
+        raise ValueError('Enter "heads" or "tails"')
+
+    coin = random.choice(choices)
+    if coin == choice.lower():
+        return True
+    else:
+        return False
