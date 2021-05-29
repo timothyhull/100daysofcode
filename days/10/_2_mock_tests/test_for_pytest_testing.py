@@ -37,7 +37,7 @@ def test_get_random_num(number):
 @patch(
    # Use the `builtins.input` object type
    'builtins.input',
-   # Specify 'side_effects' which are values which could be input by the user
+   # Specify 'side_effect' values which are values which could be input by the user
    side_effect=[4, '4', 15, 'tim', -4, 30, None]
 )
 # Function to test for validity of user input
@@ -58,3 +58,7 @@ def test_get_user_input(user_input):
         get_user_input()
     with pytest.raises(ValueError):
         get_user_input()
+
+
+def test_for_boolean():
+    assert 
