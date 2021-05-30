@@ -1,5 +1,7 @@
 # Import the file and functions to test
-from pytest_testing import get_random_num, get_user_input
+from pytest_testing import get_random_num, \
+                           get_user_input, \
+                           coin_flip
 
 # Working with random numbers requires that we import the random module
 import random
@@ -37,7 +39,7 @@ def test_get_random_num(number):
 @patch(
    # Use the `builtins.input` object type
    'builtins.input',
-   # Specify 'side_effect' values which are values which could be input by the user
+   # Specify 'side_effect' values which are possible inputs by the user
    side_effect=[4, '4', 15, 'tim', -4, 30, None]
 )
 # Function to test for validity of user input
@@ -60,5 +62,44 @@ def test_get_user_input(user_input):
         get_user_input()
 
 
-def test_for_boolean():
-    assert 
+def test_coin_flip(capfd):
+    """Function to test the validity of a return value.
+       In this case, whether the return value is either True or False.
+       Also test the output (stdout) printed by the function matches
+       an expected value.
+    """
+
+    # Define the valid return values
+    valid_returns = [
+        True,
+        False,
+    ]
+
+    # Create a list of input values to choose from
+    choices = [
+        'heads',
+        'tails'
+    ]
+
+    """Randomly choose an input value to test with.
+       This could be a static test although randomizing is more realistic.
+    """
+    choice = random.choice(choices)
+
+    # Verify the return value is valid
+    assert coin_flip(choice) in valid_returns
+
+    """Assign the values from capfd.readouterr() to two variables
+       The two arguments in capfd.readouterr() are 'out=' and 'err='
+       Use the throwaway variable '_' for 'err='
+    """
+    out, _ = capfd.readouterr()
+
+    # Verify the expected, printed output is in the 'out' variable.
+    assert f'You chose {choice.title()}, you got ' in out
+
+    """Test for a ValueError raised by the coin_flip function
+       When an invalid value is input
+    """
+    with pytest.raises(ValueError):
+        coin_flip('ducks')

@@ -1,4 +1,4 @@
-## :calendar: Day 10: 5/25/21-5/28/21
+## :calendar: Day 10: 5/25/21-5/29/21
 
 ---
 
@@ -20,13 +20,15 @@
 
 :white_check_mark: Watch videos 1-4
 
-:white_check_mark: Watch video 5
+:white_check_mark: Watch video 5 and complete exercise
 
 :white_check_mark: Review video 5 `pytest` and `pytest-cov` exercises
 
-:white_check_mark: Watch video 6 
+:white_check_mark: Watch video 6 and complete exercisd
 
 :white_check_mark: Review video 6 `pytest` and `pytest-cov` exercises
+
+:white_check_mark: Watch video 7 and complete exercise
 
 :white_large_square: Watch next video(s)
 
@@ -107,14 +109,15 @@ def test_function():
 * Build coin flip guesing function to produce a boolean.
 
 ```python
-# Check for heads/tauks abd return a boolean (True/False)
+# Check for heads/tails and return a boolean (True/False)
+# Return a boolean (True/False)
 def coin_flip(choice):
     choices = [
         'heads',
         'tails'
     ]
     print(str(choice.lower()))
-    if str(choice).lower() not in choices:
+    if choice.lower() not in choices:
         raise ValueError('Enter "heads" or "tails"')
 
     coin = random.choice(choices)
@@ -123,4 +126,74 @@ def coin_flip(choice):
     else:
         return False
 ```
+
+
+
+---
+
+#### :notebook: 5/28/21
+
+:telescope: [Jupyter Notebook](10a/pytest_2.ipynb) four using `capfd` to validate content printed to **stdout**.
+
+* Use `capfd` to test a programs printing to **stdout**.
+* Run `pytest` with the `-v` option to print detailed output for each test:
+
+```bash
+# Run pytest without -v, which displays the result for all tests
+pytest
+==================================================== test session starts ====================================================
+platform linux -- Python 3.9.4, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: /workspaces/100daysofcode/days/10/_2_mock_tests
+plugins: cov-2.12.0, anyio-3.1.0
+collected 3 items                                                                                                           
+
+test_for_pytest_testing.py ...                                                                                        [100%]
+
+===================================================== 3 passed in 0.07s =====================================================
+
+# Run pytest -v, which displays results for each individual test
+pytest -v
+==================================================== test session starts ====================================================
+platform linux -- Python 3.9.4, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /workspaces/100daysofcode/days/10/_2_mock_tests
+plugins: cov-2.12.0, anyio-3.1.0
+collected 3 items                                                                                                           
+
+test_for_pytest_testing.py::test_get_random_num PASSED                                                                [ 33%]
+test_for_pytest_testing.py::test_get_user_input PASSED                                                                [ 66%]
+test_for_pytest_testing.py::test_coin_flip PASSED                                                                     [100%]
+
+===================================================== 3 passed in 0.07s =====================================================
+
+```
+
+
+
+- Run `pytest` with the `-s` option to display anything a function under tests prints to **stdout** .
+
+```bash
+# Combined here with the -v option also
+pytest -vs
+==================================================== test session starts ====================================================
+platform linux -- Python 3.9.4, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /workspaces/100daysofcode/days/10/_2_mock_tests
+plugins: cov-2.12.0, anyio-3.1.0
+collected 3 items                                                                                                           
+
+test_for_pytest_testing.py::test_get_random_num PASSED
+test_for_pytest_testing.py::test_get_user_input PASSED
+test_for_pytest_testing.py::test_coin_flip 
+You chose Heads, you got Tails.
+
+
+PASSED
+
+===================================================== 3 passed in 0.07s =====================================================
+```
+
+
+
+---
 

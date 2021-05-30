@@ -37,16 +37,25 @@ def get_user_input():
 
 # Return a boolean (True/False)
 def coin_flip(choice):
+    # Define the valid argument values
     choices = [
         'heads',
         'tails'
     ]
-    print(str(choice.lower()))
-    if str(choice).lower() not in choices:
+
+    # Check for a valid argument value
+    if choice.lower() not in choices:
         raise ValueError('Enter "heads" or "tails"')
 
+    # Flip the coin
     coin = random.choice(choices)
-    if coin == choice.lower():
-        return True
-    else:
-        return False
+
+    # Determine if the choice matches the coin flip, as a boolean
+    boolean_response = coin == choice.lower()
+
+    # Print the result
+    print(
+        f'\nYou chose {choice.title()}, you got {coin.title()}.\n'
+    )
+
+    return boolean_response
