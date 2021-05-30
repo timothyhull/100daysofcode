@@ -14,6 +14,10 @@
 
 :star: [`pytest` Coverage Testing with `pytest-cov`](https://pypi.org/project/pytest-cov/)
 
+:star: [`pytest` `capfd` documentation #1](https://docs.pytest.org/en/6.2.x/capture.html)
+
+:star: [`pytest` `capfd` documentation #2](https://docs.pytest.org/en/2.1.0/capture.html)
+
 ---
 
 ## Tasks:
