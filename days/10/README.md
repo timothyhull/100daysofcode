@@ -1,4 +1,4 @@
-## :calendar: Day 10: 5/25/21-5/29/21
+## :calendar: Day 10: 5/25/21-5/30/21
 
 ---
 
@@ -32,7 +32,7 @@
 
 :white_check_mark: Review video 6 `pytest` and `pytest-cov` exercises
 
-:white_check_mark: Watch video 7 and complete exercise
+:white_check_mark: Watch video 7 and complete notes
 
 :white_large_square: Watch next video(s)
 
@@ -108,7 +108,7 @@ def test_function():
 
 ---
 
-#### :notebook: 5/27/21
+#### :notebook: 5/28/21
 
 * Build coin flip guesing function to produce a boolean.
 
@@ -135,7 +135,7 @@ def coin_flip(choice):
 
 ---
 
-#### :notebook: 5/28/21
+#### :notebook: 5/29/21
 
 :telescope: [Jupyter Notebook](10a/pytest_2.ipynb) four using `capfd` to validate content printed to **stdout**.
 
@@ -200,4 +200,71 @@ PASSED
 
 
 ---
+
+#### :notebook: 5/30/21
+
+* The python `zip()` method creates **n** length tuples with **n** iterables as inputs.
+  * Effictively combines multiple iterables into a `tuple` object (another iterable).
+    * If the iterables are of different lenghts, `zip` stops assembling `tuple` objects whenever it exhausts all values from the shortest iterable.
+  * Like a `generator` object, a `zip` object will `yield` values via iteration.
+
+```python
+# List #1
+l1 = ['Tim', 'Sara', 'Lily', 'Ella']
+
+# List #2, intentionally longer than List #1, to show that zip stops assembly when exausting the shorter list (List #1)
+l2 = [41, 40, 13, 10, 99]
+
+# Create a zip object, combining both lists
+z = zip(l1, l2)
+
+# Iterate over the zip object, outputting each tuple
+for n in z:
+  print(n)
+
+# Another option is to create tuples on-the-fly, during iteration
+for zipped in zip(l1, l2):
+  print(zipped)
+```
+
+
+
+- Relative to `pytest`, the `zip` method is useful for comparing expected and actual content to STDOUT, by zipping a list of expected outputs with a list of actual outputs.
+
+```python
+# Import unittest.mock.patch in order to perform mock tests of STDIN values
+from unittest.mock import patch
+
+# Pass @patch.object the 'builtins.input' attribute, to capture input from the 'input()' method
+# Specify the mock inputs with the 'side_effect' kwarg
+@patch.object(
+  'builtins.input',
+  side_effect=['1', '2', '3', '4']
+)
+
+# Create a test function with a placeholder argument (inp) for mock input plus an argument (capfd) for the outputs printed by the program
+def test_expected_vs_actual(inp, capfd):
+  # Expected outputs
+  expected = [
+    '1',
+    '2',
+    '3',
+    '4'
+  ]
+
+  # Actual printed outputs
+  output = capfd.readouterr()[0] # Produces a multi-line string of inputs, with blank lines
+  
+  # Create a list from the `output` variable
+  actual = [
+    '''
+    o.strip() - the value added to the list with all white space and new lines removed
+    o - loop local variable for each iteration of 'output'
+    output.split('\n') - convert the multi-line string into a list, each list item being 														 separated by the '\n' character (some list items will be '\n')
+    if o.strip() - include the current iteration value only if a non-zero length string 											 remains after calling the strip() method.  This will exclude list items 										 which have a value of '\n'
+    '''
+    o.strip() for o in output.split('\n')
+    if o.strip()
+  ]
+```
 

@@ -91,7 +91,9 @@ def test_coin_flip(capfd):
 
     """Assign the values from capfd.readouterr() to two variables
        The two arguments in capfd.readouterr() are 'out=' and 'err='
-       Use the throwaway variable '_' for 'err='
+       Use the throwaway variable '_' for 'err=' or, another option
+       is to specify the 0 index of capfd.readouterr() like this:
+       out = capfd.readouterr()[0]
     """
     out, _ = capfd.readouterr()
 
