@@ -42,6 +42,8 @@
 
 #### :notebook: 5/25/21
 
+:snake: [Exercise code](_1_unittest_vs_pytest).
+
 :telescope: [Jupyter Notebook](pytest.ipynb) for introduction to `unittest` and `pytest`
 
 
@@ -49,6 +51,8 @@
 ---
 
 #### :notebook: 5/26/21
+
+:snake: [Exercise code](_2_mock_tests).
 
 :telescope: [Jupyter Notebook](10a/pytest_2.ipynb) for defining `pytest` tests for a file with multiple functions.
 
@@ -266,5 +270,67 @@ def test_expected_vs_actual(inp, capfd):
     o.strip() for o in output.split('\n')
     if o.strip()
   ]
+```
+
+
+
+---
+
+#### :notebook: 5/31/21
+
+##### Test-Driven Deployment
+
+:snake: [Exercise code](_3_fizz_buzz_tdd).
+
+The process of writing tests, in the smallest of blocks, before writing any code to pass those tests.
+
+- Each test should be a single `assert` statement, for example:
+  - `assert function_to_test(1) == 1`
+- Then write code to satisfy that test
+
+```python
+# Create a test function with a single assert statement
+def test_function_to_test():
+  assert function_to_test(1) == 1
+
+# Then write code to satisfy that test
+def function_to_test(number):
+  return 1
+
+# Cause the test to fail by adding another assert
+def test_function_to_test():
+  assert function_to_test(1) == 1
+  assert function_to_test(2) == 2
+
+# Update the function so it will pass the test
+def function_to_test(number):
+  return number
+```
+
+
+
+The `pytest` method `pytest.mark.parametrize` allows you to create **tuples** of **argument** and return **values** which may be passed to a single `assert` statement.
+
+- This is in contrast to typing many `assert` statements:
+
+```python
+import pytest
+
+# Call the pytest.mark.parameterize method with a decorator for the test function
+@pytest.mark.paramertize(
+  # The first argument specifies variable names for the tuple indices
+	'arg_value, return_value',
+  # The second argument is a list of tuples for each argument and expected return value
+  [
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5)
+  ]
+)
+# Define the test function and pass it the variable names from the decorator
+def test_function_to_test(arg_value, return_value):
+  assert function_to_test(arg_value) == return_value
 ```
 
