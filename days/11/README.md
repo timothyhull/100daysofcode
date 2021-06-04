@@ -1,4 +1,4 @@
-## :calendar: Day 11: 6/1/2021-6/2/2021
+## :calendar: Day 11: 6/1/2021-6/3/2021
 
 ---
 
@@ -16,15 +16,21 @@
 
 :star: [`pytest` examples](https://docs.pytest.org/en/latest/example/index.html)
 
+:star: [Fake JSON API for testing (JSON Placeholder)](https://jsonplaceholder.typicode.com)
+
 :star: [`requests-mock` documentation](https://requests-mock.readthedocs.io/en/latest/index.html)
+
+:star: [Python **requests** exception documentation](https://jsonplaceholder.typicode.com)
+
+:star: [`pytest` **fixtures** documentation](https://docs.pytest.org/en/6.2.x/fixture.html)
 
 ---
 
 ## Tasks:
 
-:white_large_square: Complete PyBite 39
+:white_check_mark: Perform functional test HTTP request with `request_mock`
 
-:white_large_square: TBD
+:white_large_square: Complete PyBite 39
 
 ---
 
@@ -144,5 +150,40 @@ test_msg_banner.py::test_msg_banner CaptureResult(out='\ntest\n\n', err='')
 PASSED
 
 ===================================================================================== 1 passed in 0.08s ======================================================================================
+```
+
+
+
+---
+
+#### :notebook: 6/3/21
+
+:snake: [Functional **requests-mock** example](http_request)
+
+* Check `pytest` **fixtures** with `pytest --fixtures`.
+  * **Fixtures** are pre-coded test functions to simplify the process of conducting certain tests.
+  * The Python **requests-mock** module automatically acts as its own fixture and will appear as a fixture in the output of the `pytest --fixtures` command.
+    * Simply pass `requests_mock` to the test function as a parameter to use it's methods:
+
+```python
+# See the linnk above (functional requests-mock example) for full details
+def test_http_request(requests_mock):
+    """Test function which mocks an HTTP requests using the
+       requests module.
+    """
+
+    """Create a mock get request, supply the necessary arguments,
+       based on whatever the function under test requires.
+    """
+    requests_mock.get(
+        url=URL,
+        json=JSON
+    )
+
+    """With the request mocked, call the function under test.
+       The function under test will use the mocked (not the actual) request.
+    """
+    r = http_request(url=URL)
+    assert r.json() == '{}'
 ```
 
