@@ -28,7 +28,9 @@
 
 ## Tasks:
 
-:white_check_mark: Perform functional test HTTP request with `request_mock`
+:white_check_mark: Perform functional test HTTP request with `request-mock`
+
+:white_large_square: Add additional tests to `requests-mock`
 
 :white_large_square: Complete PyBite 39
 
@@ -185,5 +187,92 @@ def test_http_request(requests_mock):
     """
     r = http_request(url=URL)
     assert r.json() == '{}'
+```
+
+
+
+---
+
+#### :notebook: 6/4/21
+
+* Successfully tested `requests_mock` with the `raise_for_status()` method:
+
+```python
+# Test function, mocks a bad status code (>= 400) and makes sure the calling function
+# raises an HTTPError as a result
+def test_http_request_raise_for_status(requests_mock):
+    """Test function which mocks an invalid status code to make sure
+       the function under test raises an HTTP exception.
+    """
+    requests_mock.get(
+        url=URL,
+        status_code=400
+    )
+
+    with raises(requests.exceptions.HTTPError):
+        http_request(url=URL)
+```
+
+```python
+# Function under test, uses the raise_for_status message to raise an exception for a bad
+# status code (>= 400)
+# The try/except blocks are not necessary for the test to work, only r.raise_for_status()
+def http_request(url=URL):
+    try:
+        r = requests.get(
+            url=url,
+            headers=HEADERS,
+            timeout=TIMEOUT
+        )
+
+        r.raise_for_status()
+
+        return r
+
+    # Catch raise_for_status exceptions
+    except requests.exceptions.HTTPError as e:
+        print(f'{e!r}')
+        raise
+```
+
+* Tests for other exceptions like `requests.exceptions.ConnectTimeout` are not successful.
+  * `requests_mock` will create the exception although the function under test does not respond one way or the other to the raised exception (with `pytest.raises()`).
+
+```python
+# Test function
+def test_http_connect_timeout(requests_mock):
+    # Test function which mocks a connection timeout exception.
+    requests_mock.get(
+        url=URL,
+        exc=requests.exceptions.ConnectTimeout
+    )
+
+    """Use the pytest.raises() function to determine if the function
+       under test raises the ConnectTimeout exception.
+    """
+    # It does not matter if the function under test handles this exception or not
+    # The pytest passes either way, which is wrong.  The pytest should fail if the function
+    # under test is not configured to handle this exception.
+    with raises(requests.exceptions.ConnectTimeout):
+        http_request(url=URL)
+```
+
+```python
+# Function under test
+def http_request(url=URL):
+    try:
+        r = requests.get(
+            url=url,
+            headers=HEADERS,
+            timeout=TIMEOUT
+        )
+
+        return r
+
+    # Catch connection timeouts
+    # The pytest passes even if this exception handling doesn't exist
+    except requests.exceptions.ConnectTimeout as e:
+        print(f'{e!r}')
+        raise
 ```
 
