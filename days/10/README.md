@@ -97,13 +97,13 @@ def test_function():
   # side_effect[1]
   assert function_to_test() == "1"
   # side_effect[2]
-  with pytest.raise(ValueError):
+  with pytest.raises(ValueError):
     function_to_test()
   # side_effect[3]
-  with pytest.raise(ValueError):
+  with pytest.raises(ValueError):
     function_to_test()
   # side_effect[4]
-  with pytest.raise(ValueError):
+  with pytest.raises(ValueError):
     function_to_test()
 
 ```
