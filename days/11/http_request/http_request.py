@@ -19,12 +19,23 @@ def http_request(url=URL):
             timeout=TIMEOUT
         )
 
+        r.raise_for_status()
+
         return r
 
-    # Catch request exceptions
-    except requests.exceptions.RequestException as e:
+    # Catch raise_for_status exceptions
+    except requests.exceptions.HTTPError as e:
         print(f'{e!r}')
         raise
+
+    # Catch connection timeouts
+    except requests.exceptions.ConnectTimeout as e:
+        print(f'{e!r}')
+        raise
+
+    # except requests.exceptions.InvalidHeader as e:
+    #     print(f'{e!r}')
+    #     raise
 
 
 def main():

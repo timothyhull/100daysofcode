@@ -3,17 +3,18 @@
 # Imports
 from http_request import http_request
 from pytest import raises
-from requests.exceptions import RequestException
+import requests
 
 # Constants
 JSON = '{}'
 URL = 'http://test.io'
-BAD_URL = 'http://172.16.20.5:8099'
 
 
 def test_http_request(requests_mock):
-    """Test function which mocks an HTTP requests using the
-       requests module.
+    """Test function which mocks an HTTP request using the
+       requests module. 'requests_mock' automatically becomes a pytest
+       fixture when installed by pip (pip install requests-mock). Use the
+       'requests_mock' fixture by supplying 'requests_mock' as a parameter.
     """
 
     """Create a mock get request, supply the necessary arguments,
@@ -21,7 +22,8 @@ def test_http_request(requests_mock):
     """
     requests_mock.get(
         url=URL,
-        json=JSON
+        json=JSON,
+        status_code=200
     )
 
     """With the request mocked, call the function under test.
@@ -29,14 +31,46 @@ def test_http_request(requests_mock):
     """
     r = http_request(url=URL)
     assert r.json() == '{}'
+    assert r.status_code == 200
+    assert r.ok
 
 
-def test_bad_http_request(requests_mock):
-    # Test function which mocks an HTTP requests exception.
+def test_http_request_raise_for_status(requests_mock):
+    """Test function which mocks an invalid status code to make sure
+       the function under test raises an HTTP exception.
+    """
     requests_mock.get(
-        url=BAD_URL
+        url=URL,
+        status_code=400
     )
 
-    # Use the pytest.raises() function to catch a specific exception.
-    with http_request(url=BAD_URL):
-        raises(RequestException)
+    with raises(requests.exceptions.HTTPError):
+        http_request(url=URL)
+
+
+def test_http_connect_timeout(requests_mock):
+    # Test function which mocks a connection timeout exception.
+    requests_mock.get(
+        url=URL,
+        exc=requests.exceptions.ConnectTimeout
+    )
+
+    """Use the pytest.raises() function to determine if the function
+       under test raises the ConnectTimeout exception.
+    """
+    with raises(requests.exceptions.ConnectTimeout):
+        http_request(url=URL)
+
+
+def test_http_too_many_redirects(requests_mock):
+    # Test function which mocks a connection timeout exception.
+    requests_mock.get(
+        url=URL,
+        exc=requests.exceptions.InvalidHeader
+    )
+
+    """Use the pytest.raises() function to determine if the function
+       under test raises the TooManyRedirects exception.
+    """
+    with raises(requests.exceptions.InvalidHeader):
+        http_request(url=URL)
