@@ -12,26 +12,26 @@ TIMEOUT = 3
 
 
 def http_request(url=URL):
-    try:
-        r = requests.get(
-            url=url,
-            headers=HEADERS,
-            timeout=TIMEOUT
-        )
+    # try:
+    r = requests.get(
+        url=url,
+        headers=HEADERS,
+        timeout=TIMEOUT
+    )
 
-        r.raise_for_status()
+    r.raise_for_status()
 
-        return r
+    return r
 
     # Catch raise_for_status exceptions
-    except requests.exceptions.HTTPError as e:
-        print(f'{e!r}')
-        raise
+    # except requests.exceptions.HTTPError as e:
+    #     print(f'{e!r}')
+    #     raise
 
-    # Catch connection timeouts
-    except requests.exceptions.ConnectTimeout as e:
-        print(f'{e!r}')
-        raise
+    # # Catch connection timeouts
+    # except requests.exceptions.ConnectTimeout as e:
+    #     print(f'{e!r}')
+    #     raise
 
     # except requests.exceptions.InvalidHeader as e:
     #     print(f'{e!r}')

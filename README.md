@@ -77,6 +77,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 - Day 11a: [6/2/21](days/11#notebook-6221)
 - Day 11b: [6/3/21](days/11#notebook-6321)
 - Day 11c: [6/4/21](days/11#notebook-6421)
+- Day 11d: [6/5/21](days/11#notebook-6521)
 
 </details>
 

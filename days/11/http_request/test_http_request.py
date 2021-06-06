@@ -2,15 +2,17 @@
 
 # Imports
 from http_request import http_request
+from json import loads
 from pytest import raises
 import requests
+from unittest.mock import patch
 
 # Constants
-JSON = '{}'
+JSON = '{"Test": "Value"}'
 URL = 'http://test.io'
 
 
-def test_http_request(requests_mock):
+def test_valid_http_request(requests_mock):
     """Test function which mocks an HTTP request using the
        requests module. 'requests_mock' automatically becomes a pytest
        fixture when installed by pip (pip install requests-mock). Use the
@@ -30,12 +32,13 @@ def test_http_request(requests_mock):
        The function under test will use the mocked (not the actual) request.
     """
     r = http_request(url=URL)
-    assert r.json() == '{}'
-    assert r.status_code == 200
     assert r.ok
+    assert r.status_code == 200
+    assert r.json()
+    assert loads(r.json()).get('Test') == 'Value'
 
 
-def test_http_request_raise_for_status(requests_mock):
+def test_http_request_raise_for_status_exception(requests_mock):
     """Test function which mocks an invalid status code to make sure
        the function under test raises an HTTP exception.
     """
@@ -48,7 +51,7 @@ def test_http_request_raise_for_status(requests_mock):
         http_request(url=URL)
 
 
-def test_http_connect_timeout(requests_mock):
+def test_http_connect_timeout_exception(requests_mock):
     # Test function which mocks a connection timeout exception.
     requests_mock.get(
         url=URL,
@@ -73,4 +76,18 @@ def test_http_too_many_redirects(requests_mock):
        under test raises the TooManyRedirects exception.
     """
     with raises(requests.exceptions.InvalidHeader):
+        http_request(url=URL)
+
+
+@patch(
+    'http_request.http_request',
+    side_effect=[requests.exceptions.ConnectTimeout]
+)
+def test_api(requests_mock):
+    requests_mock.get(
+        url=URL,
+        exc=requests.exceptions.ConnectTimeout
+    )
+
+    with raises(requests.exceptions.ConnectTimeout):
         http_request(url=URL)

@@ -1,4 +1,4 @@
-## :calendar: Day 11: 6/1/2021-6/3/2021
+## :calendar: Day 11: 6/1/2021-6/5/2021
 
 ---
 
@@ -30,7 +30,13 @@
 
 :white_check_mark: Perform functional test HTTP request with `request-mock`
 
-:white_large_square: Add additional tests to `requests-mock`
+:white_check_mark: Add additional tests to `requests-mock`
+
+:white_large_square: Review mock test notes
+
+:white_large_square: Troubleshoot `requests-mock` pytests
+
+:white_large_square: Determine if passing mock tests send _real_ (not mocked) HTTP requests
 
 :white_large_square: Complete PyBite 39
 
@@ -274,5 +280,33 @@ def http_request(url=URL):
     except requests.exceptions.ConnectTimeout as e:
         print(f'{e!r}')
         raise
+```
+
+
+
+---
+
+#### :notebook: 6/5/21
+
+* Attempted to use `unitest.mock.patch` in order to simulate the mock HTTP request.
+  * The test either sends a _real_ HTTP request to the target (which defeats the purpose of a mock test) or the function under test does not catch the mocked exception:
+
+```python
+# Test function
+from unittest.mock import patch
+@patch(
+    'http_request.http_request',
+    side_effect=[requests.exceptions.ConnectTimeout]
+)
+def test_api(requests_mock):
+    requests_mock.get(
+        url=URL,
+        exc=requests.exceptions.ConnectTimeout
+    )
+
+    # The use of this code block is what generates the undesired, real (not mocked) HTTP request
+    # Strictly speaking, calling http_request() sends a real HTTP request
+    with raises(requests.exceptions.ConnectTimeout):
+        http_request(url=URL)
 ```
 
