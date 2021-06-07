@@ -61,33 +61,5 @@ def test_http_connect_timeout_exception(requests_mock):
     """Use the pytest.raises() function to determine if the function
        under test raises the ConnectTimeout exception.
     """
-    with raises(requests.exceptions.ConnectTimeout):
-        http_request(url=URL)
-
-
-def test_http_too_many_redirects(requests_mock):
-    # Test function which mocks a connection timeout exception.
-    requests_mock.get(
-        url=URL,
-        exc=requests.exceptions.InvalidHeader
-    )
-
-    """Use the pytest.raises() function to determine if the function
-       under test raises the TooManyRedirects exception.
-    """
-    with raises(requests.exceptions.InvalidHeader):
-        http_request(url=URL)
-
-
-@patch(
-    'http_request.http_request',
-    side_effect=[requests.exceptions.ConnectTimeout]
-)
-def test_api(requests_mock):
-    requests_mock.get(
-        url=URL,
-        exc=requests.exceptions.ConnectTimeout
-    )
-
-    with raises(requests.exceptions.ConnectTimeout):
+    with raises(requests.exceptions.ReadTimeout):
         http_request(url=URL)
