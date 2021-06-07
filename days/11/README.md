@@ -24,6 +24,12 @@
 
 :star: [`pytest` **fixtures** documentation](https://docs.pytest.org/en/6.2.x/fixture.html)
 
+:closed_book: [Stack Overflow `pytest` `requests_mock` article​ #1](https://stackoverflow.com/questions/41314953/pytest-how-to-force-raising-exceptions-during-unit-testing)
+
+:closed_book: [Stack Overflow `pytest` `requests_mock` article #2](https://stackoverflow.com/questions/50964786/mock-exception-raised-in-function-using-pytest)
+
+:closed_book:[​ Requests Mocking with `unittest` blog](https://bhch.github.io/posts/2017/09/python-testing-how-to-mock-requests-during-tests/)
+
 ---
 
 ## Tasks:
@@ -36,7 +42,7 @@
 
 :white_large_square: Troubleshoot `requests-mock` pytests
 
-:white_large_square: Determine if passing mock tests send _real_ (not mocked) HTTP requests
+:white_large_square: Determine if passing mock tests is supposed to send _real_ (not mocked) HTTP requests
 
 :white_large_square: Complete PyBite 39
 
@@ -307,6 +313,53 @@ def test_api(requests_mock):
     # The use of this code block is what generates the undesired, real (not mocked) HTTP request
     # Strictly speaking, calling http_request() sends a real HTTP request
     with raises(requests.exceptions.ConnectTimeout):
+        http_request(url=URL)
+```
+
+
+
+---
+
+#### :notebook: 6/6/21
+
+* Conducted additional testing and cannot find a way in which this code accurately tests the code under test:
+
+```python
+# This portion of the code works, to create a mock GET request, with an exception
+def test_http_connect_timeout_exception(requests_mock):
+    requests_mock.get(
+        url=URL,
+        exc=requests.exceptions.ConnectTimeout
+    )
+
+# If the exception in the pytest.raises() method does not match the function's exc kwarg,
+# requests_mock will fail with a message (below)
+with pytest.raises(requests.exceptions.ReadTimeout):
+        http_request(url=URL)
+```
+
+```bash
+# Exception for mismatched exceptions between requests_mock.get and pytest.raises()
+def get_response(self, request):
+        # if an error was requested then raise that instead of doing response
+        if self._exc:
+>           raise self._exc
+E           requests.exceptions.ConnectTimeout
+```
+
+```python
+# When the two exception statements match, pytest does not appear to be able to actually
+# test/assert that the function under test can catch/andle a given exception
+
+# This portion of the code works, to create a mock GET request, with an exception
+def test_http_connect_timeout_exception(requests_mock):
+    requests_mock.get(
+        url=URL,
+        exc=requests.exceptions.ConnectTimeout
+    )
+
+# The tests will ALWAYS pass when the exceptions match
+with pytest.raises(requests.exceptions.ConnectTimeout):
         http_request(url=URL)
 ```
 
