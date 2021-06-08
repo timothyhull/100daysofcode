@@ -38,11 +38,9 @@
 
 :white_check_mark: Add additional tests to `requests-mock`
 
-:white_large_square: Review mock test notes
+:white_check_mark: Review mock test notes
 
 :white_large_square: Troubleshoot `requests-mock` pytests
-
-:white_large_square: Determine if passing mock tests is supposed to send _real_ (not mocked) HTTP requests
 
 :white_large_square: Complete PyBite 39
 
@@ -363,3 +361,11 @@ with pytest.raises(requests.exceptions.ConnectTimeout):
         http_request(url=URL)
 ```
 
+
+
+---
+
+#### :notebook: 6/7/21
+
+* Conducted additional testing of `requests_mock` using links referenced in documentation.
+  * No success/changes with test variants.
