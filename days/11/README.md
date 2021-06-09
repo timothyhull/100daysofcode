@@ -1,4 +1,4 @@
-## :calendar: Day 11: 6/1/2021-6/5/2021
+## :calendar: Day 11: 6/1/2021-6/8/2021
 
 ---
 
@@ -369,3 +369,88 @@ with pytest.raises(requests.exceptions.ConnectTimeout):
 
 * Conducted additional testing of `requests_mock` using links referenced in documentation.
   * No success/changes with test variants.
+
+
+
+---
+
+#### :notebook: 6/8/21
+
+- Switching from mocking tests with `requests_mock` to producing a mock test that helps resolve a recurring `KeyError` exception in the Smart Meeting Light app.
+  - Partial success mocking up function but further testing is necessary.
+  - The challenge is mocking up with `webex_api` function which is called by the function under test, `setup_webex`.
+  - This test works although further understanding and testing with a **decorator** is necessary.
+    - Also need to determine the cause of a **deprecation warning** which occurs seemingly when a `pytest` script imports anything from the **setup_webex.py** file.
+
+```python
+# Test file (test_setup_webex.py)
+
+#!/usr/bin/env pytest
+
+# Imports
+import setup_webex
+from collections import namedtuple
+from setup_webex import get_status
+from unittest.mock import patch
+
+# Constants
+ACCESS_TOKEN = '12345'
+UNKNOWN_STATUS = 'unknown'
+
+# namedtuple for Webex person details
+Me = namedtuple('Me', 'status')
+me = Me('available')
+
+
+def test_default_status():
+    with patch.object(
+        setup_webex,
+        'webex_api',
+        return_value=me
+    ):
+        assert get_status(ACCESS_TOKEN) == UNKNOWN_STATUS
+
+```
+
+
+
+```shell
+# Test response (fail result is by design)
+
+pytest -sv test_setup_webex.py 
+============================================================================ test session starts =============================================================================
+platform linux -- Python 3.9.0, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /workspaces/smart-meeting-light/tests
+plugins: requests-mock-1.9.3, cov-2.12.1
+collected 1 item                                                                                                                                                             
+
+test_setup_webex.py::test_default_status FAILED
+
+================================================================================== FAILURES ==================================================================================
+____________________________________________________________________________ test_default_status _____________________________________________________________________________
+
+    def test_default_status():
+        with patch.object(
+            setup_webex,
+            'webex_api',
+            return_value=me
+        ):
+>           assert get_status(ACCESS_TOKEN) == UNKNOWN_STATUS
+E           AssertionError: assert 'available' == 'unknown'
+E             - unknown
+E             + available
+
+test_setup_webex.py:24: AssertionError
+============================================================================== warnings summary ==============================================================================
+../../../usr/local/lib/python3.9/site-packages/future/standard_library/__init__.py:65
+  /usr/local/lib/python3.9/site-packages/future/standard_library/__init__.py:65: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+    import imp
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+========================================================================== short test summary info ===========================================================================
+FAILED test_setup_webex.py::test_default_status - AssertionError: assert 'available' == 'unknown'
+======================================================================== 1 failed, 1 warning in 0.23s ========================================================================
+
+```
+
