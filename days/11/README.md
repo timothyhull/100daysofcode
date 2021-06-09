@@ -454,3 +454,13 @@ FAILED test_setup_webex.py::test_default_status - AssertionError: assert 'availa
 
 ```
 
+
+
+- Helpful resources:
+  - https://stackoverflow.com/questions/57924201/python-mock-mocking-a-function-inside-the-function-im-testing
+  - http://fgimian.github.io/blog/2014/04/10/using-the-python-mock-library-to-fake-regular-functions-during-tests/
+
+
+
+---
+
