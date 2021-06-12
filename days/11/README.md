@@ -44,13 +44,15 @@
 
 - Unable to successfully mock request exception handling
 
-:white_check_mark:  `pytest` `setup_webex.get_status` with a context manager
+:white_check_mark: `pytest` `setup_webex.get_status` with a context manager
 
-:white_check_mark:  `pytest` `setup_webex.get_status` with multiple values using `parameterize`
+:white_check_mark: `pytest` `setup_webex.get_status` with multiple values using `parameterize`
 
-:white_large_square:  `pytest` `setup_webex.get_status` with a decorator
+:white_check_mark: Implement `pytest` tests in GitHub Actions **check-syntax** action
 
-:white_large_square:  Mock tests with try/catch blocks in `setup_webex.get_status` 
+:white_large_square: `pytest` `setup_webex.get_status` with a decorator
+
+:white_large_square: Mock tests with try/catch blocks in `setup_webex.get_status` 
 
 :white_large_square: Complete PyBite 39
 
@@ -559,6 +561,17 @@ def test_default_status():
     - The `pass` in `except KeyError as exception` did not, as thought, prevent the `try` block from setting an invalid status response from Webex
     - Replacing `pass` with `status = UNKNOWN_STATUS` resolves the problem
     - Updated LucidChart flow chart with the change
+
+---
+
+#### :notebook: 6/11/21
+
+* Refactored and documented **test_webex_status.py** 
+* Started process to incorporate `pytest` tests into the smart-meeting-light GitHub Actions automated tests.
+  * Unable to successfully run tests becuse environment variables do not persist following a `docker export` in the **build** stage.
+  * An alternative approach may be to use `docker commit`, `docker save`, and `docker import`.
+
+
 
 ---
 
