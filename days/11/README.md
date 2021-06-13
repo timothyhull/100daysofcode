@@ -575,3 +575,24 @@ def test_default_status():
 
 ---
 
+#### :notebook: 6/12/21
+
+- Performed troubleshooting of `pytest` test failures in the GitHub Action test environment container.
+
+  - The test container does not persist environment variables from the **build** stage which causes import errors during the `pytest` run.
+    - The `PYTHONPATH` environment variable is required in order to allow Python to locate the files in **/app/setup**.
+  - Tested a variety of `docker commit`, `docker save`, and `docker import` command options without success.
+    - Wrote SED to capture an imported, abbreviated Image SHA hash, for tagging
+
+  ```sh
+  # Extracts the first 12 characters of the 'sha256: long_hash'
+  IMG=$(docker import requirements/test-env.tar | sed -E 's/^(.+:)(.{12})(.+$)/\2/')
+  docker tag $IMG test-env-image
+  ```
+
+- Unable to determine root cause of failures.
+
+
+
+---
+
