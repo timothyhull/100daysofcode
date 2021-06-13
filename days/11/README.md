@@ -596,3 +596,12 @@ def test_default_status():
 
 ---
 
+#### :notebook: 6/13/21
+
+* Corrected issues with refactoring automated tests in GitHub Actions.
+  * After extensive troubleshooting, replaced the `docker import` command with the `docker load` command.
+    * `docker import` should only be used for importing exported **Containers** (as images).
+    * `docker load` should be used for Images exported using `docker save`.
+* Added documentation comments to automated tests.
+* All GitHub actions run correctly.
+
