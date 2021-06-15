@@ -1,4 +1,4 @@
-## :calendar: Day 11: 6/1/2021-6/11/2021
+## :calendar: Day 11: 6/1/2021-6/13/2021
 
 ---
 
@@ -50,11 +50,11 @@
 
 :white_check_mark: Implement `pytest` tests in GitHub Actions **check-syntax** action
 
+:white_check_mark: Complete PyBite 39
+
 :white_large_square: `pytest` `setup_webex.get_status` with a decorator
 
 :white_large_square: Mock tests with try/catch blocks in `setup_webex.get_status` 
-
-:white_large_square: Complete PyBite 39
 
 ---
 
