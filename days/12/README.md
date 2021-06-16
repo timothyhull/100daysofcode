@@ -20,7 +20,7 @@
 
 :white_check_mark: Review `pytest` PyBit documentation & code samples
 
-:white_large_square: Re-review `pytest` PyBit documentation & code samples
+:white_check_mark: Re-review `pytest` PyBit documentation & code samples
 
 :white_large_square: Implement a `pytest` fixture
 
@@ -89,5 +89,9 @@ def test_webex_status(mock_webex_status):
 
 ---
 
+#### :notebook: 6/15/21
 
-
+- Reviewed `pytest` fixture reference and Smart Meeting Light code to determine if there is a use case for a fixture.
+  - There are cases where it would be necessary to pass certain data into many `pytest` functions although, at this point, there is no need to computer anything so a `constant` variable, set within the **global** scope is sufficient,
+  - The Smart Meeting Light app, at this time (as far as I can tell without having test coverage for most of the app) may a be a poor candidate for a `pytest` fixture test.
+  - Further test development for Smart Meeting Light may reveal a use case.
