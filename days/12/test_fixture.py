@@ -2,9 +2,13 @@
 
 # Imports
 from name_game import get_name,\
-                      name_to_upper,\
+                      name_to_title,\
                       name_to_lower,\
+                      name_to_upper, \
                       name_to_random
+
+# Constants
+NAME = 'tim Hull'
 
 
 def test_get_name():
@@ -12,13 +16,24 @@ def test_get_name():
     assert get_name().last is not None
 
 
-def test_name_to_upper():
-    assert name_to_upper() is not None
+def test_name_to_title():
+    name = NAME
+    assert name_to_title(name) is not None
+    assert name_to_title(name).istitle() is True
 
 
 def test_name_to_lower():
-    assert name_to_lower() is not None
+    name = NAME
+    assert name_to_lower(name) is not None
+    assert name_to_lower(name).islower() is True
+
+
+def test_name_to_upper():
+    name = NAME
+    assert name_to_upper(name) is not None
+    assert name_to_upper(name).isupper()
 
 
 def test_name_to_random():
-    assert name_to_random() is not None
+    name = NAME
+    assert name_to_random(name) is not None

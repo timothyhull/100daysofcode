@@ -29,17 +29,24 @@ def get_name():
     return name
 
 
-def name_to_upper():
-    pass
+def name_to_title(name):
+    name = name.title()
+
+    return name
 
 
-def name_to_lower():
-    pass
+def name_to_upper(name):
+    name = name.upper()
+
+    return name
 
 
-def name_to_title():
-    pass
+def name_to_lower(name):
+    name = name.lower()
+
+    return name
 
 
-def name_to_random():
-    pass
+def name_to_random(name):
+   
+    return name

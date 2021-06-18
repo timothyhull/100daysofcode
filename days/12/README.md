@@ -108,5 +108,19 @@ def test_webex_status(mock_webex_status):
   - Program code [name_game.py](name_game.py)
   - Program test [test_name_game.py](test_name_game.py)
 
+
+
+---
+
+#### :notebook: 6/17/21
+
+* Continued work on scratch `pytest` fixture app.
+  * Program code [name_game.py](name_game.py)
+  * Program test [test_name_game.py](test_name_game.py)
+* Using TDD methodology to write tests, fail tests, and then write code to pass tests.
+  * Added additional tests and supporting code
+
+
+
 ---
 
