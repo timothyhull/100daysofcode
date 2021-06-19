@@ -5,6 +5,7 @@
 
 # Imports
 from collections import namedtuple
+from random import choice
 
 # Constants
 FIRST_NAME = 'Tim'
@@ -48,5 +49,12 @@ def name_to_lower(name):
 
 
 def name_to_random(name):
-   
-    return name
+    random_name = ''
+    for n in name:
+        lowercase = choice([True, False])
+        if lowercase is True:
+            random_name += n.lower()
+        else:
+            random_name += n.upper()
+
+    return random_name

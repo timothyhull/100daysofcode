@@ -8,7 +8,7 @@ from name_game import get_name,\
                       name_to_random
 
 # Constants
-NAME = 'tim Hull'
+NAME = 'tim hull'
 
 
 def test_get_name():
@@ -37,3 +37,6 @@ def test_name_to_upper():
 def test_name_to_random():
     name = NAME
     assert name_to_random(name) is not None
+    assert name_to_random(name).istitle() is not True
+    assert name_to_random(name).islower() is not True
+    assert name_to_random(name).isupper() is not True
