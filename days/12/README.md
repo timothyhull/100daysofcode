@@ -1,4 +1,4 @@
-## :calendar: Day 12: 6/14/2021-6/16/2021
+## :calendar: Day 12: 6/14/2021-6/18/2021
 
 ---
 
@@ -22,9 +22,7 @@
 
 :white_check_mark: Re-review `pytest` PyBit documentation & code samples
 
-:white_large_square: Implement a `pytest` fixture
-
-:white_large_square: TBD
+:white_check_mark: Implement a `pytest` fixture
 
 ---
 
@@ -124,3 +122,9 @@ def test_webex_status(mock_webex_status):
 
 ---
 
+#### :notebook: 6/18/21
+
+- Completed initial program code ([name_game.py](name_game.py)) and program tests ([test_name_game.py](test_name_game.py)).
+  - **Renamed original test file to [test_without_fixture.py](test_without_fixture.py):**
+  - New test file name is [test_with_fixture.py](test_with_fixture.py).
+- All tests pass for both test files.
