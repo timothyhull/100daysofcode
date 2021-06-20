@@ -1,10 +1,10 @@
-## :calendar: Day 13: TBD
+## :calendar: Day 13: 6/19/21
 
 ---
 
 ## Topics:
 
-:clipboard: TBD
+:clipboard: Text-based Games Challenges (and `class` objects)
 
 ---
 
@@ -16,7 +16,7 @@
 
 ## Tasks:
 
-:white_check_mark: TBD
+:white_check_mark: Watch videos 1-3
 
 :white_large_square: TBD
 
@@ -24,4 +24,12 @@
 
 ## Notes:
 
-:notebook: TBD
+#### :notebook: 6/19/21
+
+- Watched videos 1-3
+- Created [Jupyter Notebook](object_classes.ipynb) with detailed notes and exercises.
+
+
+
+---
+
