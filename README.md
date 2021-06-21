@@ -97,7 +97,8 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 <details><summary>Days 13-15: Text-based Games Challenges (and class objects)</summary>
 
 
-- Day 13: TBD
+- Day 13: [6/19/21](days/13)
+- Day 13a: [6/20/21](days/13#notebook-62021)
 
 </details>
 
