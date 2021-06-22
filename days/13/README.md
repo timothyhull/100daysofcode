@@ -20,7 +20,7 @@
 
 :white_check_mark: Watch video 4
 
-:white_check_mark: Watch videos 5-6
+:white_check_mark: Watch videos 5-7
 
 :white_large_square: TBD
 
