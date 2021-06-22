@@ -53,5 +53,8 @@ class Wizard(Creature):
         my_roll = self.defensive_roll()
         their_roll = creature.defensive_roll()
 
+        print(f'\nPlayer rolls: {my_roll}\n'
+              f'Enemy rolls {their_roll}\n')
+
         # Returns True or False, based on the outcome of the roll comparision
         return my_roll >= their_roll
