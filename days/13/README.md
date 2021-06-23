@@ -22,6 +22,14 @@
 
 :white_check_mark: Watch videos 5-7
 
+:white_check_mark: Watch videos 8-9
+
+ :white_check_mark: ​Build foundation for rock, paper, scissors game
+
+:white_large_square: Build functional rock, paper, scissors game
+
+:white_large_square: Build 15-way for rock, paper, scissors, etc. game
+
 :white_large_square: TBD
 
 ---
@@ -38,7 +46,7 @@
 #### :notebook: 6/20/21
 
 - Watched video 4.
-- Created [`program.py`](http://localhost:8888/lab/tree/days/13/program.py) and [`actors.py`](http://localhost:8888/lab/tree/days/13/actors.py) files to test `class` development and `class` inheritance.
+- Created [`program.py`](http://localhost:8888/lab/tree/days/13/1_dnd/program.py) and [`actors.py`](http://localhost:8888/lab/tree/days/13/1_dnd/actors.py) files to test `class` development and `class` inheritance.
 - Inserted the same code in the working [Jupyter Notebook](object_classes.ipynb).
 - Working to determine the relationship between inherited and a `super` `class`.
 
@@ -47,5 +55,13 @@
 #### :notebook: 6/21/21
 
 - Watched videos 5-6
-- Completed [`program.py`](http://localhost:8888/lab/tree/days/13/program.py) and [`actors.py`](http://localhost:8888/lab/tree/days/13/actors.py) files and tested application for functionality.
+- Completed [`program.py`](http://localhost:8888/lab/tree/days/13/1_dnd/program.py) and [`actors.py`](http://localhost:8888/lab/tree/days/13/1_dnd/actors.py) files and tested application for functionality.
 - Updated the same [Jupyter Notebook](object_classes.ipynb) with the latest code.
+
+---
+
+#### :notebook:6/22/21
+
+- Watched videos 7-9
+- Built foundations for rock, paper, scissors game at [rock_paper_scissors](2_rock_paper_scissors/rock_paper_scissors.py).
+
