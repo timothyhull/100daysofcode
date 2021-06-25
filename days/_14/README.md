@@ -1,3 +1,43 @@
+## :calendar: Day 14: 6/23/21-6/24/21
+
+---
+
+## Topics:
+
+:clipboard: Text-based Games Challenges (and `class` objects)
+
+---
+
+## Resources:
+
+:star: TBD
+
+---
+
+## Tasks:
+
+:white_large_square: Build functional rock, paper, scissors game
+
+:white_large_square: Build 15-way for rock, paper, scissors, etc. game
+
+:white_large_square: TBD
+
+---
+
+## Notes:
+
+#### :notebook:6/22/21
+
+- Watched videos 7-9
+- Built foundations for rock, paper, scissors game at [rock_paper_scissors](rock_paper_scissors/rock_paper_scissors.py).
+
+---
+
+#### :notebook:6/23/21
+
+- Built out initial `class` objects for `Roll` and `Players`
+
+```python
 #!/usr/bin/env/python3
 """ Game objects for Paper, Rock, Scissors.
 """
@@ -71,3 +111,28 @@ class Player:
     """
     def __init__(self, name: str = 'Computer') -> None:
         self.name = name
+
+```
+
+
+
+- Tested functionality with the following REPL commands:
+
+```python
+from RPS_Objects import Roll
+
+# Example with a good name value
+roll_1 = Roll('rock')
+roll_1.name  # returns 'rock'
+roll_1.win  # returns 'scissors'
+roll_1.lose  # returns 'paper'
+
+# Example with a bad name value
+roll_2 = Roll('bad_name')  # raises a ValueError with a custom string
+```
+
+---
+
+#### :notebook: 6/24/21
+
+-
