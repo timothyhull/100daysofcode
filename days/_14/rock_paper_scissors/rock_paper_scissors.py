@@ -30,7 +30,7 @@ def display_banner(msg: str = BANNER_MSG) -> None:
 
 def get_player_name(
         msg: str = GET_PLAYER_FIRST_NAME_MSG,
-        first_name: str = None
+        first_name: str = ''
         ) -> str:
     """ Collect the player's name.
 
@@ -43,14 +43,11 @@ def get_player_name(
             player_name (str): Name of the player.
     """
 
-    while True:
+    if first_name == '':
         player_name = input(msg)
 
-        if player_name == '':
-            print('\n** Try again **\n')
-            continue
-
-        break
+    if player_name == '':
+        raise ValueError('A blank name is not allowed')
 
     return player_name
 
