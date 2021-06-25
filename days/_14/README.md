@@ -18,6 +18,8 @@
 
 :white_large_square: Build functional rock, paper, scissors game
 
+:white_large_square: Use `pytest` for TDD of game.
+
 :white_large_square: Build 15-way for rock, paper, scissors, etc. game
 
 :white_large_square: TBD
@@ -135,4 +137,11 @@ roll_2 = Roll('bad_name')  # raises a ValueError with a custom string
 
 #### :notebook: 6/24/21
 
--
+- Created `pytest` tests to support TDD of game functions.
+  - Wrote tests for `display_banner()` and `get_player_name()` functions.
+  - Used `unittest.mock.patch()` to mock end user STDIN inpu for `get_player_name()`t, with multiple `side_effect` values.
+    - Tested for both a valid `return` value and for a `ValueError` exception for an invalid entry (using `pytest.raises(ValueError)`).
+  - Used the `capfd` fixture to test for valid text printed to STDOUT.
+
+---
+
