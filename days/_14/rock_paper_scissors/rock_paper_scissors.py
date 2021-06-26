@@ -3,10 +3,16 @@
 """
 
 # Imports
+from RPS_Objects import Roll
 
 # Constants
 BANNER_MSG = '** Let\'s Play Rock, Paper, Scissors **'
 GET_PLAYER_FIRST_NAME_MSG = 'What is your first name? '
+ROLLS = [
+    'paper',
+    'rock',
+    'scissors'
+]
 
 
 def display_banner(msg: str = BANNER_MSG) -> None:
@@ -60,9 +66,17 @@ def main() -> None:
             Returns: None
     """
 
+    # Display overview banner
     display_banner()
+
+    # Generate rolls objects
+    rolls = list()
+    for roll in ROLLS:
+        rolls.append(Roll(roll))
+
+    from pprint import pprint as pp
+    pp(rolls)
 
 
 if __name__ == '__main__':
     main()
-    first_name = get_player_name()

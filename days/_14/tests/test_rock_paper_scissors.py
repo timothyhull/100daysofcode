@@ -11,6 +11,7 @@ from unittest.mock import patch
 
 # Constants
 BANNER_MSG = '** Let\'s Play Rock, Paper, Scissors **'
+TEST_MSG = '** Test Message **'
 
 
 # Tests
@@ -33,10 +34,10 @@ def test_display_banner(capfd):
     assert BANNER_MSG in out
 
     # Perform a second test with a custom `msg` value
-    assert display_banner('Test Message') is None
+    assert display_banner(TEST_MSG) is None
     out = capfd.readouterr()[0]
     print(out)
-    assert 'Test Message' in out
+    assert TEST_MSG in out
 
 
 @patch(
