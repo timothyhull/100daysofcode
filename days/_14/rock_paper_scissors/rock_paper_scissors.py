@@ -3,7 +3,7 @@
 """
 
 # Imports
-from RPS_Objects import Roll
+from _14.rock_paper_scissors.RPS_Objects import Roll, Player
 
 # Constants
 BANNER_MSG = '** Let\'s Play Rock, Paper, Scissors **'
