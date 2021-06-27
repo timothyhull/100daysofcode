@@ -1,4 +1,4 @@
-## :calendar: Day 14: 6/23/21-6/25/21
+## :calendar: Day 14: 6/23/21-6/26/21
 
 ---
 
@@ -147,5 +147,21 @@ roll_2 = Roll('bad_name')  # raises a ValueError with a custom string
 
 #### :notebook: 6/25/21
 
-- Reviewed `pytest` tests
-- Expanded `main()` function to include initial creation of rolls (using the imported Roll class)
+- Reviewed `pytest` tests.
+- Expanded `main()` function to include initial creation of rolls (using the imported Roll class).
+
+---
+
+#### :notebook: 6/26/21
+
+- Performed troubleshooting on failing `pytest` tests, due to the error `ModuleNotFoundError: No module named 'RPS_Objects'.`
+  - Modified the import command in `[rock_paper_scissors.py](rock_paper_scissors.py)` to match the correct command:
+
+```python
+# Old command
+from _RPS_Objects import Roll, Player
+
+# New command
+from _14.rock_paper_scissors.RPS_Objects import Roll, Player
+```
+
