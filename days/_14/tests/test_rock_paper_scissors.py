@@ -5,7 +5,8 @@
 
 # Imports
 from _14.rock_paper_scissors.rock_paper_scissors import display_banner, \
-                                                        get_player_name
+                                                        get_player_name, \
+                                                        game_loop
 from pytest import raises
 from unittest.mock import patch
 
@@ -19,8 +20,9 @@ def test_display_banner(capfd):
     """ Test to confirm the printed output is correct (using 'capfd')
     """
 
-    """ Call the function to test (required) by using an 'assert' statement
-        to tonfirm the return value for the function is 'None'.
+    """ Call the function to test, 'display_banner' (required), by using
+        an 'assert' statement to confirm the return value for the
+        function is 'None'.
     """
     assert display_banner() is None
 
@@ -55,3 +57,7 @@ def test_get_player_name(side_effect):
     # Test the second, invalid side effect raises the correct exception
     with raises(ValueError):
         get_player_name()
+
+
+def test_game_loop():
+    pass

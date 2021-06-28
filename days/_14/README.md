@@ -1,4 +1,4 @@
-## :calendar: Day 14: 6/23/21-6/26/21
+## :calendar: Day 14: 6/23/21-6/27/21
 
 ---
 
@@ -155,7 +155,7 @@ roll_2 = Roll('bad_name')  # raises a ValueError with a custom string
 #### :notebook: 6/26/21
 
 - Performed troubleshooting on failing `pytest` tests, due to the error `ModuleNotFoundError: No module named 'RPS_Objects'.`
-  - Modified the import command in `[rock_paper_scissors.py](rock_paper_scissors.py)` to match the correct command:
+  - Modified the import command in [`rock_paper_scissors.py`](rock_paper_scissors/rock_paper_scissors.py) to match the correct command:
 
 ```python
 # Old command
@@ -165,3 +165,9 @@ from _RPS_Objects import Roll, Player
 from _14.rock_paper_scissors.RPS_Objects import Roll, Player
 ```
 
+---
+
+#### :notebook: 6/27/21
+
+- Created TDD-based test, `test_game_loop` within the existing test file, [test_rock_paper_scissors.py](test/test_rock_paper_scissors.py)
+- Created initial structure and docstring for the `game_loop` function.

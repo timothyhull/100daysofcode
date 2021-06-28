@@ -7,6 +7,7 @@ from _14.rock_paper_scissors.RPS_Objects import Roll, Player
 
 # Constants
 BANNER_MSG = '** Let\'s Play Rock, Paper, Scissors **'
+GAME_LOOPS = 3
 GET_PLAYER_FIRST_NAME_MSG = 'What is your first name? '
 ROLLS = [
     'paper',
@@ -58,12 +59,32 @@ def get_player_name(
     return player_name
 
 
+def game_loop(
+    player_1: Player,
+    player_2: Player,
+    rolls: Roll
+) -> None:
+    """ Loop over game play N times and determine a winner.
+
+        Args:
+            player_1 (RPS_Objects.Player): Player object for human player.
+            player_2 (RPS_Objects.Player): Player object for computer player.
+            rolls (list): List of RPS_Objects.Rolls.
+
+        Returns:
+            None.
+    """
+    pass
+
+
 def main() -> None:
     """ Main program
 
-            Args: None.
+            Args:
+                None.
 
-            Returns: None
+            Returns:
+                None.
     """
 
     # Display overview banner
@@ -74,8 +95,16 @@ def main() -> None:
     for roll in ROLLS:
         rolls.append(Roll(roll))
 
-    from pprint import pprint as pp
-    pp(rolls)
+    # Get player name
+    player_name = get_player_name()
+
+    # Create player objects
+    player_1 = Player(player_name)
+    player_2 = Player()
+
+    # Run the game loop
+
+    print(player_1, player_2)
 
 
 if __name__ == '__main__':
