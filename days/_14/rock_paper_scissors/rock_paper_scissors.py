@@ -4,6 +4,8 @@
 
 # Imports
 from _14.rock_paper_scissors.RPS_Objects import Roll, Player
+from random import choice
+from sys import exit
 
 # Constants
 BANNER_MSG = '** Let\'s Play Rock, Paper, Scissors **'
@@ -62,7 +64,7 @@ def get_player_name(
 def game_loop(
     player_1: Player,
     player_2: Player,
-    rolls: Roll
+    rolls: list
 ) -> None:
     """ Loop over game play N times and determine a winner.
 
@@ -74,7 +76,42 @@ def game_loop(
         Returns:
             None.
     """
-    pass
+
+    # Initialize the game loop counter
+    loop_count = 1
+
+    # Start the game loop
+    while loop_count < 3:
+
+        # Randomly choose a roll for player 2 (computer)
+        player_2_roll = choice(rolls)
+
+        # Display a list of choices
+        print('\nChoices:')
+        for index, roll in enumerate(rolls):
+            print(f'{index +1}. '
+                  f'{roll.name.title()}')
+
+        player_1_input = input(f'\nMake your choice - '
+                               f'1-{len(rolls)}: ')
+
+        try:
+            # Confirm the input is an integer greater than 0 and in range
+            valid_input = int(player_1_input) in range(1, len(rolls) + 1)
+            if valid_input is True:
+                player_1_roll = rolls[int(player_1_input) - 1]
+            else:
+                raise ValueError
+
+        except ValueError:
+            # Display error for non-integer value
+            print('\n** Invalid choice **')
+            continue
+
+        except IndexError:
+            # Display error for out-of-range value
+            print('\n** Invalid choice **')
+            continue
 
 
 def main() -> None:
@@ -91,7 +128,7 @@ def main() -> None:
     display_banner()
 
     # Generate rolls objects
-    rolls = list()
+    rolls = []
     for roll in ROLLS:
         rolls.append(Roll(roll))
 
@@ -103,9 +140,17 @@ def main() -> None:
     player_2 = Player()
 
     # Run the game loop
-
-    print(player_1, player_2)
+    winner = game_loop(
+        player_1=player_1,
+        player_2=player_2,
+        rolls=rolls
+    )
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+
+    except KeyboardInterrupt:
+        print()
+        exit(0)

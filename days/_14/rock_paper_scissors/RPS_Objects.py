@@ -68,5 +68,10 @@ class Roll:
 class Player:
     """ Set the attributes for a player.
     """
-    def __init__(self, name: str = 'Computer') -> None:
+    def __init__(
+        self,
+        name: str = 'Computer',
+        roll: str = None
+    ) -> None:
         self.name = name
+        self.roll = roll

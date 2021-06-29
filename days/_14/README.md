@@ -165,9 +165,19 @@ from _RPS_Objects import Roll, Player
 from _14.rock_paper_scissors.RPS_Objects import Roll, Player
 ```
 
+
+
 ---
 
 #### :notebook: 6/27/21
 
 - Created TDD-based test, `test_game_loop` within the existing test file, [test_rock_paper_scissors.py](test/test_rock_paper_scissors.py)
 - Created initial structure and docstring for the `game_loop` function.
+
+---
+
+#### :notebook: 6/28/21
+
+- Started development of the `game_loop` function within , [rock_paper_scissors.py](rock_paper_scissors/rock_paper_scissors.py).
+  - Built initial loop functionality, random choice of player #2 (computer) rolls, and basic input validation.
+- Developed initial `assert` statement for TDD-based test, `test_game_loop` within the existing test file, [test_rock_paper_scissors.py](test/test_rock_paper_scissors.py)

@@ -4,6 +4,7 @@
 """
 
 # Imports
+from _14.rock_paper_scissors.RPS_Objects import Player, Roll
 from _14.rock_paper_scissors.rock_paper_scissors import display_banner, \
                                                         get_player_name, \
                                                         game_loop
@@ -12,6 +13,13 @@ from unittest.mock import patch
 
 # Constants
 BANNER_MSG = '** Let\'s Play Rock, Paper, Scissors **'
+GAME_LOOPS = 3
+PLAYER_1_NAME = 'Tim'
+ROLLS = [
+    'paper',
+    'rock',
+    'scissors'
+]
 TEST_MSG = '** Test Message **'
 
 
@@ -44,7 +52,7 @@ def test_display_banner(capfd):
 
 @patch(
     'builtins.input',
-    side_effect=['Tim', '']
+    side_effect=[PLAYER_1_NAME, '']
 )
 def test_get_player_name(side_effect):
     """ The 'side_effect' argument is a placeholder to send side_effect list
@@ -52,7 +60,7 @@ def test_get_player_name(side_effect):
     """
 
     # Test the first, valid side effect
-    assert get_player_name() == 'Tim'
+    assert get_player_name() == PLAYER_1_NAME
 
     # Test the second, invalid side effect raises the correct exception
     with raises(ValueError):
@@ -60,4 +68,21 @@ def test_get_player_name(side_effect):
 
 
 def test_game_loop():
-    pass
+    """ Test for a functional game loop
+    """
+
+    # Create player objects
+    player_1 = Player(PLAYER_1_NAME)
+    player_2 = Player()
+
+    # Create a list of 3 rolls
+    rolls = []
+    for roll in ROLLS:
+        rolls.append(Roll(roll))
+
+    # Verify the game loop produces a result
+    assert game_loop(
+        player_1=player_1,
+        player_2=player_2,
+        rolls=rolls
+    ) in [player_1.name, player_2.name]
