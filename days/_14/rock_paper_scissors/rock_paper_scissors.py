@@ -113,6 +113,17 @@ def game_loop(
             print('\n** Invalid choice **')
             continue
 
+        # Determine the winner for this loop iteration
+
+        # // check for equality of the rolls
+        # if the values are equal, declare a tie
+
+        # Determine if p1 beats p2
+        # add to the winner's score
+
+        # Add to the loop counter
+        loop_count += 1
+
 
 def main() -> None:
     """ Main program
