@@ -188,3 +188,10 @@ from _14.rock_paper_scissors.RPS_Objects import Roll, Player
 
 - Added outline for the portion of the `game_loop` function which will determine which player roll wins
   - Need to review and possibly revise the `class` structure to account for the current program flow.
+
+---
+
+#### :notebook: 6/30/21
+
+- Completed initial **functional** game, after reviewing `class` structure.
+  - Need to revise formatting for a smoother game play experience.

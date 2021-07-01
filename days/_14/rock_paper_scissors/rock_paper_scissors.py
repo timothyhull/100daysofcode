@@ -81,10 +81,19 @@ def game_loop(
     loop_count = 1
 
     # Start the game loop
-    while loop_count < 3:
+    while loop_count < GAME_LOOPS + 1:
+        # Display loop banner
+        results_header = f'Round {loop_count} of {GAME_LOOPS}'
+        print(f'\n{results_header}\n'
+              f'{"-" * len(results_header)}\n'
+              f'{player_1.name}: {player_1.score}'
+              f'\t{player_2.name}: {player_2.score}')
+
+        # Initialize round_winner variable
+        round_winner = None
 
         # Randomly choose a roll for player 2 (computer)
-        player_2_roll = choice(rolls)
+        player_2.roll = choice(rolls)
 
         # Display a list of choices
         print('\nChoices:')
@@ -99,7 +108,7 @@ def game_loop(
             # Confirm the input is an integer greater than 0 and in range
             valid_input = int(player_1_input) in range(1, len(rolls) + 1)
             if valid_input is True:
-                player_1_roll = rolls[int(player_1_input) - 1]
+                player_1.roll = rolls[int(player_1_input) - 1]
             else:
                 raise ValueError
 
@@ -114,15 +123,41 @@ def game_loop(
             continue
 
         # Determine the winner for this loop iteration
+        # Display each players' roll
+        print(f'\n** {player_1.name} chooses {player_1.roll.name}\n'
+              f'** {player_2.name} chooses {player_2.roll.name}')
 
-        # // check for equality of the rolls
-        # if the values are equal, declare a tie
+        if player_1.roll.name == player_2.roll.name:
+            # If the roll values are equal, declare a tie
+            print('\n** This round is is a tie **')
 
-        # Determine if p1 beats p2
+        # Determine if player 1 beats player 2 this round
+        else:
+            if player_1.roll.name == player_2.roll.win:
+                round_winner = player_1
+            else:
+                round_winner = player_2
+
         # add to the winner's score
+        if round_winner is not None:
+            round_winner.score += 1
 
         # Add to the loop counter
         loop_count += 1
+
+    # Display game results
+    print('\n** Final Score **\n')
+    print(f'{player_1.name}: {player_1.score}'
+          f'\t{player_2.name}: {player_2.score}\n')
+
+    if player_1.score == player_2.score:
+        print('\n ** Tie Game **\n')
+
+    elif player_1.score > player_2.score:
+        print(f'\n ** {player_1.name} wins **\n')
+
+    else:
+        print(f'\n ** {player_2.name} wins **\n')
 
 
 def main() -> None:
