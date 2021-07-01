@@ -71,7 +71,7 @@ class Player:
     def __init__(
         self,
         name: str = 'Computer',
-        roll: str = None,
+        roll: Roll = None,
         score: int = 0
     ) -> None:
         self.name = name
