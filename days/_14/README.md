@@ -18,9 +18,7 @@
 
 :white_check_mark: Build functional rock, paper, scissors game
 
-:white_large_square: Use `pytest` for TDD of game.
-
-:white_large_square: TBD
+:white_check_mark: Use `pytest` for TDD of game.
 
 ---
 
@@ -197,3 +195,83 @@ from _14.rock_paper_scissors.RPS_Objects import Roll, Player
 ---
 
 #### :notebook: 7/1/21
+
+- Successfully re-tested game for functionality.
+- Removed variable assignment from the call of the `game_loop` function.
+- Established framework for `pytest` tests of `game_loop` with `unittest.mock.patch`.
+  - Built `side_effect` list to supply random values for testing player input selections.
+  - `pytest` test passes at this time.
+
+```python
+root@4e75680cdf7d:/workspaces/100daysofcode/days/_14/tests# pytest -sv
+==================================================== test session starts ====================================================
+platform linux -- Python 3.9.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /workspaces/100daysofcode/days/_14/tests
+plugins: cov-2.12.1, anyio-3.2.1
+collected 3 items                                                                                                           
+
+test_rock_paper_scissors.py::test_display_banner 
+** Let's Play Rock, Paper, Scissors **
+--------------------------------------
+
+
+
+** Test Message **
+------------------
+
+
+PASSED
+test_rock_paper_scissors.py::test_get_player_name PASSED
+test_rock_paper_scissors.py::test_game_loop 
+Round 1 of 3
+------------
+Tim: 0	Computer: 0
+
+Choices:
+1. Paper
+2. Rock
+3. Scissors
+
+** Tim chooses scissors
+** Computer chooses paper
+
+Round 2 of 3
+------------
+Tim: 0	Computer: 1
+
+Choices:
+1. Paper
+2. Rock
+3. Scissors
+
+** Tim chooses rock
+** Computer chooses scissors
+
+Round 3 of 3
+------------
+Tim: 0	Computer: 2
+
+Choices:
+1. Paper
+2. Rock
+3. Scissors
+
+** Tim chooses paper
+** Computer chooses paper
+
+** This round is is a tie **
+
+** Final Score **
+
+Tim: 0	Computer: 2
+
+
+ ** Computer wins **
+
+PASSED
+
+===================================================== 3 passed in 0.06s =====================================================
+
+```
+

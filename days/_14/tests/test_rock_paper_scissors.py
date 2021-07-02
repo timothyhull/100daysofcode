@@ -70,8 +70,9 @@ def test_get_player_name(side_effect):
 
 # Create a list of random numbers, to provide side_effect values
 random_turns = []
-for turn in range(1, GAME_LOOPS):
-    random_turns.append(turn)
+for _ in range(1, GAME_LOOPS + 1):
+    random_num_choice = randint(1, 3)
+    random_turns.append(random_num_choice)
 
 
 @patch(
