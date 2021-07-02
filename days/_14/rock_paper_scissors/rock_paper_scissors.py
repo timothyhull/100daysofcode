@@ -186,7 +186,7 @@ def main() -> None:
     player_2 = Player()
 
     # Run the game loop
-    winner = game_loop(
+    game_loop(
         player_1=player_1,
         player_2=player_2,
         rolls=rolls

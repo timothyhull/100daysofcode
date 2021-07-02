@@ -1,4 +1,4 @@
-## :calendar: Day 14: 6/23/21-6/27/21
+## :calendar: Day 14: 6/23/21-7/1/21
 
 ---
 
@@ -16,11 +16,9 @@
 
 ## Tasks:
 
-:white_large_square: Build functional rock, paper, scissors game
+:white_check_mark: Build functional rock, paper, scissors game
 
 :white_large_square: Use `pytest` for TDD of game.
-
-:white_large_square: Build 15-way for rock, paper, scissors, etc. game
 
 :white_large_square: TBD
 
@@ -195,3 +193,7 @@ from _14.rock_paper_scissors.RPS_Objects import Roll, Player
 
 - Completed initial **functional** game, after reviewing `class` structure.
   - Need to revise formatting for a smoother game play experience.
+
+---
+
+#### :notebook: 7/1/21

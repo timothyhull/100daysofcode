@@ -9,6 +9,7 @@ from _14.rock_paper_scissors.rock_paper_scissors import display_banner, \
                                                         get_player_name, \
                                                         game_loop
 from pytest import raises
+from random import randint
 from unittest.mock import patch
 
 # Constants
@@ -67,7 +68,17 @@ def test_get_player_name(side_effect):
         get_player_name()
 
 
-def test_game_loop():
+# Create a list of random numbers, to provide side_effect values
+random_turns = []
+for turn in range(1, GAME_LOOPS):
+    random_turns.append(turn)
+
+
+@patch(
+    'builtins.input',
+    side_effect=random_turns
+)
+def test_game_loop(side_effect):
     """ Test for a functional game loop
     """
 
@@ -81,8 +92,8 @@ def test_game_loop():
         rolls.append(Roll(roll))
 
     # Verify the game loop produces a result
-    assert game_loop(
+    game_loop(
         player_1=player_1,
         player_2=player_2,
         rolls=rolls
-    ) in [player_1.name, player_2.name]
+    )
