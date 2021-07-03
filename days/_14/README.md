@@ -1,4 +1,4 @@
-## :calendar: Day 14: 6/23/21-7/1/21
+## :calendar: Day 14: 6/23/21-7/2/21
 
 ---
 
@@ -273,5 +273,19 @@ PASSED
 
 ===================================================== 3 passed in 0.06s =====================================================
 
+```
+
+---
+
+#### **:notebook: 7/2/21**
+
+- Corrected logic issue in round winner determination
+
+```python
+# Replaced this line:
+if player_1.roll.name == player_2.roll.win:
+
+# With this line
+if player_1.roll.name == player_2.roll.lose:
 ```
 
