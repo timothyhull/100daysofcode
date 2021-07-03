@@ -129,11 +129,11 @@ def game_loop(
 
         if player_1.roll.name == player_2.roll.name:
             # If the roll values are equal, declare a tie
-            print('\n** This round is is a tie **')
+            print('\n** This round is a tie **')
 
         # Determine if player 1 beats player 2 this round
         else:
-            if player_1.roll.name == player_2.roll.win:
+            if player_1.roll.name == player_2.roll.lose:
                 round_winner = player_1
             else:
                 round_winner = player_2
@@ -151,13 +151,13 @@ def game_loop(
           f'\t{player_2.name}: {player_2.score}\n')
 
     if player_1.score == player_2.score:
-        print('\n ** Tie Game **\n')
+        print('** Tie Game **\n')
 
     elif player_1.score > player_2.score:
-        print(f'\n ** {player_1.name} wins **\n')
+        print(f'** {player_1.name} wins **\n')
 
     else:
-        print(f'\n ** {player_2.name} wins **\n')
+        print(f'** {player_2.name} wins **\n')
 
 
 def main() -> None:
