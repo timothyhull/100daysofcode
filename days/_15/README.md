@@ -33,3 +33,7 @@
 
 ---
 
+#### :notebook: 7/3/21
+
+- Worked with `csv` module, to import and understand resulting object (`list` of list' each line).
+  - Each line becomes its own `list` of data.

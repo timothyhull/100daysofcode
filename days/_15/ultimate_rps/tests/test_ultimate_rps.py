@@ -1,11 +1,11 @@
 #!/usr/bin/env pytest
 
 # Imports
-from _15.ultimate_rps.ultimate_rps import import_csv
+from _15.ultimate_rps.ultimate_rps import CSV_FILE, import_csv
 from csv import reader
 
 # Constants
-csv_file = '../data/battle-table.csv'
+CSV_FILE = '../data/battle-table.csv'
 
 
 def test_import_csv():
