@@ -11,9 +11,10 @@
     ],
     "forwardPorts": [8888],
     "settings": {
+        "python.analysis.useImportHeuristic": true,
         "python.pythonPath": "/usr/local/bin/python3",
         "python.formatting.provider": "autopep8",
         "python.linting.enabled": true,
-        "python.linting.flake8Enabled": true
+        "python.linting.flake8Enabled": true,
     }
 }
