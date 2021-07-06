@@ -5,7 +5,7 @@
         python3 ultimate_rps.py
 """
 
-from _15.ultimate_rps.UltimateRPS import UltimateRPS
+from UltimateRPS import UltimateRPS
 
 
 def main():

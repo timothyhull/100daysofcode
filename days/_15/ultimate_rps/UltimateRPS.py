@@ -46,13 +46,13 @@ class UltimateRPS:
 
             Args:
                 player_play (str): Player-chosen gameplay article
-                                   (e.g, "scissors")
+                                   (e.g, "Scissors")
                 computer_play (str): Randomly-chosen gameplay article
                                      (e.g, "Rock")
 
             Returns:
                 play_result (str): Result of play determination, based on
-                                    the battle table (win, lose, or draw).
+                                   the battle table (win, lose, or draw).
         """
 
         # Add titlecase player and computer plays to 'self'
@@ -62,19 +62,47 @@ class UltimateRPS:
         # Loop over battle table and locate player_play value for 'Attacker'
         for player_row in self.battle_table:
 
-            # Look for the row with the 'Attacker' that matches player_play
+            # Look for the row with the 'Attacker' that matches 'player_play'
             if player_row.get('Attacker') == self.player_play:
-                player_play_result = player_row
 
-                # Stop loop iteration after match
-                break
+                """ Get the value for the key in the player_row that matches
+                    the computer_play value.
 
-        # Determine if the player_play beats the computer_play
-        if player_play_result.get(self.computer_play) == 'lose':
-            play_result = 'win'
-        elif player_play_result.get(self.computer_play) == 'win':
-            play_result = 'lose'
-        elif player_play_result.get(self.computer_play) == 'draw':
-            play_result = 'draw'
+                    Details:
+                        When the loop iteration row (dict) has an 'Attacker'
+                        key with a value that matches 'player_play', within
+                        that same row (dict), get the value for the key that
+                        matches 'computer_play'.  The value of the matching
+                        key will yield the result of the computer's play
+                        against the player's play.
 
-        return play_result
+                    Example:
+                        self.player_play = 'Scissors'
+                        self.computer_play = 'Rock'
+                        battle_table row with an attacker of 'Scissors':
+                            {'Air': 'win',
+                             'Attacker': 'Scissors',
+                             'Devil': 'lose',
+                             'Dragon': 'lose',
+                             'Fire': 'lose',
+                             'Gun': 'lose',
+                             'Human': 'win',
+                             'Lightning': 'lose',
+                             'Paper': 'win',
+                             'Rock': 'lose',
+                             'Scissors': 'draw',
+                             'Snake': 'win',
+                             'Sponge': 'win',
+                             'Tree': 'win',
+                             'Water': 'lose',
+                             'Wolf': 'win'}
+
+                        The key that matches 'self.computer_play' is 'Rock'
+                        which has a value of 'lose'.  This means that
+                        'self.player_play' (Scissors) loses to
+                        'self.computer_play' (Rock).
+                """
+                player_play_result = player_row.get(self.computer_play)
+
+                # Halt loop iteration after match and return player_play_result
+                return player_play_result
