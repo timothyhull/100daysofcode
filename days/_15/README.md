@@ -28,7 +28,9 @@
 
 :white_check_mark: Refactor `test_play_result()` function in `test_ultimate_rps.py` to include mock tests input values, via the `pytest.mark.parameterize` method.
 
-:white_large_square: ​
+:white_large_square: ​Create `class` objects for player properties
+
+:white_large_square: Create game loop which allows for interactive input and score feedback 
 
 ---
 
