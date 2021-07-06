@@ -24,9 +24,11 @@
 
 :white_check_mark: Search CSV data for win/loss results, based on attacker
 
-:white_large_square: Add docstring and comments to `test_play_result()` function in `test_ultimate_rps.py`
+:white_check_mark: Add docstring and comments to `test_play_result()` function in `test_ultimate_rps.py`
 
-:white_large_square: Refactor `test_play_result()` function in `test_ultimate_rps.py` to include `mock.patch` `side_effect` input values.
+:white_check_mark: Refactor `test_play_result()` function in `test_ultimate_rps.py` to include mock tests input values, via the `pytest.mark.parameterize` method.
+
+:white_large_square: ​
 
 ---
 
@@ -88,9 +90,9 @@ def test_import_csv_type(csv_data):
 
 ---
 
-#### :notebook: 7/4/21
+#### :notebook: 7/5/21
 
-- Refactored [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py) such that CSV import functionality is now a component of a new `class` within the file[`UltimateRPS.py`](ultimate_rps/UltimateRPS.py).
+- Refactored [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py) such that CSV import functionality is now a component of a new `class` within the file [`UltimateRPS.py`](ultimate_rps/UltimateRPS.py).
   - The `class` name is `UltimateRPS`.
 - Added TDD function to determine the outcome of a turn/play:
   - Need to add docstring and comments
@@ -155,4 +157,30 @@ def get_turn_result(
 
         return play_result
 ```
+
+---
+
+#### :notebook: 7/6/21
+
+- Refactored [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py) to implement static player and computer input values, using `pytest.mark.parameterize`.
+  - Used the `zip()` function to create a `tuple` of iterables (`player_play`, `computer_play`, `expected_result`) to pass to the `pytest.mark.parameterize` decorator.
+  - Enclosed the `zip` object type in a `list()` function, in order to pass an iterable object (`list` of tuples) to the decorator:
+
+```python
+@mark.parametrize(
+    'player_play, computer_play, expected_result',
+    list(GAMEPLAY_ARGS)
+)
+def test_play_result(
+    ultimate_rps_object,
+    player_play,
+    computer_play,
+    expected_result
+):
+  # Function details omitted for brevity
+```
+
+- Added docstring to `test_play_result()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
+- Refactored [`UltimateRPS.py`](ultimate_rps/UltimateRPS.py) `get_turn_result()` method to simplify return functionality.
+  - Added detailed documentation for specific steps in the method.
 
