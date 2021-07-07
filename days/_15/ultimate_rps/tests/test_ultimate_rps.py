@@ -6,12 +6,15 @@
 """
 
 # Imports
-from _15.ultimate_rps.UltimateRPS import UltimateRPS
+from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player
+from collections import namedtuple
 from pytest import fixture, mark
 from random import randint
 
 # Constants
-PLAYER_PLAYS = [
+PLAYER_1_NAME = 'Tim'
+PLAYER_2_NAME = 'Computer'
+PLAYER_1_PLAYS = [
     'Scissors',
     'Paper',
     'Rock',
@@ -23,7 +26,7 @@ PLAYER_PLAYS = [
     'Fire',
     'Sponge'
 ]
-COMPUTER_PLAYS = [
+PLAYER_2_PLAYS = [
     'Rock',
     'Paper',
     'Scissors',
@@ -47,9 +50,11 @@ EXPECTED_RESULTS = [
     'lose',
     'draw'
 ]
+
+# Combine lists to form a 3-tuple object, for parameterize compatibility
 GAMEPLAY_ARGS = zip(
-    PLAYER_PLAYS,
-    COMPUTER_PLAYS,
+    PLAYER_1_PLAYS,
+    PLAYER_2_PLAYS,
     EXPECTED_RESULTS
 )
 
@@ -87,6 +92,30 @@ def battle_table(ultimate_rps_object):
     battle_table = ultimate_rps_object.battle_table
 
     return battle_table
+
+
+@fixture
+def player_objects():
+    """ pytest fixture to instantiate Player objects.
+
+        Args:
+            None.
+
+        Returns:
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+    """
+
+    # Create namedtuple object to store test player object data
+    PlayerObjects = namedtuple('PlayerObjects', 'player_1 player_2')
+
+    # Instantiate Players object for player_1 and player_2
+    player_objects = PlayerObjects(
+        player_1=Player(name=PLAYER_1_NAME),
+        player_2=Player()
+    )
+
+    return player_objects
 
 
 def test_import_csv_type(battle_table):
@@ -134,27 +163,27 @@ def test_import_csv_sub_type(battle_table):
 
 
 @mark.parametrize(
-    'player_play, computer_play, expected_result',
+    'player_1_play, player_2_play, expected_result',
     list(GAMEPLAY_ARGS)
 )
 def test_play_result(
     ultimate_rps_object,
-    player_play,
-    computer_play,
+    player_1_play,
+    player_2_play,
     expected_result
 ):
     """ Test the result of a single game play (turn) to determine the
-        result of the player's play vs the computer's play
+        result of the player_1 play vs the player_2 play
 
         Args:
             ultimate_rps_object (class UltimateRPS): Ultimate Rock, Paper,
                                                      Scissors game object.
-            player_play (str):
-                Player's play choice (e.g. 'Rock').
-            computer_play (str):
-                Computer's play choice (e.g. 'Scissors').
+            player_1_play (str):
+                Player 1's play choice (e.g. 'Rock').
+            player_2_play (str):
+                Player 2's play choice (e.g. 'Scissors').
             expected_result (str):
-                Expected player result for the matchup against computer's
+                Expected player result for the matchup against Player 2's
                 play (e.g. 'Win').
 
         Returns:
@@ -163,9 +192,44 @@ def test_play_result(
 
     # Call the 'get_turn_result' function with parameterized play arguments
     turn_result = ultimate_rps_object.get_turn_result(
-            player_play=player_play,
-            computer_play=computer_play
+            player_1_play=player_1_play,
+            player_2_play=player_2_play
         )
 
     # Compare the result of the function call to the parameterized turn_result
     assert turn_result == expected_result
+
+
+def test_player_instantion(player_objects):
+    """ Test the ability to instantiate Player objects.
+
+        Args:
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+
+        Returs:
+            None.
+    """
+
+    assert type(player_objects.player_1) == Player
+    assert player_objects.player_1.name == PLAYER_1_NAME
+    assert type(player_objects.player_2) == Player
+    assert player_objects.player_2.name == PLAYER_2_NAME
+
+
+def test_instantiated_player_attributes(player_objects):
+    """ Test for the correct Player objects attribute default values
+
+        Args:
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+
+        Returs:
+            None.
+    """
+
+    assert player_objects.player_1.score == 0
+    # assert type(player_objects.player_1.plays) == list
+    assert player_objects.player_1.plays == []
+    assert player_objects.player_1.record.wins == 0
+    assert player_objects.player_1.record.losses == 0

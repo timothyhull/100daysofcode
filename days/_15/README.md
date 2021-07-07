@@ -1,4 +1,4 @@
-## :calendar: Day 15: 7/2/21-7/6/21
+## :calendar: Day 15: 7/2/21-7/7/21
 
 ---
 
@@ -28,7 +28,7 @@
 
 :white_check_mark: Refactor `test_play_result()` function in `test_ultimate_rps.py` to include mock tests input values, via the `pytest.mark.parameterize` method.
 
-:white_large_square: ​Create `class` objects for player properties
+:white_check_mark: Create `class` objects for player properties
 
 :white_large_square: Create game loop which allows for interactive input and score feedback 
 
@@ -185,4 +185,101 @@ def test_play_result(
 - Added docstring to `test_play_result()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
 - Refactored [`UltimateRPS.py`](ultimate_rps/UltimateRPS.py) `get_turn_result()` method to simplify return functionality.
   - Added detailed documentation for specific steps in the method.
+
+---
+
+**:notebook: 7/7/21**
+
+- Added TDD functions to validate the instantion objects of the  `Player` `class`.
+  - Includes a new `fixture` to instantiate two `Player` objects.
+  - Returns a `namedtuple` object with attributes which each contain one the `Player` objects.
+
+```python
+@fixture
+def player_objects():
+    """ pytest fixture to instantiate Player objects.
+
+        Args:
+            None.
+
+        Returns:
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+    """
+
+    # Create namedtuple object to store test player object data
+    PlayerObjects = namedtuple('PlayerObjects', 'player_1 player_2')
+
+    # Instantiate Players object for player_1 and player_2
+    player_objects = PlayerObjects(
+        player_1=Player(name=PLAYER_1_NAME),
+        player_2=Player()
+    )
+
+    return player_objects
+ 
+
+def test_player_instantion(player_objects):
+    """ Test the ability to instantiate Player objects.
+
+        Args:
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+
+        Returs:
+            None.
+    """
+
+    assert type(player_objects.player_1) == Player
+    assert player_objects.player_1.name == PLAYER_1_NAME
+    assert type(player_objects.player_2) == Player
+    assert player_objects.player_2.name == PLAYER_2_NAME
+
+
+def test_instantiated_player_attributes(player_objects):
+    """ Test for the correct Player objects attribute default values
+
+        Args:
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+
+        Returs:
+            None.
+    """
+
+    assert player_objects.player_1.score == 0
+    # assert type(player_objects.player_1.plays) == list
+    assert player_objects.player_1.plays == []
+    assert player_objects.player_1.record.wins == 0
+    assert player_objects.player_1.record.losses == 0
+```
+
+
+
+- Created `Player` `class` in [`UltimateRPS.py`](ultimate_rps/UltimateRPS.py).
+  - All tests passing.
+
+```python
+class Player:
+    """ Class objects for Ultimate Rock, Paper, Scissors (Ultimate RPS)
+        gameplay.
+
+        Args:
+            name (str): Player's name, default value is 'Computer'.
+
+        Returns:
+            self (Player): Player object with default values.
+    """
+
+    def __init__(self, name: str = 'Computer'):
+
+        # namedtuple to store wins and losses count
+        Record = namedtuple('Record', 'wins losses')
+
+        # Define initial attribute values
+        self.name = name
+        self.plays = []
+        self.score = 0
+        self.record = Record(0, 0)
+```
 

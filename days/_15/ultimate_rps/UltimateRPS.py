@@ -3,6 +3,7 @@
 """
 
 # Imports
+from collections import namedtuple
 from csv import DictReader
 
 # Constants
@@ -10,7 +11,15 @@ CSV_FILE = 'data/battle-table.csv'
 
 
 class UltimateRPS:
-    """ Class objects for Ultimate Rock, Paper, Scissors (Ultimate RPS) game.
+    """ Class objects for Ultimate Rock, Paper, Scissors (Ultimate RPS)
+        gameplay.
+
+        Args:
+            None.
+
+        Returns:
+            self (UltimateRPS): UltimateRPS object with populated
+            'battle_table' attribute.
     """
 
     def __init__(self):
@@ -39,15 +48,15 @@ class UltimateRPS:
 
     def get_turn_result(
         self,
-        player_play: str,
-        computer_play: str
+        player_1_play: str,
+        player_2_play: str
     ) -> str:
         """ Determine the winner of a given turn.
 
             Args:
-                player_play (str): Player-chosen gameplay article
+                player_1_play (str): Player 1's chosen gameplay article
                                    (e.g, "Scissors")
-                computer_play (str): Randomly-chosen gameplay article
+                player_2_play (str): Player 2's gameplay article
                                      (e.g, "Rock")
 
             Returns:
@@ -55,30 +64,30 @@ class UltimateRPS:
                                    the battle table (win, lose, or draw).
         """
 
-        # Add titlecase player and computer plays to 'self'
-        self.player_play = player_play.title()
-        self.computer_play = computer_play.title()
+        # Add titlecase player_1_play and player_2_play to 'self'
+        self.player_1_play = player_1_play.title()
+        self.player_2_play = player_2_play.title()
 
-        # Loop over battle table and locate player_play value for 'Attacker'
+        # Loop over battle table and locate player_1_play value for 'Attacker'
         for player_row in self.battle_table:
 
-            # Look for the row with the 'Attacker' that matches 'player_play'
-            if player_row.get('Attacker') == self.player_play:
+            # Look for the row with the 'Attacker' that matches 'player_1_play'
+            if player_row.get('Attacker') == self.player_1_play:
 
                 """ Get the value for the key in the player_row that matches
-                    the computer_play value.
+                    the player_2_play value.
 
                     Details:
                         When the loop iteration row (dict) has an 'Attacker'
-                        key with a value that matches 'player_play', within
+                        key with a value that matches 'player_1_play', within
                         that same row (dict), get the value for the key that
-                        matches 'computer_play'.  The value of the matching
+                        matches 'player_2_play'.  The value of the matching
                         key will yield the result of the computer's play
                         against the player's play.
 
                     Example:
-                        self.player_play = 'Scissors'
-                        self.computer_play = 'Rock'
+                        self.player_1_play = 'Scissors'
+                        self.player_2_play = 'Rock'
                         battle_table row with an attacker of 'Scissors':
                             {'Air': 'win',
                              'Attacker': 'Scissors',
@@ -97,12 +106,35 @@ class UltimateRPS:
                              'Water': 'lose',
                              'Wolf': 'win'}
 
-                        The key that matches 'self.computer_play' is 'Rock'
+                        The key that matches 'self.player_2_play' is 'Rock'
                         which has a value of 'lose'.  This means that
-                        'self.player_play' (Scissors) loses to
-                        'self.computer_play' (Rock).
+                        'self.player_1_play' (Scissors) loses to
+                        'self.player_2_play' (Rock).
                 """
-                player_play_result = player_row.get(self.computer_play)
+                player_1_play_result = player_row.get(self.player_2_play)
 
-                # Halt loop iteration after match and return player_play_result
-                return player_play_result
+                # Halt loop after match and return player_1_play_result
+                return player_1_play_result
+
+
+class Player:
+    """ Class objects for Ultimate Rock, Paper, Scissors (Ultimate RPS)
+        gameplay.
+
+        Args:
+            name (str): Player's name, default value is 'Computer'.
+
+        Returns:
+            self (Player): Player object with default values.
+    """
+
+    def __init__(self, name: str = 'Computer'):
+
+        # namedtuple to store wins and losses count
+        Record = namedtuple('Record', 'wins losses')
+
+        # Define initial attribute values
+        self.name = name
+        self.plays = []
+        self.score = 0
+        self.record = Record(0, 0)
