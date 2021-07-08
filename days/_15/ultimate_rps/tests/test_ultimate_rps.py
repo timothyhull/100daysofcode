@@ -7,11 +7,14 @@
 
 # Imports
 from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player
+from _15.ultimate_rps.ultimate_rps import display_banner, get_player_name
 from collections import namedtuple
 from pytest import fixture, mark
 from random import randint
+from unittest.mock import patch
 
 # Constants
+BANNER_OUTPUT = '** Ultimate Rock, Paper, Scissors **'
 PLAYER_1_NAME = 'Tim'
 PLAYER_2_NAME = 'Computer'
 PLAYER_1_PLAYS = [
@@ -59,6 +62,7 @@ GAMEPLAY_ARGS = zip(
 )
 
 
+# pytest fixtures
 @fixture
 def ultimate_rps_object():
     """ pytest figture to instantiate a full UltimateRPS object.
@@ -116,6 +120,47 @@ def player_objects():
     )
 
     return player_objects
+
+
+# pytest tests
+def test_display_banner(capfd):
+    """ Test the output of the display_banner function.
+
+        Args:
+            capfd (pytest fixture): pytest capture fixture for STDOUT and
+                                    STDERR output.
+
+        Returns:
+            None.
+    """
+
+    # Call the display_banner function
+    display_banner()
+
+    # Read the output from the capfd fixture
+    output = capfd.readouterr()[0]
+
+    # Test for expected output
+    assert BANNER_OUTPUT in output
+
+
+@patch(
+    'builtins.input',
+    side_effect=[
+        PLAYER_1_NAME, PLAYER_2_NAME
+    ]
+)
+def test_get_player_name(names):
+    """ Test for player name assignment.
+
+        Args:
+            names (MagicMock): Placeholder variable for side_effect values.
+
+        Returns:
+            None.
+    """
+
+    assert get_player_name(1) == names
 
 
 def test_import_csv_type(battle_table):
@@ -201,7 +246,10 @@ def test_play_result(
 
 
 def test_player_instantion(player_objects):
-    """ Test the ability to instantiate Player objects.
+    """ Test the Player class in UltimateRPS for the ability to instantiate
+        Player objects. player_2 should receive the default name of 'Computer',
+        having no name argument value passed to the method in the
+        'player_objects' fixture.
 
         Args:
             player_objects (namedtuple): namedtuple of objects of the
@@ -218,7 +266,8 @@ def test_player_instantion(player_objects):
 
 
 def test_instantiated_player_attributes(player_objects):
-    """ Test for the correct Player objects attribute default values
+    """ Test the Player class in UltimateRPS for the correct Player objects
+        attribute default values
 
         Args:
             player_objects (namedtuple): namedtuple of objects of the
@@ -229,7 +278,6 @@ def test_instantiated_player_attributes(player_objects):
     """
 
     assert player_objects.player_1.score == 0
-    # assert type(player_objects.player_1.plays) == list
     assert player_objects.player_1.plays == []
     assert player_objects.player_1.record.wins == 0
     assert player_objects.player_1.record.losses == 0

@@ -283,3 +283,11 @@ class Player:
         self.record = Record(0, 0)
 ```
 
+---
+
+#### :notebook: 7/8/21
+
+- Built framework for functions to support game loop in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py).
+- Completed test construction for the `display_banner()` function in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py), using the `test_display_banner` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
+  - Started test construction for the `get_player_name()` function in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py), using the `test_get_player_name()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
+
