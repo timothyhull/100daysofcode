@@ -6,10 +6,12 @@
 """
 
 # Imports
+from collections import namedtuple
 from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player
 
 # Constants
-ATTEMPTS = 3
+NUMBER_OF_PLAYERS = 2
+PLAYER_NAME_ATTEMPTS = 3
 STARTUP_BANNER = '** Ultimate Rock, Paper, Scissors **'
 
 
@@ -33,45 +35,32 @@ def display_banner(banner_text: str = STARTUP_BANNER) -> None:
           f'{"-" * banner_length}\n')
 
 
-# Get player name
-def get_player_name(player_number: int) -> str:
+# Setup player objects
+def setup_players(
+    player_1_name: str,
+    player_2_name: str = 'Computer'
+) -> namedtuple:
     """ Get player name from STDIN
 
         Args:
-            player_number (int): Player number.
+            player_1_name (str): Player 1 name.
+            player_2_name (str): Player 2 name.
+                Default: 'Computer'
 
         Returns:
-            player_name (str): Player name input from STDIN.
-                Default: 'Computer'
+            players (namedtuple): namedtuple of Player objects for each of
+                                  two players.
     """
 
-    player_name = ''
-    count = 1
+    # Create namedtuple class for player objects
+    Players = namedtuple('Players', 'player_1 player_2')
 
-    while count <= ATTEMPTS:
-        if player_number == 1:
-            print(f'Enter the name for player #{player_number}: ')
-            player_name = input()
+    players = Players(
+        player_1=Player(name=player_1_name),
+        player_2=Player(name=player_2_name)
+    )
 
-            if player_name != '':
-                break
-            else:
-                print('* Invalid name, please try again *\n')
-                continue
-
-        elif player_number == 2:
-            print(f'Enter the name for player #{player_number}'
-                  f'or press "Enter" to play against the computer: ')
-            player_name = input()
-            break
-
-        else:
-            raise ValueError('Invalid player number, should be 1 or 2.')
-
-    if player_number == 1 and player_name == '':
-        raise ValueError('Invalid player name (cannot be blank).')         
-
-    return player_name
+    return players
 
 
 # Get player play
@@ -96,10 +85,33 @@ def main():
     # Display startup banner
     display_banner()
 
-    # Create player objects from the Player class
-    player_1 = Player()
-    player_2 = Player()
-    print(player_1, player_2)
+    # Setup player objects
+    for player in range(NUMBER_OF_PLAYERS):
+
+        loop_count = 1
+
+        while loop_count <= PLAYER_NAME_ATTEMPTS:
+            print(f'Enter the name for player #{player + 1}: ')
+            player_name = input()
+
+            if player_name != '':
+                break
+            else:
+                print('* Invalid name, please try again *\n')
+                continue
+
+            elif player_number == 2:
+                print(f'Enter the name for player #{player_number}'
+                    f'or press "Enter" to play against the computer: ')
+                player_name = input()
+                break
+
+            else:
+                raise ValueError('Invalid player number, should be 1 or 2.')
+
+        if player_number == 1 and player_name == '':
+            raise ValueError('Invalid player name (cannot be blank).')
+
 
     # Create a game object from the UltimateRPS class
     ultimate_rps = UltimateRPS()

@@ -7,9 +7,9 @@
 
 # Imports
 from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player
-from _15.ultimate_rps.ultimate_rps import display_banner, get_player_name
+from _15.ultimate_rps.ultimate_rps import display_banner, setup_players
 from collections import namedtuple
-from pytest import fixture, mark
+from pytest import fixture, mark, raises
 from random import randint
 from unittest.mock import patch
 
@@ -100,7 +100,7 @@ def battle_table(ultimate_rps_object):
 
 @fixture
 def player_objects():
-    """ pytest fixture to instantiate Player objects.
+    """ pytest fixture to instantiate multiple Player objects.
 
         Args:
             None.
@@ -124,7 +124,8 @@ def player_objects():
 
 # pytest tests
 def test_display_banner(capfd):
-    """ Test the output of the display_banner function.
+    """ Test the output of the display_banner function.  The test value
+        'BANNER_OUTPUT' should be in the text printed to STDOUT.
 
         Args:
             capfd (pytest fixture): pytest capture fixture for STDOUT and
@@ -144,14 +145,16 @@ def test_display_banner(capfd):
     assert BANNER_OUTPUT in output
 
 
-@patch(
+@patch.multiple(
     'builtins.input',
     side_effect=[
-        PLAYER_1_NAME, PLAYER_2_NAME
+        (PLAYER_1_NAME, PLAYER_2_NAME),
+        (PLAYER_1_NAME, ''),
+        ('', PLAYER_2_NAME)
     ]
 )
-def test_get_player_name(names):
-    """ Test for player name assignment.
+def test_setup_players():
+    """ Test for player name assignment.  The test
 
         Args:
             names (MagicMock): Placeholder variable for side_effect values.
@@ -160,7 +163,21 @@ def test_get_player_name(names):
             None.
     """
 
-    assert get_player_name(1) == names
+    """ Test players for name strings greater than zero characters
+        while providing a name for player 2.
+    """
+    assert setup_players().player_1.name == PLAYER_1_NAME and \
+           setup_players().player_2.name == PLAYER_2_NAME
+
+    """ Test players for name strings greater than zero characters
+        without providing a name for player 2.
+    """
+    assert setup_players().player_1.name == PLAYER_1_NAME and \
+           setup_players().player_2.name == PLAYER_2_NAME
+
+    # Test for a ValueError assertion when no name is provided for player_1
+    with raises(ValueError):
+        setup_players()
 
 
 def test_import_csv_type(battle_table):

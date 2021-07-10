@@ -291,3 +291,8 @@ class Player:
 - Completed test construction for the `display_banner()` function in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py), using the `test_display_banner` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
   - Started test construction for the `get_player_name()` function in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py), using the `test_get_player_name()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
 
+---
+
+#### :notebook: 7/9/21
+
+- 
