@@ -295,4 +295,9 @@ class Player:
 
 #### :notebook: 7/9/21
 
-- 
+- Refactored `get_player_name()` function in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py) to a `setup_players()` function which creates player objects based on name values passed as arguments.
+  - The intent is to provide the function a set of names gathered from input in the game loop.
+- Unable to successfuly complete tests of the `setup_players()` function due to the need to pass multiple arguments to the function.
+  - Does not appear possible with the `side_effect` parameter of the `unittest.mock.patch` method.
+  - Testing with the `unittest.mock.patch.multiple` method.
+  - The correct methodology may be to use the `pytest.mark.parameterize` method.
