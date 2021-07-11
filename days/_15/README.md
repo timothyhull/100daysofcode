@@ -1,4 +1,4 @@
-## :calendar: Day 15: 7/2/21-7/7/21
+## :calendar: Day 15: 7/2/21-7/10/21
 
 ---
 
@@ -10,7 +10,7 @@
 
 ## Resources:
 
-:star: TBD
+:star: Defining [custom Exception objects](https://www.programiz.com/python-programming/user-defined-exception)
 
 ---
 
@@ -301,3 +301,60 @@ class Player:
   - Does not appear possible with the `side_effect` parameter of the `unittest.mock.patch` method.
   - Testing with the `unittest.mock.patch.multiple` method.
   - The correct methodology may be to use the `pytest.mark.parameterize` method.
+
+---
+
+#### :notebook: 7/10/21
+
+- Successfully implemented the following `pytest` tests in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py):
+  - `test_get_player_1_name()`
+    - Tests for valid player 1 name input.
+    - Wrote custom `Exception` `class` named `MaxRetriesExceeded` to implement a proper exception after N failed attempts at correct name input:
+  
+  ```python
+  class MaxRetriesExceeded(Exception):
+  
+      def __init__(
+          self,
+          max_retries: int = 'undefined',
+          message: str = 'Exceeded the maximum number of retries'
+      ):
+          self.max_retries = max_retries
+          self.message = f'{message} ({max_retries}).'
+          super().__init__(self.message)
+  ```
+  
+  - `test_get_player_2_name()`
+    - Tests for valid player 2 name input or default input ('Computer')
+  - `test_display_matchup()`
+    - Tests for valid display of matchup details (names and win/loss records) with a **regex** pattern
+```shell
+# String to match
+** Test (0-0) vs Computer (0-0) **
+```
+
+```python
+# regex pattern
+MATCHUP_OUTPUT_REGEX = compile(
+    r'''
+    ^\*\*\s       # Match '** '
+    .+\s          # Match 'Player 1 Name '
+    \(\d+-\d+\)   # Match win/loss record '(13-4)'
+    \svs\s        # Match ' vs '
+    .+\s          # Match 'Player 2 Name '
+    \(\d+-\d+\)   # Match win/loss record '(4-13)'
+    \s\*\*$       # Match ' **'
+    ''',
+    VERBOSE
+)
+```
+
+- Successfully implemented the following functions in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py):
+  - `get_player_1_name()`
+    - Collects a valid name for player 1 or raises a `MaxRetriesExceeded` `Exception`.
+  - `get_player_2_name()`
+    - Collects a valid name for player 1 or uses a default name of 'Computer'.
+  - `display_matchup()`
+    - Displays matchup details (names and win/loss records).
+- Refactored `main()` function for cleanliness and brevity.
+- All `pytest` tests pass.

@@ -6,15 +6,30 @@
 """
 
 # Imports
-from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player
-from _15.ultimate_rps.ultimate_rps import display_banner, setup_players
+from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player, \
+                                         MaxRetriesExceeded
+from _15.ultimate_rps.ultimate_rps import display_banner, display_matchup, \
+                                          get_player_1_name, get_player_2_name
 from collections import namedtuple
 from pytest import fixture, mark, raises
 from random import randint
+from re import compile, VERBOSE
 from unittest.mock import patch
 
 # Constants
 BANNER_OUTPUT = '** Ultimate Rock, Paper, Scissors **'
+MATCHUP_OUTPUT_REGEX = compile(
+    r'''
+    ^\*\*\s       # Match '** '
+    .+\s          # Match 'Player 1 Name '
+    \(\d+-\d+\)   # Match win/loss record '(13-4)'
+    \svs\s        # Match ' vs '
+    .+\s          # Match 'Player 2 Name '
+    \(\d+-\d+\)   # Match win/loss record '(4-13)'
+    \s\*\*$       # Match ' **'
+    ''',
+    VERBOSE
+)
 PLAYER_1_NAME = 'Tim'
 PLAYER_2_NAME = 'Computer'
 PLAYER_1_PLAYS = [
@@ -124,7 +139,7 @@ def player_objects():
 
 # pytest tests
 def test_display_banner(capfd):
-    """ Test the output of the display_banner function.  The test value
+    """ Test the output of the display_banner function. The test value
         'BANNER_OUTPUT' should be in the text printed to STDOUT.
 
         Args:
@@ -145,39 +160,85 @@ def test_display_banner(capfd):
     assert BANNER_OUTPUT in output
 
 
-@patch.multiple(
+@patch(
     'builtins.input',
     side_effect=[
-        (PLAYER_1_NAME, PLAYER_2_NAME),
-        (PLAYER_1_NAME, ''),
-        ('', PLAYER_2_NAME)
+        PLAYER_1_NAME,
+        '',
+        '',
+        ''
     ]
 )
-def test_setup_players():
-    """ Test for player name assignment.  The test
+def test_get_player_1_name(name):
+    """ Test for player 1 name input. Assert that the input string for
+        player 1 returns and raise a ValueError if the player 1 name
+        is blank.
 
         Args:
-            names (MagicMock): Placeholder variable for side_effect values.
+            name (MagicMock): Placeholder variable for side_effect values.
+                Note: The test for a blank name ('') repeats 3 x times to
+                      account for 3 x attempts to collect a valid name.
 
         Returns:
             None.
     """
 
-    """ Test players for name strings greater than zero characters
-        while providing a name for player 2.
-    """
-    assert setup_players().player_1.name == PLAYER_1_NAME and \
-           setup_players().player_2.name == PLAYER_2_NAME
+    # Test for non-blank input
+    assert get_player_1_name() == PLAYER_1_NAME
 
-    """ Test players for name strings greater than zero characters
-        without providing a name for player 2.
-    """
-    assert setup_players().player_1.name == PLAYER_1_NAME and \
-           setup_players().player_2.name == PLAYER_2_NAME
+    # Test for blank input
+    with raises(MaxRetriesExceeded):
+        get_player_1_name()
 
-    # Test for a ValueError assertion when no name is provided for player_1
-    with raises(ValueError):
-        setup_players()
+
+@patch(
+    'builtins.input',
+    side_effect=[
+        PLAYER_2_NAME,
+        ''
+    ]
+)
+def test_get_player_2_name(name):
+    """ Test for player 2 name input. Assert that the input for player 2
+        returns or, if the input is blank, returns the name 'Computer'.
+
+        Args:
+            name (MagicMock): Placeholder variable for side_effect values.
+
+        Returns:
+            None.
+    """
+
+    # Test for non-blank input
+    assert get_player_2_name() == PLAYER_2_NAME
+
+    # Test for blank input
+    assert get_player_2_name() == PLAYER_2_NAME
+
+
+def test_display_matchup(capfd, player_objects):
+    """ Test the output of the display_matchup function. The test value
+        'MATCHUP_OUTPUT_REGEX' should be in the text printed to STDOUT.
+
+        Args:
+            capfd (pytest fixture): pytest capture fixture for STDOUT and
+                                    STDERR output.
+
+        Returns:
+            None.
+    """
+
+    # Call the display_matchup function
+    display_matchup(
+        player_1=player_objects.player_1,
+        player_2=player_objects.player_2
+    )
+
+    # Read the output from the capfd fixture and strip leading/trailing space
+    output = capfd.readouterr()[0].strip()
+
+    # Regex search the output with the MATCHUP_OUTPUT_REGEX pattern
+    assert MATCHUP_OUTPUT_REGEX.search(output).group(0)
 
 
 def test_import_csv_type(battle_table):

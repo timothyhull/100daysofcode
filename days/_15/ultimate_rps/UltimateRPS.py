@@ -138,3 +138,15 @@ class Player:
         self.plays = []
         self.score = 0
         self.record = Record(0, 0)
+
+
+class MaxRetriesExceeded(Exception):
+
+    def __init__(
+        self,
+        max_retries: int = 'undefined',
+        message: str = 'Exceeded the maximum number of retries'
+    ):
+        self.max_retries = max_retries
+        self.message = f'{message} ({max_retries}).'
+        super().__init__(self.message)
