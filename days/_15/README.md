@@ -1,4 +1,4 @@
-## :calendar: Day 15: 7/2/21-7/10/21
+## :calendar: Day 15: 7/2/21-7/11/21
 
 ---
 
@@ -358,3 +358,16 @@ MATCHUP_OUTPUT_REGEX = compile(
     - Displays matchup details (names and win/loss records).
 - Refactored `main()` function for cleanliness and brevity.
 - All `pytest` tests pass.
+
+---
+
+#### :notebook: 7/11/21
+
+- Setup `test_get_player_play()` function in  [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py) to test the following:
+  - Create a game instance
+  - Gather Player 1 play input
+  - Gather Player 2 play input
+  - Determine play winner
+  - Determine game winner (best of N)
+  - Increment player records
+

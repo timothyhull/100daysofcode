@@ -12,7 +12,7 @@ from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player, \
 # Constants
 NUMBER_OF_PLAYERS = 2
 PLAYER_2_DEFAULT_NAME = 'Computer'
-PLAYER_NAME_ATTEMPTS = 3
+PLAYER_INPUT_ATTEMPTS = 3
 STARTUP_BANNER = '** Ultimate Rock, Paper, Scissors **'
 
 
@@ -50,8 +50,8 @@ def get_player_1_name() -> str:
     # Initialize loop counter
     loop_count = 1
 
-    # Try to collect non-blank input up to PLAYER_NAME_ATTEMPTS times
-    while loop_count <= PLAYER_NAME_ATTEMPTS:
+    # Try to collect non-blank input up to PLAYER_INPUT_ATTEMPTS times
+    while loop_count <= PLAYER_INPUT_ATTEMPTS:
         player_name = input('Enter a name for Player 1: ').strip()
 
         # Exit the loop for a non-blank name entry
@@ -66,7 +66,7 @@ def get_player_1_name() -> str:
     # Raise a MaxRetriesExceeded excepten after exhausting specified retries
     if player_name == '':
         raise MaxRetriesExceeded(
-            max_retries=PLAYER_NAME_ATTEMPTS
+            max_retries=PLAYER_INPUT_ATTEMPTS
         )
 
     return player_name

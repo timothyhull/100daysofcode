@@ -223,6 +223,8 @@ def test_display_matchup(capfd, player_objects):
         Args:
             capfd (pytest fixture): pytest capture fixture for STDOUT and
                                     STDERR output.
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
 
         Returns:
             None.
@@ -239,6 +241,34 @@ def test_display_matchup(capfd, player_objects):
 
     # Regex search the output with the MATCHUP_OUTPUT_REGEX pattern
     assert MATCHUP_OUTPUT_REGEX.search(output).group(0)
+
+
+# @patch or @mark
+def test_get_player_play(player_objects):
+    """ Test Player objects for the correct values, after a complete turn.
+
+        Args:
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+
+        Returns:
+            None.
+    """
+
+    # Create game instance
+    # ultimate_rps = UltimateRPS
+
+    # Player 1 chooses play
+
+    # Player 2 chooses play (manual input or automatic for computer)
+
+    # Determine play winner
+
+    # Determine game winner (best of N)
+
+    # Increment player records
+
+    pass
 
 
 def test_import_csv_type(battle_table):
