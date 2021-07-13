@@ -371,3 +371,16 @@ MATCHUP_OUTPUT_REGEX = compile(
   - Determine game winner (best of N)
   - Increment player records
 
+---
+
+#### :notebook: 7/12/21
+
+- Wrote custom `Exception` `class` named `UltimateRPSExceptions`  and texted the sub-classes:
+  - `MaxRetriesExceeded` (existing `class`)
+  - `InvalidPlaySelection` (new `class`)
+- Expanded `test_get_player_play()` function in  [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py) to encompass testing using an `@patch` function (to mock user input)
+  - Successfully mocked test although writing code to pass the test is still required.
+    - The current function under test simply has a `pass` command and will fail tests if not modified to an explicit value, like 'Rock'.
+
+---
+

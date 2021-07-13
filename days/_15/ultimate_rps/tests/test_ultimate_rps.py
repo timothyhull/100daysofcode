@@ -7,9 +7,11 @@
 
 # Imports
 from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player, \
-                                         MaxRetriesExceeded
+                                         UltimateRPSExceptions
 from _15.ultimate_rps.ultimate_rps import display_banner, display_matchup, \
-                                          get_player_1_name, get_player_2_name
+                                          get_player_1_name, \
+                                          get_player_2_name, get_player_play
+
 from collections import namedtuple
 from pytest import fixture, mark, raises
 from random import randint
@@ -187,7 +189,7 @@ def test_get_player_1_name(name):
     assert get_player_1_name() == PLAYER_1_NAME
 
     # Test for blank input
-    with raises(MaxRetriesExceeded):
+    with raises(UltimateRPSExceptions.MaxRetriesExceeded):
         get_player_1_name()
 
 
@@ -243,8 +245,15 @@ def test_display_matchup(capfd, player_objects):
     assert MATCHUP_OUTPUT_REGEX.search(output).group(0)
 
 
-# @patch or @mark
-def test_get_player_play(player_objects):
+@patch(
+    'builtins.input',
+    side_effect=['Paper']
+)
+def test_get_player_play(
+    side_effect,
+    ultimate_rps_object,
+    player_objects
+):
     """ Test Player objects for the correct values, after a complete turn.
 
         Args:
@@ -255,20 +264,24 @@ def test_get_player_play(player_objects):
             None.
     """
 
-    # Create game instance
-    # ultimate_rps = UltimateRPS
+    # Assign player objects to short variables
+    player_1 = player_objects.player_1
+    # player_2 = player_objects.player_2
 
     # Player 1 chooses play
+    assert get_player_play(
+        player=player_1,
+        play=side_effect
+    ) in ultimate_rps_object.battle_table[0]
 
     # Player 2 chooses play (manual input or automatic for computer)
+    # assert get_player_play(player=player_2) # in ultimate_rps.battle_table
 
     # Determine play winner
 
     # Determine game winner (best of N)
 
     # Increment player records
-
-    pass
 
 
 def test_import_csv_type(battle_table):

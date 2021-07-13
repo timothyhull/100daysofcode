@@ -18,16 +18,15 @@ class UltimateRPS:
             None.
 
         Returns:
-            self (UltimateRPS): UltimateRPS object with populated
-            'battle_table' attribute.
+            None.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
 
         # Import the CSV battle table data
-        self.battle_table = self.import_battle_table()
+        self.battle_table = self.__import_battle_table__()
 
-    def import_battle_table(self, file: str = CSV_FILE) -> list:
+    def __import_battle_table__(self, file: str = CSV_FILE) -> list:
         """ Read data from the CSV file with the 'battle-table.csv' matrix.
 
             Args:
@@ -128,7 +127,7 @@ class Player:
             self (Player): Player object with default values.
     """
 
-    def __init__(self, name: str = 'Computer'):
+    def __init__(self, name: str = 'Computer') -> None:
 
         # namedtuple to store wins and losses count
         Record = namedtuple('Record', 'wins losses')
@@ -140,13 +139,56 @@ class Player:
         self.record = Record(0, 0)
 
 
-class MaxRetriesExceeded(Exception):
+class UltimateRPSExceptions(Exception):
+    """ Class object for Ultimate Rock, Paper, Scissors (Ultimate RPS)
+        custom exceptions.
 
-    def __init__(
-        self,
-        max_retries: int = 'undefined',
-        message: str = 'Exceeded the maximum number of retries'
-    ):
-        self.max_retries = max_retries
-        self.message = f'{message} ({max_retries}).'
-        super().__init__(self.message)
+        Args:
+            Exception (class): Python built-in Exception class.
+
+        Returns:
+            None:
+    """
+
+    def __init__(self) -> None:
+        pass
+
+    class MaxRetriesExceeded(Exception):
+        """ Class object for Ultimate Rock, Paper, Scissors (Ultimate RPS)
+        MaxRetriesExceeded exceptions.  Raise after a player enters invalid
+        input more than the number of defined times.
+
+        Args:
+            Exception (class): Python built-in Exception class.
+
+        Returns:
+            None:
+        """
+
+        def __init__(
+            self,
+            max_retries: int = 'undefined',
+            message: str = 'Exceeded the maximum number of retries'
+        ) -> None:
+            self.max_retries = max_retries
+            self.message = f'{message} ({max_retries}).'
+            super().__init__(self.message)
+
+    class PlayInvalid(Exception):
+        """ Class object for Ultimate Rock, Paper, Scissors (Ultimate RPS)
+        invalid play selection.  Raised when a player chooses an invalid play.
+
+        Args:
+            Exception (class): Python built-in Exception class.
+
+        Returns:
+            None:
+        """
+
+        def __init__(
+            self,
+            play: str = 'unknown',
+            message: str = 'Invalid play selection'
+        ) -> None:
+            self.message = f'{message} ({play})'
+            super().__init__(self.message)

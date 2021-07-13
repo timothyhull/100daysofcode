@@ -7,7 +7,7 @@
 
 # Imports
 from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player, \
-                                         MaxRetriesExceeded
+                                         UltimateRPSExceptions
 
 # Constants
 NUMBER_OF_PLAYERS = 2
@@ -65,7 +65,7 @@ def get_player_1_name() -> str:
 
     # Raise a MaxRetriesExceeded excepten after exhausting specified retries
     if player_name == '':
-        raise MaxRetriesExceeded(
+        raise UltimateRPSExceptions.MaxRetriesExceeded(
             max_retries=PLAYER_INPUT_ATTEMPTS
         )
 
@@ -118,7 +118,20 @@ def display_matchup(player_1, player_2):
 
 
 # Get player play
-def get_player_play(player):
+def get_player_play(
+    player: Player,
+    play: str
+) -> None:
+    """ Collect the move for a given player.
+
+        Args:
+            player (Player): UltimateRPS Player object.
+            play (str): The player's play.
+
+        Returns:
+            None.
+    """
+
     pass
 
 
@@ -148,7 +161,8 @@ def main():
     # Display matchup details
     display_matchup(
         player_1=player_1,
-        player_2=player_2)
+        player_2=player_2
+    )
 
     # Create a game object from the UltimateRPS class
     ultimate_rps = UltimateRPS()
