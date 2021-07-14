@@ -1,4 +1,4 @@
-## :calendar: Day 15: 7/2/21-7/11/21
+## :calendar: Day 15: 7/2/21-7/13/21
 
 ---
 
@@ -375,12 +375,22 @@ MATCHUP_OUTPUT_REGEX = compile(
 
 #### :notebook: 7/12/21
 
-- Wrote custom `Exception` `class` named `UltimateRPSExceptions`  and texted the sub-classes:
+- Wrote custom `Exception` `class` named `UltimateRPSExceptions` and texted the sub-classes:
   - `MaxRetriesExceeded` (existing `class`)
   - `InvalidPlaySelection` (new `class`)
 - Expanded `test_get_player_play()` function in  [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py) to encompass testing using an `@patch` function (to mock user input)
   - Successfully mocked test although writing code to pass the test is still required.
-    - The current function under test simply has a `pass` command and will fail tests if not modified to an explicit value, like 'Rock'.
+    - The current function under test simply has a `pass` command and will fail tests if not modified to return an explicit value, like 'Rock'.
 
 ---
 
+#### :notebook: 7/13/21
+
+- Expanded `test_get_player_play()` function in  [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
+  - Created `get_random_plays()` function to produce a random list of plays to use as @patch values for input.
+  - Modified `test_get_player_play()` function to include the random list of plays.
+    - **It does not appear all of the side_effect items are being tested.**
+- Added basic functionality to get_player_play() in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py):
+  - Create a list of available plays and display that list with prefixed numbers (e.g. 1. Rock)
+  - Added function to collect numeric input from player, to choose a play.
+    - **No data validation in place at this time**

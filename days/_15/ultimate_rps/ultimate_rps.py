@@ -120,8 +120,7 @@ def display_matchup(player_1, player_2):
 # Get player play
 def get_player_play(
     player: Player,
-    play: str
-) -> None:
+) -> int:
     """ Collect the move for a given player.
 
         Args:
@@ -129,10 +128,28 @@ def get_player_play(
             play (str): The player's play.
 
         Returns:
-            None.
+            play (int): Index of the player's play.
     """
 
-    pass
+    # Display a list of plays to choose from
+
+    # Instantiate object from UltimateRPS and create a list of play choices
+    ultimate_rps = UltimateRPS()
+    play_choices = list(ultimate_rps.battle_table[0].keys())
+    play_choices.remove('Attacker')
+    play_choices.sort()
+
+    # Display a list of plays
+    for index, play in enumerate(play_choices):
+        print(f'{index + 1}. {play}')
+
+    # Gather and validate player input
+    play_number = int(input('Enter a play number: ') - 1)
+    play = play_choices[play_number]
+    print(f'{player.name} chose "{play}"')
+
+    # Return player play
+    return play
 
 
 # Get play result

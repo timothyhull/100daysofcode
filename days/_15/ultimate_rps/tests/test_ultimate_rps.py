@@ -14,7 +14,7 @@ from _15.ultimate_rps.ultimate_rps import display_banner, display_matchup, \
 
 from collections import namedtuple
 from pytest import fixture, mark, raises
-from random import randint
+from random import choice, randint
 from re import compile, VERBOSE
 from unittest.mock import patch
 
@@ -32,6 +32,7 @@ MATCHUP_OUTPUT_REGEX = compile(
     ''',
     VERBOSE
 )
+NUMBER_OF_PLAYS = 3
 PLAYER_1_NAME = 'Tim'
 PLAYER_2_NAME = 'Computer'
 PLAYER_1_PLAYS = [
@@ -77,6 +78,33 @@ GAMEPLAY_ARGS = zip(
     PLAYER_2_PLAYS,
     EXPECTED_RESULTS
 )
+
+
+# Get random play list
+def get_random_plays() -> list:
+    """ Create a list of random plays for test usage/consumption.
+
+        Args:
+            None.
+
+        Returns:
+            plays (list): list of player plays
+    """
+
+    # Instantiate object from UltimateRPS
+    ultimate_rps = UltimateRPS()
+
+    # Create a list of plays
+    play_choices = list(ultimate_rps.battle_table[0].keys())
+    play_choices.remove('Attacker')
+
+    # Create a blank list for random plays
+    plays = []
+    while len(plays) < NUMBER_OF_PLAYS:
+        play = choice(list(play_choices))
+        plays.append(play_choices.index(play))
+
+    return plays
 
 
 # pytest fixtures
@@ -247,7 +275,7 @@ def test_display_matchup(capfd, player_objects):
 
 @patch(
     'builtins.input',
-    side_effect=['Paper']
+    side_effect=get_random_plays()
 )
 def test_get_player_play(
     side_effect,
@@ -255,6 +283,7 @@ def test_get_player_play(
     player_objects
 ):
     """ Test Player objects for the correct values, after a complete turn.
+        The player play must be found in the UltimateRPS.battle_table.
 
         Args:
             player_objects (namedtuple): namedtuple of objects of the
@@ -269,10 +298,21 @@ def test_get_player_play(
     # player_2 = player_objects.player_2
 
     # Player 1 chooses play
-    assert get_player_play(
-        player=player_1,
-        play=side_effect
-    ) in ultimate_rps_object.battle_table[0]
+    player_1_play = get_player_play(
+        player=player_1
+    )
+
+    # Repeat all assertions NUMBER_OF_PLAYS times, matching side_effect count
+
+    # Assert the player 1 play is in the battle_table and is not 'Attacker'
+    assert player_1_play in ultimate_rps_object.battle_table[0] and \
+        player_1_play != side_effect
+
+    assert player_1_play in ultimate_rps_object.battle_table[0] and \
+        player_1_play != side_effect
+
+    assert player_1_play in ultimate_rps_object.battle_table[0] and \
+        player_1_play != side_effect
 
     # Player 2 chooses play (manual input or automatic for computer)
     # assert get_player_play(player=player_2) # in ultimate_rps.battle_table
