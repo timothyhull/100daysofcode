@@ -278,7 +278,7 @@ def test_display_matchup(capfd, player_objects):
     side_effect=get_random_plays()
 )
 def test_get_player_play(
-    side_effect,
+    play,
     ultimate_rps_object,
     player_objects
 ):
@@ -286,6 +286,9 @@ def test_get_player_play(
         The player play must be found in the UltimateRPS.battle_table.
 
         Args:
+            play: (MagicMock): Placeholder variable for side_effect values.
+            ultimate_rps_object (class UltimateRPS): Ultimate Rock, Paper,
+                                                     Scissors game object.
             player_objects (namedtuple): namedtuple of objects of the
                                          Player class.
 
@@ -297,22 +300,22 @@ def test_get_player_play(
     player_1 = player_objects.player_1
     # player_2 = player_objects.player_2
 
-    # Player 1 chooses play
-    player_1_play = get_player_play(
-        player=player_1
-    )
-
     # Repeat all assertions NUMBER_OF_PLAYS times, matching side_effect count
 
     # Assert the player 1 play is in the battle_table and is not 'Attacker'
+    player_1_play = get_player_play(player=player_1)
     assert player_1_play in ultimate_rps_object.battle_table[0] and \
-        player_1_play != side_effect
+        player_1_play != 'Attacker'
 
+    # Repeat the same function call, in order to get a new side_effect value
+    player_1_play = get_player_play(player=player_1)
     assert player_1_play in ultimate_rps_object.battle_table[0] and \
-        player_1_play != side_effect
+        player_1_play != 'Attacker'
 
+    # Repeat the same function call, in order to get a new side_effect value
+    player_1_play = get_player_play(player=player_1)
     assert player_1_play in ultimate_rps_object.battle_table[0] and \
-        player_1_play != side_effect
+        player_1_play != 'Attacker'
 
     # Player 2 chooses play (manual input or automatic for computer)
     # assert get_player_play(player=player_2) # in ultimate_rps.battle_table

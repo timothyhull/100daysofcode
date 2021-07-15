@@ -1,4 +1,4 @@
-## :calendar: Day 15: 7/2/21-7/13/21
+## :calendar: Day 15: 7/2/21-7/14/21
 
 ---
 
@@ -394,3 +394,59 @@ MATCHUP_OUTPUT_REGEX = compile(
   - Create a list of available plays and display that list with prefixed numbers (e.g. 1. Rock)
   - Added function to collect numeric input from player, to choose a play.
     - **No data validation in place at this time**
+
+---
+
+#### :notebook: 7/14/21
+
+- Conducted extensive troubleshooting to determine why the a `list` of three `side_effect` values would only have the first value run.
+  - Determined the root cause, only a function call triggers the `next()` method and iterates over the mock input values.
+  - A single function call that assigns results to a variable only iterates over the first value in the `side_effect_list`.
+  - Corrected as follows:
+
+```python
+@patch(
+    'builtins.input',
+    side_effect=get_random_plays()
+)
+def test_get_player_play(
+    play,
+    ultimate_rps_object,
+    player_objects
+):
+    """ Test Player objects for the correct values, after a complete turn.
+        The player play must be found in the UltimateRPS.battle_table.
+
+        Args:
+            play: (MagicMock): Placeholder variable for side_effect values.
+            ultimate_rps_object (class UltimateRPS): Ultimate Rock, Paper,
+                                                     Scissors game object.
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+
+        Returns:
+            None.
+    """
+
+    # Assign player objects to short variables
+    player_1 = player_objects.player_1
+    # player_2 = player_objects.player_2
+
+    # Repeat all assertions NUMBER_OF_PLAYS times, matching side_effect count
+
+    # Assert the player 1 play is in the battle_table and is not 'Attacker'
+    player_1_play = get_player_play(player=player_1)
+    assert player_1_play in ultimate_rps_object.battle_table[0] and \
+        player_1_play != 'Attacker'
+
+    # Repeat the same function call, in order to get a new side_effect value
+    player_1_play = get_player_play(player=player_1)
+    assert player_1_play in ultimate_rps_object.battle_table[0] and \
+        player_1_play != 'Attacker'
+
+    # Repeat the same function call, in order to get a new side_effect value
+    player_1_play = get_player_play(player=player_1)
+    assert player_1_play in ultimate_rps_object.battle_table[0] and \
+        player_1_play != 'Attacker'
+```
+
