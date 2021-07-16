@@ -1,4 +1,4 @@
-## :calendar: Day 15: 7/2/21-7/14/21
+## :calendar: Day 15: 7/2/21-7/15/21
 
 ---
 
@@ -448,5 +448,175 @@ def test_get_player_play(
     player_1_play = get_player_play(player=player_1)
     assert player_1_play in ultimate_rps_object.battle_table[0] and \
         player_1_play != 'Attacker'
+```
+
+---
+
+#### :notebook: 7/15/21
+
+- Completed `test_get_player_play()` function.
+  - Includes the following asserts for each player:
+    - 3 x valid tests
+    - 1 x invalid test (testing supported by raising an `IndexError`)
+  - Refactored `get_random_plays()` to `get_random_play_inputs()` in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
+    - To support automatically choosing random play inputs, both valid and invalid.
+  - Refactored to add play choices to the `Player` object `plays` `list` (instead of returning a string of the play)
+    - Refactored `test_get_player_play()` function in[`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py) and `get_player_play()` function in[`ultimate_rps.py`](ultimate_rps/ultimate_rps.py) and 
+
+```python
+get_random_play_inputs() -> list:
+    """ Create a list of random plays for test usage/consumption.
+
+        Args:
+            None.
+
+        Returns:
+            plays (list): list of player plays
+    """
+
+    # Instantiate object from UltimateRPS
+    ultimate_rps = UltimateRPS()
+
+    # Create a list of plays
+    play_choices = list(ultimate_rps.battle_table[0].keys())
+    play_choices.remove('Attacker')
+
+    # Create a blank list for random plays
+    plays = []
+
+    # Create random plays NUMBER_OF_PLAYERS times
+    for _ in range(NUMBER_OF_PLAYERS):
+
+        # Add enough valid random plays for each player, plus two invalid plays
+        for _ in range(NUMBER_OF_PLAYS):
+
+            # Choose a random number between 1 and the length of the plays list
+            play_input_number = randint(1, len(play_choices))
+            plays.append(play_input_number)
+            print(plays)
+
+        # Add an invalid play after each players valid plays
+        plays.append(len(play_choices) + 1)
+        print(plays)
+
+    return plays
+```
+
+```python
+@patch(
+    'builtins.input',
+    side_effect=get_random_play_inputs()
+)
+def test_get_player_play(
+    play,
+    ultimate_rps_object,
+    player_objects
+):
+    """ Test Player objects for the correct values, after a complete turn.
+        The player play must be found in the UltimateRPS.battle_table.
+
+        Args:
+            play: (MagicMock): Placeholder variable for side_effect values.
+            ultimate_rps_object (class UltimateRPS): Ultimate Rock, Paper,
+                                                     Scissors game object.
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+
+        Returns:
+            None.
+    """
+    print(get_random_play_inputs())
+    # Assign player objects to short variables
+    player_1 = player_objects.player_1
+    player_2 = player_objects.player_2
+
+    """ Repeat all assertions NUMBER_OF_PLAYS times for each player,
+        to match the total number of side_effect iterations.
+    """
+
+    # Player 1 plays
+    # Assert the player 1 play is in the battle_table and is not 'Attacker'
+    player_1 = get_player_play(player=player_1)
+    assert player_1.plays[-1] in ultimate_rps_object.battle_table[0] and \
+        player_1.plays[-1] != 'Attacker'
+
+    # Repeat the same function call, in order to get a new side_effect value
+    player_1 = get_player_play(player=player_1)
+    assert player_1.plays[-1] in ultimate_rps_object.battle_table[0] and \
+        player_1.plays[-1] != 'Attacker'
+
+    # Repeat the same function call, in order to get a new side_effect value
+    player_1 = get_player_play(player=player_1)
+    assert player_1.plays[-1] in ultimate_rps_object.battle_table[0] and \
+        player_1.plays[-1] != 'Attacker'
+
+    with raises(IndexError):
+        player_1 = get_player_play(player=player_1)
+
+    # Player 2 plays
+    # Assert the player 2 play is in the battle_table and is not 'Attacker'
+    player_2 = get_player_play(player=player_2)
+    assert player_2.plays[-1] in ultimate_rps_object.battle_table[0] and \
+        player_2.plays[-1] != 'Attacker'
+
+    # Repeat the same function call, in order to get a new side_effect value
+    player_2 = get_player_play(player=player_2)
+    assert player_2.plays[-1] in ultimate_rps_object.battle_table[0] and \
+        player_2.plays[-1] != 'Attacker'
+
+    # Repeat the same function call, in order to get a new side_effect value
+    player_2 = get_player_play(player=player_2)
+    assert player_2.plays[-1] in ultimate_rps_object.battle_table[0] and \
+        player_2.plays[-1] != 'Attacker'
+
+    with raises(IndexError):
+        player_2 = get_player_play(player=player_1)
+```
+
+```python
+# Get player play
+def get_player_play(
+    player: Player,
+) -> int:
+    """ Collect the move for a given player.
+
+        Args:
+            player (Player): UltimateRPS Player object.
+            play (str): The player's play.
+
+        Returns:
+            player (Player): UltimateRPS Player object with updated play list.
+    """
+
+    # Display a list of plays to choose from
+
+    # Instantiate object from UltimateRPS and create a list of play choices
+    ultimate_rps = UltimateRPS()
+    play_choices = list(ultimate_rps.battle_table[0].keys())
+    play_choices.remove('Attacker')
+    play_choices.sort()
+
+    # Display a list of plays
+    for index, play in enumerate(play_choices):
+        print(f'{index + 1}. {play}')
+
+    # Gather and validate player input
+    play_number = int(input('Enter a play number: ') - 1)
+
+    # Add play to player's play list attribute
+    try:
+        player.plays.append(play_choices[play_number])
+
+        # Display the player's choice, with the last index in the plays list
+        print(f'\n** {player.name} chooses "{play_number + 1} '
+              f'({player.plays[-1]})" **\n')
+
+    # Validate player input
+    except IndexError:
+        print(f'\n** Invalid choice: "{play_number + 1}" **\n')
+        raise
+
+    # Return the updated Player object
+    return player
 ```
 

@@ -14,7 +14,7 @@ from _15.ultimate_rps.ultimate_rps import display_banner, display_matchup, \
 
 from collections import namedtuple
 from pytest import fixture, mark, raises
-from random import choice, randint
+from random import randint
 from re import compile, VERBOSE
 from unittest.mock import patch
 
@@ -32,6 +32,7 @@ MATCHUP_OUTPUT_REGEX = compile(
     ''',
     VERBOSE
 )
+NUMBER_OF_PLAYERS = 2
 NUMBER_OF_PLAYS = 3
 PLAYER_1_NAME = 'Tim'
 PLAYER_2_NAME = 'Computer'
@@ -81,7 +82,7 @@ GAMEPLAY_ARGS = zip(
 
 
 # Get random play list
-def get_random_plays() -> list:
+def get_random_play_inputs() -> list:
     """ Create a list of random plays for test usage/consumption.
 
         Args:
@@ -100,9 +101,21 @@ def get_random_plays() -> list:
 
     # Create a blank list for random plays
     plays = []
-    while len(plays) < NUMBER_OF_PLAYS:
-        play = choice(list(play_choices))
-        plays.append(play_choices.index(play))
+
+    # Create random plays NUMBER_OF_PLAYERS times
+    for _ in range(NUMBER_OF_PLAYERS):
+
+        # Add enough valid random plays for each player, plus two invalid plays
+        for _ in range(NUMBER_OF_PLAYS):
+
+            # Choose a random number between 1 and the length of the plays list
+            play_input_number = randint(1, len(play_choices))
+            plays.append(play_input_number)
+            print(plays)
+
+        # Add an invalid play after each players valid plays
+        plays.append(len(play_choices) + 1)
+        print(plays)
 
     return plays
 
@@ -275,7 +288,7 @@ def test_display_matchup(capfd, player_objects):
 
 @patch(
     'builtins.input',
-    side_effect=get_random_plays()
+    side_effect=get_random_play_inputs()
 )
 def test_get_player_play(
     play,
@@ -295,30 +308,52 @@ def test_get_player_play(
         Returns:
             None.
     """
-
+    print(get_random_play_inputs())
     # Assign player objects to short variables
     player_1 = player_objects.player_1
-    # player_2 = player_objects.player_2
+    player_2 = player_objects.player_2
 
-    # Repeat all assertions NUMBER_OF_PLAYS times, matching side_effect count
+    """ Repeat all assertions NUMBER_OF_PLAYS times for each player,
+        to match the total number of side_effect iterations.
+    """
 
+    # Player 1 plays
     # Assert the player 1 play is in the battle_table and is not 'Attacker'
-    player_1_play = get_player_play(player=player_1)
-    assert player_1_play in ultimate_rps_object.battle_table[0] and \
-        player_1_play != 'Attacker'
+    player_1 = get_player_play(player=player_1)
+    assert player_1.plays[-1] in ultimate_rps_object.battle_table[0] and \
+        player_1.plays[-1] != 'Attacker'
 
     # Repeat the same function call, in order to get a new side_effect value
-    player_1_play = get_player_play(player=player_1)
-    assert player_1_play in ultimate_rps_object.battle_table[0] and \
-        player_1_play != 'Attacker'
+    player_1 = get_player_play(player=player_1)
+    assert player_1.plays[-1] in ultimate_rps_object.battle_table[0] and \
+        player_1.plays[-1] != 'Attacker'
 
     # Repeat the same function call, in order to get a new side_effect value
-    player_1_play = get_player_play(player=player_1)
-    assert player_1_play in ultimate_rps_object.battle_table[0] and \
-        player_1_play != 'Attacker'
+    player_1 = get_player_play(player=player_1)
+    assert player_1.plays[-1] in ultimate_rps_object.battle_table[0] and \
+        player_1.plays[-1] != 'Attacker'
 
-    # Player 2 chooses play (manual input or automatic for computer)
-    # assert get_player_play(player=player_2) # in ultimate_rps.battle_table
+    with raises(IndexError):
+        player_1 = get_player_play(player=player_1)
+
+    # Player 2 plays
+    # Assert the player 2 play is in the battle_table and is not 'Attacker'
+    player_2 = get_player_play(player=player_2)
+    assert player_2.plays[-1] in ultimate_rps_object.battle_table[0] and \
+        player_2.plays[-1] != 'Attacker'
+
+    # Repeat the same function call, in order to get a new side_effect value
+    player_2 = get_player_play(player=player_2)
+    assert player_2.plays[-1] in ultimate_rps_object.battle_table[0] and \
+        player_2.plays[-1] != 'Attacker'
+
+    # Repeat the same function call, in order to get a new side_effect value
+    player_2 = get_player_play(player=player_2)
+    assert player_2.plays[-1] in ultimate_rps_object.battle_table[0] and \
+        player_2.plays[-1] != 'Attacker'
+
+    with raises(IndexError):
+        player_2 = get_player_play(player=player_1)
 
     # Determine play winner
 

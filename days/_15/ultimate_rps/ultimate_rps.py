@@ -128,7 +128,7 @@ def get_player_play(
             play (str): The player's play.
 
         Returns:
-            play (int): Index of the player's play.
+            player (Player): UltimateRPS Player object with updated play list.
     """
 
     # Display a list of plays to choose from
@@ -145,11 +145,22 @@ def get_player_play(
 
     # Gather and validate player input
     play_number = int(input('Enter a play number: ') - 1)
-    play = play_choices[play_number]
-    print(f'{player.name} chose "{play}"')
 
-    # Return player play
-    return play
+    # Add play to player's play list attribute
+    try:
+        player.plays.append(play_choices[play_number])
+
+        # Display the player's choice, with the last index in the plays list
+        print(f'\n** {player.name} chooses "{play_number + 1} '
+              f'({player.plays[-1]})" **\n')
+
+    # Validate player input
+    except IndexError:
+        print(f'\n** Invalid choice: "{play_number + 1}" **\n')
+        raise
+
+    # Return the updated Player object
+    return player
 
 
 # Get play result
