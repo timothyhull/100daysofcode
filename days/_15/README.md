@@ -1,4 +1,4 @@
-## :calendar: Day 15: 7/2/21-7/15/21
+## :calendar: Day 15: 7/2/21-7/16/21
 
 ---
 
@@ -620,3 +620,8 @@ def get_player_play(
     return player
 ```
 
+---
+
+#### :notebook: 7/16/21
+
+- 

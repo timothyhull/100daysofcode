@@ -10,7 +10,8 @@ from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player, \
                                          UltimateRPSExceptions
 from _15.ultimate_rps.ultimate_rps import display_banner, display_matchup, \
                                           get_player_1_name, \
-                                          get_player_2_name, get_player_play
+                                          get_player_2_name, get_player_play, \
+                                          get_play_result
 
 from collections import namedtuple
 from pytest import fixture, mark, raises
@@ -111,11 +112,9 @@ def get_random_play_inputs() -> list:
             # Choose a random number between 1 and the length of the plays list
             play_input_number = randint(1, len(play_choices))
             plays.append(play_input_number)
-            print(plays)
 
         # Add an invalid play after each players valid plays
         plays.append(len(play_choices) + 1)
-        print(plays)
 
     return plays
 
@@ -308,7 +307,7 @@ def test_get_player_play(
         Returns:
             None.
     """
-    print(get_random_play_inputs())
+
     # Assign player objects to short variables
     player_1 = player_objects.player_1
     player_2 = player_objects.player_2
@@ -355,11 +354,45 @@ def test_get_player_play(
     with raises(IndexError):
         player_2 = get_player_play(player=player_1)
 
-    # Determine play winner
+@mark.parametrize(
+    'player_1_play, player_2_play, expected_result',
+    list(GAMEPLAY_ARGS)
+)
+def test_get_play_result(
+    player_1_play,
+    player_2_play,
+    expected_result,
+    ultimate_rps_object,
+    player_objects
+):
+    """ Test to determine the result of a play by each player.
 
+        Args:
+            None.
+
+        Returns:
+            None.
+    """
+
+    # Assign ultimate_rps_object to a shorter variable name
+    ultimate_rps = ultimate_rps_object
+
+    # Extract players from player_object
+    player_1 = player_objects.player_1
+    player_2 = player_objects.player_2
+
+    # Assign plays to each player
+    player_1.plays.append(player_1_play)
+    player_1.plays.append(player_2_play)
+
+    # Test plays against expected results
+    get_play_result()
+
+
+def test_get_game_result():
     # Determine game winner (best of N)
-
     # Increment player records
+    pass
 
 
 def test_import_csv_type(battle_table):
