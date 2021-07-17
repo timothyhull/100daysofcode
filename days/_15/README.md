@@ -624,4 +624,6 @@ def get_player_play(
 
 #### :notebook: 7/16/21
 
-- 
+- Developed framework for `test_get_play_result.py` `test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
+    - Created `@mark.parameterized` Configuration to support testing.
+    
