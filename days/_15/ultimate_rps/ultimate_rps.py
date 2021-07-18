@@ -164,8 +164,33 @@ def get_player_play(
 
 
 # Get play result
-def get_play_result():
-    pass
+def get_play_result(
+    player_1: Player,
+    player_2: Player
+) -> str:
+
+    """ Get the result/winner after each play.
+
+        Args:
+            None.
+
+        Return:
+            None.
+
+    """
+
+    # Instantiate ultimateRPS object
+    ultimate_rps = UltimateRPS()
+
+    # Determine play result
+    play_result = ultimate_rps.get_turn_result(
+        player_1_play=player_1.plays[-1],
+        player_2_play=player_2.plays[-1]
+    )
+
+    print(f'LOOKIE HERE: {play_result}')
+
+    return play_result
 
 
 # Get game result

@@ -354,6 +354,7 @@ def test_get_player_play(
     with raises(IndexError):
         player_2 = get_player_play(player=player_1)
 
+
 @mark.parametrize(
     'player_1_play, player_2_play, expected_result',
     list(GAMEPLAY_ARGS)
@@ -362,7 +363,6 @@ def test_get_play_result(
     player_1_play,
     player_2_play,
     expected_result,
-    ultimate_rps_object,
     player_objects
 ):
     """ Test to determine the result of a play by each player.
@@ -374,19 +374,19 @@ def test_get_play_result(
             None.
     """
 
-    # Assign ultimate_rps_object to a shorter variable name
-    ultimate_rps = ultimate_rps_object
-
     # Extract players from player_object
     player_1 = player_objects.player_1
     player_2 = player_objects.player_2
 
     # Assign plays to each player
     player_1.plays.append(player_1_play)
-    player_1.plays.append(player_2_play)
+    player_2.plays.append(player_2_play)
 
     # Test plays against expected results
-    get_play_result()
+    assert get_play_result(
+        player_1=player_1,
+        player_2=player_2
+    ) == expected_result
 
 
 def test_get_game_result():

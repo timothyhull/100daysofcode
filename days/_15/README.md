@@ -624,6 +624,15 @@ def get_player_play(
 
 #### :notebook: 7/16/21
 
-- Developed framework for `test_get_play_result.py` `test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
+- Developed framework for `test_get_play_result()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
     - Created `@mark.parameterized` Configuration to support testing.
     
+---
+
+#### :notebook: 7/17/21
+
+- Expanded framework for `test_get_play_result()` function in in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
+    - Successfully passing the `test_get_play_result()` test although it appears `@mark.parameterized` may only work once in a test file, when using the same source data for parameters.
+    - Need to conduct testing to validate and correct.
+- Developed function `get_play_result()` function in in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py).
+    Returns valid data.
