@@ -75,7 +75,15 @@ EXPECTED_RESULTS = [
 ]
 
 # Combine lists to form a 3-tuple object, for parameterize compatibility
-GAMEPLAY_ARGS = zip(
+# For test_get_play_result() function
+GAMEPLAY_ARGS_1 = zip(
+    PLAYER_1_PLAYS,
+    PLAYER_2_PLAYS,
+    EXPECTED_RESULTS
+)
+
+# For test_play_result()
+GAMEPLAY_ARGS_2 = zip(
     PLAYER_1_PLAYS,
     PLAYER_2_PLAYS,
     EXPECTED_RESULTS
@@ -357,7 +365,7 @@ def test_get_player_play(
 
 @mark.parametrize(
     'player_1_play, player_2_play, expected_result',
-    list(GAMEPLAY_ARGS)
+    list(GAMEPLAY_ARGS_1)
 )
 def test_get_play_result(
     player_1_play,
@@ -365,10 +373,19 @@ def test_get_play_result(
     expected_result,
     player_objects
 ):
-    """ Test to determine the result of a play by each player.
+    """ Test to determine the result of a play by each player, and increment
+        the score after each play.
 
         Args:
-            None.
+            player_1_play (str):
+                Player 1's play choice (e.g. 'Rock').
+            player_2_play (str):
+                Player 2's play choice (e.g. 'Scissors').
+            expected_result (str):
+                Expected player result for the matchup against Player 2's
+                play (e.g. 'Win').
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
 
         Returns:
             None.
@@ -383,10 +400,12 @@ def test_get_play_result(
     player_2.plays.append(player_2_play)
 
     # Test plays against expected results
-    assert get_play_result(
+    play_result = get_play_result(
         player_1=player_1,
         player_2=player_2
-    ) == expected_result
+    )
+
+    assert play_result.player_1_result == expected_result
 
 
 def test_get_game_result():
@@ -441,7 +460,7 @@ def test_import_csv_sub_type(battle_table):
 
 @mark.parametrize(
     'player_1_play, player_2_play, expected_result',
-    list(GAMEPLAY_ARGS)
+    list(GAMEPLAY_ARGS_2)
 )
 def test_play_result(
     ultimate_rps_object,

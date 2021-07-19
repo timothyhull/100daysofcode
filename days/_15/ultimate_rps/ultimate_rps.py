@@ -8,6 +8,7 @@
 # Imports
 from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player, \
                                          UltimateRPSExceptions
+from collections import namedtuple
 
 # Constants
 NUMBER_OF_PLAYERS = 2
@@ -167,28 +168,49 @@ def get_player_play(
 def get_play_result(
     player_1: Player,
     player_2: Player
-) -> str:
+) -> namedtuple:
 
     """ Get the result/winner after each play.
 
         Args:
-            None.
+            player_1 (Player): UltimateRPS.Player object for player 1.
+            player_2 (Player): UltimateRPS.Player object for player 2.
 
         Return:
-            None.
+            play_result (namedtuple): player_1 and player_2 objects plus
+                                      text result for player_1.
 
     """
 
     # Instantiate ultimateRPS object
     ultimate_rps = UltimateRPS()
 
+    # Create namedtuple object to store play results
+    PlayResult = namedtuple(
+        'PlayResult',
+        'player_1 player_2 player_1_result'
+    )
+
     # Determine play result
-    play_result = ultimate_rps.get_turn_result(
+    player_1_result = ultimate_rps.get_turn_result(
         player_1_play=player_1.plays[-1],
         player_2_play=player_2.plays[-1]
     )
 
-    print(f'LOOKIE HERE: {play_result}')
+    # Update the score for each Player object and display the game outcome
+    if player_1_result == 'lose':
+        player_1.score += 1
+        print(f'{player_1.name} scores 1 point.\n')
+
+    elif player_1_result == 'win':
+        player_2.score += 1
+        print(f'{player_2.name} scores 1 point.\n')
+
+    else:
+        print('Draw play.\n')
+
+    # Set the turn results
+    play_result = PlayResult(player_1, player_2, player_1_result)
 
     return play_result
 

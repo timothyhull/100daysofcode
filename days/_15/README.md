@@ -1,4 +1,4 @@
-## :calendar: Day 15: 7/2/21-7/16/21
+## :calendar: Day 15: 7/2/21-7/18/21
 
 ---
 
@@ -631,8 +631,73 @@ def get_player_play(
 
 #### :notebook: 7/17/21
 
-- Expanded framework for `test_get_play_result()` function in in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
+- Expanded framework for `test_get_play_result()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
     - Successfully passing the `test_get_play_result()` test although it appears `@mark.parameterized` may only work once in a test file, when using the same source data for parameters.
     - Need to conduct testing to validate and correct.
 - Developed function `get_play_result()` function in in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py).
-    Returns valid data.
+    - Returns valid data.
+
+---
+
+#### :notebook: 7/18/21
+
+ - Confirmed that `@mark.parameterized` only works once in a test file, when using the same source data for parameters.
+    - Added a second `zip()` object, to supply a separate set of source data for each instance of `@mark.parameterize`.
+        - `GAMEPLAY_ARGS_1` for `test_get_play_result()`
+        - `GAMEPLAY_ARGS_2` for `test_play_result()`
+- Revised function `get_play_result()` function in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py) to return a `namedtuple` object which contains both `Player` objects plus text which indicates the outcome of the play, for `player_1`.
+- Revised `test_get_play_result()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py) to accomate new return object, from `get_play_result()`.
+
+All tests passing:
+
+```python
+# Get play result
+def get_play_result(
+    player_1: Player,
+    player_2: Player
+) -> namedtuple:
+
+    """ Get the result/winner after each play.
+
+        Args:
+            player_1 (Player): UltimateRPS.Player object for player 1.
+            player_2 (Player): UltimateRPS.Player object for player 2.
+
+        Return:
+            play_result (namedtuple): player_1 and player_2 objects plus
+                                      text result for player_1.
+
+    """
+
+    # Instantiate ultimateRPS object
+    ultimate_rps = UltimateRPS()
+
+    # Create namedtuple object to store play results
+    PlayResult = namedtuple(
+        'PlayResult',
+        'player_1 player_2 player_1_result'
+    )
+
+    # Determine play result
+    player_1_result = ultimate_rps.get_turn_result(
+        player_1_play=player_1.plays[-1],
+        player_2_play=player_2.plays[-1]
+    )
+
+    # Update the score for each Player object and display the game outcome
+    if player_1_result == 'lose':
+        player_1.score += 1
+        print(f'{player_1.name} scores 1 point.\n')
+
+    elif player_1_result == 'win':
+        player_2.score += 1
+        print(f'{player_2.name} scores 1 point.\n')
+
+    else:
+        print('Draw play.\n')
+
+    # Set the turn results
+    play_result = PlayResult(player_1, player_2, player_1_result)
+
+    return play_result
+```
