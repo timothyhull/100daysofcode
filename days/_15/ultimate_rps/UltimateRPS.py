@@ -130,13 +130,13 @@ class Player:
     def __init__(self, name: str = 'Computer') -> None:
 
         # namedtuple to store wins and losses count
-        Record = namedtuple('Record', 'wins losses')
+        Record = namedtuple('Record', 'wins losses draws')
 
         # Define initial attribute values
         self.name = name
         self.plays = []
         self.score = 0
-        self.record = Record(0, 0)
+        self.record = Record(0, 0, 0)
 
 
 class UltimateRPSExceptions(Exception):

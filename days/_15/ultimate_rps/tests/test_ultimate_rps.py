@@ -11,7 +11,7 @@ from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player, \
 from _15.ultimate_rps.ultimate_rps import display_banner, display_matchup, \
                                           get_player_1_name, \
                                           get_player_2_name, get_player_play, \
-                                          get_play_result
+                                          get_play_result, get_game_result
 
 from collections import namedtuple
 from pytest import fixture, mark, raises
@@ -374,7 +374,8 @@ def test_get_play_result(
     player_objects
 ):
     """ Test to determine the result of a play by each player, and increment
-        the score after each play.
+        the score after each play.  Assert that the function under test
+        returns the expected results.
 
         Args:
             player_1_play (str):
@@ -408,10 +409,44 @@ def test_get_play_result(
     assert play_result.player_1_result == expected_result
 
 
-def test_get_game_result():
-    # Determine game winner (best of N)
-    # Increment player records
-    pass
+def test_get_game_result(player_objects):
+    """ Test to determine the result of a game by each player, incrementing
+        the score after each play.
+
+        Args:
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+
+        Returns:
+            None.
+    """
+
+    # Extract players from player_object
+    player_1 = player_objects.player_1
+    player_2 = player_objects.player_2
+
+    # Set mock Player object attribute values
+    player_1.score = 2
+    player_2.score = 1
+
+    # Setup a result object to store the response
+    result = get_game_result(
+        player_1=player_1,
+        player_2=player_2
+    )
+
+    # Assert the result values match expected values
+    # Response objects are in the result and of the correct type/class
+    assert type(result.player_1) == Player and \
+           type(result.player_2) == Player and \
+           type(result.winner) == str
+
+    # Response values match expected results
+    assert result.player_1.record.wins == 1 and \
+           result.player_2.record.losses == 1 and \
+           result.player_1.record.draws == 0 and \
+           result.player_2.record.draws == 0 and \
+           result.winner == player_1.name
 
 
 def test_import_csv_type(battle_table):

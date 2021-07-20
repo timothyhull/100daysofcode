@@ -1,4 +1,4 @@
-## :calendar: Day 15: 7/2/21-7/18/21
+## :calendar: Day 15: 7/2/21-7/19/21
 
 ---
 
@@ -646,7 +646,7 @@ def get_player_play(
         - `GAMEPLAY_ARGS_1` for `test_get_play_result()`
         - `GAMEPLAY_ARGS_2` for `test_play_result()`
 - Revised function `get_play_result()` function in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py) to return a `namedtuple` object which contains both `Player` objects plus text which indicates the outcome of the play, for `player_1`.
-- Revised `test_get_play_result()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py) to accomate new return object, from `get_play_result()`.
+- Revised `test_get_play_result()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py) to accomodate new return object, from `get_play_result()`.
 
 All tests passing:
 
@@ -700,4 +700,124 @@ def get_play_result(
     play_result = PlayResult(player_1, player_2, player_1_result)
 
     return play_result
+```
+
+---
+
+#### :notebook: 7/19/21
+
+- Created test `test_get_game_result()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py)
+    - Populated `get_game_result()` function in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py) with code to pass the test.
+    - All tests passing but the current test lacks paramaterization and only tests one scenario.
+
+`test_get_game_result()` function:
+
+```python
+def test_get_game_result(player_objects):
+    """ Test to determine the result of a game by each player, incrementing
+        the score after each play.
+
+        Args:
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+
+        Returns:
+            None.
+    """
+
+    # Extract players from player_object
+    player_1 = player_objects.player_1
+    player_2 = player_objects.player_2
+
+    # Set mock Player object attribute values
+    player_1.score = 2
+    player_2.score = 1
+
+    # Setup a result object to store the response
+    result = get_game_result(
+        player_1=player_1,
+        player_2=player_2
+    )
+
+    # Assert the result values match expected values
+    # Response objects are in the result and of the correct type/class
+    assert type(result.player_1) == Player and \
+           type(result.player_2) == Player and \
+           type(result.winner) == str
+
+    # Response values match expected results
+    assert result.player_1.record.wins == 1 and \
+           result.player_2.record.losses == 1 and \
+           result.player_1.record.draws == 0 and \
+           result.player_2.record.draws == 0 and \
+           result.winner == player_1.name
+```
+
+`get_game_result()` function:
+
+```python
+def get_game_result(
+    player_1: Player,
+    player_2: Player
+) -> namedtuple:
+    """ Get the result/winner after each play.
+
+        Args:
+            player_1 (Player): UltimateRPS.Player object for player 1.
+            player_2 (Player): UltimateRPS.Player object for player 2.
+
+        Return:
+            play_result (namedtuple): player_1 and player_2 objects plus
+                                      winner attrobute, with winning player.
+
+    """
+
+    # Determine if player_1 is the winner
+    if player_1.score > player_2.score:
+        # Set the winner as player_1
+        winner = player_1.name
+
+        # Increment the player records
+        player_1.record = player_1.record._replace(
+            wins=player_1.record.wins + 1
+        )
+        player_2.record = player_2.record._replace(
+            losses=player_1.record.losses + 1
+        )
+
+    # Determine if player_2 is the winner
+    elif player_1.score < player_2.score:
+        winner = player_2.name
+
+        # Increment the player records
+        player_1.record = player_1.record._replace(
+            losses=player_1.record.losses + 1
+        )
+        player_2.record = player_2.record._replace(
+            wins=player_1.record.wins + 1
+        )
+
+    # Determine if the game is a draw
+    else:
+        winner = ''
+
+        # Increment the player records
+        player_1.record = player_1.record._replace(
+            draws=player_1.record.draws + 1
+        )
+        player_2.record = player_2.record._replace(
+            draws=player_1.record.draws + 1
+        )
+
+    # Create a namedtuple class to return
+    PlayResults = namedtuple('PlayResults', 'player_1 player_2 winner')
+
+    # Create a play_results namedtuple instance to return
+    play_results = PlayResults(
+        player_1=player_1,
+        player_2=player_2,
+        winner=winner
+    )
+
+    return play_results
 ```

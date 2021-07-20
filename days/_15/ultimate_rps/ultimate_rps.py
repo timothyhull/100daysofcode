@@ -169,7 +169,6 @@ def get_play_result(
     player_1: Player,
     player_2: Player
 ) -> namedtuple:
-
     """ Get the result/winner after each play.
 
         Args:
@@ -209,15 +208,77 @@ def get_play_result(
     else:
         print('Draw play.\n')
 
-    # Set the turn results
+    # Set the turn results in a namedtuple object
     play_result = PlayResult(player_1, player_2, player_1_result)
 
     return play_result
 
 
 # Get game result
-def get_game_result():
-    pass
+def get_game_result(
+    player_1: Player,
+    player_2: Player
+) -> namedtuple:
+    """ Get the result/winner after each play.
+
+        Args:
+            player_1 (Player): UltimateRPS.Player object for player 1.
+            player_2 (Player): UltimateRPS.Player object for player 2.
+
+        Return:
+            play_result (namedtuple): player_1 and player_2 objects plus
+                                      winner attrobute, with winning player.
+
+    """
+
+    # Determine if player_1 is the winner
+    if player_1.score > player_2.score:
+        # Set the winner as player_1
+        winner = player_1.name
+
+        # Increment the player records
+        player_1.record = player_1.record._replace(
+            wins=player_1.record.wins + 1
+        )
+        player_2.record = player_2.record._replace(
+            losses=player_1.record.losses + 1
+        )
+
+    # Determine if player_2 is the winner
+    elif player_1.score < player_2.score:
+        winner = player_2.name
+
+        # Increment the player records
+        player_1.record = player_1.record._replace(
+            losses=player_1.record.losses + 1
+        )
+        player_2.record = player_2.record._replace(
+            wins=player_1.record.wins + 1
+        )
+
+    # Determine if the game is a draw
+    else:
+        winner = ''
+
+        # Increment the player records
+        player_1.record = player_1.record._replace(
+            draws=player_1.record.draws + 1
+        )
+        player_2.record = player_2.record._replace(
+            draws=player_1.record.draws + 1
+        )
+
+    # Create a namedtuple class to return
+    PlayResults = namedtuple('PlayResults', 'player_1 player_2 winner')
+
+    # Create a play_results namedtuple instance to return
+    play_results = PlayResults(
+        player_1=player_1,
+        player_2=player_2,
+        winner=winner
+    )
+
+    return play_results
 
 
 def main():
