@@ -89,6 +89,54 @@ GAMEPLAY_ARGS_2 = zip(
     EXPECTED_RESULTS
 )
 
+PLAYER_1_GAME_SCORES = [
+    0,
+    2,
+    1,
+    0
+]
+PLAYER_2_GAME_SCORES = [
+    3,
+    1,
+    1,
+    0
+]
+PLAYER_1_RECORD_WINS = [
+    0,
+    1,
+    0,
+    0
+]
+PLAYER_2_RECORD_WINS = [
+    1,
+    0,
+    0,
+    0
+]
+PLAYER_1_2_RECORD_DRAWS = [
+    0,
+    0,
+    1,
+    1
+]
+EXPECTED_GAME_WINNER = [
+    PLAYER_2_NAME,
+    PLAYER_1_NAME,
+    '',
+    ''
+]
+
+# Combine lists to form a 3-tuple object, for parameterize compatibility
+# For test_get_game_result() function
+GAME_RESULTS_ARGS = zip(
+    PLAYER_1_GAME_SCORES,
+    PLAYER_2_GAME_SCORES,
+    PLAYER_1_RECORD_WINS,
+    PLAYER_2_RECORD_WINS,
+    PLAYER_1_2_RECORD_DRAWS,
+    EXPECTED_GAME_WINNER
+)
+
 
 # Get random play list
 def get_random_play_inputs() -> list:
@@ -409,11 +457,37 @@ def test_get_play_result(
     assert play_result.player_1_result == expected_result
 
 
-def test_get_game_result(player_objects):
+@mark.parametrize(
+    'player_1_score, player_2_score, player_1_record_wins, '
+    'player_2_record_wins, player_1_2_record_draws, expected_game_winner',
+    list(GAME_RESULTS_ARGS)
+)
+def test_get_game_result(
+    player_1_score,
+    player_2_score,
+    player_1_record_wins,
+    player_2_record_wins,
+    player_1_2_record_draws,
+    expected_game_winner,
+    player_objects
+):
     """ Test to determine the result of a game by each player, incrementing
         the score after each play.
 
         Args:
+            player_1_score (int):
+                Player 1's tally of wins in a game.
+            player_2_score (int):
+                Player 2's tally of wins in a game.
+            player_1_record_wins (int):
+                Player 1's record after the game completes.
+            player_2_record_wins (int):
+                Player 2's record after the game completes.
+            player_1_2_record_draws (int):
+                Record of player_1/player_2 draws, after the game completes.
+
+            expected_game_winner (str):
+                Expected winning player player's name.
             player_objects (namedtuple): namedtuple of objects of the
                                          Player class.
 
@@ -426,8 +500,8 @@ def test_get_game_result(player_objects):
     player_2 = player_objects.player_2
 
     # Set mock Player object attribute values
-    player_1.score = 2
-    player_2.score = 1
+    player_1.score = player_1_score
+    player_2.score = player_2_score
 
     # Setup a result object to store the response
     result = get_game_result(
@@ -442,11 +516,13 @@ def test_get_game_result(player_objects):
            type(result.winner) == str
 
     # Response values match expected results
-    assert result.player_1.record.wins == 1 and \
-           result.player_2.record.losses == 1 and \
-           result.player_1.record.draws == 0 and \
-           result.player_2.record.draws == 0 and \
-           result.winner == player_1.name
+    assert result.player_1.record.wins == player_1_record_wins and \
+           result.player_1.record.losses == player_2_record_wins and \
+           result.player_2.record.wins == player_2_record_wins and \
+           result.player_2.record.losses == player_1_record_wins and \
+           result.player_1.record.draws == player_1_2_record_draws and \
+           result.player_2.record.draws == player_1_2_record_draws and \
+           result.winner == expected_game_winner
 
 
 def test_import_csv_type(battle_table):

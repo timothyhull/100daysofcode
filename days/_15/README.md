@@ -706,7 +706,7 @@ def get_play_result(
 
 #### :notebook: 7/19/21
 
-- Created test `test_get_game_result()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py)
+- Created test `test_get_game_result()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
     - Populated `get_game_result()` function in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py) with code to pass the test.
     - All tests passing but the current test lacks paramaterization and only tests one scenario.
 
@@ -820,4 +820,91 @@ def get_game_result(
     )
 
     return play_results
+```
+
+---
+
+#### :notebook: 7/20/21
+
+- Updated test `test_get_game_result()` function in [`test_ultimate_rps.py`](ultimate_rps/test_ultimate_rps.py).
+    - Added paramaterization to select wins, losses, draws, and expected winner (player name) for each of several games.
+    - Corrected reference mistake in `get_game_result()` function in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py).
+        - Incorrect reference to `player_1.record.draws` (corrected to `player_2.record.draws`).
+    - All tests passing.
+
+`test_get_game_result()` function:
+
+```python
+@mark.parametrize(
+    'player_1_score, player_2_score, player_1_record_wins, '
+    'player_2_record_wins, player_1_2_record_draws, expected_game_winner',
+    list(GAME_RESULTS_ARGS)
+)
+def test_get_game_result(
+    player_1_score,
+    player_2_score,
+    player_1_record_wins,
+    player_2_record_wins,
+    player_1_2_record_draws,
+    expected_game_winner,
+    player_objects
+):
+    """ Test to determine the result of a game by each player, incrementing
+        the score after each play.
+
+        Args:
+            player_1_score (int):
+                Player 1's tally of wins in a game.
+            player_2_score (int):
+                Player 2's tally of wins in a game.
+            player_1_record_wins (int):
+                Player 1's record after the game completes.
+            player_2_record_wins (int):
+                Player 2's record after the game completes.
+            player_1_2_record_draws (int):
+                Record of player_1/player_2 draws, after the game completes.
+
+            expected_game_winner (str):
+                Expected winning player player's name.
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+
+        Returns:
+            None.
+    """
+
+    # Extract players from player_object
+    player_1 = player_objects.player_1
+    player_2 = player_objects.player_2
+
+    # Set mock Player object attribute values
+    player_1.score = player_1_score
+    player_2.score = player_2_score
+
+    # Setup a result object to store the response
+    result = get_game_result(
+        player_1=player_1,
+        player_2=player_2
+    )
+
+    # Assert the result values match expected values
+    # Response objects are in the result and of the correct type/class
+    assert type(result.player_1) == Player and \
+           type(result.player_2) == Player and \
+           type(result.winner) == str
+
+    # Response values match expected results
+    assert result.player_1.record.wins == player_1_record_wins and \
+           result.player_1.record.losses == player_2_record_wins and \
+           result.player_2.record.wins == player_2_record_wins and \
+           result.player_2.record.losses == player_1_record_wins and \
+           result.player_1.record.draws == player_1_2_record_draws and \
+           result.player_2.record.draws == player_1_2_record_draws and \
+           result.winner == expected_game_winner
+```
+
+`get_game_result()` function:
+
+```python
+
 ```

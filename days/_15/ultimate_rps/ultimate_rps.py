@@ -265,7 +265,7 @@ def get_game_result(
             draws=player_1.record.draws + 1
         )
         player_2.record = player_2.record._replace(
-            draws=player_1.record.draws + 1
+            draws=player_2.record.draws + 1
         )
 
     # Create a namedtuple class to return
