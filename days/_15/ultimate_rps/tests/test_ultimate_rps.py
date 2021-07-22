@@ -167,7 +167,7 @@ def get_random_play_inputs() -> list:
 
             # Choose a random number between 1 and the length of the plays list
             play_input_number = randint(1, len(play_choices))
-            plays.append(play_input_number)
+            plays.append(str(play_input_number))
 
         # Add an invalid play after each players valid plays
         plays.append(len(play_choices) + 1)
@@ -485,7 +485,6 @@ def test_get_game_result(
                 Player 2's record after the game completes.
             player_1_2_record_draws (int):
                 Record of player_1/player_2 draws, after the game completes.
-
             expected_game_winner (str):
                 Expected winning player player's name.
             player_objects (namedtuple): namedtuple of objects of the
@@ -523,6 +522,22 @@ def test_get_game_result(
            result.player_1.record.draws == player_1_2_record_draws and \
            result.player_2.record.draws == player_1_2_record_draws and \
            result.winner == expected_game_winner
+
+
+def test_game_loop(
+    ultimate_rps_object,
+    player_objects
+):
+    """ Test the game_loop function for proper functionality.
+
+        Args:
+            player_objects (namedtuple): namedtuple of objects of the
+                                         Player class.
+            ultimate_rps_object (class UltimateRPS): Ultimate Rock, Paper,
+                                                     Scissors game object.
+    """
+
+    pass
 
 
 def test_import_csv_type(battle_table):

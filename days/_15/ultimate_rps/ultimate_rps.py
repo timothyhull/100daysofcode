@@ -11,6 +11,7 @@ from _15.ultimate_rps.UltimateRPS import UltimateRPS, Player, \
 from collections import namedtuple
 
 # Constants
+NUMBER_OF_PLAYS = 3
 NUMBER_OF_PLAYERS = 2
 PLAYER_2_DEFAULT_NAME = 'Computer'
 PLAYER_INPUT_ATTEMPTS = 3
@@ -121,12 +122,11 @@ def display_matchup(player_1, player_2):
 # Get player play
 def get_player_play(
     player: Player,
-) -> int:
+) -> Player:
     """ Collect the move for a given player.
 
         Args:
             player (Player): UltimateRPS Player object.
-            play (str): The player's play.
 
         Returns:
             player (Player): UltimateRPS Player object with updated play list.
@@ -145,7 +145,7 @@ def get_player_play(
         print(f'{index + 1}. {play}')
 
     # Gather and validate player input
-    play_number = int(input('Enter a play number: ') - 1)
+    play_number = int(input('Enter a play number: ')) - 1
 
     # Add play to player's play list attribute
     try:
@@ -226,7 +226,7 @@ def get_game_result(
             player_2 (Player): UltimateRPS.Player object for player 2.
 
         Return:
-            play_result (namedtuple): player_1 and player_2 objects plus
+            game_results (namedtuple): player_1 and player_2 objects plus
                                       winner attrobute, with winning player.
 
     """
@@ -272,13 +272,70 @@ def get_game_result(
     PlayResults = namedtuple('PlayResults', 'player_1 player_2 winner')
 
     # Create a play_results namedtuple instance to return
-    play_results = PlayResults(
+    game_results = PlayResults(
         player_1=player_1,
         player_2=player_2,
         winner=winner
     )
 
-    return play_results
+    return game_results
+
+
+# Game Loop
+def game_loop(
+    game_object: UltimateRPS,
+    player_1: Player,
+    player_2: Player
+) -> None:
+    """ Loop through gameplay until canceled.
+
+        Args:
+            game_object (UltimateRPS): Instantiation of the UltimateRPS class.
+            player_1 (Player): Instantiation of the Player class, for player 1.
+            player_2 (Player): Instantiation of the Player class, for player 2.
+
+        Returns:
+            None.
+    """
+
+    # Initalize the game number count
+    game_number = 1
+
+    # Start the loop of games
+    while True:
+        # Display the current game number
+        print(f'* Game #{game_number} *\n')
+
+        # Start the play loop, for the total NUMBER_OF_PLAYS
+        for index in range(NUMBER_OF_PLAYS):
+            # Display the current play index and play total
+            print(f'* Play {index +1} of {NUMBER_OF_PLAYS} *\n')
+
+            # Get plays for each player
+            player_1 = get_player_play(player=player_1)
+            player_2 = get_player_play(player=player_2)
+
+            # Determine the winner of the head-to-head plays
+            play_result = get_play_result(
+                player_1=player_1,
+                player_2=player_2
+            )
+            player_1 = play_result.player_1
+            player_2 = play_result.player_2
+
+        # Determine the winner of the game (after all plays)
+        game_result = get_game_result(
+            player_1=player_1,
+            player_2=player_2
+        )
+        player_1 = game_result.player_1
+        player_2 = game_result.player_2
+
+        print(f'*** {game_result.winner} wins! ***\n'
+              f'\tPlayer 1 record: {player_1.record}\n'
+              f'\tPlayer 2 record: {player_2.record}\n')
+
+        game_number += 1
 
 
 def main():
@@ -302,9 +359,13 @@ def main():
 
     # Create a game object from the UltimateRPS class
     ultimate_rps = UltimateRPS()
-    print(ultimate_rps)
 
     # Game loop
+    game_loop(
+        game_object=ultimate_rps,
+        player_1=player_1,
+        player_2=player_2
+    )
 
 
 if __name__ == '__main__':

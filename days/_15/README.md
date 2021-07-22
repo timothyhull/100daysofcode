@@ -906,5 +906,138 @@ def test_get_game_result(
 `get_game_result()` function:
 
 ```python
+# Get game result
+def get_game_result(
+    player_1: Player,
+    player_2: Player
+) -> namedtuple:
+    """ Get the result/winner after each play.
 
+        Args:
+            player_1 (Player): UltimateRPS.Player object for player 1.
+            player_2 (Player): UltimateRPS.Player object for player 2.
+
+        Return:
+            game_results (namedtuple): player_1 and player_2 objects plus
+                                      winner attrobute, with winning player.
+
+    """
+
+    # Determine if player_1 is the winner
+    if player_1.score > player_2.score:
+        # Set the winner as player_1
+        winner = player_1.name
+
+        # Increment the player records
+        player_1.record = player_1.record._replace(
+            wins=player_1.record.wins + 1
+        )
+        player_2.record = player_2.record._replace(
+            losses=player_1.record.losses + 1
+        )
+
+    # Determine if player_2 is the winner
+    elif player_1.score < player_2.score:
+        winner = player_2.name
+
+        # Increment the player records
+        player_1.record = player_1.record._replace(
+            losses=player_1.record.losses + 1
+        )
+        player_2.record = player_2.record._replace(
+            wins=player_1.record.wins + 1
+        )
+
+    # Determine if the game is a draw
+    else:
+        winner = ''
+
+        # Increment the player records
+        player_1.record = player_1.record._replace(
+            draws=player_1.record.draws + 1
+        )
+        player_2.record = player_2.record._replace(
+            draws=player_2.record.draws + 1
+        )
+
+    # Create a namedtuple class to return
+    PlayResults = namedtuple('PlayResults', 'player_1 player_2 winner')
+
+    # Create a play_results namedtuple instance to return
+    game_results = PlayResults(
+        player_1=player_1,
+        player_2=player_2,
+        winner=winner
+    )
+
+    return game_results
+```
+
+---
+
+#### :notebook: 7/21/21
+
+- Created `game_loop()` function in [`ultimate_rps.py`](ultimate_rps/ultimate_rps.py) to support interactive play.
+- Completed game:
+    - All tests pass.
+    - Time not committed to UI elegance.
+
+`game_loop()` function
+
+```python
+# Game Loop
+def game_loop(
+    game_object: UltimateRPS,
+    player_1: Player,
+    player_2: Player
+) -> None:
+    """ Loop through gameplay until canceled.
+
+        Args:
+            game_object (UltimateRPS): Instantiation of the UltimateRPS class.
+            player_1 (Player): Instantiation of the Player class, for player 1.
+            player_2 (Player): Instantiation of the Player class, for player 2.
+
+        Returns:
+            None.
+    """
+
+    # Initalize the game number count
+    game_number = 1
+
+    # Start the loop of games
+    while True:
+        # Display the current game number
+        print(f'* Game #{game_number} *\n')
+
+        # Start the play loop, for the total NUMBER_OF_PLAYS
+        for index in range(NUMBER_OF_PLAYS):
+            # Display the current play index and play total
+            print(f'* Play {index +1} of {NUMBER_OF_PLAYS} *\n')
+
+            # Get plays for each player
+            player_1 = get_player_play(player=player_1)
+            player_2 = get_player_play(player=player_2)
+
+            # Determine the winner of the head-to-head plays
+            play_result = get_play_result(
+                player_1=player_1,
+                player_2=player_2
+            )
+            player_1 = play_result.player_1
+            player_2 = play_result.player_2
+
+        # Determine the winner of the game (after all plays)
+        game_result = get_game_result(
+            player_1=player_1,
+            player_2=player_2
+        )
+        player_1 = game_result.player_1
+        player_2 = game_result.player_2
+
+        print(f'*** {game_result.winner} wins! ***\n'
+              f'\tPlayer 1 record: {player_1.record}\n'
+              f'\tPlayer 2 record: {player_2.record}\n')
+
+        game_number += 1
 ```
