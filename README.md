@@ -133,6 +133,12 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 </details>
 
+<details><summary>Days 16-18: List comprehensions and generators</summary>
+
+- Day 16: [7/22/21](days/_16)
+
+</details>
+
 <details><summary>Days DCAUTO: Exam Prep</summary>
 
 :bangbang: ​Taking a two-week break from **100DaysOfCode** exercises to study for the Cisco **DCAUTO** exam :mortar_board:.  Each day of study that includes writing Python will continue the days of code streak.
