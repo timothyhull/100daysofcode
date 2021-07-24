@@ -136,6 +136,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 <details><summary>Days 16-18: List comprehensions and generators</summary>
 
 - Day 16: [7/22/21](days/_16)
+- Day 16a: [7/23/21](days/_16#notebook-72321)
 
 </details>
 
