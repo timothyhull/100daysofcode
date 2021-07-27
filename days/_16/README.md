@@ -1,4 +1,4 @@
-## :calendar: Day 16: 7/22/2021-7/25/2021
+## :calendar: Day 16: 7/22/2021-7/26/2021
 
 ---
 
@@ -17,11 +17,13 @@
 
 ## Tasks:
 
-:white_check_mark: Watch videos 1-2 and create Jupyter Notebook for notes
+:white_check_mark: Watch videos 1-2 and create [Jupyter Notebook](list_comprehensions.ipynb) for notes
 
-:white_large_square: Watch video 3 and update Jupyter Notebook notes
+:white_large_square: Watch video 3 and update Jupyter [Notebook](generators.ipynb) notes
 
-:white_large_square: Watch video 4 and update Jupyter Notebook notes
+:white_large_square: Watch video 4 and update Jupyter [Notebook](generators.ipynb) notes
+
+:white_large_square: Watch videos 5 and update Jupyter [Notebook](generators.ipynb) notes
 
 ---
 
@@ -99,4 +101,44 @@ def create_select_options_generator(options=options):
         yield(f'<option value={option}>{option.title()}</option>')
 
 list(create_select_options_generator())
+```
+
+---
+
+- Measured the performance of creating a `list` with a large data set versus a generator.
+  - Used the `%timeit` function in Jupyter Notebooks (iPython) to test performance.
+  - The generator function vastly outperforms the `list` (microseconds versus miliseconds)
+
+```python
+# Define a million years and determine which ears are leap years
+import calendar
+
+# Use a list
+def leap_years_list(years: int = 1000000) -> list:
+    leap_years = []
+    for year in range(1, years + 1):
+        if calendar.isleap(year):
+            leap_years.append(year)
+
+    return leap_years
+
+""" Time both choices with the %timeit function.
+    -n1 means to execute the given statement 1 time.
+"""
+# Time the list function
+%timeit -n1 leap_years_list()
+```
+
+```python
+# Use a generator
+def leap_years_generator(years: int = 1000000) -> int:
+    for year in range(1, years + 1):
+        if calendar.isleap(year):
+            yield(year)
+
+""" Time both choices with the %timeit function.
+    -n1 means to execute the given statement 1 time.
+"""
+# Time the generator function
+%timeit -n1 leap_years_generator()
 ```
