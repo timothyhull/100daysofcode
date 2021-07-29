@@ -50,7 +50,7 @@ def test_title_case_names() -> None:
 
 
 def test_switch_name_order() -> None:
-    """ Test for a a list of names for a switched order of names
+    """ Test for a list of names for a switched order of names
         where last name is before first name.
 
         Args:
@@ -82,7 +82,7 @@ def test_switch_name_order() -> None:
 
 
 def test_title_case_names_gen() -> None:
-    """ Test for a a list of title case names, produced by a generator.
+    """ Test for a list of title case names, produced by a generator.
 
         Args:
             None.
@@ -102,3 +102,38 @@ def test_title_case_names_gen() -> None:
 
     # Assert that the list is empty
     assert not wrong_case_names
+
+
+def test_random_name_pairs(capfd) -> None:
+    """ Test for a list of title case name pairings, chosen at random.
+        Use capfd to test for valid print output.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+    """
+
+    # Call the function to return an object to test
+    name_pairs = random_name_pairs()
+
+    # Check each pairing to confirm both names are first names
+    bad_pairs = 0
+
+    # Loop through name pairs
+    for pairs in list(name_pairs):
+
+        """ Convert the name pair string to a list with join().
+            Add a space after each first name, to ensure it will only match
+            a first name.
+            Iterate over the list of names with a trailing space and check
+            for a matching value in the NAMES list.
+            Last names will fail to match because of the added trailing space.
+        """
+        for name in f'{" ".join(pairs)} ':
+            if name not in NAMES:
+                bad_pairs += 1
+
+    # Assert that the count of bad pairs is 0
+    assert not bad_pairs

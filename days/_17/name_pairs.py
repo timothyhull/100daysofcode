@@ -6,6 +6,8 @@
 """
 
 # Imports
+from copy import copy
+from random import choice
 from types import GeneratorType
 
 # Constants
@@ -62,12 +64,37 @@ def title_case_names_gen(names: list = NAMES) -> GeneratorType:
 
         Returns:
             titled_names (GeneratorType).
-                Generator of of title cased names
+                Generator of title cased names
     """
 
     # Loop through the names list and yield one name
     for name in names:
         yield name.title()
+
+
+def random_name_pairs(names: list = NAMES) -> GeneratorType:
+    """ Converts a list of first and last names to a generator that
+        pairs two first names randomly.
+
+        Args:
+            names (list):
+                A list of names.
+
+        Returns:
+            name_pair (GeneratorType).
+                Generator of random name pairings
+    """
+
+    # Create a copy of names, to avoid impacting the global NAMES
+    names = copy(names)
+    for _ in names:
+        name_1 = choice(names)
+        names.remove(name_1)
+
+        name_2 = choice(names)
+        names.remove(name_2)
+
+        yield name_1, name_2
 
 
 def main():

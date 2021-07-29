@@ -16,9 +16,11 @@
 
 ## Tasks:
 
-:white_check_mark: Create pytest functions to create title case and reversed name order lists
+:white_check_mark: Create pytest and primary functions to create title case and reversed name order lists
 
-:white_check_mark: Create pytest functions to create a title case list using a generator
+:white_check_mark: Create pytest and primary functions to create a title case list, using a generator
+
+:white_large_square: Create pytest and primary functions to randomly create first name pairs, using a generator
 
 :white_large_square: Complete Day 17 exercise
 
@@ -35,3 +37,11 @@
   - All tests passing.
 
 ---
+
+#### :notebook: 7/28/21
+
+- Created `pytest` function `test_random_name_pairs` in [test_name_pairs.py](test_name_pairs.py) to pairs of first names.
+
+- Created function `random_name_pairs` in [name_pairs.py](name_pairs.py) to create random name pairs but unable to produce the desired result.
+
+- Need to revise `test_random_name_pairs` to ensure the names are unique and to test capfd for the correct, printed output.
