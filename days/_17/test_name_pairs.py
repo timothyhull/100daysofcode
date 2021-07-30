@@ -115,25 +115,8 @@ def test_random_name_pairs(capfd) -> None:
             None.
     """
 
-    # Call the function to return an object to test
     name_pairs = random_name_pairs()
-
-    # Check each pairing to confirm both names are first names
-    bad_pairs = 0
-
-    # Loop through name pairs
-    for pairs in list(name_pairs):
-
-        """ Convert the name pair string to a list with join().
-            Add a space after each first name, to ensure it will only match
-            a first name.
-            Iterate over the list of names with a trailing space and check
-            for a matching value in the NAMES list.
-            Last names will fail to match because of the added trailing space.
-        """
-        for name in f'{" ".join(pairs)} ':
-            if name not in NAMES:
-                bad_pairs += 1
-
-    # Assert that the count of bad pairs is 0
-    assert not bad_pairs
+    for _ in name_pairs:
+        n = next(name_pairs)
+        out = capfd.readouterr()[0]
+        assert f'{n[0]} is paired with {n[1]}' in out

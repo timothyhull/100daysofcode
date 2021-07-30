@@ -12,10 +12,10 @@ from types import GeneratorType
 
 # Constants
 NAMES = [
-    'arnold schwarzenegger', 'alec baldwin', 'bob belderbos',
+    'arnold schwarzenegger', 'alec baldwin', 'lord garmadon',
     'julian sequeira', 'sandra bullock', 'keanu reeves',
-    'julbob pybites', 'bob belderbos', 'julian sequeira',
-    'al pacino', 'brad pitt', 'matt damon', 'brad pitt'
+    'julbob pybites', 'bob belderbos', 'forky spork',
+    'al pacino', 'brad pitt', 'matt damon', 'dead pool'
 ]
 
 
@@ -87,14 +87,17 @@ def random_name_pairs(names: list = NAMES) -> GeneratorType:
 
     # Create a copy of names, to avoid impacting the global NAMES
     names = copy(names)
-    for _ in names:
+    while len(names) > 1:
         name_1 = choice(names)
         names.remove(name_1)
 
         name_2 = choice(names)
         names.remove(name_2)
 
-        yield name_1, name_2
+        print(f'{name_1.split()[0]} is paired with {name_2.split()[0]}')
+
+        # yield the first name from name_1, name_2
+        yield name_1.split()[0], name_2.split()[0]
 
 
 def main():
