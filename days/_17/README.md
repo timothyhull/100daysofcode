@@ -48,7 +48,7 @@
 
 ---
 
-#### :notebook: 7/28/21
+#### :notebook: 7/29/21
 
 - Updated `pytest` function `test_random_name_pairs` in [test_name_pairs.py](test_name_pairs.py) to consume the generator, one `next()` function at a time.
   - Used `capfd` to test for the output _name_1 is paired with name_2_.
@@ -103,3 +103,75 @@ def random_name_pairs(names: list = NAMES) -> GeneratorType:
         # yield the first name from name_1, name_2
         yield name_1.split()[0], name_2.split()[0]
   ```
+
+---
+
+#### :notebook: 7/30/21
+
+- The `random.sample()` function chooses `N` values from a list object.
+    - Effectively, `random.sample()` is `random.choice()` with a second argument, to specify the number of values.
+
+```python
+# Import modules
+from random import choice, randint, sample
+
+# Create a list
+l = 'a b c d e f g h i j k l m n o p'.split()
+
+# Use choice() to specify a single, random chioce
+choice(l)
+
+# Use randint() and sample() to specify a random number of chioces
+sample(l, randint(1, 10))
+```
+
+- The `itertools.islice()` function allows **slicing** a generator just like a `list` except `itertools.islice()` returns an iterable object, instead of the sub-list.
+    - This can be useful when a looping over a generator function with a `for` loop would produce an infinite loop.
+
+```python
+from random import randint
+
+def random_generator_function():
+    """ Start an infinite loop, to produce a genenerated result, indifintely.
+        This does NOT start looping infinitely when called, only on-demand.
+            Because of the yield statement.
+    """
+
+    while True:
+        # Create two random numbers
+        x = randint(1, 20)
+        y = randint(1000, 2000)
+
+        # Yield the random values
+        yield f'My favor numbers are {x} and {y}'
+
+# Call the generator function to assign a generator to a variablle
+r = random_generator_function()
+
+# Yield any number of values, indifintely, with the next() function
+next(r)
+
+# Produce an infinite loop
+# list(r)
+```
+
+    - Create what is effectively a generator slice with `itertools.islice()`.
+        - After iteration, the iterator will be empty...
+        -...because it is an iterator of a generator.
+
+```python
+from itertools import islice
+
+# Call the generator function to assign a generator to a variablle
+r = random_generator_function()
+
+# Create a generator 'slice' (iterator) with a length of 10 with islice
+i = islice(r, 10)
+
+# Iterate over the iterator object by converting the iterator to a list
+list(i)
+
+# Alternatively, use a loop to iterate over the iterator
+for v in i:
+    print(v)
+```
