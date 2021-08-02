@@ -19,7 +19,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 <details><summary>Getting Started</summary>
 
 - Course Start: [4/16/21](days/_course_start)
--  Day 0: [4/17/21](days/_0)
+- Day 0: [4/17/21](days/_0)
 
 </details>
 
@@ -144,6 +144,18 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 - Day 17a: [7/28/21](days/_17#notebook-72821)
 - Day 17b: [7/29/21](days/_17#notebook-72921)
 - Day 17c: [7/30/21](days/_17#notebook-73021)
+
+```python
+# Completed 105 straight days of code, before streak ended on 7/31/21.
+from datetime import date
+streak_start_date = date(2021, 4, 16)
+streak_end_date = date(2021, 7, 30)
+
+streak_length = (streak_end_date - streak_start_date).days
+print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
+```
+
+- Day 18: [8/1/21](days/_18)
 
 </details>
 
