@@ -30,3 +30,9 @@
 #### :notebook: 8/1/21
 
 - [My Solution file for **PyBite #5**](pybite_5.py)
+
+---
+
+#### :notebook: 8/2/21
+
+- [My Solution file for **PyBite #26**](pybite_26.py)
