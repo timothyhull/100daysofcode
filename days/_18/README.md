@@ -1,4 +1,4 @@
-## :calendar: Day N: 8/1/2021
+## :calendar: Day 18: 8/1/2021-8/2/2021
 ---
 
 ## Topics:
