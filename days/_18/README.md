@@ -19,7 +19,7 @@
 
 :white_check_mark: Complete PyBite #5
 
-:white_large_square: Complete PyBite #26
+:white_check_mark: Complete PyBite #26
 
 :white_large_square: Complete PyBite Challenge #11
 
