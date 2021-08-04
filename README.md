@@ -160,6 +160,12 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 
 </details>
 
+<details><summary>Days 19-21: Iteration with itertools</summary>
+
+- Day 19: [8/3/21](days/_19)
+
+</details>
+
 <details><summary>Days DCAUTO: Exam Prep</summary>
 
 :bangbang: ​Taking a two-week break from **100DaysOfCode** exercises to study for the Cisco **DCAUTO** exam :mortar_board:.  Each day of study that includes writing Python will continue the days of code streak.
