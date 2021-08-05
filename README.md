@@ -163,6 +163,7 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 <details><summary>Days 19-21: Iteration with itertools</summary>
 
 - Day 19: [8/3/21](days/_19)
+- Day 19a: [8/4/21](days/_19#norebook-8421)
 
 </details>
 
