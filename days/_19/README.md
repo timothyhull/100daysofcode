@@ -20,9 +20,9 @@
 
 :white_check_mark: Work with iterators plus the `iter()` and `next()` methods
 
-:white_check_mark: Watch videos 4-
+:white_check_mark: Watch video 4
 
-:white_large_square: TBD
+:white_large_square: Watch video 5
 
 ---
 
@@ -34,4 +34,4 @@
 
 #### :notebook: 8/4/21
 
-- 
+- Added `itertools.cycle()` notes to a [Jupyter Notebook](itertools.ipynb#itertools.cycle---Day-2)
