@@ -30,6 +30,8 @@
 
 :white_check_mark: Revisit the `itertools.cycle()` method
 
+:white_check_mark: Review the `itertools.cycle()` and `itertools.product()` methods
+
 :white_large_square: Watch video 6
 
 ---
@@ -42,10 +44,14 @@
 
 #### :notebook: 8/4/21
 
-- Added `itertools.cycle()` notes to a [Jupyter Notebook](itertools.ipynb#itertools.cycle---Day-2)
+- Added `itertools.cycle()` notes to the [Jupyter Notebook](itertools.ipynb#itertools.cycle---Day-2)
 
 ---
 
 #### :notebook: 8/5/21
 
-- Added `itertools.product()` notes to a [Jupyter Notebook](itertools.ipynb#itertools.product---Day-3)
+- Added `itertools.product()` notes to the [Jupyter Notebook](itertools.ipynb#itertools.product---Day-3)
+
+#### :notebook: 8/6/21
+
+- Added `itertools.combinations()` and `itertools.permutations() notes to the [Jupyter Notebook](itertools.ipynb#itertools.combinations-and-itertools.permutations---Day-4
