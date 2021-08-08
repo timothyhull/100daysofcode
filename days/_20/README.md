@@ -20,6 +20,8 @@
 
 :white_check_mark: Create `class` object for colored traffic lights
 
+:white_check_mark: Create traffic light simulator application
+
 :white_large_square: Outline test framework
 
 ---
@@ -29,4 +31,12 @@
 #### :notebook: 8/7/21
 
 - Reviewed traffic light challenge instructions.
-- Created the `TrafficLight` `class` in [`light_signals.py`](light_signals.py)
+- Created the `TrafficLight` `class` in [`light_signals.py`](light_signals.py).
+
+#### :notebook: 8/8/21
+
+- Refactored the `TrafficLight` `class` in [`light_signals.py`](light_signals.py) for simplicity and reusability.
+    - Changed `class ` objects for light strings from methods that print to printable string attributes.
+    - Created a `print_light()` method to render a light attribute string as a graphic.
+- Developed a functional traffic light application in [`traffic_light.py`](traffic_light.py).
+    - Uses the `TrafficLight` `class` in [`light_signals.py`](light_signals.py).

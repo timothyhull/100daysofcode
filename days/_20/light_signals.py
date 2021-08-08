@@ -18,13 +18,15 @@ class TrafficLights:
             # Instantiate a TrafficLights object:
                 lights = TrafficLights()
 
-            # Use color methods to display a light:
-                lights.red()
+            # Use the 'print_light' method to display a light:
+                print_light(lights.red)
     """
 
     def __init__(self) -> None:
         # Create traffic lights
-        pass
+        self.red = self.__red_light__()
+        self.yellow = self.__yellow_light__()
+        self.green = self.__green_light__()
 
     # ANSI escape sequence for text formatting
     def __esc__(self, code: Union[str, int]) -> str:
@@ -73,7 +75,7 @@ class TrafficLights:
 
         return light
 
-    def red(self) -> None:
+    def __red_light__(self) -> None:
         """ Method of a TrafficLights object that displays the ASCII graphic
             for a red traffic light.
 
@@ -81,10 +83,11 @@ class TrafficLights:
                 None.
 
             Returns:
-                None.
+                red_light (str):
+                    Formatted string for a red light.
         """
 
-        self.red_light = f"""
+        red_light = f"""
 |¯¯¯¯¯¯¯¯|
 {self.__activate_light__(ansi_color=RED_ANSI)}
 |        |
@@ -95,20 +98,21 @@ class TrafficLights:
 | |____| |
 |________|
 """
-        print(self.red_light)
 
-    def yellow(self) -> None:
+        return red_light
+
+    def __yellow_light__(self) -> None:
         """ Method of a TrafficLights object that displays the ASCII graphic
             for a yellow traffic light.
 
             Args:
                 None.
 
-            Returns:
-                None.
+                yellow_light (str):
+                    Formatted string for a yellow light.
         """
 
-        self.yellow_light = f"""
+        yellow_light = f"""
 |¯¯¯¯¯¯¯¯|
 | |¯¯¯¯| |
 | |____| |
@@ -119,20 +123,21 @@ class TrafficLights:
 | |____| |
 |________|
 """
-        print(self.yellow_light)
 
-    def green(self) -> None:
+        return yellow_light
+
+    def __green_light__(self) -> None:
         """ Method of a TrafficLights object that displays the ASCII graphic
             for a green traffic light.
 
             Args:
                 None.
 
-            Returns:
-                None.
+                green_light (str):
+                    Formatted string for a green light.
         """
 
-        self.green_light = f"""
+        green_light = f"""
 |¯¯¯¯¯¯¯¯|
 | |¯¯¯¯| |
 | |____| |
@@ -143,4 +148,18 @@ class TrafficLights:
 {self.__activate_light__(ansi_color=GREEN_ANSI)}
 |________|
 """
-        print(self.green_light)
+
+        return green_light
+
+    def print_light(self, light: str) -> None:
+        """ Prints a colored light ASCII graphic.
+
+            Args:
+                light (str):
+                    Formatted string for a colored light.
+
+            Returns:
+                None
+        """
+
+        print(light)
