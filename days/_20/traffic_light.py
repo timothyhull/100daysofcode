@@ -61,5 +61,5 @@ def traffic(
             # Sleep for the interval time
             sleep(interval)
 
-    except KeyboardInterrupt:
-        pass
+    except KeyboardInterrupt as e:
+        print(f'\n{e!r}')
