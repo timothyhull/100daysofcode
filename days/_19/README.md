@@ -1,4 +1,4 @@
-## :calendar: Day 19: 8/3/2021-8/5/2021
+## :calendar: Day 19: 8/3/2021-8/6/2021
 
 ---
 
@@ -32,7 +32,9 @@
 
 :white_check_mark: Review the `itertools.cycle()` and `itertools.product()` methods
 
-:white_large_square: Watch video 6
+:white_check_mark: Watch video 6
+
+:white_check_mark: Review `itertools.combinations()` and `itertools.permutations()`
 
 ---
 
