@@ -29,4 +29,4 @@
 #### :notebook: 8/7/21
 
 - Reviewed traffic light challenge instructions.
-- Created the `TrafficLight` `class` in [`traffic_light.py`](traffic_light.py)
+- Created the `TrafficLight` `class` in [`light_signals.py`](light_signals.py)
