@@ -22,7 +22,7 @@
 
 :white_check_mark: Create traffic light simulator application
 
-:white_large_square: Outline test framework
+:white_check_mark: Watch videos 7-8
 
 ---
 
@@ -40,3 +40,7 @@
     - Created a `print_light()` method to render a light attribute string as a graphic.
 - Developed a functional traffic light application in [`traffic_light.py`](traffic_light.py).
     - Uses the `TrafficLight` `class` in [`light_signals.py`](light_signals.py).
+
+#### :notebook: 8/9/21
+
+- Watched videos 7-8
