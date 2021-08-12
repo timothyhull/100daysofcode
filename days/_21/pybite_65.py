@@ -73,7 +73,6 @@ def get_possible_dict_words(
 
     # Loop over the permutation size range
     for perm in range(1, perm_size + 1):
-        print(f'Current perm size is {perm}')  # Remove
         # Get the permutations for the current perm_size iteration
         perms = _get_permutations_draw(
             draw=draw,
@@ -85,8 +84,6 @@ def get_possible_dict_words(
             join_word = ''.join(word)
             if join_word in WORDS:
                 dict_words.append(join_word)
-
-    print(dict_words)
 
     return dict_words
 
