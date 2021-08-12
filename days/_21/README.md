@@ -73,4 +73,11 @@ pprint(list(zip_longest(names, hometown, hair_color, fillvalue='*')))
 
 #### :notebook: 8/11/21
 
-- 
+- Used TDD methodology and created `pytest` tests in [`test_pybite_65.py`](test_pybite_65.py).
+- Created functions to meet `pytest` criteria in [`pybite_65.py`](pybite_65.py).
+- Success criteria progress:
+    - [X] Get random letter draw.
+    - [X] Get all variable length permutations of a letter draw via a helper function.
+    - [X] Get all valid dictionary words from all permutations of a letter draw.
+    - [] Score words based on individual letter values.
+    - [] Return the letter with the highest score.
