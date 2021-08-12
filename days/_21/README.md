@@ -1,4 +1,4 @@
-## :calendar: Day 21: 8/11/2021
+## :calendar: Day 21: 8/10/2021-8/11/2021
 
 ---
 
@@ -68,3 +68,9 @@ pprint(list(zip_longest(names, hometown, hair_color, fillvalue='*')))
 ```
 
 - Used `itertools.combinations()` and `itertools.permutations()` to [solve PyBite 17](pybite_17.py).
+
+---
+
+#### :notebook: 8/11/21
+
+- 
