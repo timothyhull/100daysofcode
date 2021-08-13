@@ -11,6 +11,7 @@ import urllib.request
 from random import choice
 # Import `string.ascii_lowercase` to get alphabet letters
 from string import ascii_lowercase
+from _21.resources.word_score import word_score
 
 # PREWORK
 TMP = os.getenv("TMP", "/tmp")
@@ -50,14 +51,15 @@ def get_letter_draw(
 
 
 def get_possible_dict_words(
-    perm_size: int = NUM_LETTERS
+    draw: list = get_letter_draw(),
+    max_perm_size: int = NUM_LETTERS
 ) -> list:
     """ Get all possible words from a draw (list of letters) which are
         valid dictionary words. Use _get_permutations_draw and provided
         dictionary.
 
         Args:
-            perm_size (int):
+            max_perm_size (int):
                 Maximum permutation size.
 
         Returns:
@@ -65,18 +67,15 @@ def get_possible_dict_words(
                 A list of valid words.
     """
 
-    # Get a letter draw
-    draw = get_letter_draw()
-
     # Create a list for valid words
     dict_words = []
 
     # Loop over the permutation size range
-    for perm in range(1, perm_size + 1):
-        # Get the permutations for the current perm_size iteration
+    for perm in range(1, max_perm_size + 1):
+        # Get the permutations for the current max_perm_size iteration
         perms = _get_permutations_draw(
             draw=draw,
-            perm_size=perm
+            max_perm_size=perm
         )
 
         # Loop over the current permutations iteration and search for words
@@ -90,7 +89,7 @@ def get_possible_dict_words(
 
 def _get_permutations_draw(
     draw: list = get_letter_draw(),
-    perm_size: int = NUM_LETTERS
+    max_perm_size: int = NUM_LETTERS
 ) -> list:
     """ Helper to get all permutations of a draw (list of letters), hint:
         use itertools.permutations (order of letters matters).
@@ -98,7 +97,7 @@ def _get_permutations_draw(
         Args:
             draw(list):
                 List of NUM_LETTERS random letters.
-            perm_size(int):
+            max_perm_size(int):
                 Size of the permutation.
 
         Returns:
@@ -108,10 +107,30 @@ def _get_permutations_draw(
 
     perms = permutations(
         iterable=draw,
-        r=perm_size)
+        r=max_perm_size)
 
     return perms
 
 
 def main():
-    pass
+    # Get a draw of letters
+    draw = get_letter_draw()
+    print(f'\n The letter draw is "{" ".join(draw).upper()}"\n')
+
+    # Get a list of dictionary words
+    words = get_possible_dict_words(
+        draw=draw
+    )
+    print('The available words from the letter draw are:')
+    for word in words:
+        print(word)
+
+    # Determine the word with the highest score
+    max_score_word = word_score(words)
+    print(f'\nThe word with the maximum score is '
+          f'"{max_score_word.word.title()}" '
+          f'with a score of {max_score_word.score}\n')
+
+
+if __name__ == '__main__':
+    main()

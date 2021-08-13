@@ -22,9 +22,11 @@
 
 :white_check_mark: Complete PyBite 64
 
-:white_large_square: Complete PyBite 17
+:white_check_mark: Complete PyBite 17
 
-:white_large_square: Complete PyBite 65
+:white_check_mark: Complete PyBite 65
+
+- Caveat to PyBite 65 is my solution, while more funcitonal, is not compatible with the prescribed PyBite tests.
 
 ---
 
@@ -81,3 +83,22 @@ pprint(list(zip_longest(names, hometown, hair_color, fillvalue='*')))
     - [X] Get all valid dictionary words from all permutations of a letter draw.
     - [ ] Score words based on individual letter values.
     - [ ] Return the letter with the highest score.
+
+---
+
+#### :notebook: 8/12/21
+
+- Created `main()` function in [`pybite_65.py`](pybite_65.py).
+- Refactored code to support better reusability.
+- Completed `pytest` tests in [`test_pybite_65.py`](test_pybite_65.py).
+    - Added a test for the `main()` funciton in [`pybite_65.py`](pybite_65.py).
+    - Used the `capfd` property in `pytest` with `re.search` to compare expected output with actual output.
+- Created `word_score()` function to find the highest score of all word permutations.
+    - [`resources/word_score.py`](resources/word_score.py).
+    - Used `nametuple` objects for letter scores although a `dict` may have been a less complex/more elegant solution.
+- Success criteria progress:
+    - [X] Get random letter draw.
+    - [X] Get all variable length permutations of a letter draw via a helper function.
+    - [X] Get all valid dictionary words from all permutations of a letter draw.
+    - [X] Score words based on individual letter values.
+    - [X] Return the word with the highest score.
