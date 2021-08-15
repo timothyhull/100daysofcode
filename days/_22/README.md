@@ -22,7 +22,9 @@
 
 :white_check_mark: Review concepts from 8/13/21
 
-:white_check_mark: Watch videos 3
+:white_check_mark: Watch video 3
+
+:white_check_mark: Watch video 4
 
 :white_large_square: TBD
 
@@ -45,3 +47,11 @@
 - Tested the functionality of the `@wraps` decorator within a decorator function definition to determine its purpose.
     - Without `@wraps`, the docstring **is not** available for the decorated function, using the `help()` function.
     - With `@wraps`, the docstring **is** available for the decorated function, using the `help()` function.
+
+---
+
+#### 8/15/21 :notebook:
+
+- Worked with nested decorator functions in the [Jupyter Notebook](decorators.ipynb).
+    - Successfully wrapped a function in two decorators.
+- Used `itertools.cycle` to display a wait timer.
