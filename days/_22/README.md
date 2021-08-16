@@ -1,4 +1,4 @@
-## :calendar: Day 22: 8/13/2021-8/14/2021
+## :calendar: Day 22: 8/13/2021-8/15/2021
 
 ---
 
@@ -13,6 +13,8 @@
 :star: [Hitchhiker's Guide to Python Function Arguments](https://docs.python-guide.org/writing/style/#function-arguments)
 
 :star: [`functools.wraps`](https://docs.python.org/3/library/functools.html#functools.wraps)
+
+:star: [PyBites Decorators Article](https://pybit.es/decorators-by-example.html)
 
 ---
 
