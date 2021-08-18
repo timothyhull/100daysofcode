@@ -24,7 +24,7 @@ HTML_TAG = compile(
     VERBOSE
 )
 TEXT_INPUT = ['This is a test']
-TEXT_EXPECTED_RESULTS = [f'<p>{text}</p>' for text in TEXT_INPUT]
+TEXT_EXPECTED_RESULTS = [f'<p><strong>{t}</strong></p>' for t in TEXT_INPUT]
 TEXT_TESTS = list(zip(TEXT_INPUT, TEXT_EXPECTED_RESULTS))
 
 

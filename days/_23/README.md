@@ -18,7 +18,9 @@
 
 :white_check_mark: Complete [PyBite 22](https://codechalleng.es/bites/22/)
 
-:white_large_square: TBD
+:white_large_square: Review [Advanced Uses of Python Decorators](https://www.codementor.io/@sheena/advanced-use-python-decorators-class-function-du107nxsv)
+
+:white_large_square: Compare and refactor [`pybite_22.py`](pybite_22.py) as needed.
 
 ---
 
@@ -38,3 +40,7 @@
     - The first test uses `pytest.mark.parameterize` to pass values as **arguments** to the function `get_text()`.
     - The second test uses `unittest.mock.patch` to mock **`input()`** function values `get_text()`.
     - Both functions use the same input data compare that to the same expected results data.
+
+- Conducted **decorator testing** using [`decorator_testing.ipynb`](decorator_testing.ipynb).
+- Successfuly developed decorator function with argument in [`pybite_22.py`](pybite_22.py) that passes **pybite 22** tests.
+    - Need to review and improve understanding.
