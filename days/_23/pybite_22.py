@@ -34,7 +34,7 @@ def make_html(function, element) -> str:
 
 
 # @make_html('p')
-@make_html('strong')
+# @make_html('strong')
 def get_text(text: Union[str, int, float] = None) -> str:
     ''' Function to collect text for HTML formatting.
 
