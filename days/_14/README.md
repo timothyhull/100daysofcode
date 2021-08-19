@@ -36,7 +36,7 @@
 - Built out initial `class` objects for `Roll` and `Players`
 
 ```python
-#!/usr/bin/env/python3
+#!/usr/bin/env python3
 """ Game objects for Paper, Rock, Scissors.
 """
 
