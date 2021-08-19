@@ -1,4 +1,4 @@
-## :calendar: Day 23: 8/16/2021
+## :calendar: Day 23: 8/16/2021-8/18/2021
 
 ---
 
@@ -10,6 +10,8 @@
 
 ## Resources:
 
+:star: [Introduction to Python Decorators](https://www.codementor.io/@sheena/introduction-to-decorators-du107vo5c)
+
 :star: [Advanced Uses of Python Decorators](https://www.codementor.io/@sheena/advanced-use-python-decorators-class-function-du107nxsv)
 
 ---
@@ -20,7 +22,7 @@
 
 :white_large_square: Review [Advanced Uses of Python Decorators](https://www.codementor.io/@sheena/advanced-use-python-decorators-class-function-du107nxsv)
 
-:white_large_square: Compare and refactor [`pybite_22.py`](pybite_22.py) as needed.
+:white_large_square: Review and refactor [`pybite_22.py`](pybite_22.py) as needed.
 
 ---
 
@@ -34,6 +36,8 @@
     - A skim of the article indicates I need to create a function that returns a decorator in order to successfully complete the task.
     - I thought I could complete this challenge in one day although this may be a good opportunity to implement some `pytest` tests, given more time.
 
+---
+
 #### :notebook: 8/16/21
 
 - Wrote `pytest` tests for [`pybite_22.py`](pybite_22.py) in [`test_pybite_22.py`](test_pybite_22.py).
@@ -44,3 +48,53 @@
 - Conducted **decorator testing** using [`decorator_testing.ipynb`](decorator_testing.ipynb).
 - Successfuly developed decorator function with argument in [`pybite_22.py`](pybite_22.py) that passes **pybite 22** tests.
     - Need to review and improve understanding.
+
+---
+
+#### :notebook: 8/17/21
+
+- Reviewed [Advanced Uses of Python Decorators](https://www.codementor.io/@sheena/advanced-use-python-decorators-class-function-du107nxsv)
+
+- Conducted further **decorator testing** (_Day 2 of testing_ section) using [`decorator_testing.ipynb`](decorator_testing.ipynb).
+
+Note>General syntax of a Python decorator object **with arguments**:
+
+```python
+def outer_decorator(*outer_args,**outer_kwargs):                            
+    def decorator(fn):                                            
+        def decorated(*args,**kwargs):                            
+            do_something(*outer_args,**outer_kwargs)                      
+            return fn(*args,**kwargs)                         
+        return decorated                                          
+    return decorator       
+
+
+@outer_decorator(1,2,3)
+def foo(a,b,c):
+    print(a)
+    print(b)
+    print(c)
+
+
+foo()
+```
+
+Which is equivalent to:
+
+```python
+def decorator(fn):                                            
+    def decorated(*args,**kwargs):                            
+        do_something(1,2,3)                      
+        return fn(*args,**kwargs)                         
+    return decorated                                          
+return decorator       
+    
+@decorator
+def foo(a,b,c):
+    print(a)
+    print(b)
+    print(c)
+
+
+foo()
+```

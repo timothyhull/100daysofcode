@@ -16,13 +16,21 @@ def make_html(element):
                 The name of the HTML element to format with tags.
 
         Returns:
-            argument_decorator (function):
+            text_to_html (function):
                 Function that applies to a decorated function,
             passing the `make_html` decorator function's argument.
-            
+
     '''
 
-    def argument_decorator(decorated_function):
+    ''' These variables could be set:
+        - Right here
+        - The text_to_html function
+        - Or the format_as_html function
+    '''
+    # start_tag = f'<{element}>'
+    # end_tag = f'</{element}>'
+
+    def text_to_html(decorated_function):
         ''' Decorator function that applies to a decorated function,
             passing the `make_html` decorator function's argument.
 
@@ -31,13 +39,13 @@ def make_html(element):
                     Function decorated by `make_html`.
 
             Returns:
-                wrapper (function):
+                format_as_html (function):
                     Function that wraps the decorated function.
         '''
 
         # Specify @wraps to preserve the decorated function's docstring
         @wraps(decorated_function)
-        def wrapper(*args, **kwargs):
+        def format_as_html(*args, **kwargs):
 
             text = decorated_function(*args, **kwargs)
             start_tag = f'<{element}>'
@@ -46,9 +54,9 @@ def make_html(element):
 
             return html
 
-        return wrapper
+        return format_as_html
 
-    return argument_decorator
+    return text_to_html
 
 
 @make_html('p')
