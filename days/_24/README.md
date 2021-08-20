@@ -1,4 +1,4 @@
-## :calendar: Day 24: 8/19/2021
+## :calendar: Day 24: 8/19/2021-8/21/2021
 
 ---
 
@@ -16,21 +16,35 @@
 
 ## Tasks:
 
-:white_large_square: Write a useful decorator
-
-:white_check_mark: TBD
+:white_check_mark: Write a useful decorator
 
 ---
 
 ## Notes:
 
-#### :notebook: 8/19/20
+#### :notebook: 8/19/21
 
 - Ideas for a useful decorator:
-    - Convert a text string into URL-encoded format.
-    - Convert a text string into a code-safe format.
+    - [ ] Convert a text string into URL-encoded format.
+    - [ ] Convert a text string into a code-safe format.
         - I.e. Convert "Demo Server #1" to "demo-server-1".
-    - Convert a `tuple` to a `namedtuple`.
+    - [X] **Convert a `tuple` to a `namedtuple`.**
 
 - Created `pytest` tests in [test_name_that_tuple.py](test_name_that_tuple.py) to test for a decorated function that converts an iterable into a `namedtuple`.
 - Created a decorated function in [name_that_tuple.py](name_that_tuple.py) that converts an iterable into a `namedtuple`.
+
+---
+
+#### :notebook: 8/20/21
+
+- [test_name_that_tuple.py](test_name_that_tuple.py)
+    - Completed docstrings.
+    - Added `pytest.mark.parameterize` to test valid and invalid attribute names.
+
+- [name_that_tuple.py](name_that_tuple.py)
+    - Completed docstrings.
+    - Imported the `typing` module to support `Callable` (function) and `Iterable` class typing.
+    - Added the `validate_attribute_input` function to validate attribute input.
+        - Used **regex** to locate invalid characters at the start of and remainder of an attribute string.
+        - Automatically reformats invalid names using the `sub()` method of `re.compile`.
+    - Added `ValueError` exception for length mismatches between the `iterable_input` and `attribute_names` arguments.
