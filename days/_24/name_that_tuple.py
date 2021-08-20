@@ -95,10 +95,10 @@ def named_tuple_converter(function: Callable) -> Callable:
             Args:
                 kwargs:
                     iterable_input (Iterable):
-                        Any iteraterable object class including, list, tuple,
-                        dict_keys, dict_values, etc.
+                        Optional, any iteraterable object class including,
+                        list, tuple, dict_keys, dict_values, etc.
                     attribute_names (Iterable[str]):
-                        Optional kwarg, aAny iteraterable object class
+                        Optional kwarg, any iteraterable object class
                         including, list, tuple, dict_keys, dict_values, etc.
                         with str values.
 
