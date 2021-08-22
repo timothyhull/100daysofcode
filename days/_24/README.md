@@ -18,6 +18,10 @@
 
 :white_check_mark: Write a useful decorator
 
+:white_check_mark: Add regex renaming functionality to replace mid-word spaces with **_**
+
+:white_check_mark: Add option to auto-create `namedtuple` field names
+
 :white_large_square: Create open-source release of decorator
 
 ---
@@ -55,4 +59,14 @@
 
 #### :notebook: 8/21/21
 
-- 
+- [test_name_that_tuple.py](test_name_that_tuple.py)
+    - Added `pytest` test to determine if a custom decorated function not found in [name_that_tuple.py](name_that_tuple.py) would work correctly.
+    - Also tested to determine if setting the `auto_attribute_names` parameter to `True` would cause the decorator function `@named_tuple_converter` to automatically generate `namedtuple` attribute names.
+    - Removed excess test data constants after updating automatic `namedtuple` attribute name reformatting regex rules in [name_that_tuple.py](name_that_tuple.py).
+        - Space characters mid-attribute name are no longer removed but instead replaced with a **_** character.
+
+- [name_that_tuple.py](name_that_tuple.py)
+    - Modified regex automatic `namedtuple` attribute name reformatting rules.
+        - Space characters mid-attribute name are no longer removed but instead replaced with a **_** character.
+        - Space characters are stripped from the beginning and end of any attribute names.
+    - Added an optional argument to the decorator function `@named_tuple_converter` named `auto_attribute_names` which, when set to `True` (default is `False`), will automatically name `namedtuple` attributes, when not supplied by the `attribute_names` argument.

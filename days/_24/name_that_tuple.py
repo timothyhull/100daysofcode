@@ -122,17 +122,18 @@ def named_tuple_converter(function: Callable) -> Callable:
                         including, list, tuple, dict_keys, dict_values, etc.
                         with str values.
 
-                    auto_attribute_names (bool): Automatically name attributes
+                    auto_attribute_names (bool):
+                        Optional kwarg, automatically name attributes
                         without user input or use of the attribut_names
                         parameter. Default: False
 
             Returns: named_tuple (namedtuple):
                 Class NamedTuple instantiated from collections.namedtuple
         '''
-        print(args)
+
         # Call the decorated function
         iterable_input = function(*args, **kwargs)
-        print(args)
+
         # Convert the attribute_names argument value to a list object
         if kwargs.get('attribute_names') is not None:
             attribute_names = list(kwargs.get('attribute_names'))
@@ -203,7 +204,8 @@ def tuple_tester(
                 Any iterable object of strings to supply field names for
                 a namedtuple.
 
-            auto_attribute_names (bool): Automatically name attributes
+            auto_attribute_names (bool):
+                    Optional kwarg, automatically name attributes
                     without user input or use of the attribut_names
                     parameter. Default: False
 

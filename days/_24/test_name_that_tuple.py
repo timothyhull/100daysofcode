@@ -9,6 +9,7 @@
 from _24.name_that_tuple import TEST_DATA, tuple_tester, named_tuple_converter
 from collections import namedtuple
 from pytest import mark
+from typing import Iterable
 from unittest.mock import patch
 
 # Constants
@@ -24,6 +25,7 @@ TEST_INVALID_ATTRIBUTE_NAMES_DATA = (
     'hair color #',
     '  4eye color !@'
 )
+TEST_AUTO_NAMED_ATTRIBUTED_DATA = (f'index_{i}' for i in range(5))
 
 
 @mark.parametrize(
@@ -117,34 +119,27 @@ def test_named_tuple_converter_input(side_effects) -> None:
 @mark.parametrize(
     argnames=[
         'iter_input',
-        'att_names',
         'iter_return',
         'att_return'
     ],
     argvalues=[
         [
             TEST_DATA.values(),
-            TEST_DATA.keys(),
             TEST_DATA.values(),
-            TEST_DATA.keys()
-        ],
-        [
-            TEST_DATA.values(),
-            TEST_INVALID_ATTRIBUTE_NAMES_DATA,
-            TEST_DATA.values(),
-            TEST_DATA.keys()
+            TEST_AUTO_NAMED_ATTRIBUTED_DATA
         ]
     ]
 )
-def test_named_tuple_converter_custom_function(
+def test_named_tuple_converter_custom_function_auto_name_attributes(
     iter_input,
-    att_names,
     iter_return,
     att_return
 ) -> None:
     ''' Test of the named_tuple_converter decorator function using a custom
         function to determine if the function accepts a tuple argument
-        and returns a namedtuple with the original tuple data. Pass the
+        and returns a namedtuple with the original tuple data, and if the
+        decorator function automatically names the namedtuple attributes
+        with the auto_attribute_names parameter set to True. Pass the
         namedtuple field names as an argument.
 
         Args:
@@ -157,15 +152,19 @@ def test_named_tuple_converter_custom_function(
     # Create a custom function decorated with named_tuple_converter
     @named_tuple_converter
     def custom_function(
-        auto_attribute_names=True
+        iterable_input: Iterable,
+        auto_attribute_names: bool
     ) -> tuple:
         '''
         '''
 
-        return tuple(iter_input),
+        return tuple(iter_input)
 
     # Get a result to test
-    test_result = custom_function()
+    test_result = custom_function(
+        iterable_input=iter_input,
+        auto_attribute_names=True
+    )
 
     # Verify the result is of type NamedTuple
     assert 'NamedTuple' in str(test_result.__class__)
