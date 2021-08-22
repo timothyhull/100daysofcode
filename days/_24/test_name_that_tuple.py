@@ -1,9 +1,12 @@
 #!/usr/bin/env pytest
 ''' pytest tests for name_that_tuple.py
+
+    Usage:
+        pytest test_name_that_tuple.py name_that_tuple.py
 '''
 
 # Imports
-from _24.name_that_tuple import TEST_DATA, tuple_tester
+from _24.name_that_tuple import TEST_DATA, tuple_tester, named_tuple_converter
 from collections import namedtuple
 from pytest import mark
 from unittest.mock import patch
@@ -19,14 +22,7 @@ TEST_INVALID_ATTRIBUTE_NAMES_DATA = (
     '$1_las*t_nam)(e',
     '+_age',
     'hair color #',
-    ''
-)
-TEST_INVALID_ATTRIBUTE_NAMES_RESULT = (
-    'first_name',
-    'last_name',
-    'age',
-    'haircolor',
-    'index_4'
+    '  4eye color !@'
 )
 
 
@@ -48,7 +44,7 @@ TEST_INVALID_ATTRIBUTE_NAMES_RESULT = (
             TEST_DATA.values(),
             TEST_INVALID_ATTRIBUTE_NAMES_DATA,
             TEST_DATA.values(),
-            TEST_INVALID_ATTRIBUTE_NAMES_RESULT
+            TEST_DATA.keys()
         ]
     ]
 )
@@ -58,7 +54,7 @@ def test_named_tuple_converter(
     iter_return,
     att_return
 ) -> None:
-    ''' Test of the tuple_namer decorator function to determine if
+    ''' Test of the named_tuple_converter decorator function to determine if
         the function accepts a tuple argument and returns a namedtuple
         with the original tuple data. Pass the namedtuple field names
         as an argument.
@@ -91,7 +87,7 @@ def test_named_tuple_converter(
     side_effect=TEST_DATA.keys()
 )
 def test_named_tuple_converter_input(side_effects) -> None:
-    ''' Test of the tuple_namer decorator function to determine if
+    ''' Test of the named_tuple_converter decorator function to determine if
         the function accepts a tuple argument and returns a namedtuple
         with the original tuple data. Collect the field names with the
         input() function.
@@ -116,3 +112,66 @@ def test_named_tuple_converter_input(side_effects) -> None:
 
     # Verify the field names input data equals the namedtuple attribute names
     assert tuple(TEST_DATA.keys()) == test_result._fields
+
+
+@mark.parametrize(
+    argnames=[
+        'iter_input',
+        'att_names',
+        'iter_return',
+        'att_return'
+    ],
+    argvalues=[
+        [
+            TEST_DATA.values(),
+            TEST_DATA.keys(),
+            TEST_DATA.values(),
+            TEST_DATA.keys()
+        ],
+        [
+            TEST_DATA.values(),
+            TEST_INVALID_ATTRIBUTE_NAMES_DATA,
+            TEST_DATA.values(),
+            TEST_DATA.keys()
+        ]
+    ]
+)
+def test_named_tuple_converter_custom_function(
+    iter_input,
+    att_names,
+    iter_return,
+    att_return
+) -> None:
+    ''' Test of the named_tuple_converter decorator function using a custom
+        function to determine if the function accepts a tuple argument
+        and returns a namedtuple with the original tuple data. Pass the
+        namedtuple field names as an argument.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+    '''
+
+    # Create a custom function decorated with named_tuple_converter
+    @named_tuple_converter
+    def custom_function(
+        auto_attribute_names=True
+    ) -> tuple:
+        '''
+        '''
+
+        return tuple(iter_input),
+
+    # Get a result to test
+    test_result = custom_function()
+
+    # Verify the result is of type NamedTuple
+    assert 'NamedTuple' in str(test_result.__class__)
+
+    # Verify the test tuple input data equals the namedtuple attribute values
+    assert tuple(iter_return) == tuple(test_result._asdict().values())
+
+    # Verify the field names input data equals the namedtuple attribute names
+    assert tuple(att_return) == test_result._fields

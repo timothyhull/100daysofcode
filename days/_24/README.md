@@ -18,6 +18,8 @@
 
 :white_check_mark: Write a useful decorator
 
+:white_large_square: Create open-source release of decorator
+
 ---
 
 ## Notes:
@@ -48,3 +50,9 @@
         - Used **regex** to locate invalid characters at the start of and remainder of an attribute string.
         - Automatically reformats invalid names using the `sub()` method of `re.compile`.
     - Added `ValueError` exception for length mismatches between the `iterable_input` and `attribute_names` arguments.
+
+---
+
+#### :notebook: 8/21/21
+
+- 

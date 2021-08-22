@@ -18,24 +18,37 @@ from functools import wraps
 from re import compile, VERBOSE
 
 # Constants
+# Match pattern for allowed first characters in a namedtuple attribute
 ATTRIBUTE_INPUT_START_CHARACTER = compile(
     r'''
-    ^[^a-zA-Z]+   # Alphabet letter
+    ^[^a-zA-Z]+   # Only start with alphabet letters
     ''',
     VERBOSE
 )
+
+# Match pattern for allowed non-first characters in a namedtuple attribute
 ATTRIBUTE_INPUT_INVALID_CHARACTERS = compile(
     r'''
-    [^\w_-]       # Alphabet letter, integer, _, or -
+    [^\w\s_-]    # Only allow alphabet letters, integers, _, -, and spaces
     ''',
     VERBOSE
 )
+
+# Match pattern to replace space characters in a namedtuple attribute
+ATTRIBUTE_INPUT_SPACE_CHARACTERS = compile(
+    r'''
+    \s            # Any space character
+    ''',
+    VERBOSE
+)
+
+# Test attribute and value data for the run_tuple_tester() function
 TEST_DATA = {
-    'first_name': 'Tim',
-    'last_name': 'Hull',
-    'age': 41,
-    'hair_color': 'blonde',
-    'eye_color': 'blue'
+    'first_name': 'Alex',
+    'last_name': 'Smith',
+    'age': 45,
+    'hair_color': 'brown',
+    'eye_color': 'green'
 }
 
 
@@ -56,16 +69,22 @@ def validate_attribute_input(
     # Loop over each attribute name
     for index, _ in enumerate(attribute_names):
 
-        # Replace any invalid start characters
+        # Remove leading/trailing spaces and replace invalid start characters
         attribute_names[index] = ATTRIBUTE_INPUT_START_CHARACTER.sub(
             repl='',
-            string=attribute_names[index]
+            string=attribute_names[index].strip()
         )
 
         # Replace any invalid characters
         attribute_names[index] = ATTRIBUTE_INPUT_INVALID_CHARACTERS.sub(
             repl='',
-            string=attribute_names[index]
+            string=attribute_names[index].strip()
+        )
+
+        # Replace mid-value spaces with _
+        attribute_names[index] = ATTRIBUTE_INPUT_SPACE_CHARACTERS.sub(
+            repl='_',
+            string=attribute_names[index].strip()
         )
 
         # Create an attribute name for a blank string
@@ -97,33 +116,45 @@ def named_tuple_converter(function: Callable) -> Callable:
                     iterable_input (Iterable):
                         Optional, any iteraterable object class including,
                         list, tuple, dict_keys, dict_values, etc.
+
                     attribute_names (Iterable[str]):
                         Optional kwarg, any iteraterable object class
                         including, list, tuple, dict_keys, dict_values, etc.
                         with str values.
 
+                    auto_attribute_names (bool): Automatically name attributes
+                        without user input or use of the attribut_names
+                        parameter. Default: False
+
             Returns: named_tuple (namedtuple):
                 Class NamedTuple instantiated from collections.namedtuple
         '''
-
+        print(args)
         # Call the decorated function
         iterable_input = function(*args, **kwargs)
-
+        print(args)
         # Convert the attribute_names argument value to a list object
         if kwargs.get('attribute_names') is not None:
             attribute_names = list(kwargs.get('attribute_names'))
 
-        # Collect attribute names via input
+        # Collect attribute names
         else:
             attribute_names = []
-            for index, value in enumerate(iterable_input):
+            for value in iterable_input:
 
-                # Get individual attribute names
-                attribute_names.append(
-                    input(
-                        f'Enter an attribute name for the value "{value}": '
+                # Set individual attribute names to a blank string
+                # The validate_attribute_input function replaces blank strings
+                if kwargs.get('auto_attribute_names') is True:
+                    attribute_names.append('')
+
+                # Get individual attribute names via input function
+                else:
+                    attribute_names.append(
+                        input(
+                            'Enter an attribute name for the value '
+                            f'"{value}": '
+                        )
                     )
-                )
 
         # Validate attribure names
         attribute_names = validate_attribute_input(
@@ -159,16 +190,22 @@ def named_tuple_converter(function: Callable) -> Callable:
 @named_tuple_converter
 def tuple_tester(
     iterable_input: Iterable,
-    attribute_names: Iterable[str] = None
+    attribute_names: Iterable[str] = None,
+    auto_attribute_names: bool = False
 ) -> tuple:
     ''' Function to test the tuple_converter decorator function.
 
         Args:
             iterable_input (Iterable):
                 Any iterable object to convert to a namedtuple.
+
             attribute_names (Iterable[str]):
                 Any iterable object of strings to supply field names for
                 a namedtuple.
+
+            auto_attribute_names (bool): Automatically name attributes
+                    without user input or use of the attribut_names
+                    parameter. Default: False
 
         Returns:
             tuple_output (tuple):
@@ -180,8 +217,9 @@ def tuple_tester(
     return tuple_output
 
 
-def test_1() -> Callable:
-    ''' Decorator test function #1
+def run_tuple_tester() -> Callable:
+    ''' Function to run the decorated tuple_tester function using
+        TEST_DATA as a test iterable.
     '''
 
     return tuple_tester(
