@@ -22,7 +22,7 @@
 
 :white_check_mark: Add option to auto-create `namedtuple` field names
 
-:white_large_square: Create open-source release of decorator
+:white_large_square: Create open-source release of decorator on GitHub and PyPi
 
 ---
 
@@ -70,3 +70,13 @@
         - Space characters mid-attribute name are no longer removed but instead replaced with a **_** character.
         - Space characters are stripped from the beginning and end of any attribute names.
     - Added an optional argument to the decorator function `@named_tuple_converter` named `auto_attribute_names` which, when set to `True` (default is `False`), will automatically name `namedtuple` attributes, when not supplied by the `attribute_names` argument.
+
+---
+
+#### :notebook: 8/22/21
+
+- Start preparations for release of this code as an open-source project on [GitHub](https://github.com/timothyhull/namedtuple-maker) and PyPi.
+    - Created VS Code development container.
+    - Created [GitHub Repository](https://github.com/timothyhull/).
+    - Created [GitHub Issues](https://github.com/timothyhull/issues) to track progress.
+    - Created & verified [PyPi](https://pypi.org) account.
