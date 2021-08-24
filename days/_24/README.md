@@ -80,3 +80,12 @@
     - Created [GitHub Repository](https://github.com/timothyhull/).
     - Created [GitHub Issues](https://github.com/timothyhull/issues) to track progress.
     - Created & verified [PyPi](https://pypi.org) account.
+
+---
+
+#### :notebook: 8/23/21
+
+- Updated repository files in open-source [GitHub](https://github.com/timothyhull/namedtuple-maker) repository:
+    - `devcontainer.json`
+    - `requirements/requirements.txt`
+    - Created linting and `pytest` automated CI/CD workflow testing.
