@@ -10,7 +10,7 @@
 
 ## Resources:
 
-:star: TBD
+:star: [RealPython Publishing Packages to PyPI](https://realpython.com/pypi-publish-python-package/)
 
 ---
 
@@ -22,7 +22,7 @@
 
 :white_check_mark: Add option to auto-create `namedtuple` field names
 
-:white_large_square: Create open-source release of decorator on GitHub and PyPi
+:white_large_square: Create open-source release of decorator on GitHub and PyPI
 
 ---
 
@@ -79,7 +79,7 @@
     - Created VS Code development container.
     - Created [GitHub Repository](https://github.com/timothyhull/).
     - Created [GitHub Issues](https://github.com/timothyhull/issues) to track progress.
-    - Created & verified [PyPi](https://pypi.org) account.
+    - Created & verified [PyPI](https://pypi.org) account.
 
 ---
 
@@ -89,3 +89,38 @@
     - `devcontainer.json`
     - `requirements/requirements.txt`
     - Created linting and `pytest` automated CI/CD workflow testing.
+
+---
+
+#### :notebook: 8/24/21
+
+- Created & verified [Test PyPI](https://test.pypi.org) account.
+- Created `setup.py` and `__init__.py` files.
+- `pip` installed `twine` and `bumpversion`
+- Created distributed `wheel` package.
+- Ran commands to package and upload project to [Test PyPI](https://test.pypi.org)
+    - Package available at [https://test.pypi.org/project/namedtuple-maker/](https://test.pypi.org/project/namedtuple-maker/)
+
+```bash
+# Bump the patch version (other options include 'major' and 'minor')
+bumpversion  --allow-dirty --current-version 1.0.3 patch setup.py namedtuple_maker/__init__.py
+
+# Create a distributable package
+./setup.py sdist bdist_wheel
+
+# Upload the package to test.pypi.org
+twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+```
+
+- Installed package with the following command:
+
+```bash
+pip install -i https://test.pypi.org/simple/namedtuple-maker
+```
+
+- Verified the installation in `ipython` with the following code:
+
+```python
+from namedtuple_maker.namedtuple_maker import *
+run_tuple_tester()
+```
