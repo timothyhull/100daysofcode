@@ -124,3 +124,9 @@ pip install -i https://test.pypi.org/simple/namedtuple-maker
 from namedtuple_maker.namedtuple_maker import *
 run_tuple_tester()
 ```
+
+---
+
+#### :notebook: 8/25/21
+
+- Added initial content to **README.md** file.
