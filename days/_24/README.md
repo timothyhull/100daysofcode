@@ -130,3 +130,9 @@ run_tuple_tester()
 #### :notebook: 8/25/21
 
 - Added initial content to **README.md** file.
+
+---
+
+#### :notebook: 8/26/21
+
+- Added additional content to **README.md** file.
