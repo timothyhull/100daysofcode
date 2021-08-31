@@ -1,4 +1,4 @@
-## :calendar: Day 24: 8/19/2021-8/22/2021
+## :calendar: Day 24: 8/19/2021-8/31/2021
 
 ---
 
@@ -24,7 +24,7 @@
 
 :white_check_mark: Add option to auto-create `namedtuple` field names
 
-:white_large_square: Create open-source release of decorator on GitHub and PyPI
+:white_check_mark: Create open-source release of decorator on [GitHub](https://github.com/timothyhull/namedtuple-maker) and [PyPI](https://pypi.org/project/namedtuple-maker/)
 
 ---
 
