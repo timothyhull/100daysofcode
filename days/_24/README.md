@@ -12,6 +12,8 @@
 
 :star: [RealPython Publishing Packages to PyPI](https://realpython.com/pypi-publish-python-package/)
 
+:star: [RealPython Python Wheels Article](https://realpython.com/python-wheels/)
+
 ---
 
 ## Tasks:
@@ -157,3 +159,13 @@ run_tuple_tester()
 - Update code examples to include options with and without supplying an argument for the `argument_names` parameter.
 - Tested and revised code samples.
 - Merged changes to `main` branch.
+
+---
+
+#### :notebook: 8/31/21
+
+- Completed documentation.
+- Conducted testing and troubleshooting using the Test PyPI site.
+- Successfully published package to Test PyPi.
+- Successfully published package to [PyPI](https://pypi.org/project/namedtuple-maker/).
+- Successfull installed package with `pip` and tested package elements in a Python interpreter.
