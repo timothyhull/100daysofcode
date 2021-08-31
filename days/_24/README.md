@@ -152,3 +152,6 @@ run_tuple_tester()
 #### :notebook: 8/30/21
 
 - Review & revise **README.md** file.
+- Update code examples to include options with and without supplying an argument for the `argument_names` parameter.
+- Tested and revised code samples.
+- Merged changes to `main` branch.
