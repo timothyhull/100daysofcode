@@ -149,6 +149,8 @@ run_tuple_tester()
 
 - Review **README.md** file.
 
+---
+
 #### :notebook: 8/30/21
 
 - Review & revise **README.md** file.
