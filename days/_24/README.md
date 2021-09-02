@@ -175,4 +175,5 @@ run_tuple_tester()
 
 #### :notebook: 9/1/21
 
+- Added tests GitHub Action tests to ensure the package successfully installs and runs.
 - Reviewed decorator notes, after spending several weeks on publishing the `namedtuple-maker` decorator project to PyPI.
