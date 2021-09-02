@@ -1,4 +1,4 @@
-## :calendar: Day 24: 8/19/2021-8/31/2021
+## :calendar: Day 24: 8/19/2021-9/1/2021
 
 ---
 
@@ -169,3 +169,10 @@ run_tuple_tester()
 - Successfully published package to Test PyPi.
 - Successfully published package to [PyPI](https://pypi.org/project/namedtuple-maker/).
 - Successfull installed package with `pip` and tested package elements in a Python interpreter.
+
+
+---
+
+#### :notebook: 9/1/21
+
+- Reviewed decorator notes, after spending several weeks on publishing the `namedtuple-maker` decorator project to PyPI.
