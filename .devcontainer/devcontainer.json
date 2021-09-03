@@ -11,6 +11,16 @@
     ],
     "forwardPorts": [8888],
     "settings": {
+        "[yaml]": {
+            "editor.insertSpaces": true,
+            "editor.tabSize": 2,
+            "editor.autoIndent": "keep",
+            "editor.quickSuggestions": {
+                "other": true,
+                "comments": false,
+                "strings": true
+            }
+        },
         "python.analysis.useImportHeuristic": true,
         "python.pythonPath": "/usr/local/bin/python3",
         "python.formatting.provider": "autopep8",
