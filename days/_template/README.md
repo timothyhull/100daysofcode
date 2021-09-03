@@ -1,20 +1,20 @@
-## :calendar: Day N: 0/0/0000
+# :calendar: Day N: 0/0/0000
 
 ---
 
-## Topics:
+## Topics
 
 :clipboard: TBD
 
 ---
 
-## Resources:
+## Resources
 
 :star: TBD
 
 ---
 
-## Tasks:
+## Tasks
 
 :white_check_mark: TBD
 
@@ -22,6 +22,6 @@
 
 ---
 
-## Notes:
+## Notes
 
-#### :notebook: TBD
+### :notebook: TBD
