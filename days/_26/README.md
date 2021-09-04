@@ -1,0 +1,33 @@
+# :calendar: Day 26: 9/3/2021
+
+---
+
+## Topics
+
+:clipboard: Error Handling Program
+
+---
+
+## Resources
+
+:star: TBD
+
+---
+
+## Tasks
+
+:white_check_mark: Select program to write errors for 
+
+:white_large_square: TBD
+
+---
+
+## Notes
+
+### :notebook: 9/3/21
+
+- Selected DND game from day 13 as a program to test with error handling.
+- Define a list of potential errors the game could return:
+
+    1. `ModuleNotFoundError`, for failed import.
+    2. `ValueError`, for invalid user input.

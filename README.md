@@ -202,6 +202,7 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 <details><summary>Days 25-27: Error Handling</summary>
 
 - Day 25: [9/2/21](days/_25)
+- Day 26: [9/3/21](days/_26)
 
 </details>
 
