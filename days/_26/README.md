@@ -16,9 +16,9 @@
 
 ## Tasks
 
-:white_check_mark: Select program to write errors for 
+:white_check_mark: Select program to write exception handling for.
 
-:white_large_square: TBD
+:white_check_mark: List exceptions that might occur in the program.
 
 ---
 
