@@ -31,3 +31,4 @@
 
     1. `ModuleNotFoundError`, for failed import.
     2. `ValueError`, for invalid user input.
+    3. `KeyboardInterrupt`, for a keyboard interrupt sequence (ctrl + c)
