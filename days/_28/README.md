@@ -20,7 +20,7 @@
 
 :white_large_square: Review Jupyter Notebook notes
 
-:white_large_square: Watch videos 4-
+:white_large_square: Watch videos 4-5
 
 ---
 
@@ -36,4 +36,6 @@
 
 ### :notebook: 9/6/21
 
+- Reviewed content in the [Jupyter Notebook](regular_expressions.ipynb) from the previous day.
 - Updated [Jupyter Notebook](regular_expressions.ipynb).
+    - Added notes for **string capturing parenthesis** and `re.findall`.
