@@ -117,14 +117,14 @@ twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 - Installed package with the following command:
 
 ```bash
-pip install -i https://test.pypi.org/simple/namedtuple-maker
+pip install -i https://test.pypi.org/simple/ namedtuple-maker
 ```
 
 - Verified the installation in `ipython` with the following code:
 
 ```python
 from namedtuple_maker.namedtuple_maker import *
-run_tuple_tester()
+run_make_named_tuple()
 ```
 
 ---
@@ -168,7 +168,7 @@ run_tuple_tester()
 - Conducted testing and troubleshooting using the Test PyPI site.
 - Successfully published package to Test PyPi.
 - Successfully published package to [PyPI](https://pypi.org/project/namedtuple-maker/).
-- Successfull installed package with `pip` and tested package elements in a Python interpreter.
+- Successfully installed package with `pip` and tested package elements in a Python interpreter.
 
 
 ---
