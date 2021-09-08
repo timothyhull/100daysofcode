@@ -18,9 +18,13 @@
 
 :white_check_mark: Watch videos 1-3
 
-:white_large_square: Review Jupyter Notebook notes
+:white_check_mark: Review Jupyter Notebook notes
 
-:white_large_square: Watch videos 4-5
+:white_check_mark: Watch videos 4-5
+
+:white_check_mark: Watch video 6
+
+:white_large_square: Watch video 7
 
 ---
 
@@ -39,3 +43,31 @@
 - Reviewed content in the [Jupyter Notebook](regular_expressions.ipynb) from the previous day.
 - Updated [Jupyter Notebook](regular_expressions.ipynb).
     - Added notes for **string capturing parenthesis** and `re.findall`.
+
+---
+
+### :notebook: 9/7/21
+
+- Updated [Jupyter Notebook](regular_expressions.ipynb).
+    - Added notes for `re.compile` and `re.verbose`
+
+Non-capturing group note:
+
+- A non-capturing group allows the use of parenthesis to group match criteria without creating a matching group (with a unique matching group number).
+    - This is useful if you want to designate a complex search pattern that should repeat several times:
+
+```python
+import re
+
+# The non-capturing group allows me to match a word followed by a space character (twice in this case)
+search_pattern = re.compile(
+    r'''
+    (?:         # Non-capturing (
+    [a-zA-Z']+  # One or more a-z, A-Z, or literal ' characters
+    \s          # Literal space character
+    )           # Non-capturing )
+    {2}         # Repeat the non-capturing group twice
+    ''',
+    re.VERBOSE
+)
+```
