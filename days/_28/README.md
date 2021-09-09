@@ -1,4 +1,4 @@
-# :calendar: Day 28: 9/5/2021-9/6/2021
+# :calendar: Day 28: 9/5/2021-9/8/2021
 
 ---
 
@@ -24,7 +24,7 @@
 
 :white_check_mark: Watch video 6
 
-:white_large_square: Watch video 7
+:white_large_square: Watch video 7-8
 
 ---
 
@@ -49,7 +49,7 @@
 ### :notebook: 9/7/21
 
 - Updated [Jupyter Notebook](regular_expressions.ipynb).
-    - Added notes for `re.compile` and `re.verbose`
+    - Added notes for `re.compile` and `re.verbose`.
 
 Non-capturing group note:
 
@@ -69,5 +69,30 @@ search_pattern = re.compile(
     {2}         # Repeat the non-capturing group twice
     ''',
     re.VERBOSE
+)
+```
+
+---
+
+### :notebook: 9/8/21
+
+- Updated [Jupyter Notebook](regular_expressions.ipynb).
+    - Added notes for `re.sub`.
+
+- `re.sub` performs more advanced substring replacement.
+    - The parameters are `pattern`, `repl`, and `string`.
+    - `pattern` supports raw strings for regular expression **search** operations.
+        - Supports using capturing groups, with parenthesis.
+    - `repl` also supports raw strings for regular expression matching groups (`\1`).
+
+```python
+import re
+
+text = 'My #1 favorite food is pizza, my #2 favorite food is pancakes, and my #3 favorite food is pickled jalapenos.'
+
+re.sub(
+    pattern=r'#(\d[\sa-zA-Z]+is\s)[a-zA-Z\s]+([,.])',
+    repl=r'#\1chocolate\2',
+    string=text
 )
 ```
