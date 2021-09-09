@@ -24,7 +24,7 @@
 
 :white_check_mark: Watch video 6
 
-:white_large_square: Watch video 7-8
+:white_check_mark: Watch video 7-8
 
 ---
 
