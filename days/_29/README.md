@@ -1,4 +1,4 @@
-# :calendar: Day 29: 9/9/2-21
+# :calendar: Day 29: 9/9/2021-9/10/21
 
 ---
 
@@ -26,7 +26,9 @@
 
 :white_check_mark: Review 10 Tips to Get More From Regex article
 
-:white_large_square: Review Documentation for Tip 6 snd Tip 10
+:white_large_square: Review 10 Tips Documentation for Tip 5
+
+:white_large_square: Review 10 Tips Documentation for Tip 6 snd Tip 10
 
 ---
 
@@ -61,3 +63,7 @@ p.search(s).group()
 ```
 
 ---
+
+### :notebook: 9/10/21
+
+- Reviewed Tip 5 (Greediness) 10 Tips for Python article.
