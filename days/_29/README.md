@@ -129,7 +129,7 @@ This is one group of words.
     - After the last character in a string, if the first character is a word character (`\w`).
     - Between two characters in a string, where one is a word character (`\w`) and the other is not a word character (`\W`).
 
-- <details><summary>Example #1</summary>
+<details><summary><b>Example #1</b></summary>
 
 ```python
 # Import the regular expression module
@@ -153,7 +153,7 @@ r.findall(text)
 
 </details>
 
-- <details><summary>Example #2</summary>
+<details><summary><b>Example #2</b></summary>
 
 ```python
 # Import the regular expression module
