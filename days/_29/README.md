@@ -129,50 +129,6 @@ This is one group of words.
     - After the last character in a string, if the first character is a word character (`\w`).
     - Between two characters in a string, where one is a word character (`\w`) and the other is not a word character (`\W`).
 
-- Example #1:
-
-```python
-# Import the regular expression module
-import re
-
-# Define a string to search
-text = 'This is a thrilling episode to thrash about in the bath through Thursday.'
-
-# Match every instance of 'th' and 'Th' when preceded by a non-word character.
-r = re.compile(
-    r'''
-    \b      # Start a word boundary
-    [tT]h      # Literal th or Th
-    ''',
-    re.VERBOSE
-)
-
-# Return a list of matches
-r.findall(text)
-```
-
-- Example #1:
-
-```python
-# Import the regular expression module
-import re
-
-# Define a string to search
-text = 'This is a thrilling episode to thrash about in the bath through Thursday.'
-
-# Match every instance of 'th' and 'Th' when preceded by a non-word character.
-r = re.compile(
-    r'''
-    \b      # Start a word boundary
-    [tT]h      # Literal th or Th
-    ''',
-    re.VERBOSE
-)
-
-# Return a list of matches
-r.findall(text)
-```
-
 - <details><summary>Example #1</summary>
 
 ```python
@@ -195,7 +151,7 @@ r = re.compile(
 r.findall(text)
 ```
 
-<details>
+</details>
 
 - <details><summary>Example #2</summary>
 
