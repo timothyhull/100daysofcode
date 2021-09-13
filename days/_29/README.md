@@ -1,4 +1,4 @@
-# :calendar: Day 29: 9/9/2021-9/10/21
+# :calendar: Day 29: 9/9/2021-9/12/21
 
 ---
 
@@ -28,7 +28,13 @@
 
 :white_check_mark: Review 10 Tips Documentation for Tip 5
 
-:white_large_square: Review 10 Tips Documentation for Tip 6 snd Tip 10
+:white_check_mark: Review 10 Tips Documentation for Tip 6
+
+:white_large_square: Review 10 Tips Documentation for Tip 8
+
+:white_large_square: Review 10 Tips Documentation for Tip 9
+
+:white_large_square: Review 10 Tips Documentation for Tip 10
 
 ---
 
@@ -111,7 +117,128 @@ This is one group of words.
 
 ---
 
+### :notebook: 9/12/21
+
+- The regex syntax `\b` indicates a _word boundary_.
+    - The match for a word boundary does not consume any characters (zero length).
+    - Will match at the boundaries of word and non-word characters.
+    - `\b` enables a "whole word only" functionality with the syntax `\bword\b`.
+
+- `\b` matches:
+    - Before the first character in a string, if the first character is a word character (`\w`).
+    - After the last character in a string, if the first character is a word character (`\w`).
+    - Between two characters in a string, where one is a word character (`\w`) and the other is not a word character (`\W`).
+
+- Example #1:
+
+```python
+# Import the regular expression module
+import re
+
+# Define a string to search
+text = 'This is a thrilling episode to thrash about in the bath through Thursday.'
+
+# Match every instance of 'th' and 'Th' when preceded by a non-word character.
+r = re.compile(
+    r'''
+    \b      # Start a word boundary
+    [tT]h      # Literal th or Th
+    ''',
+    re.VERBOSE
+)
+
+# Return a list of matches
+r.findall(text)
+```
+
+- Example #1:
+
+```python
+# Import the regular expression module
+import re
+
+# Define a string to search
+text = 'This is a thrilling episode to thrash about in the bath through Thursday.'
+
+# Match every instance of 'th' and 'Th' when preceded by a non-word character.
+r = re.compile(
+    r'''
+    \b      # Start a word boundary
+    [tT]h      # Literal th or Th
+    ''',
+    re.VERBOSE
+)
+
+# Return a list of matches
+r.findall(text)
+```
+
+- <details><summary>Example #1</summary>
+
+```python
+# Import the regular expression module
+import re
+
+# Define a string to search
+text = 'This is a thrilling episode to thrash about in the bath through Thursday.'
+
+# Match every instance of 'th' and 'Th' when preceded by a non-word character.
+r = re.compile(
+    r'''
+    \b         # Start a word boundary
+    [tT]h      # Literal th or Th
+    ''',
+    re.VERBOSE
+)
+
+# Display a list of matches
+r.findall(text)
+```
+
+<details>
+
+- <details><summary>Example #2</summary>
+
+```python
+# Import the regular expression module
+import re
+
+# Define a string to search
+text = 'This is a thrilling episode to thrash about in the bath through Thursday.'
+
+# Match every instance of 'th' and 'Th' when followed by a non-word character.
+re.search(r'[tT]h\b', text)
+```
+
+</details>
+
 - _Backreferences_ are helpful to do things like locating duplicate words:
 
 ```python
+# Import the regular expression module
+import re
+
+# Define a string to search
+text = 'This is the song song that never never ends'
+
+''' Match any word that appears immediately after itself.
+    Create match group 1 to find every word, then search for group 1
+    immediately after the match string.
+'''
+
+r = re.compile(
+    r'''
+    (          # Start match group 1
+    \b         # Start a word boundary
+    \w+        # Match one or more word characters
+    )          # End match group 1
+    \s+        # Match one or more space characters
+    \1         # Match an instance of match group 1
+    ''',
+    re.VERBOSE
+)
+
+# Display a list of matches
+r.findall(text)
+
 ```
