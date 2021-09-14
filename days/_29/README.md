@@ -250,7 +250,7 @@ text = strip_html()
 string = text[0].strip()
 num_replacements = text[1]
 
-print(f'String result: {string}\n')
+print(f'\nString result: {string}\n')
 
 print(f'Total replacements: {num_replacements}\n')
 ```
