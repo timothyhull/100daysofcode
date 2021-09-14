@@ -198,3 +198,59 @@ r = re.compile(
 r.findall(text)
 
 ```
+
+---
+
+### :notebook: 9/13/21
+
+- The `re.subn` function performs **string replacement** like `re.sub`, and `re.subn` also counts the number of replacements performed.
+    - The returned object is s 2-tuple with the first value being the string object after replacement occurs, and the second value being the number of replacements performed.
+
+```python
+# Define a string of HTML text to perform replacements on
+html = '''
+<html>
+    <head>
+        <title>This is a sample page</title>
+    </head>
+    <body>
+        <h1>This is the Sample Page Title</h1>
+        <ul>
+            <li>Point #1</li>
+            <li>Point #2</li>
+            <li>Point #3</li>
+        </ul>
+    </body>
+</html>
+'''
+
+# Import the regular expression module
+import re
+
+# Define a function to strip HTML tags, leaving only text remaining
+def strip_html(html: str = html) -> None:
+
+    ''' The non-greedy quantifier (?) after the + character indicates
+        the search will find the shortest possible match.'''
+    text = re.subn(
+        pattern=r'\n?\s*<[^<]+?>\n?\s*',
+        repl=' ',
+        string=html
+    )
+
+    return text
+
+# Import the Pretty Print module
+from pprint import pprint
+
+# Call the function
+text = strip_html()
+
+# Assign the tuple indices to their own variables.
+string = text[0].strip()
+num_replacements = text[1]
+
+print(f'String result: {string}\n')
+
+print(f'Total replacements: {num_replacements}\n')
+```
