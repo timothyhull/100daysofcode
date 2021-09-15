@@ -6,6 +6,7 @@
     },
     "extensions": [
         "davidanson.vscode-markdownlint",
+        "github.vscode-pull-request-github",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-azuretools.vscode-docker",
