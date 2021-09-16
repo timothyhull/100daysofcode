@@ -4,7 +4,7 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 ---
 
-## Resources:
+## Resources
 
 :star: TalkPython [course materials](https://training.talkpython.fm/courses/details/100-days-of-code-in-python).
 
@@ -25,17 +25,16 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 
 <details><summary>Days 1-3: Playing with Datetimes</summary>
 
--  Day 1: [4/18/21](days/_1)
--  Day 2: [4/19/21](days/_2)
--  Day 2a: [4/20/21](days/_2)
--  Day 3: [4/21/21](days/_3)
--  Day 3a: [4/22/21](days/_3)
--  Day 3b: [4/23/21](days/_3)
+- Day 1: [4/18/21](days/_1)
+- Day 2: [4/19/21](days/_2)
+- Day 2a: [4/20/21](days/_2)
+- Day 3: [4/21/21](days/_3)
+- Day 3a: [4/22/21](days/_3)
+- Day 3b: [4/23/21](days/_3)
 
 </details>
 
 <details><summary>Days 4-6: Collections module</summary>
-
 
 - Day 4: [4/24/21](days/_4)
 - Day 4a: [4/25/21](days/_4)
@@ -95,7 +94,6 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 </details>
 
 <details><summary>Days 13-15: Text-based Games Challenges (and class objects)</summary>
-
 
 - Day 13: [6/19/21](days/_13)
 - Day 13a: [6/20/21](days/_13#notebook-62021)
