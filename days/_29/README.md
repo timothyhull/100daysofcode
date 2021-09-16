@@ -34,7 +34,7 @@
 
 :white_check_mark: Review 10 Tips Documentation for Tip 8
 
-:white_large_square: Review 10 Tips Documentation for Tip 9
+:white_check_mark: Review 10 Tips Documentation for Tip 9
 
 :white_large_square: Review 10 Tips Documentation for Tip 10
 
@@ -76,3 +76,9 @@
 ### :notebook: 9/14/21
 
 - Migrated README.md notes to [regex_tips.ipynb](regex_tips.ipynb)
+
+---
+
+### :notebook: 9/15/21
+
+- Added **Compilation Flags** to [regex_tips.ipynb](regex_tips.ipynb)
