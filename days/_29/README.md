@@ -14,6 +14,8 @@
 
 - [Compilation Flags](https://docs.python.org/3.6/howto/regex.html#compilation-flags)
 
+- [Python named regular expression groups](http://www.learningaboutelectronics.com/Articles/Named-groups-with-regular-expressions-in-Python.php)
+
 :star: [Regex HOWTO (Python Documentation)](https://docs.python.org/3.7/howto/regex.html#regex-howto)
 
 :star: [Regex Operations (Python Documentation)](https://docs.python.org/3.7/library/re.html)
@@ -36,7 +38,7 @@
 
 :white_check_mark: Review 10 Tips Documentation for Tip 9
 
-:white_large_square: Review 10 Tips Documentation for Tip 10
+:white_check_mark: Review 10 Tips Documentation for Tip 10
 
 ---
 
@@ -82,3 +84,7 @@
 ### :notebook: 9/15/21
 
 - Added **Compilation Flags** to [regex_tips.ipynb](regex_tips.ipynb)
+
+### :notebook: 9/16/21
+
+- Added **Named Groups** to [regex_tips.ipynb](regex_tips.ipynb)
