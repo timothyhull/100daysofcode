@@ -52,15 +52,15 @@ def get_all_hashtags_and_links(tweet=TWEET):
 
     link_hashtag_match = re.compile(
         r'''
-        (?:       # Start non-capturing group
-        http://   # Literal match of http://
-        [a-z\./-] # Character class for a-z and literals . / -
-        +         # Match 1 or more of the previous character class
-        |         # Bitwise OR operator
-        \#        # Literal # character
-        [a-z]     # Character class for a-z
-        +         # Match 1 or more of the previous character class
-        )         # End non-capturing group
+        (?:         # Start non-capturing group
+        http://     # Literal match of http://
+        \S          # Non-space characters
+        +           # Match 1 or more of the previous character class
+        |           # Bitwise OR operator
+        \#          # Literal # character
+        [a-z]       # Character class for a-z
+        +           # Match 1 or more of the previous character class
+        )           # End non-capturing group
         ''',
         re.IGNORECASE | re.VERBOSE
     )
