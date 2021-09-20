@@ -78,7 +78,23 @@ def match_first_paragraph(html=HTML):
        'pybites != greedy' (= content of first paragraph).
        Return this string.
     """
-    pass
+
+    html_match = re.compile(
+        r'''
+        <p>     # Literal match of <p>
+        (     # Start non-capturing group
+        .+?     # Match one or more characters with non-greedy (?) quantifier
+        )       # End non-capturing group
+        </p>    # Literal match of </p>
+        ''',
+        re.VERBOSE
+    )
+
+    html_match_string = html_match.search(
+        string=html
+    )
+
+    return html_match_string.group(1)
 
 
 def main():

@@ -20,7 +20,7 @@
 
 :white_check_mark: Watch video 10
 
-:white_large_square: Complete PyBite 2
+:white_check_mark: Complete PyBite 2
 
 :white_large_square: Complete PyBite 42
 
@@ -37,3 +37,13 @@
 - Completed the following functions in [pybite_2.py](pybite_2.py):
     - `extract_course_times()`
     - `get_all_hashtags_and_links()`
+
+---
+
+### :notebook: 9/19/21
+
+- Developed additional `pytest` test for [pybite_2.py](pybite_2.py) in the file [tests/test_pybite_2.py](tests/test_pybite_2.py):
+    - `test_match_first_paragraph()`
+
+- Completed the following function in [pybite_2.py](pybite_2.py):
+    - `match_first_paragraph()`
