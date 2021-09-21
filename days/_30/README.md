@@ -1,4 +1,4 @@
-# :calendar: Day 30: 9/18/2021
+# :calendar: Day 30: 9/18/2021-9/21/2021
 
 ---
 
@@ -59,3 +59,9 @@
     - `split_on_multiple_chars()`
     - `get_all_hashtags_and_links()`
     - `match_first_paragraph()`
+
+### :notebook: 9/21/21
+
+- Completed the following functions in [pybite_42.py](pybite_42.py):
+    - `find_double_words()`
+    - `match_ip_v4_address()`

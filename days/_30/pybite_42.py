@@ -90,10 +90,46 @@ def find_double_words():
     '''Use re.search(regex, text).group() to find the double words'''
     text = 'Spain is so nice in the the spring'
 
-    return True
+    text_result = re.search(
+        pattern=r'''
+        (       # Start capture group #1
+        \b      # Word boundary #1
+        \w+     # One or more word characters
+        )       # End capture group #1
+        # Capture group #1 matches any full word, no surrounding spaces
+        \s      # Single space character
+        \b      # Word boundary #2
+        \1      # Result of capture group #1
+        # \s, followed by the \b, followed by \1 matches repeat words
+        ''',
+        string=text,
+        flags=re.VERBOSE
+    )
+
+    return text_result.group()
 
 
 def match_ip_v4_address(ip):
     '''Use re.match to match an ip v4 address (no need for exact IP ranges)'''
 
-    return True
+    ip_address = re.match(
+        pattern=r'''
+        ^                       # Start of line
+        (                       # Start capture group #1
+        [1-2]?                  # 0 or 1 occurrences of 1-2
+        [0-9]?                  # 0 or 1 occurrences of 0-9
+        [0-9]                   # 0-9
+        )                       # End capture group #1
+        # Capture group #1 matches an IP address, no numeric range checking
+        (?:                     # Start non-capture group #1
+        \.                      # Literal .
+        [1-2]?[0-9]?[0-9]?      # Reuse previous IP address match
+        )                       # End non-capture group #1
+        {3}                     # Repeat non-capture group #1 three times
+        $                       # End of line
+        ''',
+        string=ip,
+        flags=re.VERBOSE
+    )
+
+    return ip_address
