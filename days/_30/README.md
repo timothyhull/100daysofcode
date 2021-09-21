@@ -14,6 +14,8 @@
 
 :star: [PyBite 42](https://codechalleng.es/challenges/42/): Mastering Regular Expressions
 
+    - Source files are in the [Code Challenges Repository](https://github.com/timothyhull/challenges/tree/community/42)
+
 ---
 
 ## Tasks
@@ -46,4 +48,14 @@
     - `test_match_first_paragraph()`
 
 - Completed the following function in [pybite_2.py](pybite_2.py):
+    - `match_first_paragraph()`
+
+---
+
+### :notebook: 9/20/21
+
+- Completed the following functions in [pybite_42.py](pybite_42.py):
+    - `extract_course_times()`
+    - `split_on_multiple_chars()`
+    - `get_all_hashtags_and_links()`
     - `match_first_paragraph()`
