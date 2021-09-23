@@ -25,3 +25,5 @@ autopep8
 flake8
 # data encoding
 pyyaml
+# logging with logger
+logbook
