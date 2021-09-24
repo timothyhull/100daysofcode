@@ -38,3 +38,9 @@
 
 - `Logger` Offers more flexibility that the `logging` module.
   - Has built-in notifiers that can send log messages to a mobile phone, desktop computer, etc.
+
+---
+
+### :notebook: 9/23/21
+
+- 
