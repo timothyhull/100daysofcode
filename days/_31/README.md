@@ -76,5 +76,12 @@
 
 ### :notebook: 9/24/21
 
-- Reviewed notes and Jupyter notebook.
-- Revised notes from videos 1-2 (9/22/21)
+- Created [logging.ipynb](logging.ipynb) Jupyter Notebook for notes.
+- Revised notes from videos 1-2 (9/22/21).
+
+---
+
+### :notebook: 9/25/21
+
+- Reviewed and revised [logging.ipynb](logging.ipynb) Jupyter Notebook.
+- Inserted `init_logging` function into [starter_movie_search/program.py](starter_movie_search/program.py).
