@@ -26,7 +26,7 @@
 
 :white_check_mark: Review notes and Jupyter notebook
 
-:white_large_square: Watch video 4
+:white_check_mark: Watch video 4
 
 :white_large_square: Re-watch videos 3-4
 
