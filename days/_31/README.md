@@ -1,4 +1,4 @@
-# :calendar: Day 31: 9/22/2021
+# :calendar: Day 31: 9/22/2021-9/26/21
 
 ---
 
@@ -28,9 +28,9 @@
 
 :white_check_mark: Watch video 4
 
-:white_large_square: Re-watch videos 3-4
+:white_check_mark: Watch video 5
 
-:white_large_square: Watch videos 5-8
+:white_large_square: Watch videos 6-8
 
 ---
 
@@ -83,5 +83,13 @@
 
 ### :notebook: 9/25/21
 
+- Reviewed and revised [logging.ipynb](logging.ipynb) Jupyter Notebook.
+- Inserted `init_logging` function into [starter_movie_search/program.py](starter_movie_search/program.py).
+
+---
+
+### :notebook: 9/26/21
+
+- To 
 - Reviewed and revised [logging.ipynb](logging.ipynb) Jupyter Notebook.
 - Inserted `init_logging` function into [starter_movie_search/program.py](starter_movie_search/program.py).

@@ -4,10 +4,14 @@
         init_logging
 """
 
+# from os import write
 import api
 import logbook
 import sys
 import requests.exceptions
+
+# Create application logger
+app_log = logbook.Logger('App Logging')
 
 
 def main():
@@ -19,12 +23,42 @@ def main():
         for r in results:
             print(f"{r.title} with code {r.imdb_code} "
                   f"has score {r.imdb_score}")
+        print()
+
     except requests.exceptions.ConnectionError:
-        print("ERROR: Could not find server. Check your network connection.")
+        level = "ERROR"
+        msg = "Could not find server. Check your network connection."
+        write_log(level, msg)
+
     except ValueError:
-        print("ERROR: You must specify a search term.")
-    except Exception as x:
-        print("Oh that didn't work!: {}".format(x))
+        level = 'WARNING'
+        msg = "You must specify a search term."
+        write_log(level, msg)
+
+    except Exception as e:
+        level = "CRITICAL"
+        msg = "Oh that didn't work!: {}".format(e)
+        write_log(level, msg)
+        app_log.exception(e)
+
+
+def write_log(
+    level: str,
+    msg: str
+) -> None:
+    """ Write messages to the log.
+
+        Args:
+            level (str):
+                Level of the log message (INFO, WARN, etc.)
+
+            msg (str):
+                Logging message.
+
+        Returns:
+            None.
+    """
+    app_log.log(level, msg)
 
 
 def init_logging(
@@ -45,11 +79,11 @@ def init_logging(
     # level = logbook.ERROR
     # level = logbook.WARNING
     # level = logbook.NOTICE
-    # level = logbook.INFO
+    level = logbook.INFO
     # level = logbook.DEBUG
     # level = logbook.FATAL
     # level = logbook.NOTSET
-    level = logbook.TRACE
+    # level = logbook.TRACE
 
     # Set the logging mode based on the absence or presence of a file name
     if filename is None:

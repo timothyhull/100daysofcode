@@ -8,8 +8,8 @@ import requests
 import collections
 import random
 
-Movie = collections.namedtuple('Movie', 'imdb_code, title, director, keywords, '
-                                        'duration, genres, rating, year, imdb_score')
+Movie = collections.namedtuple('Movie', 'imdb_code, title, director, keywords,'
+                               ' duration, genres, rating, year, imdb_score')
 
 
 def find_movie_by_title(keyword: str) -> List[Movie]:
