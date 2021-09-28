@@ -79,11 +79,11 @@ def init_logging(
     # level = logbook.ERROR
     # level = logbook.WARNING
     # level = logbook.NOTICE
-    level = logbook.INFO
+    # level = logbook.INFO
     # level = logbook.DEBUG
     # level = logbook.FATAL
     # level = logbook.NOTSET
-    # level = logbook.TRACE
+    level = logbook.TRACE
 
     # Set the logging mode based on the absence or presence of a file name
     if filename is None:

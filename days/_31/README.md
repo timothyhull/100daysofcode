@@ -1,4 +1,4 @@
-# :calendar: Day 31: 9/22/2021-9/26/21
+# :calendar: Day 31: 9/22/2021-9/27/21
 
 ---
 
@@ -90,6 +90,9 @@
 
 ### :notebook: 9/26/21
 
-- To 
-- Reviewed and revised [logging.ipynb](logging.ipynb) Jupyter Notebook.
-- Inserted `init_logging` function into [starter_movie_search/program.py](starter_movie_search/program.py).
+- Added `logbook.Logger` commands to [starter_movie_search/program.py](starter_movie_search/program.py), to support logging for exceptions.
+
+### :notebook: 9/27/21
+
+- Added `logbook.Logger` commands to [starter_movie_search/api.py](starter_movie_search/api.py), to support logging for exceptions.
+  - Updated log level in the `init_logging` function to `TRACE` in [starter_movie_search/program.py](starter_movie_search/program.py) (previously set to `INFO`) because `TRACE` log messages do not appear with a maximum logging level of `INFO`.
