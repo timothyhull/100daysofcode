@@ -2,7 +2,6 @@
 """ Copied from 100DaysOfCode Repository.
 """
 
-from program import init_logging
 from time import time
 from typing import List
 import logbook
