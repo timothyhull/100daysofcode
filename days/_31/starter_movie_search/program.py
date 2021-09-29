@@ -119,5 +119,13 @@ def init_logging(
 
 
 if __name__ == '__main__':
-    init_logging()
+    
+    # Function call to display logging messages in STDOUT
+    # init_logging()
+
+    # Function call to write logging messages to a file
+    init_logging(
+        filename='movie_app.log'
+    )
+
     main()

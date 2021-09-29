@@ -1,4 +1,4 @@
-# :calendar: Day 31: 9/22/2021-9/27/21
+# :calendar: Day 31: 9/22/2021-9/28/21
 
 ---
 
@@ -30,7 +30,13 @@
 
 :white_check_mark: Watch video 5
 
-:white_large_square: Watch videos 6-8
+:white_check_mark: Watch video 6
+
+:white_check_mark: Watch video 7
+
+:white_check_mark: Watch video 8
+
+:white_large_square: Watch videos 9-11
 
 ---
 
@@ -96,3 +102,10 @@
 
 - Added `logbook.Logger` commands to [starter_movie_search/api.py](starter_movie_search/api.py), to support logging for exceptions.
   - Updated log level in the `init_logging` function to `TRACE` in [starter_movie_search/program.py](starter_movie_search/program.py) (previously set to `INFO`) because `TRACE` log messages do not appear with a maximum logging level of `INFO`.
+
+---
+
+### :notebook: 9/28/21
+
+- Updated the call to the `init_logging` function to include an argument for the `filename` parameter in [starter_movie_search/program.py](starter_movie_search/program.py).
+  - A filename argument will, based on the logic configured in the `init_logging` function, will direct all logging output to the specified file, instead of STDOUT.
