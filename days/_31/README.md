@@ -36,7 +36,7 @@
 
 :white_check_mark: Watch video 8
 
-:white_large_square: Watch videos 9-11
+:white_check_mark: Watch videos 9-11
 
 ---
 
