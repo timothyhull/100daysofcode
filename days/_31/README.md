@@ -56,20 +56,25 @@
   - Has built-in notifiers that can send log messages to a mobile phone, desktop computer, etc.
 
 - Logging Levels:
-  - `critical` – for errors that lead to termination
-  - `error` – for errors that occur, but are handled
-  - `warning` – for exceptional circumstances that might not be errors
-    - `warn` - an alias for `warning`
-  - `notice` – for non-error messages you usually want to see
-  - `info` – for messages you usually don’t want to see
-  - `debug` – for debug messages
+  - `fatal` – for errors that lead to termination.
+  - `error` – for errors that occur, but are handled.
+  - `warn` – for exceptional circumstances that might not be errors.
+  - `info` – for messages you usually don’t want to see.
+  - `debug` – for debug messages.
+  - `trace` - finer level logging than debug.
 
 - Alternatively, there is the `log()` method that takes the logging level (string or integer) as an argument.
 
 - Other Logging Levels:
-  - `fatal`
+  - `critical`
+    - Similar to `fatal`.
+  - `warning`
+    - An alias for `warn`
+  - `notice`
+    - Similar to `info`.
+    – For non-error messages you usually want to see.
   - `notset`
-  - `trace`
+    - Logging disabled.
 
 ---
 
