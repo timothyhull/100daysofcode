@@ -24,4 +24,7 @@
 
 ## Notes
 
-### :notebook: TBD
+### :notebook: 9/30/21
+
+- Inserted placeholdesr into the `namedtuple_maker.py` file.
+- Started developing file named `namedtuple-logger.py`, to host all logging functions
