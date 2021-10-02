@@ -32,4 +32,4 @@
 ### :notebook: 10/1/21
 
 - Added basic logging initializer to `namedtuple_logger.py`.
-- Unable to write logging messages within 
+- Unable to write logging messages within `namedtuple_maker.py`, requires further troubleshooting.
