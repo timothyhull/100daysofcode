@@ -26,5 +26,10 @@
 
 ### :notebook: 9/30/21
 
-- Inserted placeholdesr into the `namedtuple_maker.py` file.
+- Inserted placeholder into the `namedtuple_maker.py` file.
 - Started developing file named `namedtuple-logger.py`, to host all logging functions
+
+### :notebook: 10/1/21
+
+- Added basic logging initializer to `namedtuple_logger.py`.
+- Unable to write logging messages within 
