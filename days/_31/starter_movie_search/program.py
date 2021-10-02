@@ -119,7 +119,7 @@ def init_logging(
 
 
 if __name__ == '__main__':
-    
+
     # Function call to display logging messages in STDOUT
     # init_logging()
 
