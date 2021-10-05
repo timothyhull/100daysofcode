@@ -1,4 +1,4 @@
-# :calendar: Day 33: 9/30/21
+# :calendar: Day 33: 9/30/21-10/4/21
 
 ---
 
@@ -61,3 +61,11 @@
     - Decorator function initiation.
     - Function decorated with @wraps.
     - Call of decorated function.
+
+---
+
+### :notebook: 10/4/21
+
+- - Added logging statements to:
+    - Remainder of decorator function.
+    - Performed testing and reformatting.
