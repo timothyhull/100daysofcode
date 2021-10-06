@@ -1,4 +1,4 @@
-# :calendar: Day 33: 9/30/21-10/4/21
+# :calendar: Day 33: 9/30/21-10/5/21
 
 ---
 
@@ -20,7 +20,13 @@
 
 :white_large_square: Add logging to the [namedtuple-maker](https://github.com/timothyhull/namedtuple-maker) application.
 
-:white_large_square: Add ability to log to the console.
+:white_large_square: Add ability to pass the log level as an argument (`./namedtuple-maker.py --log-level=DEBUG`).
+
+:white_large_square: Add ability to log to the console (`./namedtuple-maker.py --log-to-console=True`).
+
+:white_large_square: Add ability to display docstring in a terminal (`./namedtuple-maker.py --help`).
+
+:white_large_square: Add validation to the `make_named_tuple` to confirm iterable objects are passed in (try/except for `TypeError`).
 
 :white_large_square: Add `pytest` to logging file.
 
@@ -57,7 +63,7 @@
 
 ### :notebook: 10/3/21
 
-- - Added logging statements to:
+- Added logging statements to:
     - Decorator function initiation.
     - Function decorated with @wraps.
     - Call of decorated function.
@@ -66,6 +72,14 @@
 
 ### :notebook: 10/4/21
 
-- - Added logging statements to:
+- Added logging statements to:
     - Remainder of decorator function.
     - Performed testing and reformatting.
+
+---
+
+### :notebook: 10/5/21
+
+- Added logging statements to:
+    - `make_named_tuple` function.
+    - Tested converting different object types to a tuple, for try/except testing of `TypeError`.
