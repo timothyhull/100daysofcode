@@ -1,4 +1,4 @@
-# :calendar: Day 33: 9/30/21-10/6/21
+# :calendar: Day 33: 9/30/21-10/7/21
 
 ---
 
@@ -20,15 +20,15 @@
 
 :white_check_mark: Add logging to the [namedtuple-maker](https://github.com/timothyhull/namedtuple-maker) application.
 
-:white_large_square: Review logging file output.
+:white_check_mark: Review logging file output.
+
+:white_check_mark: Add validation to the `make_named_tuple` to confirm iterable objects are passed in (try/except for `TypeError`).
 
 :white_large_square: Add ability to pass the log level as an argument (`./namedtuple-maker.py --log-level=DEBUG`).
 
 :white_large_square: Add ability to log to the console (`./namedtuple-maker.py --log-to-console=True`).
 
 :white_large_square: Add ability to display docstring in a terminal (`./namedtuple-maker.py --help`).
-
-:white_large_square: Add validation to the `make_named_tuple` to confirm iterable objects are passed in (try/except for `TypeError`).
 
 :white_large_square: Add `pytest` to logging file.
 
@@ -99,3 +99,10 @@
 from namedtuple_maker.namedtuple_maker import *
 run_make_named_tuple()
 ```
+
+---
+
+### :notebook: 10/7/21
+
+- Reviewed log file output and updated formatting/order of log statements.
+- Added exception handling for non-iterable object passed in the `iterable_input` parameter of the `make_named_tuple` function.
