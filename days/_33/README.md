@@ -1,4 +1,4 @@
-# :calendar: Day 33: 9/30/21-10/7/21
+# :calendar: Day 33: 9/30/21-10/8/21
 
 ---
 
@@ -24,7 +24,7 @@
 
 :white_check_mark: Add validation to the `make_named_tuple` to confirm iterable objects are passed in (try/except for `TypeError`).
 
-:white_large_square: Add ability to pass the log level as an argument (`./namedtuple-maker.py --log-level=DEBUG`).
+:white_check_mark: Add ability to pass the log level as an environment variable (`export LOG_LEVEL=DEBUG`).
 
 :white_large_square: Add ability to log to the console (`./namedtuple-maker.py --log-to-console=True`).
 
@@ -106,3 +106,24 @@ run_make_named_tuple()
 
 - Reviewed log file output and updated formatting/order of log statements.
 - Added exception handling for non-iterable object passed in the `iterable_input` parameter of the `make_named_tuple` function.
+
+---
+
+### :notebook: 10/8/21
+
+- Changed default logging level in `namedtuple_maker.py` from `DEBUG` to `INFO`.
+- Added code to support setting the logging level by way of the environment variable `LOG_LEVEL`.
+    - Example:
+
+```bash
+# Set the environment variable
+export LOG_LEVEL=DEBUG
+
+# Open a REPL
+ipython
+```
+
+```python
+# Import the namedtuple_maker module and check the log file
+from namedtuple_maker.namedtuple_maker import *
+```
