@@ -127,3 +127,9 @@ ipython
 # Import the namedtuple_maker module and check the log file
 from namedtuple_maker.namedtuple_maker import *
 ```
+
+---
+
+### :notebook: 10/9/21
+
+- Setup framework to support console-based logging output, as an optional alternative to file-based logging.
