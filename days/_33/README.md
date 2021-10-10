@@ -133,3 +133,10 @@ from namedtuple_maker.namedtuple_maker import *
 ### :notebook: 10/9/21
 
 - Setup framework to support console-based logging output, as an optional alternative to file-based logging.
+
+---
+
+### :notebook: 10/10/21
+
+- Reorganize code to add `FileNotFoundError` exception handling for the `logbook.TimedRotatingFileHandler`.
+    - Using **iPython**, unable to catch the any exception related to the `TimedRotatingFileHandler` using a **try/except** block.
