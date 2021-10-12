@@ -1,4 +1,4 @@
-# :calendar: Day 33: 9/30/21-10/8/21
+# :calendar: Day 33: 9/30/21-10/11/21
 
 ---
 
@@ -26,9 +26,7 @@
 
 :white_check_mark: Add ability to pass the log level as an environment variable (`export LOG_LEVEL=DEBUG`).
 
-:white_large_square: Add ability to log to the console (`./namedtuple-maker.py --log-to-console=True`).
-
-:white_large_square: Add ability to display docstring in a terminal (`./namedtuple-maker.py --help`).
+:white_check_mark: Add ability to log to the console (`export LOG_TO_CONSOLE=True`).
 
 :white_large_square: Add `pytest` to logging file.
 
@@ -140,3 +138,26 @@ from namedtuple_maker.namedtuple_maker import *
 
 - Reorganize code to add `FileNotFoundError` exception handling for the `logbook.TimedRotatingFileHandler`.
     - Using **iPython**, unable to catch the any exception related to the `TimedRotatingFileHandler` using a **try/except** block.
+
+### :notebook: 10/11/21
+
+- Unable to determine the reason a `FileNotFoundError` exception is not caught by any `except` block.
+    - Leaving the except block in the code, even if non-functional.
+- Added the `.strip().upper()` methods in the check for a valid log level:
+    - `if log_level.upper().strip() not in LOG_LEVELS:`
+- Added `graceful_exit` function, to prevent repeating code to gracefully exit after a caught exception.
+- Added code to support setting the logging destination to a file (the default setting) or to the console by way of the environment variable `LOG_TO_CONSOLE`.
+    - Example:
+
+```bash
+# Set the environment variable
+export LOG_TO_CONSOLE=True
+
+# Open a REPL
+ipython
+```
+
+```python
+# Import the namedtuple_maker module and observer console log output
+from namedtuple_maker.namedtuple_maker import *
+```
