@@ -1,4 +1,4 @@
-# :calendar: Day 33: 9/30/21-10/11/21
+# :calendar: Day 33: 9/30/21-10/12/21
 
 ---
 
@@ -27,6 +27,8 @@
 :white_check_mark: Add ability to pass the log level as an environment variable (`export LOG_LEVEL=DEBUG`).
 
 :white_check_mark: Add ability to log to the console (`export LOG_TO_CONSOLE=True`).
+
+:white_large_square: Update `namedtuple-maker` `pytest` tests to check for new exceptions.
 
 :white_large_square: Add `pytest` to logging file.
 
@@ -139,6 +141,8 @@ from namedtuple_maker.namedtuple_maker import *
 - Reorganize code to add `FileNotFoundError` exception handling for the `logbook.TimedRotatingFileHandler`.
     - Using **iPython**, unable to catch the any exception related to the `TimedRotatingFileHandler` using a **try/except** block.
 
+---
+
 ### :notebook: 10/11/21
 
 - Unable to determine the reason a `FileNotFoundError` exception is not caught by any `except` block.
@@ -161,3 +165,12 @@ ipython
 # Import the namedtuple_maker module and observer console log output
 from namedtuple_maker.namedtuple_maker import *
 ```
+
+---
+
+### :notebook: 10/12/21
+
+- Unsuccessfully attempted to write a `pytest` test function that would test for a gracefully raised error message in the `make_named_tuple` function.
+    - Unable to read from the `pytest` fixtures `capsys` and `capfd` without using the `raise` keyword within the `make_named_tuple` function, and throwing a non-graceful exception.
+- Determined the best course of action is to use a custom function within the `pytest` file that does not gracefully handle exceptions.
+    - Used `pytest.raises` to effectively test for a `TypeError` when a non-iterable value is passed as an argument to the `iterable_input` paramater.
