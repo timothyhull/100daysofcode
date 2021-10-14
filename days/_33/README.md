@@ -1,4 +1,4 @@
-# :calendar: Day 33: 9/30/21-10/12/21
+# :calendar: Day 33: 9/30/21-10/13/21
 
 ---
 
@@ -28,7 +28,7 @@
 
 :white_check_mark: Add ability to log to the console (`export LOG_TO_CONSOLE=True`).
 
-:white_large_square: Update `namedtuple-maker` `pytest` tests to check for new exceptions.
+:white_check_mark: Update `namedtuple-maker` `pytest` tests to check for new exceptions.
 
 :white_large_square: Add `pytest` to logging file.
 
@@ -174,3 +174,10 @@ from namedtuple_maker.namedtuple_maker import *
     - Unable to read from the `pytest` fixtures `capsys` and `capfd` without using the `raise` keyword within the `make_named_tuple` function, and throwing a non-graceful exception.
 - Determined the best course of action is to use a custom function within the `pytest` file that does not gracefully handle exceptions.
     - Used `pytest.raises` to effectively test for a `TypeError` when a non-iterable value is passed as an argument to the `iterable_input` paramater.
+
+---
+
+### :notebook: 10/13/21
+
+- Created the `pytest` file test_namedtuple_logger.
+    - Established framework, test scenario ideas, and started development of first test.
