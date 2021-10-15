@@ -1,4 +1,4 @@
-# :calendar: Day 33: 9/30/21-10/13/21
+# :calendar: Day 33: 9/30/21-10/14/21
 
 ---
 
@@ -181,3 +181,13 @@ from namedtuple_maker.namedtuple_maker import *
 
 - Created the `pytest` file test_namedtuple_logger.
     - Established framework, test scenario ideas, and started development of first test.
+
+---
+
+### :notebook: 10/14/21
+
+- Unsuccessfully tested `assert` statements with:
+    - `capfd`
+    - `capsys`
+    - `caplog`
+- Even though the `logbook.StreamHandler` method specifies `stdout` as the argument to the `stream` kwarg, the built-in `pytest` **cap___** fixtures do not see log output in `stdout`.
