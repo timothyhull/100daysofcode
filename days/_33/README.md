@@ -1,4 +1,4 @@
-# :calendar: Day 33: 9/30/21-10/14/21
+# :calendar: Day 33: 9/30/21-10/15/21
 
 ---
 
@@ -173,7 +173,7 @@ from namedtuple_maker.namedtuple_maker import *
 - Unsuccessfully attempted to write a `pytest` test function that would test for a gracefully raised error message in the `make_named_tuple` function.
     - Unable to read from the `pytest` fixtures `capsys` and `capfd` without using the `raise` keyword within the `make_named_tuple` function, and throwing a non-graceful exception.
 - Determined the best course of action is to use a custom function within the `pytest` file that does not gracefully handle exceptions.
-    - Used `pytest.raises` to effectively test for a `TypeError` when a non-iterable value is passed as an argument to the `iterable_input` paramater.
+    - Used `pytest.raises` to effectively test for a `TypeError` when a non-iterable value is passed as an argument to the `iterable_input` parameter.
 
 ---
 
@@ -191,3 +191,10 @@ from namedtuple_maker.namedtuple_maker import *
     - `capsys`
     - `caplog`
 - Even though the `logbook.StreamHandler` method specifies `stdout` as the argument to the `stream` kwarg, the built-in `pytest` **cap___** fixtures do not see log output in `stdout`.
+
+---
+
+### :notebook: 10/15/21
+
+- Confirmed that `pytest` **cap___** fixture only see log output to `stdout` with the `pytest -s` option.
+    - Successfully configured `test_initialize_logging_to_console` (with `pytest -s`).
