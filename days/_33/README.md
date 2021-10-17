@@ -1,4 +1,4 @@
-# :calendar: Day 33: 9/30/21-10/15/21
+# :calendar: Day 33: 9/30/21-10/17/21
 
 ---
 
@@ -10,7 +10,7 @@
 
 ## Resources
 
-:star: TBD
+:star: [Logbook `unittest` Support Reference](https://logbook.readthedocs.io/en/stable/unittesting.html)
 
 ---
 
@@ -198,3 +198,12 @@ from namedtuple_maker.namedtuple_maker import *
 
 - Confirmed that `pytest` **cap___** fixture only see log output to `stdout` with the `pytest -s` option.
     - Successfully configured `test_initialize_logging_to_console` (with `pytest -s`).
+- Conducted basic testing with the `logbook` support for `unittest`, although unable to successfully conduct test.
+    - [Logbook `unittest` Support Reference](https://logbook.readthedocs.io/en/stable/unittesting.html)
+
+---
+
+### :notebook: 10/16/21
+
+- Updated docstring in `test_namedtuple_logger.py`.
+- Conducted additional testing with the `logbook` support for `unittest`, although unable to successfully conduct test.
