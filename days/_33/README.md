@@ -207,3 +207,12 @@ from namedtuple_maker.namedtuple_maker import *
 
 - Updated docstring in `test_namedtuple_logger.py`.
 - Conducted additional testing with the `logbook` support for `unittest`, although unable to successfully conduct test.
+
+---
+
+### :notebook: 10/17/21
+
+- Attempted to add function to `test_namedtuple_logger.py` that would test for an invalid logging level.
+    - Function removed because the syntax in `namedtuple_logger.py` precludes valid `pytest` tests from, because it gracefully catches exceptions and exits, which interrupts `pytest` testing.
+- Added `test_initialize_logging_to_console` function.
+    - Function commented out because because the syntax in `namedtuple_logger.py` precludes valid `pytest` tests from, because it gracefully catches exceptions and exits, which interrupts `pytest` testing.
