@@ -261,6 +261,7 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 
 - Day 34: [10/19/21](days/_34)
 - Day 34a: [10/20/21](days/_34#notebook-102021)
+- Day 34b: [10/21/21](days/_34#notebook-102121)
 
 <details><summary>Days DCAUTO: Exam Prep</summary>
 
