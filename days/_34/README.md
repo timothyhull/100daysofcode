@@ -1,4 +1,4 @@
-# :calendar: Day 34: 10/19/2021-10/20/2021
+# :calendar: Day 34: 10/19/2021-10/21/2021
 
 ---
 
@@ -10,7 +10,11 @@
 
 ## Resources
 
-:star: TBD
+:star: [Python PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/)
+
+:star: [Pybites 5 Minute Guide to PEP8](https://pybit.es/pep8.html)
+
+:star: [Kenneth Reitz's PEP8 Guide](https://pep8.org/)
 
 ---
 
@@ -20,7 +24,9 @@
 
 :white_check_mark: Watch videos 5-7
 
-:white_large_square: TBD
+:white_check_mark: Watch videos 8-10
+
+:white_large_square: Review PEP8 resources
 
 ---
 
@@ -43,4 +49,14 @@
 
     4. Using built-ins (`range`, `sum`, `min`, `max`).
     5. `tuple` unpacking and `namedtuple` objects.
-    5. List comprehensions and generators.
+    6. List comprehensions and generators.
+
+---
+
+### :notebook: 10/21/21
+
+- Added notes for refactoring principles 7-9:
+
+    7. String formatting and concatenation.
+    8. PEP8 and The Zen of Python.
+    9. Being explicit with exceptions.
