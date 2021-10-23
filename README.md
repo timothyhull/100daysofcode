@@ -44,6 +44,30 @@ My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCod
 - Day 5b: [4/29/21](days/_5#tasks)
 - Day 5c: [4/30/21](days/_5#rage-43021)
 - Day 5d: [5/1/21](days/_5#notebook-5121)
+
+</details>
+
+<details><summary>Days DCAUTO: Exam Prep</summary>
+
+:bangbang: ​Taking a two-week break from **100DaysOfCode** exercises to study for the Cisco **DCAUTO** exam :mortar_board:.  Each day of study that includes writing Python will continue the days of code streak.
+
+- Day 1: [5/2/21](days/_dcauto#notebook-5221)
+- Day 2: [5/3/21](days/_dcauto#notebook-5321)
+- Day 3: [5/4/21](days/_dcauto#notebook-5421)
+- Day 4: [5/5/21](days/_dcauto#notebook-5521)
+- Day 5: [5/6/21](days/_dcauto#notebook-5621)
+- Day 6: [5/7/21](days/_dcauto#notebook-5721)
+- Day 7: [5/8/21](days/_dcauto#notebook-5821)
+- Day 8: [5/9/21](days/_dcauto#notebook-5921)
+- Day 9: [5/10/21](days/_dcauto#notebook-51021)
+- Day 10: [5/11/21](days/_dcauto#notebook-51121)
+- Day 11: [5/12/21](days/_dcauto#notebook-51221)
+- Day 12: [5/13/21](days/_dcauto#notebook-51321)
+
+</details>
+
+<details><summary>Days 4-6: Collections module (continued)</summary>
+
 - Day 6: [5/14/21](days/_6#notebook-51421)
 - Day 6a: [5/15/21](days/_6#notebook-51521)
 - Day 6b: [5/16/21](days/_6#notebook-51621)
@@ -264,22 +288,4 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 34b: [10/21/21](days/_34#notebook-102121)
 - Day 34c: [10/22/21](days/_34#notebook-102221)
 - Day 34d: [10/23/21](days/_34#notebook-102321)
-
-<details><summary>Days DCAUTO: Exam Prep</summary>
-
-:bangbang: ​Taking a two-week break from **100DaysOfCode** exercises to study for the Cisco **DCAUTO** exam :mortar_board:.  Each day of study that includes writing Python will continue the days of code streak.
-
-- Day 1: [5/2/21](days/_dcauto#notebook-5221)
-- Day 2: [5/3/21](days/_dcauto#notebook-5321)
-- Day 3: [5/4/21](days/_dcauto#notebook-5421)
-- Day 4: [5/5/21](days/_dcauto#notebook-5521)
-- Day 5: [5/6/21](days/_dcauto#notebook-5621)
-- Day 6: [5/7/21](days/_dcauto#notebook-5721)
-- Day 7: [5/8/21](days/_dcauto#notebook-5821)
-- Day 8: [5/9/21](days/_dcauto#notebook-5921)
-- Day 9: [5/10/21](days/_dcauto#notebook-51021)
-- Day 10: [5/11/21](days/_dcauto#notebook-51121)
-- Day 11: [5/12/21](days/_dcauto#notebook-51221)
-- Day 12: [5/13/21](days/_dcauto#notebook-51321)
-
-</details>
+- Day 35: [10/24/21](days/_35)
