@@ -42,11 +42,11 @@
 
 :white_check_mark: Watch videos 11-13
 
-:white_large_square: Review PEP8 resources
+:white_check_mark: Review PEP8 resources
 
-:white_large_square: Review 10 Guidelines to Write More Maintainable Software
+:white_check_mark: Review 10 Guidelines to Write More Maintainable Software
 
-:white_large_square: Review code quality resources
+:white_check_mark: Review code quality resources
 
 ---
 
@@ -81,8 +81,21 @@
     8. PEP8 and The Zen of Python.
     9. Being explicit with exceptions.
 
+---
+
 ### :notebook: 10/22/21
 
 - Added notes for refactoring principles 10:
 
     10. Coding best practices.
+
+---
+
+### :notebook: 10/23/21
+
+- Reviewed PEP8 guides.
+- Notes:
+
+    1. "Code is more often written than read, so write code to be read." -PEP8
+    2. "There should be one—and preferably only one—obvious way to do it." -The Zen of Python
+    3. "Any fool can write code that a computer can understand. Good programmers write code that humans can understand."  –Martin Fowler
