@@ -3,7 +3,7 @@ FROM python:3.9-slim-buster
 
 EXPOSE 8888
 
-WORKDIR /workspaces
+WORKDIR /workspaces/100daysofcode/days
 
 RUN apt-get update && \
     apt-get install -y git
