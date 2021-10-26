@@ -1,4 +1,4 @@
-# :calendar: Days 35 & 36: 10/24/2021
+# :calendar: Days 35 & 36: 10/24/2021-10/25/2021
 
 ---
 
@@ -58,3 +58,35 @@
                 auto_attribute_names: bool = False
             ) -> tuple:
             ```
+
+---
+
+### :notebook: 10/25/21
+
+Refactoring notes:
+
+- Reduce docstrings to a maximum of 72 characters.
+    - [X] namedtuple_logger.py
+    - [X] namedtuple_maker.py
+    - [X] test_namedtuple_logger.py
+    - [X] test_namedtuple_maker.py
+- Break `import` statements into different groups:
+    - Groups
+        1. Python Standard Library
+        2. Third-Party
+        3. Local
+    - [X] namedtuple_logger.py
+    - [X] namedtuple_maker.py
+    - [X] test_namedtuple_logger.py
+    - [X] test_namedtuple_maker.py
+- Ensure all functions with reachable endings use a `return` statement.
+    - `return None` should be explicitly defined.
+    - [X] namedtuple_logger.py
+    - [X] namedtuple_maker.py
+    - [X] test_namedtuple_logger.py
+    - [X] test_namedtuple_maker.py
+- [] Refactor to make the `graceful_exit` function a separate module.
+    - [X] namedtuple_logger.py
+    - [X] namedtuple_maker.py
+    - [X] test_namedtuple_logger.py
+    - [X] test_namedtuple_maker.py
