@@ -1,4 +1,4 @@
-# :calendar: Days 35 & 36: 10/24/2021-10/25/2021
+# :calendar: Days 35 & 36: 10/24/2021-10/26/2021
 
 ---
 
@@ -12,6 +12,8 @@
 
 :star: [Better Code Hub](https://bettercodehub.com)
 
+:star: [PEP 257 - Docstring Conventions](https://www.python.org/dev/peps/pep-0257/)
+
 ---
 
 ## Tasks
@@ -22,7 +24,9 @@
 
 :white_check_mark: Complete [Code Challenge #30](https://codechalleng.es/challenges/30/)
 
-:white_large_square: Review for PEP8 best practices
+:white_check_mark: Review for PEP 8 best practices
+
+:white_large_square: Review PEP 257 (docstrings) best practices
 
 ---
 
@@ -90,3 +94,10 @@ Refactoring notes:
     - [X] namedtuple_maker.py
     - [X] test_namedtuple_logger.py
     - [X] test_namedtuple_maker.py
+
+---
+
+### :notebook: 10/26/21
+
+- Start review of PEP 257 (docstrings)
+    - Updated namedtuple-maker docstring `'''` quotes with `"""` quotes.
