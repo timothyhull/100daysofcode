@@ -26,7 +26,9 @@
 
 :white_check_mark: Review for PEP 8 best practices
 
-:white_large_square: Review PEP 257 (docstrings) best practices
+:white_check_mark: Review PEP 257 (docstrings) best practices
+
+:white_large_square: Migrate attribute name check functionality in namedtuple_maker.py to namedtuple_maker_utils.py
 
 ---
 
@@ -89,7 +91,7 @@ Refactoring notes:
     - [X] namedtuple_maker.py
     - [X] test_namedtuple_logger.py
     - [X] test_namedtuple_maker.py
-- [] Refactor to make the `graceful_exit` function a separate module.
+- Refactor to make the `graceful_exit` function a separate module.
     - [X] namedtuple_logger.py
     - [X] namedtuple_maker.py
     - [X] test_namedtuple_logger.py
@@ -99,5 +101,12 @@ Refactoring notes:
 
 ### :notebook: 10/26/21
 
-- Start review of PEP 257 (docstrings)
+- Started review of PEP 257 (docstrings)
     - Updated namedtuple-maker docstring `'''` quotes with `"""` quotes.
+
+---
+
+### :notebook: 10/27/21
+
+- Completed review of PEP 257 (docstrings)
+    - Reformatted all docstrings to comply with PEP 257 guidelines.
