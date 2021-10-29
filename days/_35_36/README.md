@@ -28,8 +28,6 @@
 
 :white_check_mark: Review PEP 257 (docstrings) best practices
 
-:white_large_square: Migrate attribute name check functionality in namedtuple_maker.py to namedtuple_maker_utils.py
-
 ---
 
 ## Notes
@@ -110,3 +108,16 @@ Refactoring notes:
 
 - Completed review of PEP 257 (docstrings)
     - Reformatted all docstrings to comply with PEP 257 guidelines.
+
+---
+
+### :notebook: 10/28/21
+
+- Completed refactoring to the extend possible, with integrated logging (`Logbook`) code.
+    - Updated docstrings.
+    - Updated logging levels, removing invalid levels and ordering levels correctly.
+    - Changed default logging to `CRITICAL` from `INFO`.
+    - Updated `re` module namespace by changing the import syntax from `from re import compile, VERBOSE` to `import re`.
+        - This makes the code more readable, since `import re` appears to be the standard way to use `re` module elements.
+        - More closely complies with The Zen of Python, _"There should be one-- and preferably only one --obvious way to do it."_
+    - Decided against migrating attribute name check functionality from `namedtuple_maker.py` to `namedtuple_maker_utils.py`, because the logging configuration would have made the implementation unnecessarily complex.
