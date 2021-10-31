@@ -5,6 +5,7 @@ from _37.weather_csv_demo import research
 
 
 def main():
+    print()
     print('Weather research for Seattle, 2014-2015')
     print()
 
@@ -19,6 +20,8 @@ def main():
 
     print('The wettest 5 days:')
     # TODO
+
+    print()
 
 
 if __name__ == '__main__':

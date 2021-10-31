@@ -26,7 +26,7 @@
 
 ## Notes
 
-### :notebook: 10/28/21
+### :notebook: 10/29/21
 
 - Define the path to a file in a location independent/portable way:
     - Set the name of the file to determine the path for with a string that names the file.
@@ -56,3 +56,61 @@
     The full path directory is: /workspaces/100daysofcode/days/_37/weather_csv_demo/.
     The file path is: /workspaces/100daysofcode/days/_37/weather_csv_demo/./temp.csv
     ```
+
+---
+
+### :notebook: 10/30/21
+
+- The `csv` module (part of the Python Standard Library) has a `DictReader` function that reads a CSV file and makes each line a row of data:
+
+    ```python
+    # Open the CSV file
+    with open(
+         file=file_name,
+         mode='rt',
+         encoding='utf-8') as file:
+
+        # Use the csv.DictReader function to convert CSV data to a dictionary
+        reader = csv.DictReader(file)
+        for row in reader:
+            print(row)
+            break
+
+        # Each row is a dictionary object, with the header being the key, and the data being the value
+        {'date': '2014-7-1', 'actual_mean_temp': '77', 'actual_min_temp': '60', 'actual_max_temp': '94', 'average_min_temp': '54', 'average_max_temp': '73', 'record_min_temp': '45', 'record_max_temp': '94', 'record_min_temp_year': '1948', 'record_max_temp_year': '2014', 'actual_precipitation': '0.00', 'average_precipitation': '0.03', 'record_precipitation': '0.75'}
+    ```
+
+    - The `DictReader` function can only read data when a file is open.
+    - To make the result of a `DictReader` function available outside of a file open context manager, convert the `DictReader` into another iterable object (like a `list`):
+
+    ```python
+    # Open the CSV file
+    with open(
+         file=file_name,
+         mode='rt',
+         encoding='utf-8') as file:
+
+        # Use the csv.DictReader function to convert CSV data to a dictionary
+        reader = list(csv.DictReader(file))
+
+    print(f'The reader object type is: {type(reader)}')
+    print()
+
+    for row in reader:
+        print(f'The row object type is {type(row)}')
+        print()
+
+        print('The row data is:')
+        print(row)
+        print()
+
+        print(
+            'The value object type for the "actual_min_temp" key is: '
+            f'{type(row.get("actual_min_temp"))}'
+        )
+        print()
+        break
+    ```
+
+- All values within each dictionary row are strings.
+    - Integer values require conversion before performing sorting or other math operations.
