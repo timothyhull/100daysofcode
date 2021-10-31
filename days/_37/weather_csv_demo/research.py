@@ -2,53 +2,86 @@
 """ Weather research data """
 
 # Imports - Python Standard Library
+from collections import namedtuple
+from typing import Dict, List, NamedTuple
 import csv
 import os
 
 # Constants
 CSV_FILE = 'seattle.csv'
 CSV_FOLDER = 'data'
+CSV_BASE_PATH = os.path.dirname(__file__)
+CSV_FULL_PATH = os.path.join(CSV_BASE_PATH, CSV_FOLDER, CSV_FILE)
 
-# Define an empty list for weather data
-data = []
 
+def init_csv_data(csv_file: str) -> List:
+    """ Convert a CSV to a dictionary.
 
-def init():
-    """ Initialize weather data """
+        Args:
+            csv_file (str):
+                Path to a CSV file.
 
-    # Specify path to CSV data file
-    csv_file = CSV_FILE
-    csv_folder = CSV_FOLDER
-    base_folder = os.path.dirname(__file__)
-    file_name = os.path.join(base_folder, csv_folder, csv_file)
+        Returns:
+            Record (namedtuple):
+                namedtuple with CSV field names as attribute names.
+
+            csv_data (List):
+                CSV data as a list of dictionaries
+    """
 
     # Open the CSV file
     with open(
-         file=file_name,
+         file=csv_file,
          mode='rt',
          encoding='utf-8') as file:
 
-        # Use the csv.DictReader function to convert CSV data to a dictionary
-        reader = list(csv.DictReader(file))
+        # Use csv.DictReader to read CSV data
+        reader = csv.DictReader(file)
 
-        # for row in reader:
-        #     print(f'ROW --> {type(row.get("actual_min_temp"))}')
-        #     break
+        # Convert csv.DictReader field names to namedtuple with CSV field names
+        Record = namedtuple('Record', reader.fieldnames)
 
-    print(f'The reader object type is: {type(reader)}')
-    print()
+        # Convert csv.DictReader data to a list of dictionaries
+        csv_data = list(reader)
 
-    for row in reader:
-        print(f'The row object type is {type(row)}')
-        print()
+    return Record, csv_data
 
-        print('The row data is:')
-        print(row)
-        print()
 
-        print(
-            'The value object type for the "actual_min_temp" key is: '
-            f'{type(row.get("actual_min_temp"))}'
-        )
-        print()
-        break
+def parse_row(Record: NamedTuple, row: Dict) -> NamedTuple:
+    """ Parse the data from CSV rows and convert data types.
+
+        Args:
+            Record (namedtuple):
+                namedtuple with CSV field names as attribute names.
+
+            row (Dict):
+                Dictionary row from a CSV list of dictionaries.
+
+        Returns:
+            record (NamedTuple):
+                NamedTuple row from a CSV list of dictionaries with
+                data types converted from strings to operational data.
+    """
+
+    # Loop over 'row' dictionary values and change strings to floats
+    for key, value in row.items():
+        if key != 'date':
+            row[key] = float(value)
+
+    # Unpack dictionary values to their matching CSV field/attribute names
+    record = Record(*row.values())
+
+    return record
+
+
+def init() -> List:
+    """ Initialize weather data. """
+
+    # Initialize CSV file
+    Record, csv_data = init_csv_data(CSV_FULL_PATH)
+
+    # Convert CSV string data to types that support operations (int, float)
+    # Store converted data in a list, using a list comprehension
+    data = [parse_row(Record, row) for row in csv_data]
+
+    return data

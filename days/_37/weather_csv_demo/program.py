@@ -10,7 +10,8 @@ def main():
     print()
 
     # Initialize the data
-    research.init()
+    data = research.init()
+    print(data)
 
     print('The hottest 5 days:')
     # TODO

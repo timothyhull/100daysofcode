@@ -18,7 +18,11 @@
 
 ## Tasks
 
-:white_check_mark: Watch videos 1-5
+:white_check_mark: Watch videos 1-5 and create initial [`program.py`](weather_csv_demo/program.py) and [`research.py`](weather_csv_demo/research.py) files
+
+:white_check_mark: Watch video 6 and implement `csv.DictReader` in [`research.py`](weather_csv_demo/research.py).
+
+:white_check_mark: Watch video 7 and convert `str` data from [`seattle.csv`](weather_csv_demo/data/seattle.csv) to useful data types.
 
 :white_large_square: TBD
 
@@ -45,16 +49,16 @@
     print(f'The full file path is: "{full_path}"')
 
     dir_name = os.path.dirname(full_path)
-    print(f'The full path directory is: {dir_name}')
+    print(f'The full path directory is: "{dir_name}"')
 
     file_path = os.path.join(dir_name, file_name)
-    print(f'The file path is: {file_path}')
+    print(f'The file path is: "{file_path}"')
     ```
 
     ```bash
     The full file path is: "/workspaces/100daysofcode/days/_37/weather_csv_demo/./file_path_test.py"
-    The full path directory is: /workspaces/100daysofcode/days/_37/weather_csv_demo/.
-    The file path is: /workspaces/100daysofcode/days/_37/weather_csv_demo/./temp.csv
+    The full path directory is: "/workspaces/100daysofcode/days/_37/weather_csv_demo/."
+    The file path is: "/workspaces/100daysofcode/days/_37/weather_csv_demo/./temp.csv"
     ```
 
 ---
@@ -114,3 +118,25 @@
 
 - All values within each dictionary row are strings.
     - Integer values require conversion before performing sorting or other math operations.
+
+---
+
+### :notebook: 10/31/21
+
+- Refactored [`research.py`](weather_csv_demo/research.py) to return data that supports mathematical operations:
+    - Moved initialization of the path to [`seattle.csv`](weather_csv_demo/data/seattle.csv) outside of the `init` function, to constants (`CSV_BASE_PATH` and `CSV_FULL_PATH`).
+    - Created am `init_csv_data` function that:
+
+        1. Reads the CSV file.
+        2. Converts the CSV file data to a list of dictionaries.
+        2. Returns a `namedtuple` object (`Record`) with the CSV file names as `namedtuple` attribute names.
+        4. Returns the list of dictionaries with the CSV file data (`csv_data`).
+
+    - Created a `parse_row` function that:
+
+        1. Converts numeric string values in `csv_data` dictionaries to `float` objects.
+        2. Converts a CSV row (dictionary in the `csv_data` `list` object) to a `namedtuple` object (`record`).
+
+    - Updated the `init` function to:
+
+        1. Create the `Record` `namedtuple` object and retrieve the `csv_data` dictionary (by calling the `init_csv_data` function) and creating a list of `namedtuple` objects (`data`) with the original CSV string values converted into `float` values (by looping over `csv_data` and calling the `parse_row` for each row/dictionary in the `csv_data` `list`).
