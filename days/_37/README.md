@@ -50,3 +50,9 @@
     file_path = os.path.join(dir_name, file_name)
     print(f'The file path is: {file_path}')
     ```
+
+    ```bash
+    The full file path is: "/workspaces/100daysofcode/days/_37/weather_csv_demo/./file_path_test.py"
+    The full path directory is: /workspaces/100daysofcode/days/_37/weather_csv_demo/.
+    The file path is: /workspaces/100daysofcode/days/_37/weather_csv_demo/./temp.csv
+    ```
