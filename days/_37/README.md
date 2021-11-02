@@ -24,9 +24,9 @@
 
 :white_check_mark: Watch video 7 and convert `str` data from [`seattle.csv`](weather_csv_demo/data/seattle.csv) to useful data types.
 
-:white_large_square: Watch video 8
+:white_check_mark: Watch video 8 and structure functions in [`research.py`](weather_csv_demo/research.py) to return and display the correct data to [`program.py`](weather_csv_demo/program.py).
 
-:white_large_square: TBD
+:white_check_mark: Choose a data set from [FiveThirtyEight GitHub Data](https://github.com/fivethirtyeight/data) and propose a question to answer.
 
 ---
 
@@ -147,4 +147,43 @@
 
 ### :notebook: 11/1/21
 
-- pass
+- Updated [`research.py`](weather_csv_demo/research.py) with functions to support reusable data sorting and filtering:
+
+    1. The `sort_records` function sorts weather records based on a specific CSV field, using a `lambda` function.
+    2. The `create_result_set` function creates a `namedtuple` result set of the top N days from the sorted data (returned from `sort_records`).
+    3. The `hot_days`, `cold_days`, and `wet_days` functions return the appropriate sorted top N results.
+
+- Updated [`program.py`](weather_csv_demo/program.py) with code that runs functions from [`research.py`](weather_csv_demo/research.py) and displays output:
+
+    ```bash
+    root@b0498a0b5d4c:/workspaces/100daysofcode/days/_37/weather_csv_demo# ./program.py 
+
+    Weather research for Seattle, 2014-2015
+
+    The hottest 5 days:
+    1. Date: 2014-8-11, Temperature: 96.0
+    2. Date: 2014-7-1, Temperature: 94.0
+    3. Date: 2015-6-27, Temperature: 92.0
+    4. Date: 2014-8-4, Temperature: 91.0
+    5. Date: 2014-7-12, Temperature: 90.0
+
+    The coldest 5 days:
+    1. Date: 2015-6-28, Temperature: 65.0
+    2. Date: 2014-7-7, Temperature: 64.0
+    3. Date: 2014-7-31, Temperature: 64.0
+    4. Date: 2014-8-11, Temperature: 64.0
+    5. Date: 2015-6-26, Temperature: 64.0
+
+    The wettest 5 days:
+    1. Date: 2015-3-15, Actual Precipitation: 2.2"
+    2. Date: 2014-11-28, Actual Precipitation: 1.35"
+    3. Date: 2014-10-22, Actual Precipitation: 1.26"
+    4. Date: 2015-1-17, Actual Precipitation: 1.03"
+    5. Date: 2015-2-5, Actual Precipitation: 1.03"
+    ```
+
+- Refactoring ideas:
+
+    1. Create a `class` object in [`research.py`](weather_csv_demo/research.py) with an `__init__` function that requires a path to a CSV file.
+    2. Use callable `class` methods to return the required data sets (hottest days, coldest days, etc.).
+    3. Combine the `hot_days`, `cold_days`, and `wet_days` functions into a single function that sorts any data set.  Doing so should remove the need for a significant amount (2 x functions worth) of redundant code.

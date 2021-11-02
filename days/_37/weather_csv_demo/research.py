@@ -19,7 +19,9 @@ else:
     CSV_FULL_PATH = os.path.join(CSV_BASE_PATH, CSV_FOLDER, CSV_FILE)
 
 
-def init_csv_data(csv_file: str) -> List:
+def init_csv_data(
+    csv_file: str
+):
     """ Convert a CSV to a dictionary.
 
         Args:
@@ -52,7 +54,10 @@ def init_csv_data(csv_file: str) -> List:
     return Record, csv_data
 
 
-def parse_row(Record: NamedTuple, row: Dict) -> NamedTuple:
+def parse_row(
+    Record: NamedTuple,
+    row: Dict
+) -> NamedTuple:
     """ Parse the data from CSV rows and convert data types.
 
         Args:
