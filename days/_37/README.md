@@ -12,7 +12,7 @@
 
 :star: [FiveThirtyEight GitHub Data](https://github.com/fivethirtyeight/data)
 
-:star: [FiveThirtyEight GitHub Data - KSEA Weather](https://github.com/fivethirtyeight/data)
+:star: [FiveThirtyEight GitHub Data - KSEA Weather](https://github.com/fivethirtyeight/data/tree/master/us-weather-history)
 
 ---
 
