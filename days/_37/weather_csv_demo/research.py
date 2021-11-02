@@ -11,7 +11,12 @@ import os
 CSV_FILE = 'seattle.csv'
 CSV_FOLDER = 'data'
 CSV_BASE_PATH = os.path.dirname(__file__)
-CSV_FULL_PATH = os.path.join(CSV_BASE_PATH, CSV_FOLDER, CSV_FILE)
+
+# Set the full CSV file path
+if os.getenv('CSV_FULL_PATH') is not None:
+    CSV_FULL_PATH = os.getenv('CSV_FULL_PATH')
+else:
+    CSV_FULL_PATH = os.path.join(CSV_BASE_PATH, CSV_FOLDER, CSV_FILE)
 
 
 def init_csv_data(csv_file: str) -> List:
@@ -85,3 +90,197 @@ def init() -> List:
     data = [parse_row(Record, row) for row in csv_data]
 
     return data
+
+
+def sort_records(
+    weather_data: List,
+    sort_field: str
+) -> List:
+    """ Sort weather records based on a specific sort field.
+
+        Args:
+            weather_data (List):
+                List of namedtuples with weather data converted from
+                data in a CSV file.
+
+            sort_field (str):
+                Field name from a CSV file to sort records by.
+
+        Returns:
+            sorted_data (List):
+                Sorted List of namedtuples with weather data converted
+                from data in a CSV file.
+    """
+
+    # Created a list of sorted data using a lambda function keyed on sort_field
+    sorted_data = sorted(
+        weather_data,
+        key=lambda x: getattr(x, sort_field),
+        reverse=True
+    )
+
+    return sorted_data
+
+
+def create_result_set(
+    sorted_data: List,
+    sort_field: str
+) -> List:
+    """ Create a namedtuple result set of top N days from sorted data.
+
+        Args:
+            sorted_data (List):
+                Sorted List of namedtuples with weather data converted
+                from data in a CSV file.
+
+            sort_field (str):
+                Field name from a CSV that records are sorted by.
+
+        Returns:
+            top_n_days (List):
+                Sorted List of top N namedtuples containing only
+                attributes for the date and the sorted field.
+    """
+
+    # Create a hot_days namedtuple object
+    ResultSet = namedtuple(
+        typename='ResultSet',
+        field_names=['date', sort_field]
+    )
+
+    # Create a blank list slice for the top N days
+    top_n_days = []
+
+    # Loop over the top N sorted records, using a list slice
+    for record in sorted_data:
+        # Append a namedtuple item to hot_days for each top N record
+        top_n_days.append(
+            ResultSet(
+                record.date,
+                getattr(record, sort_field))
+        )
+
+    return top_n_days
+
+
+def hot_days(
+    weather_data: List,
+    result_count: int = 10
+) -> NamedTuple:
+    """ Return the top N hottest days.
+
+        Args:
+            weather_data (List):
+                List of namedtuples with weather data converted from
+                data in a CSV file.
+
+            result_count (int, optional):
+                Number of results to return, default value is 10.
+
+        Returns:
+            result_set (NamedTuple):
+                NamedTuple with 'date' and 'actual_max_temp' named
+                attributes.
+    """
+
+    # Create a sort field for the function
+    sort_field = 'actual_max_temp'
+
+    # Sort the list of days, hottest to coldest
+    sorted_data = sort_records(
+        weather_data=weather_data,
+        sort_field=sort_field
+    )
+
+    # Slice the top N results from the sorted data list
+    sorted_data = sorted_data[:result_count]
+
+    # Add the top N results to the attribute limited namedtuple result set
+    result_set = create_result_set(
+        sorted_data=sorted_data,
+        sort_field=sort_field
+    )
+
+    return result_set
+
+
+def cold_days(
+    weather_data: List,
+    result_count: int = 10
+) -> NamedTuple:
+    """ Return the top N coldest days.
+
+        Args:
+            weather_data (List):
+                List of namedtuples with weather data converted from
+                data in a CSV file.
+
+            result_count (int, optional):
+                Number of results to return, default value is 10.
+
+        Returns:
+            result_set (NamedTuple):
+                NamedTuple with 'date' and 'actual_min_temp' named
+                attributes.
+    """
+
+    # Create a sort field for the function
+    sort_field = 'actual_min_temp'
+
+    # Sort the list of days, hottest to coldest
+    sorted_data = sort_records(
+        weather_data=weather_data,
+        sort_field=sort_field
+    )
+
+    # Slice the top N results from the sorted data list
+    sorted_data = sorted_data[:result_count]
+
+    # Add the top N results to the attribute limited namedtuple result set
+    result_set = create_result_set(
+        sorted_data=sorted_data,
+        sort_field=sort_field
+    )
+
+    return result_set
+
+
+def wet_days(
+    weather_data: List,
+    result_count: int = 10
+) -> NamedTuple:
+    """ Return the top N wettest days.
+
+        Args:
+            weather_data (List):
+                List of namedtuples with weather data converted from
+                data in a CSV file.
+
+            result_count (int, optional):
+                Number of results to return, default value is 10.
+
+        Returns:
+            result_set (NamedTuple):
+                NamedTuple with 'date' and 'actual_precipitation' named
+                attributes.
+    """
+
+    # Create a sort field for the function
+    sort_field = 'actual_precipitation'
+
+    # Sort the list of days, hottest to coldest
+    sorted_data = sort_records(
+        weather_data=weather_data,
+        sort_field=sort_field
+    )
+
+    # Slice the top N results from the sorted data list
+    sorted_data = sorted_data[:result_count]
+
+    # Add the top N results to the attribute limited namedtuple result set
+    result_set = create_result_set(
+        sorted_data=sorted_data,
+        sort_field=sort_field
+    )
+
+    return result_set

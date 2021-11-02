@@ -1,4 +1,4 @@
-# :calendar: Day 37: 10/29/2021
+# :calendar: Day 37: 10/29/2021-11/1/2021
 
 ---
 
@@ -23,6 +23,8 @@
 :white_check_mark: Watch video 6 and implement `csv.DictReader` in [`research.py`](weather_csv_demo/research.py).
 
 :white_check_mark: Watch video 7 and convert `str` data from [`seattle.csv`](weather_csv_demo/data/seattle.csv) to useful data types.
+
+:white_large_square: Watch video 8
 
 :white_large_square: TBD
 
@@ -140,3 +142,9 @@
     - Updated the `init` function to:
 
         1. Create the `Record` `namedtuple` object and retrieve the `csv_data` dictionary (by calling the `init_csv_data` function) and creating a list of `namedtuple` objects (`data`) with the original CSV string values converted into `float` values (by looping over `csv_data` and calling the `parse_row` for each row/dictionary in the `csv_data` `list`).
+
+---
+
+### :notebook: 11/1/21
+
+- pass
