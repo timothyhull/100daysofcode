@@ -29,7 +29,7 @@
 :white_check_mark: Choose a data set from [FiveThirtyEight GitHub Data](https://github.com/fivethirtyeight/data) and propose a question to answer.
 
 - [Bad Drivers data set](https://github.com/fivethirtyeight/data/tree/master/bad-drivers)
-- Answer a question regarding the comparison between drunk and distracted driving.
+    - Answer a question regarding the comparison between drunk and distracted driving.
 
 ---
 
