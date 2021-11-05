@@ -1,4 +1,4 @@
-# :calendar: Day 40: 11/4/2021
+# :calendar: Days 40 & 41: 11/4/2021
 
 ---
 
