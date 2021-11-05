@@ -288,11 +288,11 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 34b: [10/21/21](days/_34#notebook-102121)
 - Day 34c: [10/22/21](days/_34#notebook-102221)
 - Day 34d: [10/23/21](days/_34#notebook-102321)
-- Day 35+36: [10/24/21](days/_35_36)
-- Day 35+36a: [10/25/21](days/days/_35_36#notebook-102521)
-- Day 35+36b: [10/26/21](days/days/_35_36#notebook-102621)
-- Day 35+36c: [10/27/21](days/days/_35_36#notebook-102721)
-- Day 35+36d: [10/28/21](days/days/_35_36#notebook-102821)
+- Days 35+36: [10/24/21](days/_35_36)
+- Days 35+36a: [10/25/21](days/days/_35_36#notebook-102521)
+- Days 35+36b: [10/26/21](days/days/_35_36#notebook-102621)
+- Days 35+36c: [10/27/21](days/days/_35_36#notebook-102721)
+- Days 35+36d: [10/28/21](days/days/_35_36#notebook-102821)
 
 </details>
 
@@ -302,13 +302,13 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 37a: [10/30/21](days/_37#notebook-103021)
 - Day 37b: [10/31/21](days/_37#notebook-103121)
 - Day 37c: [11/1/21](days/_37#notebook-110121)
-- Day 38_39: [11/2/21](days/_38_39)
-- Day 38_39a: [11/3/21](days/_38_39#notebook-113021)
+- Days 38+39: [11/2/21](days/_38_39)
+- Days 38+39a: [11/3/21](days/_38_39#notebook-113021)
 
 </details>
 
-<details><summary>Days 37-39: Using CSV Data</summary>
+<details><summary>Days 40-42: Using CSV Data</summary>
 
-- Day 40: [11/4/21](days/_40)
+- Days 40+41: [11/4/21](days/_40_41)
 
 </details>
