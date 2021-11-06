@@ -310,5 +310,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 <details><summary>Days 40-42: Using CSV Data</summary>
 
 - Days 40+41: [11/4/21](days/_40_41)
+- Day 42: [11/5/21](days/_42)
 
 </details>
