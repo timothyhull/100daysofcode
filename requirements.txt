@@ -20,6 +20,7 @@ plotly
 # pytest
 pytest
 pytest-cov
+requests-mock
 # formatting
 autopep8
 flake8
