@@ -27,3 +27,5 @@ flake8
 pyyaml
 # logging with logger
 logbook
+# environment varable management
+python-dotenv
