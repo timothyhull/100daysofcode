@@ -1,4 +1,4 @@
-# :calendar: Day 42: 11/5/2021
+# :calendar: Day 42: 11/5/2021-11/6/2021
 
 ---
 
@@ -19,6 +19,16 @@
 ## Tasks
 
 :white_check_mark: Choose a use case - send text messages with the Twilio API
+
+:white_check_mark: Review Twilio API documentation
+
+:white_check_mark: Build application framework
+
+:white_large_square: Populate docstrings and comments
+
+:white_large_square: Complete basic `requests_mock` test
+
+:white_large_square: Complete `twilio_app.py`
 
 :white_large_square: Complete PyBite 16
 
@@ -53,3 +63,61 @@
         message_body='Python send_msg method test'
     )
     ```
+
+---
+
+### :notebook: 11/6/21
+
+- Updated `.env` file and associated code.
+- Refactored [twilio_api.py](pybite_16/twilio_api.py):
+    - Structured `__init__` method to accept an unpacked dictionary of all environment variable values:
+
+    ```python
+    from pybite_16.twilio_api import TwilioAPI
+    import dotenv
+
+    dotenv.load_dotenv('../')
+    twilio = TwilioAPI(**dotenv.dotenv_values())
+    ```
+
+    - All environment variables are passed to the `__init__` method and `TwilioAPI` methods can declare parameters only for the environment variables they need
+        - The `**kwargs` parameter in the `__init__` method allows any environment variables not required by the `__init__` method to be available for other methods, without causing an exception due to undefined arguments.
+    - Added new methods:
+        - `_api_helper` to perform REST API requests, and avoid repeat use of the same `requests` code.
+            - Created a `namedtuple` to simplify the code to choose an HTTP method for the `requests.request` method.
+
+            ```python
+            # namedtuple for simplified HTTP method selection
+            HTTPMethod = namedtuple(
+                typename='HTTPMethod',
+                field_names=['get', 'post', 'put', 'delete']
+            )
+            HTTP_METHOD = HTTPMethod(
+                get='GET',
+                post='POST',
+                put='PUT',
+                delete='DELETE'
+            )
+            ```
+
+        - `_api_auth` to perform an API authentication check during initialization of the `TwilioAPI` `class`.
+            - Stores a variety of returned _sub-resource URIs_ in the variable `self.api_uris`.
+            - Split `BASE_URL` into `BASE_URL` and `BASE_PATH` to make it simple to reference the sub-resource URIs.
+
+            ```python
+            BASE_URL = 'https://api.twilio.com'
+            BASE_PATH = '/2010-04-01/Accounts'
+            HTTP_ENCODING = 'json'
+            ```
+
+        - `_get_balance` to get the available account balance.
+            - Created a dictionary to support a lookup of currency symbols (i.e. "$"), based on a currency code (i.e. "USD").
+
+            ```python
+            # Currency symbol lookup dictionary
+            CURRENCY = {
+                'USD': '$'
+            }
+            ```
+
+    - Added automatic display/output of account name, account status, and account balance to the `__init__` method.

@@ -9,28 +9,47 @@
 """
 
 # Imports - Python Standard Library
+from typing import Callable
 
 # Imports - Third-Party
+import requests
 
 # Imports - Local
-from _42.pybite_16.twilio_api import TwilioAPI
+from _42.pybite_16.twilio_api import TwilioAPI, BASE_URL
 
 
-def test_api_auth() -> None:
+def test_TwilioAPI_api_auth(
+    requests_mock: Callable
+) -> None:
     """ Test the _api_auth method.
 
         Determine if authentication to the Twilio API is successful.
 
         Args:
-            None.
+            requests_mock (Callable):
+                pytest requests_mock object.
 
         Returns:
             None.
     """
 
-    twilio = TwilioAPI(
-        user_sid='abc',
-        secret_key='abc'
-    )
+    json = {'status': 'ok'}
 
-    assert twilio.auth
+    requests_mock.get(
+        url=BASE_URL,
+        json=json
+    )
+    r = requests.get(BASE_URL)
+
+    print(r.json())
+    print()
+    print(json)
+
+    assert json == r.json()
+
+    return None
+
+# TODO - test sending messages
+
+
+# TODO - test checking messages
