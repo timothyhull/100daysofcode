@@ -10,6 +10,7 @@
 
 # Imports - Python Standard Library
 from collections import namedtuple
+from copy import deepcopy
 from typing import Dict, Tuple
 
 # Imports - Third-Party
@@ -24,6 +25,11 @@ HTTP_ENCODING = 'json'
 HTTP_TIMEOUT = 5
 FROM_NUMBER = '+15034863861'
 TO_NUMBER = '+15037248461'
+SMS_PAYLOAD_BODY = {
+    'Body': None,
+    'From': None,
+    'To': None
+}
 
 # namedtuple for simplified HTTP method selection
 HTTPMethod = namedtuple(
@@ -94,11 +100,7 @@ class TwilioAPI:
         )
 
         # Display account balance
-        balance = self.balance.json()
-        print(
-            'Account balance: '
-            f'{CURRENCY.get(balance["currency"])}{balance["balance"]}\n'
-        )
+        self._display_balance()
 
         return None
 
@@ -152,7 +154,6 @@ class TwilioAPI:
 
     def _get_balance(
         self,
-        account_sid: str,
         api_sid: str,
         api_secret: str,
         **kwargs
@@ -169,13 +170,25 @@ class TwilioAPI:
         response = self._api_helper(
             method=method,
             url=url,
-            auth=auth,
-            **kwargs
+            auth=auth
         )
 
         self.balance = response
 
         return None
+
+    def _display_balance(
+        self,
+        **kwargs
+    ) -> None:
+        """ Pass. """
+
+        # Display account balance
+        balance = self.balance.json()
+        print(
+            'Account balance: '
+            f'{CURRENCY.get(balance["currency"])}{balance["balance"]}\n'
+        )
 
     def send_msg(
         self,
@@ -184,32 +197,42 @@ class TwilioAPI:
         api_secret: str,
         message_body: str,
         from_number: str = FROM_NUMBER,
-        to_number: str = TO_NUMBER
+        to_number: str = TO_NUMBER,
+        **kwargs
     ) -> Dict:
         """ Pass. """
 
-        # URL setup
-        endpoint = f'/{account_sid}/Messages.json'
+        # HTTP request setup
+        endpoint = self.api_uris['messages']
+        method = HTTP_METHOD.post
         url = f'{BASE_URL}{endpoint}'
-
-        # HTTP Basic Authentication tuple
         auth = (api_sid, api_secret)
 
-        # HTTP POST body
-        payload = {
-            'Body': message_body,
-            'From': from_number,
-            'To': to_number
-        }
+        # HTTP payload setup
+        data = deepcopy(SMS_PAYLOAD_BODY)
+        data['Body'] = message_body
+        data['From'] = from_number
+        data['To'] = to_number
 
-        # Send request
-        self.response = requests.post(
+        # HTTP request
+        response = self._api_helper(
+            method=method,
             url=url,
             auth=auth,
-            data=payload,
-            timeout=HTTP_TIMEOUT
+            data=data
         )
 
-        self.response.raise_for_status()
+        response.raise_for_status()
 
-        return self.response
+        # Refresh account balance
+        self._get_balance(
+            account_sid=account_sid,
+            api_sid=api_sid,
+            api_secret=api_secret
+        )
+
+        # Display account balance
+        print()
+        self._display_balance()
+
+        return response

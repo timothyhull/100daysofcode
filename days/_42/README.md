@@ -1,4 +1,4 @@
-# :calendar: Day 42: 11/5/2021-11/6/2021
+# :calendar: Day 42: 11/5/2021-11/7/2021
 
 ---
 
@@ -14,6 +14,8 @@
 
 :star: [Twilio API](https://www.twilio.com/docs/sms/api)
 
+:star: [`pytest` Reference for `requests_mock`](https://requests-mock.readthedocs.io/en/latest/pytest.html)
+
 ---
 
 ## Tasks
@@ -24,13 +26,13 @@
 
 :white_check_mark: Build application framework
 
+:white_check_mark: Update `send_msg` method to use the `_api_helper` method
+
+:white_check_mark: Complete `twilio_app.py`
+
 :white_large_square: Populate docstrings and comments
 
 :white_large_square: Complete basic `requests_mock` test
-
-:white_large_square: Complete `twilio_app.py`
-
-:white_large_square: Complete PyBite 16
 
 ---
 
@@ -121,3 +123,16 @@
             ```
 
     - Added automatic display/output of account name, account status, and account balance to the `__init__` method.
+
+---
+
+### :notebook: 11/7/21
+
+- Updated the `send_msg` method to use the `_api_helper` method.
+    - Added automatic display of current balance after sending a message.
+- Created the `_display_balance` method to allow for reuse of the ability to display the current account balance.
+- Tested using a decorator function to replace the `_api_helper` method.
+    - Decorating `class` methods was a problem for using a decorator, because the methods set `self` attributes but return `None`.
+    - The decorator function relies on the _decorated_ function returning a value to manipulate.
+- Updated [twilio_app.py](pybite_16/twilio_app.py) to automatically instantiate an object from the `TwilioAPI` `class`, by way of the `main` function.
+    - The shell command `ipython -i twilio_api.py` creates a `TwilioAPI` instance assigned to the variable `twilio`.

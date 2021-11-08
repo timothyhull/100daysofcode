@@ -12,7 +12,6 @@
 """
 
 # Imports - Python Standard Library
-from os import getenv
 from typing import Dict
 
 # Imports - Third-Party
@@ -37,7 +36,7 @@ def main() -> Dict:
             None.
     """
 
-    twilio = TwilioAPI()
+    twilio = TwilioAPI(**dotenv.dotenv_values())
 
     return twilio
 
