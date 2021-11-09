@@ -11,9 +11,6 @@
         from pybite_16.twilio_api import TwilioAPI
 """
 
-# Imports - Python Standard Library
-from typing import Dict
-
 # Imports - Third-Party
 import dotenv
 
@@ -26,14 +23,20 @@ dotenv.load_dotenv()
 # Constants
 
 
-def main() -> Dict:
+def main() -> TwilioAPI:
     """ Main program.
+
+        Creates an instance of the TwilioAPI  class.  Run this
+        function in an interactive Python shell for testing:
+
+        python3 -i twilio_api.py
 
         Args:
             None.
 
         Returns:
-            None.
+            twilio (TwilioAPI):
+                Instance of the TwilioAPI class.
     """
 
     twilio = TwilioAPI(**dotenv.dotenv_values())

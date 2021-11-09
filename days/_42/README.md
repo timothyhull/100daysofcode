@@ -30,7 +30,7 @@
 
 :white_check_mark: Complete `twilio_app.py`
 
-:white_large_square: Populate docstrings and comments
+:white_check_mark: Populate docstrings and comments
 
 :white_large_square: Complete basic `requests_mock` test
 
@@ -136,3 +136,11 @@
     - The decorator function relies on the _decorated_ function returning a value to manipulate.
 - Updated [twilio_app.py](pybite_16/twilio_app.py) to automatically instantiate an object from the `TwilioAPI` `class`, by way of the `main` function.
     - The shell command `ipython -i twilio_api.py` creates a `TwilioAPI` instance assigned to the variable `twilio`.
+
+---
+
+### :notebook: 11/8/21
+
+- Populated docstrings in [twilio_api.py](pybite_16/twilio_api.py) and [twilio_app.py](pybite_16/twilio_app.py).
+- Added, and refactored for, moving the to and from SMS numbers to the .env file.
+    - Successfully tested `class` instantiation and methods.
