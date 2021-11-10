@@ -1,4 +1,4 @@
-# :calendar: Day 42: 11/5/2021-11/7/2021
+# :calendar: Day 42: 11/5/2021-11/9/2021
 
 ---
 
@@ -32,7 +32,7 @@
 
 :white_check_mark: Populate docstrings and comments
 
-:white_large_square: Complete basic `requests_mock` test
+:white_check_mark: Complete basic `requests_mock` tests
 
 ---
 
@@ -144,3 +144,49 @@
 - Populated docstrings in [twilio_api.py](pybite_16/twilio_api.py) and [twilio_app.py](pybite_16/twilio_app.py).
 - Added, and refactored for, moving the to and from SMS numbers to the .env file.
     - Successfully tested `class` instantiation and methods.
+
+---
+
+### :notebook: 11/9/21
+
+- Performed extensive `pytest` testing using the `requests_mock` pytest fixture.
+    - Tested building mock payload values to supply all of the values consumed by the code under test. For example:
+        - If the code to test uses the key `response.json()['accounts'][0]['status']`, be sure to structure the mock json response to provide that key and value.
+
+            ```python
+            # Create a mock URL and JSON response
+            url = 'https://test.local
+            json = {
+                'accounts': [
+                    'status': 'active'
+                ]
+            }
+
+            # Create the mock request
+            requests_mock.get(
+                url=url,
+                json=json
+            )
+
+            # Call the function that uses the requests module (requests_mock will insert/substitute the request/response).
+            response = test_requests_function()
+
+            # Assert the mock response JSON data is in the mock response.
+            assert response.json()['accounts'][0]['status'] == 'active'
+            ```
+
+    - Tested URI matching for multiple mock requests within a single test function.
+        - The `url` argument in the `requests_mock` methods (`requests_mock.get(url=url)`) exists to match a mock request with the `requests` code under test:
+
+        ```python
+        # If the code under test reads
+        url = 'http://test.lab.local'
+        response = requests.get(url)
+
+        # requests_mock will replace the actual request.get method usage with a requests_mock object that matches the url
+        requests_mock.get(url='http://test.lab.local)
+        ```
+
+- Successfully completed two test scenarios for the `TwilioAPI` `__init__` method.
+    - `TwilioAPI_init_exception` mocks the `TwilioAPI` `__init__` method workflow, including all HTTP requests.`
+    - `test_TwilioAPI_init_exception` confirms the `raise_for_status` method creates an `HTTPError` exception.

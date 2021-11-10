@@ -370,8 +370,6 @@ class TwilioAPI:
             data=data
         )
 
-        response.raise_for_status()
-
         # Refresh account balance
         self._get_balance(
             account_sid=account_sid,
