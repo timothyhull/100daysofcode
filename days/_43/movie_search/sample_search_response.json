@@ -1,0 +1,221 @@
+{
+  "keyword": "run",
+  "hits": [
+    {
+      "imdb_code": "tt0327850",
+      "title": "The Rundown",
+      "director": "Peter Berg",
+      "keywords": [
+        "amazon",
+        "jungle",
+        "fight",
+        "bounty hunter",
+        "hunter"
+      ],
+      "duration": 104,
+      "genres": [
+        "adventure",
+        "comedy",
+        "action",
+        "thriller"
+      ],
+      "rating": "PG-13",
+      "year": 2003,
+      "imdb_score": 6.7
+    },
+    {
+      "imdb_code": "tt0163187",
+      "title": "Runaway Bride",
+      "director": "Garry Marshall",
+      "keywords": [
+        "journalist",
+        "maryland",
+        "wedding",
+        "bride",
+        "columnist"
+      ],
+      "duration": 116,
+      "genres": [
+        "comedy",
+        "romance"
+      ],
+      "rating": "PG",
+      "year": 1999,
+      "imdb_score": 5.5
+    },
+    {
+      "imdb_code": "tt2199571",
+      "title": "Run All Night",
+      "director": "Jaume Collet-Serra",
+      "keywords": [
+        "drug dealer",
+        "limousine driver",
+        "death",
+        "limousine",
+        "one night"
+      ],
+      "duration": 114,
+      "genres": [
+        "crime",
+        "drama",
+        "action",
+        "thriller"
+      ],
+      "rating": "R",
+      "year": 2015,
+      "imdb_score": 6.6
+    },
+    {
+      "imdb_code": "tt0120630",
+      "title": "Chicken Run",
+      "director": "Peter Lord",
+      "keywords": [
+        "rooster",
+        "escape",
+        "chicken",
+        "freedom",
+        "farm"
+      ],
+      "duration": 84,
+      "genres": [
+        "adventure",
+        "animation",
+        "drama",
+        "comedy",
+        "family"
+      ],
+      "rating": "G",
+      "year": 2000,
+      "imdb_score": 7.0
+    },
+    {
+      "imdb_code": "tt1790864",
+      "title": "The Maze Runner",
+      "director": "Wes Ball",
+      "keywords": [
+        "open ended",
+        "teenage boy",
+        "based on novel",
+        "maze",
+        "concrete wall"
+      ],
+      "duration": 113,
+      "genres": [
+        "thriller",
+        "sci-fi",
+        "action",
+        "mystery"
+      ],
+      "rating": "PG-13",
+      "year": 2014,
+      "imdb_score": 6.8
+    },
+    {
+      "imdb_code": "tt0095631",
+      "title": "Midnight Run",
+      "director": "Martin Brest",
+      "keywords": [
+        "mob",
+        "accountant",
+        "mafia",
+        "bounty hunter",
+        "fbi"
+      ],
+      "duration": 126,
+      "genres": [
+        "crime",
+        "comedy",
+        "action",
+        "thriller"
+      ],
+      "rating": "R",
+      "year": 1988,
+      "imdb_score": 7.6
+    },
+    {
+      "imdb_code": "tt0093894",
+      "title": "The Running Man",
+      "director": "Paul Michael Glaser",
+      "keywords": [
+        "latina",
+        "oppression",
+        "game of death",
+        "government conspiracy",
+        "police"
+      ],
+      "duration": 101,
+      "genres": [
+        "crime",
+        "sci-fi",
+        "action",
+        "thriller"
+      ],
+      "rating": "R",
+      "year": 1987,
+      "imdb_score": 6.6
+    },
+    {
+      "imdb_code": "tt2364841",
+      "title": "Runner Runner",
+      "director": "Brad Furman",
+      "keywords": [
+        "gambling",
+        "online gambling",
+        "fbi agent",
+        "costa rica",
+        "money"
+      ],
+      "duration": 88,
+      "genres": [
+        "crime",
+        "thriller"
+      ],
+      "rating": "R",
+      "year": 2013,
+      "imdb_score": 5.6
+    },
+    {
+      "imdb_code": "tt0083658",
+      "title": "Blade Runner",
+      "director": "Ridley Scott",
+      "keywords": [
+        "tech noir",
+        "megacorporation",
+        "artificial intelligence",
+        "human android relationship",
+        "police detective"
+      ],
+      "duration": 117,
+      "genres": [
+        "sci-fi",
+        "thriller"
+      ],
+      "rating": "R",
+      "year": 1982,
+      "imdb_score": 8.2
+    },
+    {
+      "imdb_code": "tt0272338",
+      "title": "Punch-Drunk Love",
+      "director": "Paul Thomas Anderson",
+      "keywords": [
+        "sister",
+        "love",
+        "pudding",
+        "harmonium",
+        "phone sex"
+      ],
+      "duration": 95,
+      "genres": [
+        "drama",
+        "comedy",
+        "thriller",
+        "romance"
+      ],
+      "rating": "R",
+      "year": 2002,
+      "imdb_score": 7.3
+    }
+  ],
+  "truncated_results": true
+}
