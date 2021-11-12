@@ -8,26 +8,26 @@
 # Imports - Local
 from _43.movie_search.app import api
 
-# Constants
-SEARCH_NAME = 'run'
-
 
 def main() -> None:
     """ Docstring """
 
     #
-    response = api.find_movie_by_title(SEARCH_NAME)
-    hits = response.json()['hits']
-    search_term = response.json()['keyword']
-    count = len(hits)
+    keyword = input(
+        'Search for movies by title: '
+    )
 
     #
-    if count < 1:
-        message = f'No results found for "{search_term}"'
-    if count == 1:
-        message = f'1 result found for "{search_term}"'
+    response = api.find_movie_by_title(keyword)
+    hit_count = len(response)
+
+    #
+    if hit_count < 1:
+        message = f'No results found for "{keyword}"'
+    if hit_count == 1:
+        message = f'1 result found for "{keyword}"'
     else:
-        message = f'{count} results found for "{search_term}"'
+        message = f'{hit_count} results found for "{keyword}"'
 
     #
     print(
@@ -36,11 +36,16 @@ def main() -> None:
     )
 
     #
-    for index, hit in enumerate(hits, 1):
-        print(f'{index}. {hit["title"]}')
+    for index, movie in enumerate(response, 1):
+        print(
+            f'{index}. {movie.title} ({movie.year})\n'
+            f'\tRating: {movie.rating}\n'
+            f'\tIMDB Score: {movie.imdb_score}\n'
+            f'\tIMDB Code: {movie.imdb_code}'
+        )
     print()
 
-    return False
+    return None
 
 
 if __name__ == '__main__':

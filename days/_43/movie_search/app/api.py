@@ -3,6 +3,7 @@
 
 # Imports - Python Standard Library
 from collections import namedtuple
+from typing import List
 
 # Imports - Third-Party
 import requests
@@ -28,6 +29,21 @@ HTTPMethods = namedtuple(
     ]
 )
 
+Movies = namedtuple(
+    typename='Movies',
+    field_names=[
+        'imdb_code',
+        'title',
+        'director',
+        'keywords',
+        'duration',
+        'genres',
+        'rating',
+        'year',
+        'imdb_score'
+    ]
+)
+
 # Constants
 BASE_URL = 'https://movieservice.talkpython.fm/api'
 ENDPOINTS = APIEndpoints(
@@ -42,12 +58,13 @@ HTTP_METHODS = HTTPMethods(
 HTTP_TIMEOUT = 5
 
 
-def find_movie_by_title(keyword):
+def find_movie_by_title(keyword: str) -> List[Movies]:
     """ Docstring """
 
     #
     url = f'{BASE_URL}/{ENDPOINTS.name}/{keyword}'
 
+    #
     response = requests.get(
         url=url,
         timeout=5
@@ -56,4 +73,9 @@ def find_movie_by_title(keyword):
     #
     response.raise_for_status()
 
-    return response
+    #
+    movies = []
+    for movie in response.json()['hits']:
+        movies.append(Movies(**movie))
+
+    return movies
