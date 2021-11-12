@@ -241,7 +241,7 @@ from unittest.mock import patch
 
 # Pass @patch.object the 'builtins.input' attribute, to capture input from the 'input()' method
 # Specify the mock inputs with the 'side_effect' kwarg
-@patch.object(
+@patch(
   'builtins.input',
   side_effect=['1', '2', '3', '4']
 )
@@ -270,6 +270,10 @@ def test_expected_vs_actual(inp, capfd):
     o.strip() for o in output.split('\n')
     if o.strip()
   ]
+
+  for line, exp in zip(actual, expected):
+    assert line == exp
+
 ```
 
 
