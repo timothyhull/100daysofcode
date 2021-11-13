@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Docstring """
+""" Movie Search app API interface """
 
 # Imports - Python Standard Library
 from collections import namedtuple
@@ -7,8 +7,6 @@ from typing import List
 
 # Imports - Third-Party
 import requests
-
-# Imports - Local
 
 # namedtuples
 # namedtuple of API endpoints
@@ -59,21 +57,30 @@ HTTP_TIMEOUT = 5
 
 
 def find_movie_by_title(keyword: str) -> List[Movies]:
-    """ Docstring """
+    """ Search for movies by title.
 
-    #
+        Args:
+            keyword (str):
+                Keyword search string.
+
+        Returns:
+            movies (List[Movies]):
+                List of namedtuples with movie attributes.
+    """
+
+    # Setup URL string
     url = f'{BASE_URL}/{ENDPOINTS.name}/{keyword}'
 
-    #
+    # Send the API request
     response = requests.get(
         url=url,
         timeout=5
     )
 
-    #
+    # Raise a status exception for HTTP errors
     response.raise_for_status()
 
-    #
+    # Create a movies list and insert namedtuples for each movie
     movies = []
     for movie in response.json()['hits']:
         movies.append(Movies(**movie))

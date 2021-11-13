@@ -1,4 +1,4 @@
-# :calendar: Day 43: 11/10/2021-11/11/2021
+# :calendar: Day 43: 11/10/2021-11/12/2021
 
 ---
 
@@ -20,7 +20,9 @@
 
 :white_check_mark: Watch video 8
 
-:white_large_square: Add docstrings and comments
+:white_check_mark: Add docstrings and comments
+
+:white_large_square: Watch video 9
 
 ---
 
@@ -136,3 +138,9 @@
             f'\tIMDB Code: {movie.imdb_code}'
         )
     ```
+
+---
+
+### :notebook: 11/12/21
+
+- Added docstrings and comments to all program and test .py files.
