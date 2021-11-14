@@ -22,7 +22,7 @@
 
 :white_check_mark: Add docstrings and comments
 
-:white_large_square: Watch video 9
+:white_check_mark: Watch videos 9-10
 
 ---
 
