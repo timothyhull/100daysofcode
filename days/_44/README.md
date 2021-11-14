@@ -18,7 +18,7 @@
 
 :white_check_mark: Setup application framework
 
-:white_large_square: Create program that returns and displays movie search results
+:white_check_mark: Create program that returns and displays movie search results
 
 ---
 
