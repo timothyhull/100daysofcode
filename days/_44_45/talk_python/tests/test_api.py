@@ -8,7 +8,7 @@ from pytest import mark
 import requests_mock.mocker
 
 # Imports - Local
-from _44.talk_python.api.api import (
+from _44_45.talk_python.api.api import (
     talkpython_search, BASE_URL
 )
 
@@ -55,9 +55,9 @@ SEARCH_KEYWORDS = [
     'requests'
 ]
 EXPECTED_RESULTS = [
-    'category',
-    'description',
-    'title'
+    'elapsed_ms',
+    'keywords',
+    'results'
 ]
 
 
@@ -106,6 +106,6 @@ def test_api_talkpython_search(
     response = talkpython_search(keyword)
 
     # Assert the response matches the expected value
-    assert expected_result in response['results'][0].keys()
+    assert expected_result in response._fields
 
     return None

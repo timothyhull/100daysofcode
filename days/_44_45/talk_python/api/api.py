@@ -2,12 +2,21 @@
 """ Talk Python to Me API Search Application.  """
 
 # Imports - Python Standard Library
+from collections import namedtuple
 
 # Imports - Third-Party Modules
-from typing import Dict
+from typing import List
 import requests
 
-# Imports - Local
+# namedtuple objects
+SearchResults = namedtuple(
+    typename='SearchResults',
+    field_names=[
+        'elapsed_ms',
+        'keywords',
+        'results'
+    ]
+)
 
 # Constants
 BASE_URL = 'https://search.talkpython.fm/api/search?q='
@@ -16,7 +25,7 @@ HTTP_TIMEOUT = 5
 
 def talkpython_search(
     keyword: str
-) -> Dict:
+) -> List[SearchResults]:
     """ Search the Talk Python to Me API Application.
 
         Args:
@@ -39,4 +48,12 @@ def talkpython_search(
     # Raise an HTTPError exception for a failed request
     response.raise_for_status()
 
-    return response.json()
+    # Group results into a namedtuple
+    r = response.json()
+    search_results = SearchResults(
+        elapsed_ms=r.get('elapsed_ms'),
+        keywords=r.get('keywords'),
+        results=r.get('results')
+    )
+
+    return search_results

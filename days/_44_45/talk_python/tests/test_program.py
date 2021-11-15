@@ -6,7 +6,7 @@ from unittest.mock import MagicMock, patch
 import _pytest.capture
 
 # Imports - Local
-from _44.talk_python.program import main
+from _44_45.talk_python.program import main
 
 # Constants
 KEYWORDS = [

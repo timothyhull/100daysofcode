@@ -1,4 +1,4 @@
-# :calendar: Day 4: 11/13/2021
+# :calendar: Days 44+45: 11/13/2021-11/14/2021
 
 ---
 
@@ -20,6 +20,10 @@
 
 :white_check_mark: Create program that returns and displays movie search results
 
+:white_check_mark: Replace dictionary results with a namedtuple
+
+:white_check_mark: Write code to open the search results in a web browser
+
 ---
 
 ## Notes
@@ -31,3 +35,11 @@
     - [program.py](program.py) - user interface
     - [api.py](tests/api.py) - api interface `pytest` tests
     - [api.py](api/api.py) - API interface
+
+---
+
+### :notebook: 11/14/21
+
+- Replaced dictionary results with a namedtuple.
+- Wrote code to open the search results in a web browser.
+    - Code does not work when run within a container.
