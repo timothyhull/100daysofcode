@@ -1,8 +1,6 @@
 #!/usr/bin/env pytest
 """ pytest tests for program.py  """
 
-# Imports - Python Standard Library
-
 # Imports - Third-Party Modules
 from unittest.mock import MagicMock, patch
 import _pytest.capture

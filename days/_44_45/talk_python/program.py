@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 """ Talk Python to Me Program Application.  """
 
-# Imports - Python Standard Library
-
-# Imports - Third-Party Modules
-
 # Imports - Local
 from _44.talk_python.api.api import talkpython_search
 
