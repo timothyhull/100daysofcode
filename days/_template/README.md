@@ -1,10 +1,10 @@
-# :calendar: Day N: 0/0/0000
+# :calendar: Day 46: 11/16/2021
 
 ---
 
 ## Topics
 
-:clipboard: TBD
+:clipboard: Web Scraping with BeautifulSoup4
 
 ---
 
@@ -16,7 +16,7 @@
 
 ## Tasks
 
-:white_check_mark: TBD
+:white_check_mark: Watch videos 1-2
 
 :white_large_square: TBD
 
@@ -24,4 +24,6 @@
 
 ## Notes
 
-### :notebook: 0/0/00
+### :notebook: 11/16/2021
+
+- Watched introductory videos.
