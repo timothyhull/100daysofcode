@@ -30,3 +30,5 @@ pyyaml
 logbook
 # environment varable management
 python-dotenv
+# web scraping
+bs4
