@@ -331,5 +331,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 <details><summary>Days 46-48: Web Scraping with BeautifulSoup4</summary>
 
 - Day 46: [11/16/21](days/_46)
+- Day 46a: [11/16/21](days/_46#notebook-111721)
 
 </details>
