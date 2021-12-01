@@ -3,6 +3,7 @@
 
 # Imports - Python Standard Library
 from os import path
+from typing import List
 
 # Imports - Third-Party
 import bs4
@@ -18,6 +19,7 @@ HTML_PATH = path.join(
     HTML_DIR,
     HTML_FILE
 )
+TITLE_SEARCH_PATH = 'h2.entry-title'
 
 
 def get_html() -> str:
@@ -41,20 +43,30 @@ def get_html() -> str:
     return html_text
 
 
-def scrape(markup_text: str) -> None:
-    """ Pull text/HTML content from a website.
+def scrape_titles(markup_text: str) -> List:
+    """ Display text embedded in nested tags.
 
         Args:
             markup_text:
                 Raw HTML markup text to parse.
 
         Returns:
-            project_headings (List):
-                List of all project headings that match the CSS class
-                named '.projectHeader'.
+            title_text (List):
+                A list of parsed titles.
     """
 
-    return None
+    # Create a BS4 object
+    soup = bs4.BeautifulSoup(markup_text, 'html.parser')
+
+    # Get a BS4 record set
+    titles = soup.select(TITLE_SEARCH_PATH)
+
+    # Strip out all of the HTML surrounding each article, leaving only the text
+    title_text = []
+    for item in titles:
+        title_text.append(item.string)
+
+    return title_text
 
 
 def main() -> None:
@@ -66,6 +78,13 @@ def main() -> None:
         Returns:
             None.
     """
+
+    # Scrape the HTML for article titles
+    html = get_html()
+    titles = scrape_titles(html)
+
+    for title in titles:
+        print(title.string)
 
     return None
 

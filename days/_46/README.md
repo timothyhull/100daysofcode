@@ -24,7 +24,11 @@
 
 :white_check_mark: Watch videos 5-6
 
-:white_large_square: Watch videos 7-8
+:white_check_mark: Review 11/23/21 notes, to reconnect to the materials.
+
+:white_check_mark: Watch video 7
+
+:white_large_square: Watch video 8
 
 ---
 
@@ -58,8 +62,8 @@
 #### The site `https://pybit.es/articles/` returns an HTTP 406
 
 - Workaround for HTTP 406 error is to save the HTML source to the **./html/articles.html** folder.
-- To search a `bs4.BeautifulSoup` object for page elements that match a specific HTML tag.
-    - Use the built-in search function by specifying an HTML tag attribute of a `bs4.BeautifulSoup` object:
+- Search a `bs4.BeautifulSoup` object for page elements that match a specific HTML tag (<h2>, <p>, etc.).
+    - Use the BS4 built-in search function by specifying an HTML tag as an attribute of a `bs4.BeautifulSoup` object:
 
     ```python
     # Create a BS4 object from raw HTML
@@ -70,9 +74,12 @@
 
     # Searching for sub-attributes is possible too
     soup.h2.a
+
+    # BS4 object attributes and methods are available for HTML tag attributes
+    soup.h2.a.text
     ```
 
-    - BS4 only returns the first matching tag, it does not return all matching tags.
+    - With this search methodology, BS4 only returns the first matching tag, it does not return _all_ matching tags.
     - The `soup.find_all` method can return all matching items:
 
      ```python
@@ -82,3 +89,36 @@
     # Use the `soup.find_all` method to locate all H2 elements
     soup.find_all('h2')
     ```
+
+---
+
+### :notebook: 11/30/2021
+
+- Searching for specific text within a series of tags:
+    - Example use case, parse an HTML document for all text inside of <h2> tags:
+
+    ```python
+    # Create a BS4 object from raw HTML
+    soup = bs4.BeautifulSoup(html_text, 'html.parser')
+
+    # Use the find_all method to get a BS4 record set of results
+    h2_records = soup.find_all('h2')
+
+    # Loop over and display the text only for each record
+    for item in h2_records:
+        print(item.string)
+    ```
+
+    - In the case of the `articles.html` document, there are H2 tags with text that isn't article titles.
+    - We can use a combination of the HTML tag and CSS class (`.entry-title`) with the BS4 `select` method to display only the text for article titles:
+
+    ```python
+    # Get a list of titles by combining the <H2> tag and the .entry_title CSS class
+    article_titles = soup.select('h2.entry-title')
+
+    # Loop over and display the text only for each record
+    for item in article_titles:
+        print(item.string)
+    ```
+
+- Completed [`scraper_2.py`](scraper_2.py)
