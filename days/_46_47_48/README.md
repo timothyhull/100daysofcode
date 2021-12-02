@@ -1,4 +1,4 @@
-# :calendar: Day 46: 11/16/2021-11/17/2021
+# :calendar: Day 46: 11/16/2021-12/1/2021
 
 ---
 
@@ -28,19 +28,19 @@
 
 :white_check_mark: Watch video 7
 
-:white_large_square: Watch video 8
+:white_check_mark: Watch video 8
 
 ---
 
 ## Notes
 
-### :notebook: 11/16/2021
+### :notebook: 11/16/21
 
 - Watched introductory videos.
 
 ---
 
-### :notebook: 11/17/2021
+### :notebook: 11/17/21
 
 #### The site `https://pybit.es/pages/projects.html` returns an HTTP 406
 
@@ -57,7 +57,7 @@
 
 ---
 
-### :notebook: 11/23/2021
+### :notebook: 11/23/21
 
 #### The site `https://pybit.es/articles/` returns an HTTP 406
 
@@ -92,7 +92,7 @@
 
 ---
 
-### :notebook: 11/30/2021
+### :notebook: 11/31/21
 
 - Searching for specific text within a series of tags:
     - Example use case, parse an HTML document for all text inside of <h2> tags:
@@ -122,3 +122,10 @@
     ```
 
 - Completed [`scraper_2.py`](scraper_2.py)
+
+---
+
+### :notebook: 12/1/21
+
+- Watched video 8.
+- Reorganized day 46, 47q

@@ -330,12 +330,13 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 
 <details><summary>Days 46-48: Web Scraping with BeautifulSoup4</summary>
 
-- Day 46: [11/16/21](days/_46)
-- Day 46a: [11/17/21](days/_46#notebook-111721)
+- Day 46+47+48: [11/16/21](days/_46_47_48)
+- Day 46+47+48a: [11/17/21](days/_46_47_48#notebook-111721)
 - Break for family trauma :sob:
-- Day 46b: [11/23/21](days/_46#notebook-112321)
+- Day 46+47+48b: [11/23/21](days/_46_47_48#notebook-112321)
 - Break for family trauma :sob:
-- Day 46c: [11/30/21](days/_46#notebook-113021)
-- Day 46d: [12/1/21](days/_46#notebook-12121)
+- Day 46+47+48c: [11/30/21](days/_46_47_48#notebook-113021)
+- Day 46+47+48d: [12/1/21](days/_46_47_48#notebook-12121)
+- Day 46+47+48e: [12/2/21](days/_46_47_48)
 
 </details>
