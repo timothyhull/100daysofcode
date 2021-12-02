@@ -128,4 +128,4 @@
 ### :notebook: 12/1/21
 
 - Watched video 8.
-- Reorganized day 46, 47q
+- Reorganized day 46, 47, & 48 file structures.
