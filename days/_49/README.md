@@ -20,6 +20,8 @@
 
 :white_check_mark: Tested `cProfile` module on `/workspaces/100daysofcode/days/_49/demo/final_csv_code/program.py`
 
+:white_check_mark: Watch videos 4-5
+
 :white_large_square: TBD
 
 ---
@@ -28,7 +30,7 @@
 
 ### :notebook: 12/2/21
 
-- Measuring application performance is refered to as "profiling."
+- Measuring application performance is referred to as "profiling."
 - To profile Python applications, use the built-in `cProfile` module at the Linux CLI:
 
 ```bash
@@ -58,4 +60,25 @@ Ordered by: cumulative time
 python -m cProfile -s cumtime
 ```
 
-- `cumtime` is cumulative runtime for a given element. 
+- `cumtime` is cumulative runtime for a given element.
+
+---
+
+### :notebook: 12/3/21
+
+- To profile a Python application using Python code, perform the following steps:
+
+   1. Import the Python cProfile module:
+      - `import cProfile`
+   2. Create a profiler by assigning a `cProfile.Profile` to a variable, and then disable the profile:
+      - Immediately disabling the profiler prevents module initialization from being included in the profiling process.
+
+      ```python
+      profiler = cProfile.Profile()
+      profiler.disable()
+      ```
+
+   3. Enable the profiler at a specific point in the application
+      - `profiler.enable()`
+   4. Add Python code to a script, to display profiler statistics in the terminal (Sorted by cumulative time.):
+      - `profiler.print_stats(sort='cumtime')`
