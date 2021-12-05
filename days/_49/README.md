@@ -22,6 +22,12 @@
 
 :white_check_mark: Watch videos 4-5
 
+:white_check_mark: Re-watch video 5
+
+:white_check_mark: Watch video 6
+
+:white_check_mark: Refactor `/workspaces/100daysofcode/days/_49/demo/starter_csv_code/program.py` to reduce profiling footprint
+
 :white_large_square: TBD
 
 ---
@@ -66,7 +72,7 @@ python -m cProfile -s cumtime
 
 ### :notebook: 12/3/21
 
-- To profile a Python application using Python code, perform the following steps:
+- To profile a Python application using code, perform the following steps:
 
    1. Import the Python cProfile module:
       - `import cProfile`
@@ -78,7 +84,44 @@ python -m cProfile -s cumtime
       profiler.disable()
       ```
 
-   3. Enable the profiler at a specific point in the application
+   3. Enable the profiler at a specific point in the application:
       - `profiler.enable()`
+   4. Disable the profiler at a specific point, later in the application:
+      - `profiler.disable()`
    4. Add Python code to a script, to display profiler statistics in the terminal (Sorted by cumulative time.):
       - `profiler.print_stats(sort='cumtime')`
+
+---
+
+### :notebook: 12/4/21
+
+- Refactored `/workspaces/100daysofcode/days/_49/demo/starter_csv_code/program.py` to reduce profiling footprint:
+   - Individual function calls to `research.hot_days`, `research.cold_days`, and `research.wet_days` no longer return results to the same variable name (`days`).
+   - Function calls now assign to individual variables named `hot_days`, `cold_days`, and `wet_days`.
+   - The refactoring allows profiling to start and stop in a contiguous block of code, removing some processes from the `cProfile` profiling.
+
+   ```python
+   import cProfile
+
+   # Initialize a profiler object and disable profiling
+   profiler = cProfile.Profile()
+   profiler.disable()
+
+   def main():
+      print("Weather research for Seattle, 2014-2015")
+      print()
+
+      # Enable the profiler
+      profiler.enable()
+
+      # Call functions from the research module
+      research.init()
+      hot_days = research.hot_days()
+      cold_days = research.cold_days()
+      wet_days = research.wet_days()
+
+      # Disable the profiler
+      profiler.disable()
+
+      # program execution continues...
+   ```
