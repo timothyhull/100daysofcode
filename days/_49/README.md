@@ -1,4 +1,4 @@
-# :calendar: Day 49: 12/2/2021
+# :calendar: Day 49: 12/2/2021-12/5/2021
 
 ---
 
@@ -27,6 +27,10 @@
 :white_check_mark: Watch video 6
 
 :white_check_mark: Refactor `/workspaces/100daysofcode/days/_49/demo/starter_csv_code/program.py` to reduce profiling footprint
+
+:white_check_mark: Watch video 7
+
+:white_check_mark: Refactor `/workspaces/100daysofcode/days/_49/demo/starter_csv_code/research.py` to for performance optimization
 
 :white_large_square: TBD
 
@@ -125,3 +129,61 @@ python -m cProfile -s cumtime
 
       # program execution continues...
    ```
+
+---
+
+### :notebook: 12/5/21
+
+- Refactored the `parse_row` function in the file [research.py](./demo/starter_csv_code/research.py) to:
+   1. Only convert text data to integers if the data is part of the results (min temp, max temp, precipitation).
+   2. Only insert the relevant data into the `Results` namedtuple object, instead of a data set with many unused fields.
+- Refactored the `__init__` function in the file [research.py](./demo/starter_csv_code/research.py) to:
+   1. Only read the CSV data from a file and convert it to a Python dictionary one time:
+
+   ```python
+   def init():
+      # If the data list (global var) is not empty, do not re-read the CSV file
+      if data:
+         return None
+      # Reamining function code truncated
+   ```
+
+- Application performance snapshot _before_ refactoring:
+
+```bash
+ 114912 function calls in 1.949 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       24    0.217    0.009    1.552    0.065 research.py:17(init)
+     8784    0.427    0.000    0.785    0.000 csv.py:107(__next__)
+     8760    0.212    0.000    0.412    0.000 research.py:30(parse_row)
+       72    0.200    0.003    0.396    0.005 {built-in method builtins.sorted}
+     8760    0.131    0.000    0.201    0.000 <string>:1(<lambda>)
+    17544    0.141    0.000    0.143    0.000 csv.py:93(fieldnames)
+       24    0.000    0.000    0.137    0.006 research.py:51(hot_days)
+       24    0.000    0.000    0.132    0.006 research.py:59(wet_days)
+    17544    0.127    0.000    0.127    0.000 {built-in method builtins.len}
+       24    0.000    0.000    0.127    0.005 research.py:55(cold_days)
+```
+
+- Application performance snapshot _after_ refactoring:
+
+```bash
+ 31617 function calls in 0.483 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       72    0.196    0.003    0.392    0.005 {built-in method builtins.sorted}
+       24    0.000    0.000    0.137    0.006 research.py:46(hot_days)
+       24    0.000    0.000    0.128    0.005 research.py:54(wet_days)
+       24    0.000    0.000    0.127    0.005 research.py:50(cold_days)
+       24    0.009    0.000    0.090    0.004 research.py:14(init)
+     8760    0.069    0.000    0.069    0.000 research.py:47(<lambda>)
+     8760    0.064    0.000    0.064    0.000 research.py:55(<lambda>)
+     8760    0.062    0.000    0.062    0.000 research.py:51(<lambda>)
+      365    0.020    0.000    0.040    0.000 research.py:31(parse_row)
+      366    0.019    0.000    0.035    0.000 csv.py:107(__next__)
+```
