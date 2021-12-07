@@ -32,6 +32,8 @@
 
 :white_check_mark: Refactor `/workspaces/100daysofcode/days/_49/demo/starter_csv_code/research.py` to for performance optimization
 
+:white_check_mark: Watch videos 8-10
+
 :white_large_square: TBD
 
 ---
@@ -187,3 +189,9 @@ python -m cProfile -s cumtime
       365    0.020    0.000    0.040    0.000 research.py:31(parse_row)
       366    0.019    0.000    0.035    0.000 csv.py:107(__next__)
 ```
+
+---
+
+### :notebook: 12/6/21
+
+- Watched videos 8-10.
