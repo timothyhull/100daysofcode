@@ -350,5 +350,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 49d: [12/6/21](days/_49#notebook-12621)
 - Break for family trauma :sob:
 - Day 49e: [12/10/21](days/_49#notebook-121021)
+- Day 50: [12/11/21](days/_50)
 
 </details>
