@@ -1,4 +1,4 @@
-# :calendar: Day 49: 12/2/2021-12/5/2021
+# :calendar: Day 49: 12/2/2021-12/10/2021
 
 ---
 
@@ -34,7 +34,9 @@
 
 :white_check_mark: Watch videos 8-10
 
-:white_large_square: TBD
+:white_check_mark: Watch video 11
+
+:white_check_mark: Select a Python application to optimize with `cProfile`.
 
 ---
 
@@ -195,3 +197,10 @@ python -m cProfile -s cumtime
 ### :notebook: 12/6/21
 
 - Watched videos 8-10.
+
+---
+
+### :notebook: 12/10/21
+
+- Selected a Python application to optimize with `cProfile`.
+   - `movie_search` application, from Day 43.
