@@ -1,6 +1,6 @@
 # #100DaysOfCode with Python
 
-My log :clipboard: and notes​ :notebook: for thethe **TalkPython #100DaysOfCode with Python** :snake: course.
+My log :clipboard: and notes​ :notebook: for the **TalkPython #100DaysOfCode with Python** :snake: course.
 
 ---
 
