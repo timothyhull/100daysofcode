@@ -2,11 +2,16 @@
 """ Movie Search application user interface program. """
 
 # Imports - Python Standard Library
+from cProfile import Profile
 from sys import argv
 from typing import List
 
 # Imports - Local
 from _50.movie_search.app import api
+
+# Create profiler object and disable profiling
+profile = Profile()
+profile.disable()
 
 
 def keyword_argument_check(
@@ -79,6 +84,9 @@ def main() -> None:
         f'\n{"-" * len(message)}'
     )
 
+    # Enable profiler
+    profile.enable()
+
     # Display the results
     for index, movie in enumerate(response, 1):
         print(
@@ -88,6 +96,10 @@ def main() -> None:
             f'\tIMDB Code: {movie.imdb_code}'
         )
     print()
+
+    # Disable profiler
+    profile.disable()
+    profile.print_stats(sort='cumtime')
 
     return None
 
