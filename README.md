@@ -323,21 +323,21 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 43: [11/10/21](days/_43)
 - Day 43a: [11/11/21](days/_43#notebook-111121)
 - Day 43b: [11/12/21](days/_43#notebook-111221)
-- Day 44+45: [11/13/21](days/_44_45)
-- Day 44+45a: [11/14/21](days/_44_45)
+- Days 44+45: [11/13/21](days/_44_45)
+- Days 44+45a: [11/14/21](days/_44_45)
 
 </details>
 
 <details><summary>Days 46-48: Web Scraping with BeautifulSoup4</summary>
 
-- Day 46+47+48: [11/16/21](days/_46_47_48)
-- Day 46+47+48a: [11/17/21](days/_46_47_48#notebook-111721)
+- Days 46+47+48: [11/16/21](days/_46_47_48)
+- Days 46+47+48a: [11/17/21](days/_46_47_48#notebook-111721)
 - Break for family trauma :sob:
-- Day 46+47+48b: [11/23/21](days/_46_47_48#notebook-112321)
+- Days 46+47+48b: [11/23/21](days/_46_47_48#notebook-112321)
 - Break for family trauma :sob:
-- Day 46+47+48c: [11/30/21](days/_46_47_48#notebook-113021)
-- Day 46+47+48d: [12/1/21](days/_46_47_48#notebook-12121)
-- Day 46+47+48e: [12/1/21](days/_46_47_48)
+- Days 46+47+48c: [11/30/21](days/_46_47_48#notebook-113021)
+- Days 46+47+48d: [12/1/21](days/_46_47_48#notebook-12121)
+- Days 46+47+48e: [12/1/21](days/_46_47_48)
 
 </details>
 
@@ -350,6 +350,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 49d: [12/6/21](days/_49#notebook-12621)
 - Break for family trauma :sob:
 - Day 49e: [12/10/21](days/_49#notebook-121021)
-- Day 50: [12/11/21](days/_50)
+- Days 50+51: [12/11/21](days/_50_51)
 
 </details>
