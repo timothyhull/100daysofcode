@@ -12,9 +12,10 @@ import requests
 # Constants
 TIMEOUT = 5
 URL = 'http://www.va.gov/rss/rss_PressRel.asp'
+XML_FILE = './rss_feed.xml'
 
 
-def get_rss_feed() -> requests.Response:
+def get_rss_feed() -> str:
     """
     """
 
@@ -25,6 +26,8 @@ def get_rss_feed() -> requests.Response:
 
     response.raise_for_status()
 
+    return response.text
+
 
 def write_rss_to_xml(
     rss_feed: str
@@ -32,7 +35,13 @@ def write_rss_to_xml(
     """
     """
 
-    with open()
+    with open(
+        file=XML_FILE,
+        mode='wt',
+        encoding='utf-8'
+    ) as xml_file:
+
+        xml_file.write(rss_feed)
 
     return None
 

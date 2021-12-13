@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VA News Releases</title>
+    <link>https://www.va.gov/opa/pressrel/PressArchInternet.cfm</link>
+    <description>News Releases from the U.S. Department of Veterans Affairs.
+</description>
+    <language>en-us</language>
+    <copyright>Copyright 2002 VHA</copyright>
+    <docs>https://www.va.gov/rss</docs>
+	<atom:link href="https://www.va.gov/rss/rss_PressRel.asp" rel="self" type="application/rss+xml" />
+<lastBuildDate>Wed, 8 Dec 2021 10:07:00 EST</lastBuildDate>
+		<item>
+		  <title>2021 Under Secretary for Health&apos;s Robert L. Jesse Award recognizes VA boundary-breaking innovations</title>
+		  <link>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5746</link>
+		  <description>The Department of Veterans Affairs honored three innovative health care practices and their creators late October with the Robert L. Jesse Award for Excellence in Innovation.</description>
+		  <guid>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5746</guid>
+		  <pubDate>Wed, 8 Dec 2021 10:07:00 EST</pubDate>
+		</item>    
+		
+		<item>
+		  <title>VA advances Electronic Health Record Modernization program</title>
+		  <link>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5745</link>
+		  <description>The Department of Veterans Affairs announced today its updated plan to move forward with its systemwide Electronic Health Record Modernization program. </description>
+		  <guid>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5745</guid>
+		  <pubDate>Wed, 1 Dec 2021 12:52:00 EST</pubDate>
+		</item>    
+		
+		<item>
+		  <title> VA statement on GPO printing and mailing delay</title>
+		  <link>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5744</link>
+		  <description>Due to supply chain and staffing shortages, the vendor contracted by the Government Publishing Office to provide printing services for the Department of Veterans Affairs is experiencing delays in printing and mailing notification letters to Veterans and claimants. The disruption may impact the ability of some claimants to meet required deadlines via written correspondence with VA.</description>
+		  <guid>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5744</guid>
+		  <pubDate>Tue, 30 Nov 2021 14:10:00 EST</pubDate>
+		</item>    
+		
+		<item>
+		  <title>VA and Indian Health Service broaden scope to serve American Indian and Alaska Native Veterans</title>
+		  <link>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5743</link>
+		  <description>The Department of Veterans Affairs and the Indian Health Service renewed a partnership, Oct. 1, to help the country&apos;s nearly 145,000 American Indian and Alaska Native Veterans overcome health care access barriers.</description>
+		  <guid>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5743</guid>
+		  <pubDate>Tue, 23 Nov 2021 11:34:00 EST</pubDate>
+		</item>    
+		
+		<item>
+		  <title>Smoking rates steadily trend down among Veterans receiving VA care</title>
+		  <link>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5742</link>
+		  <description>In conjunction with the Great American Smokeout observed Nov. 18, the Department of Veterans Affairs is encouraging Veterans to talk to their health care providers about smoking cessation programs to help them quit, as cigarette use continues to decline nationwide.</description>
+		  <guid>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5742</guid>
+		  <pubDate>Thu, 18 Nov 2021 11:07:00 EST</pubDate>
+		</item>    
+		
+		<item>
+		  <title>VA helps women Veteran entrepreneurs power up</title>
+		  <link>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5741</link>
+		  <description>The Department of Veterans Affairs, in collaboration with the PenFed Foundation, helped three women-owned small businesses earn business development grants used to support their growing companies in the economic marketplace.</description>
+		  <guid>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5741</guid>
+		  <pubDate>Tue, 16 Nov 2021 10:16:00 EST</pubDate>
+		</item>    
+		
+		<item>
+		  <title>VA updates disability rating schedules for genitourinary and cardiovascular systems</title>
+		  <link>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5740</link>
+		  <description>The U.S. Department of Veterans Affairs announced its update to the genitourinary and cardiovascular regulations in the VA Schedule for Rating Disabilities at Title 38 Code of Federal Regulations.</description>
+		  <guid>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5740</guid>
+		  <pubDate>Mon, 15 Nov 2021 10:00:00 EST</pubDate>
+		</item>    
+		
+  </channel>
+</rss>
