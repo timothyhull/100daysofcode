@@ -12,6 +12,8 @@
 
 :star: `feedparser` on [PyPI](https://pypi.org/project/feedparser/)
 
+:star: [`pytest` mock for the `file.open` function](https://medium.com/@AbhijeetKasurde/pytest-how-to-mock-the-built-in-open-d7c6e50e9984)
+
 ---
 
 ## Tasks
