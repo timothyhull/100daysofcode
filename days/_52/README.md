@@ -22,7 +22,9 @@
 
 :white_check_mark: Retrieve an RSS feed
 
-:white_check_mark: Write PyTest tests
+:white_check_mark: Write PyTest tests for [pull_xml.py](app/pull_xml.py)
+
+:white_large_square: Add docstrings to [pull_xml.py](app/pull_xml.py)
 
 :white_large_square: Parse an RSS feed with `feedparser`
 
@@ -44,5 +46,15 @@
 - Created Python application files:
     1. [test_parser.py](tests/test_parser.py) - `pytest` tests for **parser.py**.
     2. [test_pull_xml.py](tests/test_pull_xml.py) - `pytest` tests for **pull_xml.py**.
-    3. [parser.py](parser.py) - TBD
-    4. [pull_xml.py](pull_xml.py) - Pull RSS XML from source with the `requests` module.
+    3. [parser.py](app/parser.py) - TBD
+    4. [pull_xml.py](app/pull_xml.py) - Pull RSS XML from source with the `requests` module.
+
+---
+
+### :notebook: 12/13/21
+
+- Moved [parser.py](app/parser.py) and [pull_xml.py](app/pull_xml.py) to the `app` subdirectory.
+- Created `pytest` tests for the `get_rss_feed` and `write_rss_to_xml` functions in [test_pull_xml.py](tests/test_pull_xml.py).
+    - Successfully tested successful mock HTTP request to the VA API.
+    - Successfully tested failed (HTTP 400) mock HTTP request to the VA API.
+    - Successfully tested mock file open operation on the XML RSS file.
