@@ -28,7 +28,7 @@
 
 :white_check_mark: Add docstrings and comments to [pull_xml.py](app/pull_xml.py)
 
-:white_large_square: Watch video 5
+:white_check_mark: Watch video 5
 
 :white_large_square: Parse an RSS feed with `feedparser`
 
@@ -96,10 +96,11 @@
 
         # Pass the RSS XML data to the parse method
         feed = feedparser.parse(rss_data)
-
-        # Use the entry attribute 
-
         ```
 
     - The instructional videos did not use a context manager, which I think is a good practice for reading from a file.
-    - A `.entries` attribute
+
+    - The `feedparser.feed` method returns an object attribute named `entries`, which is a `list` of a special dictionary type (`feedparser.util.FeedParserDict`).
+        - Each list item is an XML element.
+        - A `published` attribute of a `feedparser.util.FeedParserDict` object returns the timestamp found in the XML document under the `<pubDate>` tag.
+        - The `title` and `link` attributes of a `feedparser.util.FeedParserDict` object return the RSS element title and link, respectively found in the XML document.
