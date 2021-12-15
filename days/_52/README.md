@@ -26,7 +26,7 @@
 
 :white_check_mark: Write PyTest tests for [pull_xml.py](app/pull_xml.py)
 
-:white_check_mark: Add docstrings to [pull_xml.py](app/pull_xml.py)
+:white_check_mark: Add docstrings and comments to [pull_xml.py](app/pull_xml.py)
 
 :white_large_square: Parse an RSS feed with `feedparser`
 
@@ -66,3 +66,10 @@
 ### :notebook: 12/14/21
 
 - Added docstrings and comments to [pull_xml.py](app/pull_xml.py).
+    - Successfully performed all `pytest` tests.
+
+---
+
+### :notebook: 12/15/21
+
+- TODO
