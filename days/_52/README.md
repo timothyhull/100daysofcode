@@ -1,4 +1,4 @@
-# :calendar: Day 52: 12/12/2021-12/14/2021
+# :calendar: Day 52: 12/12/2021-12/15/2021
 
 ---
 
@@ -26,7 +26,7 @@
 
 :white_check_mark: Write PyTest tests for [pull_xml.py](app/pull_xml.py)
 
-:white_large_square: Add docstrings to [pull_xml.py](app/pull_xml.py)
+:white_check_mark: Add docstrings to [pull_xml.py](app/pull_xml.py)
 
 :white_large_square: Parse an RSS feed with `feedparser`
 
@@ -60,3 +60,9 @@
     - Successfully tested successful mock HTTP request to the VA API.
     - Successfully tested failed (HTTP 400) mock HTTP request to the VA API.
     - Successfully tested mock file open operation on the XML RSS file.
+
+---
+
+### :notebook: 12/14/21
+
+- Added docstrings and comments to [pull_xml.py](app/pull_xml.py).
