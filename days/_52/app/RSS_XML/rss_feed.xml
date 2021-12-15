@@ -11,7 +11,15 @@
     <copyright>Copyright 2002 VHA</copyright>
     <docs>https://www.va.gov/rss</docs>
 	<atom:link href="https://www.va.gov/rss/rss_PressRel.asp" rel="self" type="application/rss+xml" />
-<lastBuildDate>Wed, 8 Dec 2021 10:07:00 EST</lastBuildDate>
+<lastBuildDate>Tue, 14 Dec 2021 16:00:00 EST</lastBuildDate>
+		<item>
+		  <title>VA strengthens care for Veterans impacted by intimate partner violence and sexual assault</title>
+		  <link>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5747</link>
+		  <description>The Department of Veterans Affairs recently initiated a pilot program to improve services for Veterans who have experienced or are experiencing intimate partner violence or sexual assault.</description>
+		  <guid>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5747</guid>
+		  <pubDate>Tue, 14 Dec 2021 16:00:00 EST</pubDate>
+		</item>    
+		
 		<item>
 		  <title>2021 Under Secretary for Health&apos;s Robert L. Jesse Award recognizes VA boundary-breaking innovations</title>
 		  <link>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5746</link>
@@ -58,14 +66,6 @@
 		  <description>The Department of Veterans Affairs, in collaboration with the PenFed Foundation, helped three women-owned small businesses earn business development grants used to support their growing companies in the economic marketplace.</description>
 		  <guid>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5741</guid>
 		  <pubDate>Tue, 16 Nov 2021 10:16:00 EST</pubDate>
-		</item>    
-		
-		<item>
-		  <title>VA updates disability rating schedules for genitourinary and cardiovascular systems</title>
-		  <link>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5740</link>
-		  <description>The U.S. Department of Veterans Affairs announced its update to the genitourinary and cardiovascular regulations in the VA Schedule for Rating Disabilities at Title 38 Code of Federal Regulations.</description>
-		  <guid>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5740</guid>
-		  <pubDate>Mon, 15 Nov 2021 10:00:00 EST</pubDate>
 		</item>    
 		
   </channel>

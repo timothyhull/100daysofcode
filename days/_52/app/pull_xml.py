@@ -3,6 +3,8 @@
 """
 
 # Imports - Python Standard Library
+from os import path
+from pathlib import Path
 
 # Imports - Third-Party
 import requests
@@ -12,7 +14,10 @@ import requests
 # Constants
 TIMEOUT = 5
 URL = 'http://www.va.gov/rss/rss_PressRel.asp'
-XML_FILE = './rss_feed.xml'
+XML_BASE_PATH = Path(path.dirname(__file__))
+XML_DIR_NAME = 'RSS_XML'
+XML_FILE_NAME = 'rss_feed.xml'
+XML_FILE = path.join(XML_BASE_PATH, XML_DIR_NAME, XML_FILE_NAME)
 
 
 def get_rss_feed() -> str:
@@ -84,7 +89,7 @@ def main() -> None:
 
     # Write the RSS feed XML to a file
     write_rss_to_xml(
-        rss_feed=rss_xml
+        rss_xml=rss_xml
     )
 
     return None

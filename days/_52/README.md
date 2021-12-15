@@ -18,7 +18,7 @@
 
 ## Tasks
 
-:white_check_mark: Watch videos 1-
+:white_check_mark: Watch videos 1-4
 
 :white_check_mark: Choose an RSS feed to parse
 
@@ -27,6 +27,8 @@
 :white_check_mark: Write PyTest tests for [pull_xml.py](app/pull_xml.py)
 
 :white_check_mark: Add docstrings and comments to [pull_xml.py](app/pull_xml.py)
+
+:white_large_square: Watch video 5
 
 :white_large_square: Parse an RSS feed with `feedparser`
 
@@ -48,7 +50,7 @@
 - Created Python application files:
     1. [test_parser.py](tests/test_parser.py) - `pytest` tests for **parser.py**.
     2. [test_pull_xml.py](tests/test_pull_xml.py) - `pytest` tests for **pull_xml.py**.
-    3. [parser.py](app/parser.py) - TBD
+    3. [parser.py](app/parser.py) - Parser for RSS XML.
     4. [pull_xml.py](app/pull_xml.py) - Pull RSS XML from source with the `requests` module.
 
 ---
@@ -72,4 +74,32 @@
 
 ### :notebook: 12/15/21
 
-- TODO
+- Added code to [parser.py](app/parser.py).
+    - Imported `feedparser`.
+    - It is possible for `feedparser` to collect RSS data from a source feed, although the preferred strategy is to parse from local files, to avoid reliance on an Internet connection to parse.
+    - Designated the file to load
+
+- Parsing an RSS XML file with the `feedparser.parse` method.
+    - Pass the XML file path to the `feedparser.parse` method.
+
+        ```python
+        import feedparser
+        XML_FILE = 'rss_data.xml'
+
+        # Use a context manager to load the file contents
+        with open(
+            file=XML_FILE.
+            mode='rt',
+            encoding='utf-8'
+        )as file:
+            rss_data = file.read()
+
+        # Pass the RSS XML data to the parse method
+        feed = feedparser.parse(rss_data)
+
+        # Use the entry attribute 
+
+        ```
+
+    - The instructional videos did not use a context manager, which I think is a good practice for reading from a file.
+    - A `.entries` attribute
