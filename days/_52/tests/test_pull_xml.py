@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-""" pytest tests for pull_xml.py
-"""
+""" pytest tests for pull_xml.py. """
 
 # Imports - Python Standard Library
 from unittest.mock import MagicMock, mock_open, patch

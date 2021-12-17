@@ -1,4 +1,4 @@
-""" Output from the feedparser.feed method. """
+""" Output from the feedparser.feed method, with results returned as a list. """
 
 [{'title': 'VA strengthens care for Veterans impacted by intimate partner violence and sexual assault',
   'title_detail': {'type': 'text/plain',

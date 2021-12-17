@@ -1,4 +1,4 @@
-# :calendar: Day 52: 12/12/2021-12/15/2021
+# :calendar: Day 52: 12/12/2021-12/16/2021
 
 ---
 
@@ -30,7 +30,9 @@
 
 :white_check_mark: Watch video 5
 
-:white_large_square: Parse an RSS feed with `feedparser`
+:white_check_mark: Parse an RSS feed with `feedparser`
+
+:white_large_square: Watch video 6
 
 ---
 
@@ -58,7 +60,7 @@
 ### :notebook: 12/13/21
 
 - Moved [parser.py](app/parser.py) and [pull_xml.py](app/pull_xml.py) to the `app` subdirectory.
-- Created `pytest` tests for the `get_rss_feed` and `write_rss_to_xml` functions in [test_pull_xml.py](tests/test_pull_xml.py).
+- Created `pytest` tests for the `get_rss_feed` and `write_rss_to_xml` functions in [tests/test_pull_xml.py](tests/test_pull_xml.py).
     - Successfully tested successful mock HTTP request to the VA API.
     - Successfully tested failed (HTTP 400) mock HTTP request to the VA API.
     - Successfully tested mock file open operation on the XML RSS file.
@@ -102,5 +104,31 @@
 
     - The `feedparser.feed` method returns an object attribute named `entries`, which is a `list` of a special dictionary type (`feedparser.util.FeedParserDict`).
         - Each list item is an XML element.
+        - A sample of the output is available in the file [example_output/feedparser.feed.py](example_output/feedparser.feed.py.)
         - A `published` attribute of a `feedparser.util.FeedParserDict` object returns the timestamp found in the XML document under the `<pubDate>` tag.
         - The `title` and `link` attributes of a `feedparser.util.FeedParserDict` object return the RSS element title and link, respectively found in the XML document.
+
+---
+
+### :notebook: 12/16/21
+
+- To display information from the object returned by the `feedparser.feed` method is possible using a `for` loop:
+
+    ```python
+    import feedparser
+
+    # Pass the RSS XML data to the parse method
+    feed = feedparser.parse(rss_data)
+
+    # Loop over the entries key, and display entry attributes
+    for entry in feed.entries:
+        print(f'{entry.title}')
+        print(f'{"=" * len(entry.title)}')
+        print(f' - Timestamp: {entry.published}')
+        print(f' - Link: {entry.link}\n')
+    ```
+
+- Created `pytest` tests for the `read_xml_file` and `parse_rss_xml` functions in [tests/test_parser.py](tests/test_pparser.py).
+    - Successfully tested successful mock file open and XML parsing to STDOUT.
+
+- Completed code for [app/parser.py](app/parser.py)

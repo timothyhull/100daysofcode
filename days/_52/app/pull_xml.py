@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-""" Pull and aprse XML from RSS feed.
-"""
+""" Pull and parse XML from RSS feed."""
 
 # Imports - Python Standard Library
 from os import path
