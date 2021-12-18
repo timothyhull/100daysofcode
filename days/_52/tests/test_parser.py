@@ -4,6 +4,7 @@
 # Imports - Python Standard Library
 
 # Imports - Third-Party
+from pytest import raises
 from unittest.mock import MagicMock, mock_open, patch
 import _pytest.capture
 
@@ -18,10 +19,12 @@ PARSE_OUTPUT = '''2021 Under Secretary for Health's Robert L. Jesse Award recogn
 ===================================================================================================
  - Timestamp: Wed, 8 Dec 2021 10:07:00 EST
  - Link: https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5746'''
+
 XML_ASSERTS = [
     '<?xml version="1.0" encoding="ISO-8859-1"?>',
     '<title>VA News Releases</title>'
 ]
+
 XML = '''
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
@@ -51,6 +54,31 @@ XML = '''
             <description>The Department of Veterans Affairs honored three innovative health care practices and their creators late October with the Robert L. Jesse Award for Excellence in Innovation.</description>
             <guid>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5746</guid>
             <pubDate>Wed, 8 Dec 2021 10:07:00 EST</pubDate>
+        </item>
+
+  </channel>
+</rss>
+'''
+
+XML_ERROR = '''
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VA News Releases</title>
+    <link>https://www.va.gov/opa/pressrel/PressArchInternet.cfm</link>
+    <description>News Releases from the U.S. Department of Veterans Affairs.
+</description>
+    <language>en-us</language>
+    <copyright>Copyright 2002 VHA</copyright>
+    <docs>https://www.va.gov/rss</docs>
+    <atom:link href="https://www.va.gov/rss/rss_PressRel.asp" rel="self" type="application/rss+xml" />
+<lastBuildDate>Tue, 14 Dec 2021 16:00:00 EST</lastBuildDate>
+        <item>
+            <link>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5747</link>
+            <description>The Department of Veterans Affairs recently initiated a pilot program to improve services for Veterans who have experienced or are experiencing intimate partner violence or sexual assault.</description>
+            <guid>https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5747</guid>
         </item>
 
   </channel>
@@ -115,3 +143,20 @@ def test_parse_rss_xml(
     assert PARSE_OUTPUT in output
 
     return None
+
+
+def test_parse_rss_xml_errors() -> None:
+    """ Test the parse_rss_xml function's error handling.
+
+        Args:
+            None.
+
+        Returns:
+            None    
+    """
+
+    # Call the function to create an exception
+    with raises(AttributeError):
+        parse_rss_xml(
+            xml_data=XML_ERROR
+        )

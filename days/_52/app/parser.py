@@ -57,13 +57,18 @@ def parse_rss_xml(
         url_file_stream_or_string=xml_data
     )
 
-    # Display a subset of the parsed data
-    print()
-    for entry in rss_data.entries:
-        print(f'{entry.title}')
-        print(f'{"=" * len(entry.title)}')
-        print(f' - Timestamp: {entry.published}')
-        print(f' - Link: {entry.link}\n')
+    try:
+        # Display a subset of the parsed data
+        print()
+        for index, entry in enumerate(rss_data.entries):
+            print(f'{entry.title}')
+            print(f'{"=" * len(entry.title)}')
+            print(f' - Timestamp: {entry.published}')
+            print(f' - Link: {entry.link}\n')
+
+    except AttributeError:
+        print(f'** Required attribute missing for object {index} **')
+        raise
 
     return None
 

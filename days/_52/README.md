@@ -1,4 +1,4 @@
-# :calendar: Day 52: 12/12/2021-12/16/2021
+# :calendar: Day 52: 12/12/2021-12/17/2021
 
 ---
 
@@ -32,7 +32,11 @@
 
 :white_check_mark: Parse an RSS feed with `feedparser`
 
-:white_large_square: Watch video 6
+:white_check_mark: Watch video 6
+
+:white_check_mark: Add error checking to parser, to ensure tags are present before printing
+
+:white_check_mark: Watch video 7
 
 ---
 
@@ -50,10 +54,10 @@
     - [Department of Veterans Affairs Office of Public and Intergovernmental Affairs RSS Feed](http://www.va.gov/rss/rss_PressRel.asp)
 
 - Created Python application files:
-    1. [test_parser.py](tests/test_parser.py) - `pytest` tests for **parser.py**.
-    2. [test_pull_xml.py](tests/test_pull_xml.py) - `pytest` tests for **pull_xml.py**.
-    3. [parser.py](app/parser.py) - Parser for RSS XML.
-    4. [pull_xml.py](app/pull_xml.py) - Pull RSS XML from source with the `requests` module.
+    1. [tests/test_parser.py](tests/test_parser.py) - `pytest` tests for **parser.py**.
+    2. [tests/test_pull_xml.py](tests/test_pull_xml.py) - `pytest` tests for **pull_xml.py**.
+    3. [app/parser.py](app/parser.py) - Parser for RSS XML.
+    4. [pprogull_xml.py](app/pull_xml.py) - Pull RSS XML from source with the `requests` module.
 
 ---
 
@@ -132,3 +136,16 @@
     - Successfully tested successful mock file open and XML parsing to STDOUT.
 
 - Completed code for [app/parser.py](app/parser.py)
+
+---
+
+### :notebook: 12/17/21
+
+- Watched video 6.
+- Added `pytest` to [tests/test_parser.py](tests/test_parser.py), to check for an `AttributeError`.
+
+- Added error checking to parser, to ensure tags are present before printing.
+- Added TDD `pytest` tests to [tests/test_parser.py](tests/test_parser.py)
+- Added TDD code to meet `pytest` test criteria.
+    - Uses `pytest.raises` to check for an AttributeError, raised by a missing XML tag.
+    - Successfully passed all tests.
