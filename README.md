@@ -356,11 +356,12 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 
 <details><summary>Days 52-54: TBD</summary>
 
-- Day 52: [12/12/21](days/_52)
-- Day 52a: [12/13/21](days/_52#notebook-121321)
-- Day 52b: [12/14/21](days/_52#notebook-121421)
-- Day 52c: [12/15/21](days/_52#notebook-121521)
-- Day 52d: [12/16/21](days/_52#notebook-121621)
-- Day 52e: [12/17/21](days/_52#notebook-121721)
+- Day 52+53+54: [12/12/21](days/_52_53_54)
+- Day 52+53+54a: [12/13/21](days/_52_53_54#notebook-121321)
+- Day 52+53+54b: [12/14/21](days/_52_53_54#notebook-121421)
+- Day 52+53+54c: [12/15/21](days/_52_53_54#notebook-121521)
+- Day 52+53+54d: [12/16/21](days/_52_53_54#notebook-121621)
+- Day 52+53+54e: [12/17/21](days/_52_53_54#notebook-121721)
+- Day 52+53+54f: [12/17/21](days/_52_53_54#notebook-121821)
 
 </details>
