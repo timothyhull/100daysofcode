@@ -10,7 +10,7 @@ from requests.exceptions import HTTPError
 import requests_mock.mocker
 
 # Imports - Local
-from _52.app.pull_xml import (
+from _52_53_54.app.pull_xml import (
     URL, get_rss_feed
 )
 

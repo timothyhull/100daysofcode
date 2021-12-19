@@ -9,7 +9,7 @@ from unittest.mock import MagicMock, mock_open, patch
 import _pytest.capture
 
 # Imports - Local
-from _52.app.parser import (
+from _52_53_54.app.parser import (
     parse_rss_xml,
     read_xml_file
 )

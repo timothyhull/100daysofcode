@@ -1,4 +1,4 @@
-# :calendar: Day 52: 12/12/2021-12/17/2021
+# :calendar: Day 52+53+54: 12/12/2021-12/18/2021
 
 ---
 
@@ -38,6 +38,8 @@
 
 :white_check_mark: Watch video 7
 
+:white_large_square: Email RSS data (do something useful with the RSS data)
+
 ---
 
 ## Notes
@@ -53,7 +55,7 @@
 - Selected RSS feed:
     - [Department of Veterans Affairs Office of Public and Intergovernmental Affairs RSS Feed](http://www.va.gov/rss/rss_PressRel.asp)
 
-- Created Python application files:
+- Created Python test and application files:
     1. [tests/test_parser.py](tests/test_parser.py) - `pytest` tests for **parser.py**.
     2. [tests/test_pull_xml.py](tests/test_pull_xml.py) - `pytest` tests for **pull_xml.py**.
     3. [app/parser.py](app/parser.py) - Parser for RSS XML.
@@ -149,3 +151,17 @@
 - Added TDD code to meet `pytest` test criteria.
     - Uses `pytest.raises` to check for an AttributeError, raised by a missing XML tag.
     - Successfully passed all tests.
+
+---
+
+### :notebook: 12/18/21
+
+- Created new Python test and application files to support sending emails:
+    1. [tests/test_send_email.py](tests/test_send_email.py) - `pytest` tests for **send_email.py**.
+    2. [app/send_email.py](app/send_email.py) - Email send application.
+
+- Created `pytest` test `test_collect_email_info` to test the `collect_email_info` function.
+    - Mocked data for the `input` function as well as the `getpass.getpass` method.
+        - Mocking this data successfully required the command `import getpass` in [app/send_email.py](app/send_email.py), instead of `from getpass import getpass`.
+        - This is because the `unittest.mock.patch` function required the first argument to reference `getpass.getpass`.
+    - Successfully tested the `collect_email_info` function in [app/send_email.py](app/send_email.py).
