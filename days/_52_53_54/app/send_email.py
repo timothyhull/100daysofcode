@@ -4,6 +4,7 @@
 # Imports - Python Standard Library
 from collections import namedtuple
 from os import getenv
+# from smtplib import SMTP
 import getpass
 
 # Imports - Third-Party
@@ -55,17 +56,6 @@ def collect_email_info(
             else:
                 break
 
-    if getenv('SUBJECT') is not None:
-        subject = getenv('SUBJECT')
-    else:
-        while True is True:
-            print()
-            subject = input('Enter the email_subject: ')
-            if subject == '':
-                print('\n** Subject is blank, please try again **')
-            else:
-                break
-
     if getenv('PASSWORD') is not None:
         password = getenv('PASSWORD')
     else:
@@ -90,7 +80,22 @@ def collect_email_info(
     return email_info
 
 
-# TODO - Build email from template
+def create_email_body(
+    rss_feed: str
+) -> str:
+    """ Build a formatted string for the email body
+
+        Args:
+            rss_feed (str):
+                Parsed and formatted RSS output string.
+
+        Returns:
+            email_body (str):
+                Formatted email body string.
+    """
+
+    return None
+
 
 # TODO - Send email
 
@@ -107,8 +112,10 @@ def main() -> None:
             None.
     """
 
+    # Collect email information
     email_info = collect_email_info()
-    print(email_info)
+
+    # Create email template
 
     return None
 

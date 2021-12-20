@@ -165,3 +165,12 @@
         - Mocking this data successfully required the command `import getpass` in [app/send_email.py](app/send_email.py), instead of `from getpass import getpass`.
         - This is because the `unittest.mock.patch` function required the first argument to reference `getpass.getpass`.
     - Successfully tested the `collect_email_info` function in [app/send_email.py](app/send_email.py).
+
+---
+
+### :notebook: 12/19/21
+
+- Removed collection on the email subject from the `collect_email_info` function.
+    - Relocated email subject collection to `create_email_body`.
+
+- Started developing `pytest` tests for the `create_email_body` function [tests/test_send_email.py](tests/test_send_email.py) -
