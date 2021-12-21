@@ -2,19 +2,32 @@
 """ Parse the contents of XML RSS feeds. """
 
 # Imports - Python Standard Library
+from os import path
+from pathlib import Path
 
 # Imports - Third-Party
+from collections import namedtuple
 import feedparser
 
 # Imports - Local
-from os import path
-from pathlib import Path
+from _52_53_54.app.send_email import (
+    collect_email_info, create_email
+)
 
 # Constants
 XML_BASE_PATH = Path(path.dirname(__file__))
 XML_DIR_NAME = 'RSS_XML'
 XML_FILE_NAME = 'rss_feed.xml'
 XML_FILE = path.join(XML_BASE_PATH, XML_DIR_NAME, XML_FILE_NAME)
+
+# namedtuples
+ParsedRSS = namedtuple(
+    typename='ParsedRSS',
+    field_names=[
+        'subject',
+        'rss_feed'
+    ]
+)
 
 
 def read_xml_file(
@@ -58,19 +71,36 @@ def parse_rss_xml(
     )
 
     try:
-        # Display a subset of the parsed data
-        print()
+        # Assign parsed RSS feed subject to a variable
+        subject = rss_data['feed']['subtitle']
+
+        # Assign parsed/formatted RSS entries to a list object
+        rss_elements = []
         for index, entry in enumerate(rss_data.entries):
-            print(f'{entry.title}')
-            print(f'{"=" * len(entry.title)}')
-            print(f' - Timestamp: {entry.published}')
-            print(f' - Link: {entry.link}\n')
+            rss_elements.append(f'\n{entry.title}\n')
+            rss_elements.append(f'{"=" * len(entry.title)}\n')
+            rss_elements.append(f' - Timestamp: {entry.published}\n')
+            rss_elements.append(f' - Link: {entry.link}\n')
+
+        # Join the elements of the rss_elements list
+        rss_feed = ''.join(rss_elements)
+
+        # Create a namedtuple instance for the parsed data
+        parsed_rss = ParsedRSS(
+            subject=subject,
+            rss_feed=rss_feed
+        )
+        # Display the subset of the parsed data
+        print(
+            f'\n{parsed_rss.subject}\n'
+            f'{parsed_rss.rss_feed}'
+        )
 
     except AttributeError:
         print(f'** Required attribute missing for object {index} **')
         raise
 
-    return None
+    return parsed_rss
 
 
 def main() -> None:
@@ -92,6 +122,15 @@ def main() -> None:
     parse_rss_xml(
         xml_data=xml_data
     )
+
+    # Collect email information
+    email_info = collect_email_info()
+    create_email(
+        email_info=email_info,
+        parsed_body=None,
+    )
+
+    # Create email
 
     return None
 

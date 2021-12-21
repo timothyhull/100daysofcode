@@ -2,31 +2,24 @@
 """ pytest tests for send_email.py """
 
 # Imports - Python Standard Library
-from collections import namedtuple
 from unittest.mock import MagicMock, patch
 
 # Imports - Third-Party
 
 # Imports - Local
 from _52_53_54.app.send_email import (
-    collect_email_info, create_email_body
-)
-
-# namedtuples
-EmailInfo = namedtuple(
-    typename='EmailInfo',
-    field_names=[
-        'address',
-        'subject',
-        'password'
-    ]
+    EmailInfo, EmailBody, collect_email_info, create_email
 )
 
 # Constants
 EMAIL_INFO = EmailInfo(
     address='test@gmail.com',
-    subject='Test Message',
     password='password'
+)
+
+EMAIL_SUBJECT = (
+    'News Releases from the U.S. Department of '
+    'Veterans Affairs.'
 )
 
 EMAIL_BODY = '''
@@ -36,18 +29,17 @@ VA strengthens care for Veterans impacted by intimate partner violence and sexua
  - Link: https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5747
 '''
 
-EMAIL_SUBJECT = (
-    'Subject: News Releases from the U.S. Department of '
-    'Veterans Affairs.'
+EMAIL_DATA = EmailBody(
+    email_info=EMAIL_INFO,
+    email_subject=EMAIL_SUBJECT,
+    email_body=EMAIL_BODY
 )
 
 
-# TODO - test mock value input
 @patch(
     'builtins.input',
     side_effect=[
-        EMAIL_INFO.address,
-        EMAIL_INFO.subject,
+        EMAIL_INFO.address
     ]
 )
 @patch(
@@ -77,7 +69,6 @@ def test_collect_email_info(
     )
 
     assert email_info.address == EMAIL_INFO.address
-    assert email_info.subject == EMAIL_INFO.subject
     assert email_info.password == EMAIL_INFO.password
 
     return None
@@ -94,13 +85,13 @@ def test_create_email_body() -> None:
     """
 
     # Call the function
-    formatted_email_body = create_email_body(
+    formatted_email_body = create_email(
         email_info=EMAIL_INFO,
-        body=EMAIL_BODY
+        parsed_body=EMAIL_DATA
     )
 
     # Assert the email headers and body match expected outputs.
-    assert formatted_email_body.mail_info == EMAIL_SUBJECT
-    assert formatted_email_body.subject == EMAIL_SUBJECT
+    assert formatted_email_body.email_info == EMAIL_INFO
+    assert formatted_email_body.email_body == EMAIL_BODY
 
     return None

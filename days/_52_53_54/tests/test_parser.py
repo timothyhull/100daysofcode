@@ -15,7 +15,12 @@ from _52_53_54.app.parser import (
 )
 
 # Constants
-PARSE_OUTPUT = '''2021 Under Secretary for Health's Robert L. Jesse Award recognizes VA boundary-breaking innovations
+PARSED_SUBJECT = (
+    'News Releases from the U.S. Department of '
+    'Veterans Affairs.'
+)
+
+PARSED_BODY = '''2021 Under Secretary for Health's Robert L. Jesse Award recognizes VA boundary-breaking innovations
 ===================================================================================================
  - Timestamp: Wed, 8 Dec 2021 10:07:00 EST
  - Link: https://www.va.gov/opa/pressrel/PressArtInternet.cfm?id=5746'''
@@ -117,10 +122,31 @@ def test_read_xml_file(
     return None
 
 
-def test_parse_rss_xml(
+def test_parse_rss_xml() -> None:
+    """ Test the parse_rss_xml function.
+
+        Args:
+            None
+
+        Returns:
+            None.
+    """
+
+    # Call the function to return a namedtuple
+    parsed_rss = parse_rss_xml(
+        xml_data=XML
+    )
+
+    assert PARSED_SUBJECT in parsed_rss.subject
+    assert PARSED_BODY in parsed_rss.rss_feed
+
+    return None
+
+
+def test_parse_rss_xml_output(
     capsys: _pytest.capture.CaptureFixture
 ) -> None:
-    """ Test the parse_rss_xml function.
+    """ Test the parse_rss_xml function output.
 
         Args:
             capsys (_pytest.capture.CaptureFixture):
@@ -140,7 +166,8 @@ def test_parse_rss_xml(
     output = capsys.readouterr().out
 
     # Assert the expected output is in STDOUT
-    assert PARSE_OUTPUT in output
+    assert PARSED_SUBJECT in output
+    assert PARSED_BODY in output
 
     return None
 
@@ -152,7 +179,7 @@ def test_parse_rss_xml_errors() -> None:
             None.
 
         Returns:
-            None    
+            None.
     """
 
     # Call the function to create an exception

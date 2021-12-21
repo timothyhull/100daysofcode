@@ -174,3 +174,9 @@
     - Relocated email subject collection to `create_email_body`.
 
 - Started developing `pytest` tests for the `create_email_body` function [tests/test_send_email.py](tests/test_send_email.py) -
+
+---
+
+### :notebook: 12/20/21
+
+- TODO

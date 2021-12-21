@@ -17,8 +17,16 @@ EmailInfo = namedtuple(
     typename='EmailInfo',
     field_names=[
         'address',
-        'subject',
         'password'
+    ]
+)
+
+EmailBody = namedtuple(
+    typename='EmailBody',
+    field_names=[
+        'email_info',
+        'email_subject',
+        'email_body'
     ]
 )
 
@@ -71,7 +79,6 @@ def collect_email_info(
 
     email_info = EmailInfo(
         address=address,
-        subject=subject,
         password=password
     )
 
@@ -80,21 +87,34 @@ def collect_email_info(
     return email_info
 
 
-def create_email_body(
-    rss_feed: str
-) -> str:
-    """ Build a formatted string for the email body
+def create_email(
+    email_info: EmailInfo,
+    parsed_body: EmailBody
+) -> EmailBody:
+    """ Build a namedtuple object with attributes for email
+        headers and a message body.
 
         Args:
-            rss_feed (str):
-                Parsed and formatted RSS output string.
+            email_info (EmailInfo):
+                namedtuple with email address and password.
+
+            parsed_body (EmailBody):
+                namedtuple with email subject and parsed RSS data.
 
         Returns:
-            email_body (str):
-                Formatted email body string.
+            email_body (EmailBody):
+                namedtuple with attributes for the email headers
+                and body.
     """
 
-    return None
+    # Create a namedtuple with all required information, in the correct format.
+    email_body = EmailBody(
+        email_info=email_info,
+        email_subject=f'Subject: {parsed_body.email_subject}\n\n',
+        email_body=parsed_body.email_body
+    )
+
+    return email_body
 
 
 # TODO - Send email
@@ -111,11 +131,6 @@ def main() -> None:
         Returns:
             None.
     """
-
-    # Collect email information
-    email_info = collect_email_info()
-
-    # Create email template
 
     return None
 
