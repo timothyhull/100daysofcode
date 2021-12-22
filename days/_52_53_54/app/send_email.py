@@ -4,7 +4,7 @@
 # Imports - Python Standard Library
 from collections import namedtuple
 from os import getenv
-# from smtplib import SMTP
+from smtplib import SMTP
 import getpass
 
 # Imports - Third-Party
@@ -117,7 +117,52 @@ def create_email(
     return email_body
 
 
-# TODO - Send email
+def send_email(
+    email_body: EmailBody
+) -> bool:
+    """ Email the formatted RSS feed.
+
+        Args:
+            email_body (EmailBody):
+                namedtuple with email header and body contents.
+
+        Returns:
+            email_status (bool):
+                Return True or False, depending on the send status
+                of the email.
+    """
+
+    # Setup email send parameters
+    email_from = email_body.email_info.address
+    email_to = email_from
+    email_pw = email_body.email_info.password
+    email_subject = f'Subject: {email_body.email_subject}\n\n'
+    email_body = email_body.email_body
+
+    # Use a context manager to send an email
+    with SMTP(
+        # Define the outgoing mail server
+        host='smtp.gmail.com',
+        port=587
+    ) as conn:
+        # Send an EHLO message
+        conn.ehlo()
+
+        # Start a TLS session and authenticate
+        conn.starttls()
+        conn.login(
+            user=email_from,
+            password=email_pw
+        )
+
+        # Send the email message
+        email_status = conn.sendmail(
+            from_addr=email_from,
+            to_addr=email_to,
+            msg=email_subject + email_body
+        )
+
+    return email_status
 
 
 def main() -> None:

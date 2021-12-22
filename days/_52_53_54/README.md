@@ -179,4 +179,16 @@
 
 ### :notebook: 12/20/21
 
-- TODO
+- Updated `pytest` tests in [tests/test_send_email.py](tests/test_send_email.py), to support testing the `test_create_email_body` function.
+    - Adjusted the `test_collect_email_info` function and constants to support the required format for `namedtuple` contents (`EmailInfo` and `EmailBody`).
+- Updated the `create_email` function in [app/send_email.py](app/send_email.py) to comply with the requirements in the `test_collect_email_info` `pytest` function.
+    - Adjusted constants to support the required format for `namedtuple` contents (`EmailInfo` and `EmailBody`).
+
+---
+
+### :notebook: 12/21/21
+
+- Created `pytest` tests in [tests/test_send_email.py](tests/test_send_email.py) to support testing the `test_send_email` function.
+    - Created assertion based on a boolean.
+- Created the `send_email` function in [app/send_email.py](app/send_email.py) to comply with the requirements in the `test_send_email` `pytest` function.
+    - Need to determine how to mock the `smtplib.SMTP` function, to avoid attempting to send an actual email with `pytest`

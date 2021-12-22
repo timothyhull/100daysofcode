@@ -8,7 +8,7 @@ from unittest.mock import MagicMock, patch
 
 # Imports - Local
 from _52_53_54.app.send_email import (
-    EmailInfo, EmailBody, collect_email_info, create_email
+    EmailInfo, EmailBody, collect_email_info, create_email, send_email
 )
 
 # Constants
@@ -93,5 +93,24 @@ def test_create_email_body() -> None:
     # Assert the email headers and body match expected outputs.
     assert formatted_email_body.email_info == EMAIL_INFO
     assert formatted_email_body.email_body == EMAIL_BODY
+
+    return None
+
+
+def test_send_email() -> None:
+    """ Test the send_email function.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+    """
+
+    email_status = send_email(
+        email_body=EMAIL_DATA
+    )
+
+    assert email_status is True
 
     return None
