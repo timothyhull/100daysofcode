@@ -38,13 +38,13 @@ EMAIL_DATA = EmailBody(
 
 
 @patch(
-    'builtins.input',
+    target='builtins.input',
     side_effect=[
         EMAIL_INFO.address
     ]
 )
 @patch(
-    'getpass.getpass',
+    target='getpass.getpass',
     return_value=EMAIL_INFO.password
 )
 def test_collect_email_info(
@@ -99,10 +99,32 @@ def test_create_email_body() -> None:
 
 
 @patch(
-    'smtplib.SMTP.sendmail',
+    target='smtplib.SMTP',
+    host='test.mail.local',
+    port=587
+)
+@patch(
+    target='smtplib.SMTP.ehlo'
+)
+@patch(
+    target='smtplib.SMTP.starttls'
+)
+@patch(
+    target='smtplib.SMTP.login',
+    side_effect=[
+        EMAIL_INFO.address,
+        EMAIL_INFO.password
+    ]
+)
+@patch(
+    target='smtplib.SMTP.sendmail',
     return_value={}
 )
 def test_send_email(
+    SMTP: MagicMock,
+    ehlo: MagicMock,
+    starttls: MagicMock,
+    login: MagicMock,
     sendmail: MagicMock
 ) -> None:
     """ Test the send_email function.
@@ -115,6 +137,12 @@ def test_send_email(
         Returns:
             None.
     """
+
+    print(f'SMTP: {SMTP}\n')
+    print(f'ehlo: {ehlo}\n')
+    print(f'starttls: {starttls}\n')
+    print(f'login: {login}\n')
+    print(f'sendmail: {sendmail}\n')
 
     email_status = send_email(
         email_body=EMAIL_DATA

@@ -1,4 +1,4 @@
-# :calendar: Day 52+53+54: 12/12/2021-12/18/2021
+# :calendar: Day 52+53+54: 12/12/2021-12/23/2021
 
 ---
 
@@ -198,8 +198,25 @@
 ### :notebook: 12/22/21
 
 - Tested sending an email with Gmail using iPython.
-    - Created an app-specific password.
+    - Created a Gmail app-specific password.
     - Successfully sent an email using functions in [app/send_email.py](app/send_email.py).
 - Updated the `test_send_email` in [tests/test_send_email.py](tests/test_send_email.py), to mock a call to `smtplib.SMTP.sendmail`.
     - Unable to successfully mock the `smtplib` object.
     - The email attempts to send with mocked credentials.
+
+---
+
+### :notebook: 12/23/21
+
+- Researched `unittest.mock.patch` to determine how to properly test `smtplib.SMTP.sendmail`.
+    - Determined I likely need to create multiple mock objects using `@patch` decorators, one for each of the `smtplib` methods in the `send_email` function.
+
+        1. `SMTP`
+        2. `SMTP.ehlo`
+        3. `SMTP.starttls`
+        4. `SMTP.login`
+        5. `SMTP.sendmail`
+
+    - Tests successfully pass with a mock object for each method in the `send_email` function, although the test requires connectivity to Gmail (TCP 587) to pass.
+    - Need to determine how to run test with a mock connection to Gmail.
+        - Likely requires determining how to pass mock arguments to the `SMTP` method, used as a context manager.
