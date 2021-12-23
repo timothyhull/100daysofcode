@@ -3,6 +3,7 @@
 
 # Imports - Python Standard Library
 from unittest.mock import MagicMock, patch
+from smtplib import SMTPAuthenticationError
 
 # Imports - Third-Party
 
@@ -97,11 +98,19 @@ def test_create_email_body() -> None:
     return None
 
 
-def test_send_email() -> None:
+@patch(
+    'smtplib.SMTP.sendmail',
+    return_value={}
+)
+def test_send_email(
+    sendmail: MagicMock
+) -> None:
     """ Test the send_email function.
 
         Args:
-            None.
+            sendmail (MagicMock):
+                Mocked data for sendmail result. An empty
+                dictionary ({}) indicates a successful message send.
 
         Returns:
             None.
@@ -111,6 +120,6 @@ def test_send_email() -> None:
         email_body=EMAIL_DATA
     )
 
-    assert email_status is True
+    assert email_status == {}
 
     return None

@@ -137,8 +137,8 @@ def test_parse_rss_xml() -> None:
         xml_data=XML
     )
 
-    assert PARSED_SUBJECT in parsed_rss.subject
-    assert PARSED_BODY in parsed_rss.rss_feed
+    assert PARSED_SUBJECT in parsed_rss.email_subject
+    assert PARSED_BODY in parsed_rss.email_body
 
     return None
 

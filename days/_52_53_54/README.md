@@ -192,3 +192,14 @@
     - Created assertion based on a boolean.
 - Created the `send_email` function in [app/send_email.py](app/send_email.py) to comply with the requirements in the `test_send_email` `pytest` function.
     - Need to determine how to mock the `smtplib.SMTP` function, to avoid attempting to send an actual email with `pytest`
+
+---
+
+### :notebook: 12/22/21
+
+- Tested sending an email with Gmail using iPython.
+    - Created an app-specific password.
+    - Successfully sent an email using functions in [app/send_email.py](app/send_email.py).
+- Updated the `test_send_email` in [tests/test_send_email.py](tests/test_send_email.py), to mock a call to `smtplib.SMTP.sendmail`.
+    - Unable to successfully mock the `smtplib` object.
+    - The email attempts to send with mocked credentials.

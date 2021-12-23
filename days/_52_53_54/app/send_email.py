@@ -136,7 +136,7 @@ def send_email(
     email_from = email_body.email_info.address
     email_to = email_from
     email_pw = email_body.email_info.password
-    email_subject = f'Subject: {email_body.email_subject}\n\n'
+    email_subject = email_body.email_subject
     email_body = email_body.email_body
 
     # Use a context manager to send an email
@@ -158,7 +158,7 @@ def send_email(
         # Send the email message
         email_status = conn.sendmail(
             from_addr=email_from,
-            to_addr=email_to,
+            to_addrs=email_to,
             msg=email_subject + email_body
         )
 

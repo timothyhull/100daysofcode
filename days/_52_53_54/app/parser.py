@@ -10,9 +10,6 @@ from collections import namedtuple
 import feedparser
 
 # Imports - Local
-from _52_53_54.app.send_email import (
-    collect_email_info, create_email
-)
 
 # Constants
 XML_BASE_PATH = Path(path.dirname(__file__))
@@ -24,8 +21,8 @@ XML_FILE = path.join(XML_BASE_PATH, XML_DIR_NAME, XML_FILE_NAME)
 ParsedRSS = namedtuple(
     typename='ParsedRSS',
     field_names=[
-        'subject',
-        'rss_feed'
+        'email_subject',
+        'email_body'
     ]
 )
 
@@ -87,13 +84,13 @@ def parse_rss_xml(
 
         # Create a namedtuple instance for the parsed data
         parsed_rss = ParsedRSS(
-            subject=subject,
-            rss_feed=rss_feed
+            email_subject=subject,
+            email_body=rss_feed
         )
         # Display the subset of the parsed data
         print(
-            f'\n{parsed_rss.subject}\n'
-            f'{parsed_rss.rss_feed}'
+            f'\n{parsed_rss.email_subject}\n'
+            f'{parsed_rss.email_body}'
         )
 
     except AttributeError:
@@ -122,15 +119,6 @@ def main() -> None:
     parse_rss_xml(
         xml_data=xml_data
     )
-
-    # Collect email information
-    email_info = collect_email_info()
-    create_email(
-        email_info=email_info,
-        parsed_body=None,
-    )
-
-    # Create email
 
     return None
 
