@@ -3,7 +3,6 @@
 
 # Imports - Python Standard Library
 from unittest.mock import MagicMock, patch
-from smtplib import SMTPAuthenticationError
 
 # Imports - Third-Party
 
@@ -99,15 +98,8 @@ def test_create_email_body() -> None:
 
 
 @patch(
-    target='smtplib.SMTP',
-    host='test.mail.local',
-    port=587
-)
-@patch(
-    target='smtplib.SMTP.ehlo'
-)
-@patch(
-    target='smtplib.SMTP.starttls'
+    target='smtplib.SMTP.sendmail',
+    return_value={}
 )
 @patch(
     target='smtplib.SMTP.login',
@@ -117,8 +109,13 @@ def test_create_email_body() -> None:
     ]
 )
 @patch(
-    target='smtplib.SMTP.sendmail',
-    return_value={}
+    target='smtplib.SMTP.starttls'
+)
+@patch(
+    target='smtplib.SMTP.ehlo'
+)
+@patch(
+    target='smtplib.SMTP'
 )
 def test_send_email(
     SMTP: MagicMock,
@@ -138,11 +135,11 @@ def test_send_email(
             None.
     """
 
-    print(f'SMTP: {SMTP}\n')
-    print(f'ehlo: {ehlo}\n')
-    print(f'starttls: {starttls}\n')
-    print(f'login: {login}\n')
-    print(f'sendmail: {sendmail}\n')
+    # print(f'SMTP: {SMTP}\n')
+    # print(f'ehlo: {ehlo}\n')
+    # print(f'starttls: {starttls}\n')
+    # print(f'login: {login}\n')
+    # print(f'sendmail: {sendmail}\n')
 
     email_status = send_email(
         email_body=EMAIL_DATA

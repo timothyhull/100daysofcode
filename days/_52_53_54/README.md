@@ -1,4 +1,4 @@
-# :calendar: Day 52+53+54: 12/12/2021-12/23/2021
+# :calendar: Day 52+53+54: 12/12/2021-12/24/2021
 
 ---
 
@@ -38,7 +38,9 @@
 
 :white_check_mark: Watch video 7
 
-:white_large_square: Email RSS data (do something useful with the RSS data)
+:white_check_mark: Email RSS data (do something useful with the RSS data)
+
+:white_check_mark: Write `pytest` tests to support the email program
 
 ---
 
@@ -220,3 +222,60 @@
     - Tests successfully pass with a mock object for each method in the `send_email` function, although the test requires connectivity to Gmail (TCP 587) to pass.
     - Need to determine how to run test with a mock connection to Gmail.
         - Likely requires determining how to pass mock arguments to the `SMTP` method, used as a context manager.
+
+---
+
+### :notebook: 12/24/21
+
+- Conducted extensive testing to properly mock an `smtplib.SMTP` method.
+    - Several attempts to adjust the mock object properties still resulted in a connection attempt to the specified SMTP server (smtp.gmail.com).
+    - The root cause of the failed mock was importing the `SMTP` module using a `from` keyword.
+    - Correcting the problem required that I make the following change in [app/send_email.py](app/send_email.py):
+
+        ```python
+        # Remove this line
+        from smtplib import SMTP
+
+        # Insert this line
+        import SMTP
+
+        # Remove this block
+        with SMTP(
+            # Define the outgoing mail server
+            host='smtp.gmail.com',
+            port=587
+        ) as conn:
+
+        # Insert this block
+        with smtplib.SMTP(
+            # Define the outgoing mail server
+            host='smtp.gmail.com',
+            port=587
+        ) as conn:
+        ```
+
+    - All tests pass successfully following this change, and no connection attempt to smtp.gmail.com takes place.
+
+        ```bash
+        root@50c4c4310ffd:/workspaces/100daysofcode/days/_52_53_54# pytest -v
+        ==================================================== test session starts ====================================================
+        platform linux -- Python 3.9.8, pytest-6.2.5, py-1.11.0, pluggy-1.0.0 -- /usr/local/bin/python
+        cachedir: .pytest_cache
+        rootdir: /workspaces/100daysofcode/days/_52_53_54
+        plugins: requests-mock-1.9.3, cov-3.0.0, anyio-3.3.4
+        collected 10 items                                                                                                          
+
+        tests/test_parser.py::test_read_xml_file PASSED                                                                       [ 10%]
+        tests/test_parser.py::test_parse_rss_xml PASSED                                                                       [ 20%]
+        tests/test_parser.py::test_parse_rss_xml_output PASSED                                                                [ 30%]
+        tests/test_parser.py::test_parse_rss_xml_errors PASSED                                                                [ 40%]
+        tests/test_pull_xml.py::test_get_rss_feed_successful PASSED                                                           [ 50%]
+        tests/test_pull_xml.py::test_get_rss_feed_http_error PASSED                                                           [ 60%]
+        tests/test_pull_xml.py::test_write_rss_to_xml PASSED                                                                  [ 70%]
+        tests/test_send_email.py::test_collect_email_info PASSED                                                              [ 80%]
+        tests/test_send_email.py::test_create_email_body PASSED                                                               [ 90%]
+        tests/test_send_email.py::test_send_email PASSED                                                                      [100%]
+
+        ==================================================== 10 passed in 0.23s =====================================================
+
+        ```

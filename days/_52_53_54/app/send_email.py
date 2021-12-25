@@ -4,9 +4,9 @@
 # Imports - Python Standard Library
 from collections import namedtuple
 from os import getenv
-from smtplib import SMTP
 from typing import Dict
 import getpass
+import smtplib
 
 # Imports - Third-Party
 from dotenv import load_dotenv
@@ -141,27 +141,27 @@ def send_email(
     email_body = email_body.email_body
 
     # Use a context manager to send an email
-    with SMTP(
+    with smtplib.SMTP(
         # Define the outgoing mail server
         host='smtp.gmail.com',
         port=587
     ) as conn:
-        # # Send an EHLO message
-        # conn.ehlo()
+        # Send an EHLO message
+        conn.ehlo()
 
-        # # Start a TLS session and authenticate
-        # email_status = conn.starttls()
-        # conn.login(
-        #     user=email_from,
-        #     password=email_pw
-        # )
+        # Start a TLS session and authenticate
+        email_status = conn.starttls()
+        conn.login(
+            user=email_from,
+            password=email_pw
+        )
 
-        # # Send the email message
-        # email_status = conn.sendmail(
-        #     from_addr=email_from,
-        #     to_addrs=email_to,
-        #     msg=email_subject + email_body
-        # )
+        # Send the email message
+        email_status = conn.sendmail(
+            from_addr=email_from,
+            to_addrs=email_to,
+            msg=email_subject + email_body
+        )
         email_status = {}
 
     return email_status
