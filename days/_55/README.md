@@ -85,3 +85,78 @@
 
 - Wrote the first `pytest` test for [app/program.py](app/program.py) to read API data using `uplink` in [app/blog_client.py](app/blog_client.py).
     - Successfully completed test.
+
+---
+
+### :notebook: 12/26/21
+
+- The `super()` method allows for calling methods of an inherited class by a parent class.
+
+    - This will be the inherited class:
+
+        ```python
+        class RaceCars():
+
+            def __init__(self):
+                self.tires = 4
+                self.adjustment_points = 2
+                self.fire_extinguishers = 2
+                self.top_hatch = 'Optional'
+                print('Race cars are fast.')
+
+            def Tires(self):
+                print(f'Race cars have {self.tires} tires.')
+        ```
+
+    - This is the parent class, inheriting `RaceCars`:
+
+        ```python
+        class Toyota(RaceCars):
+
+            def __init__(self):
+                # The call to super().__init__() will initialize the RaceCars class
+                super().__init__()
+                self.jgr_cars = 4
+                self.jgr_car_numbers = {
+                    '11': {
+                        'driver': 'Hamlin'
+                    },
+                    '18': {
+                        'driver': 'Busch'
+                    },
+                    '19': {
+                        'driver': 'Truex Jr.'
+                    },
+                    '20': {
+                        'driver': 'Bell'
+                    }
+                }
+                self.championships = 2
+
+            def jgr_info(self):
+                print(f'JGR has {self.jgr_cars} cars:')
+                for num, driver in self.jgr_car_numbers.items():
+                    print(f'  {driver.get("driver", "??")} drives car #{num}.')
+
+                print(
+                    f'\nEach car has {self.adjustment_points} '
+                    'adjustment points.'
+                )
+                
+
+            def jgr_champs(self):
+                print(f'Toyota has {self.championships} championship trophies.')
+        ```
+
+    - Creating an instance of `Toyota` will run the `__init__` method in `RaceCars`, and make `RaceCars` methods and attributes available to the `Toyota` instance:
+
+        ```python
+        # This will print 'Race cars are fast.'
+        t = Toyota()
+
+        # This will print the number of tires defined in RaceCars
+        t.tires
+
+        # This will use properties of both Toyota and RaceCars
+        t.jgr_cars()
+        ```
