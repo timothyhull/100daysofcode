@@ -372,6 +372,7 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 
 <details><summary>Days 55-57: Structured API Clients with uplink</summary>
 
-- Day 55: [12/25/21](days/_55)
+- Day 55: [12/25/21](days/_55#notebook-1221)
+- Day 55a: [12/26/21](days/_55#notebook-122621)
 
 </details>
