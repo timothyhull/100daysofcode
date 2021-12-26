@@ -32,3 +32,5 @@ logbook
 python-dotenv
 # web scraping
 bs4
+# uplink HTTP client
+uplink

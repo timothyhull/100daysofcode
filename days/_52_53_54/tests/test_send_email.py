@@ -135,16 +135,19 @@ def test_send_email(
             None.
     """
 
+    # Print statements to find the order of the mock objects from each @patch
     # print(f'SMTP: {SMTP}\n')
     # print(f'ehlo: {ehlo}\n')
     # print(f'starttls: {starttls}\n')
     # print(f'login: {login}\n')
     # print(f'sendmail: {sendmail}\n')
 
+    # Call the function
     email_status = send_email(
         email_body=EMAIL_DATA
     )
 
+    # Assert that the mocked email message returns a blank dictionary
     assert email_status == {}
 
     return None
