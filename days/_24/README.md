@@ -170,7 +170,6 @@ run_make_named_tuple()
 - Successfully published package to [PyPI](https://pypi.org/project/namedtuple-maker/).
 - Successfully installed package with `pip` and tested package elements in a Python interpreter.
 
-
 ---
 
 #### :notebook: 9/1/21

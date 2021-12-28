@@ -11,6 +11,7 @@ import uplink
 
 # Constants
 BASE_URL = 'https://consumerservicesapi.talkpython.fm'
+BLOG_ENDPOINT = '/api/blog'
 
 
 class BlogClient(uplink.Consumer):
@@ -40,7 +41,7 @@ class BlogClient(uplink.Consumer):
 
         return None
 
-    @uplink.get('/api/blog')
+    @uplink.get(BLOG_ENDPOINT)
     def get_all_entries(self) -> Response:
         """ Get all blog entries.
 

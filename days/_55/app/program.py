@@ -27,6 +27,9 @@ def read_entries() -> Response:
     # Set the response value
     response = client.get_all_entries()
 
+    # Check for HTTP errors
+    response.raise_for_status()
+
     return response
 
 
@@ -34,6 +37,38 @@ def write_entries():
     """ TODO """
 
     pass
+
+
+def get_user_input() -> None:
+    """ Collect user input to read or write API entry data.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+    """
+
+    # Display a banner
+    print('\nWhat would you like to do next?\n')
+
+    # Collect user input
+    user_input = input(
+        '[w]rite a post, or [r]ead posts? '
+    ).lower().strip()
+
+    # Handle input with conditionals
+    if user_input == 'r':
+        print('Read posts...\n')
+
+    if user_input == 'w':
+        print('Write a post...\n')
+
+    print(
+        f'\n\n** Invalid input "{user_input}", Please try again. **\n'
+    )
+
+    return None
 
 
 def main() -> None:
@@ -48,39 +83,20 @@ def main() -> None:
             None.
     """
 
+    # Collect user input
     # Define a try/except block to catch keyboard interrupts gracefully
     try:
-        # Create a prompt loop
-        while True:
+        user_input = get_user_input()
 
-            # Display a banner
-            print('\nWhat would you like to do next?\n')
-
-            # Collect user input, and catch exceptions for non-alpha characters
-            try:
-                user_input = input(
-                    '[w]rite a post, or [r]ead posts? '
-                ).lower().strip()
-            except SyntaxError:
-                print(f'\n* Invalid entry "{user_input}" *\n')
-                raise
-
-            # Handle input with conditionals
-            if user_input == 'w':
-                continue
-
-            if user_input == 'r':
-                continue
-
-            print(
-                f'\n\n** Invalid input "{user_input}," Please try again. **\n'
-            )
+        # Process valid user input
+        if user_input == 'r':
+            pass
+        elif user_input == 'w':
+            pass
 
     # Handle KeyboardInterrupt exceptions
     except KeyboardInterrupt:
         print('\nEscape sequence read, exiting program.\n')
-
-    return None
 
 
 if __name__ == '__main__':

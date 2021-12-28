@@ -1,4 +1,4 @@
-# :calendar: Day 55: 12/25/2021
+# :calendar: Day 55: 12/25/2021-12/27/2021
 
 ---
 
@@ -24,9 +24,11 @@
 
 :white_check_mark: Create initial application framework and `pytest` test framework
 
-:white_large_square: Research the use of the `super()` method
+:white_check_mark Research the use of the `super()` method
 
-:white_large_square: Rewrite `pytest` tests to mock the HTTP requests, using the `requests_mock` fixture
+:white_check_mark: Rewrite `pytest` tests to mock the HTTP requests, using the `requests_mock` fixture
+
+:white_large_square: Watch video 7
 
 ---
 
@@ -80,8 +82,8 @@
 
     1. [app/program.py](app/program.py) - UI for HTTP API client.
     2. [app/blog_client.py](app/blog_client.py) - HTTP API application.
-    3. [test/test_program.py](test/program.py) - `pytest` tests for **program.py**.
-    4. [test/test_blog_client.py](test/blog_client.py) - `pytest` tests for **blog_client.py**.
+    3. [tests/test_program.py](tests/test_program.py) - `pytest` tests for **program.py**.
+    4. [tests/test_blog_client.py](tests/test_blog_client.py) - `pytest` tests for **blog_client.py**.
 
 - Wrote the first `pytest` test for [app/program.py](app/program.py) to read API data using `uplink` in [app/blog_client.py](app/blog_client.py).
     - Successfully completed test.
@@ -104,7 +106,7 @@
                 self.top_hatch = 'Optional'
                 print('Race cars are fast.')
 
-            def Tires(self):
+            def tires(self):
                 print(f'Race cars have {self.tires} tires.')
         ```
 
@@ -142,7 +144,6 @@
                     f'\nEach car has {self.adjustment_points} '
                     'adjustment points.'
                 )
-                
 
             def jgr_champs(self):
                 print(f'Toyota has {self.championships} championship trophies.')
@@ -160,3 +161,14 @@
         # This will use properties of both Toyota and RaceCars
         t.jgr_cars()
         ```
+
+---
+
+### :notebook: 12/27/21
+
+- Restructured `pytest` tests in [tests/test_program.py](tests/test_program.py) and [tests/test_blog_client.py](tests/test_blog_client.py).
+    - Setup separate `requests_mock` objects in each file, to test the nuanced differences between creating a class instance and calling a class method directly, and reading the result of a class instance method call from a function.
+    - Created tests to confirm raising of `HTTPError` exceptions.
+    - Created the `test_get_user_input` function in [test/test_program.py](test/program.py), and created the `get_user_input` in [app/program.py](app/program.py)
+        - Tests multiple user input values against separate expected STDOUT output results.
+    - All tests successfully pass.
