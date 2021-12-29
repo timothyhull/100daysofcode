@@ -172,3 +172,12 @@
     - Created the `test_get_user_input` function in [test/test_program.py](test/program.py), and created the `get_user_input` in [app/program.py](app/program.py)
         - Tests multiple user input values against separate expected STDOUT output results.
     - All tests successfully pass.
+
+---
+
+### :notebook: 12/28/21
+
+- Watched a portion of video 7.
+    - Attempting to create function to collect a specific blog entry selection by user input.
+        - Work in-progress.
+- Updated `pytest` tests to support further testing.

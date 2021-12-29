@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c7081102-e2c9-41ec-8b79-adc1f3469d91",
+    "published": "2017-02-14",
+    "view_count": 1231,
+    "content": "So maybe you've heard about Requests...",
+    "title": "Easy Breezy Python HTTP Clients"
+  },
+  {
+    "id": "82160025-e50d-4993-aef7-dc423677ab05",
+    "published": "2017-02-08",
+    "view_count": 10,
+    "content": "Python's standard urllib2 module provides most of the HTTP capabilities you need, but the API is thoroughly broken. It was built for a different time - and a different web. It requires an enormous amount of work (even method overrides) to perform the simplest of tasks.\n\nThings shouldn't be this way. Not in Python.",
+    "title": "Introducing Requests for Python"
+  },
+  {
+    "id": "0b52ded1-29e4-4368-a41f-5c244cb9f469",
+    "published": "2017-02-01",
+    "view_count": 100,
+    "content": "Enjoy productive Python, Django, and Web development with PyCharm, an intelligent Python IDE offering unique coding experience...",
+    "title": "PyCharm, the Best IDE for Python"
+  }
+]

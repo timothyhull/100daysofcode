@@ -19,6 +19,10 @@ from _55.app.blog_client import (
 )
 
 # Constants
+VALID_USER_INPUT = [
+    'r',
+    'w'
+]
 USER_INPUT = [
     'a',
     'r',
@@ -36,9 +40,37 @@ BLOG_TEXT = 'So maybe you\'ve heard about Requests...'
 
 @patch(
     target='builtins.input',
-    side_effect=USER_INPUT
+    side_effect=VALID_USER_INPUT
 )
 def test_get_user_input(
+    valid_user_input: MagicMock
+) -> None:
+    """ Test the get_user_input function in program.py.
+
+        Compare the string output with valid results.
+
+        Args:
+            valid_user_input (MagicMock):
+                Mocked user input data.
+    """
+
+    # Loop over each valid user input option
+    for index, _ in enumerate(VALID_USER_INPUT):
+
+        # Call the function, and assign the result to a variable
+        user_input = get_user_input()
+
+        # Assert that user_input is equivalent to the mocked input value.
+        assert user_input == VALID_USER_INPUT[index]
+
+    return None
+
+
+@patch(
+    target='builtins.input',
+    side_effect=USER_INPUT
+)
+def test_get_user_input_stdout(
     user_input: MagicMock,
     capsys: CaptureFixture
 ) -> None:
