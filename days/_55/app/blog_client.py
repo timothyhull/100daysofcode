@@ -51,24 +51,24 @@ class BlogClient(uplink.Consumer):
                 None.
 
             Returns:
-                _ (requests.models.Response).
+                _ (requests.models.Response)
                     Response object from the requests package.
         """
 
-    # @uplink.get(
-    #     uri=f'{BLOG_ENDPOINT}/{self.entry_id}'
-    # )
-    # def get_entry(
-    #     self,
-    #     entry_id:str
-    # ) -> Response:
-    #     """ Get a specific blog entry by ID.
+    @uplink.get(
+        uri=f'{BLOG_ENDPOINT}/{{entry_id}}'
+    )
+    def get_entry(
+        self,
+        entry_id: str
+    ) -> Response:
+        """ Get a specific blog entry by ID.
 
-    #         Args:
-    #             entry_id (str):
-    #                 TODO
+            Args:
+                entry_id (str):
+                    Blog entry ID.
 
-    #         Returns:
-    #             _ (requests.models.Response)
-    #                 Response object from the requests package.
-    #     """
+            Returns:
+                _ (requests.models.Response)
+                    Response object from the requests package.
+        """

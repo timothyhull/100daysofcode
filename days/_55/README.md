@@ -28,7 +28,9 @@
 
 :white_check_mark: Rewrite `pytest` tests to mock the HTTP requests, using the `requests_mock` fixture
 
-:white_large_square: Watch video 7
+:white_check_mark: Watch video 7
+
+:white_large_square: Watch video 8
 
 ---
 
@@ -178,6 +180,47 @@
 ### :notebook: 12/28/21
 
 - Watched a portion of video 7.
-    - Attempting to create function to collect a specific blog entry selection by user input.
+    - Attempting to create function to collect a specific blog entry selection, by user input.
         - Work in-progress.
 - Updated `pytest` tests to support further testing.
+
+---
+
+### :notebook: 12/29/21
+
+- Completed video 7.
+    - Completed functions that collect and display a specific blog entry selection, by user input.
+- Updated `pytest` tests to support new functionality.
+    - `pytest` coverage report:
+
+    ```bash
+    root@50c4c4310ffd:/workspaces/100daysofcode/days/_55# pytest -v --disable-warnings --cov-report=term-missing --cov='.'
+    ==================================================== test session starts ====================================================
+    platform linux -- Python 3.9.8, pytest-6.2.5, py-1.11.0, pluggy-1.0.0 -- /usr/local/bin/python
+    cachedir: .pytest_cache
+    rootdir: /workspaces/100daysofcode/days/_55
+    plugins: requests-mock-1.9.3, cov-3.0.0, anyio-3.3.4
+    collected 8 items                                                                                                           
+
+    tests/test_blog_client.py::test_get_all_entries PASSED                                                                [ 12%]
+    tests/test_blog_client.py::test_get_all_entries_error PASSED                                                          [ 25%]
+    tests/test_blog_client.py::test_get_entry PASSED                                                                      [ 37%]
+    tests/test_blog_client.py::test_get_entry_error PASSED                                                                [ 50%]
+    tests/test_program.py::test_get_user_input PASSED                                                                     [ 62%]
+    tests/test_program.py::test_get_user_input_stdout PASSED                                                              [ 75%]
+    tests/test_program.py::test_read_entries PASSED                                                                       [ 87%]
+    tests/test_program.py::test_read_entries_error PASSED                                                                 [100%]
+
+    ----------- coverage: platform linux, python 3.9.8-final-0 -----------
+    Name                        Stmts   Miss  Cover   Missing
+    ---------------------------------------------------------
+    app/blog_client.py             13      0   100%
+    app/program.py                 59     16    73%   38-42, 48-55, 119, 152-154, 172-178, 182
+    tests/test_blog_client.py      37      0   100%
+    tests/test_program.py          41      0   100%
+    ---------------------------------------------------------
+    TOTAL                         150     16    89%
+
+
+    =============================================== 8 passed, 6 warnings in 0.67s ===============================================
+    ```

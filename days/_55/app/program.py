@@ -2,6 +2,7 @@
 """ User interface to consume blog_client.BlogClient. """
 
 # Imports - Python Standard Library
+from sys import exit
 
 # Imports - Third-party
 from requests.models import Response
@@ -30,20 +31,28 @@ def select_entry(
         while True:
             # Prompt for user input
             try:
+                # Collect input and subtract 1, to pair with list index numbers
                 user_choice = int(
                     input('Which blog entry would you like to read? ')
-                )
+                ) - 1
             except ValueError:
                 print(
-                    '\n\n** Invalid input. Please try again. **\n'
+                    '\n** Invalid input. Please try again. **\n'
                 )
                 continue
 
             # Validate user choice:
-            if user_choice - 1 in range(len(response.json())):
+            if user_choice in range(len(response.json())):
                 break
+            else:
+                print(
+                    f'\n** No blog entry "{user_choice + 1}" found. '
+                    'Please try again. **\n'
+                )
+
     except KeyboardInterrupt:
         print('\nEscape sequence read, exiting program.\n')
+        exit()
 
     return user_choice
 
@@ -75,13 +84,31 @@ def read_entries() -> Response:
 
     # Display a list of blog entries for selection
     for index, entry in enumerate(response.json()):
-        print(f'{index + 1}. {entry.get("title")}')
-        print()
+        print(
+            f'{index + 1}. {entry.get("title")} '
+            f'[{entry.get("view_count", "Unknown")} views]'
+        )
+    print()
 
-    # Prompt for user selection
-    entry = select_entry(
+    # Prompt user for blog entry selection
+    blog_entry_number = select_entry(
         response=response
     )
+
+    # Assign the blog entry data to a variable
+    blog_entry = client.get_entry(
+        entry_id=response.json()[blog_entry_number]['id']
+    )
+
+    # Display the blog entry title
+    blog_entry = blog_entry.json()
+    blog_title = f'** {blog_entry.get("title", "Unknown")} **'
+    print(f'\n{blog_title}')
+    print("-" * len(blog_title))
+
+    # Display the blog entry
+    print(f'{blog_entry.get("content", "Unknown")}\n')
+    print(f'Published on {blog_entry.get("published", "Unknown")}\n')
 
     return response
 
@@ -120,10 +147,11 @@ def get_user_input() -> None:
             print('Write a post...\n')
         else:
             print(
-                f'\n\n** Invalid input "{user_input}", Please try again. **\n'
+                f'\n** Invalid input "{user_input}", Please try again. **\n'
             )
     except KeyboardInterrupt:
         print('\nEscape sequence read, exiting program.\n')
+        exit()
 
     return user_input
 

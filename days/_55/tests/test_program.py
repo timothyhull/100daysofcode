@@ -35,7 +35,16 @@ EXPECTED_OUTPUT = [
     'Write a post',
     'Invalid input'
 ]
-BLOG_TEXT = 'So maybe you\'ve heard about Requests...'
+BLOG_JSON = [
+  {
+    'id': 'c7081102-e2c9-41ec-8b79-adc1f3469d91',
+    'published': '2017-02-14',
+    'view_count': 1231,
+    'content': 'So maybe you\'ve heard about Requests...',
+    'title': 'Easy Breezy Python HTTP Clients'
+  }
+]
+BLOG_ID = 'c7081102-e2c9-41ec-8b79-adc1f3469d91'
 
 
 @patch(
@@ -104,8 +113,13 @@ def test_get_user_input_stdout(
     return None
 
 
+@patch(
+    'builtins.input',
+    side_effect=[1]
+)
 def test_read_entries(
-    requests_mock: Mocker
+    user_input: MagicMock,
+    requests_mock: Mocker,
 ) -> None:
     """ Test the read_entries function in program.py.
 
@@ -117,20 +131,27 @@ def test_read_entries(
             None.
     """
 
-    # Setup mock HTTP request
+    # Setup two mock HTTP requests
     url = f'{BASE_URL}{BLOG_ENDPOINT}'
+    url_2 = f'{BASE_URL}{BLOG_ENDPOINT}/{BLOG_ID}'
 
-    # Send the mock HTTP request
+    # Send the first mock HTTP request
     requests_mock.get(
         url=url,
-        text=BLOG_TEXT
+        json=BLOG_JSON
+    )
+
+    # Send the second mock HTTP request
+    requests_mock.get(
+        url=url_2,
+        json=BLOG_JSON[0]
     )
 
     # Call the read_entries function
     entries = read_entries()
 
     # Assert the correct text is in the HTTP response text attribute
-    assert BLOG_TEXT in entries.text
+    assert BLOG_JSON[0].get('content') == entries.json()[0].get('content')
 
     return None
 
