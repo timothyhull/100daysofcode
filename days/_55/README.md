@@ -30,7 +30,9 @@
 
 :white_check_mark: Watch video 7
 
-:white_large_square: Watch video 8
+:white_check_mark: Watch video 8
+
+:white_large_square: Create HTTP error handling for globally, for the `BlogClient` class
 
 ---
 
@@ -224,3 +226,37 @@
 
     =============================================== 8 passed, 6 warnings in 0.67s ===============================================
     ```
+
+---
+
+### :notebook: 12/30/21
+
+- The `uplink` module has a concept of **response handlers** that provide a way to decorate functions that handle HTTP responses from HTTP requests created by `uplink`.
+    - The syntax is:
+
+    ```python
+    import requests
+    import uplink
+
+    @uplink.response_handler
+    def handle_http_error(
+        response: requests.models.Response
+    ) -> requests.models.Response:
+
+    """ Handle HTTP errors from uplink client requests. """
+
+    # Check for HTTP errors, and raise an exception if necessary
+    response.raise_for_status()
+
+    # Return the response object if no errors are found
+    return response
+    ```
+
+- Created the following files;
+
+    1. [app/uplink_helper.py](app/uplink_helper.py) - Helper application for `uplink` response handlers.
+    3. [tests/test_uplink_helper.py](tests/test_uplink_helper.py) - `pytest` tests for **uplink_helper.py**.
+
+- Unable to successfully create a `pytest` test that raises an exception:
+    - Attempted using the `requests_mock.get` arguments/values `status_code=404` and `exc=HTTPError`.
+    - Further testing required.
