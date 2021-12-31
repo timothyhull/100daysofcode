@@ -32,7 +32,9 @@
 
 :white_check_mark: Watch video 8
 
-:white_large_square: Create HTTP error handling for globally, for the `BlogClient` class
+:white_check_mark: Create HTTP error handling for globally, for the `BlogClient` class
+
+:white_large_square: Remove `raise_for_status()` references from `program.py`
 
 ---
 

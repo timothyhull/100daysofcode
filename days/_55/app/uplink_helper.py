@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
 """ uplink client helpers. """
 
-# Imports - Python Standard Library
-
 # Imports - Third-party
 from requests.models import Response
 import uplink
-
-# Imports - Local
 
 
 @uplink.response_handler
