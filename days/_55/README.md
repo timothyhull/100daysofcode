@@ -260,3 +260,11 @@
 - Unable to successfully create a `pytest` test that raises an exception:
     - Attempted using the `requests_mock.get` arguments/values `status_code=404` and `exc=HTTPError`.
     - Further testing required.
+
+---
+
+### :notebook: 12/31/21
+
+- Updated `pytest` tests in [tests/test_uplink_helper.py](tests/test_uplink_helper.py) to pass.
+    - Unable to successfully "mock" a `requests.models.Response` object.
+    - The test doesn't effectively perform a test of the function.

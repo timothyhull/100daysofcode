@@ -6,38 +6,41 @@
 # Imports - Third-party
 from pytest import raises
 from requests.exceptions import HTTPError
-from requests_mock.mocker import Mocker
+from requests.models import Response
 
 # Imports - Local
 from _55.app.uplink_helper import (
     handle_http_error
 )
 
-# Constants
 
-
-def test_handle_http_error(
-    requests_mock: Mocker
-) -> None:
+def test_handle_http_error() -> None:
     """ Test the handle_http_error function in uplink_helper.py.
 
         Args:
-            requests_mock (MagicMock):
-                Mocked HTTP client request.
+            None.
+
+        Returns:
+            None.
     """
 
-    # Setup mock HTTP request
-    url = 'http://test.api.local'
+    # Create a mock requests.models.Response object
+    response = Response
 
-    # Send the HTTP request with a 4XX response code
-    mock_response = requests_mock.get(
-        url=url,
-        exc=HTTPError
-    )
+    # Assign attribute values that will raise an HTTPError exception
+    response.ok = False
+    response.reason = 'Not Found'
+    response.status_code = 404
+    response.url = 'http://test.api.local'
 
+    # Call pytest.raises for the requests.exceptions.HTTPError exception
     with raises(
         expected_exception=HTTPError
     ):
-        handle_http_error(mock_response)
+        # Call the handle_http_error function, and pass the response object
+        test_response = handle_http_error(response)
+
+        # Attempt to raise for status after calling handle_http_error
+        response.raise_for_status(test_response)
 
     return None
