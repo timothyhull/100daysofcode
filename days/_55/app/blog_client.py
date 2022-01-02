@@ -94,5 +94,3 @@ class BlogClient(uplink.Consumer):
                 _ (requests.models.Response)
                     Response object from the requests package.
         """
-
-        pass
