@@ -14,7 +14,7 @@ from requests_mock.mocker import Mocker
 
 # Imports - Local
 from _55.app.program import (
-    get_user_input, read_entries, write_entries
+    get_user_input, get_write_entry_input, read_entries, write_entries
 )
 from _55.app.blog_client import (
     BASE_URL, BLOG_ENDPOINT
@@ -51,7 +51,7 @@ NEW_BLOG_JSON = {
     'title': 'Test the write_entries function',
     'content': 'This is a test of the write_entries function in program.py...',
     'view_count': 54321,
-    'published': f'{datetime.now().isoformat()}',
+    'published': f'{datetime.now().date().isoformat()}',
 }
 NEW_BLOG_JSON_RESPONSE = {
     **NEW_BLOG_JSON,
@@ -204,13 +204,40 @@ def test_read_entries_error(
 
 @patch(
     target='builtins.input',
-    side_effect=[
-        NEW_BLOG_JSON.values()
-    ]
+    side_effect=NEW_BLOG_JSON.values()
+)
+def test_get_write_entry_input(
+    user_input: MagicMock
+) -> None:
+    """ Test the get_write_entry function in program.py.
+
+        Args:
+            user_input: (MagicMock):
+                Mocked user responses to input prompts.
+
+            requests_mock (Mocker):
+                Mock requests object.
+
+        Returns:
+            None.
+    """
+
+    # Call the function
+    user_input = get_write_entry_input()
+
+    # Assert dictionary properties are correct
+    assert user_input == NEW_BLOG_JSON
+
+    return None
+
+
+@patch(
+    target='builtins.input',
+    side_effect=NEW_BLOG_JSON.values()
 )
 def test_write_entries(
-        user_input: MagicMock,
-        requests_mock: Mocker
+    user_input: MagicMock,
+    requests_mock: Mocker
 ) -> None:
     """ Test the write_entries function in program.py.
 
@@ -226,7 +253,7 @@ def test_write_entries(
     """
 
     # Setup the Mock HTTP request
-    url = f'{BASE_URL}/{BLOG_ENDPOINT}'
+    url = f'{BASE_URL}{BLOG_ENDPOINT}'
 
     # Create the Mock HTTP request
     requests_mock.post(
@@ -245,12 +272,11 @@ def test_write_entries(
 
 @patch(
     target='builtins.input',
-    side_effect=[
-        NEW_BLOG_JSON.values()
-    ]
+    side_effect=NEW_BLOG_JSON.values()
 )
 def test_write_entries_error(
-        requests_mock: Mocker
+    user_input: MagicMock,
+    requests_mock: Mocker
 ) -> Response:
     """ Test errors in the write_entries function in program.py.
 
@@ -266,12 +292,11 @@ def test_write_entries_error(
     """
 
     # Setup the Mock HTTP request
-    url = f'{BASE_URL}/{BLOG_ENDPOINT}'
+    url = f'{BASE_URL}{BLOG_ENDPOINT}'
 
     # Create the Mock HTTP request
     requests_mock.post(
         url=url,
-        json=NEW_BLOG_JSON_RESPONSE,
         status_code=401
     )
 

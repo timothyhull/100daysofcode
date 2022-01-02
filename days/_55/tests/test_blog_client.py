@@ -2,6 +2,7 @@
 """ pytest tests for blog_client.py """
 
 # Imports - Python Standard Library
+from datetime import datetime
 
 # Imports - Third-party
 from pytest import raises
@@ -16,6 +17,12 @@ from _55.app.blog_client import (
 # Constants
 BLOG_ID = 'c7081102-e2c9-41ec-8b79-adc1f3469d91'
 BLOG_TEXT = 'So maybe you\'ve heard about Requests...'
+NEW_BLOG_JSON = {
+    'title': 'Test the write_entries function',
+    'content': 'This is a test of the write_entries function in program.py...',
+    'view_count': 54321,
+    'published': f'{datetime.now().date().isoformat()}',
+}
 
 
 def test_get_all_entries(
@@ -175,6 +182,7 @@ def test_write_entry(
     # Send the mock HTTP request
     requests_mock.post(
         url=url,
+        json=NEW_BLOG_JSON,
         status_code=201
     )
 
@@ -185,6 +193,7 @@ def test_write_entry(
     new_blog = blog_client.write_entry()
 
     assert new_blog.status_code == 201
+    assert new_blog.json() == NEW_BLOG_JSON
 
     return None
 
@@ -202,6 +211,22 @@ def test_write_entry_error(
             None.
     """
 
-    # TODO
+    # Setup mock HTTP request
+    url = f'{BASE_URL}{BLOG_ENDPOINT}'
+
+    # Send the mock HTTP request
+    requests_mock.post(
+        url=url,
+        status_code=404
+    )
+
+    with raises(
+        expected_exception=HTTPError
+    ):
+        # Create a class instance
+        blog_client = BlogClient()
+
+        # Call the get_all_entries method
+        blog_client.write_entry()
 
     return None

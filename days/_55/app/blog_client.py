@@ -15,8 +15,8 @@ BASE_URL = 'https://consumerservicesapi.talkpython.fm'
 BLOG_ENDPOINT = '/api/blog'
 
 
-@uplink.json
 @handle_http_error
+@uplink.json
 class BlogClient(uplink.Consumer):
     """ HTTP client for blog API interaction.
 

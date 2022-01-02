@@ -2,6 +2,7 @@
 """ User interface to consume blog_client.BlogClient. """
 
 # Imports - Python Standard Library
+from datetime import datetime
 from sys import exit
 from typing import Dict
 
@@ -112,20 +113,97 @@ def read_entries() -> Response:
 
 
 def get_write_entry_input() -> Dict:
-    """ TODO """
+    """ Collect user input for a new blog post entry.
 
-    pass
+        Args:
+            None.
+
+        Returns:
+            user_input (Dict):
+                User input key/value pairs.
+    """
+
+    # Create a dictionary for user input
+    user_input = {}
+
+    # Create an error message.
+    error_message = '\nInvalid input, please try again.'
+
+    # Collect the new blog title
+    while True:
+        title = input('\nBlog entry title: ')
+
+        if title:
+            user_input.update({'title': title})
+            break
+        else:
+            print(error_message)
+            continue
+
+    # Collect the new blog content
+    while True:
+        content = input('\nBlog entry content: ')
+
+        if content:
+            user_input.update({'content': content})
+            break
+        else:
+            print(error_message)
+            continue
+
+    # Collect the new blog view count
+    while True:
+        try:
+            view_count = int(input('\nBlog entry view count: '))
+            user_input.update({'view_count': view_count})
+            break
+        except ValueError:
+            print(error_message)
+            continue
+
+    # Create a publish date
+    user_input.update(
+        {
+            'published': datetime.now().date().isoformat()
+        }
+    )
+
+    return user_input
 
 
 def write_entries() -> Response:
-    """ TODO """
+    """ Write a new blog post entry.
 
-    print(
-        # TODO - this will eventually be response.json().get('id')
-        f'\nSuccessfully created a new post with the id "{True}".'
+        Args:
+            None.
+
+        Returns:
+            response (requests.models.Response):
+                Response object from the blog API server.
+    """
+
+    # Collect user input
+    try:
+        user_input = get_write_entry_input()
+    except KeyboardInterrupt:
+        print('\nEscape sequence read, exiting program.\n')
+        exit()
+
+    # Create an instance of the BlogClient class
+    blog_client = BlogClient()
+
+    # Call the write_entry method of blog_client
+    response = blog_client.write_entry(
+        **user_input
     )
 
-    pass
+    print(
+        # Display the server-generated id of the new post
+        '\nSuccessfully created a new post with the id '
+        f'"{response.json().get("id")}".\n'
+    )
+
+    return response
 
 
 def get_user_input() -> None:
@@ -153,7 +231,7 @@ def get_user_input() -> None:
         if user_input == 'r':
             print('Read posts...\n')
         elif user_input == 'w':
-            print('Write a post...\n')
+            print('Write a post...')
         else:
             print(
                 f'\n** Invalid input "{user_input}", Please try again. **\n'
@@ -185,7 +263,7 @@ def main() -> None:
         read_entries()
 
     elif user_input == 'w':
-        write_entries
+        write_entries()
 
     return None
 

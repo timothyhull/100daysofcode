@@ -38,7 +38,9 @@
 
 :white_check_mark: Watch video 9
 
-:white_large_square: Update `program.py` with function content that allows `pytest` tests in `test_program.py` to pass
+:white_check_mark: Update `program.py` with function content that allows `pytest` tests in `test_program.py` to pass
+
+:white_large_square: Watch video 10
 
 ---
 
@@ -315,3 +317,53 @@
         number = '54321'
         f'This string reformats {number}, with a comma separator to {int(number):,}.'
         ```
+
+---
+
+### :notebook: 1/2/22
+
+- Updated the `test_write_entry` and `test_write_entry_error` test functions in [tests/test_blog_client.py](tests/test_blog_client.py).
+    - Added tests that successfully pass.
+- Created the `test_write_entries` and `test_get_write_entry_input` test functions in [tests/program.py](tests/test_program.py)
+    - Wrote code in the `write_entries` and `get_write_entry_input` test functions in [app/program.py](app/program.py) that support passing all `pytest` tests in [tests/program.py](tests/test_program.py).
+- `pytest` coverage report:
+
+    ```bash
+    root@50c4c4310ffd:/workspaces/100daysofcode/days/_55# pytest --disable-warnings -v --cov-report=term-missing --cov='.'
+    ==================================================== test session starts ====================================================
+    platform linux -- Python 3.9.8, pytest-6.2.5, py-1.11.0, pluggy-1.0.0 -- /usr/local/bin/python
+    cachedir: .pytest_cache
+    rootdir: /workspaces/100daysofcode/days/_55
+    plugins: requests-mock-1.9.3, cov-3.0.0, anyio-3.3.4
+    collected 14 items                                                                                                          
+
+    tests/test_blog_client.py::test_get_all_entries PASSED                                                                [  7%]
+    tests/test_blog_client.py::test_get_all_entries_error PASSED                                                          [ 14%]
+    tests/test_blog_client.py::test_get_entry PASSED                                                                      [ 21%]
+    tests/test_blog_client.py::test_get_entry_error PASSED                                                                [ 28%]
+    tests/test_blog_client.py::test_write_entry PASSED                                                                    [ 35%]
+    tests/test_blog_client.py::test_write_entry_error PASSED                                                              [ 42%]
+    tests/test_program.py::test_get_user_input PASSED                                                                     [ 50%]
+    tests/test_program.py::test_get_user_input_stdout PASSED                                                              [ 57%]
+    tests/test_program.py::test_read_entries PASSED                                                                       [ 64%]
+    tests/test_program.py::test_read_entries_error PASSED                                                                 [ 71%]
+    tests/test_program.py::test_get_write_entry_input PASSED                                                              [ 78%]
+    tests/test_program.py::test_write_entries PASSED                                                                      [ 85%]
+    tests/test_program.py::test_write_entries_error PASSED                                                                [ 92%]
+    tests/test_uplink_helper.py::test_handle_http_error PASSED                                                            [100%]
+
+    ----------- coverage: platform linux, python 3.9.8-final-0 -----------
+    Name                          Stmts   Miss  Cover   Missing
+    -----------------------------------------------------------
+    app/blog_client.py               18      0   100%
+    app/program.py                   94     27    71%   40-44, 50-57, 140-141, 151-152, 160-162, 188-190, 239-241, 259-268, 272
+    app/uplink_helper.py              7      0   100%
+    tests/test_blog_client.py        44      0   100%
+    tests/test_program.py            64      0   100%
+    tests/test_uplink_helper.py      15      0   100%
+    -----------------------------------------------------------
+    TOTAL                           242     27    89%
+
+
+    ============================================== 14 passed, 6 warnings in 0.66s ===============================================
+    ```
