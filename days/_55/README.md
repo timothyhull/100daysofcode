@@ -1,4 +1,4 @@
-# :calendar: Day 55: 12/25/2021-12/27/2021
+# :calendar: Day 55: 12/25/2021-1/1/2022
 
 ---
 
@@ -34,7 +34,11 @@
 
 :white_check_mark: Create HTTP error handling for globally, for the `BlogClient` class
 
-:white_large_square: Remove `raise_for_status()` references from `program.py`
+:white_check_mark: Remove `raise_for_status()` references from `program.py`
+
+:white_check_mark: Watch video 9
+
+:white_large_square: Update `program.py` with function content that allows `pytest` tests in `test_program.py` to pass
 
 ---
 
@@ -270,3 +274,44 @@
 - Updated `pytest` tests in [tests/test_uplink_helper.py](tests/test_uplink_helper.py) to pass.
     - Unable to successfully "mock" a `requests.models.Response` object.
     - The test doesn't effectively perform a test of the function.
+
+---
+
+### :notebook: 1/1/22
+
+- Removed `raise_for_status` method calls from all `Python` and `pytest` files.
+    - Imported the `handle_http_error` function into [app/blog_client.py](app/blog_client.py) from [app/uplink_helper.py](app/uplink_helper.py).
+    - Decorated the `BlogClient` class with the `handle_http_error` function.
+        - This applies the decorator (raising an exception for HTTP errors) to all methods within the `BlogClient` class.
+    - Successfully performed all `pytest` tests.
+
+- Created the `test_write_entry` and `test_write_entry_error` test functions in [tests/test_blog_client.py](tests/test_blog_client.py).
+    - Used the `requests_mock` fixture to send a mock HTTP post request with a mock `status_code` response attribute of `201`.
+    - Used the `requests_mock` fixture to send a mock HTTP post error request with a mock `status_code` response attribute of `401`.
+- Created the `BlogClient` method `write_entry` in [app/blog_client.py](app/blog_client.py) to write a new blog entry.
+    - Decorated the `write_entry` method with the `@uplink.post` decorator.
+    - Created the parameter `**kwargs` with a type of `uplink.Body`.
+        - By default, `uplink` attempts to send POST requests with the `Content-Type` header set to `x-www-form-urlencoded`.
+        - In the case of this API, the `Content-Type` header must be set to `application/json`.
+        - Decorate the entire `BlogClient` class with `@uplink.json`, to change the `Content-Type` header for all methods in the class.
+
+            ```python
+            @uplink.json
+            @handle_http_error
+            class BlogClient(uplink.Consumer):
+                """ Class content omitted. """
+            ```
+
+- **Digit grouping** is a numeric `int` formatting technique that adds commas as separators to large numbers (1000+).
+    - Reformats numbers like `1456` to `1,456`.
+    - The syntax to apply string formatting to a Python f-string is:
+
+        ```python
+        # Syntax with a number as an integer
+        number = 54321
+        f'This string reformats {number}, with a comma separator to {number:,}.'
+
+        # Syntax with a number as a string
+        number = '54321'
+        f'This string reformats {number}, with a comma separator to {int(number):,}.'
+        ```

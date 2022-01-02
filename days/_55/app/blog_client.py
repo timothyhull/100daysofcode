@@ -8,12 +8,15 @@ from requests.models import Response
 import uplink
 
 # Imports - Local
+from _55.app.uplink_helper import handle_http_error
 
 # Constants
 BASE_URL = 'https://consumerservicesapi.talkpython.fm'
 BLOG_ENDPOINT = '/api/blog'
 
 
+@uplink.json
+@handle_http_error
 class BlogClient(uplink.Consumer):
     """ HTTP client for blog API interaction.
 
@@ -72,3 +75,24 @@ class BlogClient(uplink.Consumer):
                 _ (requests.models.Response)
                     Response object from the requests package.
         """
+
+    @uplink.post(
+        uri=f'{BLOG_ENDPOINT}'
+    )
+    def write_entry(
+        self,
+        **kwargs: uplink.Body
+    ) -> Response:
+        """ Write a new blog entry.
+
+            Args:
+                **kwargs (uplink.Body):
+                    Arbitrary keyword arguments that map to the body
+                    of the HTTP POST request.
+
+            Returns:
+                _ (requests.models.Response)
+                    Response object from the requests package.
+        """
+
+        pass

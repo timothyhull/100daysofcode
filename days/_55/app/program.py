@@ -3,6 +3,7 @@
 
 # Imports - Python Standard Library
 from sys import exit
+from typing import Dict
 
 # Imports - Third-party
 from requests.models import Response
@@ -74,9 +75,6 @@ def read_entries() -> Response:
     # Set the response value
     response = client.get_all_entries()
 
-    # Check for HTTP errors
-    response.raise_for_status()
-
     # Display blog entry header
     header = '** Blog Entries **'
     print(header)
@@ -86,7 +84,7 @@ def read_entries() -> Response:
     for index, entry in enumerate(response.json()):
         print(
             f'{index + 1}. {entry.get("title")} '
-            f'[{entry.get("view_count", "Unknown")} views]'
+            f'[{entry.get("view_count", "Unknown"):,} views]'
         )
     print()
 
@@ -113,8 +111,19 @@ def read_entries() -> Response:
     return response
 
 
-def write_entries():
+def get_write_entry_input() -> Dict:
     """ TODO """
+
+    pass
+
+
+def write_entries() -> Response:
+    """ TODO """
+
+    print(
+        # TODO - this will eventually be response.json().get('id')
+        f'\nSuccessfully created a new post with the id "{True}".'
+    )
 
     pass
 
@@ -174,6 +183,9 @@ def main() -> None:
     # Call a blog read function
     if user_input == 'r':
         read_entries()
+
+    elif user_input == 'w':
+        write_entries
 
     return None
 

@@ -2,17 +2,19 @@
 """ pytest tests for program.py """
 
 # Imports - Python Standard Library
+from datetime import datetime
 from unittest.mock import MagicMock, patch
 
 # Imports - Third-party
 from _pytest.capture import CaptureFixture
 from pytest import raises
 from requests.exceptions import HTTPError
+from requests.models import Response
 from requests_mock.mocker import Mocker
 
 # Imports - Local
 from _55.app.program import (
-    get_user_input, read_entries
+    get_user_input, read_entries, write_entries
 )
 from _55.app.blog_client import (
     BASE_URL, BLOG_ENDPOINT
@@ -45,6 +47,16 @@ BLOG_JSON = [
   }
 ]
 BLOG_ID = 'c7081102-e2c9-41ec-8b79-adc1f3469d91'
+NEW_BLOG_JSON = {
+    'title': 'Test the write_entries function',
+    'content': 'This is a test of the write_entries function in program.py...',
+    'view_count': 54321,
+    'published': f'{datetime.now().isoformat()}',
+}
+NEW_BLOG_JSON_RESPONSE = {
+    **NEW_BLOG_JSON,
+    'id': BLOG_ID
+}
 
 
 @patch(
@@ -124,6 +136,9 @@ def test_read_entries(
     """ Test the read_entries function in program.py.
 
         Args:
+            user_input: (MagicMock):
+                Mocked user responses to input prompts.
+
             requests_mock (Mocker):
                 Mock requests object.
 
@@ -183,5 +198,88 @@ def test_read_entries_error(
     ):
         # Call the read_entries function
         read_entries()
+
+    return None
+
+
+@patch(
+    target='builtins.input',
+    side_effect=[
+        NEW_BLOG_JSON.values()
+    ]
+)
+def test_write_entries(
+        user_input: MagicMock,
+        requests_mock: Mocker
+) -> None:
+    """ Test the write_entries function in program.py.
+
+        Args:
+            user_input: (MagicMock):
+                Mocked user responses to input prompts.
+
+            requests_mock (Mocker):
+                Mock requests object.
+
+        Returns:
+            None.
+    """
+
+    # Setup the Mock HTTP request
+    url = f'{BASE_URL}/{BLOG_ENDPOINT}'
+
+    # Create the Mock HTTP request
+    requests_mock.post(
+        url=url,
+        json=NEW_BLOG_JSON_RESPONSE,
+        status_code=201
+    )
+
+    # Call the write_entries function
+    new_blog_post = write_entries()
+
+    assert new_blog_post.json().get('id') == BLOG_ID
+
+    return None
+
+
+@patch(
+    target='builtins.input',
+    side_effect=[
+        NEW_BLOG_JSON.values()
+    ]
+)
+def test_write_entries_error(
+        requests_mock: Mocker
+) -> Response:
+    """ Test errors in the write_entries function in program.py.
+
+        Args:
+            user_input: (MagicMock):
+                Mocked user responses to input prompts.
+
+            requests_mock (Mocker):
+                Mock requests object.
+
+        Returns:
+            None.
+    """
+
+    # Setup the Mock HTTP request
+    url = f'{BASE_URL}/{BLOG_ENDPOINT}'
+
+    # Create the Mock HTTP request
+    requests_mock.post(
+        url=url,
+        json=NEW_BLOG_JSON_RESPONSE,
+        status_code=401
+    )
+
+    # Use a context manager to call pytest.raises with an exception (HTTPError)
+    with raises(
+        expected_exception=HTTPError
+    ):
+        # Call the write_entries function
+        write_entries()
 
     return None

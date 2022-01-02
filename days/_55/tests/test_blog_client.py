@@ -80,8 +80,7 @@ def test_get_all_entries_error(
         expected_exception=HTTPError
     ):
         # Call the get_all_entries method
-        all_entries = blog_client.get_all_entries()
-        all_entries.raise_for_status()
+        blog_client.get_all_entries()
 
     return None
 
@@ -150,9 +149,59 @@ def test_get_entry_error(
         expected_exception=HTTPError
     ):
         # Call the get_entry method
-        blog_entry = blog_client.get_entry(
+        blog_client.get_entry(
             entry_id=BLOG_ID
         )
-        blog_entry.raise_for_status()
+
+    return None
+
+
+def test_write_entry(
+    requests_mock: Mocker
+) -> None:
+    """ Test the write_entry function in blog_client.py.
+
+        Args:
+            requests_mock (Mocker):
+                Mock requests object.
+
+        Returns:
+            None.
+    """
+
+    # Setup mock HTTP request
+    url = f'{BASE_URL}{BLOG_ENDPOINT}'
+
+    # Send the mock HTTP request
+    requests_mock.post(
+        url=url,
+        status_code=201
+    )
+
+    # Create a class instance
+    blog_client = BlogClient()
+
+    # Call the get_all_entries method
+    new_blog = blog_client.write_entry()
+
+    assert new_blog.status_code == 201
+
+    return None
+
+
+def test_write_entry_error(
+    requests_mock: Mocker
+) -> None:
+    """ Test errors in the write_entry function in blog_client.py.
+
+        Args:
+            requests_mock (Mocker):
+                Mock requests object.
+
+        Returns:
+            None.
+    """
+
+    # TODO
 
     return None
