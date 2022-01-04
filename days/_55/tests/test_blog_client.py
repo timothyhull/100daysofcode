@@ -188,9 +188,42 @@ def test_write_entry(
 
     # Create a class instance
     blog_client = BlogClient()
+    new_blog = blog_client.write_entry(**NEW_BLOG_JSON)
 
     # Call the get_all_entries method
-    new_blog = blog_client.write_entry()
+    assert new_blog.json() == NEW_BLOG_JSON
+
+    return None
+
+
+def test___write_entry(
+    requests_mock: Mocker
+) -> None:
+    """ Test the __write_entry function in blog_client.py.
+
+        Args:
+            requests_mock (Mocker):
+                Mock requests object.
+
+        Returns:
+            None.
+    """
+
+    # Setup mock HTTP request
+    url = f'{BASE_URL}{BLOG_ENDPOINT}'
+
+    # Send the mock HTTP request
+    requests_mock.post(
+        url=url,
+        json=NEW_BLOG_JSON,
+        status_code=201
+    )
+
+    # Create a class instance
+    blog_client = BlogClient()
+
+    # Call the get_all_entries method
+    new_blog = blog_client._BlogClient__write_entry()
 
     assert new_blog.status_code == 201
     assert new_blog.json() == NEW_BLOG_JSON
@@ -198,10 +231,10 @@ def test_write_entry(
     return None
 
 
-def test_write_entry_error(
+def test___write_entry_error(
     requests_mock: Mocker
 ) -> None:
-    """ Test errors in the write_entry function in blog_client.py.
+    """ Test errors in the __write_entry function in blog_client.py.
 
         Args:
             requests_mock (Mocker):
@@ -227,6 +260,6 @@ def test_write_entry_error(
         blog_client = BlogClient()
 
         # Call the get_all_entries method
-        blog_client.write_entry()
+        blog_client._BlogClient__write_entry()
 
     return None

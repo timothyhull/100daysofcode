@@ -40,7 +40,7 @@
 
 :white_check_mark: Update `program.py` with function content that allows `pytest` tests in `test_program.py` to pass
 
-:white_large_square: Watch video 10
+:white_check_mark: Watch videos 10-11
 
 ---
 
@@ -367,3 +367,18 @@
 
     ============================================== 14 passed, 6 warnings in 0.66s ===============================================
     ```
+
+---
+
+### :notebook: 1/3/22
+
+- The `write_entry` method in [app/blog_client.py](app/blog_client.py) did not provide any argument names or type hinting, only providing the `**kwargs` parameter.
+    - Wrapping the `write_entry` method in a new method that calls `write_entry` allows adding argument names and type hinting, which makes the method easier to consume.
+        - Renamed the `write_entry` method in [app/blog_client.py](app/blog_client.py) to `__write_entry`.
+        - Created a new `write_entry` method in [app/blog_client.py](app/blog_client.py) with keyword arguments (`title`, `content`, `view_count`, & `published`).
+        - The new `write_entry` method calls the `__write_entry` function, passing all keyword arguments to `**kwargs` while hiding the `__write_entry` function from (non-intuitive) consumption.
+
+- Renamed the `test_write_entry` and `test_write_entry_error` test functions in [tests/test_blog_client.py](tests/test_blog_client.py) to:
+    - `test___write_entry`
+    - `test___write_entry_error`
+- Created a new `pytest` test function named `test_write_entry` that calls the `write_entry` method in [app/blog_client.py](app/blog_client.py).

@@ -76,10 +76,45 @@ class BlogClient(uplink.Consumer):
                     Response object from the requests package.
         """
 
+    def write_entry(
+        self,
+        title: str,
+        content: str,
+        view_count: int,
+        published: str
+    ) -> Response:
+        """ Provide a wrapper to __write_entry with a helpful docstring.
+
+            Args:
+                title (str):
+                    Blog entry title.
+
+                content (str):
+                    Blog entry title.
+
+                view_count (int):
+                    Blog entry title.
+
+                published (str):
+                    Blog entry title.
+
+            Returns:
+                Returns:
+                _ (requests.models.Response)
+                    Response object from the requests package.
+        """
+
+        return self.__write_entry(
+            title=title,
+            content=content,
+            view_count=view_count,
+            published=published
+        )
+
     @uplink.post(
         uri=f'{BLOG_ENDPOINT}'
     )
-    def write_entry(
+    def __write_entry(
         self,
         **kwargs: uplink.Body
     ) -> Response:
