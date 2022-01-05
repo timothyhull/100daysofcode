@@ -1,0 +1,47 @@
+{
+    "keyword": "run",
+    "hits": [
+        {
+            "imdb_code": "tt0327850",
+            "title": "The Rundown",
+            "director": "Peter Berg",
+            "keywords": [
+                "bounty hunter",
+                "jungle",
+                "amazon",
+                "hunter",
+                "fight"
+            ],
+            "duration": 104,
+            "genres": [
+                "adventure",
+                "thriller",
+                "comedy",
+                "action"
+            ],
+            "rating": "PG-13",
+            "year": 2003,
+            "imdb_score": 6.7
+        },
+        {
+            "imdb_code": "tt0163187",
+            "title": "Runaway Bride",
+            "director": "Garry Marshall",
+            "keywords": [
+                "bride",
+                "columnist",
+                "journalist",
+                "maryland",
+                "wedding"
+            ],
+            "duration": 116,
+            "genres": [
+                "romance",
+                "comedy"
+            ],
+            "rating": "PG",
+            "year": 1999,
+            "imdb_score": 5.5
+        }
+    ]
+}
