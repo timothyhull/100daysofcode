@@ -354,7 +354,7 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 
 </details>
 
-<details><summary>Days 52-54: TBD</summary>
+<details><summary>Days 52-54: Parsing RSS feeds with `feedparser`</summary>
 
 - Day 52+53+54: [12/12/21](days/_52_53_54)
 - Day 52+53+54a: [12/13/21](days/_52_53_54#notebook-121321)
@@ -369,6 +369,8 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 52+53+54j: [12/22/21](days/_52_53_54#notebook-122221)
 - Day 52+53+54k: [12/23/21](days/_52_53_54#notebook-122321)
 - Day 52+53+54l: [12/24/21](days/_52_53_54#notebook-122421)
+
+</details>
 
 <details><summary>Days 55-57: Structured API Clients with uplink</summary>
 
