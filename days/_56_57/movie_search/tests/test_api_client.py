@@ -9,7 +9,7 @@ from requests.exceptions import HTTPError
 from requests_mock.mocker import Mocker
 
 # Imports - Local
-from _56.movie_search.app.api_client import (
+from _56_57.movie_search.app.api_client import (
     MovieSearchClient, BASE_URL, MOVIE_ENDPOINT, DIRECTOR_ENDPOINT,
     IMDB_CODE_ENDPOINT
 )
