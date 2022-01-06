@@ -16,6 +16,28 @@ DIRECTOR_ENDPOINT = 'director'
 IMDB_CODE_ENDPOINT = 'movie'
 
 
+@uplink.response_handler
+def handle_http_error(
+    response: Response
+) -> Response:
+    """ HTTP exception helper for the MovieSearchClient class.
+
+        Args:
+            response (requests.models.Response):
+                Response object from the requests package.
+
+        Returns:
+            response (requests.models.Response)
+                Response object from the requests package.
+    """
+
+    # Raise a requests.exceptions.HTTPError for any HTTP errors
+    response.raise_for_status()
+
+    return response
+
+
+@handle_http_error
 class MovieSearchClient(uplink.Consumer):
     """ Movie Search API client class.
 
@@ -56,7 +78,8 @@ class MovieSearchClient(uplink.Consumer):
         """ Search for movies by title.
 
             Args:
-                None.
+                keyword (str):
+                    Movie keyword search string.
 
             Returns:
                 _ (requests.models.Response):
@@ -75,7 +98,8 @@ class MovieSearchClient(uplink.Consumer):
         """ Search for movies by director.
 
             Args:
-                None.
+                director (str):
+                    Director keyword search string.
 
             Returns:
                 _ (requests.models.Response):
@@ -94,7 +118,8 @@ class MovieSearchClient(uplink.Consumer):
         """ Search for movies by IMDB code.
 
             Args:
-                None.
+                imdb_code (str):
+                    IMDB code search string.
 
             Returns:
                 _ (requests.models.Response):
