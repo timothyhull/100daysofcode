@@ -19,7 +19,7 @@ MOVIE_KEYWORD = 'term'
 DIRECTOR_KEYWORD = 'cameron'
 IMDB_CODE_KEYWORD = 'tt0103064'
 MOVIE_JSON = {
-    'keyword': 'run',
+    'keyword': 'term',
     'hits': [
         {
             'imdb_code': 'tt0103064',

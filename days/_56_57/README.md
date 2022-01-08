@@ -124,3 +124,14 @@
 
         ============================================== 10 passed, 6 warnings in 0.67s ===============================================
         ```
+
+---
+
+### :notebook: 1/7/22
+
+- Added `test_keyword_input` function to [tests/test_movie_search.py](tests/test_movie_search.py).
+    - Created `keyword_input` function in [app/movie_search.py](app/movie_search.py), to support passing `pytest` tests.
+    - A `StopIteration` error occurs in the `pytest` loop.
+        - Requires further troubleshooting to resolve.
+
+- Resolved issue of `pytest` tests for a `side_effect` of input values failing to run tests using a loop over the test function value argument keyword.

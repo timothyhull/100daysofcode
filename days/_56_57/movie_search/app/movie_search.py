@@ -3,6 +3,7 @@
 
 # Imports - Python Standard Library
 from sys import exit
+from typing import Union
 
 # Imports - Third-Party
 
@@ -70,15 +71,20 @@ def invalid_input_error() -> None:
     return None
 
 
-def select_menu_option() -> int:
+def select_menu_option(
+    pytest: bool = False
+) -> Union[int, bool]:
     """ Display a menu and collect user selection input.
 
         Args:
-            None.
+            pytest (bool, optional):
+                Only required for pytest test.  Breaks the input loop
+                after invalid input.
 
         Returns:
-            menu_choice (int):
-                User input choice from the menu.
+            menu_choice (int or bool (False), optional):
+                User input choice from the menu.  False only for pytest
+                input error checks.
     """
 
     # Create an input loop
@@ -98,15 +104,57 @@ def select_menu_option() -> int:
             menu_choice = int(menu_choice)
         except ValueError:
             invalid_input_error()
-            continue
+            if pytest is True:
+                menu_choice = False
+                break
+            else:
+                continue
 
         if menu_choice in range(1, 4):
             break
         else:
             invalid_input_error()
-            continue
+            if pytest is True:
+                menu_choice = False
+                break
+            else:
+                continue
 
     return menu_choice
+
+
+def keyword_input(
+    pytest: bool = False
+) -> Union[str, bool]:
+    """ Collect user keyword search input.
+
+        Args:
+            pytest (bool, optional):
+                Only required for pytest test.  Breaks the input loop
+                after invalid input.
+
+        Returns:
+            keyword_input (str or bool (False), optional):
+                User-entered keyword to search with.  False only for
+                pytest input error checks.
+    """
+
+    # Create an input loop
+    while True:
+
+        # Prompt for input
+        keyword_input = input('Enter the text to search for: ')
+
+        # Break the loop if input exists
+        if keyword_input:
+            print(f'\nSearching for matches of "{keyword_input}"...\n')
+            break
+        else:
+            if pytest is True:
+                keyword_input = False
+                break
+
+    return keyword_input
 
 
 def main() -> None:
