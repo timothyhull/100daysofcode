@@ -131,7 +131,14 @@
 
 - Added `test_keyword_input` function to [tests/test_movie_search.py](tests/test_movie_search.py).
     - Created `keyword_input` function in [app/movie_search.py](app/movie_search.py), to support passing `pytest` tests.
-    - A `StopIteration` error occurs in the `pytest` loop.
-        - Requires further troubleshooting to resolve.
 
-- Resolved issue of `pytest` tests for a `side_effect` of input values failing to run tests using a loop over the test function value argument keyword.
+- Resolved issue of `pytest` tests for a `side_effect` of input values failing to run tests using a loop over the test function using the keyword argument of the `@patch` fixture.
+    - All side effects need their own function call, and cannot be looped over the keyword argument of the `@patch` fixture.
+
+---
+
+### :notebook: 1/8/22
+
+- Added `test_get_search_results` function to [tests/test_movie_search.py](tests/test_movie_search.py).
+    - Created `get_search_results` function in [app/movie_search.py](app/movie_search.py), to support passing `pytest` tests.
+    - All `pytest` tests pass.

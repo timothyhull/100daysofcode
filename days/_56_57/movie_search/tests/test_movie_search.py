@@ -7,11 +7,16 @@ from unittest.mock import MagicMock, patch
 
 # Imports - Third-Party
 from _pytest.capture import CaptureFixture
+from requests_mock.mocker import Mocker
 
 # Imports - Local
 from _56_57.movie_search.app.movie_search import (
     display_keyboard_interrupt_message, display_banner, invalid_input_error,
-    select_menu_option, keyword_input
+    select_menu_option, get_keyword_input, get_search_results
+)
+
+from _56_57.movie_search.app.api_client import (
+    BASE_URL, MOVIE_ENDPOINT
 )
 
 # namedtuple Objects
@@ -21,7 +26,6 @@ KeywordInput = namedtuple(
         'title',
         'director',
         'imdb_code',
-        'bad_input'
     ]
 )
 
@@ -39,17 +43,17 @@ MENU_INPUT = [
     2,
     3,
     0,
-    'a'
+    'a',
     ''
 ]
 MENU_ERROR_MSG = '** Invalid input, please try again **'
 KEYWORD_INPUT = KeywordInput(
     title='term',
     director='cameron',
-    imdb_code='tt0103064',
-    bad_input=''
+    imdb_code='tt0103064'
 )
 KEYWORD_OUTPUT = 'Searching for matches of'
+MOVIE_KEYWORD = 'term'
 MOVIE_JSON = {
     'keyword': 'term',
     'hits': [
@@ -74,50 +78,6 @@ MOVIE_JSON = {
             'imdb_score': 8.5
         }
     ]
-}
-DIRECTOR_JSON = {
-    'keyword': 'cameron',
-    'hits': [
-        {
-            'imdb_code': 'tt0103064',
-            'title': 'Terminator 2: Judgment Day',
-            'director': 'James Cameron',
-            'keywords': [
-                'future',
-                'sexy woman',
-                'multiple cameos',
-                'liquid metal',
-                'time travel'
-            ],
-            'duration': 153,
-            'genres': [
-                'sci-fi', 'action'
-            ],
-            'rating': 'R',
-            'year': 1991,
-            'imdb_score': 8.5
-        }
-    ]
-}
-IMDB_CODE_JSON = {
-    'imdb_code': 'tt0103064',
-    'title': 'Terminator 2: Judgment Day',
-    'director': 'James Cameron',
-    'keywords': [
-        'future',
-        'sexy woman',
-        'multiple cameos',
-        'liquid metal',
-        'time travel'
-    ],
-    'duration': 153,
-    'genres': [
-        'sci-fi',
-        'action'
-    ],
-    'rating': 'R',
-    'year': 1991,
-    'imdb_score': 8.5
 }
 
 
@@ -237,7 +197,7 @@ def test_select_menu_option(
     target='builtins.input',
     side_effect=KEYWORD_INPUT._asdict().values()
 )
-def test_keyword_input(
+def test_get_keyword_input(
     user_keyword_input: MagicMock,
     capsys: CaptureFixture
 ) -> None:
@@ -258,8 +218,8 @@ def test_keyword_input(
     for keyword in KEYWORD_INPUT._asdict().values():
 
         # Call the keyword_input function
-        keyword_input(
-            # pytest=True
+        get_keyword_input(
+            pytest=True
         )
 
         # Capture STDOUT contents
@@ -270,5 +230,39 @@ def test_keyword_input(
 
         # Assert the required response is present
         assert response_message in output
+
+    return None
+
+
+def test_get_search_results(
+    requests_mock: Mocker
+) -> None:
+    """ Test the keyword_input function.
+
+        Args:
+            requests_mock (request.mocker.Mocker):
+                Mock HTTP client requests object.
+
+        Returns:
+            None.
+    """
+
+    # Setup mock HTTP request
+    url = f'{BASE_URL}{MOVIE_ENDPOINT}/{MOVIE_KEYWORD}'
+
+    # Create mock HTTP request
+    requests_mock.get(
+        url=url,
+        json=MOVIE_JSON,
+        status_code=200
+    )
+
+    # Call the get_search_results function
+    response = get_search_results(
+        api_target=1,
+        keyword_input=MOVIE_KEYWORD
+    )
+
+    assert MOVIE_JSON == response.json()
 
     return None

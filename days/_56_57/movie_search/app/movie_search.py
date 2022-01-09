@@ -6,10 +6,17 @@ from sys import exit
 from typing import Union
 
 # Imports - Third-Party
+from requests.adapters import Response
 
 # Imports - Local
+from _56_57.movie_search.app.api_client import MovieSearchClient
 
 # Constants
+API_MAPPING = {
+    1: 'title_search',
+    2: 'director_search',
+    3: 'imdb_code_search'
+}
 
 
 def display_keyboard_interrupt_message() -> None:
@@ -123,7 +130,7 @@ def select_menu_option(
     return menu_choice
 
 
-def keyword_input(
+def get_keyword_input(
     pytest: bool = False
 ) -> Union[str, bool]:
     """ Collect user keyword search input.
@@ -147,7 +154,7 @@ def keyword_input(
 
         # Break the loop if input exists
         if keyword_input:
-            print(f'\nSearching for matches of "{keyword_input}"...\n')
+            print(f'\nSearching for matches of "{keyword_input}"...')
             break
         else:
             if pytest is True:
@@ -155,6 +162,38 @@ def keyword_input(
                 break
 
     return keyword_input
+
+
+def get_search_results(
+    api_target: int,
+    keyword_input: str
+) -> Response:
+    """ Request search results from the MovieSearchClient class.
+
+        Args:
+            api_target (int):
+                Menu input value that maps to an API target, via the
+                API_MAPPING constant.
+
+            keyword_input (str):
+                Keyword to search for.
+
+        Returns:
+            response (requests.adapters.Response):
+                requests module response object.
+    """
+
+    # Instantiate a copy of the MovieSearchClient class
+    movie_search_client = MovieSearchClient()
+
+    # Send the search request
+    response = movie_search_client.__getattribute__(
+        API_MAPPING.get(api_target)
+    )(
+        keyword=keyword_input
+    )
+
+    return response
 
 
 def main() -> None:
@@ -175,14 +214,25 @@ def main() -> None:
     # Collect a user search menu selection
     try:
         menu_choice = select_menu_option()
-        print(menu_choice)
     except KeyboardInterrupt:
         display_keyboard_interrupt_message()
         exit()
 
-    # TODO - Collect a user search keyword
+    # Collect a user search keyword
+    try:
+        keyword_input = get_keyword_input()
+    except KeyboardInterrupt:
+        display_keyboard_interrupt_message()
+        exit()
 
-    # TODO - Display results
+    # Get search results
+    response = get_search_results(
+        api_target=menu_choice,
+        keyword_input=keyword_input
+    )
+    print(len(response.json().get('hits')))
+
+    # TODO - Display search results
 
     return None
 
