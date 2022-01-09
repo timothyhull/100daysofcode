@@ -89,16 +89,16 @@ class MovieSearchClient(uplink.Consumer):
         """
 
     @uplink.get(
-        uri=f'{DIRECTOR_ENDPOINT}/{{director}}'
+        uri=f'{DIRECTOR_ENDPOINT}/{{keyword}}'
     )
     def director_search(
         self,
-        director: str
+        keyword: str
     ) -> Response:
         """ Search for movies by director.
 
             Args:
-                director (str):
+                keyword (str):
                     Director keyword search string.
 
             Returns:
@@ -109,16 +109,16 @@ class MovieSearchClient(uplink.Consumer):
         """
 
     @uplink.get(
-        uri=f'{IMDB_CODE_ENDPOINT}/{{imdb_code}}'
+        uri=f'{IMDB_CODE_ENDPOINT}/{{keyword}}'
     )
     def imdb_code_search(
         self,
-        imdb_code: str
+        keyword: str
     ) -> Response:
         """ Search for movies by IMDB code.
 
             Args:
-                imdb_code (str):
+                keyword (str):
                     IMDB code search string.
 
             Returns:

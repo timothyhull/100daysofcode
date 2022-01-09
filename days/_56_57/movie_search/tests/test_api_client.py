@@ -209,7 +209,7 @@ def test_director_search(
 
     # Call the director_search method
     response = movie_search_client.director_search(
-        director=DIRECTOR_KEYWORD
+        keyword=DIRECTOR_KEYWORD
     )
 
     assert response.json() == DIRECTOR_JSON
@@ -245,7 +245,7 @@ def test_director_search_error(
     # Call the title_search method within a context manager
     with raises(HTTPError):
         movie_search_client.director_search(
-            director=DIRECTOR_KEYWORD
+            keyword=DIRECTOR_KEYWORD
         )
 
     return None
@@ -279,9 +279,9 @@ def test_imdb_code_search(
         status_code=200
     )
 
-    # Call the director_search method
+    # Call the imdb_code_search method
     response = movie_search_client.imdb_code_search(
-        imdb_code=IMDB_CODE_KEYWORD
+        keyword=IMDB_CODE_KEYWORD
     )
 
     assert response.json() == IMDB_CODE_JSON
@@ -314,10 +314,10 @@ def test_imdb_code_search_error(
         status_code=404,
     )
 
-    # Call the title_search method within a context manager
+    # Call the imdb_code_search method within a context manager
     with raises(HTTPError):
         movie_search_client.imdb_code_search(
-            imdb_code=IMDB_CODE_KEYWORD
+            keyword=IMDB_CODE_KEYWORD
         )
 
     return None

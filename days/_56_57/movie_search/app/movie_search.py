@@ -6,7 +6,8 @@ from sys import exit
 from typing import Union
 
 # Imports - Third-Party
-from requests.adapters import Response
+from requests.exceptions import HTTPError
+from requests.models import Response
 
 # Imports - Local
 from _56_57.movie_search.app.api_client import MovieSearchClient
@@ -179,7 +180,7 @@ def get_search_results(
                 Keyword to search for.
 
         Returns:
-            response (requests.adapters.Response):
+            response (requests.models.Response):
                 requests module response object.
     """
 
@@ -187,13 +188,82 @@ def get_search_results(
     movie_search_client = MovieSearchClient()
 
     # Send the search request
-    response = movie_search_client.__getattribute__(
-        API_MAPPING.get(api_target)
-    )(
-        keyword=keyword_input
-    )
+    try:
+        response = movie_search_client.__getattribute__(
+            API_MAPPING.get(api_target)
+        )(
+            keyword=keyword_input
+        )
+    except HTTPError:
+        if api_target == 3:
+            print(f'\nInvalid IMDB code "{keyword_input}"')
+            exit(1)
+        else:
+            raise
 
     return response
+
+
+def display_search_results(
+    response: Response
+) -> None:
+    """ Display search results from a Movie Search API response object.
+
+        Args:
+            response (requests.models.Response):
+                requests module response object.
+
+        Returns:
+            None.
+    """
+
+    # Assign the json method result to the response variable
+    response = response.json()
+
+    # Determine the response count, if there is more than one result
+    result_count = response.get('hits', None)
+    if result_count is None:
+        result_count = 1
+        result_verb = 'result'
+        hits = [response]
+    else:
+        result_count = len(response.get('hits', None))
+        if result_count == 1:
+            result_verb = 'result'
+        else:
+            result_verb = 'results'
+        hits = response.get('hits')
+
+    # Set an output message for 0 results
+    if result_count == 0:
+        output = '\nNo results found\n'
+
+    # Set a plural or non-plural result verb and the hits variable
+    else:
+        # Set the results count display output
+        result_header = (
+            f'\n{result_count} {result_verb} found for the '
+            f'keyword "{response.get("keyword", response.get("imdb_code"))}":'
+        )
+
+        # Create a list placeholder for individual result display output
+        results = []
+
+        # Add each individual result display to the results list
+        for index, hit in enumerate(hits):
+            results.append(
+                f'{index + 1}. {hit.get("title", "Unknown")}\n'
+                f'\tDirector: {hit.get("director", "Unknown")}\n'
+                f'\tIMDB Code: {hit.get("imdb_code", "Unknown")}\n'
+            )
+
+        # Add the results set to the results count
+        output = '\n'.join([result_header, '\n'.join(results)])
+
+    # Display the output
+    print(output)
+
+    return None
 
 
 def main() -> None:
@@ -216,23 +286,25 @@ def main() -> None:
         menu_choice = select_menu_option()
     except KeyboardInterrupt:
         display_keyboard_interrupt_message()
-        exit()
+        exit(0)
 
     # Collect a user search keyword
     try:
         keyword_input = get_keyword_input()
     except KeyboardInterrupt:
         display_keyboard_interrupt_message()
-        exit()
+        exit(0)
 
     # Get search results
     response = get_search_results(
         api_target=menu_choice,
         keyword_input=keyword_input
     )
-    print(len(response.json().get('hits')))
 
-    # TODO - Display search results
+    # Display search results
+    display_search_results(
+        response=response
+    )
 
     return None
 

@@ -3,16 +3,20 @@
 
 # Imports - Python Standard Library
 from collections import namedtuple
+from typing import Dict
 from unittest.mock import MagicMock, patch
 
 # Imports - Third-Party
 from _pytest.capture import CaptureFixture
+from pytest import raises
+from requests.exceptions import HTTPError
 from requests_mock.mocker import Mocker
 
 # Imports - Local
 from _56_57.movie_search.app.movie_search import (
     display_keyboard_interrupt_message, display_banner, invalid_input_error,
-    select_menu_option, get_keyword_input, get_search_results
+    select_menu_option, get_keyword_input, get_search_results,
+    display_search_results
 )
 
 from _56_57.movie_search.app.api_client import (
@@ -79,6 +83,68 @@ MOVIE_JSON = {
         }
     ]
 }
+RESULTS_OUTPUT = (
+    f'1 result found for the keyword "{KEYWORD_INPUT.title}":\n'
+    f'1. {MOVIE_JSON["hits"][0].get("title")}\n'
+    f'\tDirector: {MOVIE_JSON["hits"][0].get("director")}\n'
+    f'\tIMDB Code: {MOVIE_JSON["hits"][0].get("imdb_code")}\n'
+)
+
+
+# class objects
+class MockResponse:
+    """ Mock requests module response object. """
+
+    def __init__(
+        self,
+        movie_json: Dict = MOVIE_JSON,
+        ok: bool = True,
+        status_code: int = 200,
+        text: str = str(MOVIE_JSON)
+    ) -> None:
+        """ Initialize default values.
+
+            Args:
+                movie_json (Dict, optional):
+                    JSON value to return from the json method. Default
+                    value is MOVIE_JSON.
+
+                ok (bool, optional):
+                    Boolean value of the ok attribute. Default value
+                    is True.
+
+                status_code (int, optional):
+                    Boolean value of the status_code attribute. Default value
+                    is 200.
+
+                text (str, optional):
+                    String value of the text attribute. Default value
+                    is a string of _movie_json.
+
+            Returns:
+                None.
+        """
+
+        # Set default values
+        self._movie_json = movie_json
+        self.ok = ok
+        self.status_code = status_code
+        self.text = str(movie_json)
+
+        return None
+
+    def json(self):
+        """ Return self.movie_json value.
+
+            Args:
+                None.
+
+            Returns:
+                self._movie_json (Dict):
+                    Value of self._movie_json
+        """
+
+        return self._movie_json
 
 
 def test_display_keyboard_interrupt_message(
@@ -264,5 +330,67 @@ def test_get_search_results(
     )
 
     assert MOVIE_JSON == response.json()
+
+    return None
+
+
+def test_get_search_results_error(
+    requests_mock: Mocker
+) -> None:
+    """ Test the keyword_input function.
+
+        Args:
+            requests_mock (request.mocker.Mocker):
+                Mock HTTP client requests object.
+
+        Returns:
+            None.
+    """
+
+    # Setup mock HTTP request
+    url = f'{BASE_URL}{MOVIE_ENDPOINT}/{MOVIE_KEYWORD}'
+
+    # Create mock HTTP request
+    requests_mock.get(
+        url=url,
+        status_code=404
+    )
+
+    # Call the get_search_results function, check for HTTPError
+    with raises(HTTPError):
+        get_search_results(
+            api_target=1,
+            keyword_input=MOVIE_KEYWORD
+        )
+
+    return None
+
+
+def test_display_search_results(
+    capsys: CaptureFixture
+) -> None:
+    """
+    Test the display_search_results function.
+
+        Args:
+            capsys (_pytest.capture.CaptureFixture):
+                pytest fixture to capture STDOUT contents.
+
+        Returns:
+            None.
+    """
+
+    # Instantiate a copy of the mock_response class
+    mock_response = MockResponse()
+
+    # Call the display_search_results function
+    display_search_results(
+        response=mock_response
+    )
+
+    # Collect STDOUT output
+    output = capsys.readouterr().out
+
+    assert RESULTS_OUTPUT in output
 
     return None

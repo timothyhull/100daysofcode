@@ -142,3 +142,13 @@
 - Added `test_get_search_results` function to [tests/test_movie_search.py](tests/test_movie_search.py).
     - Created `get_search_results` function in [app/movie_search.py](app/movie_search.py), to support passing `pytest` tests.
     - All `pytest` tests pass.
+
+---
+
+### :notebook: 1/9/22
+
+- Added `test_get_search_results_error` function to [tests/test_movie_search.py](tests/test_movie_search.py).
+- Added `test_display_search_results` function to [tests/test_movie_search.py](tests/test_movie_search.py).
+    - Created `display_search_results` function in [app/movie_search.py](app/movie_search.py), to support passing `pytest` tests.
+    - Made numerous changes to [app/movie_search.py](app/movie_search.py), [tests/test_movie_search.py](tests/test_movie_search.py), [app/api_client.py](app/api_client.py), and [tests/test_api_client.py](tests/test_api_client.py) to support application and test functionality.
+        - Specifically changed keyword arguments in the methods of `MovieSearchClient` to have the same name (`keyword`).
