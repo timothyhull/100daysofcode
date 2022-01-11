@@ -392,3 +392,9 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 56+57e: [1/9/22](days/_56_57#notebook-1922)
 
 </details>
+
+<details><summary>Days 58-60: Twitter Data Analysis With Python</summary>
+
+- Day 58: [1/10/22](days/_55#notebook-11022)
+
+</details>
