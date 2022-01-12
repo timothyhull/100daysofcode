@@ -14,7 +14,9 @@
 
 :star: [`tweepy` Twitter library for Python](https://pypi.org/project/tweepy/)
 
-:star: [`wordcloud` word cloud cenerator Python package](https://pypi.org/project/wordcloud/)
+:star: [`wordcloud` word cloud generator Python package](https://pypi.org/project/wordcloud/)
+
+:star: [Twitter Elevated API access application](https://developer.twitter.com/en/portal/products/elevated)
 
 ---
 
@@ -28,7 +30,9 @@
 
 :white_check_mark: Setup environment variables export script
 
-:white_large_square: Watch video 4
+:white_check_mark: Watch video 4
+
+:white_large_square: Create an application within a Jupyter Notebook that colllects PyBites tweets
 
 ---
 
@@ -52,3 +56,17 @@
         # Review imported environment vars
         dotenv.dotenv_values()
         ```
+
+---
+
+### :notebook: 1/11/22
+
+- Created the file [twitter_app/twitter.ipynb](twitter_app/twitter.ipynb) that collects information from the Twitter API.
+    - Unable to authenticate to the twitter API, [Elevated API access required](https://developer.twitter.com/en/portal/products/elevated):
+
+        ```text
+        Forbidden: 403 Forbidden
+        453 - You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve
+        ```
+
+        - The elevated access application page would not load, will attempt again tomorrow.
