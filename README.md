@@ -374,7 +374,7 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 
 <details><summary>Days 55-57: Structured API Clients with uplink</summary>
 
-- Day 55: [12/25/21](days/_55#notebook-1221)
+- Day 55: [12/25/21](days/_55)
 - Day 55a: [12/26/21](days/_55#notebook-122621)
 - Day 55b: [12/27/21](days/_55#notebook-122721)
 - Day 55c: [12/28/21](days/_55#notebook-122821)
@@ -395,6 +395,7 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 
 <details><summary>Days 58-60: Twitter Data Analysis With Python</summary>
 
-- Day 58: [1/10/22](days/_55#notebook-11022)
+- Day 58: [1/10/22](days/_55)
+- Day 58a: [1/11/22](days/_55#notebook-11122)
 
 </details>
