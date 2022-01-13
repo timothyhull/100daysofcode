@@ -70,3 +70,12 @@
         ```
 
         - The elevated access application page would not load, will attempt again tomorrow.
+
+---
+
+### :notebook: 1/12/22
+
+- Completed application for elevated Twitter API access.
+    - Application approved.
+    - Successfully ran all of the Python code written to date in [twitter_app/twitter.ipynb](twitter_app/twitter.ipynb).
+    - Retrieved 3196 Tweets.
