@@ -1,4 +1,4 @@
-# :calendar: Day 58: 1/10/2022
+# :calendar: Day 58: 1/10/2022-1/13/2022
 
 ---
 
@@ -32,7 +32,11 @@
 
 :white_check_mark: Watch video 4
 
-:white_large_square: Create an application within a Jupyter Notebook that colllects PyBites tweets
+:white_check_mark: Create an application within a Jupyter Notebook that collects PyBites Tweets
+
+:white_check_mark: Watch video 5
+
+:white_large_square: Watch video 6
 
 ---
 
@@ -79,3 +83,42 @@
     - Application approved.
     - Successfully ran all of the Python code written to date in [twitter_app/twitter.ipynb](twitter_app/twitter.ipynb).
     - Retrieved 3196 Tweets.
+
+---
+
+### :notebook: 1/13/22
+
+- Watched video 5, and refined the data set of Twitter Tweets:
+
+    1. Removed all retweets with a list comprehension:
+
+        ```python
+        no_retweets = [tweet for tweet in tweets if not tweet.text.startswith('RT')]
+        ```
+
+    2. Sorted the `no_retweets` list by an average of the likes + retweets, using a `lambda` function:
+
+        ```python
+        top_10 = sorted(
+            no_retweets,
+            key=lambda tweet: (tweet.likes + tweet.re_tweets) / 2,
+            reverse=True
+        )
+        ```
+
+    3. Displayed the top 10 tweets by indexing the `top_10` list:
+
+        - Learned that f-strings cannot have `\` characters in expressions (inside of {}).
+        - Implemented a workaround to replace newlines (`\n`) in tweet text with a space.
+            - Assign the string `\n` to a variable, and use the variable in the expression.
+        - Learned that Python strings support emojis.
+
+        ```python
+        newline = '\n'
+        for index, tweet in enumerate(top_10[:10], 1):
+            print(
+                f'{index}. Tweet: 🐦 {tweet.text.replace(newline, " ")}\n'
+                f'  Likes: ♥️ {tweet.likes}\n'
+                f'  Retweets: ✏️ {tweet.re_tweets}'
+            )
+        ```
