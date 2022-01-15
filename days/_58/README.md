@@ -36,7 +36,11 @@
 
 :white_check_mark: Watch video 5
 
-:white_large_square: Watch video 6
+:white_check_mark: Review the `collection.Counter` class
+
+:white_check_mark: Watch video 6
+
+:white_large_square: Watch video 7
 
 ---
 
@@ -122,3 +126,13 @@
                 f'  Retweets: ✏️ {tweet.re_tweets}'
             )
         ```
+
+---
+
+### :notebook: 1/14/22
+
+- Reviewed the `collections.Counter.most_common` method, from [Day 4](../_4/).
+- Determined and displayed the most common hashtags and mentions.
+    - Combined all tweets into string objects (one with, and one without retweets).
+    - Used `re` to search for hashtags and mentions, respectively.
+    - Used a function to display the top N mentions and retweets, in a friendly view.
