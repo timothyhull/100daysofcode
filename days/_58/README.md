@@ -1,4 +1,4 @@
-# :calendar: Day 58: 1/10/2022-1/13/2022
+# :calendar: Day 58: 1/10/2022-1/15/2022
 
 ---
 
@@ -17,6 +17,8 @@
 :star: [`wordcloud` word cloud generator Python package](https://pypi.org/project/wordcloud/)
 
 :star: [Twitter Elevated API access application](https://developer.twitter.com/en/portal/products/elevated)
+
+:star: [`wordcloud` GitHub site](https://github.com/amueller/word_cloud)
 
 ---
 
@@ -40,7 +42,7 @@
 
 :white_check_mark: Watch video 6
 
-:white_large_square: Watch video 7
+:white_check_mark: Watch videos 7-8
 
 ---
 
@@ -136,3 +138,17 @@
     - Combined all tweets into string objects (one with, and one without retweets).
     - Used `re` to search for hashtags and mentions, respectively.
     - Used a function to display the top N mentions and retweets, in a friendly view.
+
+---
+
+### :notebook: 1/15/22
+
+- **iPython Tip** - Run shell commands from within iPython or a Jupyter Notebook by preceding commands with the `!` character:
+
+    ```python
+    # From within a shell or Jupyter Notebook
+    !pip freeze
+    ```
+
+- Generated a word cloud with the `wordcloud` module.
+- Displayed the image, using an image mask to define the shape.
