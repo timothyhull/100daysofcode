@@ -24,9 +24,9 @@
 
 :white_check_mark: Define application design/goals
 
-:white_large_square: Setup Git repository
+:white_check_mark: Setup Git repository
 
-:white_large_square: Connect Git repository to Better Code Hub
+:white_check_mark: Connect Git repository to Better Code Hub
 
 :white_large_square: Setup application framework (devcontainer, README, file structure)
 
