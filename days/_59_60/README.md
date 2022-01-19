@@ -28,9 +28,11 @@
 
 :white_check_mark: Connect Git repository to Better Code Hub
 
-:white_large_square: Setup application framework (devcontainer, README, file structure)
+:white_check_mark: Setup application framework (devcontainer, README, file structure)
 
-:white_large_square: Setup CI/CD pipeline
+:white_check_mark: Setup webhook to automatically perform bettercodehub.com analysis on push and PR events
+
+:white_large_square: Setup CI/CD pipelines for `yamllint`, `flake8`, and `bandit` checks
 
 :white_large_square: Add Better Code Hub and CI/CD build status to README
 
@@ -66,3 +68,17 @@
 - Created [Git repository](https://github.com/timothyhull/ww_tweeter/) for project.
 - Connected project to [Better Code Hub](https://bettercodehub.com/results/timothyhull/ww_tweeter).
 - Created initial test and function, to support Better Code Hub integration.
+
+---
+
+## :notebook: 1/18/22
+
+- Created core repository files:
+
+    1. [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json) - Development container configuration.
+    2. [.github.workflows/linting.yaml](.github.workflows/linting.yaml) - GitHub action configuration for file linting and static code analysis.
+    3. [requirements/requirements.txt](requirements/requirements.txt) - Python packages.
+    4. [.bettercodehub.yml](.bettercodehub.yml) - bettercodehub.com configuration file.
+    5. [.markdownlint.json](.markdownlint.json) - `markdownlint` rule exclusions.
+    6. [Dockerfile](Dockerfile) - Development container Dockerfile.
+    7. [LICENSE](LICENSE) - Apache 2.0 license.
