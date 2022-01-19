@@ -82,3 +82,5 @@
     5. [.markdownlint.json](.markdownlint.json) - `markdownlint` rule exclusions.
     6. [Dockerfile](Dockerfile) - Development container Dockerfile.
     7. [LICENSE](LICENSE) - Apache 2.0 license.
+
+- Setup webhook integration between GitHub and BetterCodeHub
