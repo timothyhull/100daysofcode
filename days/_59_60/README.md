@@ -32,7 +32,9 @@
 
 :white_check_mark: Setup webhook to automatically perform bettercodehub.com analysis on push and PR events
 
-:white_large_square: Setup CI/CD pipelines for `yamllint`, `flake8`, and `bandit` checks
+:white_check_mark: Setup CI/CD pipelines for `yamllint`, `flake8`, and `bandit` checks
+
+:white_check_mark: Setup CI/CD pipeline for `pytest` testing
 
 :white_large_square: Add Better Code Hub and CI/CD build status to README
 
@@ -75,12 +77,32 @@
 
 - Created core repository files:
 
-    1. [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json) - Development container configuration.
-    2. [.github.workflows/linting.yaml](.github.workflows/linting.yaml) - GitHub action configuration for file linting and static code analysis.
-    3. [requirements/requirements.txt](requirements/requirements.txt) - Python packages.
-    4. [.bettercodehub.yml](.bettercodehub.yml) - bettercodehub.com configuration file.
-    5. [.markdownlint.json](.markdownlint.json) - `markdownlint` rule exclusions.
-    6. [Dockerfile](Dockerfile) - Development container Dockerfile.
-    7. [LICENSE](LICENSE) - Apache 2.0 license.
+    1. [.devcontainer/devcontainer.json](https://github.com/timothyhull/ww_tweeter/blob/main/.devcontainer/devcontainer.json) - Development container configuration.
+    2. [.github.workflows/linting.yaml](https://github.com/timothyhull/ww_tweeter/blob/main/.github.workflows/linting.yaml) - GitHub action configuration for file linting and static code analysis.
+    3. [requirements/requirements.txt](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/requirements.txt) - Python packages.
+    4. [.bettercodehub.yml](https://github.com/timothyhull/ww_tweeter/blob/main/.bettercodehub.yml) - bettercodehub.com configuration file.
+    5. [.markdownlint.json](https://github.com/timothyhull/ww_tweeter/blob/main/.markdownlint.json) - `markdownlint` rule exclusions.
+    6. [Dockerfile](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile) - Development container Dockerfile.
+    7. [LICENSE](https://github.com/timothyhull/ww_tweeter/blob/main/LICENSE) - Apache 2.0 license.
 
 - Setup webhook integration between GitHub and BetterCodeHub
+
+---
+
+## :notebook: 1/19/22
+
+- Setup CI/CD pipelines for `yamllint`, `flake8`, and `bandit` checks.
+    - Added new files:
+
+        1. [.bandit.yml](https://github.com/timothyhull/ww_tweeter/blob/main/.bandit.yml) - `bandit` configuration file.
+        2. [.flake8](https://github.com/timothyhull/ww_tweeter/blob/main/.flake8) - `flake8` configuration file.
+        3. [.yamllint](https://github.com/timothyhull/ww_tweeter/blob/main/.yamllint) - `yamllint` configuration file.
+        4. [requirements/requirements_linting.txt](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/requirements_linting.txt) - Requirements file for linting and static code analysis.
+
+- Setup CI/CD pipeline for `pytest` testing.
+    - Added new files:
+
+        1. [requirements/requirements_pytest.txt](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/requirements_pytest.txt) - Requirements file for `pytest` tests.
+        2. [.github.workflows/pylint.yaml](https://github.com/timothyhull/ww_tweeter/blob/main/.github.workflows/pylint.yaml) - GitHub action configuration for `pytest` tests.
+
+- All CI/CD pipelines pass.
