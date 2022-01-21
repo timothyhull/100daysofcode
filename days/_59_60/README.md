@@ -36,9 +36,11 @@
 
 :white_check_mark: Setup CI/CD pipeline for `pytest` testing
 
-:white_large_square: Add Better Code Hub and CI/CD build status to README
+:white_check_mark: Add Better Code Hub and CI/CD build status to README
 
 :white_large_square: Write application
+
+:white_large_square: Fill README.md content
 
 ---
 
@@ -106,3 +108,9 @@
         2. [.github.workflows/pylint.yaml](https://github.com/timothyhull/ww_tweeter/blob/main/.github.workflows/pylint.yaml) - GitHub action configuration for `pytest` tests.
 
 - All CI/CD pipelines pass.
+
+---
+
+## :notebook: 1/20/22
+
+- TODO
