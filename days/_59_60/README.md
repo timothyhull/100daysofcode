@@ -38,6 +38,8 @@
 
 :white_check_mark: Add Better Code Hub and CI/CD build status to README
 
+:white_large_square: Read project article on RealPython
+
 :white_large_square: Write application
 
 :white_large_square: Fill README.md content
@@ -113,4 +115,28 @@
 
 ## :notebook: 1/20/22
 
-- TODO
+- Added GitHub badges to the [README.md](https://github.com/timothyhull/ww_tweeter/blob/main/README.md) file:
+
+    1. GitHub Action status for linting & static code analysis.
+    2. GitHub Action status for `pytest` tests.
+    3. Better Code Hub quality score.
+
+---
+
+## :notebook: 1/21/22
+
+- Removed `sys.path.append` lines, due to `PYTHONPATH` environment variable set in Dockerfile.
+- Set environment variables in a `.env` file.
+- Tested loading environment variables with `dotenv.load_dotent()` in [app/ww_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/ww_tweeter.py)
+- Created new files for Twitter API integration:
+
+    1. [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py) - `pytest` tests for `tweeter.py`.
+    2. [app/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py) - Application code for Twitter API integration.
+
+- Setup file framework in [app/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py):
+
+    1. Imports.
+    2. `namedtuple` object for tweets.
+    3. Constants for Twitter API authentication (loaded from the .env file).
+
+    - Withholding TDD methodology until after I can read tweets from **@wwt_inc**, and understand the data set to build mock Twitter API calls with, for testing.
