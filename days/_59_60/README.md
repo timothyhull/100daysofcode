@@ -152,3 +152,13 @@
 
         - Successfully passing tests with the `test_twitter_auth` function.
         - No code written in the `test_get_tweets` function yet.
+
+---
+
+## :notebook: 1/23/22
+
+- Completed the `get_tweets` function in [app/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py).
+    - The function returns an object containing tweets from the Twitter API.
+    - Tested using `itertools.islice` to limit the quantity of the tweets that require processing into a list.
+- Worked on mocking a `tweepy.Cursor` object with `unittest.mock.patch.object`.
+    - Successfully completed a mock of the `tweepy.Cursor` with some trial and error, although the mock requires a review and refactoring
