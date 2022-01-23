@@ -140,3 +140,15 @@
     3. Constants for Twitter API authentication (loaded from the .env file).
 
     - Withholding TDD methodology until after I can read tweets from **@wwt_inc**, and understand the data set to build mock Twitter API calls with, for testing.
+
+---
+
+## :notebook: 1/22/22
+
+- Started TDD process:
+
+    1. Created the `test_twitter_auth` and `test_get_tweets` functions in [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py).
+    2. Created the `twitter_auth` and `get_tweets` functions in [app/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py) to meet `pytest` test requirements.
+
+        - Successfully passing tests with the `test_twitter_auth` function.
+        - No code written in the `test_get_tweets` function yet.
