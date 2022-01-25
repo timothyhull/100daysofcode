@@ -162,3 +162,14 @@
     - Tested using `itertools.islice` to limit the quantity of the tweets that require processing into a list.
 - Worked on mocking a `tweepy.Cursor` object with `unittest.mock.patch.object`.
     - Successfully completed a mock of the `tweepy.Cursor` with some trial and error, although the mock requires a review and refactoring
+
+---
+
+## :notebook: 1/24/22
+
+- Refactored the mock of the `tweepy.Cursor` object:
+    - Removed `namedtuple` instances, because the field names cannot start with an underscore, and the tweet data returned by `tweepy.Cursor` is in an attribute named `_json`.
+    - Created a `Status` class to mimic the `Status` class in the `tweepy.Cursor` response.
+        - The `Status` class includes attributes for tweet data `_api` and `_json`.
+
+- All `pytest` tests pass.
