@@ -173,3 +173,13 @@
         - The `Status` class includes attributes for tweet data `_api` and `_json`.
 
 - All `pytest` tests pass.
+
+---
+
+## :notebook: 1/25/22
+
+- Updated the `get_tweets` function in [app/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py) so that it returns a limited number of results, using `itertools.islice`.
+    - Updated the `test_get_tweets` function in [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py) to test for the slice limit.
+
+- Started research to determine how to setup a model, view, controller style application that used Docker Compose to build separate containers for each element.
+    - Unable to keep a PostgreSQL container build running (immediately exits with a status code of 0).
