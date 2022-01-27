@@ -1,4 +1,4 @@
-# :calendar: Day 59+60: 1/16/2022-1/25/2022
+# :calendar: Day 59+60: 1/16/2022-2/5/2022
 
 ---
 
@@ -183,3 +183,78 @@
 
 - Started research to determine how to setup a model, view, controller style application that used Docker Compose to build separate containers for each element.
     - Unable to keep a PostgreSQL container build running (immediately exits with a status code of 0).
+
+---
+
+## :notebook: 1/26/22
+
+- Used article at [https://graspingtech.com/docker-compose-postgresql/](https://graspingtech.com/docker-compose-postgresql/) to successfully bring a PostgreSQL container online successfully.
+    - Unable to connect to the container via [http://localhost:5432](http://localhost:5432) with an error that requires further troubleshooting.
+    - `invalid length of startup packet` (full log below)
+
+    ```bash
+    bash# ww-tweeter % docker compose up  
+    [+] Running 2/2
+    ⠿ Network ww-tweeter_default  Created                                                                                  0.0s
+    ⠿ Container ww-tweeter-db-1   Created                                                                                  0.1s
+    Attaching to ww-tweeter-db-1
+    ww-tweeter-db-1  | The files belonging to this database system will be owned by user "postgres".
+    ww-tweeter-db-1  | This user must also own the server process.
+    ww-tweeter-db-1  | 
+    ww-tweeter-db-1  | The database cluster will be initialized with locale "en_US.utf8".
+    ww-tweeter-db-1  | The default database encoding has accordingly been set to "UTF8".
+    ww-tweeter-db-1  | The default text search configuration will be set to "english".
+    ww-tweeter-db-1  | 
+    ww-tweeter-db-1  | Data page checksums are disabled.
+    ww-tweeter-db-1  | 
+    ww-tweeter-db-1  | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+    ww-tweeter-db-1  | creating subdirectories ... ok
+    ww-tweeter-db-1  | selecting dynamic shared memory implementation ... posix
+    ww-tweeter-db-1  | selecting default max_connections ... 100
+    ww-tweeter-db-1  | selecting default shared_buffers ... 128MB
+    ww-tweeter-db-1  | selecting default time zone ... Etc/UTC
+    ww-tweeter-db-1  | creating configuration files ... ok
+    ww-tweeter-db-1  | running bootstrap script ... ok
+    ww-tweeter-db-1  | performing post-bootstrap initialization ... ok
+    ww-tweeter-db-1  | syncing data to disk ... ok
+    ww-tweeter-db-1  | 
+    ww-tweeter-db-1  | 
+    ww-tweeter-db-1  | Success. You can now start the database server using:
+    ww-tweeter-db-1  | 
+    ww-tweeter-db-1  |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+    ww-tweeter-db-1  | 
+    ww-tweeter-db-1  | initdb: warning: enabling "trust" authentication for local connections
+    ww-tweeter-db-1  | You can change this by editing pg_hba.conf or using the option -A, or
+    ww-tweeter-db-1  | --auth-local and --auth-host, the next time you run initdb.
+    ww-tweeter-db-1  | waiting for server to start....2022-01-27 04:12:52.961 UTC [49] LOG:  starting PostgreSQL 14.1 (Debian 14.1-1.pgdg110+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit
+    ww-tweeter-db-1  | 2022-01-27 04:12:52.964 UTC [49] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+    ww-tweeter-db-1  | 2022-01-27 04:12:52.970 UTC [50] LOG:  database system was shut down at 2022-01-27 04:12:52 UTC
+    ww-tweeter-db-1  | 2022-01-27 04:12:52.975 UTC [49] LOG:  database system is ready to accept connections
+    ww-tweeter-db-1  |  done
+    ww-tweeter-db-1  | server started
+    ww-tweeter-db-1  | CREATE DATABASE
+    ww-tweeter-db-1  | 
+    ww-tweeter-db-1  | 
+    ww-tweeter-db-1  | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+    ww-tweeter-db-1  | 
+    ww-tweeter-db-1  | waiting for server to shut down....2022-01-27 04:12:53.239 UTC [49] LOG:  received fast shutdown request
+    ww-tweeter-db-1  | 2022-01-27 04:12:53.241 UTC [49] LOG:  aborting any active transactions
+    ww-tweeter-db-1  | 2022-01-27 04:12:53.243 UTC [49] LOG:  background worker "logical replication launcher" (PID 56) exited with exit code 1
+    ww-tweeter-db-1  | 2022-01-27 04:12:53.244 UTC [51] LOG:  shutting down
+    ww-tweeter-db-1  | 2022-01-27 04:12:53.257 UTC [49] LOG:  database system is shut down
+    ww-tweeter-db-1  |  done
+    ww-tweeter-db-1  | server stopped
+    ww-tweeter-db-1  | 
+    ww-tweeter-db-1  | PostgreSQL init process complete; ready for start up.
+    ww-tweeter-db-1  | 
+    ww-tweeter-db-1  | 2022-01-27 04:12:53.365 UTC [1] LOG:  starting PostgreSQL 14.1 (Debian 14.1-1.pgdg110+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit
+    ww-tweeter-db-1  | 2022-01-27 04:12:53.365 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+    ww-tweeter-db-1  | 2022-01-27 04:12:53.365 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+    ww-tweeter-db-1  | 2022-01-27 04:12:53.369 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+    ww-tweeter-db-1  | 2022-01-27 04:12:53.374 UTC [63] LOG:  database system was shut down at 2022-01-27 04:12:53 UTC
+    ww-tweeter-db-1  | 2022-01-27 04:12:53.381 UTC [1] LOG:  database system is ready to accept connections
+    ww-tweeter-db-1  | 2022-01-27 04:13:15.075 UTC [86] LOG:  invalid length of startup packet
+    ww-tweeter-db-1  | 2022-01-27 04:13:15.085 UTC [87] LOG:  invalid length of startup packet
+    ww-tweeter-db-1  | 2022-01-27 04:13:16.118 UTC [88] LOG:  invalid length of startup packet
+    ww-tweeter-db-1  | 2022-01-27 04:13:16.127 UTC [89] LOG:  invalid length of startup packet
+    ```
