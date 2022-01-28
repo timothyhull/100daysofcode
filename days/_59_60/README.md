@@ -189,7 +189,7 @@
 ## :notebook: 1/26/22
 
 - Used article at [https://graspingtech.com/docker-compose-postgresql/](https://graspingtech.com/docker-compose-postgresql/) to successfully bring a PostgreSQL container online successfully.
-    - Unable to connect to the container via [http://localhost:5432](http://localhost:5432) with an error that requires further troubleshooting.
+    - Unable to connect to the container using a web browser via [http://localhost:5432](http://localhost:5432) with an error that requires further troubleshooting.
     - `invalid length of startup packet` (full log below)
 
     ```bash
@@ -258,3 +258,12 @@
     ww-tweeter-db-1  | 2022-01-27 04:13:16.118 UTC [88] LOG:  invalid length of startup packet
     ww-tweeter-db-1  | 2022-01-27 04:13:16.127 UTC [89] LOG:  invalid length of startup packet
     ```
+
+---
+
+## :notebook: 1/27/22
+
+- Solved PostgreSQL connectivity issue...a web browser cannot connect to the database (TCP 5432).
+- Added a **pgAdmin** container to the [docker-compose.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose.yml) file that listens on HTTP 8080.
+    - Successfully connected from pgAdmin to the PostgreSQL database although a dedicated Docker network with automatic DNS is a better strategy than manually looking up an IP address.
+- Optimization of the Docker Compose implementation is necessary to limit the number of files and folders required to support the application (`_dockerfiles`, `.env`, `.dockerignore`, etc.)
