@@ -14,6 +14,10 @@
 
 :star: [PyBites article: Parsing Twitter Geo Data and Mocking API Calls by Example](https://pybit.es/articles/twitter-api-geodata-mocking/)
 
+:star: [pgAdmin documentation](https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html)
+
+:star: [pgadmin on Docker Hub](https://hub.docker.com/r/dpage/pgadmin4/)
+
 ---
 
 ## Tasks
