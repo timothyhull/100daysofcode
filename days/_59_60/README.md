@@ -271,3 +271,14 @@
 - Added a **pgAdmin** container to the [docker-compose.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose.yml) file that listens on HTTP 8080.
     - Successfully connected from pgAdmin to the PostgreSQL database although a dedicated Docker network with automatic DNS is a better strategy than manually looking up an IP address.
 - Optimization of the Docker Compose implementation is necessary to limit the number of files and folders required to support the application (`_dockerfiles`, `.env`, `.dockerignore`, etc.)
+
+---
+
+## :notebook: 1/28/22
+
+- Modifed PGSQL startup script to support database structure in the RealPython article.
+    - One new DB creates, but not the other.
+    - Requires further troubleshooting.
+- Optimize Docker Compose implementation.
+    - Established Docker network which seems to work, and support auto-DNS.
+    - Requires further testing.
