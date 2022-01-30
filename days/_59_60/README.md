@@ -282,3 +282,22 @@
 - Optimize Docker Compose implementation.
     - Established Docker network which seems to work, and support auto-DNS.
     - Requires further testing.
+
+---
+
+## :notebook: 1/29/22
+
+- Modified the [docker-compose.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose.yml) file to mount a local volume named `db` in the `db` container.
+    - Manually created two databases in the `db` container:
+
+        ```sql
+        create database ww_tweeter;
+        create database ww_tweeter_test;
+        ```
+
+- Updated environment variables in `.env` files with database credentials and a URL.
+
+- Migrated the main/development [Dockerfile](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile) to [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile.dev) and repurposed the original [Dockerfile](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile) to use within the [docker-compose.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose.yml) file.
+    - Modified the `CMD` instruction to read `CMD ["tail", "-f", "/dev/null"]` in order to establish a long-running process that keeps the container alive.
+
+- Docker Compose now brings up the `db`, `db_admin`, and `app` containers.
