@@ -14,6 +14,12 @@
 
 :star: [PyBites article: Parsing Twitter Geo Data and Mocking API Calls by Example](https://pybit.es/articles/twitter-api-geodata-mocking/)
 
+:star: [PyBites example application repository](https://github.com/pybites/pytip)
+
+:star: [SQLAlchemy on PyPI](https://pypi.org/project/SQLAlchemy/)
+
+:star: [SQLAlchemy documentation](https://www.sqlalchemy.org)
+
 :star: [pgAdmin documentation](https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html)
 
 :star: [pgadmin on Docker Hub](https://hub.docker.com/r/dpage/pgadmin4/)
@@ -301,3 +307,21 @@
     - Modified the `CMD` instruction to read `CMD ["tail", "-f", "/dev/null"]` in order to establish a long-running process that keeps the container alive.
 
 - Docker Compose now brings up the `db`, `db_admin`, and `app` containers.
+
+---
+
+## :notebook: 1/30/22
+
+- Moved temporary Python files to the [_gitignore](https://github.com/timothyhull/ww_tweeter/blob/main/_gitignore) directory:
+    - [_gitignore/ww_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/_gitignore/ww_tweeter.py)
+    - [_gitignore_/test_ww_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/_gitignore/test_ww_tweeter.py)
+
+- Created [pytest.ini](https://github.com/timothyhull/ww_tweeter/blob/main/app/ww_tweeter.py) configuration file to add options that ignore `pytest` tests in the [_gitignore](https://github.com/timothyhull/ww_tweeter/blob/main/_gitignore), and disable `pytest` warnings.
+    - The `tweepy` package raises the following `pytest` warning:
+
+        ```bash
+        DeprecationWarning: OAuthHandler is deprecated; use OAuth1UserHandler instead.
+        ```
+
+- Started review of database code in the [PyBites example repository](https://github.com/pybites/pytip).
+- Added SQLAlchemy to the [requirements/requirements.txt](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/requirements.txt) file.
