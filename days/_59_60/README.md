@@ -324,4 +324,48 @@
         ```
 
 - Started review of database code in the [PyBites example repository](https://github.com/pybites/pytip).
-- Added SQLAlchemy to the [requirements/requirements.txt](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/requirements.txt) file.
+- Added `SQLAlchemy` to the [requirements/requirements.txt](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/requirements.txt) file.
+
+---
+
+## :notebook: 2/1/22
+
+- Updated environment variables `DB_URL` and `DB_TEST_URL` to reflect the correct URL and database names.
+- Reviewed [`SQLAlchemy` documentation](https://docs.sqlalchemy.org/en/14/), spefically the [Mapper Configuration](https://docs.sqlalchemy.org/en/14/orm/mapper_config.html).
+    - The documentation is more advanced than my skill level with `SQLAlchemy`, so I started reviewing the [Object Relational Tutorial (1.x API)](https://docs.sqlalchemy.org/en/14/orm/tutorial.html).
+    - Performed troubleshooting on connection attempts to the PostgreSQL database:
+
+        1. Exception - `NoSuchModuleError: Can't load plugin: sqlalchemy.dialects:postgres`
+
+            ```python
+            from os import getenv
+            from sqlalchemy import create_engine
+
+            DB_TEST_URL = getenv('DB_TEST_URL')
+            engine = create_engine(DB_TEST_URL, echo=True)
+
+            # Exception thrown
+            NoSuchModuleError: Can't load plugin: sqlalchemy.dialects:postgres
+            ```
+
+            - The problem was the format of the database URL:
+            - The URL protocol handler was `postgres://` and `SQLAlchemy` requires that the URL protocol handler be `postgresql://`.
+
+        2. Exception - `ModuleNotFoundError: No module named 'psycopg2'`
+
+            ```python
+            from os import getenv
+            from sqlalchemy import create_engine
+
+            DB_TEST_URL = getenv('DB_TEST_URL')
+            engine = create_engine(DB_TEST_URL, echo=True)
+
+            # Exception thrown
+            ModuleNotFoundError: No module named 'psycopg2'
+            ```
+
+            - The problem was due to a missing Python package, `psycopg2-binary`.
+            - Installed the missing package with `pip install psycopg2-binary` and database connections are now successful.
+            - Added `psycopg2-binary` to the [requirements/requirements.txt](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/requirements.txt) file.
+
+    - The tutorial is somewhat lengthy and requires more time to review thoroughly.
