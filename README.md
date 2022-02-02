@@ -416,5 +416,7 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 59+60l: [1/28/22](days/_59_60#notebook-12822)
 - Day 59+60m: [1/29/22](days/_59_60#notebook-12922)
 - Day 59+60n: [1/30/22](days/_59_60#notebook-13022)
+- Break for rest :sleeping:
+- Day 59+60o: [2/1/22](days/_59_60#notebook-2122)
 
 </details>
