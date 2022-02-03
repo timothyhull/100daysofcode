@@ -369,3 +369,11 @@
             - Added `psycopg2-binary` to the [requirements/requirements.txt](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/requirements.txt) file.
 
     - The tutorial is somewhat lengthy and requires more time to review thoroughly.
+
+---
+
+## :notebook: 2/2/22
+
+- Created the [app/\_\_dev\_\_](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__) folder for SQLAlchemy tutorial code.
+    - Created [sqlalchemy_tutorial.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/sqlalchemy_tutorial.py)
+    - It will be helpful to create a volume mount to the Docker Compose application, so code changes locally are available in the Docker Compose container without performing a rebuild.
