@@ -316,7 +316,7 @@
     - [_gitignore/ww_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/_gitignore/ww_tweeter.py)
     - [_gitignore_/test_ww_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/_gitignore/test_ww_tweeter.py)
 
-- Created [pytest.ini](https://github.com/timothyhull/ww_tweeter/blob/main/app/ww_tweeter.py) configuration file to add options that ignore `pytest` tests in the [_gitignore](https://github.com/timothyhull/ww_tweeter/blob/main/_gitignore), and disable `pytest` warnings.
+- Created [pytest.ini](https://github.com/timothyhull/ww_tweeter/blob/main/pytest.ini) configuration file to add options that ignore `pytest` tests in the [_gitignore](https://github.com/timothyhull/ww_tweeter/blob/main/_gitignore), and disable `pytest` warnings.
     - The `tweepy` package raises the following `pytest` warning:
 
         ```bash
@@ -377,3 +377,21 @@
 - Created the [app/\_\_dev\_\_](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__) folder for SQLAlchemy tutorial code.
     - Created [sqlalchemy_tutorial.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/sqlalchemy_tutorial.py)
     - It will be helpful to create a volume mount to the Docker Compose application, so code changes locally are available in the Docker Compose container without performing a rebuild.
+
+---
+
+## :notebook: 2/3/22
+
+- Created dedicated Docker Compose development environment, to support code changes from the VS Code development container, via volume mounts, without having to tear down and rebuild the Docker containers.
+- Created [docker-compose-dev.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose-dev.yml) for the development environment with the following:
+
+    - Volume mounts for:
+
+        1. [./app](https://github.com/timothyhull/ww_tweeter/blob/main/app/]
+        2. [./tests](https://github.com/timothyhull/ww_tweeter/blob/main/tests/]
+        3. [./pytest.ini](https://github.com/timothyhull/ww_tweeter/blob/main/app/pytest.ini]
+
+    - Container, network, volume, and alias names that end in `_dev`.
+    - `command:` paramater, to overwrite the `CMD` instruction in [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile.dev) with a long-running process (`["tail", "-f", "/dev/null"]`).
+
+Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile.dev) to remove the [./requirements](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/) folder after `pip` installations completes.
