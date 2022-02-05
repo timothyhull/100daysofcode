@@ -387,11 +387,27 @@
 
     - Volume mounts for:
 
-        1. [./app](https://github.com/timothyhull/ww_tweeter/blob/main/app/]
-        2. [./tests](https://github.com/timothyhull/ww_tweeter/blob/main/tests/]
-        3. [./pytest.ini](https://github.com/timothyhull/ww_tweeter/blob/main/app/pytest.ini]
+        1. [./app](https://github.com/timothyhull/ww_tweeter/blob/main/app/)
+        2. [./tests](https://github.com/timothyhull/ww_tweeter/blob/main/tests/)
+        3. [./pytest.ini](https://github.com/timothyhull/ww_tweeter/blob/main/app/pytest.ini)
 
     - Container, network, volume, and alias names that end in `_dev`.
     - `command:` paramater, to overwrite the `CMD` instruction in [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile.dev) with a long-running process (`["tail", "-f", "/dev/null"]`).
 
 Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile.dev) to remove the [./requirements](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/) folder after `pip` installations completes.
+
+---
+
+## :notebook: 2/4/22
+
+- Create database named `ww_tweeter_test` in the `db_dev` container.
+
+    ```sql
+    create database ww_tweeter_test;
+    ```
+
+- Worked through sections in the [Object Relational Tutorial (1.x API)](https://docs.sqlalchemy.org/en/14/orm/tutorial.html):
+    - Updated [sqlalchemy_tutorial.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/sqlalchemy_tutorial.py)
+        - Created the `User` class to define a **users** table mapping.
+        - Created the `create_db_engine` function to create an `sqlalchemy.engine.Engine`.
+        - Created the `get_user_schema`function to display a copy of the **users** table schema.
