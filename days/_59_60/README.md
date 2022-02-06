@@ -411,3 +411,11 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
         - Created the `User` class to define a **users** table mapping.
         - Created the `create_db_engine` function to create an `sqlalchemy.engine.Engine`.
         - Created the `get_user_schema`function to display a copy of the **users** table schema.
+
+---
+
+## :notebook: 2/5/22
+
+- Added the `repr` function to display the contents of the `get_user_schema` function.
+    - Eliminates the need to use the `._schema_item_copy` attribute of `User.__table__` to display the schema.
+- Added display of user attributes to the `main` function, by creating an instance of a `User` class via a call of the `get_user_schema` function.
