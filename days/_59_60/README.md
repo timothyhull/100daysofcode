@@ -1,4 +1,4 @@
-# :calendar: Day 59+60: 1/16/2022-2/5/2022
+# :calendar: Day 59+60: 1/16/2022-2/15/2022
 
 ---
 
@@ -407,7 +407,7 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
     ```
 
 - Worked through sections in the [Object Relational Tutorial (1.x API)](https://docs.sqlalchemy.org/en/14/orm/tutorial.html):
-    - Updated [sqlalchemy_tutorial.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/sqlalchemy_tutorial.py)
+    - Updated [sqlalchemy_tutorial.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/sqlalchemy_tutorial.py):
         - Created the `User` class to define a **users** table mapping.
         - Created the `create_db_engine` function to create an `sqlalchemy.engine.Engine`.
         - Created the `get_user_schema`function to display a copy of the **users** table schema.
@@ -416,6 +416,33 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 ## :notebook: 2/5/22
 
-- Added the `repr` function to display the contents of the `get_user_schema` function.
-    - Eliminates the need to use the `._schema_item_copy` attribute of `User.__table__` to display the schema.
-- Added display of user attributes to the `main` function, by creating an instance of a `User` class via a call of the `get_user_schema` function.
+- Updated [sqlalchemy_tutorial.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/sqlalchemy_tutorial.py):
+    - Added the `repr` function to display the contents of the `get_user_schema` function.
+        - Eliminates the need to use the `._schema_item_copy` attribute of `User.__table__` to display the schema.
+    - Added display of user attributes to the `main` function, by creating an instance of a `User` class via a call of the `get_user_schema` function.
+
+---
+
+## :notebook: 2/6/22
+
+- Updated [sqlalchemy_tutorial.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/sqlalchemy_tutorial.py):
+    - Added the `config_session_db_engine` function, to create a class instance from the `sqlalchemy.orm.Session` class.
+        - Added display of `sqlalchemy.orm.Session` instance to the `main` function, by updating the `Session` class, with the previously created `engine` instance, via a call of the `config_session_db_engine` function.
+    - Added the `add_db_session_user_object` function, to add `User` objects to the instance of the `sqlalchemy.orm.Session` class.
+        - Returned multiple exceptions, with one recommend disabling automatic transaction flushing:
+        - Disabled automation transaction flushing seems to correct the problem:
+
+            ```python
+            Session = sessionmaker(
+                autoflush=False
+            )
+            ```
+
+        - Returned an error indicating the `users` table does not exist; perhaps because the table does not yet exist in the database itself:
+
+            ```bash
+            psycopg2.errors.UndefinedTable: relation "users" does not exist
+            LINE 2: FROM users 
+            ```
+
+- Corrected docstrings.
