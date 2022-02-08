@@ -446,3 +446,23 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
             ```
 
 - Corrected docstrings.
+
+---
+
+## :notebook: 2/7/22
+
+- Troubleshot the `psycopg2.errors.UndefinedTable: relation "users" does not exist` error.
+    - Determined that the `users` table is not automatically created, and requires the following command to call `create_all` method of the `declarative_base()` object.
+
+        ```python
+        BASE.metadata.create_all(engine)
+        ```
+
+    - The `declarative_base().metadata.create_all(engine)` call created tables for any class objects with the `declarative_base` object passed as an argument directly to the class:
+
+        ```python
+        # Example (truncated)
+        class User(BASE):
+        ```
+
+    - Created the `create_db_tables()` function to call create database tables.
