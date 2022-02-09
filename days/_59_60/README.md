@@ -466,3 +466,14 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
         ```
 
     - Created the `create_db_tables()` function to call create database tables.
+
+---
+
+## :notebook: 2/8/22
+
+- Converted the value of the `autoflush=False` argument in `Session = sessionmaker(autoflush=)` to a constant named `AUTO_FLUSH.`
+    - The default value of the `autoflush` parameter is `True`.
+    - When set to `False`, the database tables are not automatically created.
+- Conducted testing with the `session.query(User)` method, and struggled to produce accurate and consistent results.
+    - The tutorial is written for **SQLite** which may have some differences from **PostgreSQL**.
+    - Further testing is necessary.
