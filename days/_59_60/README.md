@@ -477,3 +477,24 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 - Conducted testing with the `session.query(User)` method, and struggled to produce accurate and consistent results.
     - The tutorial is written for **SQLite** which may have some differences from **PostgreSQL**.
     - Further testing is necessary.
+
+---
+
+## :notebook: 2/9/22
+
+- Reviewed [sqlalchemy_tutorial.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/sqlalchemy_tutorial.py) to address issues from the previous day:
+    - Found an error in the code at line 55.
+
+        ```python
+        # The nickname field in the __repr__ method was set to `self.fullname`
+        # Corrected to read `self.nickname`
+        f'nickname={self.nickname})>'
+        ```
+
+    - Correcting this line allows the the application to behave exactly the tutorial describes, when working interactively.
+    - Repeated runs of the application as a script does not work as expected, after the first run.
+    - Requires interactive testing to troubleshoot.
+
+- Created the `commit_db_session` function, to separate the `session.commit` method call from the `add_db_session_user_object` function.
+- Removed the `session.dirty` function call in the `add_db_session_user_object` function, because it did not serve a purpose
+- Tested database queries using the [SQLAlchemy Queries documentation](https://docs.sqlalchemy.org/en/14/orm/tutorial.html#querying)
