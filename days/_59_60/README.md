@@ -498,3 +498,12 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 - Created the `commit_db_session` function, to separate the `session.commit` method call from the `add_db_session_user_object` function.
 - Removed the `session.dirty` function call in the `add_db_session_user_object` function, because it did not serve a purpose
 - Tested database queries using the [SQLAlchemy Queries documentation](https://docs.sqlalchemy.org/en/14/orm/tutorial.html#querying)
+
+---
+
+## :notebook: 2/10/22
+
+- The SQLAlchemy documentation indicates the `User` objected added to the `session` object, via `session.add(User)` should have the same Python identity as the result returned from a `session.query` call.
+    - This appears to work properly once, and then the identities do not match afterword.
+    - This does not seem to impact DB operations.
+- Completed relevant SQLAlchemy tutorial steps, and ready to test writing and reading Twitter data from the PostgreSQL database.
