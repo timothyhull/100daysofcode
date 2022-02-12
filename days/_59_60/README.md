@@ -507,3 +507,23 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
     - This appears to work properly once, and then the identities do not match afterword.
     - This does not seem to impact DB operations.
 - Completed relevant SQLAlchemy tutorial steps, and ready to test writing and reading Twitter data from the PostgreSQL database.
+
+---
+
+## :notebook: 2/11/22
+
+- Updated the [docker-compose-dev.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose-dev.yml) and [docker-compose.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose.yml) files to persist **pgadmin** configuration and connection information between container instances.
+    - Initially attempted to mount persistent storage with a Docker volume, but the web **pgadmin** web service would not start properly.
+    - Required the following mappings:
+
+        ```yaml
+        # docker-compose-dev.yml
+        volumes:
+          - ./_dockerfiles/db_admin_dev/pg_admin:/var/lib/pgadmin
+          - ./_dockerfiles/db_admin_dev/pg_admin:/pgadmin4/servers.json
+
+        # docker-compose.yml
+        volumes:
+          - ./_dockerfiles/db_admin/pg_admin:/var/lib/pgadmin
+          - ./_dockerfiles/db_admin/pg_admin:/pgadmin4/servers.json
+        ```
