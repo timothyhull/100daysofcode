@@ -527,3 +527,10 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
           - ./_dockerfiles/db_admin/pg_admin:/var/lib/pgadmin
           - ./_dockerfiles/db_admin/pg_admin:/pgadmin4/servers.json
         ```
+
+---
+
+## :notebook: 2/12/22
+
+- Created [tests/test_db_models.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db_models.py) to for `pytest` tests of [app/db/db_models.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db_models.py).
+    - Created [app/db/db_models.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db_models.py) to create models for database tables (`hashtag` and `tweets`).
