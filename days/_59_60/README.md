@@ -534,3 +534,4 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 - Created [tests/test_db_models.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db_models.py) to for `pytest` tests of [app/db/db_models.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db_models.py).
     - Created [app/db/db_models.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db_models.py) to create models for database tables (`hashtag` and `tweets`).
+    - Based class construction on the [PyTip repo `models.py`](https://github.com/pybites/pytip/blob/master/tips/models.py) and the SQLAlchemy tutorial file [app/\_\_dev\_\_/sqlalchemy_tutorial.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/sqlalchemy_tutorial.py).
