@@ -535,3 +535,27 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 - Created [tests/test_db_models.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db_models.py) to for `pytest` tests of [app/db/db_models.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db_models.py).
     - Created [app/db/db_models.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db_models.py) to create models for database tables (`hashtag` and `tweets`).
     - Based class construction on the [PyTip repo `models.py`](https://github.com/pybites/pytip/blob/master/tips/models.py) and the SQLAlchemy tutorial file [app/\_\_dev\_\_/sqlalchemy_tutorial.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/sqlalchemy_tutorial.py).
+
+---
+
+## :notebook: 2/13/22
+
+- Initiated application with initial build of containers using `docker compose up -d --build`.
+    - Configured database connectivity and dark theme in the **pgadmin** container.
+    - Initialized `wwt_tweeter` and `ww_tweeter_pytest` databases with the following commands in the **db** container:
+
+    ```bash
+    # Connect to db container
+    docker exec -it <container_name> /bin/bash
+
+    # Run psql binary before creating databses
+    psql
+    ```
+
+    ```sql
+    create database wwt_tweeter;
+    create database wwt_tweeter_pytest;
+    ```
+
+- Created database interaction framework in [app/db/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py)
+- Created database interaction test framework in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py)
