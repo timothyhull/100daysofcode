@@ -559,3 +559,11 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 - Created database interaction framework in [app/db/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py)
 - Created database interaction test framework in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py)
+
+---
+
+## :notebook: 2/14/22
+
+- Add code to the `_create_session` function in [app/db/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py).
+    - Requires further testing.
+    - Requires `pytest` test.
