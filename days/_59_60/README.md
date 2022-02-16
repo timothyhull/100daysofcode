@@ -567,3 +567,12 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 - Add code to the `_create_session` function in [app/db/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py).
     - Requires further testing.
     - Requires `pytest` test.
+
+---
+
+## :notebook: 2/15/22
+
+- Tuned [Dockerfile](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile) to support development and testing.
+- Added code to the `test_create_session` tests in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+    - Test is successful without mocking the test `sqlalchemy.orm.Session` object.
+    - Mocking the `sqlalchemy.orm.Session` object requires further testing and troubleshooting.
