@@ -576,3 +576,12 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 - Added code to the `test_create_session` tests in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
     - Test is successful without mocking the test `sqlalchemy.orm.Session` object.
     - Mocking the `sqlalchemy.orm.Session` object requires further testing and troubleshooting.
+
+---
+
+## :notebook: 2/16/22
+
+- Created [class_method_attribute_testing](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/class_method_attribute_testing) to conduct testing of class method attribute methods.
+
+- Added code to the `test_create_session` tests in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+    - Mocking the `sqlalchemy.orm.Session` object requires further testing and troubleshooting.
