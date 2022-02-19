@@ -1,4 +1,4 @@
-# :calendar: Day 59+60: 1/16/2022-2/15/2022
+# :calendar: Day 59+60: 1/16/2022-2/25/2022
 
 ---
 
@@ -590,6 +590,14 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 ## :notebook: 2/17/22
 
-- - Added code to the `test_create_session` tests in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+- Added code to the `test_create_session` tests in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
     - Successfully mocked the `sqlalchemy.orm.Session` object using a class method attribute that calls its own method:
         - `class.method().attribute.method()`
+
+---
+
+## :notebook: 2/18/22
+
+- Added code to the `truncate_tables` function in [app/db/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py).
+    - Function removes all entries from the `TweetData` and `Hashtag` tables.
+    - Need to create a `pytest` test that mocks the `session.query().delete()` method.
