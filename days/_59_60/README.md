@@ -581,16 +581,16 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 ## :notebook: 2/16/22
 
-- Created [class_method_attribute_testing](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/class_method_attribute_testing) to conduct testing of class method attribute methods.
+- Created [class_method_attribute_testing.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/class_method_attribute_testing.py) to conduct testing of class method attribute methods.
 
-- Added code to the `test_create_session` tests in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+- Added code to the `test_create_session` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
     - Mocking the `sqlalchemy.orm.Session` object requires further testing and troubleshooting.
 
 ---
 
 ## :notebook: 2/17/22
 
-- Added code to the `test_create_session` tests in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+- Added code to the `test_create_session` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
     - Successfully mocked the `sqlalchemy.orm.Session` object using a class method attribute that calls its own method:
         - `class.method().attribute.method()`
 
@@ -606,6 +606,8 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 ## :notebook: 2/19/22
 
-- Added code to the `test_create_session` tests in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
-    - Mocking the `sqlalchemy.orm.Session` object requires further testing and troubleshooting.
+- Created [class_method_method_testing.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/class_method_attribute_testing.py) to conduct testing of class method methods.
 
+- Added code to the `test_truncate_tables` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+    - Partially mocked the `sqlalchemy.orm.Session` and `sqlalchemy.orm.Query` objects.
+    - Requires further testing and troubleshooting.
