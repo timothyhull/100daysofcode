@@ -601,3 +601,11 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 - Added code to the `truncate_tables` function in [app/db/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py).
     - Function removes all entries from the `TweetData` and `Hashtag` tables.
     - Need to create a `pytest` test that mocks the `session.query().delete()` method.
+
+---
+
+## :notebook: 2/19/22
+
+- Added code to the `test_create_session` tests in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+    - Mocking the `sqlalchemy.orm.Session` object requires further testing and troubleshooting.
+
