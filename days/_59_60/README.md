@@ -611,3 +611,12 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 - Added code to the `test_truncate_tables` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
     - Partially mocked the `sqlalchemy.orm.Session` and `sqlalchemy.orm.Query` objects.
     - Requires further testing and troubleshooting.
+
+---
+
+## :notebook: 2/20/22
+
+- Continued testing of `test_truncate_tables` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+    - Consolidated mock two separate `sqlalchemy.orm.Session` objects by moving the `get_bind` method to the `SessionMock` class.
+    - Unable to successfully mock an `sqlalchemy.orm.Session` object.
+    - Requires further testing and troubleshooting.
