@@ -620,3 +620,12 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
     - Consolidated mock two separate `sqlalchemy.orm.Session` objects by moving the `get_bind` method to the `SessionMock` class.
     - Unable to successfully mock an `sqlalchemy.orm.Session` object.
     - Requires further testing and troubleshooting.
+
+---
+
+## :notebook: 2/21/22
+
+- Completed testing of `test_truncate_tables` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+    - Removed multiple `patch.object` decorators, only using a single `patch.object` decorator to mock a `sqlalchemy.orm.Session` object.
+    - Added an optional `session` parameter to the `truncate_tables` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db.py), to allow passing a mock `sqlalchemy.orm.Session` object.
+    - `pytest` tests successfully pass.
