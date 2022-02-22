@@ -629,3 +629,11 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
     - Removed multiple `patch.object` decorators, only using a single `patch.object` decorator to mock a `sqlalchemy.orm.Session` object.
     - Added an optional `session` parameter to the `truncate_tables` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db.py), to allow passing a mock `sqlalchemy.orm.Session` object.
     - `pytest` tests successfully pass.
+
+---
+
+## :notebook: 2/22/22
+
+- Added code to the `get_hashtags` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db.py), to retrieve and sort all hashtags from the `hashtags` table.
+    - Manually inserted mock hashtag data into the database for testing, and removed data with the `truncate_tables` function.
+    - Need to develop a `pytest` test for the `get_hashtags` function.
