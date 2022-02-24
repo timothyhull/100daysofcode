@@ -627,13 +627,21 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 - Completed testing of `test_truncate_tables` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
     - Removed multiple `patch.object` decorators, only using a single `patch.object` decorator to mock a `sqlalchemy.orm.Session` object.
-    - Added an optional `session` parameter to the `truncate_tables` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db.py), to allow passing a mock `sqlalchemy.orm.Session` object.
+    - Added an optional `session` parameter to the `truncate_tables` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py), to allow passing a mock `sqlalchemy.orm.Session` object.
     - `pytest` tests successfully pass.
 
 ---
 
 ## :notebook: 2/22/22
 
-- Added code to the `get_hashtags` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db.py), to retrieve and sort all hashtags from the `hashtags` table.
+- Added code to the `get_hashtags` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py), to retrieve and sort all hashtags from the `hashtags` table.
     - Manually inserted mock hashtag data into the database for testing, and removed data with the `truncate_tables` function.
     - Need to develop a `pytest` test for the `get_hashtags` function.
+
+---
+
+## :notebook: 2/23/22
+
+- Added code to the `test_get_hashtags` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+    - Tested mocking the results of a call to an `sqlalchemy.orm.Query.order_by.all` object method.
+    - Requires further testing and troubleshooting, and may require a refactor of the existing `QueryMock` class to support more than the single method (`delete`) used in the `test_truncate_tables` method.
