@@ -645,3 +645,12 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 - Added code to the `test_get_hashtags` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
     - Tested mocking the results of a call to an `sqlalchemy.orm.Query.order_by.all` object method.
     - Requires further testing and troubleshooting, and may require a refactor of the existing `QueryMock` class to support more than the single method (`delete`) used in the `test_truncate_tables` method.
+
+---
+
+## :notebook: 2/24/22
+
+- Created [class_inheritance_testing.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/class_inheritance_testing.py) to conduct testing of class inheritance with attribute methods.
+
+- Updated mock class framework in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py) to support proper function of the `test_get_hashtags` function.
+    - `pytest` tests successfully pass.
