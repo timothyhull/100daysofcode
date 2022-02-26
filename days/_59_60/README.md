@@ -1,4 +1,4 @@
-# :calendar: Day 59+60: 1/16/2022-2/25/2022
+# :calendar: Day 59+60: 1/16/2022-3/5/2022
 
 ---
 
@@ -662,4 +662,38 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 - Created the `commit_session` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py), to refactor session commits into a dedicated function, and avoid writing repetitious code.
 
 - Created the `test_commit_session` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+    - All `pytest` tests pass.
+
+---
+
+## :notebook: 2/26/22
+
+- Created the `add_hashtags` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py), to add new hashtags to the database.
+    - Successfully added hashtags to the database using mock dictionary data in an interactive shell:
+
+        ```python
+        # Mock hashtag data
+        NEW_HASHTAGS = {
+            'hashtag_1': 10,
+            'hashtag_2': 20,
+            'hashtag_3': 30,
+        }
+
+        # Add new hashtags
+        add_hashtags(NEW_HASHTAGS)
+
+        # Get hashtags
+        hashtags = get_hashtags()
+        print(hashtags)
+        ''' [<Hashtag(name=hashtag_1, count=10)>,
+        <Hashtag(name=hashtag_2, count=20)>,
+        <Hashtag(name=hashtag_3, count=30)>] '''
+
+        # Remove hashtags
+        truncate_tables()
+        ```
+
+- Created the `test_add_hashtags` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+    - Added the `add` method to the `SessionMock` class, to support mock calls to the `sqlalchemy.orm.Session.add` method.
+        - `add` method adds a mock transaction to the `self.transactions` list for each object (database table row) added.
     - All `pytest` tests pass.
