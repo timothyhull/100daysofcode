@@ -654,3 +654,12 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 - Updated mock class framework in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py) to support proper function of the `test_get_hashtags` function.
     - `pytest` tests successfully pass.
+
+---
+
+## :notebook: 2/25/22
+
+- Created the `commit_session` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py), to refactor session commits into a dedicated function, and avoid writing repetitious code.
+
+- Created the `test_commit_session` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+    - All `pytest` tests pass.
