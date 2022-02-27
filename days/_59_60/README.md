@@ -697,3 +697,14 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
     - Added the `add` method to the `SessionMock` class, to support mock calls to the `sqlalchemy.orm.Session.add` method.
         - `add` method adds a mock transaction to the `self.transactions` list for each object (database table row) added.
     - All `pytest` tests pass.
+
+---
+
+## :notebook: 2/27/22
+
+- Refactored tests in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py) to use a `pytest` fixture to create a mock `sqlalchemy.orm.Session` object, using the `SessionMock` class.
+
+- Created the `test_get_tweets` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+
+- Created the `get_tweets` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py), to support collecting tweet data from the database.
+    - `pytest` tests require further testing.
