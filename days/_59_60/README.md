@@ -717,3 +717,12 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
     The `order_by` method in the `OrderMock` class should return an `OrderMock` class object.
 - Added the `filter` method to mock calls to the `sqlalchemy.orm.Query.filter` method.
 - Updated the `repr_string` in the `TweetData` class in [app/db/db_models.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db_models.py), so that it prints all fields in a tweet.
+
+---
+
+## :notebook: 3/1/22
+
+- Created the `test_add_tweets` test in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+
+- Created the `add_tweets` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py), to support adding tweet data to the database.
+    - `add_tweets` requires additional code to function properly.
