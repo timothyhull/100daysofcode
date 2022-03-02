@@ -726,3 +726,38 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 - Created the `add_tweets` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py), to support adding tweet data to the database.
     - `add_tweets` requires additional code to function properly.
+
+---
+
+## :notebook: 3/2/22
+
+- The `isinstance` method compares an object to an object class and, via two arguments, and returns `True` or `False` depending on whether or not the object is an instance of the object class.
+    - Useful for determining if an object is of a certain type, without using a `type` method:
+
+        ```python
+        # Use isinstance to determine if an object is an instance of a class
+        my_dict = {'a': 1}
+
+        isinstance(
+            my_dict,  # object instance
+            dict,     # object class
+        )
+        ''' Returns True '''
+
+        # This is an alternative to the type method
+        type(my_dict) == dict
+        ''' Returns True '''
+        ```
+
+    - `isinstance` supports inline conditional logic:
+
+        ```python
+        my_dict = {'a': 1}
+
+        # Set or reset the value of my_dict based on the object type
+        my_dict = my_dict if isinstance(my_dict, list) else my_dict.items()
+        ''' Returns dict_items([('a', 1)]) '''
+        ```
+
+- Completed and tested the `add_tweets` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py)
+    - All `pytest` tests pass.
