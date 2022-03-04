@@ -796,3 +796,17 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
         ```
 
     - Importing hashtags into the database requires further analysis of the pybites repository example.
+
+---
+
+## :notebook: 3/4/22
+
+- Renamed the `get_tweets` function in [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter/tweeter.py) to avoid namespace conflict with `get_tweets` in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py).
+    - New function name is `get_top_n_tweets`.
+    - Updated function name in [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py) to `test_get_top_n_tweets`.
+
+- Imported the `add_tweets` and `truncate_tables` functions from [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py) into [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter/tweeter.py).
+    - Added both functions to the `main` function, and tweets are now read from Twitter and imported into the database (after the tables are cleared).
+
+- Created [counter_testing.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/counter_testing.py) to determine the purpose use of the [pybites `get_hashtag_counter` function](https://github.com/pybites/pytip/blob/master/tasks/import_tweets.py#L38).
+    - Need to review the `Counter` object and the `VALID_HASHTAG` regular expression syntax.
