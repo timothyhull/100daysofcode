@@ -141,9 +141,9 @@
 - Created new files for Twitter API integration:
 
     1. [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py) - `pytest` tests for `tweeter.py`.
-    2. [app/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py) - Application code for Twitter API integration.
+    2. [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter/tweeter.py) - Application code for Twitter API integration.
 
-- Setup file framework in [app/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py):
+- Setup file framework in [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter/tweeter.py):
 
     1. Imports.
     2. `namedtuple` object for tweets.
@@ -158,7 +158,7 @@
 - Started TDD process:
 
     1. Created the `test_twitter_auth` and `test_get_tweets` functions in [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py).
-    2. Created the `twitter_auth` and `get_tweets` functions in [app/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py) to meet `pytest` test requirements.
+    2. Created the `twitter_auth` and `get_tweets` functions in [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter/tweeter.py) to meet `pytest` test requirements.
 
         - Successfully passing tests with the `test_twitter_auth` function.
         - No code written in the `test_get_tweets` function yet.
@@ -167,7 +167,7 @@
 
 ## :notebook: 1/23/22
 
-- Completed the `get_tweets` function in [app/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py).
+- Completed the `get_tweets` function in [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter/tweeter.py).
     - The function returns an object containing tweets from the Twitter API.
     - Tested using `itertools.islice` to limit the quantity of the tweets that require processing into a list.
 - Worked on mocking a `tweepy.Cursor` object with `unittest.mock.patch.object`.
@@ -188,7 +188,7 @@
 
 ## :notebook: 1/25/22
 
-- Updated the `get_tweets` function in [app/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py) so that it returns a limited number of results, using `itertools.islice`.
+- Updated the `get_tweets` function in [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter/tweeter.py) so that it returns a limited number of results, using `itertools.islice`.
     - Updated the `test_get_tweets` function in [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py) to test for the slice limit.
 
 - Started research to determine how to setup a model, view, controller style application that used Docker Compose to build separate containers for each element.
@@ -761,3 +761,38 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 - Completed and tested the `add_tweets` function in [app/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py)
     - All `pytest` tests pass.
+
+---
+
+## :notebook: 3/3/22
+
+- Reviewed [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter/tweeter.py) to recall how it works.
+- Reviewed the [pybites twitter repository example](https://github.com/pybites/pytip/blob/master/tasks/import_tweets.py) to understand its operation.
+    - Successfully tested importing tweets into the database using an interactive Python shell:
+
+        ```bash
+        # Run tweeter.py in an interactive shell
+        ipython -i app/tweeter/tweeter.py
+        ```
+
+        ```python
+        # Import db.py in the 'db' namespace to avoid naming conflicts
+        from app.db import db
+
+        # Create Twitter authentication object
+        auth = twitter_api_auth()
+
+        # Get tweets from Twitter
+        tweets = get_tweets(api_object=auth)
+
+        # Add tweets to the database
+        db.add_tweets(tweets=list(tweets))
+
+        # Get tweets from the database
+        db_tweets = db.get_tweets()
+
+        # Remove tweets from the database
+        db.truncate_tables()
+        ```
+
+    - Importing hashtags into the database requires further analysis of the pybites repository example.
