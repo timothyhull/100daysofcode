@@ -810,3 +810,12 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 - Created [counter_testing.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/__dev__/counter_testing.py) to determine the purpose use of the [pybites `get_hashtag_counter` function](https://github.com/pybites/pytip/blob/master/tasks/import_tweets.py#L38).
     - Need to review the `Counter` object and the `VALID_HASHTAG` regular expression syntax.
+
+---
+
+## :notebook: 3/5/22
+
+- Created the `test_hashtag_counter` test in [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py).
+    - Mock class objects require modification to support the `hashtag_counter` object function.
+
+- Created the `hashtag_counter` function in [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter/tweeter.py), to support counting hashtags from the tweet text
