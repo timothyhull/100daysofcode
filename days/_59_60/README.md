@@ -1,4 +1,4 @@
-# :calendar: Day 59+60: 1/16/2022-3/5/2022
+# :calendar: Day 59+60: 1/16/2022-3/15/2022
 
 ---
 
@@ -815,7 +815,44 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 ## :notebook: 3/5/22
 
-- Created the `test_hashtag_counter` test in [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py).
-    - Mock class objects require modification to support the `hashtag_counter` object function.
+- Created the `test_hashtag_counter` test function in [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py).
+    - Mock class objects require modification to support the `hashtag_counter` function.
 
 - Created the `hashtag_counter` function in [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter/tweeter.py), to support counting hashtags from the tweet text
+
+---
+
+## :notebook: 3/7/22
+
+- Updated the `test_hashtag_counter` test function in [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py) to function properly.
+    - Wrapped `TWEET_MOCK` in a list, to make the object iterable and allow capture of tweet data by the `hashtag_counter` function.
+    - All `pytest` tests pass.
+
+- Created the `test_import_hashtags` test function in [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py).
+    - Created initial framework only, further development and testing required.
+
+- Created the `import_hashtags` function in [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py), to support importing hashtags and counts into the database.
+    - Added the to the `main` function, and hashtags with counts, extracted from actual tweets, are now imported into the database (after the tables are cleared).
+    - Required extending the length of the `hashtags` table `name` field from 20 to 40 characters in [app/db/db_models.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db_models.py):
+
+        ```python
+        class Hashtag(BASE):
+            """ Create table for hashtags and hitcounts.
+
+                Args:
+                    BASE (sqlalchemy.ext.declarative.declarative_base)
+            """
+
+            # Assign table name
+            __tablename__ = 'hashtags'
+
+            # Assign table columns
+            id = Column(
+                type_=Integer,
+                primary_key=True
+            )
+            name = Column(String(40))
+            count = Column(Integer)
+
+            ''' Truncated for brevity. '''
+        ```
