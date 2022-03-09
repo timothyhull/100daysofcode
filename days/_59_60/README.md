@@ -856,3 +856,20 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
             ''' Truncated for brevity. '''
         ```
+
+---
+
+## :notebook: 3/8/22
+
+- Removed the `test_import_hashtags` test function in [tests/test_tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_tweeter.py).
+    - Testing already takes place in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py).
+
+- Removed the `import_hashtags` functions from [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py).
+    - Added direct call to `add_hashtags` from the `main` function.
+
+- Updated `import` statement in [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py) from `from app.db.db import (function_1, function_2, etc.)` to `from app.db import db`.
+    - This ensures the `db._create_session` function always runs, which creates database tables if they do not exist.
+    - Without this function running, an exception would return if the database tables did not exist.
+
+- Refactored [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py) such that the `TWEET_SLICE` constant can accept a value of `None` and return all tweets.
+    - Updated the `TWEET_SLICE` constant default to a value of 500.
