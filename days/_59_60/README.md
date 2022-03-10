@@ -24,6 +24,8 @@
 
 :star: [pgadmin on Docker Hub](https://hub.docker.com/r/dpage/pgadmin4/)
 
+:star: [Bottle documentation](http://bottlepy.org/docs/dev/)
+
 ---
 
 ## Tasks
@@ -873,3 +875,23 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 - Refactored [app/tweeter/tweeter.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/tweeter.py) such that the `TWEET_SLICE` constant can accept a value of `None` and return all tweets.
     - Updated the `TWEET_SLICE` constant default to a value of 500.
+
+---
+
+## :notebook: 3/9/22
+
+- Started development process to use `bottle` as a web/view service in the app.
+    - Added `bottle` to the [requirements/requirements.txt](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/requirements.txt) and [requirements/requirements_pytest.txt](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/requirements_pytest.txt) files.
+    - Started review of [bottle documentation](http://bottlepy.org/docs/dev/).
+    - Started review of database code in the [PyBites example repository](https://github.com/pybites/pytip).
+
+- Created web application framework:
+    - Created the following files:
+        - [_dockerfiles/web/\_\_dev\_\_/bottle_testing.py](https://github.com/timothyhull/ww_tweeter/blob/main/_dockerfiles/web/__dev__/bottle_testing.py) - to support `bottle` tutorial walk-through.
+        - [app/web/web.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/web/web.py) - to support final web application.
+        - [_dockerfiles/web/requirements.txt](https://github.com/timothyhull/ww_tweeter/blob/main/_dockerfiles/web/requirements.txt) - to support Python package installation.
+        - [_dockerfiles/web/Dockerfile](https://github.com/timothyhull/ww_tweeter/blob/main/_dockerfiles/web/Dockerfile) - to support web app container image.
+    - Updated the following files with instructions for the `web` container:
+        - [docker-compose.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose.yml)
+        - [docker-compose-dev.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose-dev.yml)
+    - **web** container starts and exits immediately, and requires further troubleshooting.
