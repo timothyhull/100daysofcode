@@ -895,3 +895,54 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
         - [docker-compose.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose.yml)
         - [docker-compose-dev.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose-dev.yml)
     - **web** container starts and exits immediately, and requires further troubleshooting.
+
+---
+
+## :notebook: 3/10/22
+
+- Updated the `host` argument value in the `run` function of [_dockerfiles/web/\_\_dev\_\_/bottle_testing.py](https://github.com/timothyhull/ww_tweeter/blob/main/_dockerfiles/):
+    - The `bottle` tutorial recommends a value of `localhost` although connections to the `bottle` web service would fail.
+    - Changing the value to `0.0.0.0` corrects the problem.
+
+- Refactored [_dockerfiles/web/\_\_dev\_\_/bottle_testing.py](https://github.com/timothyhull/ww_tweeter/blob/main/_dockerfiles/) to support an object-oriented programing design by creating a `Bottle` object instead of calling the `route` method directly:
+    - Original design:
+
+        ```python
+
+        from bottle import route, run
+
+        @route('/')
+        def hello_world():
+            return 'Hello World'
+
+        run(
+            host='0.0.0.0',
+            port=8080
+        )
+        ```
+
+    - OOP design:
+
+        ```python
+
+        from bottle import Bottle, run
+
+        app = Bottle()
+
+        @app.route('/')
+        def hello_world():
+            return 'Hello World'
+
+        run(
+            app=app,
+            host='0.0.0.0',
+            port=8080
+        )
+        ```
+
+- Updated [_dockerfiles/web/Dockerfile](https://github.com/timothyhull/ww_tweeter/blob/main/_dockerfiles/web/Dockerfile) with corrected path values for the `WORKDIR`, `ENV`, and `CMD` instructions.
+    - Temporarily set the `CMD` instruction to `["tail", "-f", "/bin/bash"]` to allow changes to [_dockerfiles/web/\_\_dev\_\_/bottle_testing.py](https://github.com/timothyhull/ww_tweeter/blob/main/_dockerfiles/web/__dev__/bottle_testing.py) without having to restart the container.
+        - For development, attaching to a **bash** shell of the `web` container and running/stopping/re-running [_dockerfiles/web/\_\_dev\_\_/bottle_testing.py](https://github.com/timothyhull/ww_tweeter/blob/main/_dockerfiles/web/__dev__/bottle_testing.py) allows changes to the Python code.
+
+
+- Updated [docker-compose-dev.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose-dev.yml) with corrected paths.
