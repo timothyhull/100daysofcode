@@ -946,3 +946,12 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
         - For development, attaching to a **bash** shell of the `web` container and running/stopping/re-running [_dockerfiles/web/\_\_dev\_\_/bottle_testing.py](https://github.com/timothyhull/ww_tweeter/blob/main/_dockerfiles/web/__dev__/bottle_testing.py) allows changes to the Python code.
 
 - Updated [docker-compose-dev.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose-dev.yml) with corrected paths.
+
+---
+
+## :notebook: 3/11/22
+
+- Added new routes and functions to [bottle_testing.py](https://github.com/timothyhull/ww_tweeter/blob/main/_dockerfiles/web/__dev__/bottle_testing.py):
+    - Tested multiple `@route` decorators (HTTP paths) on the same function.
+    - Tested multiple variables in the same route definition/function.
+    - Tested using method decorators (`@get`) instead of using a `method` argument.
