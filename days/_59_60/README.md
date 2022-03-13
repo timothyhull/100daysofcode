@@ -962,6 +962,7 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 
 - Added initial `bottle` web service function code to - [app/web/web.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/web/web.py).
     - Tested the function with simple function and variable handling.
+    - Migrated the `APP_HOST` constant value from `0.0.0.0` to the auto-DNS name `web`, to correct bandit static code analysis finding.
 
 - Updated [docker-compose.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose.yml).
     - Removed dedicated web container, to bypass the need for REST API communications between the **app** and a potential **web** container.
