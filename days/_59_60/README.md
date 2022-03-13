@@ -98,7 +98,7 @@
     3. [requirements/requirements.txt](https://github.com/timothyhull/ww_tweeter/blob/main/requirements/requirements.txt) - Python packages.
     4. [.bettercodehub.yml](https://github.com/timothyhull/ww_tweeter/blob/main/.bettercodehub.yml) - bettercodehub.com configuration file.
     5. [.markdownlint.json](https://github.com/timothyhull/ww_tweeter/blob/main/.markdownlint.json) - `markdownlint` rule exclusions.
-    6. [Dockerfile](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile) - Development container Dockerfile.
+    6. [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile.dev) - Development container Dockerfile.
     7. [LICENSE](https://github.com/timothyhull/ww_tweeter/blob/main/LICENSE) - Apache 2.0 license.
 
 - Setup webhook integration between GitHub and BetterCodeHub
@@ -955,3 +955,15 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
     - Tested multiple `@route` decorators (HTTP paths) on the same function.
     - Tested multiple variables in the same route definition/function.
     - Tested using method decorators (`@get`) instead of using a `method` argument.
+
+---
+
+## :notebook: 3/12/22
+
+- Added initial `bottle` web service function code to - [app/web/web.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/web/web.py).
+    - Tested the function with simple function and variable handling.
+
+- Updated [docker-compose.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose.yml).
+    - Removed dedicated web container, to bypass the need for REST API communications between the **app** and a potential **web** container.
+
+- Added an `EXPOSE` instruction for TCP port 8081 to [Dockerfile](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile).
