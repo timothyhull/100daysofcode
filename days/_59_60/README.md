@@ -968,3 +968,35 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
     - Removed dedicated web container, to bypass the need for REST API communications between the **app** and a potential **web** container.
 
 - Added an `EXPOSE` instruction for TCP port 8081 to [Dockerfile](https://github.com/timothyhull/ww_tweeter/blob/main/Dockerfile).
+
+---
+
+## :notebook: 3/13/22
+
+- Added an alias of **web** to the **app** container in [docker-compose.yml](https://github.com/timothyhull/ww_tweeter/blob/main/docker-compose.yml).
+    - Creates Docker DNS resolver for the hostname **web**, which allows the argument value of `web` in the `bottle.run` function's `host` argument.
+    - Using `localhost` does not work, and using `0.0.0.0` generates a bandit finding.
+
+- Corrected the filter/search functionality in the [app/db/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py) function `get_tweets`.
+    - Testing determined that no filtering took place during database queries.
+    - With Postgresql, the `SQLAlchemy` `session.filter` `ilike` method requires that `%` characters surround the filter/search string.
+    - Since the Pytip example code uses SQLLite instead of Postgresql, this was not evident (nor tested) during initial development.
+        - Original search code:
+
+            ```python
+            tweets = tweets.filter(
+                TweetData.tweet_text.ilike(filter})
+            )
+            ```
+
+        - New search code:
+
+            ```python
+            tweets = tweets.filter(
+                TweetData.tweet_text.ilike(f'%{filter}%')
+            )
+            ```
+
+- Built initial code in the `tweeter_view` function in [app/web/web.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/web/web.py) to retrieve tweets and hashtags from the database.
+    - Returning the raw data results in an HTTP 500 error, and more development is necessary to create templates that can render the data.
+    - Calling the `db.get_tweets` function with a value in the `search_tag` parameter requires prefixing the value of the `search_tag` argument with a `#` character, since the `db.get_tweets` function searches for valid hashtags in a format that requires a leading `#`.
