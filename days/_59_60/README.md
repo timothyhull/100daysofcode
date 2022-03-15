@@ -1000,3 +1000,18 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 - Built initial code in the `tweeter_view` function in [app/web/web.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/web/web.py) to retrieve tweets and hashtags from the database.
     - Returning the raw data results in an HTTP 500 error, and more development is necessary to create templates that can render the data.
     - Calling the `db.get_tweets` function with a value in the `search_tag` parameter requires prefixing the value of the `search_tag` argument with a `#` character, since the `db.get_tweets` function searches for valid hashtags in a format that requires a leading `#`.
+
+---
+
+## :notebook: 3/14/22
+
+- Created CSS file [app/web/static/css/style.css](https://github.com/timothyhull/ww_tweeter/blob/main/app/web/static/css/style.css) using the Pytip [style.css](https://github.com/pybites/pytip/blob/master/static/css/style.css) file as a template.
+- Created template/view files using the [Pytip templates](https://github.com/pybites/pytip/tree/master/views) as a source, although accidentally deleted files before saving/committing.
+- Updated [app/web/web.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/web/web.py):
+    - Renamed the `tweeter_view` function to `index`.
+    - Added a `send_static` function per the [Bottle documentation](https://bottlepy.org/docs/dev/tutorial.html#static-files).
+    - Set the `bottle.run` `reloader` parameter to `True`, to automatically restart the application after saving a file change.
+
+- Unable to successfully load a web view.
+    - A 500 code returns indicating the template "index" cannot be found.
+    - Requires further troubleshooting.
