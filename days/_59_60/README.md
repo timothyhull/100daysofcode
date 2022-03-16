@@ -1,4 +1,4 @@
-# :calendar: Day 59+60: 1/16/2022-3/15/2022
+# :calendar: Day 59+60: 1/16/2022-3/16/2022
 
 ---
 
@@ -50,9 +50,9 @@
 
 :white_check_mark: Add Better Code Hub and CI/CD build status to README
 
-:white_large_square: Read project article on RealPython
+:white_check_mark: Read project article on RealPython
 
-:white_large_square: Write application
+:white_check_mark: Write application
 
 :white_large_square: Fill README.md content
 
@@ -1015,3 +1015,69 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
 - Unable to successfully load a web view.
     - A 500 code returns indicating the template "index" cannot be found.
     - Requires further troubleshooting.
+
+---
+
+## :notebook: 3/15/22
+
+- Corrected static file hosting and view template 404 errors in [app/web/web.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/web/web.py):
+    - The default search paths for **.tpl** view template files are `./` and `./views/` (defined in `bottle.TEMPLATE_PATH`), and the absolute path to the **views** directory is /workspaces/ww-tweeter/app/web/views.
+        - [`bottle` template documentation](http://bottlepy.org/docs/dev/tutorial.html#templates)
+    - Added the correct (absolute) path to `bottle.TEMPLATE_PATH` with the following code:
+
+        ```python
+        # Import the TEMPLATE_PATH list
+        from bottle import TEMPLATE_PATH
+
+        # Directory name for web.py
+        APP_PATH = Path(dirname(__file__))
+        # Name of template subdirectory
+        APP_VIEW_DIR = 'views'
+        # Absolute path to the template directory
+        APP_VIEW_PATH = join(APP_PATH, APP_VIEW_DIR)
+
+        # Add the template directory path to the TEMPLATE_PATH list, as the first item
+        TEMPLATE_PATH.insert(0, APP_VIEW_PATH)
+        ```
+
+    - Corrected the 404 error for `/static/css/style.css` by moving the code `app = Bottle()` above the `send_static` function, and replacing the `@route` decorator with `@app.route`.
+        - This puts all route callbacks in the same parent object (`app`).
+        - Set a dynamic absolute path for the static directory in the `static_file` function call
+
+            ```python
+            # bottle imports
+            from bottle import (
+                Bottle, HTTPError, HTTPResponse, static_file
+            )
+
+            # Name of static file subdirectory
+            APP_STATIC_DIR = 'static'
+            # Absolute path to the static directory
+            APP_STATIC_PATH = join(APP_PATH, APP_STATIC_DIR)
+
+            app = Bottle()
+
+            @app.route(path='/static/<filename:path>')
+            def send_static(
+                filename: str
+            ) -> Union[HTTPError, HTTPResponse]:
+                """ WW-Tweeter static file route.
+
+                    Args:
+                        filename (str):
+                            Static file name to load.
+
+                    Returns:
+                        static_file_path (Union[HTTPError, HTTPResponse]):
+                            HTTP Response or HTTP error object.
+                """
+
+                static_file_path = static_file(
+                    filename=filename,
+                    root=APP_STATIC_PATH
+                )
+
+                return static_file_path
+            ```
+
+- Full program runs correctly.
