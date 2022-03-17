@@ -1091,5 +1091,8 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
         - Exclude paths must be the paths in the GitHub repository, not the development environment
         - `/app/__dev__/.*`
         - `/_dockerfiles/web/__dev__/.*`
+    - Changed the `component_depth` value from `1` to `2`in [.bettercodehub.yml](https://github.com/timothyhull/ww_tweeter/blob/main/.bettercodehub.yml).
+        - A depth of 2 examines components in the app folder individually (db, tweeter, and web).
+        - A depth of 1 examines the app folder individually, as a single component.
     - Refactored [app/web/web.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/web/web.py) to reduce extra lines of code.
     - Refactored [app/db/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py) to reduce extra lines of code.
