@@ -559,7 +559,7 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
     create database wwt_tweeter_pytest;
     ```
 
-- Created database interaction framework in [app/db/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py)
+- Created database interaction framework in [app/db/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py).
 - Created database interaction test framework in [tests/test_db.py](https://github.com/timothyhull/ww_tweeter/blob/main/tests/test_db.py)
 
 ---
@@ -1081,3 +1081,15 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
             ```
 
 - Full program runs correctly.
+
+---
+
+## :notebook: 3/16/22
+
+- Refactored code for Better Code Hub Compliance rule _Write Small Units of Code_:
+    - Added exclude paths to [.bettercodehub.yml](https://github.com/timothyhull/ww_tweeter/blob/main/.bettercodehub.yml).
+        - Exclude paths must be the paths in the GitHub repository, not the development environment
+        - `/app/__dev__/.*`
+        - `/_dockerfiles/web/__dev__/.*`
+    - Refactored [app/web/web.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/web/web.py) to reduce extra lines of code.
+    - Refactored [app/db/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py) to reduce extra lines of code.
