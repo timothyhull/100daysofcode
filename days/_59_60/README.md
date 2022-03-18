@@ -1,4 +1,4 @@
-# :calendar: Day 59+60: 1/16/2022-3/16/2022
+# :calendar: Day 59+60: 1/16/2022-3/17/2022
 
 ---
 
@@ -54,7 +54,7 @@
 
 :white_check_mark: Write application
 
-:white_large_square: Fill README.md content
+:white_check_mark: Fill README.md content
 
 ---
 
@@ -1096,3 +1096,9 @@ Updated [Dockerfile.dev](https://github.com/timothyhull/ww_tweeter/blob/main/Doc
         - A depth of 1 examines the app folder individually, as a single component.
     - Refactored [app/web/web.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/web/web.py) to reduce extra lines of code.
     - Refactored [app/db/db.py](https://github.com/timothyhull/ww_tweeter/blob/main/app/db/db.py) to reduce extra lines of code.
+
+---
+
+## :notebook: 3/17/22
+
+- Added project overview and application setup instructions to [README.md](https://github.com/timothyhull/ww_tweeter/blob/main/README.md).
