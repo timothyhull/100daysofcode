@@ -464,3 +464,9 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 59+60aaf: [3/17/22](days/_59_60#notebook-31722)
 
 </details>
+
+<details><summary>Days 61-63: Using the Github API with Python</summary>
+
+- Day 61: [3/18/22](days/_61)
+
+</details>
