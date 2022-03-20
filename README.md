@@ -468,5 +468,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 <details><summary>Days 61-63: Using the Github API with Python</summary>
 
 - Day 61: [3/18/22](days/_61)
+- Day 61a: [3/19/22](days/_61#notebook-31922)
 
 </details>
