@@ -1,4 +1,4 @@
-# :calendar: Day 61: 3/18/2022-3/19/2022
+# :calendar: Day 61: 3/18/2022-3/22/2022
 
 ---
 
@@ -18,7 +18,9 @@
 
 ## Tasks
 
-:white_check_mark: Watch videos 1-
+:white_check_mark: Watch videos 1-2
+
+:white_large_square: Watch video
 
 :white_large_square: TBD
 
@@ -28,5 +30,13 @@
 
 ### :notebook: 3/18/22
 
+- Watched videos 1-2
 - Created [./github_api.ipynb](./github_api.ipybnb) Jupyter Notebook.
 - Setup `PyGithub` user object.
+
+---
+
+### :notebook: 3/19/22
+
+- Watched video 3
+- Updated notes in [./github_api.ipynb](./github_api.ipybnb)
