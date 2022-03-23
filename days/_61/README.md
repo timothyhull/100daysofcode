@@ -1,4 +1,4 @@
-# :calendar: Day 61: 3/18/2022-3/22/2022
+# :calendar: Day 61: 3/18/2022-3/23/2022
 
 ---
 
@@ -11,8 +11,14 @@
 ## Resources
 
 :star: [PyGithub](https://pypi.org/project/PyGithub/) on PyPI
+
 :star: [GitPython](https://pypi.org/project/GitPython/) on PyPI
+
 :star: [GitHub API Rate Limiting Documentation](https://docs.github.com/en/rest#rate-limiting)
+
+:star: [Python Debugger (`pdb`) Documentation](https://docs.python.org/3.7/library/pdb.html)
+
+:star: [PyBites Article - How to Use `pdb` to Debug Your Code](https://pybit.es/articles/pdb-debugger)
 
 ---
 
@@ -26,7 +32,11 @@
 
 :white_check_mark: Watch video 5 and create a GitHub gist
 
-:white_large_square: TBD
+:white_check_mark: Watch video 5
+
+:white_large_square: Watch video 6
+
+:white_large_square: Review PyBites `pdb` article and official `pdb` documentation.
 
 ---
 
@@ -95,3 +105,47 @@
         description='Get a user\'s most popular repos'
     )
     ```
+
+---
+
+### :notebook: 3/22/22
+
+- Watched video 6.
+- Reviewed functionality of the Python Debugger (`pdb`) module.
+    - Part of the Python Standard Library.
+    - Pauses code execution, and allows the use of a REPL.
+    - Very useful for inspecting objects and debugging, without having to continuously rerun code (with `print` function calls).
+
+        ```python
+        # Import the pdb and pprint modules
+        import pdb
+        from pprint import pprint
+
+        # Create a github.Github user object for a specific user
+        github_user = gh.get_user(login='timothyhull')
+
+        # Get a PaginatedList of a user's gists
+        gists = github_user.get_gists()
+
+        # Loop over the user's gists
+        for gist in gists:
+            pdb.set_trace()
+
+        ''' While in set_trace mode, enter some commands to inspect objects:
+
+                - pprint(dir(gist))
+                - gist.owner
+                - !help(gist)  # The ! prefix is required
+        '''
+
+        # Use output from commands in set_trace mode to create friendly output for each gist
+        for gist in gists:
+            print(
+                f'GitHub gists for "{github_user.name}":\n'
+                f'  Owner: {gist.owner}'
+                f'  ID: {gist.id}\n'
+                f'  Description: {gist.description}\n'
+                f'  Created on: {gist.created_at}\n'
+                f'  URL: {gist.url}\n'
+            )
+        ```
