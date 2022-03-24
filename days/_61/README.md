@@ -20,6 +20,8 @@
 
 :star: [PyBites Article - How to Use `pdb` to Debug Your Code](https://pybit.es/articles/pdb-debugger)
 
+:star: [PEP 553 - Python Built-In `breakpoint` Debugging Function](https://peps.python.org/pep-0553/)
+
 ---
 
 ## Tasks
@@ -34,9 +36,11 @@
 
 :white_check_mark: Watch video 5
 
-:white_large_square: Watch video 6
+:white_check_mark: Review PyBites `pdb` article
 
-:white_large_square: Review PyBites `pdb` article and official `pdb` documentation.
+:white_large_square: Review official `pdb` documentation
+
+:white_large_square: Watch video 6
 
 ---
 
@@ -118,7 +122,6 @@
 
         ```python
         # Import the pdb and pprint modules
-        import pdb
         from pprint import pprint
 
         # Create a github.Github user object for a specific user
@@ -129,7 +132,7 @@
 
         # Loop over the user's gists
         for gist in gists:
-            pdb.set_trace()
+            import pdb; pdb.set_trace()
 
         ''' While in set_trace mode, enter some commands to inspect objects:
 
@@ -149,3 +152,32 @@
                 f'  URL: {gist.url}\n'
             )
         ```
+
+---
+
+### :notebook: 3/23/22
+
+- Researched and tested the Python `breakpoint` function, as a replacement for `import pdb; pdb.set_trace()`.
+- Located `pdb`/`breakpoint` documentation by typing `help` during a debug session:
+
+    ```text
+    In [1]: breakpoint()
+    --Call--
+    > /usr/local/lib/python3.9/site-packages/IPython/core/displayhook.py(252)__call__()
+    -> def __call__(self, result=None):
+    (Pdb) help
+
+    Documented commands (type help <topic>):
+    ========================================
+    EOF    c          d        h         list      q        rv       undisplay
+    a      cl         debug    help      ll        quit     s        unt      
+    alias  clear      disable  ignore    longlist  r        source   until    
+    args   commands   display  interact  n         restart  step     up       
+    b      condition  down     j         next      return   tbreak   w        
+    break  cont       enable   jump      p         retval   u        whatis   
+    bt     continue   exit     l         pp        run      unalias  where    
+
+    Miscellaneous help topics:
+    ==========================
+    exec  pdb
+    ```
