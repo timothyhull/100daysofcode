@@ -1,4 +1,4 @@
-# :calendar: Day 61: 3/18/2022-3/23/2022
+# :calendar: Day 61: 3/18/2022-3/24/2022
 
 ---
 
@@ -38,9 +38,9 @@
 
 :white_check_mark: Review PyBites `pdb` article
 
-:white_large_square: Review official `pdb` documentation
+:white_check_mark: Review official `pdb` documentation
 
-:white_large_square: Watch video 6
+:white_check_mark: Watch video 6
 
 ---
 
@@ -181,3 +181,39 @@
     ==========================
     exec  pdb
     ```
+
+---
+
+### :notebook: 3/24/22
+
+- Reviewed Python `pdb` official documentation and tested a variety of `pdb` methods/features:
+    - The `pdb.run` method runs a string in the `statement` positional (0 position) argument:
+
+        ```python
+        pdb.run(
+            '''for i in range(1, 20):
+            print(f\'"i" = {i}\')'''
+        )
+        ```
+
+    - The `pdb.pm` method starts a post-mortem of the most recent exception/traceback found in `sys.last_traceback`
+
+        ```python
+        # Create a SyntaxError exception
+        except ValueError('Invalid Value') as e:
+
+        # Start a post-mortem inspection of the exception
+        pdb.pm()
+
+        # From the debugger prompt
+        locals()
+
+        '''
+        {'self': <IPython.core.compilerop.CachingCompiler object at 0x7f3cabe46a90>, 'source': "except ValueError('Invalid Value') as e:\n    pdb.post_mortem(e)\n", 'filename': '<ipython-input-9-62e2b80fd590>', 'symbol': 'exec'}
+        '''
+        ```
+
+    - The `!` prefix allows running Python commands within the debugger.
+        - This allows powerful commands, like setting/resetting variables and calling functions.
+
+- Watched video 6
