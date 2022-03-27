@@ -2,35 +2,47 @@
 jupyterlab
 # jupyter # (replaced with 'jupyterlab')
 ipykernel
+
 # list comprehensions
 requests
+
 # twitter API
 matplotlib
 numpy
 Pillow
 tweepy
 wordcloud
+
 # github api
 PyGithub
+
 # selenium
 selenium
+
 # data viz
 feedparser
 plotly
+
 # pytest
 pytest
 pytest-cov
 requests-mock
+
 # formatting
 autopep8
 flake8
+
 # data encoding
 pyyaml
+
 # logging with logger
 logbook
+
 # environment varable management
 python-dotenv
+
 # web scraping
 bs4
+
 # uplink HTTP client
 uplink
