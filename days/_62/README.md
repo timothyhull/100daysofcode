@@ -14,6 +14,10 @@
 
 :star: [GitHub Profiler](https://github.com/clamytoe/Github-Profiler) example application
 
+:star: [Flask web framework on PyPI](https://pypi.org/project/Flask)
+
+:star: [Flask web framework documentation](https://palletsprojects.com/p/flask)
+
 ---
 
 ## Tasks
@@ -28,7 +32,11 @@
 
 :white_large_square: Build development and runtime container environments
 
+:white_large_square: Add Better Code Hub Git repository integration
+
 :white_large_square: Write application
+
+:white_large_square: Fill README file
 
 ---
 
@@ -68,3 +76,19 @@
 
 - Created [GitHub Profiler repository](https://github.com/timothyhull/github_profiler) framework.
     - Created development environment using VS Code development container.
+
+---
+
+### :notebook: 3/28/22
+
+- Added `Flask` to:
+    - [requirements/requirements.txt](https://github.com/timothyhull/github_profiler/blob/main/requirements/requirements.txt)
+    - [requirements/requirements_dev.txt](https://github.com/timothyhull/github_profiler/blob/main/requirements/requirements_dev.txt)
+- Added port forwarding for TCP 8080 to [.devcontainer/devcontainer.json](https://github.com/timothyhull/github_profiler/blob/main/.devcontainer/devcontainer.json)
+    - Manually installed `Flask` in the development container.
+    - Added the `EXPOSE` instruction to:
+        - [Dockerfile](https://github.com/timothyhull/github_profiler/blob/main/Dockerfile)
+        - [Dockerfile.dev](https://github.com/timothyhull/github_profiler/blob/main/Dockerfile.dev)
+
+- Created initial `Flask` application file, [app/app.py](https://github.com/timothyhull/github_profiler/blob/main/Dockerfile)
+    - Successfully tested web service.
