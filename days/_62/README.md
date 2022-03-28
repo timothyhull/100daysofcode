@@ -22,9 +22,9 @@
 
 :white_check_mark: Select project to build (GitHub Profiler)
 
-:white_large_square: Create application design framework outline
+:white_check_mark: Create application design framework outline
 
-:white_large_square: Create GitHub repository for the application
+:white_check_mark: Create GitHub repository for the application
 
 :white_large_square: Build development and runtime container environments
 
@@ -61,3 +61,10 @@
     - Render API data in a readable, friendly way.
         - Display profile information, based on API call data.
         - List repositories with descriptive icons/emojis (a fork next to forked repositories, etc.)
+
+---
+
+### :notebook: 3/27/22
+
+- Created [GitHub Profiler repository](https://github.com/timothyhull/github_profiler) framework.
+    - Created development environment using VS Code development container.
