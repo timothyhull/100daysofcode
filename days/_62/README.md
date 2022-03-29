@@ -90,12 +90,15 @@
         - [Dockerfile](https://github.com/timothyhull/github_profiler/blob/main/Dockerfile)
         - [Dockerfile.dev](https://github.com/timothyhull/github_profiler/blob/main/Dockerfile.dev)
 
-- Created initial `Flask` application file, [app/app.py](https://github.com/timothyhull/github_profiler/blob/main/Dockerfile)
+- Created initial `Flask` application file, [app/app.py](https://github.com/timothyhull/github_profiler/blob/main/app/app.py)
     - Successfully tested web service.
 
 ---
 
 ### :notebook: 3/29/22
 
-- Refactored [app/app.py](https://github.com/timothyhull/github_profiler/blob/main/Dockerfile) to transition from a `Flask.run` method call to a `flask run` shell command:
+- Refactored [app/app.py](https://github.com/timothyhull/github_profiler/blob/main/app/app.py) to transition from a `Flask.run` method call to a `flask run` shell command:
     - Removed `Flask.run` and constant values.
+
+- Created initial `pytest` test in [tests/test_app.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_app.py).
+    - Added `Flask` to - [requirements/requirements_pytest.txt](https://github.com/timothyhull/github_profiler/blob/main/requirements/requirements_pytest.txt).
