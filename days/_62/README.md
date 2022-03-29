@@ -92,3 +92,10 @@
 
 - Created initial `Flask` application file, [app/app.py](https://github.com/timothyhull/github_profiler/blob/main/Dockerfile)
     - Successfully tested web service.
+
+---
+
+### :notebook: 3/29/22
+
+- Refactored [app/app.py](https://github.com/timothyhull/github_profiler/blob/main/Dockerfile) to transition from a `Flask.run` method call to a `flask run` shell command:
+    - Removed `Flask.run` and constant values.
