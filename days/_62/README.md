@@ -30,11 +30,13 @@
 
 :white_check_mark: Create GitHub repository for the application
 
-:white_large_square: Build development and runtime container environments
+:white_check_mark: Build development and runtime container environments
 
-:white_large_square: Add Better Code Hub Git repository integration
+:white_check_mark: Add Better Code Hub Git repository integration
 
 :white_large_square: Write application
+
+:white_large_square: Update CMD/ENTRYPOINT instruction in the application runtime Dockerfile
 
 :white_large_square: Fill README file
 
@@ -102,3 +104,11 @@
 
 - Created initial `pytest` test in [tests/test_app.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_app.py).
     - Added `Flask` to - [requirements/requirements_pytest.txt](https://github.com/timothyhull/github_profiler/blob/main/requirements/requirements_pytest.txt).
+    - Initial `pytest` test passes, and GitHub Actions workflows pass (due to having a `pytest` test available).
+
+---
+
+### :notebook: 3/30/22
+
+- Added [Better Code Hub integration](https://bettercodehub.com/results/timothyhull/github_profiler).
+    - Added badge to [README.md](https://github.com/timothyhull/github_profiler/blob/main/README.md)
