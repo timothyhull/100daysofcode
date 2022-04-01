@@ -111,4 +111,27 @@
 ### :notebook: 3/30/22
 
 - Added [Better Code Hub integration](https://bettercodehub.com/results/timothyhull/github_profiler).
-    - Added badge to [README.md](https://github.com/timothyhull/github_profiler/blob/main/README.md)
+    - Added badge to [README.md](https://github.com/timothyhull/github_profiler/blob/main/README.md).
+
+---
+
+### :notebook: 3/31/22
+
+- Added GitHub Actions workflow badges to [README.md](https://github.com/timothyhull/github_profiler/blob/main/README.md).
+- Followed the `Flask` tutorial through the [HTML Escaping](https://flask.palletsprojects.com/en/2.1.x/quickstart/#html-escaping) section.
+- Created the `pytest` test function `test_hello` in [tests/test_app.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_app.py).
+    - Created the function `hello` in [app/app.py](https://github.com/timothyhull/github_profiler/blob/main/app/app.py), using a TDD methodology to support passing `pytest` tests.
+    - Used a custom route to pass a variable to the `hello` function, and display dynamic output.
+    - Used the `markupsafe.escape` function to render all input as text, and prevent code injection attacks.
+
+        ```python
+        from flask import Flask
+        from markupsafe import escape
+
+        app = Flask(__name__)
+
+
+        @app.route('/<name>/')  # <name> becomes the name of an available parameter
+        def hello(name: str):
+            return f'Hello, {escape(name)}.'  # Renders the value for name strictly as text (not any form of code)
+        ```
