@@ -131,7 +131,41 @@
         app = Flask(__name__)
 
 
-        @app.route('/<name>/')  # <name> becomes the name of an available parameter
+        @app.route('/<name>/')  # <name> becomes a keyword argument
         def hello(name: str):
             return f'Hello, {escape(name)}.'  # Renders the value for name strictly as text (not any form of code)
         ```
+
+---
+
+### :notebook: 4/1/22
+
+- Tested the [`url_for` method](https://flask.palletsprojects.com/en/2.1.x/quickstart/#url-building), which will automatically escape special characters.
+
+    ```python
+    from flask import Flask
+
+    app = Flask(__name__)
+
+
+    @app.route('/')
+    def home() -> str:
+        return 'This is a test'
+
+
+    @app.route('/<name>/')  # <name> becomes a keyword argument
+    def hello(name: str) -> str:
+        return f'Hello, {name}.'
+
+
+    with app.test_request_context():
+    print(url_for('home'))
+    print(url_for('home', next='/'))
+    print(url_for('hello', name='Timmy'))
+    ```
+
+- Renamed web components from `app` to `web`:
+    - [web/web.py](https://github.com/timothyhull/github_profiler/blob/main/web/web.py)
+    - [tests/test_web.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_web.py)
+
+- Created [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py) to interact with the GitHub API.
