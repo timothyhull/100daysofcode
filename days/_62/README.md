@@ -169,3 +169,19 @@
     - [tests/test_web.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_web.py)
 
 - Created [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py) to interact with the GitHub API.
+
+---
+
+### :notebook: 4/2/22
+
+- Tested GitHub authentication using an invalid GitHub token, to determine the exception `PyGithub` raises.
+
+    ```shell
+    github.GithubException.BadCredentialsException: 401 {"message": "Bad credentials", "documentation_url": "https://docs.github.com/rest"}
+    ```
+
+- Created the `pytest` file [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py) to test functions in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py).
+    - Created the `test_github_auth` function to test the `github_auth` function.
+        - Created mock class (`Github_Mock`) for the `github.Github` object.
+    - Started writing the `github_auth` function via TDD.
+    - `pytest` test does not pass, and `github_auth` function does not yet work.
