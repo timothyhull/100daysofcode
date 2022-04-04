@@ -185,3 +185,13 @@
         - Created mock class (`Github_Mock`) for the `github.Github` object.
     - Started writing the `github_auth` function via TDD.
     - `pytest` test does not pass, and `github_auth` function does not yet work.
+
+---
+
+### :notebook: 4/3/22
+
+- Conducted additional testing of the `test_github_auth` function in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py).
+    - Attempted to use `@patch(target='github.Github')`, to patch a class instance directly, instead of using `@patch.object(target=github, attribute='Github')`.
+        - A `github.GithubException.BadCredentialsException` exception occurs, indicating that `unittest.mock.patch` does not intercept the call to `github.Github` in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py).
+    - A workaround to pass the `pytest` test is to replace the import `from github import Github` with `import github` in both [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), and [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py).
+        - Omitting the `from` keyword allows `unittest.mock.patch` to intercept the call to `github.Github`.
