@@ -195,3 +195,36 @@
         - A `github.GithubException.BadCredentialsException` exception occurs, indicating that `unittest.mock.patch` does not intercept the call to `github.Github` in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py).
     - A workaround to pass the `pytest` test is to replace the import `from github import Github` with `import github` in both [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), and [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py).
         - Omitting the `from` keyword allows `unittest.mock.patch` to intercept the call to `github.Github`.
+
+---
+
+### :notebook: 4/4/22
+
+- Created the `test_github_auth_login_exception` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), to test for invalid credentials.
+    - This test requires online connectivity to the GitHub API.
+    - Used `pytest.mark.skipif` to conditionally skip the test when online connectivity to the GitHub API is not available.
+
+        ```python
+        from pytest import mark
+
+        try:
+            # Send a GET request to the GitHub API
+            get(
+                url=GITHUB_API_URL
+            )
+
+            # Set the github_api_online variable to True for successful connections
+            github_api_online = True
+
+        except ConnectionError:
+            # Set the github_api_online variable to False for unsuccessful connections
+            github_api_online = False
+
+        @mark.skipif(
+            condition='github_api_online == False'
+        )
+        def test_github_auth_login_exception() -> None:
+            """ Truncated for brevity. """
+        ```
+
+- Updated the `github_auth` function in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py) to support passing the `test_github_auth_login_exception` test.
