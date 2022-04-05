@@ -228,3 +228,4 @@
         ```
 
 - Updated the `github_auth` function in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py) to support passing the `test_github_auth_login_exception` test.
+    - All `pytest` tests pass.
