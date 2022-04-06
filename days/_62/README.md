@@ -229,3 +229,11 @@
 
 - Updated the `github_auth` function in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py) to support passing the `test_github_auth_login_exception` test.
     - All `pytest` tests pass.
+
+---
+
+### :notebook: 4/5/22
+
+- Created the framework for the `pytest` function `test_github_get_user` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), to test fetching a `github.NamedUser.NamedUser` or `github.AuthenticatedUser.AuthenticatedUser` object.
+    - Used `iPython` to test fetching a user profile with the `github.Github.get_user` method.
+    - Determined passing a username argument to the lone parameter (`login`) results in a `github.NamedUser.NamedUser` object, whereas passing no username argument results in a `github.AuthenticatedUser.AuthenticatedUser` object (assuming the `github.Github` object was authenticated with a token).
