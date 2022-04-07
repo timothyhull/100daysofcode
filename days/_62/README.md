@@ -249,3 +249,12 @@
 
 - Created the test class `Github_Auth_Mock` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), to mock the `github.AuthenticatedUser.AuthenticatedUser` object.
     - This class will provide object mocking the forthcoming `github_get_user` function.
+
+---
+
+### :notebook: 4/7/22
+
+- Added the `get_user` method to the test class `Github_Mock` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), to mock calls to the `github.Github.get_user` method.
+- Created the function `github_get_user` in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py), to retrieve Github user data.
+    - All `pytest` tests pass, however the `github_get_user` throws an `AssertionError` exception when run outside of `pytest`.
+    - Troubleshooting required.
