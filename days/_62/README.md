@@ -236,4 +236,16 @@
 
 - Created the framework for the `pytest` function `test_github_get_user` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), to test fetching a `github.NamedUser.NamedUser` or `github.AuthenticatedUser.AuthenticatedUser` object.
     - Used `iPython` to test fetching a user profile with the `github.Github.get_user` method.
-    - Determined passing a username argument to the lone parameter (`login`) results in a `github.NamedUser.NamedUser` object, whereas passing no username argument results in a `github.AuthenticatedUser.AuthenticatedUser` object (assuming the `github.Github` object was authenticated with a token).
+    - Determined passing a username argument to the lone parameter (`login`) results in a `github.NamedUser.NamedUser` object, whereas passing no username argument results in a `github.AuthenticatedUser.AuthenticatedUser` object, even without authenticating the `github.Github` object with a token.
+        - Without supplying a token, calling methods of the `github.AuthenticatedUser.AuthenticatedUser` result in a 401 error:
+
+            ```shell
+            GithubException: 401 {"message": "Requires authentication", "documentation_url": "https://docs.github.com/rest/reference/repos#list-repositories-for-the-authenticated-user"}
+            ```
+
+---
+
+### :notebook: 4/6/22
+
+- Created the test class `Github_Auth_Mock` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), to mock the `github.AuthenticatedUser.AuthenticatedUser` object.
+    - This class will provide object mocking the forthcoming `github_get_user` function.
