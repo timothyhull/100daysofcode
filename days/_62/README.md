@@ -258,3 +258,13 @@
 - Created the function `github_get_user` in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py), to retrieve Github user data.
     - All `pytest` tests pass, however the `github_get_user` throws an `AssertionError` exception when run outside of `pytest`.
     - Troubleshooting required.
+
+---
+
+### :notebook: 4/8/22
+
+- Corrected the `AssertionError` in the `github_get_user` function for [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py).
+    - `AssertionError` was the result of setting the default value for the `login` parameter in the `github.Github.get_user` method to `None`.
+        - The only types allowed for the `login` parameter are `str` and `github.GithubObject._NotSetType`.
+        - Updated the `github_get_user` definition to use the `Union` type class with the correct types.
+        - Set the default value for the `login` parameter to `github.GithubObject.NotSet`.
