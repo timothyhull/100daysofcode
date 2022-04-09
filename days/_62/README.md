@@ -234,7 +234,7 @@
 
 ### :notebook: 4/5/22
 
-- Created the framework for the `pytest` function `test_github_get_user` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), to test fetching a `github.NamedUser.NamedUser` or `github.AuthenticatedUser.AuthenticatedUser` object.
+- Created the framework for the `pytest` function `test_get_github_user` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), to test fetching a `github.NamedUser.NamedUser` or `github.AuthenticatedUser.AuthenticatedUser` object.
     - Used `iPython` to test fetching a user profile with the `github.Github.get_user` method.
     - Determined passing a username argument to the lone parameter (`login`) results in a `github.NamedUser.NamedUser` object, whereas passing no username argument results in a `github.AuthenticatedUser.AuthenticatedUser` object, even without authenticating the `github.Github` object with a token.
         - Without supplying a token, calling methods of the `github.AuthenticatedUser.AuthenticatedUser` result in a 401 error:
@@ -248,23 +248,32 @@
 ### :notebook: 4/6/22
 
 - Created the test class `Github_Auth_Mock` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), to mock the `github.AuthenticatedUser.AuthenticatedUser` object.
-    - This class will provide object mocking the forthcoming `github_get_user` function.
+    - This class will provide object mocking the forthcoming `get_github_user` function.
 
 ---
 
 ### :notebook: 4/7/22
 
 - Added the `get_user` method to the test class `Github_Mock` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), to mock calls to the `github.Github.get_user` method.
-- Created the function `github_get_user` in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py), to retrieve Github user data.
-    - All `pytest` tests pass, however the `github_get_user` throws an `AssertionError` exception when run outside of `pytest`.
+- Created the function `get_github_user` in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py), to retrieve Github user data.
+    - All `pytest` tests pass, however the `get_github_user` throws an `AssertionError` exception when run outside of `pytest`.
     - Troubleshooting required.
 
 ---
 
 ### :notebook: 4/8/22
 
-- Corrected the `AssertionError` in the `github_get_user` function for [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py).
+- Corrected the `AssertionError` in the `get_github_user` function for [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py).
     - `AssertionError` was the result of setting the default value for the `login` parameter in the `github.Github.get_user` method to `None`.
         - The only types allowed for the `login` parameter are `str` and `github.GithubObject._NotSetType`.
-        - Updated the `github_get_user` definition to use the `Union` type class with the correct types.
+        - Updated the `get_github_user` definition to use the `Union` type class with the correct types.
         - Set the default value for the `login` parameter to `github.GithubObject.NotSet`.
+    - All `pytest` tests pass and the `get_github_user` function runs correctly.
+
+---
+
+### :notebook: 4/9/22
+
+- Added the `get_repos` method to the test class `Github_Auth_Mock` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), to mock calls to the `github.AuthenticatedUser.AuthenticatedUser.get_repos` method.
+- Created the function `get_github_repos` in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py), to retrieve Github user repos.
+    - All `pytest` tests pass.
