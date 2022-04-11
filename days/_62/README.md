@@ -284,3 +284,11 @@
 
 - Created database models file [db/db_models.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_models.py).
     - Created `Repos` class to model each GitHub repo.
+
+---
+
+### :notebook: 4/11/22
+
+- Created the `pytest` file [tests/test_db_models.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_db_models.py) to test classes and methods in [db/db_models.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_models.py).
+    - Created the test `test_repos` to test the `__repr__` method in an instance of the `Repos` class.
+    - Test successfully passes.
