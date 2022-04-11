@@ -277,3 +277,10 @@
 - Added the `get_repos` method to the test class `Github_Auth_Mock` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py), to mock calls to the `github.AuthenticatedUser.AuthenticatedUser.get_repos` method.
 - Created the function `get_github_repos` in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py), to retrieve Github user repos.
     - All `pytest` tests pass.
+
+---
+
+### :notebook: 4/10/22
+
+- Created database models file [db/db_models.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_models.py).
+    - Created `Repos` class to model each GitHub repo.
