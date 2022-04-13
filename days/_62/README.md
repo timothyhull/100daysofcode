@@ -292,3 +292,11 @@
 - Created the `pytest` file [tests/test_db_models.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_db_models.py) to test classes and methods in [db/db_models.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_models.py).
     - Created the test `test_repos` to test the `__repr__` method in an instance of the `Repos` class.
     - Test successfully passes.
+
+---
+
+### :notebook: 4/12/22
+
+- Updated [db/db_models.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_models.py) attribute naming and order for simplicity.
+- Revised the `get_github_repos` function in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py) to return a `list` of `namedtuple` objects, instead of a `github.PaginatedList.PaginatedList` object.
+    - Updated `pytest` tests to pass correctly, although the test file needs cleanup around the `GitHub_PaginatedList_Mock` class.
