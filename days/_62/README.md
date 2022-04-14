@@ -300,3 +300,13 @@
 - Updated [db/db_models.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_models.py) attribute naming and order for simplicity.
 - Revised the `get_github_repos` function in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py) to return a `list` of `namedtuple` objects, instead of a `github.PaginatedList.PaginatedList` object.
     - Updated `pytest` tests to pass correctly, although the test file needs cleanup around the `GitHub_PaginatedList_Mock` class.
+
+---
+
+### :notebook: 4/13/22
+
+- Conducted testing to get private repos with the `AuthenticatedUser.AuthenticatedUser.get_repos` method.
+    - Trued using the `git_user` parameters/arguments `visibility='private'` and `type='private`'.
+    - Unable to retrieve private repositories.
+- Replaced instances of the `last_modified` attribute with `updated_at`.
+    - `last_modified` returned `None` for all repositories.
