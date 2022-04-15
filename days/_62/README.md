@@ -310,3 +310,12 @@
     - Unable to retrieve private repositories.
 - Replaced instances of the `last_modified` attribute with `updated_at`.
     - `last_modified` returned `None` for all repositories.
+
+---
+
+### :notebook: 4/14/22
+
+- Created initial database interaction file, [db/db.py](https://github.com/timothyhull/github_profiler/blob/main/db/db.py)
+- Created initial database `pytest`, [tests/test_db.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_db.py).
+- Tested the `Sqlite3` module by creating the initial database file [db/github_profiler.db](https://github.com/timothyhull/github_profiler/blob/main/db/github_profiler.db).
+    - Performed initial testing using `iPython`.
