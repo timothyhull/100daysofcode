@@ -18,6 +18,12 @@
 
 :star: [Flask web framework documentation](https://palletsprojects.com/p/flask)
 
+:star: [SQLite3 Documentation (docs.python.org)](https://docs.python.org/3/library/sqlite3.html)
+
+:star: [SQLAlchemy Tutorial](https://docs.sqlalchemy.org/en/14/orm/index.html)
+
+<!-- :star: [SQLite3 Documentation (sqllite.org)](https://www.sqlite.org/docs.html) -->
+
 ---
 
 ## Tasks
@@ -319,3 +325,21 @@
 - Created initial database `pytest`, [tests/test_db.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_db.py).
 - Tested the `Sqlite3` module by creating the initial database file [db/github_profiler.db](https://github.com/timothyhull/github_profiler/blob/main/db/github_profiler.db).
     - Performed initial testing using `iPython`.
+
+---
+
+### :notebook: 4/15/22
+
+- Tested using `Pathlib.Path` and `os.path.abspath` in the file [db/db.py](https://github.com/timothyhull/github_profiler/blob/main/db/db.py), to to generate the path to the database file automatically:
+
+    ```python
+    # Import modules
+    from os.path import abspath, dirname, join
+    from Pathlib import Path
+
+    # Determine current directory
+    DB_FILE_NAME = 'my_db.db'
+    CURRENT_DIR = Path(dirname(__file__))
+    ABS_PATH = abspath(CURRENT_DIR)
+    DB_NAME = join(ABS_PATH, DB_FILE_NAME)
+    ```
