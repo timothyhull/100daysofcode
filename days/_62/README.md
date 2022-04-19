@@ -321,8 +321,8 @@
 
 ### :notebook: 4/14/22
 
-- Created initial database interaction file, [db/db.py](https://github.com/timothyhull/github_profiler/blob/main/db/db.py)
-- Created initial database `pytest`, [tests/test_db.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_db.py).
+- Created initial database interaction file, [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py).
+- Created initial database `pytest`, [tests/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/tests/db_helper.py).
 - Tested the `Sqlite3` module by creating the initial database file [db/github_profiler.db](https://github.com/timothyhull/github_profiler/blob/main/db/github_profiler.db).
     - Performed initial testing using `iPython`.
 
@@ -330,7 +330,7 @@
 
 ### :notebook: 4/15/22
 
-- Tested using `Pathlib.Path` and `os.path.abspath` in the file [db/db.py](https://github.com/timothyhull/github_profiler/blob/main/db/db.py), to to generate the path to the database file automatically:
+- Tested using `Pathlib.Path` and `os.path.abspath` in the file [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py), to to generate the path to the database file automatically:
 
     ```python
     # Import modules
@@ -342,4 +342,45 @@
     CURRENT_DIR = Path(dirname(__file__))
     ABS_PATH = abspath(CURRENT_DIR)
     DB_NAME = join(ABS_PATH, DB_FILE_NAME)
+    ```
+
+---
+
+### :notebook: 4/18/22
+
+- Added `*args` and `**kwargs` parameters to `Github_Auth_Mock.get_repos` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler.py).
+    - Corrects `pytest` failure caused by the `get_github_repos` function in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py), due to the keyword argument `affiliation` that is valid in `github.AuthenticatedUser.AuthenticatedUser` class, although did not exist in the `Github_Auth_Mock` class.
+
+- Updated constants in [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py).
+- Created SQLAlchemy engine object with the `sqlalchemy.create_engine` method, and created an `sqlalchemy.orm.session` object bound to the `sqlalchemy.create_engine` object:
+
+    ```python
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import Session
+
+    engine = create_engine(
+        url='sqlite+pysqlite:///:memory:',
+        echo=True,
+        future=True
+    )
+
+    session = Session(
+        engine
+    )
+    ```
+
+- Created database tables with the SQLAlchemy `sqlalchemy.ext.declarative.declarative_base.metadata.create_all` function, bound to the `engine` object.
+
+    ```python
+    from db.db_models import BASE
+
+    BASE.metadata.create_all(engine)
+    ```
+
+- Queried the `Repos` table of the database
+
+    ```python
+    from db.db_models import Repos
+
+    session.query(Repos).all()
     ```
