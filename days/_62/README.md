@@ -384,3 +384,9 @@
 
     session.query(Repos).all()
     ```
+
+---
+
+### :notebook: 4/19/22
+
+- Refactor existing code in [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py) as a function (`_create_session`).
