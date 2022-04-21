@@ -390,3 +390,37 @@
 ### :notebook: 4/19/22
 
 - Refactor existing code in [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py) as a function (`_create_session`).
+
+---
+
+### :notebook: 4/20/22
+
+- **Follow-up from 4/13/22**
+    - Refreshed GitHub access token and added permission to access private repositories to the token.
+    - Requesting repos with [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py) now returns all repos, public and private.
+
+- Updated [db/db_models.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_models.py):
+    - Updated `Repos` docstring to show class attributes (database columns).
+    - Added `private` column (`bool`) to store repository private status.
+    - Updated `Repos` `__repr__` function with private repository information.
+
+- Updated `pytest` tests to support the `Repos` class `private` attribute/DB column:
+- [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler).
+- [tests/test_db_models.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_db_models.py).
+
+- Added new functions to [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py):
+    - `commit_session`: commit staged changes to the database.
+    - `truncate_tables`: clear all database table rows.
+    - `get_repos`: get all repos from the database.
+    - `add_repos` add repos to the database.
+
+- Updated the `get_github_repos` function in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py) to use the`login` attribute for the `repo.owner` attribute.
+    - Returns a string of the repo owner instead of a class instance:
+
+    ```python
+    print(repo.owner)
+    # NamedUser(login="timothyhull")
+
+    print(repo.owner.login)
+    # 'timothyhull'
+    ```
