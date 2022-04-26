@@ -424,3 +424,170 @@
     print(repo.owner.login)
     # 'timothyhull'
     ```
+
+---
+
+### :notebook: 4/25/22
+
+- Corrected failing `pytest` test `test_get_github_repos` in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler).
+
+    ```shell
+    pytest -v
+    =========================================================================== test session starts ============================================================================
+    platform linux -- Python 3.10.4, pytest-7.1.1, pluggy-1.0.0 -- /usr/local/bin/python
+    cachedir: .pytest_cache
+    rootdir: /workspaces/github_profiler
+    plugins: cov-3.0.0
+    collected 7 items                                                                                                                                                          
+
+    tests/test_db_models.py::test_repos PASSED                                                                                                                           [ 14%]
+    tests/test_github_profiler.py::test_github_auth PASSED                                                                                                               [ 28%]
+    tests/test_github_profiler.py::test_github_auth_login_exception PASSED                                                                                               [ 42%]
+    tests/test_github_profiler.py::test_get_github_user PASSED                                                                                                           [ 57%]
+    tests/test_github_profiler.py::test_get_github_repos FAILED                                                                                                          [ 71%]
+    tests/test_web.py::test_home PASSED                                                                                                                                  [ 85%]
+    tests/test_web.py::test_hello PASSED                                                                                                                                 [100%]
+
+    ================================================================================= FAILURES =================================================================================
+    __________________________________________________________________________ test_get_github_repos ___________________________________________________________________________
+
+    github_mock_repos_obj = <MagicMock name='get_repos' id='140262883150144'>
+
+        @patch(
+            target='github.AuthenticatedUser.AuthenticatedUser.get_repos'
+        )
+        def test_get_github_repos(
+            github_mock_repos_obj: MagicMock
+        ) -> None:
+            """ Test the get_github_repos function.
+        
+                Mock the github.PaginatedList.PaginatedList object returned by
+                the github.AuthenticatedUser.AuthenticatedUser.get_repos
+                method.
+        
+                Args:
+                    github_mock_auth_obj (unittest.mock.MagicMock):
+                        Mock of the github.AuthenticatedUser object.
+        
+                Returns:
+                    None.
+            """
+        
+            # Call the get_github_repos function with a mock AuthenticatedUser object
+    >       gh_repos = get_github_repos(
+                github_user_object=Github_Auth_Mock()
+            )
+
+    tests/test_github_profiler.py:257: 
+    _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    github_user_object = <test_github_profiler.Github_Auth_Mock object at 0x7f917f50a2c0>
+
+        def get_github_repos(
+            github_user_object: AuthenticatedUser
+        ) -> List:
+            """ Get a user's GitHub repos.
+        
+                Calls the get_repos method on the
+                github.AuthenticatedUser.AuthenticatedUser github_user.
+        
+                Args:
+                    github_user (github.AuthenticatedUser.AuthenticatedUser):
+                        github.AuthenticatedUser.AuthenticatedUser object for
+                        a GitHub user.
+        
+                Returns:
+                    repo_list (List):
+                        List of GitHubRepo namedtuple objects for each GitHub
+                        repos.
+            """
+        
+            # Get a list of repos for a GitHub user
+            repos = github_user_object.get_repos(
+                affiliation=GITHUB_AFFILIATION
+            )
+        
+            # Create a list to hold each repo as a list item
+            repo_list = []
+        
+            # Loop over the repos PaginatedList object
+            for repo in repos:
+        
+                # Create a GitHubRepo namedtuple object for the current repo iteration
+                repo_object = GitHubRepo(
+                    name=repo.name,
+                    description=repo.description,
+    >               owner=repo.owner.login,
+                    private=repo.private,
+                    url=repo.url,
+                    updated_at=repo.updated_at
+                )
+    E           AttributeError: 'str' object has no attribute 'login'
+
+    app/github_profiler.py:143: AttributeError
+    ========================================================================= short test summary info ==========================================================================
+    FAILED tests/test_github_profiler.py::test_get_github_repos - AttributeError: 'str' object has no attribute 'login'
+    ======================================================================= 1 failed, 6 passed in 1.49s ======================================================================== 
+    ```
+
+    - Added the mock class `MockGithubRepositoryOwner` with a `login` attribute to match the `login` attribute of the `owner` object returned by GitHub for a repo.
+
+    ```python
+    # GitOwnerLogin mock class definition object
+    class MockGithubRepositoryOwner:
+        """ Mock of the PyGithub Repository class.
+
+            The full path to the mocked object is:
+                github.Repository.Repository.owner
+
+            The object type for the path to the mock attribute
+            'self.login' is:
+                github.NamedUser.NamedUser
+        """
+
+        def __init__(
+            self,
+            owner: str
+        ) -> None:
+
+            """ Class initializer.
+
+                Args:
+                    owner (str):
+                        Name of the repository owner to populate the
+                        'login' attribute.
+
+                Returns:
+                    None.
+            """
+
+            self.login = owner
+    ```
+
+    - Updated the `MOCK_GITHUB_USER` constant value using :
+
+    ```python
+    MOCK_GITHUB_USER = MockGithubRepositoryOwner(owner='timothyhull')
+    ```
+
+    - All `pytest` tests pass.
+
+- Updated load of environment variables in ... such that the script attempts to load `.env` files from the `./` directory and also the user's working directory:
+
+    ```python
+    from dotenv import load_dotenv
+    from os import getcwd
+    from os.path import join
+
+    # Load environment variables from the directory of this script
+    load_dotenv(
+        dotenv_path='./.env'
+    )
+
+    # Load environment variables from the script user's working directory
+    load_dotenv(
+        dotenv_path=join(
+            getcwd(), '.env'
+        )
+    )
+    ```
