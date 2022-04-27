@@ -591,3 +591,24 @@
         )
     )
     ```
+
+---
+
+### :notebook: 4/26/22
+
+- Replaced the `MockGithubRepositoryOwner` class object with a `namedtuple` object in [tests/test_github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/tests/test_github_profiler):
+
+    ```python
+    MockGithubRepositoryOwner = namedtuple(
+        typename='MockGithubRepositoryOwner',
+        field_names=['login']
+    )
+    ```
+
+    - All `pytest` tests pass.
+
+- Created a `main` function in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py) to run the workflow of populating the database with repositories.
+
+- Modified/tested the URL path to the `SQLite3` database in [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py), to create database persistence.
+    - Previously the database was in-memory.
+    - Database persistence achieved, although code needs cleanup.
