@@ -612,3 +612,15 @@
 - Modified/tested the URL path to the `SQLite3` database in [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py), to create database persistence.
     - Previously the database was in-memory.
     - Database persistence achieved, although code needs cleanup.
+
+---
+
+### :notebook: 4/27/22
+
+- Migrated multiple `.env` file loading to a helper function `load_env_vars` in the file [_github_profiler/github_helper.py](https://github.com/timothyhull/github_profiler/blob/main/_github_profiler/github_helper.py).  Applies to the following files:
+    - [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py)
+    - [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py)
+
+- Add `repo_name` parameter to the `get_repos` function in [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py), to allow queries for for a single repo entry.
+
+- Updated usage of the `DB_URL` and `TEST_DB_URL` constants in [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py)
