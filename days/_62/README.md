@@ -624,3 +624,20 @@
 - Add `repo_name` parameter to the `get_repos` function in [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py), to allow queries for for a single repo entry.
 
 - Updated usage of the `DB_URL` and `TEST_DB_URL` constants in [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py)
+
+---
+
+### :notebook: 4/27/22
+
+- Troubleshot `pytest` failure in GitHub Action [.github/workflows/pytest.yml](https://github.com/timothyhull/github_profiler/blob/main/app/.github/workflows/pytest.yml)
+    - Added GitHub Action `@python-setup` action in [.github/workflows/pytest.yml](https://github.com/timothyhull/github_profiler/blob/main/app/.github/workflows/pytest.yml) to use Python version 3.10 in the GitHub Action runner.
+    - Added `DB_NAME` environment variables, so `pytest` does not attempt to use a `NoneType` in the `os.path.join` function, when setting the `DB_PATH` variable:
+
+        ```python
+        DB_NAME = getenv(key='DB_NAME', default=None)
+        DB_PATH = join(CURRENT_DIR, DB_NAME)
+        ```
+
+- Updated GitHub `@checkout` action to v3 in:
+    - [.github/workflows/pytest.yml](https://github.com/timothyhull/github_profiler/blob/main/app/.github/workflows/pytest.yml)
+    - [.github/workflows/lint-files.yml](https://github.com/timothyhull/github_profiler/blob/main/app/.github/workflows/lint-files.yml)
