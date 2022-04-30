@@ -627,7 +627,7 @@
 
 ---
 
-### :notebook: 4/27/22
+### :notebook: 4/28/22
 
 - Troubleshot `pytest` failure in GitHub Action [.github/workflows/pytest.yml](https://github.com/timothyhull/github_profiler/blob/main/app/.github/workflows/pytest.yml)
     - Added GitHub Action `@python-setup` action in [.github/workflows/pytest.yml](https://github.com/timothyhull/github_profiler/blob/main/app/.github/workflows/pytest.yml) to use Python version 3.10 in the GitHub Action runner.
@@ -641,3 +641,48 @@
 - Updated GitHub `@checkout` action to v3 in:
     - [.github/workflows/pytest.yml](https://github.com/timothyhull/github_profiler/blob/main/app/.github/workflows/pytest.yml)
     - [.github/workflows/lint-files.yml](https://github.com/timothyhull/github_profiler/blob/main/app/.github/workflows/lint-files.yml)
+
+---
+
+### :notebook: 4/29/22
+
+- Add exception handling for a missing/invalid token in [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py):
+
+    ```python
+    from sys import exit
+
+    # Handle authentication failures
+    except GithubException as e:
+        print(
+            f'\n** A {e.status} error occurred **\n'
+            f'\n{e.data}\n'
+            '\n** Make sure your working directory has an .env file with the '
+            'variable "GITHUB_TOKEN" set to a valid GitHub Access Token **\n'
+        )
+        exit(1)
+    ```
+
+- Update calls to the `load_env_vars` function in [_github_profiler/github_helper.py](https://github.com/timothyhull/github_profiler/blob/main/_github_profiler/github_helper.py) to correctly load the `.env` file in the same path as the file calling the function:
+
+    ```python
+    from os.path import dirname, join
+
+    load_env_vars(
+        env_path=join(
+            dirname(), '.env'
+        )
+    )
+    ```
+
+    - Before this change, `load_env_vars` loaded the `.env` file from the same directory as the file [_github_profiler/github_helper.py](https://github.com/timothyhull/github_profiler/blob/main/_github_profiler/github_helper.py), not the file calling the function.
+
+    - Updated the function call in each of the files from the files:
+        - [app/github_profiler.py](https://github.com/timothyhull/github_profiler/blob/main/app/github_profiler.py)
+        - [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py)
+
+- Revise conditional logic in the `get_repos` function of [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py) to correctly perform either a full database repo query, or a query for a single repo.
+    - Added the `all` method to the database query syntax, to return a `list` object, instead of an `sqlalchemy.orm.query` object:
+
+        ```python
+        repos = session.query(Repos).filter(Repos.name == repo_name).all()
+        ```
