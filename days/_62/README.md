@@ -686,3 +686,23 @@
         ```python
         repos = session.query(Repos).filter(Repos.name == repo_name).all()
         ```
+
+---
+
+### :notebook: 4/30/22
+
+- Updated the Flask variables in the `.env` file to use a new file, [web/app.py](https://github.com/timothyhull/github_profiler/blob/main/web/app.py), for the web application.
+    - Replaces the old file (used for testing), [web/web.py](https://github.com/timothyhull/github_profiler/blob/main/web/web.py).
+
+    ```text
+    # .env file
+    FLASK_APP=web.app.py
+    FLASK_DEBUG=True
+    FLASK_HOST=127.0.0.1:8080
+    FLASK_RUN_PORT=8080
+    ```
+
+- Configured a default route in [web/app.py](https://github.com/timothyhull/github_profiler/blob/main/web/app.py) to:
+    - Call the `get_repos` function in [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py), to get a list of repos in the database.
+    - Return a string of repo names.
+    - The string does not render well in a browser, so formatting with HTML using a template is necessary.
