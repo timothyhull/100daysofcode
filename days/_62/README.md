@@ -706,3 +706,10 @@
     - Call the `get_repos` function in [db/db_helper.py](https://github.com/timothyhull/github_profiler/blob/main/db/db_helper.py), to get a list of repos in the database.
     - Return a string of repo names.
     - The string does not render well in a browser, so formatting with HTML using a template is necessary.
+
+---
+
+### :notebook: 5/1/22
+
+- Updated [web/app.py](https://github.com/timothyhull/github_profiler/blob/main/web/app.py) to use the `flask.render_template` method template, in order to render HTML using a Jinja2 template.
+    - Created the Jinja2 template [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html) with a simple layout to display all repositories.
