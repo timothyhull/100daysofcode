@@ -713,3 +713,10 @@
 
 - Updated [web/app.py](https://github.com/timothyhull/github_profiler/blob/main/web/app.py) to use the `flask.render_template` method template, in order to render HTML using a Jinja2 template.
     - Created the Jinja2 template [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html) with a simple layout to display all repositories.
+
+---
+
+### :notebook: 5/2/22
+
+- Added inline documentation comments to [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html).
+- Created the file [web/style/style.css](https://github.com/timothyhull/github_profiler/blob/main/web/style/style.css) to host webpage styling.
