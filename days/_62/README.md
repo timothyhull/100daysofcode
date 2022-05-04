@@ -735,4 +735,16 @@
     - Commented out the default stylesheet, to use the dark mode stylesheet.
     - Day/night modes automatically activate based on the browser settings.
     - Added button to manually toggle day/night mode.
-- Used the `flask.url_for` method to include the static file [web/static/css/custom.css](https://github.com/timothyhull/github_profiler/blob/main/web/static/css/custom.css) (renamed from `style.css`)
+- Used the `flask.url_for` method to include the static file [web/static/css/custom.css](https://github.com/timothyhull/github_profiler/blob/main/web/static/css/custom.css) (renamed from `style.css`).
+
+---
+
+### :notebook: 5/4/22
+
+- Reformatted [web/static/css/custom.css](https://github.com/timothyhull/github_profiler/blob/main/web/static/css/custom.css) for readability.
+    - Unsuccessfully tested applying styles to [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html).
+
+- Commented the JSDeliver CSS link in [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html).
+    - Un-commented the CSS link to [web/static/css/custom.css](https://github.com/timothyhull/github_profiler/blob/main/web/static/css/custom.css).
+
+- Added conditional formatting to - Commented the JSDeliver CSS link in [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html), to display a message when there are no repo results to display.
