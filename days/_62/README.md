@@ -22,6 +22,12 @@
 
 :star: [SQLAlchemy Tutorial](https://docs.sqlalchemy.org/en/14/orm/index.html)
 
+:star: [Bootstrap HTML/CSS Layout Tool](https://getbootstrap.com)
+
+:star: [Bootstrap dark mode article](https://vinorodrigues.github.io/bootstrap-dark-5/)
+
+:star: [Bootstrap dark mode example](https://github.com/vinorodrigues/bootstrap-dark-5/blob/main/docs/bootstrap-nightshade.md)
+
 <!-- :star: [SQLite3 Documentation (sqllite.org)](https://www.sqlite.org/docs.html) -->
 
 ---
@@ -719,4 +725,14 @@
 ### :notebook: 5/2/22
 
 - Added inline documentation comments to [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html).
-- Created the file [web/style/style.css](https://github.com/timothyhull/github_profiler/blob/main/web/style/style.css) to host webpage styling.
+- Created the file [web/static/style.css](https://github.com/timothyhull/github_profiler/blob/main/web/static/style.css) to host webpage styling.
+
+---
+
+### :notebook: 5/3/22
+
+- Added Bootstrap default and dark mode stylesheets.
+    - Commented out the default stylesheet, to use the dark mode stylesheet.
+    - Day/night modes automatically activate based on the browser settings.
+    - Added button to manually toggle day/night mode.
+- Used the `flask.url_for` method to include the static file [web/static/css/custom.css](https://github.com/timothyhull/github_profiler/blob/main/web/static/css/custom.css) (renamed from `style.css`)
