@@ -748,3 +748,9 @@
     - Un-commented the CSS link to [web/static/css/custom.css](https://github.com/timothyhull/github_profiler/blob/main/web/static/css/custom.css).
 
 - Added conditional formatting to - Commented the JSDeliver CSS link in [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html), to display a message when there are no repo results to display.
+
+---
+
+### :notebook: 5/5/22
+
+- Tested the application of new styles, buttons, and badges to [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html)
