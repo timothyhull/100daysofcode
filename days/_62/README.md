@@ -754,3 +754,9 @@
 ### :notebook: 5/5/22
 
 - Tested the application of new styles, buttons, and badges to [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html)
+
+---
+
+### :notebook: 5/6/22
+
+- Conducted additional testing with Bootstrap styles, buttons, and badges on [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html)
