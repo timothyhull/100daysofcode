@@ -1,4 +1,4 @@
-# :calendar: Day 62: 3/26/2022-4/10/2022
+# :calendar: Day 62: 3/26/2022-5/7/2022
 
 ---
 
@@ -46,11 +46,11 @@
 
 :white_check_mark: Add Better Code Hub Git repository integration
 
-:white_large_square: Write application
+:white_check_mark: Write application
 
-:white_large_square: Update CMD/ENTRYPOINT instruction in the application runtime Dockerfile
+:white_check_mark: Update CMD/ENTRYPOINT instruction in the application runtime Dockerfile
 
-:white_large_square: Fill README file
+:white_check_mark: Fill README file
 
 ---
 
@@ -759,4 +759,8 @@
 
 ### :notebook: 5/6/22
 
-- Conducted additional testing with Bootstrap styles, buttons, and badges on [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html)
+- Conducted additional testing with Bootstrap styles, buttons, and badges on [web/templates/index.html](https://github.com/timothyhull/github_profiler/blob/main/web/templates/index.html).
+
+### :notebook: 5/7/22
+
+- Completed application development and populated with [README.md](https://github.com/timothyhull/github_profiler/blob/main/README.md) setup instructions.
