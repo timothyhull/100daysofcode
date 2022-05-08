@@ -34,7 +34,7 @@
 
 ## Tasks
 
-:white_check_mark: Watch video 7
+:white_check_mark: Watch videos 7-8
 
 :white_check_mark: Select project to build (GitHub Profiler)
 
