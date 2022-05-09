@@ -1,12 +1,12 @@
 # VS Code Python Development Container
-FROM python:3.9-slim-buster
+FROM python:3.10-slim-buster
 
 EXPOSE 8888
 
 WORKDIR /workspaces/100daysofcode/days
 
 RUN apt-get update && \
-    apt-get install -y git
+    apt-get install -y git gcc python3-dev
 
 COPY requirements.txt requirements.txt
 
@@ -15,4 +15,4 @@ RUN python -m pip install --upgrade pip && \
 
 ENV PYTHONPATH=/workspaces/100daysofcode/days
 
-CMD ["/bin/sh"]
+CMD ["/bin/bash"]
