@@ -525,5 +525,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 <details><summary>Days 64-66: Sending Emails with `smtplib`</summary>
 
 - Day 64: [5/9/22](days/_64)
+- Day 64a: [5/10/22](days/_64#notebook-51022)
 
 </details>
