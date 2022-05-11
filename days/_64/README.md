@@ -16,9 +16,9 @@
 
 ## Tasks
 
-:white_check_mark: TBD
+:white_check_mark: Watch videos 1-4
 
-:white_large_square: Watch videos 1-4
+:white_check_mark: Watch video 5
 
 :white_large_square: Watch videos 5-8
 
@@ -34,3 +34,11 @@
 - Created two blank Python files to support sending emails:
     - [./blob/main/days/_64/emailer_app/emailer.py](./blob/main/days/_64/emailer_app/emailer.py).
     - [./blob/main/days/_64/emailer_app/emailer_mime.py](./blob/main/days/_64/emailer_app/emailer_mime.py).
+
+---
+
+### :notebook: 5/10/22
+
+- Watched video 5.
+- Added basic functional code to - [./blob/main/days/_64/emailer_app/emailer.py](./blob/main/days/_64/emailer_app/emailer.py).
+    - Refactored code with a `send_email` function, and added `print` statements at each steps for a better interactive experience.
