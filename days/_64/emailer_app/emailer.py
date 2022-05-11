@@ -46,3 +46,13 @@ SMTP_SERVER.login(
     user=EMAIL_OBJECT.from_addr,
     password=getenv('APP_PW')
 )
+
+# Send an email
+SMTP_SERVER.sendmail(
+    from_addr=EMAIL_OBJECT.from_addr,
+    to_addrs=EMAIL_OBJECT.to_addr,
+    msg=EMAIL_OBJECT.body
+)
+
+# Close the connection to the SMTP server
+SMTP_SERVER.quit()
