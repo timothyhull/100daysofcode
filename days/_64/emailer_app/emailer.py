@@ -2,6 +2,7 @@
 """ TODO """
 
 # Imports - Python Standard Library
+from collections import namedtuple
 from os import getenv
 import smtplib
 
@@ -13,6 +14,35 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+# namedtuple objects
+EmailObject = namedtuple(
+    typename='EmailObject',
+    field_names=[
+        'from_addr',
+        'to_addr',
+        'body'
+    ]
+)
+
 # Constants
-FROM_ADDR = getenv('FROM_ADDR')
-TO_ADDR = getenv('FROM_ADDR')
+EMAIL_OBJECT = EmailObject(
+    from_addr=getenv('FROM_ADDR'),
+    to_addr=getenv('TO_ADDR'),
+    body=getenv('BODY')
+)
+SMTP_SERVER = smtplib.SMTP(
+    host='smtp.gmail.com',
+    port=587
+)
+
+# Send an Enhanced Hello message to the SMTP server
+SMTP_SERVER.ehlo()
+
+# Start TLS session
+SMTP_SERVER.starttls()
+
+# Perform SMTP login
+SMTP_SERVER.login(
+    user=EMAIL_OBJECT.from_addr,
+    password=getenv('APP_PW')
+)
