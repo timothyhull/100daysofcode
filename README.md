@@ -531,3 +531,9 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 66: [5/13/22](days/_66)
 
 </details>
+
+<details><summary>Days 67-69: Copy and Paste with `Pyperclip`</summary>
+
+- Day 67: [5/14/22](days/_67)
+
+</details>
