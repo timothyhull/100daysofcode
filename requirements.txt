@@ -46,3 +46,6 @@ bs4
 
 # uplink HTTP client
 uplink
+
+# Pyperclip copy/paste tool
+pyperclip
