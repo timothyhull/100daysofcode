@@ -12,8 +12,7 @@ RUN apt-get update && \
     apt-get install -y git gcc python3-dev
 
 # Install X Virtual Frame Buffer (Xvfb) and xclip to support Pyperclip
-RUN apt-get install -y xvfb xclip && \
-    Xvfb :99 -screen 0 1280x720x16 & export DISPLAY=:99
+RUN apt-get install -y xvfb xclip
 
 # Copy Python pip requirements file
 COPY requirements.txt requirements.txt

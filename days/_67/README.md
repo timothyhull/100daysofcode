@@ -1,4 +1,4 @@
-# :calendar: Day 67: 5/15/2022
+# :calendar: Day 67: 5/15/2022-5/16/2022
 
 ---
 
@@ -26,7 +26,9 @@
 
 :white_check_mark: Watch videos 1-4
 
-:white_large_square: Watch videos 5-7
+:white_check_mark: Watch video 5
+
+:white_large_square: Watch videos 6-7
 
 ---
 
@@ -48,4 +50,24 @@
         Xvfb :99 -screen 0 1280x720x16 & export DISPLAY=:99
         ```
 
-- Successfully tested `Pyperclip` within a Docker container.
+- Successfully tested `Pyperclip` within a Docker container using code added to [./blob/main/days/_67/pyperclip/text_replacer.py](./blob/main/days/_67/pyperclip/text_replacer.py).
+
+    ```python
+    # Create a virtual display with Xvfb
+    from os import system
+    system('Xvfb :99 -screen 0 1280x720x16 & export DISPLAY=:99')
+
+    # Read data from the OS clipboard into Python
+    clipboard_data = pyperclip.paste()
+
+    # Write data to the OS clipboard from Python
+    pyperclip.copy(clipboard_data.upper())
+    ```
+
+---
+
+### :notebook: 5/15/22
+
+- Watched video 5.
+
+- Added code to [./blob/main/days/_67/pyperclip/affiliate.py](./blob/main/days/_67/pyperclip/affiliate.py) that generates a tagged affiliate link.
