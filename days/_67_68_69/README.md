@@ -1,4 +1,4 @@
-# :calendar: Day 67: 5/15/2022-5/16/2022
+# :calendar: Day 67+68+69: 5/15/2022-5/16/2022
 
 ---
 
@@ -28,7 +28,7 @@
 
 :white_check_mark: Watch video 5
 
-:white_large_square: Watch videos 6-7
+:white_check_mark: Watch videos 6-7
 
 ---
 
@@ -39,8 +39,8 @@
 - Watched videos 1-4
 
 - Created two project files:
-    - [./blob/main/days/_67/pyperclip/text_replacer.py](./blob/main/days/_67/pyperclip/text_replacer.py)
-    - [./blob/main/days/_67/pyperclip/affiliate.py](./blob/main/days/_67/pyperclip/affiliate.py)
+    - [./blob/main/days/_67_68_69/pyperclip/text_replacer.py](./blob/main/days/_67_68_69/pyperclip/text_replacer.py)
+    - [./blob/main/days/_67_68_69/pyperclip/affiliate.py](./blob/main/days/_67_68_69/pyperclip/affiliate.py)
 
 - `Pyperclip` installs with `pip install pyperclip`.
     - In order to run in a Docker container environment, it is necessary to install `Xfvb` and `xclip`, and simulate a virtual display with `Xfvb`:
@@ -50,7 +50,7 @@
         Xvfb :99 -screen 0 1280x720x16 & export DISPLAY=:99
         ```
 
-- Successfully tested `Pyperclip` within a Docker container using code added to [./blob/main/days/_67/pyperclip/text_replacer.py](./blob/main/days/_67/pyperclip/text_replacer.py).
+- Successfully tested `Pyperclip` within a Docker container using code added to [./blob/main/days/_67_68_69/pyperclip/text_replacer.py](./blob/main/days/_67_68_69/pyperclip/text_replacer.py).
 
     ```python
     # Create a virtual display with Xvfb
@@ -70,4 +70,10 @@
 
 - Watched video 5.
 
-- Added code to [./blob/main/days/_67/pyperclip/affiliate.py](./blob/main/days/_67/pyperclip/affiliate.py) that generates a tagged affiliate link.
+- Added code to [./blob/main/days/_67_68_69/pyperclip/affiliate.py](./blob/main/days/_67_68_69/pyperclip/affiliate.py) that generates a tagged affiliate link.
+
+---
+
+### :notebook: 5/16/22
+
+- Watched videos 6-7
