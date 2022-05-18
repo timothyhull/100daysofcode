@@ -49,3 +49,6 @@ uplink
 
 # Pyperclip copy/paste tool
 pyperclip
+
+# openpyxl
+openpyxl
