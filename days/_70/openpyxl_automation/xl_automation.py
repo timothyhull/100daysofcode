@@ -7,15 +7,16 @@ from os import path
 from pathlib import Path
 
 # Imports - Third-Party
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 
 # Imports - Local
 
 # Constants
 FILE_NAME = path.abspath(__file__)
 LOCAL_DIR = Path(FILE_NAME).parent
-DATA_FILE = 'data/Financial_Sample.xlsx'
-DATA_FILE_PATH = path.join(LOCAL_DIR, DATA_FILE)
+DATA_DIR = 'data'
+DATA_FILE = 'Financial_Sample.xlsx'
+DATA_FILE_PATH = path.join(LOCAL_DIR, DATA_DIR, DATA_FILE)
 
 
 # Read the spreadsheet data
@@ -30,22 +31,61 @@ def import_workbook() -> None:
     """
 
     # Load the workbook file
+    print(f'\nLoading workbook "{DATA_FILE}"...', end='')
     workbook = load_workbook(
         filename=DATA_FILE_PATH
     )
+    print('done.\n')
 
     # Display worksheet names
-    print('\nWorksheet Names:')
+    print('Worksheet Names:')
     for index, worksheet in enumerate(workbook.sheetnames, 1):
         print(f'{index}. {worksheet}')
 
     return workbook
 
 
+def get_profit_total(
+    workbook: Workbook
+) -> float:
+    """ Get a total of all profits from a workbook.
+
+        Args:
+            workbook (openpyxl.Workbook):
+                openpyxl Workbook object, created using the
+                load_workbook method of openpyxl.
+
+        Returns:
+            profit_total (float):
+                Total of all cells in the Profits Column.
+    """
+
+    # Set profit_total to 0
+    profit_total = 0
+
+    # Get the first worksheet from the spreadsheet
+    worksheet_1 = workbook[workbook.sheetnames[0]]
+
+    # Set the column of values
+    column = 'L'
+
+    # Create a list of all column cells
+    for col in worksheet_1:
+        for row in range(2, 102):
+            current_cell = f'{column}{row}'
+            profit_total += float(f'{worksheet_1[current_cell].value}')
+
+    return round(profit_total, 2)
+
+
 def main() -> None:
     """ Main program. """
 
-    import_workbook()
+    # Import the workbook file
+    workbook = import_workbook()
+
+    # Get a total of all profits from the first worksheet in the workbook
+    get_profit_total(workbook)
 
     return None
 
