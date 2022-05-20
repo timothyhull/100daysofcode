@@ -70,10 +70,19 @@ def get_profit_total(
     column = 'L'
 
     # Create a list of all column cells
+    # Loop over all columns in the worksheet
     for col in worksheet_1:
-        for row in range(2, 102):
+        # Loop over a range of row numbers
+        # for row in range(2, 102):
+        # Replace the specific range end number with the max_row value
+        for row in range(2, worksheet_1.max_row):
+            """ Set the current cell to a string value of the column name (L)
+            plus the current row number. """
             current_cell = f'{column}{row}'
-            profit_total += float(f'{worksheet_1[current_cell].value}')
+
+            # Conditionally add the value of the current cell to profit_total
+            if worksheet_1[current_cell].value is not None:
+                profit_total += float(f'{worksheet_1[current_cell].value}')
 
     return round(profit_total, 2)
 
@@ -85,7 +94,8 @@ def main() -> None:
     workbook = import_workbook()
 
     # Get a total of all profits from the first worksheet in the workbook
-    get_profit_total(workbook)
+    profit_total = get_profit_total(workbook)
+    print(f'Total profits: ${profit_total}')
 
     return None
 

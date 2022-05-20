@@ -1,4 +1,4 @@
-# :calendar: Day 70: 5/17/2022
+# :calendar: Day 70: 5/17/2022-5/20/2022
 
 ---
 
@@ -22,7 +22,9 @@
 
 :white_check_mark: Watch video 5
 
-:white_large_square: Watch videos 6-8
+:white_check_mark: Watch video 6
+
+:white_large_square: Watch videos 7-8
 
 ---
 
@@ -80,3 +82,23 @@
 
 - Added `get_profit_total` to [./blob/main/days/_70/openpyxl_automation/xl_automation.py](./blob/main/days/_70/openpyxl_automation/xl_automation.py), to support gathering a total of many cells in a column.
     - The function needs additional work.
+
+---
+
+### :notebook: 5/19/22
+
+- Reviewed the `get_profit_total` function in [./blob/main/days/_70/openpyxl_automation/xl_automation.py](./blob/main/days/_70/openpyxl_automation/xl_automation.py).
+
+- Watched video 6.
+    - The `openpyxl` `max_row` attribute of a worksheet displays an integer showing the highest row number that contains a value.
+
+        ```python
+        from openpyxl import load_workbook
+        workbook = load_workbook('workbook_name.xlsx')
+
+        worksheet = workbook[workbook.worksheets[0]]
+        worksheet.max_row
+        # Returns row number 703
+        ```
+
+- Revised the `get_profit_total` function in [./blob/main/days/_70/openpyxl_automation/xl_automation.py](./blob/main/days/_70/openpyxl_automation/xl_automation.py) to use the `openpyxl.Worksheet.max_rows` attribute as the end value for the `range` method.
