@@ -24,7 +24,11 @@
 
 :white_check_mark: Watch video 6
 
-:white_large_square: Watch videos 7-8
+:white_check_mark: Review `openpyxl` syntax and usage
+
+:white_check_mark: Watch video 7
+
+:white_large_square: Watch video 8
 
 ---
 
@@ -102,3 +106,33 @@
         ```
 
 - Revised the `get_profit_total` function in [./blob/main/days/_70/openpyxl_automation/xl_automation.py](./blob/main/days/_70/openpyxl_automation/xl_automation.py) to use the `openpyxl.Worksheet.max_rows` attribute as the end value for the `range` method.
+
+---
+
+### :notebook: 5/20/22
+
+- Reviewed `openpyxl` syntax and usage.
+
+- Watched video 7.
+    - Added the function `insert_sum` to [./blob/main/days/_70/openpyxl_automation/xl_automation.py](./blob/main/days/_70/openpyxl_automation/xl_automation.py), to calculate the total of all rows within a column:
+
+        ```python
+        # Get the first worksheet from the spreadsheet
+        worksheet_1 = workbook[workbook.sheetnames[0]]
+
+        # Set a column name to sum total
+        column = 'L'
+
+        # Set the cell to insert the sum total
+        sum_cell = f'{column}{worksheet_1.max_row + 2}'
+
+        # Set the SUM total formula - =SUM(L2:L709)
+        worksheet_1[sum_cell] = (
+            f'=SUM({column}2:{column}{worksheet_1.max_row})'
+        )
+
+        # Save the workbook
+        workbook.save(
+            filename=DATA_FILE_PATH
+        )
+        ```

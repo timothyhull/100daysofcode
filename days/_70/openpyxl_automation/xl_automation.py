@@ -87,6 +87,43 @@ def get_profit_total(
     return round(profit_total, 2)
 
 
+def insert_sum(
+    workbook: Workbook
+) -> None:
+    """ Insert a SUM function cell in an Excel spreadsheet.
+
+        Args:
+            workbook (openpyxl.Workbook):
+                openpyxl Workbook object, created using the
+                load_workbook method of openpyxl.
+
+        Returns:
+            None.
+    """
+
+    # Get the first worksheet from the spreadsheet
+    worksheet_1 = workbook[workbook.sheetnames[0]]
+
+    # Set a column name to sum total
+    column = 'L'
+
+    # Set the cell to insert the sum total
+    sum_cell = f'{column}{worksheet_1.max_row + 2}'
+    print(sum_cell)
+
+    # Set the SUM total formula
+    worksheet_1[sum_cell] = (
+        f'=SUM({column}2:{column}{worksheet_1.max_row})'
+    )
+
+    # Save the workbook
+    workbook.save(
+        filename=DATA_FILE_PATH
+    )
+
+    return None
+
+
 def main() -> None:
     """ Main program. """
 
@@ -96,6 +133,11 @@ def main() -> None:
     # Get a total of all profits from the first worksheet in the workbook
     profit_total = get_profit_total(workbook)
     print(f'Total profits: ${profit_total}')
+
+    # Insert or update the total profits
+    insert_sum(
+        workbook=workbook
+    )
 
     return None
 
