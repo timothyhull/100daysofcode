@@ -28,7 +28,7 @@
 
 :white_check_mark: Watch video 7
 
-:white_large_square: Watch video 8
+:white_check_mark: Watch video 8
 
 ---
 
@@ -141,4 +141,4 @@
 
 ### :notebook: 5/21/22
 
-- TODO
+- Watched video 8
