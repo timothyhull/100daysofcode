@@ -1,4 +1,4 @@
-# :calendar: Day 70: 5/17/2022-5/20/2022
+# :calendar: Days 70+71: 5/17/2022-5/21/2022
 
 ---
 
@@ -66,7 +66,7 @@
     active_worksheet = workbook.active
     ```
 
-- Created [./blob/main/days/_70/openpyxl_automation/xl_automation.py](./blob/main/days/_70/openpyxl_automation/xl_automation.py) to support `openpyxl` testing.
+- Created [./blob/main/days_70_71/openpyxl_automation/xl_automation.py](./blob/main/days_70_71/openpyxl_automation/xl_automation.py) to support `openpyxl` testing.
 
 ---
 
@@ -84,14 +84,14 @@
         print(worksheet['L5'].value)
         ```
 
-- Added `get_profit_total` to [./blob/main/days/_70/openpyxl_automation/xl_automation.py](./blob/main/days/_70/openpyxl_automation/xl_automation.py), to support gathering a total of many cells in a column.
+- Added `get_profit_total` to [./blob/main/days_70_71/openpyxl_automation/xl_automation.py](./blob/main/days_70_71/openpyxl_automation/xl_automation.py), to support gathering a total of many cells in a column.
     - The function needs additional work.
 
 ---
 
 ### :notebook: 5/19/22
 
-- Reviewed the `get_profit_total` function in [./blob/main/days/_70/openpyxl_automation/xl_automation.py](./blob/main/days/_70/openpyxl_automation/xl_automation.py).
+- Reviewed the `get_profit_total` function in [./blob/main/days_70_71/openpyxl_automation/xl_automation.py](./blob/main/days_70_71/openpyxl_automation/xl_automation.py).
 
 - Watched video 6.
     - The `openpyxl` `max_row` attribute of a worksheet displays an integer showing the highest row number that contains a value.
@@ -105,7 +105,7 @@
         # Returns row number 703
         ```
 
-- Revised the `get_profit_total` function in [./blob/main/days/_70/openpyxl_automation/xl_automation.py](./blob/main/days/_70/openpyxl_automation/xl_automation.py) to use the `openpyxl.Worksheet.max_rows` attribute as the end value for the `range` method.
+- Revised the `get_profit_total` function in [./blob/main/days_70_71/openpyxl_automation/xl_automation.py](./blob/main/days_70_71/openpyxl_automation/xl_automation.py) to use the `openpyxl.Worksheet.max_rows` attribute as the end value for the `range` method.
 
 ---
 
@@ -114,7 +114,7 @@
 - Reviewed `openpyxl` syntax and usage.
 
 - Watched video 7.
-    - Added the function `insert_sum` to [./blob/main/days/_70/openpyxl_automation/xl_automation.py](./blob/main/days/_70/openpyxl_automation/xl_automation.py), to calculate the total of all rows within a column:
+    - Added the function `insert_sum` to [./blob/main/days_70_71/openpyxl_automation/xl_automation.py](./blob/main/days_70_71/openpyxl_automation/xl_automation.py), to calculate the total of all rows within a column:
 
         ```python
         # Get the first worksheet from the spreadsheet
@@ -136,3 +136,9 @@
             filename=DATA_FILE_PATH
         )
         ```
+
+---
+
+### :notebook: 5/21/22
+
+- TODO

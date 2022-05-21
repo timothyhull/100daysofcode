@@ -542,10 +542,10 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 
 <details><summary>Days 70-72: Excel Automation with `openpyxl`</summary>
 
-- Day 70: [5/17/22](days/_70)
-- Day 70a: [5/18/22](days/_70#notebook-51822)
-- Day 70b: [5/19/22](days/_70#notebook-51922)
-- Day 70c: [5/20/22](days/_70#notebook-52022)
-- Day 70d: [5/21/22](days/_70#notebook-52022)
+- Days 70+71: [5/17/22](days_70_71)
+- Days 70+71a: [5/18/22](days_70_71#notebook-51822)
+- Days 70+71b: [5/19/22](days_70_71#notebook-51922)
+- Days 70+71c: [5/20/22](days_70_71#notebook-52022)
+- Days 70+71d: [5/21/22](days_70_71#notebook-52022)
 
 </details>
