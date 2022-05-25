@@ -31,13 +31,29 @@
 - Project is to create an LoE as code, sourced from a YAML file.
     - Created local Git repository (`loe_as_code`).
 
+---
+
 ### :notebook: 5/23/22
 
 - Created initial project files:
     - [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py) - main application.
     - [test_generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/tests/test_generate_loe.py) - `pytest` tests for [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py).
 
-- Created the function `create_new_workbook()` in [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py), to create a new Excel spreadsheet file.
+- Created the function `create_new_workbook` in [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py), to create a new Excel spreadsheet file.
 
-- Created the function `create_new_workbook()` in [test_generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/tests/test_generate_loe.py), to create a new Excel spreadsheet file.
-    - All `pytest` tests pass.
+- Created the function `test_create_new_workbook` in [test_generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/tests/test_generate_loe.py), to create a new Excel spreadsheet file.
+
+- All `pytest` tests pass.
+
+---
+
+### :notebook: 5/24/22
+
+- Created the function `create_new_workbook` in [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py), to remove spreadsheet files in the data directory.
+
+- Created the function `test_clear_workbook_dir` in [test_generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/tests/test_generate_loe.py), to test removing all files from the data directory.
+    - Used `unit.mock.patch.object` to mock the function call and return value.
+
+- Refactored the function `test_create_new_workbook` in [test_generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/tests/test_generate_loe.py) to use `unit.mock.patch.object`, to mock the function call and return value.
+
+- All `pytest` tests pass.
