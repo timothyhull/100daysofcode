@@ -57,3 +57,14 @@
 - Refactored the function `test_create_new_workbook` in [test_generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/tests/test_generate_loe.py) to use `unit.mock.patch.object`, to mock the function call and return value.
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 5/25/22
+
+- Created the function `read_source_data` in [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py), to read LoE source YAML data from a file.
+
+- Created the function `test_read_source_data` in [test_generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/tests/test_generate_loe.py), to test reading LoE source YAML data from a file.
+    - Used `unit.mock.patch.object` to mock the function call and return value.
+
+- All `pytest` tests pass.
