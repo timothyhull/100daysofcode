@@ -74,4 +74,11 @@
 ### :notebook: 5/26/22
 
 - Created the function `create_loe` in [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py), to create an LoE from project source data.
-    - Function requires further development.
+
+---
+
+### :notebook: 5/27/22
+
+- Attempted to refactor the content of [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py) such that it works within a dedicated class.
+    - Created the file [loe_object.py](https://github.com/timothyhull/loe_as_code/blob/main/app/loe_object.py) to support the LoE class object.
+    - Most of the functionality works, although further testing is necessary to write new values to cells (in the `create_loe`) method.
