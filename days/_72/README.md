@@ -73,4 +73,5 @@
 
 ### :notebook: 5/26/22
 
-- Created the function `create_loe` in [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py), to create an LoE from project source data..
+- Created the function `create_loe` in [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py), to create an LoE from project source data.
+    - Function requires further development.
