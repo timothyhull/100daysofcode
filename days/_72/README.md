@@ -68,3 +68,9 @@
     - Used `unit.mock.patch.object` to mock the function call and return value.
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 5/26/22
+
+- Created the function `create_loe` in [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py), to create an LoE from project source data..
