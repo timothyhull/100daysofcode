@@ -556,3 +556,9 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 72f: [5/28/22](days_72#notebook-52822)
 
 </details>
+
+<details><summary>Days 73-75: Automating Tasks With Selenium</summary>
+
+- Day 73: [5/19/22](days_73)
+
+</details>
