@@ -1,4 +1,4 @@
-# :calendar: Day 72: 5/22/2022-5/31/2022
+# :calendar: Day 72: 5/22/2022-5/28/2022
 
 ---
 
@@ -18,9 +18,9 @@
 
 ## Tasks
 
-::white_check_mark:: Determine source data for challenge to populate a spreadsheet with `openpyxl`
+:white_check_mark: Determine source data for challenge to populate a spreadsheet with `openpyxl`
 
-:white_large_square: TBD
+:white_check_mark: Write application code
 
 ---
 
@@ -82,3 +82,16 @@
 - Attempted to refactor the content of [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py) such that it works within a dedicated class.
     - Created the file [loe_object.py](https://github.com/timothyhull/loe_as_code/blob/main/app/loe_object.py) to support the LoE class object.
     - Most of the functionality works, although further testing is necessary to write new values to cells (in the `create_loe`) method.
+
+---
+
+### :notebook: 5/28/22
+
+- Revised the `create_loe` method in [loe_object.py](https://github.com/timothyhull/loe_as_code/blob/main/app/loe_object.py) to correctly assign values to cell objects in a workbook.
+
+- Created the file [test_loe_object.py](https://github.com/timothyhull/loe_as_code/blob/main/tests/test_loe_object.py) by duplicating [test_generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/tests/test_generate_loe.py).
+    - Refactored [test_loe_object.py](https://github.com/timothyhull/loe_as_code/blob/main/tests/test_loe_object.py) imports and name spaces to test the methods in the `LoEObject` class of [loe_object.py](https://github.com/timothyhull/loe_as_code/blob/main/app/loe_object.py).
+
+- Refactored [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py) such that it only calls methods of the `LoEObject` class in [loe_object.py](https://github.com/timothyhull/loe_as_code/blob/main/app/loe_object.py), using the `main` function.
+
+- Refactored [test_generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/tests/test_generate_loe.py) to mock a call to the `main` function in [generate_loe.py](https://github.com/timothyhull/loe_as_code/blob/main/app/generate_loe.py).
