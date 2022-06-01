@@ -1,4 +1,4 @@
-# :calendar: Day 73: 5/29/2022
+# :calendar: Day 73: 5/29/2022-6/4/2022
 
 ---
 
@@ -9,6 +9,10 @@
 ---
 
 ## Resources
+
+:star: [`pipenv` on PyPI](https://pypi.org/project/pipenv)
+
+:star: [`pipenv` Documentation](https://pipenv.pypa.io/en/latest)
 
 :star: [Selenium documentation]
 
@@ -43,3 +47,19 @@
     - Selenium requires a headless web browser driver, typically this is either:
         - [Chromedriver](./#).
         - [Firefoxdriver](./#).
+
+---
+
+### :notebook: 5/31/22
+
+- Reviewed `pipenv` documentation in order to setup local development, outside of the VS Code devcontainer.
+    - This is necessary to launch a local browser, because the devcontainer does not have a graphical browser.
+
+- Setup `pipenv` on my local computer development environment using the [selenium_project](https://github.com/timothyhull/100daysofcode/main/blob/days/_73/selenium_project) directory:
+
+    ```bash
+    # Install pipenv
+    pip install pipenv
+
+
+    ```
