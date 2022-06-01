@@ -14,9 +14,11 @@
 
 :star: [`pipenv` Documentation](https://pipenv.pypa.io/en/latest)
 
-:star: [Selenium documentation]
+:star: [Selenium on PyPI](https://pypi.org/project/selenium)
 
-:star: [Chromedriver binary download]
+:star: [Selenium Documentation](https://www.selenium.dev)
+
+:star: [Chromedriver binary download](https://chromedriver.chromium.org/downloads)
 
 ---
 
@@ -24,9 +26,11 @@
 
 :white_check_mark: Watch videos 1-3
 
-:white_large_square: Research `pipenv` versus `venv`
+:white_check_mark: Research `pipenv` versus `venv`
 
-:white_large_square: Setup a local Selenium runtime environment
+:white_check_mark: Setup a local `pipenv` runtime environment for Selenium development/testing
+
+:white_check_mark: Make Chromedriver available to the `pipenv` runtime environment
 
 :white_large_square: Watch videos 4-8
 
@@ -45,7 +49,7 @@
             ```
 
     - Selenium requires a headless web browser driver, typically this is either:
-        - [Chromedriver](./#).
+        - [Chromedriver](https://chromedriver.chromium.org/downloads).
         - [Firefoxdriver](./#).
 
 ---
@@ -55,11 +59,45 @@
 - Reviewed `pipenv` documentation in order to setup local development, outside of the VS Code devcontainer.
     - This is necessary to launch a local browser, because the devcontainer does not have a graphical browser.
 
-- Setup `pipenv` on my local computer development environment using the [selenium_project](https://github.com/timothyhull/100daysofcode/main/blob/days/_73/selenium_project) directory:
+- Setup `pipenv` on my local computer development environment using the [selenium_project](https://github.com/timothyhull/100daysofcode/tree/main/days/_73/selenium_project) directory:
 
     ```bash
     # Install pipenv
     pip install pipenv
 
+    # Create a new directory
+    cd selenium_project && mkdir selenium_project
 
+    # Create a pipenv environment
+    pipenv install
+
+    # Install Selenium in the pipenv environment
+    pipenv install selenium
+
+    # Install iPython as a development package
+    pipenv install --dev ipython
+
+    # Run the 'pip freeze' command for the pipenv environment
+    pipenv run pip freeze
+    ```
+
+- A `pipenv` shell is available to interactively work with the `pipenv` environment:
+
+    ```bash
+    # Launch the pipenv shell
+    pipenv shell
+
+    # Check the python version
+    python --version
+    ```
+
+- Copied Chromedriver to `/usr/local/bin` on my local computer, and verified the availability of Chromedriver to the `pipenv` environment with the following commands:
+
+    ```bash
+    # Display the location of the chromedriver binary
+    pipenv run which chromedriver
+    # output -> /usr/local/bin/chromedriver
+
+    pipenv run chromedriver --version
+    # output -> ChromeDriver 102.0.5005.61 (0e59bcc00cc4985ce39ad31c150065f159d95ad3-refs/branch-heads/5005@{#819})
     ```
