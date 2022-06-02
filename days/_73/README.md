@@ -24,13 +24,15 @@
 
 ## Tasks
 
-:white_check_mark: Watch videos 1-3
+:white_check_mark: Watch videos 1-2
 
 :white_check_mark: Research `pipenv` versus `venv`
 
 :white_check_mark: Setup a local `pipenv` runtime environment for Selenium development/testing
 
 :white_check_mark: Make Chromedriver available to the `pipenv` runtime environment
+
+:white_large_square: Watch video 3
 
 :white_large_square: Watch videos 4-8
 
@@ -48,9 +50,8 @@
             pip install selenium
             ```
 
-    - Selenium requires a headless web browser driver, typically this is either:
-        - [Chromedriver](https://chromedriver.chromium.org/downloads).
-        - [Firefoxdriver](./#).
+    - Selenium requires a headless web browser driver, typically this is [Chromedriver](https://chromedriver.chromium.org/downloads).
+        - Firefox also supports headless operation.
 
 ---
 
@@ -101,3 +102,39 @@
     pipenv run chromedriver --version
     # output -> ChromeDriver 102.0.5005.61 (0e59bcc00cc4985ce39ad31c150065f159d95ad3-refs/branch-heads/5005@{#819})
     ```
+
+---
+
+### :notebook: 6/1/22
+
+- Installed `python-dotenv` in the `pipenv` environment.
+
+     ```bash
+    # Install python-dotenv in the pipenv environment
+    pipenv install python-dotenv
+    ```
+
+- Created the file [selenium_1.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_73/selenium_project/selenium_1.py):
+    - Created basic automation to open a web page and perform click interaction.
+
+    ```python
+    # Import Selenium packages and classes
+    from selenium import webdriver
+    from selenium.webdriver.common.keys import Keys
+    from selenium.webdriver.common.by import By
+
+    # Create a Chrome webdriver object
+    driver = webdriver.Chrome()
+
+    # Open a URL in a Selenium-controlled browser
+    driver.get(URL)
+
+    # Find and click on an element
+    toggle_button = driver.find_element(
+        by=By.XPATH,
+        value='/sample/xpath/value'
+    )
+    toggle_button.click()
+    ```
+
+- Watched the first 3 minutes of video 3
