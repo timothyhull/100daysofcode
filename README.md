@@ -559,8 +559,9 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 
 <details><summary>Days 73-75: Automating Tasks With Selenium</summary>
 
-- Day 73: [5/19/22](days_73)
+- Day 73: [5/30/22](days_73)
 - Break for rest :sleeping:
-- Day 73a: [5/19/22](days_73#notebook-53122)
+- Day 73a: [5/31/22](days_73#notebook-53122)
+- Day 73b: [6/1/22](days_73#notebook-6122)
 
 </details>
