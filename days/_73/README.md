@@ -18,6 +18,8 @@
 
 :star: [Selenium Documentation](https://www.selenium.dev)
 
+:star: [Sending Keystrokes with Selenium](https://www.selenium.dev/documentation/webdriver/elements/interactions/#send-keys)
+
 :star: [Chromedriver binary download](https://chromedriver.chromium.org/downloads)
 
 ---
@@ -32,7 +34,7 @@
 
 :white_check_mark: Make Chromedriver available to the `pipenv` runtime environment
 
-:white_large_square: Watch video 3
+:white_check_mark: Watch video 3
 
 :white_large_square: Watch videos 4-8
 
@@ -138,3 +140,56 @@
     ```
 
 - Watched the first 3 minutes of video 3
+
+---
+
+### :notebook: 6/2/22
+
+- Tested reviewing search results with a CSS class selector, and displaying the results as a list:
+
+    ```python
+    from selenium import webdriver
+    from selenium.webdriver.common.keys import Keys
+    from selenium.webdriver.common.by import By
+
+    URL = 'https://squidfunk.github.io/mkdocs-material/reference/icons-emojis'
+    SEARCH_RESULTS_CLASS = 'mdx-iconsearch-result__list'
+
+    # Create a Chrome webdriver object
+    driver = webdriver.Chrome()
+
+    # Open a URL in a Selenium-controlled browser
+    driver.get(URL)
+
+    # Assert the result exists by searching the results class
+    print(f'\nConfirming "{EMOJI_MATCH}" is in the results class...', end='')
+    results = driver.find_element(
+        by=By.CLASS_NAME,
+        value=SEARCH_RESULTS_CLASS
+    )
+    assert EMOJI_MATCH in results.text.split('\n')
+    print('done.\n')
+
+    # Display full search results list
+    print('\nSearch results:')
+    for index, result in enumerate(results.text.split('\n'), 1):
+        print(f'{index}. {result}')
+    ```
+
+    - Shell output from [selenium_1.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_73/selenium_project/selenium_1.py):
+
+        ```bash
+        Search results:
+        1. :material-github:
+        2. :octicons-logo-github-16:
+        3. :octicons-mark-github-16:
+        4. :fontawesome-brands-github:
+        5. :fontawesome-brands-github-alt:
+        6. :fontawesome-brands-github-square:
+        ```
+
+- Tested closing the web browser:
+
+    ```python
+    driver.close()
+    ```
