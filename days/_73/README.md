@@ -1,4 +1,4 @@
-# :calendar: Day 73: 5/29/2022-6/4/2022
+# :calendar: Day 73: 5/29/2022-6/3/2022
 
 ---
 
@@ -36,7 +36,9 @@
 
 :white_check_mark: Watch video 3
 
-:white_large_square: Watch videos 4-8
+:white_check_mark: Watch video 4
+
+:white_check_mark: Watch videos 5-6
 
 ---
 
@@ -193,3 +195,9 @@
     ```python
     driver.close()
     ```
+
+---
+
+### :notebook: 6/3/22
+
+- Watched videos 5-6.
