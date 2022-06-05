@@ -1,0 +1,6 @@
+# Testing framework
+pytest
+pytest-cov
+
+# Selenium
+selenium
