@@ -74,3 +74,9 @@
 - Created the file [selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/app/selenium_pytest/selenium_pytest.py), to search a website for a product and click an auto-complete search suggestion link.
     - Script works properly.
     - `pytest` development is the next required step.
+
+---
+
+### :notebook: 6/6/22
+
+- TODO
