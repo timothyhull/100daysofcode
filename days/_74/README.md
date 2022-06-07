@@ -79,4 +79,5 @@
 
 ### :notebook: 6/6/22
 
-- TODO
+- Refactored [selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/app/selenium_pytest/selenium_pytest.py) with functional decomposition, in preparation for testing with `pytest`.
+    - Manual test of function calls works properly.
