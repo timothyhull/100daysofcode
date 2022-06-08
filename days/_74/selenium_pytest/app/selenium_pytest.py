@@ -8,16 +8,18 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 # from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.webdriver import WebDriver
+from time import sleep
 
 # Imports - Local
 
 # Constants
-URL = 'https://kingarthurbaking.com'
+URL = 'https://www.kingarthurbaking.com'
 SEARCH_OPEN_XPATH = '/html/body/div[1]/div/header/div/div[3]/div[1]'
 SEARCH_BOX_XPATH = '/html/body/div[1]/div/div[4]/div/div[1]/div[2]/input'
 SEARCH_BOX_INPUT = 'gluten free chocolate cake'
 SEARCH_AUTO_COMPLETE = 'search-autocomplete'
 SEARCH_TARGET_PRODUCT = 'Gluten-Free Chocolate Cake'
+SLEEP_TIMER = 5
 
 
 def open_page(
@@ -107,6 +109,9 @@ def search_result_click(
             value=SEARCH_TARGET_PRODUCT
         ).click()
 
+    # Pause on the target page for SLEEP_TIMER seconds
+    sleep(SLEEP_TIMER)
+
     return browser
 
 
@@ -128,3 +133,47 @@ def close_browser(
     browser.close()
 
     return browser
+
+
+def main() -> None:
+    """ Main application.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+    """
+
+    # Open the target page
+    print(f'\nOpening web browser and navigating to "{URL}"...', end='')
+    browser = open_page()
+    print('done.')
+
+    # Conduct product search
+    print(f'\nSearching for "{SEARCH_BOX_INPUT}"...', end='')
+    browser = search_for_product(
+        browser=browser
+    )
+    print('done.')
+
+    # Click on the search result suggestion
+    print(f'\nClicking the search result "{SEARCH_TARGET_PRODUCT}"...', end='')
+    browser = search_result_click(
+        browser=browser
+    )
+    print('done.')
+
+    # Close the browser
+    print('\nClosing the web browser...', end='')
+    close_browser(
+        browser=browser
+    )
+    print('done.')
+
+    return None
+
+
+# Run the script if directly launched, not imported
+if __name__ == '__main__':
+    main()

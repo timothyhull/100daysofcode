@@ -80,4 +80,12 @@
 ### :notebook: 6/6/22
 
 - Refactored [selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/app/selenium_pytest/selenium_pytest.py) with functional decomposition, in preparation for testing with `pytest`.
-    - Manual test of function calls works properly.
+
+---
+
+### :notebook: 6/7/22
+
+- Added the `main` function to [selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/app/selenium_pytest/selenium_pytest.py), and included `print` statements to indicate progress.
+
+- Added the `test_open_page` function to [test_selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/tests/test_selenium_pytest.py), to check that the current URL matches the expected URL.
+    - All `pytest` tests pass.
