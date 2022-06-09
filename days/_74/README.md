@@ -10,9 +10,11 @@
 
 ## Resources
 
-:star: [Using Selenium to write tests article](https://selenium-python.readthedocs.io/getting-started.html)
+:star: [Using Selenium to write tests article](https://selenium-python.readthedocs.io/getting-started.html#using-selenium-to-write-tests)
 
 :star: [RealPython article: Pipenv: A Guide to the New Python Packaging Tool](https://realpython.com/pipenv-guide/#i-already-have-a-requirementstxt-how-do-i-convert-to-a-pipfile)
+
+:star: [`pipenv` Automatic Loading of `.env` files](https://pipenv.pypa.io/en/latest/advanced/#automatic-loading-of-env)
 
 ---
 
@@ -20,9 +22,9 @@
 
 :white_check_mark: Watch video 7
 
-:white_check_mark: Read the [Using Selenium to write tests article](https://selenium-python.readthedocs.io/getting-started.html)
+:white_check_mark: Read the [Using Selenium to write tests article](https://selenium-python.readthedocs.io/getting-started.html#using-selenium-to-write-tests)
 
-:white_large_square: Create a `pytest` test of a web page using Selenium
+:white_check_mark: Create a `pytest` test of a web page using Selenium
 
 :white_large_square: Complete [Code Challenge 32](https://codechalleng.es/challenges/32/)
 
@@ -89,3 +91,12 @@
 
 - Added the `test_open_page` function to [test_selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/tests/test_selenium_pytest.py), to check that the current URL matches the expected URL.
     - All `pytest` tests pass.
+
+---
+
+### :notebook: 6/8/22
+
+- Added the `test_search_for_product`, `test_search_result_click`,  and `test_close_browser` functions to [test_selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/tests/test_selenium_pytest.py).
+    - All `pytest` tests pass.
+
+- Added environment variable file to automatically import the `PYTHONPATH` value when the `pipenv` environment starts.
