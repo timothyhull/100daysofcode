@@ -1,4 +1,4 @@
-# :calendar: Day 74: 6/4/2022-6/6/2022
+# :calendar: Day 74: 6/4/2022-6/9/2022
 
 ---
 
@@ -16,6 +16,8 @@
 
 :star: [`pipenv` Automatic Loading of `.env` files](https://pipenv.pypa.io/en/latest/advanced/#automatic-loading-of-env)
 
+:star: [Code Challenge 32 test page](https://pyplanet.herokuapp.com)
+
 ---
 
 ## Tasks
@@ -26,7 +28,7 @@
 
 :white_check_mark: Create a `pytest` test of a web page using Selenium
 
-:white_large_square: Complete [Code Challenge 32](https://codechalleng.es/challenges/32/)
+:white_large_square: Complete [Code Challenge 32](https://codechalleng.es/challenges/32)
 
 ---
 
@@ -73,7 +75,7 @@
 
 ### :notebook: 6/5/22
 
-- Created the file [selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/app/selenium_pytest/selenium_pytest.py), to search a website for a product and click an auto-complete search suggestion link.
+- Created the file [selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/selenium_pytest/app/selenium_pytest.py), to search a website for a product and click an auto-complete search suggestion link.
     - Script works properly.
     - `pytest` development is the next required step.
 
@@ -81,22 +83,33 @@
 
 ### :notebook: 6/6/22
 
-- Refactored [selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/app/selenium_pytest/selenium_pytest.py) with functional decomposition, in preparation for testing with `pytest`.
+- Refactored [selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/selenium_pytest/app/selenium_pytest.py) with functional decomposition, in preparation for testing with `pytest`.
 
 ---
 
 ### :notebook: 6/7/22
 
-- Added the `main` function to [selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/app/selenium_pytest/selenium_pytest.py), and included `print` statements to indicate progress.
+- Added the `main` function to [selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/selenium_pytest/app/selenium_pytest.py), and included `print` statements to indicate progress.
 
-- Added the `test_open_page` function to [test_selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/tests/test_selenium_pytest.py), to check that the current URL matches the expected URL.
+- Added the `test_open_page` function to [test_selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/selenium_pytest/tests/test_selenium_pytest.py), to check that the current URL matches the expected URL.
     - All `pytest` tests pass.
 
 ---
 
 ### :notebook: 6/8/22
 
-- Added the `test_search_for_product`, `test_search_result_click`,  and `test_close_browser` functions to [test_selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/tests/test_selenium_pytest.py).
+- Added the `test_search_for_product`, `test_search_result_click`,  and `test_close_browser` functions to [test_selenium_pytest.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/selenium_pytest/tests/test_selenium_pytest.py).
     - All `pytest` tests pass.
 
 - Added environment variable file to automatically import the `PYTHONPATH` value when the `pipenv` environment starts.
+
+---
+
+### :notebook: 6/9/22
+
+- Created the file [test_django_app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/django_app_pytest/test_django_app.py)
+    - Created `pipenv` environment with requirements files.
+    - Created the `pytest` fixture function `chrome_browser`, to open a Chrome browser instance.
+    - Created the function `test_1`, for test case #1.
+    - Tested for the presence of the header text plus two links in the header section of the page.
+    - All `pytest` tests pass.

@@ -1,0 +1,6 @@
+# Python unit testing
+pytest
+pytest-cov
+
+# Web browser test client
+selenium
