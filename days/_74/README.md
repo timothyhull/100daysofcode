@@ -1,4 +1,4 @@
-# :calendar: Day 74: 6/4/2022-6/9/2022
+# :calendar: Day 74: 6/4/2022-6/10/2022
 
 ---
 
@@ -107,9 +107,26 @@
 
 ### :notebook: 6/9/22
 
-- Created the file [test_django_app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/django_app_pytest/test_django_app.py)
+- Started Code Challenge 32.
+- Created the file [test_django_app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/django_app_pytest/test_django_app.py).
     - Created `pipenv` environment with requirements files.
     - Created the `pytest` fixture function `chrome_browser`, to open a Chrome browser instance.
     - Created the function `test_1`, for test case #1.
     - Tested for the presence of the header text plus two links in the header section of the page.
+    - All `pytest` tests pass.
+
+---
+
+### :notebook: 6/10/22
+
+- Built function framework (definition, arguments, docstring, etc.) in [test_django_app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_74/django_app_pytest/test_django_app.py) for `pytest` functions:
+    - `test_2`
+    - `test_3`
+    - `test_4`
+    - `test_5`
+    - `test_6`
+    - `test_7`
+
+- Created the function `test_2`, for test case #2.
+    - Tested the main app link, for a specific table element (`<th>`), and for a specific number of `<tr>`.
     - All `pytest` tests pass.
