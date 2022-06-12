@@ -1,4 +1,4 @@
-# :calendar: Day 74: 6/4/2022-6/10/2022
+# :calendar: Day 74: 6/4/2022-6/11/2022
 
 ---
 
@@ -128,5 +128,15 @@
     - `test_7`
 
 - Created the function `test_2`, for test case #2.
-    - Tested the main app link, for a specific table element (`<th>`), and for a specific number of `<tr>`.
+    - Tested the main app link, for a specific table element (`<th>`), and for a specific number (100) of `<tr>` elements.
+    - All `pytest` tests pass.
+
+---
+
+### :notebook: 6/11/22
+
+- Created the functions `test_3` and `test_4` for test cases #3 and #4, respectively.
+    - Tested finding and clicking on an article link, then making sure the link text matches the article header text.
+    - Clicked on the 'Login' link and filled in the requested credentials.
+    - The next step is to click the 'Login' button and test logged-on functionality.
     - All `pytest` tests pass.

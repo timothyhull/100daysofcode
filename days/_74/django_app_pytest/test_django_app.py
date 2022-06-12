@@ -5,6 +5,7 @@
 """
 
 # Imports - Python Standard Library
+from os import getenv
 
 # Imports - Third-party
 from pytest import fixture
@@ -26,6 +27,11 @@ TABLE_HEADER_SELECTOR = 'body > main > table > thead > tr > th'
 TABLE_HEADER_TEXT = 'Title'
 TABLE_ROW_COUNT = 100
 TABLE_ROW_XPATH = f'/html/body/main/table/tbody/tr[{TABLE_ROW_COUNT}]'
+ARTICLE_ROW_XPATH = '/html/body/main/table/tbody/tr[1]/td/a'
+ARTICLE_HEADING_XPATH = '/html/body/main/h2/a'
+GO_BACK_BUTTON_SELECTOR = 'body > main > div.pure-button-group > a'
+USERNAME_FIELD_SELECTOR = '#id_username'
+PASSWORD_FIELD_SELECTOR = '#id_password'
 
 
 # pytest fixtures
@@ -170,6 +176,43 @@ def test_3(
             None.
     """
 
+    # Locate the 'PyPlanet Article Sharer App' link
+    app_link = chrome_browser.find_element(
+        by=By.LINK_TEXT,
+        value=APP_LINK_TEXT
+    )
+    assert app_link.text == APP_LINK_TEXT
+
+    # Click on the 'PyPlanet Article Sharer App' link
+    app_link.click()
+    assert APP_LINK_URL in chrome_browser.current_url
+
+    # Locate and click on the first article in the table
+    article_link = chrome_browser.find_element(
+        by=By.XPATH,
+        value=ARTICLE_ROW_XPATH
+    )
+    article_link_text = article_link.text
+    article_link.click()
+
+    # Confirm the article heading is the same as the link text
+    article_header = chrome_browser.find_element(
+        by=By.XPATH,
+        value=ARTICLE_HEADING_XPATH
+    )
+    assert article_link_text == article_header.text
+
+    # Confirm the 'Go back' button works correctly
+    back_button = chrome_browser.find_element(
+        by=By.CSS_SELECTOR,
+        value=GO_BACK_BUTTON_SELECTOR
+    )
+    back_button.click()
+    assert chrome_browser.current_url.startswith(f'{PAGE_URL}{APP_LINK_URL}')
+
+    # Close the browser
+    chrome_browser.close()
+
     return None
 
 
@@ -190,6 +233,44 @@ def test_4(
         Returns:
             None.
     """
+
+    # Locate and click on the 'Login' link
+    login_link = chrome_browser.find_element(
+        by=By.LINK_TEXT,
+        value=LOGIN_URL_TEXT
+    )
+    login_link.click()
+    assert chrome_browser.current_url.startswith(
+        f'{PAGE_URL}{LOGIN_URL_TEXT.lower()}'
+    )
+
+    # Find and enter text in the 'username' field
+    login_field = chrome_browser.find_element(
+        by=By.CSS_SELECTOR,
+        value=USERNAME_FIELD_SELECTOR
+    )
+    login_field.send_keys(
+        getenv(
+            key='USER'
+        )
+    )
+
+    # Find and enter text in the 'password' field
+    login_field = chrome_browser.find_element(
+        by=By.CSS_SELECTOR,
+        value=PASSWORD_FIELD_SELECTOR
+    )
+    login_field.send_keys(
+        getenv(
+            key='PW'
+        )
+    )
+
+    # Click the 'Login' button
+    # TODO
+
+    # Close the browser
+    chrome_browser.close()
 
     return None
 
