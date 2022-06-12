@@ -28,7 +28,7 @@
 
 :white_check_mark: Create a `pytest` test of a web page using Selenium
 
-:white_large_square: Complete [Code Challenge 32](https://codechalleng.es/challenges/32)
+:white_check_mark: Complete [Code Challenge 32](https://codechalleng.es/challenges/32)
 
 ---
 
