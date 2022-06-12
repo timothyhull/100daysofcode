@@ -32,6 +32,15 @@ ARTICLE_HEADING_XPATH = '/html/body/main/h2/a'
 GO_BACK_BUTTON_SELECTOR = 'body > main > div.pure-button-group > a'
 USERNAME_FIELD_SELECTOR = '#id_username'
 PASSWORD_FIELD_SELECTOR = '#id_password'
+LOGIN_BUTTON_CLASS = 'pure-button'
+WELCOME_BANNER_SELECTOR = '#login'
+WELCOME_BANNER_TEXT = 'Welcome back, guest!'
+LOGOUT_URL_TEXT = 'Logout'
+TWEET_BUTTON_TEXT = 'Tweet this'
+LOGOUT_HEADING_XPATH = '/html/body/header/h1'
+LOGOUT_HEADING_TEXT = 'See you!'
+LOGOUT_BANNER_XPATH = '/html/body/main/p'
+LOGOUT_BANNER_TEXT = 'You have been successfully logged out.'
 
 
 # pytest fixtures
@@ -58,6 +67,66 @@ def chrome_browser() -> WebDriver:
     return browser
 
 
+@fixture()
+def chrome_browser_auth() -> WebDriver:
+    """ pytest fixture for a Chrome browser object with authentication.
+
+        Args:
+            None.
+
+        Returns:
+            browser (selenium.webdriver.chrome.webdriver.Webdriver):
+                Selenium Chrome web browser object, authenticated to
+                site.
+    """
+
+    # Create a Chrome browser instance
+    browser = webdriver.Chrome()
+
+    # Open the target URL
+    browser.get(
+        url=PAGE_URL
+    )
+
+    # Locate and click on the 'Login' link
+    login_link = browser.find_element(
+        by=By.LINK_TEXT,
+        value=LOGIN_URL_TEXT
+    )
+    login_link.click()
+
+    # Find and enter text in the 'username' field
+    login_field = browser.find_element(
+        by=By.CSS_SELECTOR,
+        value=USERNAME_FIELD_SELECTOR
+    )
+    login_field.send_keys(
+        getenv(
+            key='USER'
+        )
+    )
+
+    # Find and enter text in the 'password' field
+    pw_field = browser.find_element(
+        by=By.CSS_SELECTOR,
+        value=PASSWORD_FIELD_SELECTOR
+    )
+    pw_field.send_keys(
+        getenv(
+            key='PW'
+        )
+    )
+
+    # Click the 'Login' button
+    login_button = browser.find_element(
+        by=By.CLASS_NAME,
+        value=LOGIN_BUTTON_CLASS
+    )
+    login_button.click()
+
+    return browser
+
+
 # Test functions
 def test_1(
     chrome_browser: WebDriver
@@ -72,7 +141,7 @@ def test_1(
         Args:
             chrome_browser (selenium.webdriver.chrome.webdriver.Webdriver):
                 Selenium Chrome web browser object from pytest fixture
-                open_chrome.
+                chrome_browser.
 
         Returns:
             None.
@@ -93,14 +162,11 @@ def test_1(
     assert login_link.text == LOGIN_URL_TEXT
 
     # Test for the 'Home' link
-    login_link = chrome_browser.find_element(
+    home_link = chrome_browser.find_element(
         by=By.LINK_TEXT,
         value=HOME_URL_TEXT
     )
-    assert login_link.text == HOME_URL_TEXT
-
-    # Close the browser
-    chrome_browser.close()
+    assert home_link.text == HOME_URL_TEXT
 
     return None
 
@@ -119,7 +185,7 @@ def test_2(
         Args:
             chrome_browser (selenium.webdriver.chrome.webdriver.Webdriver):
                 Selenium Chrome web browser object from pytest fixture
-                open_chrome.
+                chrome_browser.
 
         Returns:
             None.
@@ -150,9 +216,6 @@ def test_2(
     )
     assert last_tr
 
-    # Close the browser
-    chrome_browser.close()
-
     return None
 
 
@@ -170,7 +233,7 @@ def test_3(
         Args:
             chrome_browser (selenium.webdriver.chrome.webdriver.Webdriver):
                 Selenium Chrome web browser object from pytest fixture
-                open_chrome.
+                chrome_browser.
 
         Returns:
             None.
@@ -210,9 +273,6 @@ def test_3(
     back_button.click()
     assert chrome_browser.current_url.startswith(f'{PAGE_URL}{APP_LINK_URL}')
 
-    # Close the browser
-    chrome_browser.close()
-
     return None
 
 
@@ -228,7 +288,7 @@ def test_4(
         Args:
             chrome_browser (selenium.webdriver.chrome.webdriver.Webdriver):
                 Selenium Chrome web browser object from pytest fixture
-                open_chrome.
+                chrome_browser.
 
         Returns:
             None.
@@ -256,27 +316,28 @@ def test_4(
     )
 
     # Find and enter text in the 'password' field
-    login_field = chrome_browser.find_element(
+    pw_field = chrome_browser.find_element(
         by=By.CSS_SELECTOR,
         value=PASSWORD_FIELD_SELECTOR
     )
-    login_field.send_keys(
+    pw_field.send_keys(
         getenv(
             key='PW'
         )
     )
 
     # Click the 'Login' button
-    # TODO
-
-    # Close the browser
-    chrome_browser.close()
+    login_button = chrome_browser.find_element(
+        by=By.CLASS_NAME,
+        value=LOGIN_BUTTON_CLASS
+    )
+    login_button.click()
 
     return None
 
 
 def test_5(
-    chrome_browser: WebDriver
+    chrome_browser_auth: WebDriver
 ) -> None:
     """ Test for the presence logged-on user elements.
 
@@ -285,19 +346,45 @@ def test_5(
         and Home links."
 
         Args:
-            chrome_browser (selenium.webdriver.chrome.webdriver.Webdriver):
+            chrome_browser_auth (
+                selenium.webdriver.chrome.webdriver.Webdriver
+            ):
                 Selenium Chrome web browser object from pytest fixture
-                open_chrome.
+                chrome_browser, authenticated to site.
 
         Returns:
             None.
     """
 
+    # Confirm the redirect URL is correct
+    assert chrome_browser_auth.current_url.startswith(PAGE_URL)
+
+    # Confirm the welcome banner exists and is correct
+    welcome_banner = chrome_browser_auth.find_element(
+        by=By.CSS_SELECTOR,
+        value=WELCOME_BANNER_SELECTOR
+    )
+    assert welcome_banner.text.startswith(WELCOME_BANNER_TEXT)
+
+    # Confirm the Logout and Home links exist
+    logout_link = chrome_browser_auth.find_element(
+        by=By.LINK_TEXT,
+        value=LOGOUT_URL_TEXT
+    )
+    assert logout_link.text == LOGOUT_URL_TEXT
+
+    # Confirm the Logout and Home links exist
+    home_link = chrome_browser_auth.find_element(
+        by=By.LINK_TEXT,
+        value=HOME_URL_TEXT
+    )
+    assert home_link.text == HOME_URL_TEXT
+
     return None
 
 
 def test_6(
-    chrome_browser: WebDriver
+    chrome_browser_auth: WebDriver
 ) -> None:
     """ Test for the presence of a Twitter button.
 
@@ -307,19 +394,40 @@ def test_6(
         PyBites entries have New PyBites Article prepended)."
 
         Args:
-            chrome_browser (selenium.webdriver.chrome.webdriver.Webdriver):
-                Selenium Chrome web browser object from pytest fixture
-                open_chrome.
+            chrome_browser_auth (
+                selenium.webdriver.chrome.webdriver.Webdriver
+            ):
 
         Returns:
             None.
     """
 
+    # Locate and click the 'PyPlanet Article Sharer App' link
+    app_link = chrome_browser_auth.find_element(
+        by=By.LINK_TEXT,
+        value=APP_LINK_TEXT
+    )
+    app_link.click()
+
+    # Locate and click on the first article in the table
+    article_link = chrome_browser_auth.find_element(
+        by=By.XPATH,
+        value=ARTICLE_ROW_XPATH
+    )
+    article_link.click()
+
+    # Confirm the presence of a 'Tweet this' button
+    tweet_button = chrome_browser_auth.find_element(
+        by=By.LINK_TEXT,
+        value=TWEET_BUTTON_TEXT
+    )
+    assert tweet_button.text == TWEET_BUTTON_TEXT
+
     return None
 
 
 def test_7(
-    chrome_browser: WebDriver
+    chrome_browser_auth: WebDriver
 ) -> None:
     """ Test for the logout banner and heading links.
 
@@ -328,12 +436,35 @@ def test_7(
         and navbar links are Login and Home again."
 
         Args:
-            chrome_browser (selenium.webdriver.chrome.webdriver.Webdriver):
-                Selenium Chrome web browser object from pytest fixture
-                open_chrome.
+            chrome_browser_auth (
+                selenium.webdriver.chrome.webdriver.Webdriver
+            ):
 
         Returns:
             None.
     """
+
+    # Logout of the application
+    chrome_browser_auth.find_element(
+        by=By.LINK_TEXT,
+        value=LOGOUT_URL_TEXT
+    ).click()
+    assert chrome_browser_auth.current_url.startswith(
+        f'{PAGE_URL}{LOGOUT_URL_TEXT.lower()}'
+    )
+
+    # Confirm the logout heading displays
+    logout_heading = chrome_browser_auth.find_element(
+        by=By.XPATH,
+        value=LOGOUT_HEADING_XPATH
+    )
+    assert logout_heading.text == LOGOUT_HEADING_TEXT
+
+    # Confirm the logout banner displays
+    logout_banner = chrome_browser_auth.find_element(
+        by=By.XPATH,
+        value=LOGOUT_BANNER_XPATH
+    )
+    assert logout_banner.text == LOGOUT_BANNER_TEXT
 
     return None

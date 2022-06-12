@@ -1,4 +1,4 @@
-# :calendar: Day 74: 6/4/2022-6/11/2022
+# :calendar: Day 74: 6/4/2022-6/12/2022
 
 ---
 
@@ -139,4 +139,16 @@
     - Tested finding and clicking on an article link, then making sure the link text matches the article header text.
     - Clicked on the 'Login' link and filled in the requested credentials.
     - The next step is to click the 'Login' button and test logged-on functionality.
+    - All `pytest` tests pass.
+
+---
+
+### :notebook: 6/12/22
+
+- Completed function `test_4`.
+- Created functions `test_5`, `test_6`, and `test_7` for test cases #5, #6, and #7, respectively.
+    - Created a new `pytest` fixture named `chrome_browser_auth` that creates a Selenium browser object with the authentication process completed.
+    - Tested for the presence of elements available to logged-on users.
+    - Tested for the presence of a 'Tweet this' button.
+    - Tested logout functionality and display of logout heading and banner.
     - All `pytest` tests pass.
