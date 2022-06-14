@@ -16,7 +16,7 @@
 
 ## Tasks
 
-:white_large_square: Select task to automate with Selenium
+:white_check_mark: Select task to automate with Selenium
 
 :white_large_square: Write application code
 
