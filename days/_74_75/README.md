@@ -152,3 +152,9 @@
     - Tested for the presence of a 'Tweet this' button.
     - Tested logout functionality and display of logout heading and banner.
     - All `pytest` tests pass.
+
+---
+
+### :notebook: 6/13/22
+
+- Consolidated days 74 and 75
