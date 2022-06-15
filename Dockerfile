@@ -1,6 +1,9 @@
 # VS Code Python Development Container
 FROM python:3.10-slim-buster
 
+# Flask server port
+EXPOSE 5000
+
 # Jupyter Lab server port
 EXPOSE 8888
 
