@@ -52,3 +52,6 @@ pyperclip
 
 # openpyxl
 openpyxl
+
+# web application hosting
+flask

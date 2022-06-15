@@ -581,5 +581,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 <details><summary>Days 76-78: Getting Started with Python Flask</summary>
 
 - Day 76: [6/14/22](days_76)
+- Day 76a: [6/15/22](days_76#notebook-61522)
 
 </details>
