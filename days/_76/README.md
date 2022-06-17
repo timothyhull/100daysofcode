@@ -1,4 +1,4 @@
-# :calendar: Day 76: 6/14/2022-6/15/2022
+# :calendar: Day 76: 6/14/2022-6/17/2022
 
 ---
 
@@ -76,3 +76,27 @@
 
     - Successfully tested the Flask app by navigating to [http://127.0.0.1:5000](http://127.0.0.1:5000).
         - Added port forwarding for TCP 5000 to [.devcontainer/devcontainer.json](https://github.com/timothyhull/100daysofcode/blob/main/.devcontainer/devcontainer.json).
+
+---
+
+### :notebook: 6/16/22
+
+- Watched part of video 5.
+- Added a simple data structure (dictionary) to [_76/flask_app/data.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/data.py).
+- Imported the data structure (`favorite_pizzas`) into [_76/flask_app/app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/app.py):
+
+    ```python
+    from _76.flask_app.data import favorite_pizzas
+    ```
+
+- Added the `favorite_pizzas` dictionary to the `render_template` function, to pass it to the Jinja2 template:
+
+    ```python
+    app.render_template(
+        # Template name
+        'index.html',
+        # Python variable name assigned to the Jinja2 template reference name
+        # It is common for kwarg name and value to be the same things
+        favorite_pizzas=favorite_pizzas
+    )
+    ```

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" Simple Flask application. """
 
 # Imports - Python Standard Library
 
@@ -6,6 +7,7 @@
 from flask import Flask, render_template
 
 # Imports - Local
+from _76.flask_app.data import favorite_pizzas
 
 # Create Flask application object for this file
 app = Flask(__name__)
@@ -28,7 +30,8 @@ def index() -> str:
 
     # Return HTML text to render as a web page
     return render_template(
-        'index.html'
+        'index.html',
+        favorite_pizzas=favorite_pizzas
     )
 
 
