@@ -1,4 +1,4 @@
-# :calendar: Day 76: 6/14/2022-6/17/2022
+# :calendar: Day 76+77: 6/14/2022-6/17/2022
 
 ---
 
@@ -100,3 +100,12 @@
         favorite_pizzas=favorite_pizzas
     )
     ```
+
+---
+
+### :notebook: 6/17/22
+
+- Watched remainder of video 5.
+- Added Jinja2 syntax to the [_76/flask_app/templates/index.html](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/templates/index.html) template that displays the values in the `favorite_pizzas` dictionary.
+
+- Watched video 6.

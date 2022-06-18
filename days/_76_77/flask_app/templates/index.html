@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+
+    <body>
+        <h1 align="center">Everyone's Favorite Pizza</h1>
+        {% for person, pie in favorite_pizzas.items() %}
+        <p>{{ person }} loves {{ pie }}</p>
+        {% endfor %}
+    </body>
+</html>
