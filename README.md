@@ -584,5 +584,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 76+77a: [6/15/22](days_76_77#notebook-61522)
 - Day 76+77b: [6/16/22](days_76_77#notebook-61622)
 - Day 76+77c: [6/17/22](days_76_77#notebook-61722)
+- Day 78: [6/18/22](days_78)
 
 </details>
