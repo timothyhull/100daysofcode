@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Basic Form App</title>
+    </head>
+    <body>
+        <h1>
+            Basic form entry
+            <hr />
+        </h1>
+        <!-- TODO -->
+        <form method="post">
+            First Name: <input name="name" />
+            <br /><br />
+            Last Name : <input name="surname" />
+            <br /><br />
+            <button type="submit">Submit</button>
+        </form>
+        <hr />
+        <!-- TODO -->
+        {% if form_data %}
+            Hello {{ form_data.name }}
+        {% endif %}
+    </body>
+</html>
