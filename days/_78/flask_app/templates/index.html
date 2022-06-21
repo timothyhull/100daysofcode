@@ -8,7 +8,7 @@
             Basic form entry
             <hr />
         </h1>
-        <!-- TODO -->
+        <!-- Name input form, data submitted using HTTP POST -->
         <form method="post">
             First Name: <input name="name" />
             <br /><br />
@@ -17,9 +17,16 @@
             <button type="submit">Submit</button>
         </form>
         <hr />
-        <!-- TODO -->
+        <!-- Determine whether or not there is form_data variable (from Flask) to process -->
         {% if form_data %}
-            Hello {{ form_data.name }}
+            <!-- Determine whether or not all of the form fields have data -->
+            {% if form_data.name and form_data.surname %}
+                <!-- Display all form data -->
+                Hello, {{ form_data.name | title }} {{ form_data.surname | title }}!
+            <!-- If all form fields do not have data, display an error message -->
+            {% else %}
+                Please fill out all of the fields and try again.
+            {% endif %}
         {% endif %}
     </body>
 </html>

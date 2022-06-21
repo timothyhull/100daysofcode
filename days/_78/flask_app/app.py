@@ -24,6 +24,8 @@ app = Flask('__main__')
 def index() -> str:
     """ Default route to index.html.
 
+    Accepts GET and POST methods.
+
     Args:
         None.
 
@@ -48,6 +50,7 @@ def index() -> str:
     return html_text
 
 
+# Run the Flask application when the script runs
 if __name__ == '__main__':
     app.run(
         host='localhost',
