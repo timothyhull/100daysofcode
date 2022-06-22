@@ -39,14 +39,14 @@
 
 - Watched videos 1-4
 - Setup test application environment files:
-    - \[days/_76/flask_app/app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/app.py): Main Flask application.
-    - \[days/_76/flask_app/data.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/data.py): Mock database for Flask application.
-    - \[days/_76/flask_app/templates/index.html](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/templates/index.html): Jinja2 templated Flask application HTML file.
+    - [days/_76/flask_app/app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/app.py): Main Flask application.
+    - [days/_76/flask_app/data.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/data.py): Mock database for Flask application.
+    - [days/_76/flask_app/templates/index.html](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/templates/index.html): Jinja2 templated Flask application HTML file.
 
 - Installed Flask from PyPI with `pip install flask`.
     - Requires and automatically installs `Jinja2`.
 
-- Started Flask application setup in \[days/_76/flask_app/app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/app.py):
+- Started Flask application setup in [days/_76/flask_app/app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/app.py):
 
     ```python
     # Import the Flask class to create the web application
@@ -82,8 +82,8 @@
 ### :notebook: 6/16/22
 
 - Watched part of video 5.
-- Added a simple data structure (dictionary) to \[days/_76/flask_app/data.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/data.py).
-- Imported the data structure (`favorite_pizzas`) into \[days/_76/flask_app/app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/app.py):
+- Added a simple data structure (dictionary) to [days/_76/flask_app/data.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/data.py).
+- Imported the data structure (`favorite_pizzas`) into [days/_76/flask_app/app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/app.py):
 
     ```python
     from _76.flask_app.data import favorite_pizzas
@@ -106,6 +106,6 @@
 ### :notebook: 6/17/22
 
 - Watched remainder of video 5.
-- Added Jinja2 syntax to the \[days/_76/flask_app/templates/index.html](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/templates/index.html) template that displays the values in the `favorite_pizzas` dictionary.
+- Added Jinja2 syntax to the [days/_76/flask_app/templates/index.html](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/templates/index.html) template that displays the values in the `favorite_pizzas` dictionary.
 
 - Watched video 6.
