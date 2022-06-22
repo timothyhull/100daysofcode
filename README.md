@@ -565,25 +565,25 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 73b: [6/1/22](days_73#notebook-6122)
 - Day 73c: [6/2/22](days_73#notebook-6222)
 - Day 73d: [6/3/22](days_73#notebook-6322)
-- Day 74+75: [6/4/22](days_74_75)
-- Day 74+75a: [6/5/22](days_74_75#notebook-6/5/22)
-- Day 74+75b: [6/6/22](days_74_75#notebook-6/6/22)
-- Day 74+75c: [6/7/22](days_74_75#notebook-6/7/22)
-- Day 74+75d: [6/8/22](days_74_75#notebook-6/8/22)
-- Day 74+75e: [6/9/22](days_74_75#notebook-6/9/22)
-- Day 74+75f: [6/10/22](days_74_75#notebook-6/10/22)
-- Day 74+75g: [6/11/22](days_74_75#notebook-6/11/22)
-- Day 74+75h: [6/12/22](days_74_75#notebook-6/12/22)
-- Day 74+75i: [6/13/22](days_74_75#notebook-6/12/22)
+- Days 74+75: [6/4/22](days_74_75)
+- Days 74+75a: [6/5/22](days_74_75#notebook-6/5/22)
+- Days 74+75b: [6/6/22](days_74_75#notebook-6/6/22)
+- Days 74+75c: [6/7/22](days_74_75#notebook-6/7/22)
+- Days 74+75d: [6/8/22](days_74_75#notebook-6/8/22)
+- Days 74+75e: [6/9/22](days_74_75#notebook-6/9/22)
+- Days 74+75f: [6/10/22](days_74_75#notebook-6/10/22)
+- Days 74+75g: [6/11/22](days_74_75#notebook-6/11/22)
+- Days 74+75h: [6/12/22](days_74_75#notebook-6/12/22)
+- Days 74+75i: [6/13/22](days_74_75#notebook-6/12/22)
 
 </details>
 
 <details><summary>Days 76-78: Getting Started with Python Flask</summary>
 
-- Day 76+77: [6/14/22](days_76_77)
-- Day 76+77a: [6/15/22](days_76_77#notebook-61522)
-- Day 76+77b: [6/16/22](days_76_77#notebook-61622)
-- Day 76+77c: [6/17/22](days_76_77#notebook-61722)
+- Days 76+77: [6/14/22](days_76_77)
+- Days 76+77a: [6/15/22](days_76_77#notebook-61522)
+- Days 76+77b: [6/16/22](days_76_77#notebook-61622)
+- Days 76+77c: [6/17/22](days_76_77#notebook-61722)
 - Break for rest :sleeping:
 - Day 78: [6/19/22](days_78)
 - Day 78a: [6/20/22](days_79#notebook-62022)
@@ -592,6 +592,7 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 
 <details><summary>Days 79-81: Basic Database Access with SQLite3</summary>
 
-- Day 79: [6/21/22](days_79)
+- Days 79+80: [6/21/22](days_79_80)
+- Days 79+80a: [6/12/22](days_79_80#notebook-62222)
 
 </details>
