@@ -12,7 +12,7 @@
         "ms-azuretools.vscode-docker",
         "streetsidesoftware.code-spell-checker"
     ],
-    "forwardPorts": [5000, 8888],
+    "forwardPorts": [5000, 8080, 8888],
     "settings": {
         // Set the default terminal application to bash
         "#terminal.integrated.defaultProfile.linux#": "/bin/bash",

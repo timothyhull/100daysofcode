@@ -1,4 +1,4 @@
-# :calendar: Day 79: 6/20/2022
+# :calendar: Day 79: 6/20/2022-6/21/2022
 
 ---
 
@@ -10,9 +10,11 @@
 
 ## Resources
 
-:star: [SQLite DB Browser Browser Tool](https://sqlitebrowser.org)
+:star: ~~[SQLite DB browser tool](https://sqlitebrowser.org) - GUI-only tool~~
 
-:star: [Python SQLite3 Documentation](https://docs.python.org/3/library/sqlite3.html)
+:star: [Python SQLite3 documentation](https://docs.python.org/3/library/sqlite3.html)
+
+:star: [`sqlite-web` SQLite3 web interface](https://github.com/coleifer/sqlite-web)
 
 ---
 
@@ -21,6 +23,8 @@
 :white_check_mark: Watched videos 1-4
 
 :white_check_mark: Build a simple SQLite3 Jupyter Notebook that creates a database with a table and columns
+
+:white_large_square: Watch video 5
 
 ---
 
@@ -35,13 +39,35 @@
     import sqlite3
     ```
 
-- Installed **SQLite Browser for Linux** in the development container with the commands:
+- ~~Installed **SQLite Browser for Linux** in the development container with the commands:~~
 
     ```bash
     apt-get update
     apt-get install sqlitebrowser
     ```
 
-    - SQLite Browser is a GUI tool that interacts with SQLite databases.
+    - ~~SQLite Browser is a GUI tool that interacts with SQLite databases.~~
 
 - Created the file [days/_79/simple_db/simple_db.ipynb](https://github.com/timothyhull/100daysofcode/blob/main/days/_79/simple_db/simple_db.ipynb), to create a database with a table and columns.
+
+---
+
+### :notebook: 6/22/22
+
+- Reviewed [days/_79/simple_db/simple_db.ipynb](https://github.com/timothyhull/100daysofcode/blob/main/days/_79/simple_db/simple_db.ipynb).
+
+- Determined **SQLite Browser for Linux** requires a GUI terminal.
+    - Identified [`sqlite-web`](https://github.com/coleifer/sqlite-web) as an alternative.
+    - Installs with `pip`:
+
+        ```bash
+        # Install sqlite-web
+        pip install sqlite-web
+
+        # Run sqlite-web, default port is 8080
+        # Set a different port with -p NNNN
+        # Disable automatic browser launch with -x
+        sqlite_web [options] /path/to/database-file.db
+        ```
+
+- Watched video 5.

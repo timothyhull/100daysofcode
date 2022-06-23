@@ -2,23 +2,22 @@
 FROM python:3.10-slim-buster
 
 # Flask server port
-EXPOSE 5000
+EXPOSE 5000/TCP
 
 # Jupyter Lab server port
-EXPOSE 8888
+EXPOSE 8888/TCP
 
-# SQLite3 server port 
-# EXPOSE NNNN
+# sqlite-web server port 
+EXPOSE 8080/TCP
 
 # Default working directory
 WORKDIR /workspaces/100daysofcode/days
 
-# Install Git, core packages for GCC, Python 3 development and SQLite3
+# Install Git, core packages for GCC, Python 3 development
 RUN apt-get update && \
     apt-get install -y git \
                        gcc \
-                       python3-dev \
-                       sqlitebrowser
+                       python3-dev
 
 # Install X Virtual Frame Buffer (Xvfb) and xclip to support Pyperclip
 RUN apt-get install -y xvfb xclip

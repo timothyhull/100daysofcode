@@ -55,3 +55,6 @@ openpyxl
 
 # web application hosting
 flask
+
+# SQLite3 web GUI
+sqlite-web
