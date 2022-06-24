@@ -593,6 +593,7 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 <details><summary>Days 79-81: Basic Database Access with SQLite3</summary>
 
 - Days 79+80: [6/21/22](days_79_80)
-- Days 79+80a: [6/12/22](days_79_80#notebook-62222)
+- Days 79+80a: [6/22/22](days_79_80#notebook-62222)
+- Days 79+80b: [6/23/22](days_79_80#notebook-62322)
 
 </details>

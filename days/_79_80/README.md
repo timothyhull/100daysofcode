@@ -24,7 +24,11 @@
 
 :white_check_mark: Build a simple SQLite3 Jupyter Notebook that creates a database with a table and columns
 
-:white_large_square: Watch video 5
+:white_check_mark: Watch video 5
+
+:white_check_mark: Watch video 6
+
+:white_large_square: Watch videos 7-10
 
 ---
 
@@ -71,3 +75,11 @@
         ```
 
 - Watched video 5.
+
+---
+
+### :notebook: 6/23/22
+
+- Watched video 6.
+
+- Created the file [days/_79/simple_db/generate_db.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_79/simple_db/generate_db.py) to generate test database files.
