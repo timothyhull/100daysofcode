@@ -72,7 +72,10 @@ def main() -> None:
             None.
     """
 
+    # Collect user input for a DB name
     db_name = get_db_name()
+
+    # Create the test DB
     create_db(
         db_name=db_name
     )

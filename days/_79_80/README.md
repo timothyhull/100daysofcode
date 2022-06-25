@@ -88,4 +88,6 @@
 
 ### :notebook: 6/24/22
 
-- TODO
+- Watched video 7.
+
+- Updated [days/_79/simple_db/simple_db.ipynb](https://github.com/timothyhull/100daysofcode/blob/main/days/_79/simple_db/simple_db.ipynb) with steps to insert data into the database file and query/return all rows.
