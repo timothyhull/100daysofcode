@@ -83,3 +83,9 @@
 - Watched video 6.
 
 - Created the file [days/_79/simple_db/generate_db.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_79/simple_db/generate_db.py) to generate test database files.
+
+---
+
+### :notebook: 6/24/22
+
+- TODO
