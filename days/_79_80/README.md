@@ -28,6 +28,8 @@
 
 :white_check_mark: Watch video 6
 
+:white_check_mark: Watch video 7
+
 :white_large_square: Watch videos 7-10
 
 ---
@@ -91,3 +93,11 @@
 - Watched video 7.
 
 - Updated [days/_79/simple_db/simple_db.ipynb](https://github.com/timothyhull/100daysofcode/blob/main/days/_79/simple_db/simple_db.ipynb) with steps to insert data into the database file and query/return all rows.
+
+---
+
+### :notebook: 6/25/22
+
+- Watched video 8.
+
+- Created the file [days/_79/simple_db/populate_db.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_79/simple_db/populate_db.py) to insert new DB rows.
