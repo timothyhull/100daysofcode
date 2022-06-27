@@ -1,4 +1,4 @@
-# :calendar: Day 79: 6/20/2022-6/26/2022
+# :calendar: Day 79: 6/20/2022-6/27/2022
 
 ---
 
@@ -30,7 +30,11 @@
 
 :white_check_mark: Watch video 7
 
-:white_large_square: Watch videos 7-10
+:white_check_mark: Watch video 8
+
+:white_check_mark: Watch video 9
+
+:white_large_square: Watch video 10
 
 ---
 
@@ -101,3 +105,11 @@
 - Watched video 8.
 
 - Created the file [days/_79/simple_db/populate_db.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_79/simple_db/populate_db.py) to insert new DB rows.
+
+---
+
+### :notebook: 6/26/22
+
+- Watched video 9.
+
+- Added cells to [days/_79/simple_db/simple_db.ipynb](https://github.com/timothyhull/100daysofcode/blob/main/days/_79/simple_db/simple_db.ipynb) that query the DB and display both raw and friendly result data.
