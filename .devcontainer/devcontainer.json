@@ -5,13 +5,14 @@
         "context": ".."
     },
     "extensions": [
-        "davidanson.vscode-markdownlint",
-        "github.vscode-pull-request-github",
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "ms-azuretools.vscode-docker",
-        "streetsidesoftware.code-spell-checker"
-    ],
+		"davidanson.vscode-markdownlint",
+		"github.vscode-pull-request-github",
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"ms-azuretools.vscode-docker",
+		"streetsidesoftware.code-spell-checker",
+		"alexcvzz.vscode-sqlite"
+	],
     "forwardPorts": [5000, 8080, 8888],
     "settings": {
         // Set the default terminal application to bash

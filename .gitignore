@@ -1,6 +1,9 @@
 # Course GitHub repository files
 100daysofcode-with-python-course
 
+# Files with "fail" in the name
+*fail*
+
 # macOS Spotlight Index
 .DS_Store
 
