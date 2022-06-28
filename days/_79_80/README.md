@@ -34,7 +34,7 @@
 
 :white_check_mark: Watch video 9
 
-:white_large_square: Watch video 10
+:white_check_mark: Watch video 10
 
 ---
 
@@ -113,3 +113,9 @@
 - Watched video 9.
 
 - Added cells to [days/_79/simple_db/simple_db.ipynb](https://github.com/timothyhull/100daysofcode/blob/main/days/_79/simple_db/simple_db.ipynb) that query the DB and display both raw and friendly result data.
+
+---
+
+### :notebook: 6/27/22
+
+- Watched video 10.
