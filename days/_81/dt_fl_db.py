@@ -2,6 +2,7 @@
 """ DT FL DB Application. """
 
 # Imports - Python Standard Library
+from collections import namedtuple
 from sqlite3 import OperationalError
 import sqlite3
 
@@ -21,10 +22,22 @@ DB_COLUMN_SQL = (
     ')'
 )
 
+# namedtuple objects
+UserInput = namedtuple(
+    typename='UserInput',
+    field_names=[
+        'name',
+        'outbound_interest_score',
+        'inbound_interest_score',
+        'num_tries',
+        'fl_reason'
+    ]
+)
+
 
 def display_banner(
     banner_string: str
-) -> None:
+) -> str:
     """ Display a welcome banner.
 
         Args:
@@ -32,7 +45,8 @@ def display_banner(
                 String for the banner display.
 
         Returns:
-            None.
+            banner (str).
+                Banner to write to STDOUT.
     """
 
     # Create horizontal and vertical rule strings
@@ -46,9 +60,55 @@ def display_banner(
         f'{horizontal_rule}\n'
     )
 
-    print(banner)
+    return banner
 
-    return None
+
+def get_user_input() -> None:
+    """ Get user input.
+
+        Args:
+            None.
+
+        Returns:
+            user_input (UserInput):
+                namedtuple object containing user input.
+    """
+
+    # Collect user input
+
+    # Display an informational message
+    display_banner(
+        banner_string='** Add a new DB entry **'
+    )
+    
+    # Create a list of user input data
+    user_input = []
+
+
+    name_input = input(
+        'Enter a name, or "q" to quit: '
+    )
+
+    outbound_interest_score_input = input(
+        'Enter an outbound interest score (1-5) or "q" to quit: '
+    )
+
+    inbound_interest_score_input = input(
+        'Enter an inbound interest score (1-5), or "q" to quit: '
+    )
+
+    num_tries_input = input(
+        'Enter a number of attempts, or "q" to quit: '
+    )
+
+    fl_reason_input = input(
+        'Enter a fl reason. or "q" to quit: '
+    )
+
+    # Unpack the user input data
+    user_input = UserInput(*user_input)
+
+    return user_input 
 
 
 def check_db_suffix(
@@ -104,7 +164,7 @@ def create_connect_db(
 
 def create_db_tables(
     db_name: str = DB_NAME
-) -> None:
+) -> str:
     """ Create DB tables.
 
         Args:
@@ -114,7 +174,8 @@ def create_db_tables(
                 the DB_NAME constant.
 
         Returns:
-            None.
+            msg (str):
+                Database transaction status message to write to STDOUT.
     """
 
     # Check for and, if needed add the DB_EXTENSION to the end of the db_name
@@ -140,13 +201,36 @@ def create_db_tables(
             )
 
             # Display a success message.
-            print(f'\nSuccessfully created the table "{DB_TABLE_NAME}".')
+            msg = f'\nSuccessfully created the table "{DB_TABLE_NAME}".'
 
     # Handle exceptions when the DB table already exists
     except OperationalError:
 
         # Display an informational message
-        print(f'\nDB table "{DB_TABLE_NAME}" already exists.')
+        msg = f'\nDB table "{DB_TABLE_NAME}" is available.'
+
+    return msg
+
+
+def add_db_entries(
+    db_name: str
+) -> str:
+    """ Add DB row entries based on user input.
+
+        Args:
+            db_name (str, optional):
+                Name of the db file.  Automatically adds the ".db"
+                extension, if not found.  Default value is the value of
+                the DB_NAME constant.
+
+        Returns:
+            msg (str):
+                Database transaction status message to write to STDOUT.
+    """
+
+    # Collect user input
+    while True:
+        user_input = get_user_input()
 
     return None
 
@@ -162,22 +246,25 @@ def main() -> None:
     """
 
     # Display a start banner
-    display_banner(
+    msg = display_banner(
         banner_string=BANNER_START
-    )
+        )
+    print(msg)
 
     # Connect to the DB
     db_name = create_connect_db()
 
     # Create DB tables
-    create_db_tables(
+    msg = create_db_tables(
         db_name=db_name
     )
+    print(msg)
 
     # Display an exit banner
-    display_banner(
+    msg = display_banner(
         banner_string=BANNER_EXIT
     )
+    print(msg)
 
     return None
 
