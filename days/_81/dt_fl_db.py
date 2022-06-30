@@ -4,6 +4,8 @@
 # Imports - Python Standard Library
 from collections import namedtuple
 from sqlite3 import OperationalError
+from sys import exit
+from typing import List
 import sqlite3
 
 # Constants
@@ -63,52 +65,241 @@ def display_banner(
     return banner
 
 
-def get_user_input() -> None:
+def quit_program() -> None:
+    """ Quit the program.
+
+        Args:
+            None.
+
+        Returns:
+            None.
+    """
+
+    # Display a quit banner
+    msg = display_banner(
+        banner_string=BANNER_EXIT
+    )
+    print(msg)
+
+    # Exit the program
+    exit(0)
+
+
+def display_menu() -> int:
+    """ Display a menu of options.
+
+        Args:
+            None.
+
+        Returns:
+            menu_choice (int):
+                Menu choice.
+    """
+
+    try:
+        while True:
+            # Display a menu
+            display_banner(
+                banner_string='** Menu **'
+            )
+
+            print(
+                '\n1. Add a new DB entry\n'
+                '2. Display all DB entries\n'
+                '3. Display a specific DB entry\n'
+                '4. Update a specific DB entry\n'
+                '5. Delete a specific DB entry\n'
+                '6. Quit\n'
+            )
+
+            # Get menu selection
+            menu_choice = input(
+                'Enter a menu selection: '
+            )
+
+            # Validate menu selection
+            if not menu_choice:
+                print(
+                    '\n* Invalid menu selection *'
+                )
+                continue
+            else:
+                try:
+                    # Determine if the menu selection is an integer
+                    menu_choice = int(menu_choice)
+                except ValueError:
+                    print(
+                        '\n* Invalid menu selection *'
+                    )
+                    continue
+                # Determine if the menu selection is within the range of 1-6
+                if not 1 <= menu_choice <= 6:
+                    print(
+                        '\n* Invalid menu selection *'
+                    )
+                    continue
+
+            return menu_choice
+
+    except KeyboardInterrupt:
+        # Display a message and exit the application
+        quit_program()
+
+
+def get_user_input() -> List:
     """ Get user input.
 
         Args:
             None.
 
         Returns:
-            user_input (UserInput):
+            user_input (List):
                 namedtuple object containing user input.
     """
 
-    # Collect user input
+    try:
+        while True:
+            # Display an informational message
+            display_banner(
+                banner_string='** Add a new DB entry **'
+            )
 
-    # Display an informational message
-    display_banner(
-        banner_string='** Add a new DB entry **'
-    )
-    
-    # Create a list of user input data
-    user_input = []
+            # Create a list of user input data
+            user_input = []
 
+            # Collect name_input
+            while True:
+                name_input = input(
+                    'Enter a name, or "q" to quit: '
+                )
 
-    name_input = input(
-        'Enter a name, or "q" to quit: '
-    )
+                # Validate name_input
+                if name_input:
+                    if name_input == 'q':
+                        # Display an exit banner and exit the application
+                        quit_program()
+                    else:
+                        user_input.append(name_input)
+                        break
+                else:
+                    print(
+                        '\n* Invalid name input *'
+                    )
+                    continue
 
-    outbound_interest_score_input = input(
-        'Enter an outbound interest score (1-5) or "q" to quit: '
-    )
+            # Collect outbound_interest_score_input
+            while True:
+                outbound_interest_score_input = input(
+                    'Enter an outbound interest score (1-5), or "q" to quit: '
+                )
 
-    inbound_interest_score_input = input(
-        'Enter an inbound interest score (1-5), or "q" to quit: '
-    )
+                # Validate outbound_interest_score input
+                if outbound_interest_score_input:
+                    if outbound_interest_score_input == 'q':
+                        # Display an exit banner and exit the application
+                        quit_program()
+                    else:
+                        try:
+                            outbound_interest_score_input = int(
+                                outbound_interest_score_input
+                            )
+                        except ValueError:
+                            print(
+                                '\n* Invalid outbound interest score *'
+                            )
+                            continue
+                        else:
+                            if 1 <= outbound_interest_score_input <= 5:
+                                user_input.append(
+                                    outbound_interest_score_input
+                                )
+                                break
+                            else:
+                                print(
+                                    '\n* Invalid outbound interest score *'
+                                )
+                                continue
 
-    num_tries_input = input(
-        'Enter a number of attempts, or "q" to quit: '
-    )
+            # Collect inbound_interest_score_input
+            while True:
+                inbound_interest_score_input = input(
+                    'Enter an inbound interest score (1-5), or "q" to quit: '
+                )
 
-    fl_reason_input = input(
-        'Enter a fl reason. or "q" to quit: '
-    )
+                # Validate inbound_interest_score_input
+                if inbound_interest_score_input:
+                    if inbound_interest_score_input == 'q':
+                        # Display an exit banner and exit the application
+                        quit_program()
+                    else:
+                        try:
+                            inbound_interest_score_input = int(
+                                inbound_interest_score_input
+                            )
+                        except ValueError:
+                            print('\n* Invalid inbound interest score *')
+                            continue
+                        else:
+                            if 1 <= inbound_interest_score_input <= 5:
+                                user_input.append(
+                                    inbound_interest_score_input
+                                )
+                                break
+                            else:
+                                print(
+                                    '\n* Invalid inbound interest score *'
+                                )
+                                continue
 
-    # Unpack the user input data
-    user_input = UserInput(*user_input)
+            # Collect num_tries input
+            while True:
+                num_tries_input = input(
+                    'Enter a number of attempts, or "q" to quit: '
+                )
 
-    return user_input 
+                # Validate num_tries input
+                if num_tries_input:
+                    if num_tries_input == 'q':
+                        # Display an exit banner and exit the application
+                        quit_program()
+                    else:
+                        try:
+                            num_tries_input = int(num_tries_input)
+                        except ValueError:
+                            print(
+                                '\n* Invalid number of tries *'
+                            )
+                            continue
+                        else:
+                            if num_tries_input >= 0:
+                                user_input.append(num_tries_input)
+                                break
+                            else:
+                                print(
+                                    '\n* Invalid number of tries *'
+                                )
+                                continue
+
+            # Collect fl_reason input
+            while True:
+                fl_reason_input = input(
+                    'Enter a fl reason, or "q" to quit: '
+                )
+
+                # Validate fl_reason input
+                if fl_reason_input:
+                    if fl_reason_input == 'q':
+                        # Display an exit banner and exit the application
+                        quit_program()
+                    else:
+                        user_input.append(fl_reason_input)
+                        break
+
+            return user_input
+
+    except KeyboardInterrupt:
+        # Display a message and exit the application
+        quit_program()
 
 
 def check_db_suffix(
@@ -201,7 +392,9 @@ def create_db_tables(
             )
 
             # Display a success message.
-            msg = f'\nSuccessfully created the table "{DB_TABLE_NAME}".'
+            msg = (
+                f'\n\n** Successfully created the table "{DB_TABLE_NAME}" **.'
+            )
 
     # Handle exceptions when the DB table already exists
     except OperationalError:
@@ -213,26 +406,50 @@ def create_db_tables(
 
 
 def add_db_entries(
-    db_name: str
-) -> str:
+    db_name: str,
+) -> List[str]:
     """ Add DB row entries based on user input.
 
         Args:
             db_name (str, optional):
                 Name of the db file.  Automatically adds the ".db"
                 extension, if not found.  Default value is the value of
-                the DB_NAME constant.
+                the DB_NAME constant.'
 
         Returns:
-            msg (str):
-                Database transaction status message to write to STDOUT.
+            db_entry (List):
+                List object with raw DB entry data.
     """
 
     # Collect user input
-    while True:
-        user_input = get_user_input()
+    user_input = get_user_input()
 
-    return None
+    # Unpack the user input data
+    user_input = UserInput(*user_input)
+
+    # Connect to a SQLite3 DB and add entries, if not already present
+    with sqlite3.connect(
+        database=DB_NAME
+    ) as conn:
+
+        # Create a cursor object
+        cursor = conn.cursor()
+
+        # Run the SQL command to add a DB entry
+        db_entry = cursor.execute(
+            f'''
+                INSERT INTO {DB_TABLE_NAME}
+                VALUES (
+                    "{user_input.name}",
+                    {user_input.outbound_interest_score},
+                    {user_input.inbound_interest_score},
+                    {user_input.num_tries},
+                    "{user_input.fl_reason}"
+                )
+            '''.strip()
+        )
+
+    return db_entry
 
 
 def main() -> None:
@@ -260,11 +477,19 @@ def main() -> None:
     )
     print(msg)
 
-    # Display an exit banner
-    msg = display_banner(
-        banner_string=BANNER_EXIT
-    )
-    print(msg)
+    # Display menu
+    menu_choice = display_menu()
+    if menu_choice == 1:
+        # Add DB entries
+        add_db_entries(
+            db_name=db_name,
+        )
+        print(
+            'Successfully added new record to the DB.'
+        )
+
+    # Display an exit banner and exit the application
+    quit_program()
 
     return None
 

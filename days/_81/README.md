@@ -51,3 +51,15 @@
     - `get_user_input` - Collects user input data for DB entry.
     - `add_db_entries` - Adds new rows to the DB.
         - **Both functions are incomplete.**
+
+---
+
+### :notebook: 6/29/22
+
+- Completed the `get_user_input` and `add_db_entries` functions in [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py).
+
+- Added functions to [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py):
+    - `quit_program` - Quit the program.
+    - `display_menu` - Display a menu of options for user input.
+
+- Tested inputs and data validation.
