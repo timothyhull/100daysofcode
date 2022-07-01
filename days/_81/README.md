@@ -68,4 +68,13 @@
 
 ### :notebook: 6/30/22
 
-- TODO
+- Updated variable and function names for reusability.
+    - `UserInput` --> `DBData`
+    - `display_menu` --> `display_main_menu`
+    - `get_user_input` --> `get_db_query_input`
+    - `user_input` --> `new_record_input`
+- Revised the `display_menu` function.
+- Corrected instances of using the `display_banner` function without printing the result/return value.
+- **Added functionality to allow a user to return to the main menu.**
+- added the `query_db` function to either get all DB rows, or search for a specific row using the `name` field.
+- Added looping over the main menu, to allow a user to use the menu selections indefinitely
