@@ -78,3 +78,18 @@
 - **Added functionality to allow a user to return to the main menu.**
 - added the `query_db` function to either get all DB rows, or search for a specific row using the `name` field.
 - Added looping over the main menu, to allow a user to use the menu selections indefinitely
+
+---
+
+### :notebook: 7/1/22
+
+- Functionally decomposed [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py), separating all but the `main` function to separate files:
+    - [`DTFLDB/db_data.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_data.py)
+    - [`DTFLDB/db_insert.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_insert.py)
+    - [`DTFLDB/db_query.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_query.py)
+    - [`DTFLDB/db_setup.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_setup.py)
+    - [`DTFLDB/display_banner.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/display_banner.py)
+    - [`DTFLDB/display_main_menu.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/display_main_menu.py)
+    - [`DTFLDB/get_db_query_input.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/get_db_query_input.py)
+    - [`DTFLDB/get_new_record_input.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/get_new_record_input.py)
+    - [`DTFLDB/quit_program.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/quit_program.py)
