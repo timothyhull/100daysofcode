@@ -6,13 +6,10 @@ from typing import List
 import sqlite3
 
 # Imports - Local
-from _81.DTFLDB.db_data import DBData
+from _81.DTFLDB.db_data import (
+    DB_NAME, DB_TABLE_NAME, DBData
+)
 from _81.DTFLDB.display_banner import display_banner
-
-# Constants
-DB_EXTENSION = '.sqlite'
-DB_NAME = f'dt_fail{DB_EXTENSION}'
-DB_TABLE_NAME = 'history'
 
 
 def query_db(

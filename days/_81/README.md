@@ -93,3 +93,13 @@
     - [`DTFLDB/get_db_query_input.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/get_db_query_input.py)
     - [`DTFLDB/get_new_record_input.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/get_new_record_input.py)
     - [`DTFLDB/quit_program.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/quit_program.py)
+
+---
+
+### :notebook: 7/2/22
+
+- Refactored files in the [`DTFLDB`](https://github.com/timothyhull/100daysofcode/tree/main/days/_81/DTFLDB) folder, migrating all constants to shared constants in the `db_data` module.
+
+- Created the framework for the function `update_db_entry` in [[`DTFLDB/db_insert.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_insert.py), to update a record in the DB.
+
+- Added code framework to the `main` function in [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py) to support updating a DB record.

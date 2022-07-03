@@ -5,10 +5,10 @@
 from sys import exit
 
 # Imports - Local
+from _81.DTFLDB.db_data import (
+    BANNER_EXIT
+)
 from _81.DTFLDB.display_banner import display_banner
-
-# Constants
-BANNER_EXIT = 'Application closed'
 
 
 def quit_program() -> None:

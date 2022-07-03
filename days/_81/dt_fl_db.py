@@ -87,7 +87,24 @@ def main() -> None:
             )
 
         elif menu_choice == 4:
-            pass
+            # Get all DB entries
+            query_results = query_db(
+                db_name=db_name,
+                get_all_records=True
+            )
+
+            # Display the query results
+            if query_results:
+                display_query_results(
+                    query_results=query_results
+                )
+
+            # If no results were found, display a message
+            else:
+                msg = display_banner(
+                    banner_string=NO_RESULTS_FOUND
+                )
+                print(msg)
 
         elif menu_choice == 5:
             pass

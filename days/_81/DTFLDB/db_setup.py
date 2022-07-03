@@ -5,18 +5,9 @@
 from sqlite3 import OperationalError
 import sqlite3
 
-# Constants
-DB_EXTENSION = '.sqlite'
-DB_NAME = f'dt_fail{DB_EXTENSION}'
-DB_TABLE_NAME = 'history'
-DB_COLUMN_SQL = (
-    '('
-    'name TEXT, '
-    'outbound_interest_score INT, '
-    'inbound_interest_score INT, '
-    'num_tries INT ,'
-    'fl_reason TEXT'
-    ')'
+# Imports - Local
+from _81.DTFLDB.db_data import (
+    DB_EXTENSION, DB_NAME, DB_TABLE_NAME, DB_COLUMN_SQL
 )
 
 
