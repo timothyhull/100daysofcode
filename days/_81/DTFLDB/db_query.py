@@ -91,12 +91,19 @@ def display_query_results(
                 List of DBData objects with raw DB entry data.
     """
 
+    # Display a banner with the number of results
     if query_results:
         msg = display_banner(
             banner_string=f'** {len(query_results)} results found **'
         )
         print(msg)
 
+        # Sort the results by name
+        query_results.sort(
+            key=lambda x: x.name.lower()
+        )
+
+        # Display the query results
         for index, result in enumerate(
             query_results,
             start=1
