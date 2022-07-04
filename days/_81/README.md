@@ -1,4 +1,4 @@
-# :calendar: Day 81: 6/28/2022
+# :calendar: Day 81: 6/28/2022-7/4/22
 
 ---
 
@@ -105,3 +105,26 @@
 - Added code framework to the `main` function in [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py) to support updating a DB record.
 
 - Sorted query results by name in [`DTFLDB/db_query.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_query.py).
+
+---
+
+### :notebook: 7/3/22
+
+- Updated application to support code reuse and updating a DB record:
+    - [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py):
+        - Moved constants to [`DTFLDB/db_data.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_data.py).
+        - Added function calls to `get_db_record_user_input` and `update_db_entry`, to get user input for a DB record to update and update a DB record, respectively.
+    - [`DTFLDB/db_data.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_data.py):
+        - Added constants migrated from [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py).
+    - [`DTFLDB/db_insert.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_insert.py):
+        - Corrected SQL `UPDATE` clause syntax.
+    - [`DTFLDB/db_query.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_query.py):
+        - Updated `SELECT` SQL clause to use a `LIKE` operator and support partial name matches, instead of the `=` operator and explicit name matches only.
+    - [`DTFLDB/display_main_menu.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/display_main_menu.py):
+        - Migrated multiple instances of printing the text `* Invalid menu selection *` to the `invalid_menu_input` function in [`DTFLDB/output_messages.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/output_messages.py)
+
+- Added new modules in the [`DTFLDB`](https://github.com/timothyhull/100daysofcode/tree/main/days/_81/DTFLDB) folder:
+    - [`DTFLDB/get_db_record_selection.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/get_db_record_selection.py)
+    - [`DTFLDB/output_messages.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/output_messages.py)
+
+- Need to find or add a key/ID column to the DB, to prevent updating multiple records that match a `WHERE` clause.
