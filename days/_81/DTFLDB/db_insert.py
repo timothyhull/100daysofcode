@@ -78,7 +78,7 @@ def add_db_entry(
 
 def update_db_entry(
     db_name: str = DB_NAME,
-    old_record: DBData = None
+    db_record: DBData = None
 ) -> List[str]:
     """ Update DB row entries based on user input.
 
@@ -88,7 +88,7 @@ def update_db_entry(
                 extension, if not found.  Default value is the value of
                 the DB_NAME constant.'
 
-            old_record (DBData):
+            db_record (DBData):
                 DBData object with the DB record data for the entry
                 to update.
 
@@ -106,20 +106,15 @@ def update_db_entry(
         # Unpack the user input data
         new_record = DBData(*new_record)
 
-    # If the old record is not None, update the record
-    if old_record is not None:
-
-        # Build the SQL statement
+        # Build the SQL command to update the DB entry
         db_entry = f'''
-            (
-                UPDATE {DB_TABLE_NAME}
-                SET name = "{new_record.name}"
-                outbound_interest_score = {new_record.outbound_interest_score}
-                inbound_interest_score = {new_record.inbound_interest_score}
-                num_tries = {new_record.num_tries}
+            UPDATE {DB_TABLE_NAME}
+            SET name = "{new_record.name}",
+                outbound_interest_score = {new_record.outbound_interest_score},
+                inbound_interest_score = {new_record.inbound_interest_score},
+                num_tries = {new_record.num_tries},
                 fl_reason = "{new_record.fl_reason}"
-                WHERE name = "{new_record.name}";
-            )
+            WHERE name = "{db_record.name}";
         '''.strip()
 
         # Connect to a SQLite3 DB and update the record, if it exists
@@ -137,7 +132,7 @@ def update_db_entry(
         msg = display_banner(
             banner_string=(
                 '** Successfully updated the record '
-                f'"{old_record.name}" **'
+                f'"{new_record.name}" **'
             )
         )
         print(msg)

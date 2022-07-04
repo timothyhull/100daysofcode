@@ -5,6 +5,7 @@
 from collections import namedtuple
 
 # Shared Constants
+BANNER_START = '** DT FL DB Application **'
 BANNER_EXIT = 'Application closed'
 DB_COLUMN_SQL = (
     '('
@@ -18,6 +19,9 @@ DB_COLUMN_SQL = (
 DB_EXTENSION = '.sqlite'
 DB_NAME = f'dt_fail{DB_EXTENSION}'
 DB_TABLE_NAME = 'history'
+INVALID_MENU_INPUT = '** Invalid menu selection **'
+INVALID_DB_RECORD_INPUT = '** Invalid DB record number **'
+NO_RESULTS_FOUND = '** No results found **'
 
 
 # namedtuple objects

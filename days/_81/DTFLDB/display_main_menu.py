@@ -3,6 +3,7 @@
 
 # Imports - Local
 from _81.DTFLDB.display_banner import display_banner
+from _81.DTFLDB.output_messages import invalid_menu_input
 from _81.DTFLDB.quit_program import quit_program
 
 
@@ -43,24 +44,18 @@ def display_main_menu() -> int:
 
             # Validate menu selection
             if not menu_choice:
-                print(
-                    '\n* Invalid menu selection *'
-                )
+                print(invalid_menu_input())
                 continue
             else:
                 try:
                     # Determine if the menu selection is an integer
                     menu_choice = int(menu_choice)
                 except ValueError:
-                    print(
-                        '\n* Invalid menu selection *'
-                    )
+                    print(invalid_menu_input())
                     continue
                 # Determine if the menu selection is within the range of 1-6
                 if not 1 <= menu_choice <= 6:
-                    print(
-                        '\n* Invalid menu selection *'
-                    )
+                    print(invalid_menu_input())
                     continue
 
             return menu_choice

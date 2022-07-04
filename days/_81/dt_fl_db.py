@@ -2,8 +2,11 @@
 """ DT FL DB Application. """
 
 # Imports - Local
+from _81.DTFLDB.db_data import (
+    BANNER_START, NO_RESULTS_FOUND
+)
 from _81.DTFLDB.db_insert import (
-    add_db_entry
+    add_db_entry, update_db_entry
 )
 from _81.DTFLDB.db_setup import (
     create_connect_db, create_db_tables
@@ -13,13 +16,9 @@ from _81.DTFLDB.db_query import (
 )
 from _81.DTFLDB.display_banner import display_banner
 from _81.DTFLDB.display_main_menu import display_main_menu
+from _81.DTFLDB.get_db_record_selection import get_db_record_user_input
 from _81.DTFLDB.get_db_query_input import get_db_query_input
 from _81.DTFLDB.quit_program import quit_program
-
-# Constants
-BANNER_START = '** DT FL DB Application **'
-DB_EXTENSION = '.sqlite'
-NO_RESULTS_FOUND = '** No results found **'
 
 
 def main() -> None:
@@ -55,14 +54,12 @@ def main() -> None:
             if menu_choice == 1:
                 # Get all DB entries
                 query_results = query_db(
-                    db_name=db_name,
                     get_all_records=True
                 )
 
             elif menu_choice == 2:
                 # Search for a DB entry or entries
                 query_results = query_db(
-                    db_name=db_name,
                     get_all_records=False,
                     query_filter=get_db_query_input()
                 )
@@ -82,14 +79,11 @@ def main() -> None:
 
         elif menu_choice == 3:
             # Add DB entries
-            add_db_entry(
-                db_name=db_name,
-            )
+            add_db_entry()
 
         elif menu_choice == 4:
             # Get all DB entries
             query_results = query_db(
-                db_name=db_name,
                 get_all_records=True
             )
 
@@ -98,6 +92,20 @@ def main() -> None:
                 display_query_results(
                     query_results=query_results
                 )
+
+                # Collect the number of the DB entry to update
+                db_record_number = get_db_record_user_input(
+                    number_of_records=len(query_results)
+                )
+
+                # Update the DB entry
+                if db_record_number:
+                    update_db_entry(
+                        db_record=query_results[db_record_number - 1]
+                    )
+
+                else:
+                    continue
 
             # If no results were found, display a message
             else:

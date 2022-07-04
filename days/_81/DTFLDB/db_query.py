@@ -52,12 +52,13 @@ def query_db(
                     SELECT * FROM {DB_TABLE_NAME};
                 '''.strip()
             )
+
         # Run the SQL command to query the DB table for a specific record
         else:
             db_query = cursor.execute(
                 f'''
                     SELECT * FROM {DB_TABLE_NAME}
-                    WHERE LOWER(name) = "{query_filter}";
+                    WHERE LOWER(name) LIKE "{query_filter}%";
                 '''.strip()
             )
 
