@@ -9,6 +9,7 @@ BANNER_START = '** DT FL DB Application **'
 BANNER_EXIT = 'Application closed'
 DB_COLUMN_SQL = (
     '('
+    'id INTEGER PRIMARY KEY, '
     'name TEXT, '
     'outbound_interest_score INT, '
     'inbound_interest_score INT, '
@@ -28,6 +29,7 @@ NO_RESULTS_FOUND = '** No results found **'
 DBData = namedtuple(
     typename='DBData',
     field_names=[
+        'id',
         'name',
         'outbound_interest_score',
         'inbound_interest_score',

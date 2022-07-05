@@ -128,3 +128,28 @@
     - [`DTFLDB/output_messages.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/output_messages.py)
 
 - Need to find or add a key/ID column to the DB, to prevent updating multiple records that match a `WHERE` clause.
+
+---
+
+### :notebook: 7/4/22
+
+- Added new column (`id`) to the constant `DB_COLUMN_NAMES` in [[`DTFLDB/db_data.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_data.py) to serve as a DB primary key using the following syntax:
+
+    ```python
+    DB_COLUMN_SQL = (
+    '('
+    'id INTEGER PRIMARY KEY, '
+    'name TEXT, '
+    'outbound_interest_score INT, '
+    'inbound_interest_score INT, '
+    'num_tries INT ,'
+    'fl_reason TEXT'
+    ')'
+    )
+    ```
+
+- Updated the `add_db_entry` and `update_db_entry` functions in [`DTFLDB/db_insert.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_insert.py) to support the new `id` DB column.
+
+- Updated the `get_db_record_user_input` function in [`DTFLDB/get_db_record_selection.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/get_db_record_selection.py) to support the new `id` DB column.
+
+- Updated the `query_db` and `display_query_results` functions in [`DTFLDB/db_query.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_query.py) to support the new `id` DB column.

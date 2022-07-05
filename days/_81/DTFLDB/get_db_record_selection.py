@@ -24,7 +24,7 @@ def get_db_record_user_input(
         while True:
             # Get user input
             db_record_choice = input(
-                'Enter the number for the record to update, '
+                'Enter the number of the record to update, '
                 'or "m" for the Main Menu: '
             )
 

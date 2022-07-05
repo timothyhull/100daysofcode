@@ -66,11 +66,12 @@ def query_db(
         if db_query.arraysize > 0:
             query_results = [
                 DBData(
-                    name=row[0],
-                    inbound_interest_score=row[1],
-                    outbound_interest_score=row[2],
-                    num_tries=row[3],
-                    fl_reason=row[4]
+                    id=row[0],
+                    name=row[1],
+                    inbound_interest_score=row[2],
+                    outbound_interest_score=row[3],
+                    num_tries=row[4],
+                    fl_reason=row[5]
                 )
                 for row in db_query.fetchall()
             ]
@@ -101,16 +102,13 @@ def display_query_results(
 
         # Sort the results by name
         query_results.sort(
-            key=lambda x: x.name.lower()
+            key=lambda x: x.id
         )
 
         # Display the query results
-        for index, result in enumerate(
-            query_results,
-            start=1
-        ):
+        for result in query_results:
             print(
-                f'{index}. Name: {result.name}\n'
+                f'{result.id}. Name: {result.name}\n'
                 f'   Inbound Score: {result.inbound_interest_score}\n'
                 f'   Outbound Score: {result.outbound_interest_score}\n'
                 f'   Number of Tries: {result.num_tries}\n'

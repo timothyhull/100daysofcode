@@ -35,6 +35,9 @@ def add_db_entry(
     # If the response object is a list, insert the new record
     if new_record_input is not None:
 
+        # Prepend the user input data with the DB record ID
+        new_record_input.insert(0, None)
+
         # Unpack the user input data
         new_record_input = DBData(*new_record_input)
 
@@ -51,6 +54,7 @@ def add_db_entry(
                 f'''
                     INSERT INTO {DB_TABLE_NAME}
                     VALUES (
+                        NULL,
                         "{new_record_input.name}",
                         {new_record_input.outbound_interest_score},
                         {new_record_input.inbound_interest_score},
@@ -103,18 +107,22 @@ def update_db_entry(
     # If the response object is a list, insert the new record
     if new_record is not None:
 
+        # Prepend the user input data with the DB record ID
+        new_record.insert(0, db_record.id)
+
         # Unpack the user input data
         new_record = DBData(*new_record)
 
         # Build the SQL command to update the DB entry
         db_entry = f'''
             UPDATE {DB_TABLE_NAME}
-            SET name = "{new_record.name}",
+            SET id = {db_record.id},
+                name = "{new_record.name}",
                 outbound_interest_score = {new_record.outbound_interest_score},
                 inbound_interest_score = {new_record.inbound_interest_score},
                 num_tries = {new_record.num_tries},
                 fl_reason = "{new_record.fl_reason}"
-            WHERE name = "{db_record.name}";
+            WHERE id = "{db_record.id}";
         '''.strip()
 
         # Connect to a SQLite3 DB and update the record, if it exists
