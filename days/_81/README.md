@@ -1,4 +1,4 @@
-# :calendar: Day 81: 6/28/2022-7/4/22
+# :calendar: Day 81: 6/28/2022-7/5/22
 
 ---
 
@@ -48,15 +48,15 @@
 - Refactored [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py) functions to return printable message strings.
 
 - Added functions to [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py):
-    - `get_user_input` - Collects user input data for DB entry.
-    - `add_db_entries` - Adds new rows to the DB.
+    - `get_user_input` - Collects user input data for DB record.
+    - `add_db_records` - Adds new rows to the DB.
         - **Both functions are incomplete.**
 
 ---
 
 ### :notebook: 6/29/22
 
-- Completed the `get_user_input` and `add_db_entries` functions in [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py).
+- Completed the `get_user_input` and `add_db_records` functions in [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py).
 
 - Added functions to [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py):
     - `quit_program` - Quit the program.
@@ -100,7 +100,7 @@
 
 - Refactored files in the [`DTFLDB`](https://github.com/timothyhull/100daysofcode/tree/main/days/_81/DTFLDB) folder, migrating all constants to shared constants in the `db_data` module.
 
-- Created the framework for the function `update_db_entry` in [[`DTFLDB/db_insert.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_insert.py), to update a record in the DB.
+- Created the framework for the function `update_db_record` in [[`DTFLDB/db_insert.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_insert.py), to update a record in the DB.
 
 - Added code framework to the `main` function in [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py) to support updating a DB record.
 
@@ -113,7 +113,7 @@
 - Updated application to support code reuse and updating a DB record:
     - [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py):
         - Moved constants to [`DTFLDB/db_data.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_data.py).
-        - Added function calls to `get_db_record_user_input` and `update_db_entry`, to get user input for a DB record to update and update a DB record, respectively.
+        - Added function calls to `get_db_record_user_input` and `update_db_record`, to get user input for a DB record to update and update a DB record, respectively.
     - [`DTFLDB/db_data.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_data.py):
         - Added constants migrated from [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py).
     - [`DTFLDB/db_insert.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_insert.py):
@@ -148,8 +148,20 @@
     )
     ```
 
-- Updated the `add_db_entry` and `update_db_entry` functions in [`DTFLDB/db_insert.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_insert.py) to support the new `id` DB column.
+- Updated the `add_db_record` and `update_db_record` functions in [`DTFLDB/db_insert.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_insert.py) to support the new `id` DB column.
 
 - Updated the `get_db_record_user_input` function in [`DTFLDB/get_db_record_selection.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/get_db_record_selection.py) to support the new `id` DB column.
 
 - Updated the `query_db` and `display_query_results` functions in [`DTFLDB/db_query.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_query.py) to support the new `id` DB column.
+
+---
+
+### :notebook: 7/5/22
+
+- Updated terminology across all `.py` files in the [`_81`](https://github.com/timothyhull/100daysofcode/tree/main/days/_81) folder by changing instances of _entry_ and _entries_ to _record_ and _records_, respectively.
+
+- Created the file [`DTFLDB/db_delete.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_delete.py) with the function `delete_db_record`, to delete a record from the DB.
+
+- Updated the file [`dt_fl_db.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/dt_fl_db.py) with functions to call the `delete_db_record` function in [`DTFLDB/db_delete.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_delete.py).
+
+- Successfully tested functionality of all menu options in [`DTFLDB/db_delete.py`](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/DTFLDB/db_delete.py).

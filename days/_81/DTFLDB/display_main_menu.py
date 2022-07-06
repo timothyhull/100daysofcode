@@ -28,11 +28,11 @@ def display_main_menu() -> int:
 
             print(
                 '\n'
-                '1. Display all DB entries\n'
-                '2. Display a specific DB entry\n'
-                '3. Add a new DB entry\n'
-                '4. Update a specific DB entry\n'
-                '5. Delete a specific DB entry\n'
+                '1. Display all DB records\n'
+                '2. Display a specific DB record\n'
+                '3. Add a new DB record\n'
+                '4. Update a specific DB record\n'
+                '5. Delete a specific DB record\n'
                 '6. Quit'
                 '\n'
             )

@@ -21,8 +21,7 @@ def query_db(
 
         Args:
             db_name (str, optional):
-                Name of the db file.  Automatically adds the ".db"
-                extension, if not found.  Default value is the value of
+                Name of the db file.  Default value is the value of
                 the DB_NAME constant.'
 
             get_all_records (bool, optional):
@@ -34,7 +33,7 @@ def query_db(
 
         Returns:
             query_results (List):
-                List object with raw DB entry data.
+                List object with raw DB record data.
     """
 
     # Connect to a SQLite3 DB and query the DB table, if it exists
@@ -90,7 +89,7 @@ def display_query_results(
 
         Args:
             query_results (List):
-                List of DBData objects with raw DB entry data.
+                List of DBData objects with raw DB record data.
     """
 
     # Display a banner with the number of results

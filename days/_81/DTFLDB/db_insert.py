@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" DB query functions for the DT FL DB Application. """
+""" DB insert/updates functions for the DT FL DB Application. """
 
 # Imports - Python Standard Library
 from typing import List
@@ -13,20 +13,19 @@ from _81.DTFLDB.display_banner import display_banner
 from _81.DTFLDB.get_new_record_input import get_new_record_input
 
 
-def add_db_entry(
+def add_db_record(
     db_name: str = DB_NAME
 ) -> List[str]:
-    """ Add DB row entries based on user input.
+    """ Add DB row records based on user input.
 
         Args:
             db_name (str, optional):
-                Name of the DB file.  Automatically adds the ".db"
-                extension, if not found.  Default value is the value of
+                Name of the DB file.  Default value is the value of
                 the DB_NAME constant.'
 
         Returns:
-            db_entry (List):
-                List object with raw DB entry data.
+            db_record (List):
+                List object with raw DB record data.
     """
 
     # Collect user input
@@ -41,7 +40,7 @@ def add_db_entry(
         # Unpack the user input data
         new_record_input = DBData(*new_record_input)
 
-        # Connect to a SQLite3 DB and add entries, if not already present
+        # Connect to a SQLite3 DB and add records, if not already present
         with sqlite3.connect(
             database=DB_NAME
         ) as conn:
@@ -49,8 +48,8 @@ def add_db_entry(
             # Create a cursor object
             cursor = conn.cursor()
 
-            # Run the SQL command to add a DB entry
-            db_entry = cursor.execute(
+            # Run the SQL command to add a DB record
+            db_record = cursor.execute(
                 f'''
                     INSERT INTO {DB_TABLE_NAME}
                     VALUES (
@@ -75,30 +74,29 @@ def add_db_entry(
 
     # If the response object is None, return an empty list
     else:
-        db_entry = []
+        db_record = []
 
-    return db_entry
+    return db_record
 
 
-def update_db_entry(
+def update_db_record(
     db_name: str = DB_NAME,
     db_record: DBData = None
 ) -> List[str]:
-    """ Update DB row entries based on user input.
+    """ Update DB row records based on user input.
 
         Args:
             db_name (str, optional):
-                Name of the DB file.  Automatically adds the ".db"
-                extension, if not found.  Default value is the value of
+                Name of the DB file.  Default value is the value of
                 the DB_NAME constant.'
 
             db_record (DBData):
-                DBData object with the DB record data for the entry
+                DBData object with the DB record data for the record
                 to update.
 
         Returns:
-            db_entry (List):
-                List object with raw DB entry data.
+            db_record (List):
+                List object with raw DB record data.
     """
 
     # Collect user input
@@ -113,8 +111,8 @@ def update_db_entry(
         # Unpack the user input data
         new_record = DBData(*new_record)
 
-        # Build the SQL command to update the DB entry
-        db_entry = f'''
+        # Build the SQL command to update the DB record
+        db_record = f'''
             UPDATE {DB_TABLE_NAME}
             SET id = {db_record.id},
                 name = "{new_record.name}",
@@ -133,8 +131,8 @@ def update_db_entry(
             # Create a cursor object
             cursor = conn.cursor()
 
-            # Run the SQL command to update the DB entry
-            db_entry = cursor.execute(db_entry)
+            # Run the SQL command to update the DB record
+            db_record = cursor.execute(db_record)
 
         # Display a success message.
         msg = display_banner(
@@ -147,6 +145,6 @@ def update_db_entry(
 
     # If the old record is None, return an empty list
     else:
-        db_entry = []
+        db_record = []
 
-    return db_entry
+    return db_record

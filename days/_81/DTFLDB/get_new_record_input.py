@@ -24,7 +24,7 @@ def get_new_record_input() -> Union[List[str], None]:
         while True:
             # Display an informational message
             display_banner(
-                banner_string='** Add a new DB entry **'
+                banner_string='** Add a new DB record **'
             )
 
             # Create a list of user input data
