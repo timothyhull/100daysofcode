@@ -610,3 +610,9 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Day 81h: [7/5/22](days/_81#notebook-7522)
 
 </details>
+
+<details><summary>Days 82-84: Data Visualization with Plotly</summary>
+
+- Day 82: [7/6/22](days/_82)
+
+</details>
