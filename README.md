@@ -614,5 +614,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 <details><summary>Days 82-84: Data Visualization with Plotly</summary>
 
 - Day 82: [7/6/22](days/_82)
+- Day 82a: [7/7/22](days/_82#notebook7/7/22)
 
 </details>
