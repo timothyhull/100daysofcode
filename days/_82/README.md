@@ -20,13 +20,19 @@
 
 :star: [`feedparser` documentation](https://feedparser.readthedocs.io/en/latest)
 
+:star: [Getting Started with Plotly for Python](https://plot.ly/python/getting-started)
+
 ---
 
 ## Tasks
 
 :white_check_mark: Watch videos 1-3
 
-:white_large_square: Watch videos 1-3
+:white_check_mark: Watch video 4
+
+:white_check_mark: Watch video 5
+
+:white_large_square: Read [Getting Started with Plotly for Python](https://plot.ly/python/getting-started)
 
 ---
 
@@ -48,3 +54,11 @@
     - Set 1 is the number of RSS entries per month.
     - Set 2 is the number of RSS entries per category.
     - Set 3 is the number time tags appear in RSS entries.
+
+---
+
+### :notebook: 7/8/22
+
+- Watched video 5.
+- Created the `transpose_data_for_graphing` function in [`plotly.ipynb`](https://github.com/timothyhull/100daysofcode/blob/main/days/_82/plotly.ipynb).
+    - Converted `posts_by_month`, `category_counts`, and `tag_counts` to data that can form `x` and `y` axises.
