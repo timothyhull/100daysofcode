@@ -1,4 +1,4 @@
-# :calendar: Day 82: 7/6/2022
+# :calendar: Day 82: 7/6/2022-7/10/2022
 
 ---
 
@@ -32,7 +32,9 @@
 
 :white_check_mark: Watch video 5
 
-:white_large_square: Read [Getting Started with Plotly for Python](https://plot.ly/python/getting-started)
+:white_check_mark: Watch video 6
+
+:white_check_mark: Read [Getting Started with Plotly for Python](https://plot.ly/python/getting-started)
 
 ---
 
@@ -62,3 +64,77 @@
 - Watched video 5.
 - Created the `transpose_data_for_graphing` function in [`plotly.ipynb`](https://github.com/timothyhull/100daysofcode/blob/main/days/_82/plotly.ipynb).
     - Converted `posts_by_month`, `category_counts`, and `tag_counts` to data that can form `x` and `y` axises.
+
+---
+
+### :notebook: 7/9/22
+
+- Watched video 6.
+- Skimmed _Getting Started with Plotly for Python_ article.
+- Added bar and pie graphs using `Plotly` to [`plotly.ipynb`](https://github.com/timothyhull/100daysofcode/blob/main/days/_82/plotly.ipynb):
+    - Bar graph: `posts_by_month`
+
+    ```python
+    import plotly
+    import plotly.graph_objs as go
+
+    x, y = transpose_data_for_graphing(
+        data=posts_by_month
+    )
+
+    data = [
+        go.Bar(
+            x=x,
+            y=y
+        )
+    ]
+
+    plotly.offline.iplot(
+        figure_or_data=data,
+        filename='pybites-posts-by-month'
+    )
+    ```
+
+    - Pie graph: `category_counts`
+
+    ```python
+    import plotly
+    import plotly.graph_objs as go
+
+    x, y = transpose_data_for_graphing(
+        data=category_counts
+    )
+
+    data = [
+        go.Bar(
+            x=x,
+            y=y
+        )
+    ]
+
+    plotly.offline.iplot(
+        figure_or_data=data,
+        filename='pybites-posts-by-category'
+    )
+    ```
+
+    - Pie graph: `tag_counts`
+
+    ```python
+    import plotly
+    import plotly.graph_objs as go
+
+    labels, values = transpose_data_for_graphing(
+        data=tag_top_n
+    )
+
+    pie = go.Pie(
+        labels=labels,
+        values=values
+    )
+
+    plotly.offline.iplot(
+        figure_or_data=[pie],
+        filename='pybites-tags-by-appearance'
+    )
+    ```
