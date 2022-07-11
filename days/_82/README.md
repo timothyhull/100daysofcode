@@ -34,6 +34,8 @@
 
 :white_check_mark: Watch video 6
 
+:white_check_mark: Watch video 7
+
 :white_check_mark: Read [Getting Started with Plotly for Python](https://plot.ly/python/getting-started)
 
 ---
