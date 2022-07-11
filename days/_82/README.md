@@ -138,3 +138,12 @@
         filename='pybites-tags-by-appearance'
     )
     ```
+
+---
+
+### :notebook: 7/10/22
+
+- Watched video 6, a review of other data visualization libraries:
+    - [`matplotlib`](https://matplotlib.org)
+    - [`Bokeh`](https://bokeh.org)
+    - [`pandas`](https://pandas.pydata.org) with [`seaborn`](https://seaborn.pydata.org)
