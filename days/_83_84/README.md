@@ -26,7 +26,9 @@
 
 :white_check_mark: Choose project application to develop - graph climate data
 
-:white_large_square: Develop application outline
+:white_check_mark: Develop application outline
+
+:white_large_square: Setup requirements files
 
 :white_large_square: Download data set(s) from API sources
 
@@ -43,3 +45,11 @@
 - Watched videos 8-9.
 - Researched climate change data sets.
 - Prepared plan for app development.
+
+---
+
+### :notebook: 7/11/22
+
+- Setup project GitHub repository file at [https://github.com/timothyhull/climate-data-plotly](https://github.com/timothyhull/climate-data-plotly).
+    - Setup [README.md](https://github.com/timothyhull/climate-data-plotly/blob/main/README.md) with basic application framework and status/quality badges.
+    - Setup integration with Better Code Hub.
