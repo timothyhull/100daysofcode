@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-7/11/2022
+# :calendar: Days 83+84: 7/10/2022-7/15/2022
 
 ---
 
@@ -34,7 +34,9 @@
 
 :white_check_mark: Download atmospheric CO2 data set from API source
 
-:white_large_square: Format atmospheric CO2 data `Date` key as a `datetime.datetime` object
+:white_check_mark: Format atmospheric CO2 data `Date` key as a `datetime.datetime` object
+
+:white_large_square: Write `pytest` tests
 
 :white_large_square: Write application to plot data
 
@@ -72,4 +74,15 @@
     - [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py), to run the main application.
     - [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py), to source the `ClimateData` class.
 
-- Successfully retrieved atmospheric Co2 data from the API using the `ClimateData.get_atmospheric_co2_data` method.
+- Successfully retrieved atmospheric Co2 data from the API using the `ClimateData._get_atmospheric_co2_data` method.
+
+---
+
+### :notebook: 7/13/22
+
+- Created the `convert_date_string` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to convert date strings to `datetime.datetime` objects.
+    - Updated the `_get_atmospheric_co2_data` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to format atmospheric CO2 data `Date` keys as `datetime.datetime` objects, using the `convert_date_string` method.
+
+- Created initial `pytest` file, [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py).
+    - Created initial test function `test_convert_date_string` to test the `convert_date_string` in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+    - All tests pass.
