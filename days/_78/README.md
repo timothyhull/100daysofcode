@@ -33,8 +33,8 @@
 - Decided to build a basic Flask application that includes a form.
 
 - Created a simple, static Flask application with two files:
-    - Main application: \[days/_76/flask_app/app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/app.py)
-    - Default template: \[days/_78/flask_app/templates/index.html](https://github.com/timothyhull/100daysofcode/blob/main/days/_78/flask_app/templates/index.html).
+    - Main application: [days/_76/flask_app/app.py](https://github.com/timothyhull/100daysofcode/blob/main/days/_76/flask_app/app.py)
+    - Default template: [days/_78/flask_app/templates/index.html](https://github.com/timothyhull/100daysofcode/blob/main/days/_78/flask_app/templates/index.html).
 
 - Created a simple Flask form input application that displays user form input for their first name.
 

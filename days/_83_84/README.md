@@ -38,9 +38,13 @@
 
 :white_large_square: Write `pytest` tests
 
-:white_large_square: Write application to plot data
+:white_large_square: Write application to plot data with `Plotly`
+
+:white_large_square: Test data ploting with `Bokeh`
 
 :white_large_square: Publish application in `Flask` app
+
+:white_large_square: Setup basic `Flask` web service
 
 ---
 
@@ -86,3 +90,10 @@
 - Created initial `pytest` file, [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py).
     - Created initial test function `test_convert_date_string` to test the `convert_date_string` in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
     - All tests pass.
+
+---
+
+### :notebook: 7/14/22
+
+- Created the file [web/flask_app.py](https://github.com/timothyhull/climate-data-plotly/blob/main/web/flask_app.py) to run the `Flask` web service.
+    - Tested Flask service with string output from an instance of the `ClimateData` class in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
