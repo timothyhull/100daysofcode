@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-7/15/2022
+# :calendar: Days 83+84: 7/10/2022-7/18/2022
 
 ---
 
@@ -36,11 +36,15 @@
 
 :white_check_mark: Format atmospheric CO2 data `Date` key as a `datetime.datetime` object
 
+:white_check_mark: Write method to initialize `Plotly` in offline mode
+
+:white_check_mark: Write method to format climate data for X and Y-axis plotting.
+
 :white_large_square: Write `pytest` tests
 
 :white_large_square: Write application to plot data with `Plotly`
 
-:white_large_square: Test data ploting with `Bokeh`
+:white_large_square: Test data plotting with `Bokeh`
 
 :white_large_square: Publish application in `Flask` app
 
@@ -84,11 +88,11 @@
 
 ### :notebook: 7/13/22
 
-- Created the `convert_date_string` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to convert date strings to `datetime.datetime` objects.
-    - Updated the `_get_atmospheric_co2_data` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to format atmospheric CO2 data `Date` keys as `datetime.datetime` objects, using the `convert_date_string` method.
+- Created the `_convert_date_string` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to convert date strings to `datetime.datetime` objects.
+    - Updated the `_get_atmospheric_co2_data` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to format atmospheric CO2 data `Date` keys as `datetime.datetime` objects, using the `_convert_date_string` method.
 
 - Created initial `pytest` file, [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py).
-    - Created initial test function `test_convert_date_string` to test the `convert_date_string` in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+    - Created initial test function `test__convert_date_string` to test the `_convert_date_string` in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
     - All tests pass.
 
 ---
@@ -105,3 +109,9 @@
 - Created the HTML template file [web/templates/index.html](https://github.com/timothyhull/climate-data-plotly/blob/main/web/templates/index.html) to test the `render_template` method in [web/flask_app.py](https://github.com/timothyhull/climate-data-plotly/blob/main/web/flask_app.py).
 
 - Created the framework for the `plot_atmospheric_co2_data` function in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+
+---
+
+### :notebook: 7/16/22
+
+- Created the `_init_plotly_offline_mode` function in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to initialize `Plotly` in offline mode.
