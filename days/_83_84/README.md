@@ -114,4 +114,12 @@
 
 ### :notebook: 7/16/22
 
-- Created the `_init_plotly_offline_mode` function in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to initialize `Plotly` in offline mode.
+- Created the `_init_plotly_offline_mode` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to initialize `Plotly` in offline mode.
+
+---
+
+### :notebook: 7/17/22
+
+- Created the following method placeholders in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py):
+    - `transpose_data_for_graphing` - Transpose raw data from the climate API to X and Y axis coordinate data.
+    - `plot_atmospheric_co2_data` - Display atmospheric Co2 data in a graph.
