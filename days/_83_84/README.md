@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-7/18/2022
+# :calendar: Days 83+84: 7/10/2022-7/20/2022
 
 ---
 
@@ -123,3 +123,20 @@
 - Created the following method placeholders in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py):
     - `transpose_data_for_graphing` - Transpose raw data from the climate API to X and Y axis coordinate data.
     - `plot_atmospheric_co2_data` - Display atmospheric Co2 data in a graph.
+
+---
+
+### :notebook: 7/18/22
+
+- Created the following methods in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py):
+    - `_get_co2_ppm_date_data` - Extract a dictionary from data self.atmospheric_co2_data that only contains parts per million (PPM) and dates of measurement.
+    - `_get_co2_yoy_change_data` - Extract a dictionary from data self.atmospheric_co2_data that only contains % YoY change and dates of measurement.
+
+- Added code to the `transpose_data_for_graphing` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) that returns data transposed to a graphing-friendly (X and Y-axis) format.
+
+- Added placeholder test functions to [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
+    - `test_get_atmospheric_co2_data`
+    - `test_transpose_data_for_graphing`
+    - `test_plot_atmospheric_co2_data`
+    - `test_get_co2_ppm_date_data`
+    - `test_get_co2_yoy_change_data`
