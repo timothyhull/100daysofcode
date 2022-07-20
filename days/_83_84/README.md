@@ -18,6 +18,8 @@
 
 :star: [Atmospheric CO2 Indicators API Query Info](https://climatedata.imf.org/datasets/9c3764c0efcc4c71934ab3988f219e0e/api)
 
+:star: [Plotly Express Documentation](https://plotly.com/python/plotly-express)
+
 ---
 
 ## Tasks
@@ -140,3 +142,14 @@
     - `test_plot_atmospheric_co2_data`
     - `test_get_co2_ppm_date_data`
     - `test_get_co2_yoy_change_data`
+
+---
+
+### :notebook: 7/19/22
+
+- Added the packages to [requirements/requirements.txt](https://github.com/timothyhull/climate-data-plotly/blob/main/requirements/requirements.txt) and [requirements/requirements_dev.txt](https://github.com/timothyhull/climate-data-plotly/blob/main/requirements/requirements_dev.txt):
+    - `pandas` - required to support `plotly.express`.
+    - `kaleido` - required to export a `plotly.express` line graph to an image file.
+
+- Added code to the `ClimateData.plot_atmospheric_co2_data` method in https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+    - The method returns a `tuple` with a binary PNG in index 0, and a text HTML in index 1.
