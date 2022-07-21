@@ -151,5 +151,12 @@
     - `pandas` - required to support `plotly.express`.
     - `kaleido` - required to export a `plotly.express` line graph to an image file.
 
-- Added code to the `ClimateData.plot_atmospheric_co2_data` method in https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+- Added code to the `ClimateData.plot_atmospheric_co2_data` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
     - The method returns a `tuple` with a binary PNG in index 0, and a text HTML in index 1.
+
+---
+
+### :notebook: 7/20/22
+
+- Created the `write_plot_html_file` method and revised the `plot_atmospheric_co2_data` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to write HTML plot data to local storage.
+    - Successfully created and opened the file [app/plot_files/climate_data_1.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/plot_files/climate_data_1.html).
