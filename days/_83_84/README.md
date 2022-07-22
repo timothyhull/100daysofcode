@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-7/20/2022
+# :calendar: Days 83+84: 7/10/2022-7/23/2022
 
 ---
 
@@ -160,3 +160,9 @@
 
 - Created the `write_plot_html_file` method and revised the `plot_atmospheric_co2_data` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to write HTML plot data to local storage.
     - Successfully created and opened the file [app/plot_files/climate_data_1.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/plot_files/climate_data_1.html).
+
+---
+
+### :notebook: 7/21/22
+
+- Added initial although incomplete code to the `test_get_atmospheric_co2_data` function  [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
