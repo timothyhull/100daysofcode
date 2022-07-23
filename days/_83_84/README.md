@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-7/23/2022
+# :calendar: Days 83+84: 7/10/2022-7/24/2022
 
 ---
 
@@ -165,4 +165,11 @@
 
 ### :notebook: 7/21/22
 
-- Added initial although incomplete code to the `test_get_atmospheric_co2_data` function  [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
+- Added initial although incomplete code to the `test_get_atmospheric_co2_data` function  [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py).
+
+---
+
+### :notebook: 7/22/22
+
+- Continued work on the `test_get_atmospheric_co2_data` function  [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
+    - Added the `MOCK_RAW_CO2_JSON` and `MOCK_RAW_CO2_DICT` constants to mock the HTTP `GET` request and response objects.
