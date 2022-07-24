@@ -173,3 +173,17 @@
 
 - Continued work on the `test_get_atmospheric_co2_data` function  [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
     - Added the `MOCK_RAW_CO2_JSON` and `MOCK_RAW_CO2_DICT` constants to mock the HTTP `GET` request and response objects.
+
+---
+
+### :notebook: 7/23/22
+
+- Updated the [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) `pytest` tests file:
+    - Completed the `test_get_atmospheric_co2_data` function
+    - Converted the `'Date'` key values in `MOCK_ROW_CO2_LIST` to `datetime.datetime` objects.
+    - Created the `mock_api_request` `pytest` fixture to reduce code repetition.
+    - Added the `mock_api_request_bad_date` `pytest` fixture to test for invalid date strings.
+    - Updated the `test_convert_date_string function` to support the new `pytest` fixtures.
+    - Added the `test_convert_date_string_error` function to test for a `ValueError` exception for invalid date strings.
+
+- Add exception handling for invalid date strings to [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
