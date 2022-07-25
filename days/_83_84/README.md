@@ -187,3 +187,16 @@
     - Added the `test_convert_date_string_error` function to test for a `ValueError` exception for invalid date strings.
 
 - Add exception handling for invalid date strings to [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+
+---
+
+### :notebook: 7/24/22
+
+- Revised the `mock_api_request` `pytest` fixture in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) to support passing arguments:
+    - Nested a `_mock_api_request` function with a parameter (`status_code`) in the `mock_api_request` `pytest` fixture.
+    - The revisions use a `pytest` _factory fixture_ methodology and allows passing custom arguments to a `pytest` fixture, promoting reuse of the fixture by several test functions.
+
+- Revised the `test_get_atmospheric_co2_data` function in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
+    - Sends arguments to the `mock_api_request` `pytest` fixture.
+
+- Created the `test_get_atmospheric_co2_data_http_error` function in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) to test for handling of `requests.exceptions.HTTPError` exceptions.
