@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-7/24/2022
+# :calendar: Days 83+84: 7/10/2022-7/31/2022
 
 ---
 
@@ -200,3 +200,18 @@
     - Sends arguments to the `mock_api_request` `pytest` fixture.
 
 - Created the `test_get_atmospheric_co2_data_http_error` function in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) to test for handling of `requests.exceptions.HTTPError` exceptions.
+
+- All tests pass.
+
+---
+
+### :notebook: 7/25/22
+
+- Removed the `mock_api_request_date_error` `pytest` fixture from [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py).
+    - Refactored the `mock_api_request` `pytest` fixture to support an invalid date string test, triggered by setting the `date_error` parameter to `True`.
+    - Refactored the `test_convert_date_string_error` function to pass `date_error=True` to `mock_api_request` (`_mock_api_request`).
+
+- Added test code to the function `test_transpose_data_for_graphing` in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py).
+    - Updated the `_get_co2_ppm_date_data` method to support passing a set of test data to `transpose_data_for_graphing` in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+
+- All tests pass.
