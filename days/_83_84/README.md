@@ -236,3 +236,30 @@
 
 - Unsuccessfully tested converting a converting a two-tuple of tuples to dict key/value pairs to support a `List` or `Tuple` object as an argument for the `data` parameter in `transpose_data_for_graphing` in the file [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
     - Further testing required.
+
+--
+
+### :notebook: 7/28/22
+
+- Revised the List/Tuple input option for the `transpose_data_for_graphing` in  in the file [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to work convert a list of two tuples into dictionary keys/values:
+
+    ```python
+    # Converts this:
+        MOCK_CO2_DATE_DATA_2 = [
+            (
+                datetime(1958, 3, 1, 0, 0),
+                datetime(1958, 4, 1, 0, 0),
+                datetime(1958, 5, 1, 0, 0)
+            ),
+            (
+                315.7, 317.45, 317.51
+            )
+        ]
+
+    # Into this:
+    {datetime.datetime(1958, 3, 1, 0, 0): 315.7,
+    datetime.datetime(1958, 4, 1, 0, 0): 317.45,
+    datetime.datetime(1958, 5, 1, 0, 0): 317.51}
+    ```
+
+- All tests pass.
