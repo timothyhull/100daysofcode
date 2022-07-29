@@ -215,3 +215,24 @@
     - Updated the `_get_co2_ppm_date_data` method to support passing a set of test data to `transpose_data_for_graphing` in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
 
 - All tests pass.
+
+---
+
+### :notebook: 7/26/22
+
+- Added a `namedtuple` object to [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) as a way to reference tuple values by property name instead of tuple index:
+
+    ```python
+    from collections import namedtuple
+
+    TransposedData = namedtuple(
+        typename='TransposedData',
+        field_names=[
+            'date',
+            'co2_ppm'
+        ]
+    )
+    ```
+
+- Unsuccessfully tested converting a converting a two-tuple of tuples to dict key/value pairs to support a `List` or `Tuple` object as an argument for the `data` parameter in `transpose_data_for_graphing` in the file [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+    - Further testing required.
