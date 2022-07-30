@@ -237,29 +237,61 @@
 - Unsuccessfully tested converting a converting a two-tuple of tuples to dict key/value pairs to support a `List` or `Tuple` object as an argument for the `data` parameter in `transpose_data_for_graphing` in the file [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
     - Further testing required.
 
---
+---
 
 ### :notebook: 7/28/22
 
 - Revised the List/Tuple input option for the `transpose_data_for_graphing` in  in the file [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to work convert a list of two tuples into dictionary keys/values:
 
     ```python
-    # Converts this:
-        MOCK_CO2_DATE_DATA_2 = [
-            (
-                datetime(1958, 3, 1, 0, 0),
-                datetime(1958, 4, 1, 0, 0),
-                datetime(1958, 5, 1, 0, 0)
-            ),
-            (
-                315.7, 317.45, 317.51
-            )
-        ]
+    # Original data
+    MOCK_CO2_DATE_DATA_2 = [
+        (
+            datetime(1958, 3, 1, 0, 0),
+            datetime(1958, 4, 1, 0, 0),
+            datetime(1958, 5, 1, 0, 0)
+        ),
+        (
+            315.7, 317.45, 317.51
+        )
+    ]
 
-    # Into this:
+    # Use this code to convert the list of tuples to dict keys/values
+    data_zip = zip(
+        MOCK_CO2_DATE_DATA_2[0],
+        MOCK_CO2_DATE_DATA_2[1]
+    )
+
+    data_dict = dict(data_zip)
+
+    # Resulting data
+    print(data_dict)
+
     {datetime.datetime(1958, 3, 1, 0, 0): 315.7,
     datetime.datetime(1958, 4, 1, 0, 0): 317.45,
     datetime.datetime(1958, 5, 1, 0, 0): 317.51}
     ```
+
+- All tests pass.
+
+---
+
+### :notebook: 7/29/22
+
+- Updated [`.github/workflows/pytest.yml`](https://github.com/timothyhull/climate-data-plotly/blob/main/.github/workflows/pytest.yml) to include `setup-python` GitHub Action.
+    - Corrects a `pytest` failure caused by an older version of `pytest` running in GitHub's cloud-hosted runner.
+
+- Expanded the `assert` statement in `test_transpose_data_for_graphing` function in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py).
+
+- Refactored [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) for reuse, to create additional graphs with the same methods:
+    - Revised the `TransposedData` `namedtuple` object field names to support both PPM and YOY (or other) data sets.
+    - Revised the docstrings in the `_get_co2_ppm_date_data` and `_get_co2_yoy_change_data` methods.
+    - Revised the conditional checks for instances of `list` objects passed as an argument to the `atmospheric_co2_data` parameter in the `_get_co2_ppm_date_data` and `_get_co2_yoy_change_data` methods.
+    - Revised the parameter names in the `plot_atmospheric_co2_data` method to match the `TransposedData` object's field name revisions.
+
+- Revised [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) to support additional test cases and data sets.
+    - Added and revised mock data constants to support using the YOY mock data with the test functions that already support the PPM mock data.
+    - Revised the `test_get_atmospheric_co2_data` and `test_transpose_data_for_graphing` function to test with both PPM and YOY mock data.
+    - Added the `test_get_co2_ppm_date_data` and `test_get_co2_yoy_date_data` functions to to test extracting specific dictionary keys/values from Python-formatted API JSON data.
 
 - All tests pass.
