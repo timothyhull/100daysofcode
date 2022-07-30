@@ -295,3 +295,14 @@
     - Added the `test_get_co2_ppm_date_data` and `test_get_co2_yoy_date_data` functions to to test extracting specific dictionary keys/values from Python-formatted API JSON data.
 
 - All tests pass.
+
+---
+
+### :notebook: 7/30/22
+
+- Revised the `plot_atmospheric_co2_data` function in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py):
+    - Requires the `TransposedData` object as the data source (`transposed_data` parameter) for generating HTML plot content.
+    - Add parameters for `date_label`, `value_label`, and `title`.
+
+- Revised [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) to support revisions to `plot_atmospheric_co2_data`.
+    - Revised order of tests to match application flow.
