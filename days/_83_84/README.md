@@ -306,3 +306,10 @@
 
 - Revised [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) to support revisions to `plot_atmospheric_co2_data`.
     - Revised order of tests to match application flow.
+
+---
+
+### :notebook: 7/31/22
+
+- Revised the `write_plot_html_file` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to support `OSError` exception handling.
+- Setup initial code outline for the `test_write_plot_html_file` function.
