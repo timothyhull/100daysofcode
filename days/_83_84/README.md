@@ -20,6 +20,14 @@
 
 :star: [Plotly Express Documentation](https://plotly.com/python/plotly-express)
 
+:star: [`unittest.mock.mock_open` documentation](https://docs.python.org/3/library/unittest.mock.html#mock-open)
+
+:star: [`mock_open` StackOverflow post #1](https://stackoverflow.com/questions/38454272/mock-file-open-in-python)
+
+:star: [`mock_open` StackOverflow post #2](https://stackoverflow.com/questions/1289894/how-do-i-mock-an-open-used-in-a-with-statement-using-the-mock-framework-in-pyth)
+
+:star: [`mock_open` Tutorial Blog Post](https://nickolaskraus.io/articles/how-to-mock-the-built-in-function-open)
+
 ---
 
 ## Tasks
