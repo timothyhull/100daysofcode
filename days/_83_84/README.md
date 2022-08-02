@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-7/31/2022
+# :calendar: Days 83+84: 7/10/2022-8/5/2022
 
 ---
 
@@ -313,3 +313,12 @@
 
 - Revised the `write_plot_html_file` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to support `OSError` exception handling.
 - Setup initial code outline for the `test_write_plot_html_file` function.
+
+---
+
+### :notebook: 8/1/22
+
+- Started development on the `test_write_plot_html_file` function in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py).
+    - Requires mocking the `builtins.open` method.
+    - Unsuccessfully Tested the `unittest.mock.mock_open` method using the official Python [`unittest.mock` documentation](https://docs.python.org/3/library/unittest.mock.html#mock-open).
+    - Additional testing required.
