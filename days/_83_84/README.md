@@ -327,6 +327,51 @@
 ### :notebook: 8/1/22
 
 - Started development on the `test_write_plot_html_file` function in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py).
-    - Requires mocking the `builtins.open` method.
+    - Requires mocking the `builtins.open` function.
     - Unsuccessfully Tested the `unittest.mock.mock_open` method using the official Python [`unittest.mock` documentation](https://docs.python.org/3/library/unittest.mock.html#mock-open).
     - Additional testing required.
+
+---
+
+### :notebook: 8/2/22
+
+- Rewrote calling a mock of the `builtins.open` function in `test_write_plot_html_file`, in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
+    - Used the `unittest.mock.patch.object` with a context manager inside of the `test_write_plot_html_file` function, instead of as a decorator.
+    - Used properties and methods of the `new` argument in the `unittest.mock.patch.object`.
+
+        ```python
+            # Define HTML for a mock_open object
+            mock_html_data = '''
+                <html>
+                    <head>
+                        <title>Mock Open HTML Data</title>
+                    </head>
+                    <body>
+                        <h1>Mock Open HTML Data</h1>
+                    </body>
+                </html>
+            '''.strip()
+
+            # Define a mock_open object with mock_html_data
+            write_html_mock = mock_open(
+                read_data=mock_html_data
+            )
+
+            # Mock the builtins.open function
+            with patch.object(
+                target=builtins,
+                attribute='open',
+                new=write_html_mock
+            ):
+
+                # Call the cd.write_plot_html_file function
+                cd.write_plot_html_file(
+                    file_name=MOCK_HTML_FILE_NAME.split(sep='.')[0],
+                    file_content=mock_html_data
+                )
+
+            assert write_html_mock.assert_called_once
+            assert MOCK_HTML_FILE_NAME in str(write_html_mock.call_args_list)
+        ```
+
+- All `pytest` tests pass.
