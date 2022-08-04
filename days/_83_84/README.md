@@ -371,3 +371,46 @@
         ```
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 8/3/22
+
+- Created the `test_write_plot_html_file_error` function in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
+    - Tests exception handling of the `write_plot_html_file` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+
+- Revised the `write_plot_html_file` function in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py):
+    - Changed `OSError` exceptions to `FileNotFound` exceptions.
+    - Added ability to determine if `pytest` calls the function, in order to set variables that raise the `FileNotFound` exception.
+    - The `os.environ` property returns a dictionary-like object.
+        - When `pytest` calls a function, there will be a key value of `PYTEST_CURRENT_TEST` in the object.
+        - The value of `PYTEST_CURRENT_TEST` will list the name of the `pytest` test that calls the function.
+    - Conditional logic can take actions based on whether or not `pytest` called the function:
+
+        ```python
+        from os import environ, path
+        from pathlib import Path
+        PYTEST_ENV_VAR = 'PYTEST_CURRENT_TEST'
+        PYTEST_FUNCTION = 'test_function_x'
+
+        # Determine if pytest calls the function
+        PYTEST_1 = PYTEST_ENV_VAR in str(environ.keys())
+        PYTEST_2 = PYTEST_WRITE_PLOT_HTML_FUNCTION in str(environ.values())
+
+        # If pytest calls the function, set variables to raise exceptions
+        if PYTEST_1 is True and PYTEST_2 is True:
+            plot_dir = ''
+            plot_file = ''
+
+        else:
+            # Determine the local path to the plot file directory
+            current_file = path.abspath(__file__)
+            current_dir = Path(current_file).parent
+            plot_dir = path.join(current_dir, PLOT_FILE_PATH)
+            plot_file = path.join(
+                plot_dir,
+                f'{file_name}.{PLOT_FILE_EXTENSION}'
+            )
+        ```
+
+- All `pytest` tests pass
