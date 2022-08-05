@@ -46,9 +46,11 @@
 
 :white_check_mark: Write method to format climate data for X and Y-axis plotting.
 
-:white_large_square: Write `pytest` tests
+:white_check_mark: Write `pytest` tests
 
-:white_large_square: Write application to plot data with `Plotly`
+:white_check_mark: Write application to plot data with `Plotly`
+
+:white_check_mark: Add application diagram to [README.md](https://github.com/timothyhull/climate-data-plotly/blob/main/README.md) using `mermaid`
 
 :white_large_square: Test data plotting with `Bokeh`
 
@@ -414,3 +416,9 @@
         ```
 
 - All `pytest` tests pass
+
+---
+
+### :notebook: 8/4/22
+
+- Replaced text representation of application folder and file structure with a mermaid `classDiagram` chart, in [README.md](https://github.com/timothyhull/climate-data-plotly/blob/main/README.md).
