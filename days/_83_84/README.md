@@ -48,9 +48,11 @@
 
 :white_check_mark: Write `pytest` tests
 
-:white_check_mark: Write application to plot data with `Plotly`
+:white_check_mark: Write application to plot monthly atmospheric Co2 values with `Plotly`
 
 :white_check_mark: Add application diagram to [README.md](https://github.com/timothyhull/climate-data-plotly/blob/main/README.md) using `mermaid`
+
+:white_large_square: Write application to plot monthly atmospheric Co2 percentage change values with `Plotly`
 
 :white_large_square: Test data plotting with `Bokeh`
 
@@ -422,3 +424,13 @@
 ### :notebook: 8/4/22
 
 - Replaced text representation of application folder and file structure with a mermaid `classDiagram` chart, in [README.md](https://github.com/timothyhull/climate-data-plotly/blob/main/README.md).
+
+---
+
+### :notebook: 8/5/22
+
+- Created the `test_write_plot_html_dir_error` function in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
+    - Tests exception handling of the `write_plot_html_file` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+    - Manually raises an `OSError` exception, unable to find a way to cause the `os.mkdir` command fail.
+
+- All `pytest` tests pass
