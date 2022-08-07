@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-8/5/2022
+# :calendar: Days 83+84: 7/10/2022-8/10/2022
 
 ---
 
@@ -417,7 +417,7 @@
             )
         ```
 
-- All `pytest` tests pass
+- All `pytest` tests pass.
 
 ---
 
@@ -431,6 +431,23 @@
 
 - Created the `test_write_plot_html_dir_error` function in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
     - Tests exception handling of the `write_plot_html_file` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
-    - Manually raises an `OSError` exception, unable to find a way to cause the `os.mkdir` command fail.
+    - Manually raises a `FileExistsError` exception, unable to find a way to cause the `pathlib.Path.mkdir` function fail.
 
-- All `pytest` tests pass
+- All `pytest` tests pass.
+
+---
+
+### :notebook: 8/6/22
+
+- Revised [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to not manually raise an exception.
+    - Set variables in the conditional logic that checks for a call to the `test_write_plot_html_dir_error` function to:
+        - Create a dictionary that already exists (`../`)
+        - Set the `exist_ok` parameter in `pathlib.Path.mkdir` to False.
+    - With the variables present, the `write_plot_html_file` method throws a `FileExistsError` exception when called by the `test_write_plot_html_dir_error` in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py).
+
+- Revised [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
+    - Refactored the context manager that uses `pytest.raises` for the `test_write_plot_html_dir_error` and `test_write_plot_html_file_error` functions.
+    - Added a mock `pathlib.Path.mkdir` object to the `test_write_plot_html_file` function, to prevent the function from attempting to create a new directory.
+
+- All `pytest` tests pass.
+    - 100% `pytest` coverage for [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
