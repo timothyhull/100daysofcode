@@ -451,3 +451,43 @@
 
 - All `pytest` tests pass.
     - 100% `pytest` coverage for [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+
+---
+
+### :notebook: 8/7/22
+
+- Experimented with Plotly Express graph types.
+    - Determined the `line` and `bar` graph formats work the best for the purpose of non-financial, time-series data.
+
+- Revised [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py):
+    - Added range selector to the `plot_atmospheric_co2_data` method.
+    - Added automatic plot data transposition variables (by calling the `transpose_data_for_graphing` method) to the `__init__` method.
+    - Revised the `labels` argument format in the `px.line` function element of `plot_atmospheric_co2_data`.
+    - Added the `x_start` parameter to set start and end date ranges (based on the first and last dates in the data set) for the range slider.
+
+- Revised [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
+    - Replaced static mock expected values for `pytest` tests of the `test_plot_atmospheric_co2_data` function.
+    - Replaced static strings in `MOCK_HTML_PLOT_SNIPPETS` with dynamic f-string values sourced from actual test input data in `MOCK_HTML_PLOT_INPUTS`:
+
+    ```python
+    # Constant defining the test values for date_label, value_label, and title
+    MOCK_HTML_PLOT_INPUTS = {
+    'transposed_data': MOCK_CO2_PPM_GRAPH_DATA,
+        'date_label': 'Dates',
+        'value_label': 'Atmospheric Co2 PPM',
+        'title': 'Atmospheric Co2 Levels',
+    }
+
+    # Old MOCK_HTML_PLOT_SNIPPETS lines
+    '"Dates=%{x}<br>Atmospheric Co2 PPM=%{y}<extra></extra>"': True,
+    '"title":{"text":"Atmospheric Co2 Levels"}': True,
+
+    # New MOCK_HTML_PLOT_SNIPPETS lines
+    f'"{MOCK_HTML_PLOT_INPUTS.get("date_label")}=%{{x}}<br>': True,
+    f'{MOCK_HTML_PLOT_INPUTS.get("value_label")}=%{{y}}<extra></extra>"': True,
+    f'"title":{{"text":"{MOCK_HTML_PLOT_INPUTS.get("title")}"}}': True,
+    ```
+
+Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
+
+- All `pytest` tests pass.
