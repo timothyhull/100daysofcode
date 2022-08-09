@@ -3,6 +3,8 @@
         "arraysize",
         "builtins",
         "DTFLDB",
-        "kaleido"
+        "kaleido",
+        "xaxes",
+        "yaxes"
     ]
 }

@@ -24,6 +24,8 @@
 
 :star::star::star: [`mock_open` Tutorial Blog Post](https://nickolaskraus.io/articles/how-to-mock-the-built-in-function-open)
 
+:star: [Plotly Time and Date Axes in Python](https://plotly.com/python/time-series)
+
 ---
 
 ## Tasks
@@ -491,3 +493,20 @@
 Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 8/8/22
+
+- Revised the `plot_atmospheric_co2_data` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py):
+    - Added the ability to choose from a line or bar graph with the `line_graph` parameter.
+    - Added further range customizations to the `update_yaxes`, `update_xaxes` functions.
+    - Enabled optional y-axis compression with the `compress_y_axis` parameter.
+        - Useful in the PPM bar graph in particular, so the y-axis doesn't start its scale at 0.
+        - Instead starts the scale at 95% of the lowest value.
+
+- Refreshed graph HTML files:
+    - [ppm_bar_plot_1a.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/plot_files/ppm_bar_plot_1a.html)
+    - [ppm_line_plot_1a.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/plot_files/ppm_line_plot_1a.html)
+    - [yoy_bar_plot_1a.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/plot_files/yoy_bar_plot_1a.html)
+    - [yoy_line_plot_1a.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/plot_files/yoy_line_plot_1a.html)
