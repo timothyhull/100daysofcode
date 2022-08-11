@@ -56,13 +56,13 @@
 
 :white_check_mark: Write application to plot monthly atmospheric Co2 percentage change values with `Plotly`
 
-:white_large_square: Create mechanism to overlay the PPM and YoY Co2 data
+:white_check_mark: Write `pytest` tests for the `plot_atmospheric_co2_data_go` function in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py)
 
-:white_large_square: Write `pytest` tests for the `plot_atmospheric_co2_data_go` function in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py)
+:white_large_square: Create mechanism to overlay the PPM and YoY Co2 data
 
 :white_large_square: Write `pytest` tests for [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py)
 
-:white_large_square: Correct Better Code Hub findings
+:white_large_square: Refactor to correct Better Code Hub findings
 
 :white_large_square: Test data plotting with `Bokeh`
 
@@ -545,3 +545,12 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
             - **Further development and testing necessary**
     - Added `px_` prefix to Python variables and functions in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py):
         - `plot_atmospheric_co2_data_px`
+
+---
+
+### :notebook: 8/10/22
+
+- Revised the `plot_atmospheric_co2_data_go` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to use `plotly.graph_objects` objects instead of `plotly.plotly_express` objects.
+    - Verified graph output is similar to that of the `plotly.plotly_express` graph output from `plot_atmospheric_co2_data_ppx`.
+
+- All `pytest` tests pass.
