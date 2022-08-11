@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-8/10/2022
+# :calendar: Days 83+84: 7/10/2022-8/15/2022
 
 ---
 
@@ -48,13 +48,21 @@
 
 :white_check_mark: Write method to format climate data for X and Y-axis plotting.
 
-:white_check_mark: Write `pytest` tests
+:white_check_mark: Write `pytest` tests for [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py)
 
 :white_check_mark: Write application to plot monthly atmospheric Co2 values with `Plotly`
 
 :white_check_mark: Add application diagram to [README.md](https://github.com/timothyhull/climate-data-plotly/blob/main/README.md) using `mermaid`
 
-:white_large_square: Write application to plot monthly atmospheric Co2 percentage change values with `Plotly`
+:white_check_mark: Write application to plot monthly atmospheric Co2 percentage change values with `Plotly`
+
+:white_large_square: Create mechanism to overlay the PPM and YoY Co2 data
+
+:white_large_square: Write `pytest` tests for the `plot_atmospheric_co2_data_go` function in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py)
+
+:white_large_square: Write `pytest` tests for [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py)
+
+:white_large_square: Correct Better Code Hub findings
 
 :white_large_square: Test data plotting with `Bokeh`
 
@@ -510,3 +518,30 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
     - [ppm_line_plot_1a.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/plot_files/ppm_line_plot_1a.html)
     - [yoy_bar_plot_1a.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/plot_files/yoy_bar_plot_1a.html)
     - [yoy_line_plot_1a.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/plot_files/yoy_line_plot_1a.html)
+
+---
+
+### :notebook: 8/9/22
+
+- Renamed all functions, files, methods, and variables that produce plot HTML data, in order to have the ability to plot data with both Plotly Express (limited functionality) and Plotly Graph Objects (more flexible functionality):
+    - Added `_px` suffix to functions and methods in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py):
+        - `plot_atmospheric_co2_data_px`
+    - Added `px_` prefix to variables and functions in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py):
+        - `px_ppm_bar`
+        - `px_ppm_line`
+        - `px_yoy_bar`
+        - `px_yoy_line`
+        - `px_graph_all`
+
+    - Plot files:
+        - [px_ppm_bar_plot_1a.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/px_plot_files/ppm_bar_plot_1a.html)
+        - [px_ppm_line_plot_1a.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/px_plot_files/ppm_line_plot_1a.html)
+        - [px_yoy_bar_plot_1a.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/px_plot_files/yoy_bar_plot_1a.html)
+        - [px_yoy_line_plot_1a.html](https://github.com/timothyhull/climate-data-plotly/blob/main/app/plot_files/px_yoy_line_plot_1a.html)
+
+- Duplicated the `plot_atmospheric_co2_data_px` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) and renamed the duplicate:
+        - `plot_atmospheric_co2_data_go`
+        - Replaced `plotly.express` (`px`) method/function calls with `plotly.graph_objects` (`go`) methods/functions.
+            - **Further development and testing necessary**
+    - Added `px_` prefix to Python variables and functions in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py):
+        - `plot_atmospheric_co2_data_px`
