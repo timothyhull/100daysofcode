@@ -26,6 +26,8 @@
 
 :star: [Plotly Time and Date Axes in Python](https://plotly.com/python/time-series)
 
+:star: [Plotly Subplots (multiple stacked plots with a shared axis)](https://plotly.com/python/subplots/#subplots-with-shared-xaxes)
+
 ---
 
 ## Tasks
@@ -58,7 +60,7 @@
 
 :white_check_mark: Write `pytest` tests for the `plot_atmospheric_co2_data_go` function in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py)
 
-:white_large_square: Create mechanism to overlay the PPM and YoY Co2 data
+:white_check_mark: Create mechanism to overlay the PPM and YoY Co2 data
 
 :white_large_square: Write `pytest` tests for [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py)
 
@@ -554,3 +556,13 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
     - Verified graph output is similar to that of the `plotly.plotly_express` graph output from `plot_atmospheric_co2_data_ppx`.
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 8/11/22
+
+- Experimented with multiple graphs in one plot using both [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) and [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py):
+    - The two data sets, monthly Co2 PPM and +/- % of monthly YoY Co2 delta, have vastly different x-axis ranges, so [Plotly Subplots (multiple stacked plots with a shared axis](https://plotly.com/python/subplots/#subplots-with-shared-xaxes) is the best candidate to display the two data sets adjacently.
+    - Saved test files to the local `_gitignore` directory.
+
+- Minor variable/constant and functional updates to both [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) and [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py.
