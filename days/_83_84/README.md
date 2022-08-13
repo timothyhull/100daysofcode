@@ -28,6 +28,8 @@
 
 :star: [Plotly Subplots (multiple stacked plots with a shared axis)](https://plotly.com/python/subplots/#subplots-with-shared-xaxes)
 
+:star: [Python NamedTuple object with type hint and default values support](https://docs.python.org/3/library/typing.html#typing.NamedTuple)
+
 ---
 
 ## Tasks
@@ -566,3 +568,69 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
     - Saved test files to the local `_gitignore` directory.
 
 - Minor variable/constant and functional updates to both [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) and [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py.
+
+---
+
+### :notebook: 8/12/22
+
+- Started refactoring the `plot_atmospheric_co2_data_px` and `plot_atmospheric_co2_data_go` methods in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+    - Reduced the number of parameters in each function by creating and passing a `typing.NamedTuple` object of the custom class `PlotProperties` with several individual properties.
+        - A `typing.NamedTuple` object is equivalent to a `collections.namedtuple` object and also allows for type hints and default values in field names.
+        - Increased the Better Code Hub score from **6/10** to **7/10**.
+        - Now passing the _Keep Unit Interfaces Small_ test.
+
+            ```python
+            # Import the typing.NamedTuple class
+            from typing import NamedTuple
+
+            # Constants
+            PLOT_DATE_LABEL = 'Dates'
+            PLOT_VALUE_LABEL = 'Values'
+            PLOT_TITLE = 'Atmospheric Co2 Data'
+
+            # NamedTuple object
+            class PlotProperties(NamedTuple):
+                """ Properties for formatting a graphed plot.
+
+                    Typed version of the collections.namedtuple object with
+                    field names and default values.
+
+                    Field Names and Default Values:
+
+                        line_graph (bool, optional):
+                            Specifies whether the plot will be a line graph
+                            or not.  When True, the plot will be a line graph.
+                            When False, the plot will be a bar graph.  Default
+                            is True.
+
+                        date_label (str, optional):
+                            Label of plot y-axis.  Default is PLOT_DATE_LABEL.
+
+                        value_label (str, optional):
+                            Label of plot y-axis.  Default is PLOT_VALUE_LABEL.
+
+                        title (str, optional):
+                            Title of plot. Default is PLOT_TITLE.
+
+                        compress_y_axis (str, optional):
+                            Determine whether the y-axis starts at 0, which
+                            displays well with PPM data although poorly with
+                            YOY data.  When True, compresses the y-axis range
+                            to 95% of the first value of the y-axis data,
+                            and 100.5% of the last value in the y-axis data.
+                            Default is False.
+                """
+
+                # Field names and default values
+                line_graph: bool = True,
+                date_label: str = PLOT_DATE_LABEL,
+                value_label: str = PLOT_VALUE_LABEL,
+                title: str = PLOT_TITLE,
+                compress_y_axis: bool = False
+            ```
+
+- Refactored functions in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) to support passing arguments to the  `plot_atmospheric_co2_data_px` and `plot_atmospheric_co2_data_go` methods in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) as `PlotProperties`object instances.
+
+- Refactored [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) to support passing arguments to the  `plot_atmospheric_co2_data_px` and `plot_atmospheric_co2_data_go` methods in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) as `PlotProperties`object instances.
+    - Renamed the test function `test_plot_atmospheric_co2_data` to `test_plot_atmospheric_co2_data_px` and updated call to the `ClimateData.plot_atmospheric_co2_data_px` method to send a `PlotProperties` object as an argument.
+    - Created the test function `test_plot_atmospheric_co2_data_go` to call the `ClimateData.plot_atmospheric_co2_data_go` method with `PlotProperties` object as an argument.
