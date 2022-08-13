@@ -634,3 +634,5 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
 - Refactored [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) to support passing arguments to the  `plot_atmospheric_co2_data_px` and `plot_atmospheric_co2_data_go` methods in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) as `PlotProperties`object instances.
     - Renamed the test function `test_plot_atmospheric_co2_data` to `test_plot_atmospheric_co2_data_px` and updated call to the `ClimateData.plot_atmospheric_co2_data_px` method to send a `PlotProperties` object as an argument.
     - Created the test function `test_plot_atmospheric_co2_data_go` to call the `ClimateData.plot_atmospheric_co2_data_go` method with `PlotProperties` object as an argument.
+
+- All `pytest` tests pass.
