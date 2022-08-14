@@ -636,3 +636,26 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
     - Created the test function `test_plot_atmospheric_co2_data_go` to call the `ClimateData.plot_atmospheric_co2_data_go` method with `PlotProperties` object as an argument.
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 8/13/22
+
+- Refactored functions in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to reduce the number of lines of code in the `plot_atmospheric_co2_data_px` and improve the compliance score with Better Code Hub.
+    - Added the following methods:
+        - `setup_graph_args`
+        - `update_graph_x_axis`
+        - `compress_y_axis`
+        - `update_graph_y_axis`
+    - Relocated code from `plot_atmospheric_co2_data_px` to the new methods.
+
+- Revised elements in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py):
+    - Relocated TransposedData object definition to be adjacent to the `PlotProperties` `NamedTuple` object.
+    - Revised spelling for the plural of axis to axes.
+
+- Refactored the setup of the `PlotProperties` object in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) to support setting the `compress_y_axis` value on a per-function basis:
+    - Relocated the `compress_y_access` from `PPM_PLOT_PROPERTIES` and `GO_PLOT_PROPERTIES` to individual functions.
+    - Adjusted values for the `compress_y_access` value on a per-function basis.
+    - Removed instances of `line_graph` arguments in the `go_yoy_bar` and `go_yoy_line` functions.
+
+- All `pytest` tests pass.
