@@ -567,7 +567,7 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
     - The two data sets, monthly Co2 PPM and +/- % of monthly YoY Co2 delta, have vastly different x-axis ranges, so [Plotly Subplots (multiple stacked plots with a shared axis](https://plotly.com/python/subplots/#subplots-with-shared-xaxes) is the best candidate to display the two data sets adjacently.
     - Saved test files to the local `_gitignore` directory.
 
-- Minor variable/constant and functional updates to both [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) and [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py.
+- Minor variable/constant and functional updates to both [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) and [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py).
 
 ---
 
@@ -648,6 +648,7 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
         - `compress_y_axis`
         - `update_graph_y_axis`
     - Relocated code from `plot_atmospheric_co2_data_px` to the new methods.
+    - Improved score from **6/10** to **7/10**.
 
 - Revised elements in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py):
     - Relocated TransposedData object definition to be adjacent to the `PlotProperties` `NamedTuple` object.
@@ -657,5 +658,15 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
     - Relocated the `compress_y_access` from `PPM_PLOT_PROPERTIES` and `GO_PLOT_PROPERTIES` to individual functions.
     - Adjusted values for the `compress_y_access` value on a per-function basis.
     - Removed instances of `line_graph` arguments in the `go_yoy_bar` and `go_yoy_line` functions.
+
+- All `pytest` tests pass.
+
+---
+
+### :notebook: 8/14/22
+
+- Refactored [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) for reusability to improve the Better Code Hub **Write Code Once** score.
+    - Reduced calls to `plot_atmospheric_co2_data_px` and `plot_atmospheric_co2_data_px` from four each to once each.
+    - Improved score from **7/10** to **8/10**.
 
 - All `pytest` tests pass.
