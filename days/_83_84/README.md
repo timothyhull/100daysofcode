@@ -641,7 +641,7 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
 
 ### :notebook: 8/13/22
 
-- Refactored functions in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to reduce the number of lines of code in the `plot_atmospheric_co2_data_px` and improve the compliance score with Better Code Hub.
+- Refactored [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to reduce the number of lines of code in the `plot_atmospheric_co2_data_px` method and improve the compliance score with Better Code Hub.
     - Added the following methods:
         - `setup_graph_args`
         - `update_graph_x_axis`
@@ -665,8 +665,28 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
 
 ### :notebook: 8/14/22
 
-- Refactored [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) for reusability to improve the Better Code Hub **Write Code Once** score.
+- Refactored [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) for reusability to improve the Better Code Hub **Write Code Once** and **Write Short Units of Code** scores.
     - Reduced calls to `plot_atmospheric_co2_data_px` and `plot_atmospheric_co2_data_px` from four each to once each.
+    - Removed `px_graph_all` and `go_graph_all` from the list of Better Code Hub warnings, previously having 26 lines of code for each of these functions.
     - Improved score from **7/10** to **8/10**.
+
+- All `pytest` tests pass.
+
+---
+
+### :notebook: 8/15/22
+
+- Refactored [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to reduce the number of lines of code in the `plot_atmospheric_co2_data_go` method and improve the compliance score with Better Code Hub.
+    - Added the following methods:
+        - `setup_layout_args`
+        - `setup_graph_args_go`
+        - `setup_graph_args_px` (renamed `setup_graph_args_px`)
+            - Split functions due to the different graph arguments required for `plotly.express` and `plotly.graph_objects` plot objects.
+    - Relocated code from `plot_atmospheric_co2_data_go` to the new methods.
+
+- BCH score declined from **8/10** to **7/10**:
+    - Need to refactor `plot_atmospheric_co2_data_px` and `plot_atmospheric_co2_data_go` to reduce duplicate code instances.
+
+- Corrected variable name in the `plot_px_yoy_line` function in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py).
 
 - All `pytest` tests pass.
