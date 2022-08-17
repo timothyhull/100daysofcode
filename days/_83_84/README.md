@@ -690,3 +690,13 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
 - Corrected variable name in the `plot_px_yoy_line` function in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py).
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 8/16/22
+
+- Refactored [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) to reduce the number of repetitive constants, and to make constants more modular:
+    - The refactor did not reduce the number of lines of code, as intended.
+    - BCH score remains **7/10**:
+
+- All `pytest` tests pass.
