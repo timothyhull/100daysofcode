@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-8/15/2022
+# :calendar: Days 83+84: 7/10/2022-8/20/2022
 
 ---
 
@@ -668,7 +668,7 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
 - Refactored [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) for reusability to improve the Better Code Hub **Write Code Once** and **Write Short Units of Code** scores.
     - Reduced calls to `plot_atmospheric_co2_data_px` and `plot_atmospheric_co2_data_px` from four each to once each.
     - Removed `px_graph_all` and `go_graph_all` from the list of Better Code Hub warnings, previously having 26 lines of code for each of these functions.
-    - Improved score from **7/10** to **8/10**.
+    - Improved BCH score from **7/10** to **8/10**.
 
 - All `pytest` tests pass.
 
@@ -698,5 +698,27 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
 - Refactored [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) to reduce the number of repetitive constants, and to make constants more modular:
     - The refactor did not reduce the number of lines of code, as intended.
     - BCH score remains **7/10**:
+
+- All `pytest` tests pass.
+
+---
+
+### :notebook: 8/17/22
+
+- Refactored [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to combine the `plot_atmospheric_co2_data_px` and `plot_atmospheric_co2_data_go` into a single method `plot_atmospheric_co2_data_px`.
+    - Reduced number of lines of code and instances of duplicate code.
+
+- Refactored [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py):
+    - Consolidated `px_plot` and `go_plot` functions to the `plot_graph` function.
+    - Set `plot_graph` to a single method `ClimateData.plot_atmospheric_co2_data`
+    - Updated `_PLOT_PROPERTIES` constants to include the `px_plot` key/value pair.
+    - Reduced number of lines of code and instances of duplicate code.
+    - BCH score...
+
+- Refactored `pytest` tests in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) to support the consolidated `ClimateData.plot_atmospheric_co2_data` method.
+    - Updated `MOCK_HTML_PLOT_PROPERTIES_` constants to include the `px_plot` argument.
+
+- Improved BCH score from **7/10** to **8/10**:
+    - Now passing the **Write Code Once** standard.
 
 - All `pytest` tests pass.
