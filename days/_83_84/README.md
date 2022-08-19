@@ -722,3 +722,16 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
     - Now passing the **Write Code Once** standard.
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 8/18/22
+
+- Refactored [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py), functionally decomposing the `plot_atmospheric_co2_data` method:
+    - Moved code to the new methods `_plot_graph_px` and `_plot_graph_go`
+
+- No change BCH score (**8/10**):
+    - Reduced `plot_atmospheric_co2_data` method from 53 to 27 lines.
+    - `plot_atmospheric_co2_data` now scored as yellow (more than 15 lines of code) instead of orange (more than 30 lines of code).
+
+- All `pytest` tests pass.
