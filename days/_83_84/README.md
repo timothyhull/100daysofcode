@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-8/20/2022
+# :calendar: Days 83+84: 7/10/2022-8/25/2022
 
 ---
 
@@ -745,5 +745,31 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
 
 - Improved BCH score from **8/10** to **9/10**:
     - Now passing the **Write Short Units of Code** standard.
+
+- All `pytest` tests pass.
+
+---
+
+### :notebook: 8/20/22
+
+- Refactored the file [web/flask_app.py](https://github.com/timothyhull/climate-data-plotly/blob/main/web/flask_app.py) to import the `app` folder directly, instead of importing the `ClimateData` class directly:
+    - Researched the **Abstract Factory** design pattern to improve the BCH score.
+        - Learned that by importing `app.ClimateData.ClimateData` directly caused the code to fail the **Couple Architecture Components Loosely** test.
+            - This creates a "tight coupling" of code, because [web/flask_app.py](https://github.com/timothyhull/climate-data-plotly/blob/main/web/flask_app.py) cannot access other modules in the `app` folder.
+        - Importing the `app` folder directly instead creates a "loose coupling" of code, because components in the `app` folder allows the flexibility to access all of its sub-components
+
+            ```python
+            # Initial, non-abstract factory method
+            from app.ClimateData import ClimateData
+
+            # Updated, abstract factory method
+            import app
+
+            # Because the Flask app variable in my file is 'app', I renamed the 'app' import
+            import app as app_climate
+            ```
+
+- Improved BCH score from **9/10** to **10/10**:
+    - Now passing the **Couple Architecture Components Loosely** standard.
 
 - All `pytest` tests pass.
