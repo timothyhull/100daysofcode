@@ -60,13 +60,13 @@
 
 :white_check_mark: Write application to plot monthly atmospheric Co2 percentage change values with `Plotly`
 
-:white_check_mark: Write `pytest` tests for the `plot_atmospheric_co2_data_go` function in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py)
+:white_check_mark: Write `pytest` tests for the `plot_atmospheric_co2_data_go` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py)
 
 :white_check_mark: Create mechanism to overlay the PPM and YoY Co2 data
 
-:white_large_square: Write `pytest` tests for [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py)
+:white_check_mark: Write `pytest` tests for the `_compress_y_axis` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py)
 
-:white_large_square: Refactor to correct Better Code Hub findings
+:white_large_square: Write `pytest` tests for [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py)
 
 :white_large_square: Test data plotting with `Bokeh`
 
@@ -756,7 +756,7 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
     - Researched the **Abstract Factory** design pattern to improve the BCH score.
         - Learned that by importing `app.ClimateData.ClimateData` directly caused the code to fail the **Couple Architecture Components Loosely** test.
             - This creates a "tight coupling" of code, because [web/flask_app.py](https://github.com/timothyhull/climate-data-plotly/blob/main/web/flask_app.py) cannot access other modules in the `app` folder.
-        - Importing the `app` folder directly instead creates a "loose coupling" of code, because components in the `app` folder allows the flexibility to access all of its sub-components
+        - Importing the `app` folder directly instead creates a "loose coupling" of code, because importing the `app` folder allows the flexibility to access all of its sub-components
 
             ```python
             # Initial, non-abstract factory method
@@ -773,3 +773,35 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
     - Now passing the **Couple Architecture Components Loosely** standard.
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 8/21/22
+
+- Created the `test_compress_y_axis` function in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
+    - Tests the `_compress_y_axis` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+
+- All `pytest` tests pass.
+    - `pytest` coverage at 98%.
+
+```bash
+\# pytest --cov-report=term-missing --cov=.
+=================================================================== test session starts ====================================================================
+platform linux -- Python 3.10.5, pytest-7.1.2, pluggy-1.0.0
+rootdir: /workspaces/climate-data-plotly
+plugins: requests-mock-1.9.3, cov-3.0.0
+collected 39 items                                                                                                                                         
+
+tests/test_ClimateData.py .......................................                                                                                    [100%]
+
+---------- coverage: platform linux, python 3.10.5-final-0 -----------
+Name                        Stmts   Miss  Cover   Missing
+---------------------------------------------------------
+app/ClimateData.py            168      3    98%   756, 853, 1113
+tests/test_ClimateData.py     131      1    99%   517
+---------------------------------------------------------
+TOTAL                         299      4    99%
+
+
+==================================================================== 39 passed in 1.86s ====================================================================
+```
