@@ -782,7 +782,7 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
     - Tests the `_compress_y_axis` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
 
 - All `pytest` tests pass.
-    - `pytest` coverage at 98%.
+- `pytest` coverage at 98%.
 
 ```bash
 \# pytest --cov-report=term-missing --cov=.
@@ -805,3 +805,34 @@ TOTAL                         299      4    99%
 
 ==================================================================== 39 passed in 1.86s ====================================================================
 ```
+
+---
+
+### :notebook: 8/22/22
+
+- Refactored [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py), functionally decomposing the `_create_graph_px` and `create_graph_go` methods:
+    - Renamed methods from `_create_plot_px` and `_create_plot_go` respectively.
+    - Created and moved code to methods `_plot_px` and `plot_go` to exclusively call and return `plotly.express` and `plotly.graph_objects` respectively.
+        - This allows `pytest` to explicitly test the return values of `px.bar`, `px.line`, `go.Scatter`, and `go.Bar`.
+
+- Created the `test_plot_px` and `test_plot_go` functions in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py):
+    - Tests the `_plot_px` and `_plot_go` methods in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+
+- All `pytest` tests pass.
+- `pytest` coverage at 98%.
+    - `pytest` does not recognize the new test functions as resolutions to the 2 x lines of code shown as not-covered in the `pytest` coverage report:
+
+        ```python
+        graph = px.line(
+            **graph_args,
+            markers=True
+        )
+
+        graph.add_trace(
+            go.Scatter(**graph_args)
+        )
+        ```
+
+- Maintained BCH of **10/10**:
+
+- All `pytest` tests pass
