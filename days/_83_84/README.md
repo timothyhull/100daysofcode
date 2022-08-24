@@ -116,7 +116,7 @@
     - Updated the `_get_atmospheric_co2_data` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to format atmospheric CO2 data `Date` keys as `datetime.datetime` objects, using the `_convert_date_string` method.
 
 - Created initial `pytest` file, [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py).
-    - Created initial test function `test__convert_date_string` to test the `_convert_date_string` in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+    - Created initial test function `test_convert_date_string` to test the `_convert_date_string` in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
     - All tests pass.
 
 ---
@@ -833,6 +833,45 @@ TOTAL                         299      4    99%
         )
         ```
 
-- Maintained BCH of **10/10**:
+- Maintained BCH of **10/10**.
 
-- All `pytest` tests pass
+- All `pytest` tests pass.
+
+---
+
+### :notebook: 8/23/22
+
+- Created `pytest` file, [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py).
+    - Created test function `test_main` to test the `main` function in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py).
+
+- Maintained BCH of **10/10**.
+
+- All `pytest` tests pass.
+    - Coverage report for `` is 35%.
+
+        ```bash
+        root@97d9e35a0c55:/workspaces/climate-data-plotly# pytest --cov-report=term-missing --cov=.
+        =================================================== test session starts ====================================================
+        platform linux -- Python 3.10.5, pytest-7.1.2, pluggy-1.0.0
+        rootdir: /workspaces/climate-data-plotly
+        plugins: requests-mock-1.9.3, cov-3.0.0
+        collected 42 items                                                                                                         
+
+        tests/test_ClimateData.py .........................................                                                  [ 97%]
+        tests/test_climate_data.py .                                                                                         [100%]
+
+        ---------- coverage: platform linux, python 3.10.5-final-0 -----------
+        Name                         Stmts   Miss  Cover   Missing
+        ----------------------------------------------------------
+        app/ClimateData.py             174      3    98%   743, 822, 1250
+        app/climate_data.py             85     55    35%   78-92, 109-123, 142-156, 175-189, 208-222, 241-255, 274-288, 307-321, 340-354, 368-387, 401-420, 441
+        tests/test_ClimateData.py      146      1    99%   542
+        tests/test_climate_data.py      25      0   100%
+        ----------------------------------------------------------
+        TOTAL                          430     59    86%
+
+
+        ==================================================== 42 passed in 2.18s ====================================================
+        ```
+
+- Added missing `return None` statements to [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py).
