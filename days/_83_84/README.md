@@ -66,6 +66,8 @@
 
 :white_check_mark: Write `pytest` tests for the `_compress_y_axis` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py)
 
+:white_large_square: Complete refactoring checklist items from [Days 83+84ar](#notebook8/24/22)
+
 :white_large_square: Write `pytest` tests for [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py)
 
 :white_large_square: Test data plotting with `Bokeh`
@@ -833,7 +835,7 @@ TOTAL                         299      4    99%
         )
         ```
 
-- Maintained BCH of **10/10**.
+- Maintained BCH score of **10/10**.
 
 - All `pytest` tests pass.
 
@@ -844,10 +846,11 @@ TOTAL                         299      4    99%
 - Created `pytest` file, [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py).
     - Created test function `test_main` to test the `main` function in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py).
 
-- Maintained BCH of **10/10**.
+- Maintained BCH score of **10/10**.
 
 - All `pytest` tests pass.
-    - Coverage report for `` is 35%.
+    - Coverage report for [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py) is 35%.
+    - Total coverage is 86%.
 
         ```bash
         root@97d9e35a0c55:/workspaces/climate-data-plotly# pytest --cov-report=term-missing --cov=.
@@ -896,3 +899,24 @@ TOTAL                         299      4    99%
         - [ ] Use constants in the `test_plot_graph` function.
         - [ ] Use `pytest.mark.parameterize` to send multiple data sets to the `plot_graph` function.
         - [ ] Use a mock of the `file.open` method to prevent the `test_plot_graph` function from creating a new plot HTML file.
+
+- BCH score dropped from **10/10** to **9/10**.
+    - Failing the **Write Code Once** check.
+    - [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) requires refactoring to reduce 4 x instances of:
+
+        ```python
+        plot_graph(
+            transposed_data=climate_data.transposed_co2_ppm_date_data,
+            plot_properties=plot_properties,
+            climate_data=climate_data
+        )
+
+        # Display a success message
+        print(
+            f'\nGenerated the file {PX_PREFIX}{BAR_PPM_FILE_NAME}{FILE_SUFFIX}\n'
+        )
+        ```  
+
+- All `pytest` tests pass.
+    - Coverage report for [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py) is 42%, up from 35%.
+    - Total coverage is 88%, up from 86%.
