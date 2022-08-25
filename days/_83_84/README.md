@@ -896,6 +896,10 @@ TOTAL                         299      4    99%
     - [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py):
         - [ ] Use constants in the `plot_graph` function's `print` statement.
     - [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py):
+    - [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py):
+        - [ ] Check to see if the expected file creates successfully in `write_plot_html_file` and return a `bool` object.
+            - The return value for the `open` function with a `wt` mode is a count of characters written to a new file.
+    - [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py):
         - [ ] Use constants in the `test_plot_graph` function.
         - [ ] Use `pytest.mark.parameterize` to send multiple data sets to the `plot_graph` function.
         - [ ] Use a mock of the `file.open` method to prevent the `test_plot_graph` function from creating a new plot HTML file.
@@ -920,3 +924,56 @@ TOTAL                         299      4    99%
 - All `pytest` tests pass.
     - Coverage report for [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py) is 42%, up from 35%.
     - Total coverage is 88%, up from 86%.
+
+---
+
+### :notebook: 8/25/22
+
+- Refactored [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) to to improve BCH score.
+    - Renamed the `plot_graph` function to be an internal use function, `_plot_graph`.
+    - Created a new, callable `plot_graph` function that calls the `_plot_graph` with arguments and a print statement that were common across 8 x functions:
+        - `plot_px_ppm_bar`
+        - `plot_px_ppm_line`
+        - `plot_px_yoy_bar`
+        - `plot_px_yoy_line`
+        - `plot_go_ppm_bar`
+        - `plot_go_ppm_line`
+        - `plot_go_yoy_bar`
+        - `plot_go_yoy_line`
+
+        ```python
+        # Generate a PPM bar graph
+        plot_status = _plot_graph(
+            plot_properties=plot_properties,
+            climate_data=climate_data
+        )
+
+        # Display a success message
+        print(
+            f'\nGenerated the file {PX_PREFIX}{BAR_PPM_FILE_NAME}{FILE_SUFFIX}\n'
+        )
+        ```
+
+    - BCH score remains at **9/10**.
+        - Further refactoring to reduce repetitive code required.
+
+    - Added the `_create_ppm_plot_properties` and `_create_yoy_plot_properties` functions to reduce duplicate code.
+    - Reduced calls to the `plot_graph` function from 6 lines to 1:
+
+        ```python
+        # Original plot_graph call
+        plot_graph(
+            climate_data=climate_data,
+            plot_properties=plot_properties
+        )
+
+        # Revised plot_graph call
+        plot_graph(climate_data=climate_data, plot_properties=plot_properties)
+        ```
+
+- Improved BCH score from **9/10** to **10/10**:
+    - Now passing the **Write Code Once** check.
+
+- All `pytest` tests pass.
+    - Coverage report for [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py) is 49%, up from 42%.
+    - Total coverage is 90%, up from 88%.
