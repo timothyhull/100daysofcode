@@ -875,3 +875,24 @@ TOTAL                         299      4    99%
         ```
 
 - Added missing `return None` statements to [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py).
+
+---
+
+### :notebook: 8/24/22
+
+- Added the `climate_data` parameter to the `plot_graph` function in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) to require an instance of the `ClimateData.ClimateData` class.
+    - Enables importing and calling functions in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) from other Python files.
+        - Enables using `pytest` to send a mock instance of the `ClimateData.ClimateData` class to the `plot_graph` function.
+    - Updated calls to the `plot_graph` function to send an instance of the `ClimateData.ClimateData` class as an argument to the `climate_data` parameter.
+
+- Added `pytest` fixtures and tests to [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py):
+    - Added the `pytest` fixture `mock_climate_data_main` to create a reusable interface that generates a mock instance of the `ClimateData.ClimateData` class returned by the `main` function in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py).
+        - Added the `mock_climate_data_main` fixture to the `test_main` and `test_plot_graph` functions.
+
+- Refactor needs:
+    - [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py):
+        - [ ] Use constants in the `plot_graph` function's `print` statement.
+    - [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py):
+        - [ ] Use constants in the `test_plot_graph` function.
+        - [ ] Use `pytest.mark.parameterize` to send multiple data sets to the `plot_graph` function.
+        - [ ] Use a mock of the `file.open` method to prevent the `test_plot_graph` function from creating a new plot HTML file.
