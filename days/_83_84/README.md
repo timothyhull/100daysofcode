@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-8/25/2022
+# :calendar: Days 83+84: 7/10/2022-9/5/2022
 
 ---
 
@@ -977,3 +977,38 @@ TOTAL                         299      4    99%
 - All `pytest` tests pass.
     - Coverage report for [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py) is 49%, up from 42%.
     - Total coverage is 90%, up from 88%.
+
+---
+
+### :notebook: 8/26/22
+
+- Refactored the `_create_plot_file` and `write_plot_html_file` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) to return a value:
+    - Returns the value returned by the `open()` function, which is an `int` value equivalent to the number of characters written to a new file, when the `mode` argument is `wt`.
+
+- Refactored `test_write_plot_html_file` function in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) to account for new return value in the `ClimateData.write_plot_html_file` method:
+    - Added check for match between mock file input and mock file output.
+    - Getting the mock file output value required digging into the value assigned to `write_html_mock` created by the built-in `mock_open()` function:
+
+        ```python
+        # Get the attributes and methods of write_html_mock
+        print(f'*************{dir(write_html_mock)}')
+
+        # Found the mock file output value in the write_html_mock.mock_calls attribute
+        print(f'*************{write_html_mock.mock_calls}')
+
+        # Extracted the mock file output from the call_list method of list item number 2
+        mock_write_value = write_html_mock.mock_calls[2].call_list()[0]
+
+        # Converted the mock file output value to a string
+        mock_write_value = str(mock_write_value)
+
+        # Extracted the file contents with the split method, collecting list item 1 from the result
+        mock_write_value = mock_write_value.split(sep="'")[1]
+
+        # Compared the mock file input value with the mock file output value
+        assert mock_file_input_string == mock_write_value
+        ```
+
+- Maintained BCH score of **10/10**.
+
+- All `pytest` tests pass.
