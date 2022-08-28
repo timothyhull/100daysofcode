@@ -66,7 +66,7 @@
 
 :white_check_mark: Write `pytest` tests for the `_compress_y_axis` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py)
 
-:white_large_square: Complete refactoring checklist items from [Days 83+84ar](#notebook8/24/22)
+:white_large_square: Complete refactoring checklist items from [Days 83+84ar](#notebook-82422)
 
 :white_large_square: Write `pytest` tests for [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py)
 
@@ -900,9 +900,9 @@ TOTAL                         299      4    99%
         - [X] Check to see if the expected file creates successfully in `write_plot_html_file` and return a `bool` object.
             - The return value for the `open` function with a `wt` mode is a count of characters written to a new file.
     - [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py):
-        - [ ] Use constants in the `test_plot_graph` function.
-        - [ ] Use `pytest.mark.parameterize` to send multiple data sets to the `plot_graph` function.
-        - [ ] Use a mock of the `file.open` method to prevent the `test_plot_graph` function from creating a new plot HTML file.
+        - [X] Use constants in the `test_plot_graph` function.
+        - [ ] Use `pytest.mark.parameterize` to send multiple test data sets to the `plot_graph` function.
+        - [X] Use a mock of the `file.open` method to prevent the `test__plot_graph` function from creating a new plot HTML file.
 
 - BCH score dropped from **10/10** to **9/10**.
     - Failing the **Write Code Once** check.
@@ -991,10 +991,10 @@ TOTAL                         299      4    99%
 
         ```python
         # Get the attributes and methods of write_html_mock
-        print(f'*************{dir(write_html_mock)}')
+        print({dir(write_html_mock)})
 
         # Found the mock file output value in the write_html_mock.mock_calls attribute
-        print(f'*************{write_html_mock.mock_calls}')
+        print({write_html_mock.mock_calls})
 
         # Extracted the mock file output from the call_list method of list item number 2
         mock_write_value = write_html_mock.mock_calls[2].call_list()[0]
@@ -1043,3 +1043,55 @@ Replaced text variables with text constants
 - Maintained BCH score of **10/10**.
 
 - All `pytest` tests pass.
+
+--
+
+### :notebook: 8/28/22
+
+- Refactored [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) to use constants with variable substitution for printing:
+    - Set constants with placeholders and used the `str.format` method to display final values:
+
+    ```python
+    # Set constant with placeholders
+    PLOT_RESULT_STR = '\nCreated the {} graph "{}"\n'
+
+    # Print statement with the str.format method to substitute variables
+    print(PLOT_RESULT_STR.format(graph_type, plot_properties.title))
+    ```
+
+- Refactored [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py) to:
+    - Test the `plot_graph` function directly, instead of the `_plot_graph` function.
+        - `_plot_graph` calls `plot_graph`, so both functions get tested by testing `plot_graph`
+    - Use the `mock_open` function, in order to prevent the test function `test_plot_graph` from creating a new HTML file when calling `plot_graph`.
+    - Updated assertions to properly test for valid results.
+
+- Maintained BCH score of **10/10**.
+
+- All `pytest` tests pass.
+    - Coverage report for [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py) is 61%, up from 49%.
+    - Total coverage is 91%, up from 90%.
+
+        ```bash
+        \# pytest --cov-report=term-missing --cov=.
+        =================================================== test session starts ====================================================
+        platform linux -- Python 3.10.5, pytest-7.1.2, pluggy-1.0.0
+        rootdir: /workspaces/climate-data-plotly
+        plugins: requests-mock-1.9.3, cov-3.0.0
+        collected 43 items                                                                                                         
+
+        tests/test_ClimateData.py .........................................                                                  [ 95%]
+        tests/test_climate_data.py ..                                                                                        [100%]
+
+        ---------- coverage: platform linux, python 3.10.5-final-0 -----------
+        Name                         Stmts   Miss  Cover   Missing
+        ----------------------------------------------------------
+        app/ClimateData.py             174      2    99%   743, 822
+        app/climate_data.py            104     41    61%   160, 193-200, 225-232, 266, 313-321, 340-348, 367-375, 394-402, 421-429, 448-456, 475-483, 502-510, 524-543, 557-576, 597
+        tests/test_ClimateData.py      151      1    99%   542
+        tests/test_climate_data.py      46      0   100%
+        ----------------------------------------------------------
+        TOTAL                          475     44    91%
+
+
+        ==================================================== 43 passed in 1.98s ====================================================
+        ```
