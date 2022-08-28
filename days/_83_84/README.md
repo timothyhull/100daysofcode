@@ -316,7 +316,7 @@
 - Revised [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) to support additional test cases and data sets.
     - Added and revised mock data constants to support using the YOY mock data with the test functions that already support the PPM mock data.
     - Revised the `test_get_atmospheric_co2_data` and `test_transpose_data_for_graphing` function to test with both PPM and YOY mock data.
-    - Added the `test_get_co2_ppm_date_data` and `test_get_co2_yoy_date_data` functions to to test extracting specific dictionary keys/values from Python-formatted API JSON data.
+    - Added the `test_get_co2_ppm_date_data` and `test_get_co2_yoy_date_data` functions to test extracting specific dictionary keys/values from Python-formatted API JSON data.
 
 - All tests pass.
 
@@ -894,10 +894,10 @@ TOTAL                         299      4    99%
 
 - Refactor needs:
     - [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py):
-        - [ ] Use constants in the `plot_graph` function's `print` statement.
+        - [X] Use constants in the `plot_graph` function's `print` statement.
     - [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py):
     - [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py):
-        - [ ] Check to see if the expected file creates successfully in `write_plot_html_file` and return a `bool` object.
+        - [X] Check to see if the expected file creates successfully in `write_plot_html_file` and return a `bool` object.
             - The return value for the `open` function with a `wt` mode is a count of characters written to a new file.
     - [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py):
         - [ ] Use constants in the `test_plot_graph` function.
@@ -929,7 +929,7 @@ TOTAL                         299      4    99%
 
 ### :notebook: 8/25/22
 
-- Refactored [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) to to improve BCH score.
+- Refactored [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) to improve BCH score.
     - Renamed the `plot_graph` function to be an internal use function, `_plot_graph`.
     - Created a new, callable `plot_graph` function that calls the `_plot_graph` with arguments and a print statement that were common across 8 x functions:
         - `plot_px_ppm_bar`
@@ -1008,6 +1008,37 @@ TOTAL                         299      4    99%
         # Compared the mock file input value with the mock file output value
         assert mock_file_input_string == mock_write_value
         ```
+
+- Maintained BCH score of **10/10**.
+
+- All `pytest` tests pass.
+
+--
+
+### :notebook: 8/27/22
+
+- Refactor _create_plot_file to return two values.
+The path to the plot file.
+The number of characters written to a new plot file.
+
+- Add new functions to validate new plot generation.
+_validate_new_plot
+_print_plot_result
+
+Replaced text variables with text constants
+
+- Updated `test_write_plot_html_file` function in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData) to support returning values that allow determination of whether or not a plot file write is successful:
+    - Refactored the `_create_plot_file` method to return two values:
+        - The path to the plot file.
+        - The number of characters written to a new plot file.
+
+- Refactored `test_write_plot_html_file` function in [tests/test_ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_ClimateData.py) to account for new return value in the `ClimateData.write_plot_html_file` method:
+    - Added check for match between mock file input and mock file output.
+
+- Refactored [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) to support determining if a plot file write is successful or not:
+    - Add new functions to validate new plot generation.
+        - `_validate_new_plot`
+        - `_print_plot_result`
 
 - Maintained BCH score of **10/10**.
 
