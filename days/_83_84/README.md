@@ -901,7 +901,7 @@ TOTAL                         299      4    99%
             - The return value for the `open` function with a `wt` mode is a count of characters written to a new file.
     - [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py):
         - [X] Use constants in the `test_plot_graph` function.
-        - [ ] Use `pytest.mark.parameterize` to send multiple test data sets to the `plot_graph` function.
+        - [X] Use `pytest.mark.parameterize` to send multiple test data sets to the `plot_graph` function.
         - [X] Use a mock of the `file.open` method to prevent the `test__plot_graph` function from creating a new plot HTML file.
 
 - BCH score dropped from **10/10** to **9/10**.
@@ -1095,3 +1095,23 @@ Replaced text variables with text constants
 
         ==================================================== 43 passed in 1.98s ====================================================
         ```
+
+--
+
+### :notebook: 8/30/22
+
+- Refactored the `_create_ppm_plot_properties` function in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py) to include a `climate_data` parameter for a `ClimateData` object.
+    - Without this parameter, the function cannot be called from outside the `__main__` context (in this case for testing), because the function previously relied on the `main` function creating a climate_data object.
+    - Added an argument to the `_create_ppm_plot_properties` function call in `plot_px_ppm_bar`.
+
+- Added `pytest.mark.parameterize` to the `test_plot_graph` function in [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py).
+    - `test_plot_data` now tests multiple test data sets at once.
+    - Created constants to support the parameterized calls to `test_plot_graph`.
+
+- Created the function `test_plot_px_ppm_bar` in [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py), to test the `plot_px_ppm_bar` function in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py).
+
+- Maintained BCH score of **10/10**.
+
+- All `pytest` tests pass.
+    - Coverage report for [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py) is 65%, up from 61%.
+    - Total coverage is 92%, up from 91%.
