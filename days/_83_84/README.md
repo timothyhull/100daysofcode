@@ -1013,7 +1013,7 @@ TOTAL                         299      4    99%
 
 - All `pytest` tests pass.
 
---
+---
 
 ### :notebook: 8/27/22
 
@@ -1044,7 +1044,7 @@ Replaced text variables with text constants
 
 - All `pytest` tests pass.
 
---
+---
 
 ### :notebook: 8/28/22
 
@@ -1096,7 +1096,7 @@ Replaced text variables with text constants
         ==================================================== 43 passed in 1.98s ====================================================
         ```
 
---
+---
 
 ### :notebook: 8/30/22
 
@@ -1115,3 +1115,62 @@ Replaced text variables with text constants
 - All `pytest` tests pass.
     - Coverage report for [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py) is 65%, up from 61%.
     - Total coverage is 92%, up from 91%.
+
+---
+
+### :notebook: 8/31/22
+
+- Added the following tests to [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py), to test functions in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py):
+    - `test_plot_px_ppm_line`
+    - `test_plot_px_yoy_bar`
+    - `test_plot_px_yoy_line`
+    - `test_plot_go_ppm_bar`
+    - `test_plot_go_ppm_line`
+    - `test_plot_go_yoy_bar`
+    - `test_plot_go_yoy_line`
+
+- Added the `test_graph_all` function to [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py), to test all graph plots with a single function call.
+
+- Maintained BCH score of **10/10**.
+
+- All `pytest` tests pass.
+    - Coverage report for [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py) is 86%, up from 61%.
+    - Total coverage is 97%, up from 92%.
+
+        ```bash
+        \# pytest --cov-report=term-missing --cov=.
+        ============================================================================ test session starts ============================================================================
+        platform linux -- Python 3.10.5, pytest-7.1.2, pluggy-1.0.0
+        rootdir: /workspaces/climate-data-plotly
+        plugins: requests-mock-1.9.3, cov-3.0.0
+        collected 52 items                                                                                                                                                          
+
+        tests/test_ClimateData.py .........................................                                                                                                   [ 78%]
+        tests/test_climate_data.py ...........                                                                                                                                [100%]
+
+        ============================================================================ 52 passed in 1.18s =============================================================================
+        root@97d9e35a0c55:/workspaces/climate-data-plotly# 
+        root@97d9e35a0c55:/workspaces/climate-data-plotly# 
+        root@97d9e35a0c55:/workspaces/climate-data-plotly# pytest --cov-report=term-missing --cov=.
+        ============================================================================ test session starts ============================================================================
+        platform linux -- Python 3.10.5, pytest-7.1.2, pluggy-1.0.0
+        rootdir: /workspaces/climate-data-plotly
+        plugins: requests-mock-1.9.3, cov-3.0.0
+        collected 52 items                                                                                                                                                          
+
+        tests/test_ClimateData.py .........................................                                                                                                   [ 78%]
+        tests/test_climate_data.py ...........                                                                                                                                [100%]
+
+        ---------- coverage: platform linux, python 3.10.5-final-0 -----------
+        Name                         Stmts   Miss  Cover   Missing
+        ----------------------------------------------------------
+        app/ClimateData.py             174      1    99%   743
+        app/climate_data.py            107     15    86%   160, 274, 540-559, 573-592, 606-609, 630
+        tests/test_ClimateData.py      151      1    99%   542
+        tests/test_climate_data.py     113      0   100%
+        ----------------------------------------------------------
+        TOTAL                          545     17    97%
+
+
+        ============================================================================ 52 passed in 2.09s =============================================================================
+        ```
