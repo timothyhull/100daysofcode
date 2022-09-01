@@ -670,5 +670,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Days 83+84av: [8/28/23](days/_83_84#notebook-82822)
 - Break for work project :face_exhaling:
 - Days 83+84aw: [8/30/23](days/_83_84#notebook-83022)
+- Days 83+84ax: [8/31/23](days/_83_84#notebook-83122)
 
 </details>
