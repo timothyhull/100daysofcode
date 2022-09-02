@@ -66,9 +66,9 @@
 
 :white_check_mark: Write `pytest` tests for the `_compress_y_axis` method in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py)
 
-:white_large_square: Complete refactoring checklist items from [Days 83+84ar](#notebook-82422)
+:white_check_mark: Complete refactoring checklist items from [Days 83+84ar](#notebook-82422)
 
-:white_large_square: Write `pytest` tests for [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py)
+:white_check_mark: Write `pytest` tests for [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py)
 
 :white_large_square: Test data plotting with `Bokeh`
 
@@ -1129,7 +1129,7 @@ Replaced text variables with text constants
     - `test_plot_go_yoy_bar`
     - `test_plot_go_yoy_line`
 
-- Added the `test_graph_all` function to [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py), to test all graph plots with a single function call.
+- Added the `graph_all` function to [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py), to graph all plots with a single function call.
 
 - Maintained BCH score of **10/10**.
 
@@ -1173,4 +1173,50 @@ Replaced text variables with text constants
 
 
         ============================================================================ 52 passed in 2.09s =============================================================================
+        ```
+
+---
+
+### :notebook: 9/1/22
+
+- Added the following tests to [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py), to test functions in [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py):
+    - `test_px_graph_all`
+    - `test_go_graph_all`
+    - `test_graph_all`
+
+- Revised [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py):
+    - Added the keyword argument `climate_data` to the following functions, to support `pytest` testing and code usage from modules that import [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py):
+        - `px_graph_all`
+        - `go_graph_all`
+        - `graph_all`
+
+- Maintained BCH score of **10/10**.
+
+- All `pytest` tests pass.
+    - Coverage report for [tests/test_climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/tests/test_climate_data.py) is 97%, up from 86%.
+    - Total coverage is 99%, up from 97%.
+
+        ```bash
+        \# pytest --cov-report=term-missing --cov=.
+        =========================================== test session starts ===========================================
+        platform linux -- Python 3.10.5, pytest-7.1.2, pluggy-1.0.0
+        rootdir: /workspaces/climate-data-plotly
+        plugins: requests-mock-1.9.3, cov-3.0.0
+        collected 55 items                                                                                        
+
+        tests/test_ClimateData.py .........................................                                 [ 74%]
+        tests/test_climate_data.py ..............                                                           [100%]
+
+        ---------- coverage: platform linux, python 3.10.5-final-0 -----------
+        Name                         Stmts   Miss  Cover   Missing
+        ----------------------------------------------------------
+        app/ClimateData.py             174      1    99%   743
+        app/climate_data.py            107      3    97%   160, 274, 640
+        tests/test_ClimateData.py      151      1    99%   542
+        tests/test_climate_data.py     143      0   100%
+        ----------------------------------------------------------
+        TOTAL                          575      5    99%
+
+
+        =========================================== 55 passed in 2.55s ============================================
         ```
