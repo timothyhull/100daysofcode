@@ -30,6 +30,8 @@
 
 :star: [Python NamedTuple object with type hint and default values support](https://docs.python.org/3/library/typing.html#typing.NamedTuple)
 
+:star: [Web Visualization with Plotly and Flask article](https://towardsdatascience.com/web-visualization-with-plotly-and-flask-3660abf9c946) - alternate reference, did not use in this application
+
 ---
 
 ## Tasks
@@ -45,6 +47,8 @@
 :white_check_mark: Setup requirements files
 
 :white_check_mark: Download atmospheric CO2 data set from API source
+
+:white_check_mark: Setup basic `Flask` web service
 
 :white_check_mark: Format atmospheric CO2 data `Date` key as a `datetime.datetime` object
 
@@ -70,11 +74,11 @@
 
 :white_check_mark: Write `pytest` tests for [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py)
 
-:white_large_square: Test data plotting with `Bokeh`
-
 :white_large_square: Publish application in `Flask` app
 
-:white_large_square: Setup basic `Flask` web service
+:white_large_square: Write `pytest` tests for [web/flask_app.py](https://github.com/timothyhull/climate-data-plotly/blob/main/web/flask_app.py)
+
+:white_large_square: Test data plotting with `Bokeh`
 
 ---
 
@@ -1220,3 +1224,14 @@ Replaced text variables with text constants
 
         =========================================== 55 passed in 2.55s ============================================
         ```
+
+---
+
+### :notebook: 9/2/22
+
+- Added initial graph display to [web/flask_app.py](https://github.com/timothyhull/climate-data-plotly/blob/main/web/flask_app.py).
+
+- Maintained BCH score of **10/10**.
+    - **Couple Architecture Components Loosely** failing due to change in the `import` instruction in - Added initial graph display to [web/flask_app.py](https://github.com/timothyhull/climate-data-plotly/blob/main/web/flask_app.py).
+
+- All `pytest` tests pass.
