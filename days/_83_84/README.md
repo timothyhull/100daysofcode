@@ -32,7 +32,7 @@
 
 :star: [Web Visualization with Plotly and Flask article](https://towardsdatascience.com/web-visualization-with-plotly-and-flask-3660abf9c946) - alternate reference, did not use in this application
 
-:star: [Python abstract factory example](https://stackabuse.com/abstract-factory-design-pattern-in-python/)
+:star: [Python abstract factory example](https://stackabuse.com/abstract-factory-design-pattern-in-python)
 
 ---
 
@@ -1235,7 +1235,28 @@ Replaced text variables with text constants
 
 - Added initial graph display to [web/flask_app.py](https://github.com/timothyhull/climate-data-plotly/blob/main/web/flask_app.py).
 
-- Maintained BCH score of **10/10**.
-    - **Couple Architecture Components Loosely** failing due to change in the `import` instruction in - Added initial graph display to [web/flask_app.py](https://github.com/timothyhull/climate-data-plotly/blob/main/web/flask_app.py).
+- BCH score fell to **9/10**.
+    - **Couple Architecture Components Loosely** failing due to change in the `import` instruction.
+
+- All `pytest` tests pass.
+
+---
+
+### :notebook: 9/3/22
+
+- Reviewed and tested abstract factory design pattern to resolve BCH **Couple Architecture Components Loosely** test failure.
+
+---
+
+### :notebook: 9/4/22
+
+- Refactored to support abstract factory design pattern:
+    - Repurposed the `ClimateData` class in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) as an abstract factory class.
+    - Renamed the `ClimateData` class to `AtmosphericCo2PPM` in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) as a concrete factory class of the `ClimateData` class.
+    - Renamed all instances of `ClimateData` to `AtmosphericCo2PPM` in the [climate-data-plotly](https://github.com/timothyhull/climate-data-plotly).
+
+- BCH score remains **9/10**.
+    - **Couple Architecture Components Loosely** failing.
+    - Further abstract factory design refactoring required.
 
 - All `pytest` tests pass.
