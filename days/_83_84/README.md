@@ -32,6 +32,8 @@
 
 :star: [Web Visualization with Plotly and Flask article](https://towardsdatascience.com/web-visualization-with-plotly-and-flask-3660abf9c946) - alternate reference, did not use in this application
 
+:star: [Python abstract factory example](https://stackabuse.com/abstract-factory-design-pattern-in-python/)
+
 ---
 
 ## Tasks
@@ -774,6 +776,8 @@ Replaced with f-strings with vars from MOCK_HTML_PLOT_INPUT.
             # Because the Flask app variable in my file is 'app', I renamed the 'app' import
             import app as app_climate
             ```
+
+    \*\*\* 9/3/22 update: `import.app` did not allow access to any submodules in the `app` folder, further **abstract factory** research required. \*\*\*
 
 - Improved BCH score from **9/10** to **10/10**:
     - Now passing the **Couple Architecture Components Loosely** standard.
