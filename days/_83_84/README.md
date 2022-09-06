@@ -1260,3 +1260,28 @@ Replaced text variables with text constants
     - Further abstract factory design refactoring required.
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 9/5/22
+
+- Refactored to support abstract factory design pattern:
+    - Changed the `TransposedData` `namedtuple` object to a `NamedTuple` object with type hints in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+        - Updated import statements across all repo files to reflect new path to `TransposedData` object (`app.ClimateData.AtmosphericCo2PPM.TransposedData`).
+    - Moved the `PlotProperties` `NamedTuple` object to the `AtmosphericCo2PPM` class in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+        - Updated import statements across all repo files to reflect new path to `PlotProperties` object (`app.ClimateData.AtmosphericCo2PPM.PlotProperties`).
+    - Updated import statements across all repo files import the `AtmosphericCo2PPM` class with an alias for brevity.
+
+        ```python
+        # Revised import statement
+        from app.ClimateData import AtmosphericCo2PPM as APP
+
+        # Usage
+        climate_data = APP()
+        ```
+
+- BCH score remains **9/10**.
+    - **Couple Architecture Components Loosely** failing.
+    - Further abstract factory design refactoring required.
+
+- All `pytest` tests pass.
