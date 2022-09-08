@@ -1285,3 +1285,12 @@ Replaced text variables with text constants
     - Further abstract factory design refactoring required.
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 9/7/22
+
+- Refactored to support abstract factory design pattern:
+    - Moved the `TransposedData` and `PlotProperties` objects to a new, concrete factory class (`CustomObjs`) in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+        - The `CustomObjs` class inherits the `ClimateData` class.
+        - The `AtmosphericCo2PPM` class inherits the `CustomObjs` class.
