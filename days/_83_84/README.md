@@ -1294,3 +1294,28 @@ Replaced text variables with text constants
     - Moved the `TransposedData` and `PlotProperties` objects to a new, concrete factory class (`CustomObjs`) in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
         - The `CustomObjs` class inherits the `ClimateData` class.
         - The `AtmosphericCo2PPM` class inherits the `CustomObjs` class.
+
+---
+
+### :notebook: 9/8/22
+
+- Experimented with mechanisms to find the count of code lines in a Python file, to help understand the meaning of the output from the BCH **Couple Architecture Components Loosely** report, showing 404 lines of **interface code**.
+    - The best counting mechanism I found is [`pygount`](https://pypi.org/project/pygount/):
+
+        ```bash
+        # Command input
+        pygount app/ClimateData.py --format=summary
+        ```
+
+        ```bash
+        # Command output
+        ┏━━━━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━┓
+        ┃ Language ┃ Files ┃     % ┃ Code ┃    % ┃ Comment ┃    % ┃
+        ┡━━━━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━┩
+        │ Python   │     1 │ 100.0 │  351 │ 25.8 │     810 │ 59.4 │
+        ├──────────┼───────┼───────┼──────┼──────┼─────────┼──────┤
+        │ Sum      │     1 │ 100.0 │  351 │ 25.8 │     810 │ 59.4 │
+        └──────────┴───────┴───────┴──────┴──────┴─────────┴──────┘
+        ```
+
+- The meaning of **interface code** requires further research, still.
