@@ -1321,3 +1321,12 @@ Replaced text variables with text constants
         ```
 
 - The meaning of **interface code** requires further research, still.
+
+---
+
+### :notebook: 9/9/22
+
+- Reviewed [Python abstract factory example](https://stackabuse.com/abstract-factory-design-pattern-in-python).
+    - Tested the code within the article locally, to determine if it produces the expected result.
+        - Local testing is successful.
+    - Started process to document the class and method architecture in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) in order to refactor in an abstract factory design pattern.
