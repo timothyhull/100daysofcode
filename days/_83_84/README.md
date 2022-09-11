@@ -1330,3 +1330,9 @@ Replaced text variables with text constants
     - Tested the code within the article locally, to determine if it produces the expected result.
         - Local testing is successful.
     - Started process to document the class and method architecture in [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py) in order to refactor in an abstract factory design pattern.
+
+---
+
+### :notebook: 9/10/22
+
+- Continued development of [refactoring diagram](https://lucid.app/lucidchart/ddab7221-4851-4311-af0b-08273a7439d4/edit?beaconFlowId=CA13137AA43FDDD1&invitationId=inv_f3a1d044-5254-493b-b91e-7cad8618f700&page=0_0#) for .
