@@ -34,6 +34,8 @@
 
 :star: [Python abstract factory example](https://stackabuse.com/abstract-factory-design-pattern-in-python)
 
+:star: [`pygount` Python line counting CLI tool](https://pypi.org/project/pygount/):
+
 ---
 
 ## Tasks
