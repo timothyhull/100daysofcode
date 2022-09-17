@@ -36,6 +36,8 @@
 
 :star: [`pygount` Python line counting CLI tool](https://pypi.org/project/pygount/):
 
+:star: [Python factory design pattern tutorial video](https://www.youtube.com/watch?v=s_4ZrtQs8Do)
+
 ---
 
 ## Tasks
@@ -1368,3 +1370,11 @@ Replaced text variables with text constants
 ### :notebook: 9/14/22
 
 - Continued development of [refactoring diagram](https://lucid.app/lucidchart/ddab7221-4851-4311-af0b-08273a7439d4/edit?beaconFlowId=CA13137AA43FDDD1&invitationId=inv_f3a1d044-5254-493b-b91e-7cad8618f700&page=0_0#) for [app/ClimateData.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/ClimateData.py).
+
+---
+
+### :notebook: 9/16/22
+
+- Reviewed video overview of the abstract factory design pattern, in an attempt to understand how to refactor the application properly.
+    - Still unclear how to refactor the climate application.
+    - Further research and testing required.
