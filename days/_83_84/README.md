@@ -38,6 +38,8 @@
 
 :star: [Python factory design pattern tutorial video](https://www.youtube.com/watch?v=s_4ZrtQs8Do)
 
+:star: [Python Documentation: Abstract Base Classes (abc)](https://docs.python.org/3/library/abc.html)
+
 ---
 
 ## Tasks
@@ -1375,6 +1377,13 @@ Replaced text variables with text constants
 
 ### :notebook: 9/16/22
 
-- Reviewed video overview of the abstract factory design pattern, in an attempt to understand how to refactor the application properly.
+- Reviewed YouTube video overview of the abstract factory design pattern, in an attempt to understand how to refactor the application properly.
     - Still unclear how to refactor the climate application.
     - Further research and testing required.
+
+---
+
+### :notebook: 9/17/22
+
+- Re-reviewed the first portion of the YouTube video overview for the abstract factory design pattern.
+    - Started testing in a new, simplified Python file, versus refactoring the climate application.
