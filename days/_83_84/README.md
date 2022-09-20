@@ -1386,10 +1386,17 @@ Replaced text variables with text constants
 ### :notebook: 9/17/22
 
 - Re-reviewed the first portion of the YouTube video overview for the abstract factory design pattern.
-    - Started testing in a new, simplified Python file, versus refactoring the climate application.
+    - Started testing in a new, simplified Python file (`abs_3a.py`), versus refactoring the climate application.
 
 ---
 
 ### :notebook: 9/18/22
 
-- Reviewed and refactored simplified Python file although the revisions do not result in functional code.
+- Reviewed and refactored simplified Python file (`abs_3b.py`) although the revisions do not result in functional code.
+
+---
+
+### :notebook: 9/19/22
+
+- Reviewed and refactored simplified Python file (`abs_3b.py`) and produced the expected output.
+    - Next step is to write a new file with an abstract factory design pattern framework and test.
