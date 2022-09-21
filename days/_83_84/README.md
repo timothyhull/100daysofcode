@@ -1400,3 +1400,20 @@ Replaced text variables with text constants
 
 - Reviewed and refactored simplified Python file (`abs_3b.py`) and produced the expected output.
     - Next step is to write a new file with an abstract factory design pattern framework and test.
+
+---
+
+### :notebook: 9/20/22
+
+- Created new file (`abs_4.py`) for abstract factory design pattern testing.
+    - Created the following classes:
+        - `ITProvisioner` Abstract factory
+        - `Server` Abstract product 1
+        - `NetDevice` Abstract product 2
+        - `CreateServer` Concrete product 1
+        - `CreateNetDevice` Concrete product 2
+        - `NewServer` Concrete factory 1
+        - `NewNetDevice` Concrete factory 2
+
+    - Preliminary testing results in expected behavior.
+    - Requires further testing to ensure the design structure is correct.
