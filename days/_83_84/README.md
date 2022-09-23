@@ -1417,3 +1417,20 @@ Replaced text variables with text constants
 
     - Preliminary testing results in expected behavior.
     - Requires further testing to ensure the design structure is correct.
+
+---
+
+### :notebook: 9/22/22
+
+- Created new file (`abs_5.py`) for abstract factory design pattern testing.
+    - Created the following classes:
+        - `ServiceCatalog` Abstract factory
+        - `Mobile` Abstract product 1
+        - `Laptop` Abstract product 2
+        - `ATTPhoneServices` Concrete product 1
+        - `MacBookProServices` Concrete product 2
+        - `ATTPhone` Concrete factory 1
+        - `MacBookPro` Concrete factory 2
+
+    - Preliminary testing results in expected behavior.
+    - Requires further testing to ensure the design structure is correct.
