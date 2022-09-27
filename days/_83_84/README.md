@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-9/25/2022
+# :calendar: Days 83+84: 7/10/2022-9/30/2022
 
 ---
 
@@ -1434,3 +1434,16 @@ Replaced text variables with text constants
 
     - Preliminary testing results in expected behavior.
     - Requires further testing to ensure the design structure is correct.
+
+---
+
+### :notebook: 9/26/22
+
+- The Factory Design Pattern separates object _creation_ from object _usage_.
+- Without using this pattern, a function may have "weak/low cohesion", because it may do too many different things:
+
+    1. Collect user input.
+    2. Create objects from established classes (c).
+    3. Run methods of the created objects (usage)
+
+- Relocated abstract factory test files from the `climate-data-plotly` repo to the `100DaysOfCode` repository [`days/_83_84/abstract`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory)

@@ -156,6 +156,18 @@ class LQAudio(AudioExporter):
         print(f'Exporting low-quality audio to "{folder}".')
 
 
+""" Example #1:
+
+    This is an example of the main function being responsible for
+    too many things.  It is responsible for:
+
+    1. Asking the user for input.
+    2. Creating the video and audio exporter objects.
+    3. Using the video and audio exporter objects, by way of calling
+    their methods that prepare and export audio/video.
+"""
+
+
 def main() -> None:
     """ Main program. """
 
