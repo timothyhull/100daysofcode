@@ -156,25 +156,98 @@ class LQAudio(AudioExporter):
         print(f'Exporting low-quality audio to "{folder}".')
 
 
+# TODO class that abstracts the video and audio exporters.
+class ExporterFactory(ABC):
+    """ Factory that represents a combo of video and audio codecs.
+
+        The factory does not maintain any of the instances it creates.
+    """
+
+    # Is the @abstractmethod decorator required?
+    # @abstractmethod
+    def get_video_exporter(self) -> VideoExporter:
+        """ Returns a new instance of the VideoExporter class. """
+        pass
+
+    # Is the @abstractmethod decorator required?
+    # @abstractmethod
+    def get_audio_exporter(self) -> AudioExporter:
+        """ Returns a new instance of the AudioExporter class. """
+        pass
+
+
+# Concrete factory class that creates lower-quality A/V export objects
+class FastExporter(ExporterFactory):
+    """ Factory that provides lower-quality, high-speed exports. """
+
+    def get_video_exporter(self) -> VideoExporter:
+        """ Returns a new instance of the VideoExporter class. """
+        return LQVideo()
+
+    def get_audio_exporter(self) -> AudioExporter:
+        """ Returns a new instance of the AudioExporter class. """
+        return LQAudio()
+
+
+# Concrete factory class that creates medium-quality A/V export objects
+class MediumExporter(ExporterFactory):
+    """ Factory that provides medium-quality, medium-speed exports. """
+
+    def get_video_exporter(self) -> VideoExporter:
+        """ Returns a new instance of the VideoExporter class. """
+        return MQVideo()
+
+    def get_audio_exporter(self) -> AudioExporter:
+        """ Returns a new instance of the AudioExporter class. """
+        return MQAudio()
+
+
+# Concrete factory class that creates higher-quality A/V export objects
+class SlowExporter(ExporterFactory):
+    """ Factory that provides high-quality, lower-speed exports. """
+
+    def get_video_exporter(self) -> VideoExporter:
+        """ Returns a new instance of the VideoExporter class. """
+        return HQVideo()
+
+    def get_audio_exporter(self) -> AudioExporter:
+        """ Returns a new instance of the AudioExporter class. """
+        return HQAudio()
+
+
 """ Example #1:
 
-    This is an example of the main function being responsible for
+    This is an example of the 'main_1' function being responsible for
     too many things.  It is responsible for:
 
     1. Asking the user for input.
     2. Creating the video and audio exporter objects.
     3. Using the video and audio exporter objects, by way of calling
     their methods that prepare and export audio/video.
+
+    This also means:
+        1. The 'main_1' function has to be aware of the existence of
+        each class in this file.
+        2. Many if/else statements are necessary in order to allow the
+        selection of the built-in quality settings, plus any possible
+        custom quality settings.
 """
 
 
-def main() -> None:
-    """ Main program. """
+def main_1() -> None:
+    """ Main program #1. """
 
     # Collect user input
-    quality = input(
-        'Choose an export quality (l)ow, (m)edium, or (h)igh: '
-    )
+    while True:
+        quality = input(
+            'Choose an export quality (l)ow, (m)edium, or (h)igh: '
+        )
+
+        if quality.lower() in {'l', 'm', 'h'}:
+            break
+
+        else:
+            print('\nUnknown option "{}"\n')
 
     # Create video and audio exporters
     if quality.lower() == 'l':
@@ -205,5 +278,41 @@ def main() -> None:
     return None
 
 
+def collect_user_input() -> ExporterFactory:
+    """ Collect user input.
+
+        Relocated from the main_1 function, to separate user input
+        collection from the main application.  Now creates an
+        ExporterFactory object, instead of returning a string.
+    """
+
+    # Define a factories dictionary, for quick reference
+    factories = dict(
+        l=FastExporter(),
+        m=MediumExporter(),
+        h=SlowExporter()
+    )
+
+    while True:
+        quality = input(
+            'Choose an export quality (l)ow, (m)edium, or (h)igh: '
+        ).lower()
+
+        if quality not in factories:
+            print('\nUnknown option "{}"\n')
+
+        else:
+            return factories(quality)
+
+
+def main_2() -> None:
+    """ Main program #2. """
+
+    # Collect user input
+    # quality = collect_user_input()
+
+    return None
+
+
 if __name__ == '__main__':
-    main()
+    main_1()

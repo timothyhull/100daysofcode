@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-9/30/2022
+# :calendar: Days 83+84: 7/10/2022-10/5/2022
 
 ---
 
@@ -1443,7 +1443,15 @@ Replaced text variables with text constants
 - Without using this pattern, a function may have "weak/low cohesion", because it may do too many different things:
 
     1. Collect user input.
-    2. Create objects from established classes (c).
+    2. Create objects from established classes (creation).
     3. Run methods of the created objects (usage)
 
-- Relocated abstract factory test files from the `climate-data-plotly` repo to the `100DaysOfCode` repository [`days/_83_84/abstract`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory)
+- Relocated abstract factory test files from the `climate-data-plotly` repo to the `100DaysOfCode` repository [`days/_83_84/abstract_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory).
+
+---
+
+### :notebook: 10/1/22
+
+- Continued review of Abstract Factory Design Pattern YouTube video, and updated the file [`days/_83_84/abstract_factory/video_exporter.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory/video_exporter.py):
+    - Partially refactored file to support **Concrete Factory** classes.
+    - Need to add code to the `main_2` function, to test the updates.
