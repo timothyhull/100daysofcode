@@ -39,7 +39,7 @@ class HQVideo(VideoExporter):
 
     def prepare_export(
         self,
-        video_data: str
+        video_data: str = VIDEO_DATA
     ) -> None:
         print('Preparing high-quality video export.')
 
@@ -56,7 +56,7 @@ class MQVideo(VideoExporter):
 
     def prepare_export(
         self,
-        video_data: str
+        video_data: str = VIDEO_DATA
     ) -> None:
         print('Preparing medium-quality video export.')
 
@@ -73,7 +73,7 @@ class LQVideo(VideoExporter):
 
     def prepare_export(
         self,
-        video_data: str
+        video_data: str = VIDEO_DATA
     ) -> None:
         print('Preparing low-quality video export.')
 
@@ -156,6 +156,69 @@ class LQAudio(AudioExporter):
         print(f'Exporting low-quality audio to "{folder}".')
 
 
+""" Example #1:
+
+    This is an example of the 'main_1' function being responsible for
+    too many things.  It is responsible for:
+
+    1. Asking the user for input.
+    2. Creating the video and audio exporter objects.
+    3. Using the video and audio exporter objects, by way of calling
+    their methods that prepare and export audio/video.
+
+    This also means:
+        1. The 'main_1' function has to be aware of the existence of
+        each class in this file.
+        2. Many if/else statements are necessary in order to allow the
+        selection of the built-in quality settings, plus any possible
+        custom quality settings.
+"""
+
+
+def main_1() -> None:
+    """ Main program #1. """
+
+    # Collect user input
+    while True:
+        quality = input(
+            'Choose an export quality (l)ow, (m)edium, or (h)igh: '
+        )
+
+        if quality.lower() in {'l', 'm', 'h'}:
+            break
+
+        else:
+            print(f'\nUnknown option "{quality}"\n')
+
+    # Create video and audio exporters
+    if quality.lower() == 'l':
+        video_exporter = LQVideo()
+        audio_exporter = LQAudio()
+
+    elif quality.lower() == 'm':
+        video_exporter = MQVideo()
+        audio_exporter = MQAudio()
+
+    else:
+        # Default value: high-quality
+        video_exporter = HQVideo()
+        audio_exporter = HQAudio()
+
+    # Prepare the export
+    video_exporter.prepare_export(
+        video_data=VIDEO_DATA
+    )
+    audio_exporter.prepare_export(
+        audio_data=AUDIO_DATA
+    )
+
+    # Perform the export
+    video_exporter.do_export()
+    audio_exporter.do_export()
+
+    return None
+
+
 # TODO class that abstracts the video and audio exporters.
 class ExporterFactory(ABC):
     """ Factory that represents a combo of video and audio codecs.
@@ -215,69 +278,6 @@ class SlowExporter(ExporterFactory):
         return HQAudio()
 
 
-""" Example #1:
-
-    This is an example of the 'main_1' function being responsible for
-    too many things.  It is responsible for:
-
-    1. Asking the user for input.
-    2. Creating the video and audio exporter objects.
-    3. Using the video and audio exporter objects, by way of calling
-    their methods that prepare and export audio/video.
-
-    This also means:
-        1. The 'main_1' function has to be aware of the existence of
-        each class in this file.
-        2. Many if/else statements are necessary in order to allow the
-        selection of the built-in quality settings, plus any possible
-        custom quality settings.
-"""
-
-
-def main_1() -> None:
-    """ Main program #1. """
-
-    # Collect user input
-    while True:
-        quality = input(
-            'Choose an export quality (l)ow, (m)edium, or (h)igh: '
-        )
-
-        if quality.lower() in {'l', 'm', 'h'}:
-            break
-
-        else:
-            print('\nUnknown option "{}"\n')
-
-    # Create video and audio exporters
-    if quality.lower() == 'l':
-        video_exporter = LQVideo()
-        audio_exporter = LQAudio()
-
-    elif quality.lower() == 'm':
-        video_exporter = MQVideo()
-        audio_exporter = MQAudio()
-
-    else:
-        # Default value: high-quality
-        video_exporter = HQVideo()
-        audio_exporter = HQAudio()
-
-    # Prepare the export
-    video_exporter.prepare_export(
-        video_data=VIDEO_DATA
-    )
-    audio_exporter.prepare_export(
-        audio_data=AUDIO_DATA
-    )
-
-    # Perform the export
-    video_exporter.do_export()
-    audio_exporter.do_export()
-
-    return None
-
-
 def collect_user_input() -> ExporterFactory:
     """ Collect user input.
 
@@ -299,20 +299,79 @@ def collect_user_input() -> ExporterFactory:
         ).lower()
 
         if quality not in factories:
-            print('\nUnknown option "{}"\n')
+            print(f'\nUnknown option "{quality}"\n')
 
         else:
-            return factories(quality)
+            return factories[quality]
+
+
+""" Example #2:
+
+    This is an example of the 'main_2' function creating objects from
+    abstract classes, which improves cohesion by decoupling object
+    creation ('collect_user_input' function) and usage
+    ('main_2' function).
+
+    The 'main_2' function doesn't need to know anything specific about
+    exporter codecs.  Even `collect_user_input` doesn't need to know
+    anything specific about the exporter codecs, it only needs to know
+    that the factories exist.
+
+    The only things this function is responsible for are:
+
+    1. Retrieving the video and audio exporters from their respective
+    factories.
+    2. Preparing the export.
+    2. Performing the export.
+
+    The 'collect_user_input' function returns an ExporterFactory
+    abstract class object, which will be an object of type:
+
+    1. FastExporter
+    2. MediumExporter
+    3. SlowExporter
+
+    Each of these object types are sub-classes of the ExporterFactory
+    abstract class.
+"""
 
 
 def main_2() -> None:
-    """ Main program #2. """
+    """ Main program #2.
 
-    # Collect user input
-    # quality = collect_user_input()
+    Create the factory that defines the video/audio quality, based on
+    user input.
+    """
+
+    # Collect user input, returns an ExporterFactory abstract class object
+    quality = collect_user_input()
+
+    """ Get the video and exporters from the ExporterFactory object instance.
+        Each of the following methods returns an object of type:
+
+        1. LQVideo/LQAudio
+        2. MQVideo/MQAudio
+        3. HQVideo/HQAudio
+
+        These objects are classes that each have 'prepare_export' and
+        'do_export' methods.
+    """
+
+    # Create the audio and video exporters
+    video_exporter = quality.get_video_exporter()
+    audio_exporter = quality.get_audio_exporter()
+
+    # Prepare the exports
+    video_exporter.prepare_export()
+    audio_exporter.prepare_export()
+
+    # Perform the exports
+    video_exporter.do_export()
+    audio_exporter.do_export()
 
     return None
 
 
 if __name__ == '__main__':
-    main_1()
+    # main_1()
+    main_2()

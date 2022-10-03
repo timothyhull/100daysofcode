@@ -1455,3 +1455,10 @@ Replaced text variables with text constants
 - Continued review of Abstract Factory Design Pattern YouTube video, and updated the file [`days/_83_84/abstract_factory/video_exporter.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory/video_exporter.py):
     - Partially refactored file to support **Concrete Factory** classes.
     - Need to add code to the `main_2` function, to test the updates.
+
+---
+
+### :notebook: 10/2/22
+
+- Continued review of Abstract Factory Design Pattern YouTube video, and updated the file [`days/_83_84/abstract_factory/video_exporter.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory/video_exporter.py):
+    - Updated and tested the `main_2` function, which works as expected.
