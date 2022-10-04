@@ -346,6 +346,43 @@ def main_2() -> None:
     # Collect user input, returns an ExporterFactory abstract class object
     quality = collect_user_input()
 
+    """ Get the video and audio exporters from the ExporterFactory
+        object instance. Each of the following methods returns an
+        object of type:
+
+        1. LQVideo/LQAudio
+        2. MQVideo/MQAudio
+        3. HQVideo/HQAudio
+
+        These objects are classes that each have 'prepare_export' and
+        'do_export' methods.
+    """
+
+    # Create the audio and video exporters
+    video_exporter = quality.get_video_exporter()
+    audio_exporter = quality.get_audio_exporter()
+
+    # Prepare the exports
+    video_exporter.prepare_export()
+    audio_exporter.prepare_export()
+
+    # Perform the exports
+    video_exporter.do_export()
+    audio_exporter.do_export()
+
+    return None
+
+
+def main_3(
+    factory: ExporterFactory
+) -> None:
+    """ Main program #3.
+
+        Use the same factory creation process from the 'main_2' function,
+        except separate/remove creation of the factory object from the
+        'main_2', and pass a factory object to 'main_3' as an argument.
+    """
+
     """ Get the video and exporters from the ExporterFactory object instance.
         Each of the following methods returns an object of type:
 
@@ -374,4 +411,11 @@ def main_2() -> None:
 
 if __name__ == '__main__':
     # main_1()
-    main_2()
+    # main_2()
+
+    # Create a factory object for the 'main_3' function
+    quality = collect_user_input()
+
+    main_3(
+        factory=quality
+    )

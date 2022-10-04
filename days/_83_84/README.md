@@ -1462,3 +1462,11 @@ Replaced text variables with text constants
 
 - Continued review of Abstract Factory Design Pattern YouTube video, and updated the file [`days/_83_84/abstract_factory/video_exporter.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory/video_exporter.py):
     - Updated and tested the `main_2` function, which works as expected.
+
+---
+
+### :notebook: 10/3/22
+
+- Continued review of Abstract Factory Design Pattern YouTube video, and updated the file [`days/_83_84/abstract_factory/video_exporter.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory/video_exporter.py):
+    - Added and tested the 'main_3'function:
+        - Decouples object creation from usage by passing an abstract subclass object as an argument to 'main_3'.
