@@ -379,8 +379,24 @@ def main_3(
     """ Main program #3.
 
         Use the same factory creation process from the 'main_2' function,
-        except separate/remove creation of the factory object from the
+        except separate/remove creation of the factory object from
         'main_2', and pass a factory object to 'main_3' as an argument.
+        This provides more flexibility in the ways we provide the
+        factory to the 'main_3' function.
+
+        This is an example of using a technique called 'dependency
+        injection,' which injects the dependency on the factory object
+        into the 'main_3' function.
+
+        This is also an example of using a technique called "dependency
+        inversion," because the factory itself (ExporterFactory) is an
+        abstract class.  'main_3' gets an abstract factory class object
+        as an argument, and we use the abstract factory to create
+        concrete factory sub-classes that 'main_3' doesn't need to know
+        anything about. **Note, the concrete factory sub-classes are:
+            1. FastExporter
+            2. MediumExporter
+            4. SlowExporter
     """
 
     """ Get the video and exporters from the ExporterFactory object instance.

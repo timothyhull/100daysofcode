@@ -1470,3 +1470,24 @@ Replaced text variables with text constants
 - Continued review of Abstract Factory Design Pattern YouTube video, and updated the file [`days/_83_84/abstract_factory/video_exporter.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory/video_exporter.py):
     - Added and tested the 'main_3'function:
         - Decouples object creation from usage by passing an abstract subclass object as an argument to 'main_3'.
+
+---
+
+### :notebook: 10/4/22
+
+- Factory design patterns separate the creation of objects from the use of objects.
+    - This provides flexibility to make code changes to classes functions and features, because it keeps developers that consume class objects from having to update their interface code (the code that accesses and runs class objects) when changes to class objects occur.
+    - This is possible because the classes that typical functions consume (usage from another Python file) are abstract, and do not expose the sub-classes that actually create objects (creation).
+
+- A strong point of factories is they allow the grouping of objects that belong together.  For example, different:
+    - Currency options
+    - Tax rates
+    - Languages
+    - Shipping rates
+
+- Factories are not as useful in cases where a great number of factories are necessary, to account for different combinations of choices a user may select.
+    - For example, a user exporting audio and video may want to define a custom exporter with their choices of audio and video codecs, instead of choosing a preset.
+    - It is manageable for preset export settings to be concrete factory classes, although creating concrete factory classes for every possible combination of audio and video codecs may not make sense.
+
+- Completed review of Abstract Factory Design Pattern YouTube video, and updated the file [`days/_83_84/abstract_factory/video_exporter.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory/video_exporter.py) to function properly.
+    - The next step is to create a new factory design-patterned set of test classes.
