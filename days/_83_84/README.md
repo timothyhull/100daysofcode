@@ -1475,8 +1475,8 @@ Replaced text variables with text constants
 
 ### :notebook: 10/4/22
 
-- Factory design patterns separate the creation of objects from the use of objects.
-    - This provides flexibility to make code changes to classes functions and features, because it keeps developers that consume class objects from having to update their interface code (the code that accesses and runs class objects) when changes to class objects occur.
+- Factory design patterns separate the _creation_ of objects from the _use_ of objects.
+    - This provides flexibility to make code changes to class functions/methods and features, because it keeps developers that consume class objects from having to update their interface code (the code that accesses and runs class objects) when changes to class objects occur.
     - This is possible because the classes that typical functions consume (usage from another Python file) are abstract, and do not expose the sub-classes that actually create objects (creation).
 
 - A strong point of factories is they allow the grouping of objects that belong together.  For example, different:
@@ -1491,3 +1491,12 @@ Replaced text variables with text constants
 
 - Completed review of Abstract Factory Design Pattern YouTube video, and updated the file [`days/_83_84/abstract_factory/video_exporter.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory/video_exporter.py) to function properly.
     - The next step is to create a new factory design-patterned set of test classes.
+
+---
+
+### :notebook: 10/6/22
+
+- Created [framework for mock program](https://lucid.app/lucidchart/fc6cad6d-bfa3-4446-858d-cd6502fd3a50/edit?invitationId=inv_c10b276a-7044-4dff-9304-197752bee888#) that uses the abstract factory design pattern.
+    - Application will provision various virtual server types within different public cloud provider environments.
+
+- Created [`server_provisioner`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/server_provisioner) directory, to host the application.
