@@ -1499,4 +1499,10 @@ Replaced text variables with text constants
 - Created [framework for mock program](https://lucid.app/lucidchart/fc6cad6d-bfa3-4446-858d-cd6502fd3a50/edit?invitationId=inv_c10b276a-7044-4dff-9304-197752bee888#) that uses the abstract factory design pattern.
     - Application will provision various virtual server types within different public cloud provider environments.
 
-- Created [`server_provisioner`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/server_provisioner) directory, to host the application.
+- Created [`server_maker`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/server_maker) directory, to host the application.
+
+---
+
+### :notebook: 10/10/22
+
+- TODO
