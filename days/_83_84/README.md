@@ -1505,4 +1505,18 @@ Replaced text variables with text constants
 
 ### :notebook: 10/10/22
 
-- TODO
+- Created the file [`server_maker.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/server_maker/app/server_maker.py):
+    - Created the `ServerMaker` **Abstract Factory** class, to represent a basic cloud server provisioning app.
+        - Created the `create_server_config` **Abstract Method**, as an abstract reference for future **Concrete Product** classes that create new servers in different cloud platforms.
+    - Created the `NamedTuple` object `ServerParams`, to serve as a container for server configuration data (host name, server size, etc.).
+
+---
+
+### :notebook: 10/20/22
+
+Back after a nine day physical and mental health recovery period.
+
+- Reviewed notes and previous content.
+- Added new code to [`server_maker.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/server_maker/app/server_maker.py):
+    - Added the `generate_server_name` function to auto-generate server names.
+    - Added the `deploy_server_config` **Abstract Method**, to the `ServerMaker` **Abstract Factory** class as an abstract reference for future **Concrete Product** classes that deploy new servers in different cloud platforms.
