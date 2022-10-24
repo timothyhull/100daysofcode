@@ -1520,3 +1520,11 @@ Back after a nine day physical and mental health recovery period.
 - Added new code to [`server_maker.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/server_maker/app/server_maker.py):
     - Added the `generate_server_name` function to auto-generate server names.
     - Added the `deploy_server_config` **Abstract Method**, to the `ServerMaker` **Abstract Factory** class as an abstract reference for future **Concrete Product** classes that deploy new servers in different cloud platforms.
+
+---
+
+### :notebook: 10/21/22
+
+- Relocated the `generate_server_name` function to a new file, [`server_maker_helper.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/server_maker/app/server_maker_helper.py).
+
+- Created the `AWSConfig` abstract product class, to create AWS server configuration files using the abstract methods in the `ServerMaker` class.

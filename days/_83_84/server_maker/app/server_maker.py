@@ -3,45 +3,18 @@
 
 # Imports - Python Standard Library
 from abc import ABC, abstractmethod
-from random import randint
-from typing import NamedTuple, Union
+from typing import NamedTuple
 
 # Imports - Third-Party
 
 # Imports - Local
+from server_maker_helper import (  # type: ignore (ignores Pylance warning)
+    generate_server_name
+)
 
 # Server name length constants
 SERVER_BASE_NAME = 'svr_'
 SERVER_NAME_LENGTH = 8
-
-
-def generate_server_name(
-    base_name: str = SERVER_BASE_NAME,
-    length: Union[int, str] = SERVER_NAME_LENGTH
-) -> str:
-    """ Generate a randomized server name.
-
-        Args:
-            base_name (str), optional:
-                Base name for a server.  Default is SERVER_BASE_NAME.
-
-            Length (Union[int, str], optional):
-                Number of random characters in the server name.
-                Default is SERVER_NAME_LENGTH
-
-        Returns:
-            server_name (str):
-                Randomized server name.
-    """
-
-    # Declare an empty string server_name variable
-    server_name = base_name
-
-    # Generate a random string for the server name
-    for i in range(1, 8):
-        server_name += str(randint(0, 9))
-
-    return server_name
 
 
 # NamedTuple objects
@@ -110,8 +83,23 @@ class ServerMaker(ABC):
     @abstractmethod
     def deploy_server_config(
         self,
-        target_cloud: str[int] = DEFAULT_CLOUD
+        target_cloud: str(int) = DEFAULT_CLOUD
     ) -> None:
 
         """ Deploy a server configuration to a cloud provider """
         pass
+
+
+# TODO product classes
+class AWSConfig(ServerMaker):
+    """ Create an AWS Server. """
+
+    def create_server_config(
+        self,
+        params: ServerParams = SERVER_1_PARAMS
+    ) -> str:
+        """ Create an AWS server configuration string. """
+
+        # Call a function that produces the AWS-formatted string
+
+        return None
