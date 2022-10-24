@@ -67,7 +67,7 @@ SERVER_1_PARAMS = ServerParams(
 )
 
 
-# Abstract factory class
+# Abstract product class or interface class #1
 class ServerMaker(ABC):
     """ Basic representation of a cloud server provisioning app. """
 
@@ -90,7 +90,7 @@ class ServerMaker(ABC):
         pass
 
 
-# TODO product classes
+# Abstract product classes
 class AWSConfig(ServerMaker):
     """ Create an AWS Server. """
 

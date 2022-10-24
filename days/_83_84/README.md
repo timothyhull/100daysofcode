@@ -1528,3 +1528,15 @@ Back after a nine day physical and mental health recovery period.
 - Relocated the `generate_server_name` function to a new file, [`server_maker_helper.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/server_maker/app/server_maker_helper.py).
 
 - Created the `AWSConfig` abstract product class, to create AWS server configuration files using the abstract methods in the `ServerMaker` class.
+
+---
+
+### :notebook: 10/23/22
+
+- Reviewed application design diagram.
+- Reviewed abstract factory example diagram to determine how to name and classify classes.
+    - Determined there should be no "Abstract Factory" class.
+    - The Abstract Factory is a concept that includes the following class concepts:
+        - Abstract Product
+        - Concrete Factory
+        - Concrete Product
