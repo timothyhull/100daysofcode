@@ -1527,7 +1527,7 @@ Back after a nine day physical and mental health recovery period.
 
 - Relocated the `generate_server_name` function to a new file, [`server_maker_helper.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/server_maker/app/server_maker_helper.py).
 
-- Created the `AWSConfig` abstract product class, to create AWS server configuration files using the abstract methods in the `ServerMaker` class.
+- Created the `AWSServer` concrete product class, to create AWS server configuration files using the abstract methods in the `ServerMaker` class.
 
 ---
 
@@ -1540,3 +1540,7 @@ Back after a nine day physical and mental health recovery period.
         - Abstract Product
         - Concrete Factory
         - Concrete Product
+
+- Created the `AzureServer` and `GCPServer` concrete product classes, to create AWS server configuration files using the abstract methods in the `ServerMaker` class.
+- Updated application design diagram to reflect new class structure.
+    - Still working to understand the relationship between the abstract and concrete classes.

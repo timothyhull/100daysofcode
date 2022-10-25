@@ -90,8 +90,8 @@ class ServerMaker(ABC):
         pass
 
 
-# Abstract product classes
-class AWSConfig(ServerMaker):
+# Concrete product classes
+class AWSServer(ServerMaker):
     """ Create an AWS Server. """
 
     def create_server_config(
@@ -101,5 +101,33 @@ class AWSConfig(ServerMaker):
         """ Create an AWS server configuration string. """
 
         # Call a function that produces the AWS-formatted string
+
+        return None
+
+
+class AzureServer(ServerMaker):
+    """ Create an Azure Server. """
+
+    def create_server_config(
+        self,
+        params: ServerParams = SERVER_1_PARAMS
+    ) -> str:
+        """ Create an AWS server configuration string. """
+
+        # Call a function that produces the Azure-formatted string
+
+        return None
+
+
+class GCPServer(ServerMaker):
+    """ Create an GCP Server. """
+
+    def create_server_config(
+        self,
+        params: ServerParams = SERVER_1_PARAMS
+    ) -> str:
+        """ Create an GPC server configuration string. """
+
+        # Call a function that produces the GPC-formatted string
 
         return None
