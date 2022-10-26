@@ -1541,6 +1541,16 @@ Back after a nine day physical and mental health recovery period.
         - Concrete Factory
         - Concrete Product
 
+---
+
+### :notebook: 10/24/22
+
 - Created the `AzureServer` and `GCPServer` concrete product classes, to create AWS server configuration files using the abstract methods in the `ServerMaker` class.
 - Updated application design diagram to reflect new class structure.
     - Still working to understand the relationship between the abstract and concrete classes.
+
+---
+
+### :notebook: 10/25/22
+
+- Revised clases in [`server_maker.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/server_maker/app/server_maker.py) to align more closely with [`days/_83_84/abstract_factory/video_exporter.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory/video_exporter.py).

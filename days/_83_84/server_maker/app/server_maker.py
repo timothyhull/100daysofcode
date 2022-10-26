@@ -91,43 +91,63 @@ class ServerMaker(ABC):
 
 
 # Concrete product classes
-class AWSServer(ServerMaker):
-    """ Create an AWS Server. """
+class MicroServer(ServerMaker):
+    """ Micro-sized server. """
 
     def create_server_config(
         self,
         params: ServerParams = SERVER_1_PARAMS
-    ) -> str:
-        """ Create an AWS server configuration string. """
+    ) -> None:
+        """ Construct a server configuration definition. """
 
-        # Call a function that produces the AWS-formatted string
+        print('Preparing a micro-sized server configuration file.')
 
-        return None
-
-
-class AzureServer(ServerMaker):
-    """ Create an Azure Server. """
-
-    def create_server_config(
+    def deploy_server_config(
         self,
-        params: ServerParams = SERVER_1_PARAMS
-    ) -> str:
-        """ Create an AWS server configuration string. """
+        target_cloud: str(int) = DEFAULT_CLOUD
+    ) -> None:
+        """ Deploy a server configuration to a cloud provider """
 
-        # Call a function that produces the Azure-formatted string
-
-        return None
+        print('Deploy a micro-sized server configuration file.')
 
 
-class GCPServer(ServerMaker):
-    """ Create an GCP Server. """
+# class AWSServer(ServerMaker):
+#     """ Create an AWS Server. """
 
-    def create_server_config(
-        self,
-        params: ServerParams = SERVER_1_PARAMS
-    ) -> str:
-        """ Create an GPC server configuration string. """
+#     def create_server_config(
+#         self,
+#         params: ServerParams = SERVER_1_PARAMS
+#     ) -> str:
+#         """ Create an AWS server configuration string. """
 
-        # Call a function that produces the GPC-formatted string
+#         # Call a function that produces the AWS-formatted string
 
-        return None
+#         return None
+
+
+# class AzureServer(ServerMaker):
+#     """ Create an Azure Server. """
+
+#     def create_server_config(
+#         self,
+#         params: ServerParams = SERVER_1_PARAMS
+#     ) -> str:
+#         """ Create an AWS server configuration string. """
+
+#         # Call a function that produces the Azure-formatted string
+
+#         return None
+
+
+# class GCPServer(ServerMaker):
+#     """ Create an GCP Server. """
+
+#     def create_server_config(
+#         self,
+#         params: ServerParams = SERVER_1_PARAMS
+#     ) -> str:
+#         """ Create an GPC server configuration string. """
+
+#         # Call a function that produces the GPC-formatted string
+
+#         return None

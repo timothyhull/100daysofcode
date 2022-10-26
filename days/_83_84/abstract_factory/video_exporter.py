@@ -12,7 +12,7 @@ DEFAULT_PATH = getcwd()
 VIDEO_DATA = '{video_data}'
 
 
-# Abstract Factory class to represent the video exporter
+# Abstract Product class to represent the video exporter
 class VideoExporter(ABC):
     """ Basic representation of a video exporter. """
 
@@ -33,7 +33,7 @@ class VideoExporter(ABC):
         pass
 
 
-# TODO class to represent high-quality video
+# Concrete Product class to represent high-quality video
 class HQVideo(VideoExporter):
     """ High-quality video exporter """
 
@@ -50,7 +50,7 @@ class HQVideo(VideoExporter):
         print(f'Exporting high-quality video to "{folder}".')
 
 
-# TODO class to represent medium-quality video
+# Concrete Product class to represent medium-quality video
 class MQVideo(VideoExporter):
     """ Medium-quality video exporter """
 
@@ -67,7 +67,7 @@ class MQVideo(VideoExporter):
         print(f'Exporting medium-quality video to "{folder}".')
 
 
-# TODO class to represent low-quality video
+# Concrete Product class to represent low-quality video
 class LQVideo(VideoExporter):
     """ Low-quality video exporter """
 
@@ -84,7 +84,7 @@ class LQVideo(VideoExporter):
         print(f'Exporting low-quality video to "{folder}".')
 
 
-# Abstract Factory class to represent the audio exporter
+# Abstract Product class to represent the audio exporter
 class AudioExporter(ABC):
     """ Basic representation of an audio exporter. """
 
@@ -219,7 +219,7 @@ def main_1() -> None:
     return None
 
 
-# TODO class that abstracts the video and audio exporters.
+# Concrete factory class that abstracts the video and audio exporters.
 class ExporterFactory(ABC):
     """ Factory that represents a combo of video and audio codecs.
 
