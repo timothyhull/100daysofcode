@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-10/5/2022
+# :calendar: Days 83+84: 7/10/2022-11/15/2022
 
 ---
 
@@ -39,6 +39,8 @@
 :star: [Python factory design pattern tutorial video](https://www.youtube.com/watch?v=s_4ZrtQs8Do)
 
 :star: [Python Documentation: Abstract Base Classes (abc)](https://docs.python.org/3/library/abc.html)
+
+:star: [Pluralsight Python Design Patterns Course](https://app.pluralsight.com/course-player?courseId=c142e95a-ec41-44db-add1-7dd1f6c2851d)
 
 ---
 
@@ -1553,4 +1555,13 @@ Back after a nine day physical and mental health recovery period.
 
 ### :notebook: 10/25/22
 
-- Revised clases in [`server_maker.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/server_maker/app/server_maker.py) to align more closely with [`days/_83_84/abstract_factory/video_exporter.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory/video_exporter.py).
+- Revised classes in [`server_maker.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/server_maker/app/server_maker.py) to align more closely with [`days/_83_84/abstract_factory/video_exporter.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/abstract_factory/video_exporter.py).
+
+---
+
+### :notebook: 10/27/22
+
+- Paused development of server maker application to study the abstract factory design pattern in more detail.
+    - Started Pluralsight course to learn abstract factory design details.
+    - Completed section 1,
+    - Completed lessons 1-3 in section 2.
