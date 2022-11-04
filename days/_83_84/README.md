@@ -1565,3 +1565,11 @@ Back after a nine day physical and mental health recovery period.
     - Started Pluralsight course to learn abstract factory design details.
     - Completed section 1,
     - Completed lessons 1-3 in section 2.
+
+--
+
+### :notebook: 11/3/22
+
+- Continued Pluralsight design patterns course.
+    - Completed section 2.
+    - Created the file [`my_abstract_class.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/introduction/my_abstract_class.py) to practice creating a simple interface (Abstract Base Class), and implementation (Concrete Class).
