@@ -1573,3 +1573,11 @@ Back after a nine day physical and mental health recovery period.
 - Continued Pluralsight design patterns course.
     - Completed section 2.
     - Created the file [`my_abstract_class.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/introduction/my_abstract_class.py) to practice creating a simple interface (Abstract Base Class), and implementation (Concrete Class).
+
+--
+
+### :notebook: 11/5/22
+
+- - Continued Pluralsight design patterns course.
+    - Started section 3.
+    - Created a simple factory package in the folder [`simple_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory) to practice creating a simple factory package (using an `__init__.py`)
