@@ -7,11 +7,11 @@ from .simple_factory import AbstractAutomobile
 
 class Domino(AbstractAutomobile):
     def Start(self) -> None:
-        print('Starting Batmobile.')
+        print('Starting Domino.')
 
         return None
 
     def Stop(self) -> None:
-        print('Stopping Batmobile.')
+        print('Stopping Domino.')
 
         return None

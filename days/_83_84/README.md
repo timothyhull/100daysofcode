@@ -1562,7 +1562,7 @@ Back after a nine day physical and mental health recovery period.
 ### :notebook: 10/27/22
 
 - Paused development of server maker application to study the abstract factory design pattern in more detail.
-    - Started Pluralsight course to learn abstract factory design details.
+    - Started Pluralsight course to learn abstract factory design details:
     - Completed section 1,
     - Completed lessons 1-3 in section 2.
 
@@ -1570,7 +1570,7 @@ Back after a nine day physical and mental health recovery period.
 
 ### :notebook: 11/3/22
 
-- Continued Pluralsight design patterns course.
+- Continued Pluralsight design patterns course:
     - Completed section 2.
     - Created the file [`my_abstract_class.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/introduction/my_abstract_class.py) to practice creating a simple interface (Abstract Base Class), and implementation (Concrete Class).
 
@@ -1578,6 +1578,25 @@ Back after a nine day physical and mental health recovery period.
 
 ### :notebook: 11/5/22
 
-- - Continued Pluralsight design patterns course.
+- Continued Pluralsight design patterns course:
     - Started section 3.
     - Created a simple factory package in the folder [`simple_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory) to practice creating a simple factory package (using an `__init__.py`)
+
+--
+
+### :notebook: 11/6/22
+
+- Continued Pluralsight design patterns course:
+    - Reviewed section 3.
+    - Added Visual Studio Code configuration option to ignore specific `flake8` violations in specific files:
+        - Intent is to remove `flake8` warnings in [`__init.py__`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__init__.py) for [`F401 module imported but unused`](https://flake8.pycqa.org/en/latest/user/error-codes.html).
+        - Added the [configuration option](https://9to5tutorial.com/for-beginners-introducing-flake8-to-visual-studio-code) [`--per-file-ignores='days/_83_84/*/__init__.py:F401'`](https://flake8.pycqa.org/en/latest/user/options.html#cmdoption-flake8-per-file-ignores) to the Visual Studio Code Workspace section in the **Code>Preferences>Settings**  menu.
+        - Adds the following JSON to the Workspace `settings.json` file:
+
+            ```json
+            {
+                "python.linting.flake8Args": [
+                    "--per-file-ignores='days/_83_84/*/__init__.py:F401'"
+                ]
+            }
+            ```
