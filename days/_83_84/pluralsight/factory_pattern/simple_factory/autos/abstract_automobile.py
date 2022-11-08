@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Simple example of the factory design pattern. """
+""" Abstract automobile classes. """
 
 # Imports - Python Standard Library
 from abc import ABC, abstractmethod

@@ -2,7 +2,7 @@
 """ Null class constructor for unknown cars. """
 
 # Imports - Python Standard Library
-from .simple_factory import AbstractAutomobile
+from .abstract_automobile import AbstractAutomobile
 
 
 class NullCar(AbstractAutomobile):

@@ -11,5 +11,6 @@
     ],
     "python.linting.flake8Args": [
         "--per-file-ignores=days/_83_84/*/__init__.py:F401"
-    ]
+    ],
+    "python.analysis.typeCheckingMode": "off"
 }

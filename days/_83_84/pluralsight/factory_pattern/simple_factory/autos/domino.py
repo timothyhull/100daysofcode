@@ -2,7 +2,7 @@
 """ Domino class definition. """
 
 # Imports - Python Standard Library
-from .simple_factory import AbstractAutomobile
+from .abstract_automobile import AbstractAutomobile
 
 
 class Domino(AbstractAutomobile):

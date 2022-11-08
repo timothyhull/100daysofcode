@@ -42,6 +42,8 @@
 
 :star: [Pluralsight Python Design Patterns Course](https://app.pluralsight.com/course-player?courseId=c142e95a-ec41-44db-add1-7dd1f6c2851d)
 
+:star: [Python `inspect` Module](https://docs.python.org/3/library/inspect.html)
+
 ---
 
 ## Tasks
@@ -1600,3 +1602,13 @@ Back after a nine day physical and mental health recovery period.
                 ]
             }
             ```
+
+--
+
+### :notebook: 11/7/22
+
+- Continued Pluralsight design patterns course:
+    - Reviewed section 3.
+- Refactored application layout (directory structure) to mimic the course instructor's example.
+    - Moved automobile classes, including the abstract automobile class to the [`autos`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/autos) directory.
+    - Performed initial review of the `inspect` module.

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-""" Package initialization for the simple_factory.py app. """
+""" Package initialization for the auto_factory.py app. """
 
-from .simple_factory import AbstractAutomobile
+# Imports - Local
+from .abstract_automobile import AbstractAutomobile
 from .batmobile import Batmobile
 from .domino import Domino
 from .lloyd import Lloyd
