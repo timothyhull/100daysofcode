@@ -1590,13 +1590,13 @@ Back after a nine day physical and mental health recovery period.
     - Reviewed section 3.
     - Added Visual Studio Code configuration option to ignore specific `flake8` violations in specific files:
         - Intent is to remove `flake8` warnings in [`__init.py__`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__init__.py) for [`F401 module imported but unused`](https://flake8.pycqa.org/en/latest/user/error-codes.html).
-        - Added the [configuration option](https://9to5tutorial.com/for-beginners-introducing-flake8-to-visual-studio-code) [`--per-file-ignores='days/_83_84/*/__init__.py:F401'`](https://flake8.pycqa.org/en/latest/user/options.html#cmdoption-flake8-per-file-ignores) to the Visual Studio Code Workspace section in the **Code>Preferences>Settings**  menu.
+        - Added the [configuration option](https://9to5tutorial.com/for-beginners-introducing-flake8-to-visual-studio-code) [`--per-file-ignores=days/_83_84/*/__init__.py:F401`](https://flake8.pycqa.org/en/latest/user/options.html#cmdoption-flake8-per-file-ignores) to the Visual Studio Code Workspace section in the **Code>Preferences>Settings**  menu.
         - Adds the following JSON to the Workspace `settings.json` file:
 
             ```json
             {
                 "python.linting.flake8Args": [
-                    "--per-file-ignores='days/_83_84/*/__init__.py:F401'"
+                    "--per-file-ignores=days/_83_84/*/__init__.py:F401"
                 ]
             }
             ```
