@@ -1608,7 +1608,17 @@ Back after a nine day physical and mental health recovery period.
 ### :notebook: 11/7/22
 
 - Continued Pluralsight design patterns course:
-    - Reviewed section 3.
+    - Reviewed section 3 content.
 - Refactored application layout (directory structure) to mimic the course instructor's example.
     - Moved automobile classes, including the abstract automobile class to the [`autos`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/autos) directory.
-    - Performed initial review of the `inspect` module.
+    - Performed initial review of the `inspect` module documentation.
+        - Gets detailed information about Python objects.
+
+--
+
+### :notebook: 11/8/22
+
+- Continued Pluralsight design patterns course:
+    - Reviewed section 3 content.
+    - Started initial code framework in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory) file.
+        - Requires methods will populate the `autos` dictionary with a car's model name and class name.
