@@ -3,6 +3,7 @@
         "abspath",
         "arraysize",
         "builtins",
+        "carname",
         "DTFLDB",
         "kaleido",
         "xaxes",

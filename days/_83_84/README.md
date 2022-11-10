@@ -1621,4 +1621,11 @@ Back after a nine day physical and mental health recovery period.
 - Continued Pluralsight design patterns course:
     - Reviewed section 3 content.
     - Started initial code framework in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory) file.
-        - Requires methods will populate the `autos` dictionary with a car's model name and class name.
+        - Requires methods that will populate the `autos` dictionary with a car's model name and class name.
+
+--
+
+### :notebook: 11/9/22
+
+- Completed initial build of [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory).
+    - Need to conduct testing to understand the use and return values from`inspect` module methods.

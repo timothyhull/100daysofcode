@@ -3,10 +3,12 @@
 
 # Imports - Python Standard Library
 from inspect import getmembers, isclass, isabstract
+from typing import Union
 
 # Imports - Local
 # Import the 'autos' directory to automatically run __init.py__
-from _83_84.pluralsight.factory_pattern.simple_factory import autos
+# import days._83_84.pluralsight.factory_pattern.simple_factory.autos as autos
+from . import autos as Autos
 
 
 class AutoFactory(object):
@@ -20,13 +22,30 @@ class AutoFactory(object):
 
         self.load_autos()
 
-    def load_autos(self) -> None:
+    def load_autos(self, carname) -> None:
         """ TODO """
 
+        # TODO
         classes = getmembers(
-            autos,
+            Autos,
+            lambda member: isclass(member) and not isabstract(member)
         )
 
-        for c in classes:
-            print(c)
-            break
+        # TODO
+        for name, _type in classes:
+            if isclass(_type) and issubclass(_type, Autos.AbstractAutomobile):
+                self.autos.update([[name, _type]])
+
+        return None
+
+    def create_instance(
+        self,
+        carname: str
+    ) -> Union(str | Autos.NullCar):
+        """ TODO """
+
+        # TODO
+        if carname in self.autos:
+            return self.autos[carname]
+        else:
+            return Autos.NullCar(carname)
