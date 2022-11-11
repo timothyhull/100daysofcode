@@ -1629,3 +1629,16 @@ Back after a nine day physical and mental health recovery period.
 
 - Completed initial build of [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory).
     - Need to conduct testing to understand the use and return values from`inspect` module methods.
+
+--
+
+### :notebook: 11/10/22
+
+- Conducted review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory) in order to review return values from the following code:
+
+    ```python
+    import autos as Autos
+    from inspect import getmembers
+
+    classes = getmembers(Autos)
+    ```
