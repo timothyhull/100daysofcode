@@ -18,20 +18,29 @@ class AutoFactory(object):
     autos = {}  # key = car model name, value = class for the car
 
     def __init__(self) -> None:
-        """ TODO """
+        """ Initialization method. """
 
+        # Run the load_autos method at during object instantiation
         self.load_autos()
 
     def load_autos(self, carname) -> None:
-        """ TODO """
+        """ Gets a list of sub-classes in the 'autos' folder.
 
-        # TODO
+            The 'getmembers' function retrieves a list of tuples
+            for the 'autos' folder.  A lambda function removes all
+            objects that are not classes (__doc__, etc.), and not
+            abstract classes(AbstractAutomobile).
+        """
+
+        # Creates a list of tuples with non-abstract class object in 'autos'
         classes = getmembers(
             Autos,
+            # lambda function removes any non-class and abstract class objects
             lambda member: isclass(member) and not isabstract(member)
         )
 
-        # TODO
+        # Adds each class name and type (class) to the autos dictionary
+        # The _type keyword returns the object type of tuple index 1
         for name, _type in classes:
             if isclass(_type) and issubclass(_type, Autos.AbstractAutomobile):
                 self.autos.update([[name, _type]])

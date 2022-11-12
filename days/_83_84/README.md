@@ -1634,11 +1634,44 @@ Back after a nine day physical and mental health recovery period.
 
 ### :notebook: 11/10/22
 
-- Conducted review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory) in order to review return values from the following code:
+- Conducted review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory) in order to analyze return values from the following code:
 
     ```python
     import autos as Autos
     from inspect import getmembers
 
     classes = getmembers(Autos)
+    ```
+
+--
+
+### :notebook: 11/11/22
+
+- Continued review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory):
+    - Completed analysis of the `load_autos` method and added both docstring and inline comments to describe findings.
+
+    ```python
+    def load_autos(self, carname) -> None:
+        """ Gets a list of sub-classes in the 'autos' folder.
+
+            The 'getmembers' function retrieves a list of tuples
+            for the 'autos' folder.  A lambda function removes all
+            objects that are not classes (__doc__, etc.), and not
+            abstract classes(AbstractAutomobile).
+        """
+
+        # Creates a list of tuples with non-abstract class object in 'autos'
+        classes = getmembers(
+            Autos,
+            # lambda function removes any non-class and abstract class objects
+            lambda member: isclass(member) and not isabstract(member)
+        )
+
+        # Adds each class name and type (class) to the autos dictionary
+        # The _type keyword returns the object type of tuple index 1
+        for name, _type in classes:
+            if isclass(_type) and issubclass(_type, Autos.AbstractAutomobile):
+                self.autos.update([[name, _type]])
+
+        return None
     ```
