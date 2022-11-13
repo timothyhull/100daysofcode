@@ -12,7 +12,7 @@ from . import autos as Autos
 
 
 class AutoFactory(object):
-    """ TODO """
+    """ Concrete class factory class. """
 
     # Create a dictionary to contain car information
     autos = {}  # key = car model name, value = class for the car
@@ -29,7 +29,7 @@ class AutoFactory(object):
             The 'getmembers' function retrieves a list of tuples
             for the 'autos' folder.  A lambda function removes all
             objects that are not classes (__doc__, etc.), and not
-            abstract classes(AbstractAutomobile).
+            abstract classes (AbstractAutomobile).
         """
 
         # Creates a list of tuples with non-abstract class object in 'autos'
@@ -51,10 +51,11 @@ class AutoFactory(object):
         self,
         carname: str
     ) -> Union(str | Autos.NullCar):
-        """ TODO """
+        """ Return an abstract instance of a concrete auto class. """
 
-        # TODO
+        # Return an abstract instance of a defined concrete object
         if carname in self.autos:
             return self.autos[carname]
+        # Return an abstract instance of NullCar concrete object
         else:
             return Autos.NullCar(carname)

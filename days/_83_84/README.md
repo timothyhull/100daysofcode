@@ -1657,7 +1657,7 @@ Back after a nine day physical and mental health recovery period.
             The 'getmembers' function retrieves a list of tuples
             for the 'autos' folder.  A lambda function removes all
             objects that are not classes (__doc__, etc.), and not
-            abstract classes(AbstractAutomobile).
+            abstract classes (AbstractAutomobile).
         """
 
         # Creates a list of tuples with non-abstract class object in 'autos'
@@ -1674,4 +1674,26 @@ Back after a nine day physical and mental health recovery period.
                 self.autos.update([[name, _type]])
 
         return None
+    ```
+
+--
+
+### :notebook: 11/12/22
+
+- Completed initial review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory):
+    - Completed analysis of the `create_instance` method and added both docstring and inline comments to describe findings.
+
+    ```python
+    def create_instance(
+        self,
+        carname: str
+    ) -> Union(str | Autos.NullCar):
+        """ Return an abstract instance of a concrete auto class. """
+
+        # Return an abstract instance of a defined concrete object
+        if carname in self.autos:
+            return self.autos[carname]
+        # Return an abstract instance of NullCar concrete object
+        else:
+            return Autos.NullCar(carname)
     ```
