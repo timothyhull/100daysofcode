@@ -6,12 +6,12 @@ from .abstract_automobile import AbstractAutomobile
 
 
 class Domino(AbstractAutomobile):
-    def Start(self) -> None:
+    def start(self) -> None:
         print('Starting Domino.')
 
         return None
 
-    def Stop(self) -> None:
+    def stop(self) -> None:
         print('Stopping Domino.')
 
         return None

@@ -1697,3 +1697,20 @@ Back after a nine day physical and mental health recovery period.
         else:
             return Autos.NullCar(carname)
     ```
+
+--
+
+### :notebook: 11/13/22
+
+- Completed initial code in [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__main.py__.):
+    - Unable to successfully use code, requires further troubleshooting.
+    - Returning a `TypeError` exception
+
+        ```bash
+        ./__main__.py 
+        __init__.py complete.
+        Traceback (most recent call last):
+        File "/workspaces/100daysofcode/days/_83_84/pluralsight/factory_pattern/simple_factory/./__main__.py", line 25, in <module>
+            car.start()
+        TypeError: Batmobile.start() missing 1 required positional argument: 'self'
+        ```

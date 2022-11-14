@@ -7,8 +7,8 @@ from typing import Union
 
 # Imports - Local
 # Import the 'autos' directory to automatically run __init.py__
-# import days._83_84.pluralsight.factory_pattern.simple_factory.autos as autos
-from . import autos as Autos
+import _83_84.pluralsight.factory_pattern.simple_factory.autos as Autos
+# from . import autos as Autos
 
 
 class AutoFactory(object):
@@ -23,7 +23,7 @@ class AutoFactory(object):
         # Run the load_autos method at during object instantiation
         self.load_autos()
 
-    def load_autos(self, carname) -> None:
+    def load_autos(self) -> None:
         """ Gets a list of sub-classes in the 'autos' folder.
 
             The 'getmembers' function retrieves a list of tuples
@@ -50,7 +50,7 @@ class AutoFactory(object):
     def create_instance(
         self,
         carname: str
-    ) -> Union(str | Autos.NullCar):
+    ) -> Union[str, Autos.NullCar]:
         """ Return an abstract instance of a concrete auto class. """
 
         # Return an abstract instance of a defined concrete object

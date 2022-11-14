@@ -9,9 +9,9 @@ class AbstractAutomobile(ABC):
     """ Abstract Base Class for Automobile Creation. """
 
     @abstractmethod
-    def Start(self) -> None:
+    def start(self) -> None:
         pass
 
     @abstractmethod
-    def Stop(stop) -> None:
+    def stop(stop) -> None:
         pass
