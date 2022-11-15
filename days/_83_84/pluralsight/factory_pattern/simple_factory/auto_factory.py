@@ -55,7 +55,7 @@ class AutoFactory(object):
 
         # Return an abstract instance of a defined concrete object
         if carname in self.autos:
-            return self.autos[carname]
+            return self.autos[carname]()
         # Return an abstract instance of NullCar concrete object
         else:
             return Autos.NullCar(carname)

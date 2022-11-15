@@ -6,6 +6,8 @@ from .abstract_automobile import AbstractAutomobile
 
 
 class Lloyd(AbstractAutomobile):
+    """ Class for instances of Lloyd. """
+
     def start(self) -> None:
         print('Starting Lloyd.')
 

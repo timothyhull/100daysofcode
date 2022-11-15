@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
-""" Batmobile class definition. """
+""" Rivian class definition. """
 
 # Imports - Local
 from .abstract_automobile import AbstractAutomobile
 
 
-class Batmobile(AbstractAutomobile):
-    """ Class for instances of the Batmobile. """
+class Rivian(AbstractAutomobile):
+    """ Class for instances of Rivian. """
 
     def start(self) -> None:
-        print('Starting Batmobile.')
+        print('Starting Rivian.')
 
         return None
 
     def stop(self) -> None:
-        print('Stopping Batmobile.')
+        print('Stopping Rivian.')
 
         return None

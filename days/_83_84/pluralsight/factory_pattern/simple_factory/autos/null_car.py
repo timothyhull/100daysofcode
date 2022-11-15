@@ -16,5 +16,5 @@ class NullCar(AbstractAutomobile):
 
         return None
 
-    def Stop(self) -> None:
+    def stop(self) -> None:
         pass

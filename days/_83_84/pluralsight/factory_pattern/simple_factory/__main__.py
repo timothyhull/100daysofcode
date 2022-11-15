@@ -7,10 +7,11 @@ from _83_84.pluralsight.factory_pattern.simple_factory.auto_factory \
 
 # Constants
 CAR_NAMES = (
-    'batmobile',
+    'Batmobile',
     'Domino',
     'Lloyd',
-    'Camry'
+    'Camry',
+    'Rivian'
 )
 
 # Create an AbstractAutomobile instance

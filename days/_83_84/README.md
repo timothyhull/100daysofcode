@@ -1702,7 +1702,7 @@ Back after a nine day physical and mental health recovery period.
 
 ### :notebook: 11/13/22
 
-- Completed initial code in [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__main.py__.):
+- Completed initial code in [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__main__.py.):
     - Unable to successfully use code, requires further troubleshooting.
     - Returning a `TypeError` exception
 
@@ -1714,3 +1714,13 @@ Back after a nine day physical and mental health recovery period.
             car.start()
         TypeError: Batmobile.start() missing 1 required positional argument: 'self'
         ```
+
+--
+
+### :notebook: 11/14/22
+
+- Completed code, testing, and review of the [`simple_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory) application.
+    - Created an additional class to walk through the process of adding a new auto to the factory.
+        - Created the class `Rivian` in the file [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__main__.py.).
+        - Added the `Rivian` class to [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/autos/__main__.py.).
+        - Added `Rivian` to the `CAR_NAMES` tuple in [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__main__.py.).

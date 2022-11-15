@@ -6,6 +6,8 @@ from .abstract_automobile import AbstractAutomobile
 
 
 class Domino(AbstractAutomobile):
+    """ Class for instances of Domino. """
+
     def start(self) -> None:
         print('Starting Domino.')
 
