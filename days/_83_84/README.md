@@ -1620,21 +1620,21 @@ Back after a nine day physical and mental health recovery period.
 
 - Continued Pluralsight design patterns course:
     - Reviewed section 3 content.
-    - Started initial code framework in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory) file.
+    - Started initial code framework in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory.py) file.
         - Requires methods that will populate the `autos` dictionary with a car's model name and class name.
 
 --
 
 ### :notebook: 11/9/22
 
-- Completed initial build of [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory).
+- Completed initial build of [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory/.py).
     - Need to conduct testing to understand the use and return values from`inspect` module methods.
 
 --
 
 ### :notebook: 11/10/22
 
-- Conducted review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory) in order to analyze return values from the following code:
+- Conducted review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory.py) in order to analyze return values from the following code:
 
     ```python
     import autos as Autos
@@ -1647,7 +1647,7 @@ Back after a nine day physical and mental health recovery period.
 
 ### :notebook: 11/11/22
 
-- Continued review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory):
+- Continued review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory.py):
     - Completed analysis of the `load_autos` method and added both docstring and inline comments to describe findings.
 
     ```python
@@ -1680,7 +1680,7 @@ Back after a nine day physical and mental health recovery period.
 
 ### :notebook: 11/12/22
 
-- Completed initial review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory):
+- Completed initial review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory.py):
     - Completed analysis of the `create_instance` method and added both docstring and inline comments to describe findings.
 
     ```python
@@ -1724,3 +1724,24 @@ Back after a nine day physical and mental health recovery period.
         - Created the class `Rivian` in the file [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__main__.py.).
         - Added the `Rivian` class to [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/autos/__main__.py.).
         - Added `Rivian` to the `CAR_NAMES` tuple in [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__main__.py.).
+
+- Corrected exception from [11/13/22](#notebook-111322) by adding parenthesis to the return value of the `AutoFactory.create_instance` method in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory.py).
+    - The parenthesis are necessary to create an instance of any class.
+        - `my_string = str()` returns an instance of a class.
+        - `my_string_1 = str` returns a copy of a class.
+
+```python
+class AutoFactory(object):
+     def create_instance(
+        self,
+        carname: str
+    ) -> Union[str, Autos.NullCar]:
+        """ Return an abstract instance of a concrete auto class. """
+
+        # Return an abstract instance of a defined concrete object
+        if carname in self.autos:
+            return self.autos[carname]() # <<--- Added missing parenthesis here
+        # Return an abstract instance of NullCar concrete object
+        else:
+            return Autos.NullCar(carname)
+```
