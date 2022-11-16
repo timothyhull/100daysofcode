@@ -1568,7 +1568,7 @@ Back after a nine day physical and mental health recovery period.
     - Completed section 1,
     - Completed lessons 1-3 in section 2.
 
---
+---
 
 ### :notebook: 11/3/22
 
@@ -1576,7 +1576,7 @@ Back after a nine day physical and mental health recovery period.
     - Completed section 2.
     - Created the file [`my_abstract_class.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/introduction/my_abstract_class.py) to practice creating a simple interface (Abstract Base Class), and implementation (Concrete Class).
 
---
+---
 
 ### :notebook: 11/5/22
 
@@ -1584,7 +1584,7 @@ Back after a nine day physical and mental health recovery period.
     - Started section 3.
     - Created a simple factory package in the folder [`simple_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory) to practice creating a simple factory package (using an `__init__.py`)
 
---
+---
 
 ### :notebook: 11/6/22
 
@@ -1603,7 +1603,7 @@ Back after a nine day physical and mental health recovery period.
             }
             ```
 
---
+---
 
 ### :notebook: 11/7/22
 
@@ -1614,7 +1614,7 @@ Back after a nine day physical and mental health recovery period.
     - Performed initial review of the `inspect` module documentation.
         - Gets detailed information about Python objects.
 
---
+---
 
 ### :notebook: 11/8/22
 
@@ -1623,14 +1623,14 @@ Back after a nine day physical and mental health recovery period.
     - Started initial code framework in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory.py) file.
         - Requires methods that will populate the `autos` dictionary with a car's model name and class name.
 
---
+---
 
 ### :notebook: 11/9/22
 
 - Completed initial build of [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory/.py).
     - Need to conduct testing to understand the use and return values from`inspect` module methods.
 
---
+---
 
 ### :notebook: 11/10/22
 
@@ -1643,7 +1643,7 @@ Back after a nine day physical and mental health recovery period.
     classes = getmembers(Autos)
     ```
 
---
+---
 
 ### :notebook: 11/11/22
 
@@ -1676,7 +1676,7 @@ Back after a nine day physical and mental health recovery period.
         return None
     ```
 
---
+---
 
 ### :notebook: 11/12/22
 
@@ -1698,7 +1698,7 @@ Back after a nine day physical and mental health recovery period.
             return Autos.NullCar(carname)
     ```
 
---
+---
 
 ### :notebook: 11/13/22
 
@@ -1715,7 +1715,7 @@ Back after a nine day physical and mental health recovery period.
         TypeError: Batmobile.start() missing 1 required positional argument: 'self'
         ```
 
---
+---
 
 ### :notebook: 11/14/22
 
@@ -1745,3 +1745,14 @@ class AutoFactory(object):
         else:
             return Autos.NullCar(carname)
 ```
+
+---
+
+### :notebook: 11/15/22
+
+- Completed the Simple Factory Pattern Pluralsight video.
+    - Updated Pluralsight Evernote notes and code docstrings.
+    - Need to review UML diagram for the Simple Factory Pattern for better understanding.
+
+- Started the Full Factory Pattern Pluralsight video.
+    - Need to review UML diagram for the Full Factory Pattern for better understanding.

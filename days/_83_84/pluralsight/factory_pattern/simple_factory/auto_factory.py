@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Automobile abstract factory application example. """
+""" Automobile factory loader. """
 
 # Imports - Python Standard Library
 from inspect import getmembers, isclass, isabstract
