@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Automobile factory loader. """
+""" Automobile factory class that produces concrete classes. """
 
 # Imports - Python Standard Library
 from inspect import getmembers, isclass, isabstract
@@ -8,11 +8,13 @@ from typing import Union
 # Imports - Local
 # Import the 'autos' directory to automatically run __init.py__
 import _83_84.pluralsight.factory_pattern.simple_factory.autos as Autos
-# from . import autos as Autos
 
 
 class AutoFactory(object):
-    """ Concrete class factory class. """
+    """ Concrete class generator.
+
+        Returns a concrete product.
+    """
 
     # Create a dictionary to contain car information
     autos = {}  # key = car model name, value = class for the car
@@ -51,7 +53,7 @@ class AutoFactory(object):
         self,
         carname: str
     ) -> Union[str, Autos.NullCar]:
-        """ Return an abstract instance of a concrete auto class. """
+        """ Return an instance of a concrete auto class. """
 
         # Return an abstract instance of a defined concrete object
         if carname in self.autos:

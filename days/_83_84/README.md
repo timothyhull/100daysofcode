@@ -1756,3 +1756,11 @@ class AutoFactory(object):
 
 - Started the Full Factory Pattern Pluralsight video.
     - Need to review UML diagram for the Full Factory Pattern for better understanding.
+
+---
+
+### :notebook: 11/16/22
+
+- Reviewed UML diagrams for the Simple and Full Factory Pattern examples.
+- Watched all remaining section 3 lessons in the Pluralsight course.
+- Next step is to build the Full Factory Pattern sample application defined in [`full_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory)
