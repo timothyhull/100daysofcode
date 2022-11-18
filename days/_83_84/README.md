@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-11/15/2022
+# :calendar: Days 83+84: 7/10/2022-11/30/2022
 
 ---
 
@@ -86,11 +86,9 @@
 
 :white_check_mark: Write `pytest` tests for [app/climate_data.py](https://github.com/timothyhull/climate-data-plotly/blob/main/app/climate_data.py)
 
-:white_large_square: Publish application in `Flask` app
+:white_check_mark: Publish application in `Flask` app
 
-:white_large_square: Write `pytest` tests for [web/flask_app.py](https://github.com/timothyhull/climate-data-plotly/blob/main/web/flask_app.py)
-
-:white_large_square: Test data plotting with `Bokeh`
+:white_large_square: Understand the Abstract Factory Design Pattern
 
 ---
 
@@ -1763,4 +1761,12 @@ class AutoFactory(object):
 
 - Reviewed UML diagrams for the Simple and Full Factory Pattern examples.
 - Watched all remaining section 3 lessons in the Pluralsight course.
-- Next step is to build the Full Factory Pattern sample application defined in [`full_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory)
+- Next step is to build the Full Factory Pattern sample application defined in [`full_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory).
+
+---
+
+### :notebook: 11/17/22
+
+- Built initial Python files for the [`full_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory) application:
+    - Added factory file for each concrete factory.
+    - Modified the [abstract_automobile](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factor/autos/abstract_automobile.py) file to include the `name` property.
