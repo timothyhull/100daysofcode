@@ -1769,4 +1769,22 @@ class AutoFactory(object):
 
 - Built initial Python files for the [`full_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory) application:
     - Added factory file for each concrete factory.
-    - Modified the [abstract_automobile](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factor/autos/abstract_automobile.py) file to include the `name` property.
+    - Modified the [abstract_automobile](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/abstract_automobile.py) file to include the `name` property.
+
+---
+
+### :notebook: 11/18/22
+
+- Started initial build of [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/loader.py).
+    - The file will dynamically import the correct concrete factory class, based on the name of the class supplied by the `factory_name` parameter.
+        - The `importlib` module provides a mechanism to dynamically import modules.
+
+            ```python
+            from importlib import import_module
+
+            import_module(
+                name='random'
+            )
+            ```
+
+    - Established initial code structure although relative module imports are a problem that require further troubleshooting.

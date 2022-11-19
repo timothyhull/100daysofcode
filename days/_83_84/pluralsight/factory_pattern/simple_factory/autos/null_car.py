@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Null class constructor for unknown cars. """
 
-# Imports - Python Standard Library
+# Imports - Local
 from .abstract_automobile import AbstractAutomobile
 
 

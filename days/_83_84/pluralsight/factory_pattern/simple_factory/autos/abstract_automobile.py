@@ -3,7 +3,6 @@
 
     The UML representation for this program refers to this class as
     the "interface."
-
 """
 
 # Imports - Python Standard Library

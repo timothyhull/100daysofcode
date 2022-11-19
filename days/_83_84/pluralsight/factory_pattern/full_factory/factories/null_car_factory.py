@@ -13,6 +13,6 @@ class RivianFactory(AbstractFactory):
         """ NullCar implementation of the abstract factory class """
 
         self.null_car = null_car = NullCar()
-        null_car.name = 'Rivian'
+        null_car.name = ''
 
         return null_car

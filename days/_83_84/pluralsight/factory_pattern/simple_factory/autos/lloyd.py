@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Lloyd concrete class definition. """
 
-# Imports - Python Standard Library
+# Imports - Local
 from .abstract_automobile import AbstractAutomobile
 
 
