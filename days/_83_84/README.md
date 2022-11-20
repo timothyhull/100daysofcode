@@ -1788,3 +1788,14 @@ class AutoFactory(object):
             ```
 
     - Established initial code structure although relative module imports are a problem that require further troubleshooting.
+
+---
+
+### :notebook: 11/19/22
+
+- Updated `import` statements in the following files to include absolute or relative paths to imported modules, in an attempt to resolve `ModuleNotFoundError.`
+    - [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/loader.py).
+    - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/lloyd_factory.py).
+
+    - Requires additional troubleshooting.
+    

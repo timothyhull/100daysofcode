@@ -6,7 +6,7 @@ from importlib import import_module
 from inspect import getmembers, isabstract, isclass
 
 # Imports - Local
-# from .abstract_factory import AbstractFactory
+from abstract_factory import AbstractFactory
 
 
 def load_factory(factory_name: str) -> None:
@@ -32,4 +32,7 @@ def load_factory(factory_name: str) -> None:
         predicate=lambda x: isclass(x) and not isabstract(x)
     )
 
-    print(classes)
+    # TODO
+    for _, _class in classes:
+        if issubclass(_class, AbstractFactory):
+            return _class()
