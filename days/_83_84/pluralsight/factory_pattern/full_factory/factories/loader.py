@@ -15,14 +15,14 @@ def load_factory(factory_name: str) -> None:
     # TODO
     try:
         factory_module = import_module(
-            name=f'.{factory_name}',
+            name=f'{factory_name}',
             package='factories'
         )
 
     # TODO
     except ImportError:
         factory_module = import_module(
-            name='.null_car_factory',
+            name='null_car_factory',
             package='factories'
         )
 

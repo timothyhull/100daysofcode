@@ -1795,7 +1795,19 @@ class AutoFactory(object):
 
 - Updated `import` statements in the following files to include absolute or relative paths to imported modules, in an attempt to resolve `ModuleNotFoundError.`
     - [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/loader.py).
-    - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/lloyd_factory.py).
+     cctories/lloyd_factory.py).
 
-    - Requires additional troubleshooting.
-    
+    - `import` statement errors require additional troubleshooting.
+
+---
+
+### :notebook: 11/20/22
+
+- Removed relative import `.` characters input statements in the following files:
+    - factory_pattern/full_factory/factories/loader.py).
+    - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/lloyd_factory.py).
+    - [batmobile_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/blined_factory.py).
+    - [domino.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/domino_factory.py).
+    - [rivian_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/rivian_factory.py).
+
+- Resolved many import errors, further discovery and troubleshooting required.

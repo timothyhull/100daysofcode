@@ -2,8 +2,9 @@
 """ Null class constructor concrete factory class definition. """
 
 # Imports - Local
-from .abstract_factory import AbstractFactory
-from ..autos.null_car import NullCar
+from abstract_factory import AbstractFactory
+from _83_84.pluralsight.factory_pattern.full_factory.autos.null_car \
+    import NullCar
 
 
 class RivianFactory(AbstractFactory):

@@ -2,8 +2,8 @@
 """ Batmobile concrete factory class definition. """
 
 # Imports - Local
-from .abstract_factory import AbstractFactory
-from ..autos.batmobile import Batmobile
+from abstract_factory import AbstractFactory
+from autos.batmobile import Batmobile
 
 
 class BatmobileFactory(AbstractFactory):

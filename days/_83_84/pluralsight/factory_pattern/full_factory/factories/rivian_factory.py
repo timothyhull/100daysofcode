@@ -2,8 +2,8 @@
 """ Rivian concrete factory class definition. """
 
 # Imports - Local
-from .abstract_factory import AbstractFactory
-from ..autos.rivian import Rivian
+from abstract_factory import AbstractFactory
+from autos.rivian import Rivian
 
 
 class RivianFactory(AbstractFactory):

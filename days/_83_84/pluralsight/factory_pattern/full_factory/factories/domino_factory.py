@@ -2,8 +2,8 @@
 """ Domino concrete factory class definition. """
 
 # Imports - Local
-from .abstract_factory import AbstractFactory
-from ..autos.domino import Domino
+from abstract_factory import AbstractFactory
+from autos.domino import Domino
 
 
 class DominoFactory(AbstractFactory):
