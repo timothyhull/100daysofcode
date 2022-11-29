@@ -9,11 +9,11 @@ class Domino(AbstractAutomobile):
     """ Concrete class for instances of Domino. """
 
     def start(self) -> None:
-        print('Starting Domino.')
+        print(f'Starting "{self.name}."')
 
         return None
 
     def stop(self) -> None:
-        print('Stopping Domino.')
+        print(f'Starting "{self.name}."')
 
         return None

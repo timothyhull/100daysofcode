@@ -9,11 +9,11 @@ class Rivian(AbstractAutomobile):
     """ Concrete class for instances of Rivian. """
 
     def start(self) -> None:
-        print('Starting Rivian.')
+        print(f'Starting "{self.name}."')
 
         return None
 
     def stop(self) -> None:
-        print('Stopping Rivian.')
+        print(f'Starting "{self.name}."')
 
         return None

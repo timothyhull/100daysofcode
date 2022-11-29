@@ -3,7 +3,7 @@
 
 # Imports - Local
 from abstract_factory import AbstractFactory
-from autos.domino import Domino
+from _83_84.pluralsight.factory_pattern.full_factory.autos.domino import Domino
 
 
 class DominoFactory(AbstractFactory):

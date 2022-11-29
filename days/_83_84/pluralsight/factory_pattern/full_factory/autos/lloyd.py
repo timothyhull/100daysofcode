@@ -9,11 +9,11 @@ class Lloyd(AbstractAutomobile):
     """ Concrete class for instances of Lloyd. """
 
     def start(self) -> None:
-        print('Starting Lloyd.')
+        print(f'Starting "{self.name}."')
 
         return None
 
     def stop(self) -> None:
-        print('Stopping Lloyd.')
+        print(f'Starting "{self.name}."')
 
         return None

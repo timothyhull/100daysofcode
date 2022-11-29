@@ -1795,7 +1795,7 @@ class AutoFactory(object):
 
 - Updated `import` statements in the following files to include absolute or relative paths to imported modules, in an attempt to resolve `ModuleNotFoundError.`
     - [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/loader.py).
-     cctories/lloyd_factory.py).
+    - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/lloyd_factory.py).
 
     - `import` statement errors require additional troubleshooting.
 
@@ -1811,3 +1811,89 @@ class AutoFactory(object):
     - [rivian_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/rivian_factory.py).
 
 - Resolved many import errors, further discovery and troubleshooting required.
+
+---
+
+### :notebook: 11/22/22
+
+- Successfully tested - [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/loader.py).
+    - Added docstrings, line comments, and type hints.
+
+---
+
+### :notebook: 11/28/22
+
+- Refactored concrete product class modules to use the `self.name` property, inherited from the corresponding concrete factory class modules, to replace hard-coded auto names in `print` functions with `self.name` variables.
+- Applicable modules:
+    - [batmobile.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/batmobile.py).
+    - [domino.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/domino.py).
+    - [lloyd.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/lloyd.py).
+    - [rivian.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/rivian.py).
+
+    ```python
+    # Original syntax example
+    class Batmobile(AbstractAutomobile):
+        """ Concrete class for instances of the Batmobile. """
+
+        def start(self) -> None:
+            print('Starting Batmobile.')
+
+            return None
+
+        def stop(self) -> None:
+            print('Stopping Batmobile.')
+
+            return None
+
+    # Updated syntax example
+    class RivianFactory(AbstractFactory):
+        """ Concrete class for instances of Rivian. """
+
+        def create_auto(self) -> Rivian:
+            """ Rivian implementation of the abstract factory class """
+
+            self.rivian = rivian = Rivian()
+            rivian.name = 'Rivian'
+
+            return rivian
+    ```
+
+- Replaced relative path imports of concrete product class modules from concrete factory modules with absolute path imports, in order to overcome an `ImportError` exception:
+
+    ```python
+    # Original syntax example
+    from abstract_factory import AbstractFactory
+    from autos.rivian import Rivian
+
+    # Updated syntax example
+    from abstract_factory import AbstractFactory
+    from _83_84.pluralsight.factory_pattern.full_factory.autos.rivian import Rivian
+    ```
+
+    ```bash
+    # Import error with relative import usage
+    ImportError: attempted relative import with no known parent package
+    ```
+
+- Applicable modules:
+    - [batmobile_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/batmobile_factory.py).
+    - [domino_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/domino_factory.py).
+    - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/lloyd_factory.py).
+    - [rivian_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/rivian_factory.py).
+
+- Modified the [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/loader.py) module to append a suffix of "`_loader`" to the `name` parameter in the `load-factory` function.
+    - This matches the concrete factory module names (`batmobile_factory`) when given a concrete product name (`batmobile`):
+
+```python
+# Original syntax example
+factory_module = import_module(
+    name=f'{factory_name}',
+    package='factories'
+)
+
+# Updated syntax example
+factory_module = import_module(
+    name=f'{factory_name}_factory',
+    package='factories'
+)
+```
