@@ -7,7 +7,7 @@ from typing import Union
 
 # Imports - Local
 # Import the 'autos' directory to automatically run __init.py__
-import _83_84.pluralsight.factory_pattern.simple_factory.autos as Autos
+import _83_84.pluralsight.factory_pattern.simple.autos as Autos
 
 
 class AutoFactory(object):

@@ -1580,7 +1580,7 @@ Back after a nine day physical and mental health recovery period.
 
 - Continued Pluralsight design patterns course:
     - Started section 3.
-    - Created a simple factory package in the folder [`simple_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory) to practice creating a simple factory package (using an `__init__.py`)
+    - Created a simple factory package in the folder [`simple`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple) to practice creating a simple factory package (using an `__init__.py`)
 
 ---
 
@@ -1589,7 +1589,7 @@ Back after a nine day physical and mental health recovery period.
 - Continued Pluralsight design patterns course:
     - Reviewed section 3.
     - Added Visual Studio Code configuration option to ignore specific `flake8` violations in specific files:
-        - Intent is to remove `flake8` warnings in [`__init.py__`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__init__.py) for [`F401 module imported but unused`](https://flake8.pycqa.org/en/latest/user/error-codes.html).
+        - Intent is to remove `flake8` warnings in [`__init.py__`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple/__init__.py) for [`F401 module imported but unused`](https://flake8.pycqa.org/en/latest/user/error-codes.html).
         - Added the [configuration option](https://9to5tutorial.com/for-beginners-introducing-flake8-to-visual-studio-code) [`--per-file-ignores=days/_83_84/*/__init__.py:F401`](https://flake8.pycqa.org/en/latest/user/options.html#cmdoption-flake8-per-file-ignores) to the Visual Studio Code Workspace section in the **Code>Preferences>Settings**  menu.
         - Adds the following JSON to the Workspace `settings.json` file:
 
@@ -1608,7 +1608,7 @@ Back after a nine day physical and mental health recovery period.
 - Continued Pluralsight design patterns course:
     - Reviewed section 3 content.
 - Refactored application layout (directory structure) to mimic the course instructor's example.
-    - Moved automobile classes, including the abstract automobile class to the [`autos`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/autos) directory.
+    - Moved automobile classes, including the abstract automobile class to the [`autos`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple/autos) directory.
     - Performed initial review of the `inspect` module documentation.
         - Gets detailed information about Python objects.
 
@@ -1618,21 +1618,21 @@ Back after a nine day physical and mental health recovery period.
 
 - Continued Pluralsight design patterns course:
     - Reviewed section 3 content.
-    - Started initial code framework in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory.py) file.
+    - Started initial code framework in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple/auto_factory.py) file.
         - Requires methods that will populate the `autos` dictionary with a car's model name and class name.
 
 ---
 
 ### :notebook: 11/9/22
 
-- Completed initial build of [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory/.py).
+- Completed initial build of [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple/auto_factory/.py).
     - Need to conduct testing to understand the use and return values from`inspect` module methods.
 
 ---
 
 ### :notebook: 11/10/22
 
-- Conducted review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory.py) in order to analyze return values from the following code:
+- Conducted review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple/auto_factory.py) in order to analyze return values from the following code:
 
     ```python
     import autos as Autos
@@ -1645,7 +1645,7 @@ Back after a nine day physical and mental health recovery period.
 
 ### :notebook: 11/11/22
 
-- Continued review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory.py):
+- Continued review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple/auto_factory.py):
     - Completed analysis of the `load_autos` method and added both docstring and inline comments to describe findings.
 
     ```python
@@ -1678,7 +1678,7 @@ Back after a nine day physical and mental health recovery period.
 
 ### :notebook: 11/12/22
 
-- Completed initial review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory.py):
+- Completed initial review of code in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple/auto_factory.py):
     - Completed analysis of the `create_instance` method and added both docstring and inline comments to describe findings.
 
     ```python
@@ -1700,7 +1700,7 @@ Back after a nine day physical and mental health recovery period.
 
 ### :notebook: 11/13/22
 
-- Completed initial code in [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__main__.py.):
+- Completed initial code in [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple/__main__.py.):
     - Unable to successfully use code, requires further troubleshooting.
     - Returning a `TypeError` exception
 
@@ -1708,7 +1708,7 @@ Back after a nine day physical and mental health recovery period.
         ./__main__.py 
         __init__.py complete.
         Traceback (most recent call last):
-        File "/workspaces/100daysofcode/days/_83_84/pluralsight/factory_pattern/simple_factory/./__main__.py", line 25, in <module>
+        File "/workspaces/100daysofcode/days/_83_84/pluralsight/factory_pattern/simple/./__main__.py", line 25, in <module>
             car.start()
         TypeError: Batmobile.start() missing 1 required positional argument: 'self'
         ```
@@ -1717,13 +1717,13 @@ Back after a nine day physical and mental health recovery period.
 
 ### :notebook: 11/14/22
 
-- Completed code, testing, and review of the [`simple_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory) application.
+- Completed code, testing, and review of the [`simple`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple) application.
     - Created an additional class to walk through the process of adding a new auto to the factory.
-        - Created the class `Rivian` in the file [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__main__.py.).
-        - Added the `Rivian` class to [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/autos/__main__.py.).
-        - Added `Rivian` to the `CAR_NAMES` tuple in [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/__main__.py.).
+        - Created the class `Rivian` in the file [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple/__main__.py.).
+        - Added the `Rivian` class to [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple/autos/__main__.py.).
+        - Added `Rivian` to the `CAR_NAMES` tuple in [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple/__main__.py.).
 
-- Corrected exception from [11/13/22](#notebook-111322) by adding parenthesis to the return value of the `AutoFactory.create_instance` method in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple_factory/auto_factory.py).
+- Corrected exception from [11/13/22](#notebook-111322) by adding parenthesis to the return value of the `AutoFactory.create_instance` method in [`auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/simple/auto_factory.py).
     - The parenthesis are necessary to create an instance of any class.
         - `my_string = str()` returns an instance of a class.
         - `my_string_1 = str` returns a copy of a class.
@@ -1761,21 +1761,21 @@ class AutoFactory(object):
 
 - Reviewed UML diagrams for the Simple and Full Factory Pattern examples.
 - Watched all remaining section 3 lessons in the Pluralsight course.
-- Next step is to build the Full Factory Pattern sample application defined in [`full_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory).
+- Next step is to build the Full Factory Pattern sample application defined in [`full`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full).
 
 ---
 
 ### :notebook: 11/17/22
 
-- Built initial Python files for the [`full_factory`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory) application:
+- Built initial Python files for the [`full`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full) application:
     - Added factory file for each concrete factory.
-    - Modified the [abstract_automobile](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/abstract_automobile.py) file to include the `name` property.
+    - Modified the [abstract_automobile](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/abstract_automobile.py) file to include the `name` property.
 
 ---
 
 ### :notebook: 11/18/22
 
-- Started initial build of [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/loader.py).
+- Started initial build of [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/factories/loader.py).
     - The file will dynamically import the correct concrete factory class, based on the name of the class supplied by the `factory_name` parameter.
         - The `importlib` module provides a mechanism to dynamically import modules.
 
@@ -1794,8 +1794,8 @@ class AutoFactory(object):
 ### :notebook: 11/19/22
 
 - Updated `import` statements in the following files to include absolute or relative paths to imported modules, in an attempt to resolve `ModuleNotFoundError.`
-    - [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/loader.py).
-    - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/lloyd_factory.py).
+    - [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/factories/loader.py).
+    - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/factories/lloyd_factory.py).
 
     - `import` statement errors require additional troubleshooting.
 
@@ -1804,11 +1804,11 @@ class AutoFactory(object):
 ### :notebook: 11/20/22
 
 - Removed relative import `.` characters input statements in the following files:
-    - factory_pattern/full_factory/factories/loader.py).
-    - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/lloyd_factory.py).
-    - [batmobile_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/blined_factory.py).
-    - [domino.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/domino_factory.py).
-    - [rivian_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/rivian_factory.py).
+    - factory_pattern/full/factories/loader.py).
+    - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/factories/lloyd_factory.py).
+    - [batmobile_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/factories/blined_factory.py).
+    - [domino.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/factories/domino_factory.py).
+    - [rivian_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/factories/rivian_factory.py).
 
 - Resolved many import errors, further discovery and troubleshooting required.
 
@@ -1816,7 +1816,7 @@ class AutoFactory(object):
 
 ### :notebook: 11/22/22
 
-- Successfully tested - [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/loader.py).
+- Successfully tested - [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/factories/loader.py).
     - Added docstrings, line comments, and type hints.
 
 ---
@@ -1825,10 +1825,10 @@ class AutoFactory(object):
 
 - Refactored concrete product class modules to use the `self.name` property, inherited from the corresponding concrete factory class modules, to replace hard-coded auto names in `print` functions with `self.name` variables.
 - Applicable modules:
-    - [batmobile.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/batmobile.py).
-    - [domino.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/domino.py).
-    - [lloyd.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/lloyd.py).
-    - [rivian.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/rivian.py).
+    - [batmobile.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/batmobile.py).
+    - [domino.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/domino.py).
+    - [lloyd.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/lloyd.py).
+    - [rivian.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/rivian.py).
 
     ```python
     # Original syntax example
@@ -1867,7 +1867,7 @@ class AutoFactory(object):
 
     # Updated syntax example
     from abstract_factory import AbstractFactory
-    from _83_84.pluralsight.factory_pattern.full_factory.autos.rivian import Rivian
+    from _83_84.pluralsight.factory_pattern.full.autos.rivian import Rivian
     ```
 
     ```bash
@@ -1876,12 +1876,12 @@ class AutoFactory(object):
     ```
 
 - Applicable modules:
-    - [batmobile_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/batmobile_factory.py).
-    - [domino_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/domino_factory.py).
-    - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/lloyd_factory.py).
-    - [rivian_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/autos/rivian_factory.py).
+    - [batmobile_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/factories/batmobile_factory.py).
+    - [domino_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/domino_factory.py).
+    - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/lloyd_factory.py).
+    - [rivian_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/rivian_factory.py).
 
-- Modified the [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full_factory/factories/loader.py) module to append a suffix of "`_loader`" to the `name` parameter in the `load-factory` function.
+- Modified the [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/factories/loader.py) module to append a suffix of "`_loader`" to the `name` parameter in the `load_factory` function.
     - This matches the concrete factory module names (`batmobile_factory`) when given a concrete product name (`batmobile`):
 
 ```python
@@ -1897,3 +1897,19 @@ factory_module = import_module(
     package='factories'
 )
 ```
+
+---
+
+### :notebook: 11/29/22
+
+- Updated folder names for brevity:
+    - Changed folder name `_83_84/pluralsight/factory_pattern/simple_factory` to `_83_84/pluralsight/factory_pattern/simple`
+    - Changed `_83_84/pluralsight/factory_pattern/full_factory` to `_83_84/pluralsight/factory_pattern/full`
+
+- Created the helper functions file [autos_helper.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/autos_helper.py) to limit reuse of code.
+    - Added simple `start` and `stop` functions that allows making centralized application-wide changes to `print` output.
+    - Refactored the following files to use the new functions:
+        - [batmobile.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/batmobile.py).
+        - [domino.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/domino.py).
+        - [lloyd.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/lloyd.py).
+        - [rivian.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/rivian.py).

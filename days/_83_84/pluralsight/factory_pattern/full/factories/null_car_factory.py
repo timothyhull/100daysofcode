@@ -3,8 +3,7 @@
 
 # Imports - Local
 from abstract_factory import AbstractFactory
-from _83_84.pluralsight.factory_pattern.full_factory.autos.null_car \
-    import NullCar
+from _83_84.pluralsight.factory_pattern.full.autos.null_car import NullCar
 
 
 class NullCarFactory(AbstractFactory):

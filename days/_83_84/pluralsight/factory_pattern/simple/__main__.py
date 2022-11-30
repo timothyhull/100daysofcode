@@ -2,7 +2,7 @@
 """ Package main program for the auto_factory.py app. """
 
 # Imports - Local
-from _83_84.pluralsight.factory_pattern.simple_factory.auto_factory \
+from _83_84.pluralsight.factory_pattern.simple.auto_factory \
     import AutoFactory
 
 # Constants

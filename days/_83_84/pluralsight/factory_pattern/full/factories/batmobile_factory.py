@@ -3,8 +3,7 @@
 
 # Imports - Local
 from abstract_factory import AbstractFactory
-from _83_84.pluralsight.factory_pattern.full_factory.autos.batmobile \
-    import Batmobile
+from _83_84.pluralsight.factory_pattern.full.autos.batmobile import Batmobile
 
 
 class BatmobileFactory(AbstractFactory):
