@@ -1913,3 +1913,10 @@ factory_module = import_module(
         - [domino.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/domino.py).
         - [lloyd.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/lloyd.py).
         - [rivian.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/rivian.py).
+
+---
+
+### :notebook: 11/30/22
+
+- Created initial code in [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/__main__.py.).
+    - Running the code produces a number of `ModuleNotFoundError` exceptions.  Further troubleshooting required.

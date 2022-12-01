@@ -13,7 +13,8 @@ from inspect import getmembers, isabstract, isclass
 from typing import Type
 
 # Imports - Local
-from abstract_factory import AbstractFactory
+from _83_84.pluralsight.factory_pattern.full.factories.abstract_factory \
+    import AbstractFactory
 
 # Constants
 DEFAULT_FACTORY_NAME = 'Unknown'
