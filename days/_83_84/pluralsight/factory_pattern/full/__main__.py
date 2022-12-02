@@ -2,7 +2,8 @@
 """ Main auto factory program. """
 
 # Imports - Local
-from factories.loader import load_factory
+from _83_84.pluralsight.factory_pattern.full.factories.loader \
+    import load_factory
 
 # Constants
 CAR_FACTORY_NAMES = (
@@ -16,10 +17,10 @@ CAR_FACTORY_NAMES = (
 # TODO
 for car_factory in CAR_FACTORY_NAMES:
     factory = load_factory(
-        factory_name=car_factory
+        factory_name=f'factories.{car_factory}'
     )
 
     # TODO
     car = factory.create_auto()
     car.start()
-    car.stop
+    car.stop()

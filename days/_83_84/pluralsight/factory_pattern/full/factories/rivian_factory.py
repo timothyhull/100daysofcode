@@ -2,7 +2,8 @@
 """ Rivian concrete factory class definition. """
 
 # Imports - Local
-from abstract_factory import AbstractFactory
+from _83_84.pluralsight.factory_pattern.full.factories.abstract_factory \
+    import AbstractFactory
 from _83_84.pluralsight.factory_pattern.full.autos.rivian import Rivian
 
 

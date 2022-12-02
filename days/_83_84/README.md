@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-11/30/2022
+# :calendar: Days 83+84: 7/10/2022-12/10/2022
 
 ---
 
@@ -1920,3 +1920,18 @@ factory_module = import_module(
 
 - Created initial code in [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/__main__.py.).
     - Running the code produces a number of `ModuleNotFoundError` exceptions.  Further troubleshooting required.
+
+---
+
+### :notebook: 12/1/22
+
+- Modified the `factory_name` argument in the `load_factory` method if [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/__main__.py.) to include a relative import path prefix of `factories` (for the `factories` sub-directory of `__main__`).
+
+- Modified the [loader.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/factories/loader.py) to include exception handling for both the `ImportError` and the `ModuleNotFoundError` exceptions.
+    - Modified the `name` argument in the `import_module` method to include a relative import path prefix of `factories` (for the `factories` sub-directory of `__main__`).
+
+- Modified the `import` statements in the following files from relative to absolute paths:
+    - [batmobile_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/factories/batmobile_factory.py).
+    - [domino_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/domino_factory.py).
+    - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/lloyd_factory.py).
+    - [rivian_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/rivian_factory.py).

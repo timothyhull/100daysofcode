@@ -45,9 +45,9 @@ def load_factory(
         )
 
     # If no matching concrete factory class is found, return a null class
-    except ImportError:
+    except ImportError or ModuleNotFoundError:
         factory_module = import_module(
-            name='null_car_factory',
+            name='factories.null_car_factory',
             package='factories'
         )
 
