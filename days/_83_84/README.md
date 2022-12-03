@@ -1935,3 +1935,20 @@ factory_module = import_module(
     - [domino_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/domino_factory.py).
     - [lloyd_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/lloyd_factory.py).
     - [rivian_factory.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/rivian_factory.py).
+
+---
+
+### :notebook: 12/2/22
+
+- Added inline comments to [`__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/__main__.py.)
+
+- Refactored the following files to use absolute `import` paths:
+        - [batmobile.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/batmobile.py).
+        - [domino.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/domino.py).
+        - [lloyd.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/lloyd.py).
+        - [null_car.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/null_car.py).
+        - [rivian.py](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/full/autos/rivian.py).
+
+- Application functions properly.
+    - Tested passing a dynamic name value to the `NullCar` concrete product class, to display the name of the car that has no matching concrete factory.
+    - Further troubleshooting required.

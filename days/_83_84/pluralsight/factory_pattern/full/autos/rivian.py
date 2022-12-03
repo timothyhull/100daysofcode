@@ -2,8 +2,10 @@
 """ Rivian concrete class definition. """
 
 # Imports - Local
-from .abstract_automobile import AbstractAutomobile
-from . import autos_helper
+from _83_84.pluralsight.factory_pattern.full.autos.abstract_automobile \
+    import AbstractAutomobile
+from _83_84.pluralsight.factory_pattern.full.autos \
+    import autos_helper
 
 
 class Rivian(AbstractAutomobile):

@@ -2,18 +2,17 @@
 """ Null class constructor for unknown cars. """
 
 # Imports - Local
-from .abstract_automobile import AbstractAutomobile
+from _83_84.pluralsight.factory_pattern.full.autos.abstract_automobile \
+    import AbstractAutomobile
 
 
 class NullCar(AbstractAutomobile):
-    def __init__(self, car_name) -> None:
-        self._car_name = car_name
-
-        return None
+    """ Concrete class for instances of unknown/NullCar cars. """
 
     def start(self) -> None:
-        print(f'Error, unknown car, "{self._car_name}".')
-
+        # print(f'Error, unknown car, "{self.name}".')
+        print('Error, unknown car.')
+        print(self._name)
         return None
 
     def stop(self) -> None:

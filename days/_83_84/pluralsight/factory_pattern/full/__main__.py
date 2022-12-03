@@ -14,13 +14,16 @@ CAR_FACTORY_NAMES = (
     'rivian'
 )
 
-# TODO
+# Loop over concrete car factory names and produce concrete products
 for car_factory in CAR_FACTORY_NAMES:
+    # Create a concrete factory using load_factory and 'factories.' path prefix
     factory = load_factory(
         factory_name=f'factories.{car_factory}'
     )
 
-    # TODO
+    # Create a concrete product (car) with the concrete factory object
     car = factory.create_auto()
+
+    # Run methods of the concrete product instance
     car.start()
     car.stop()
