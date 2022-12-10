@@ -10,7 +10,6 @@ class NullCar(AbstractAutomobile):
     """ Concrete class for instances of unknown/NullCar cars. """
 
     def start(self) -> None:
-        # print(f'Error, unknown car, "{self.name}".')
         print('Error, unknown car.')
         print(self._name)
         return None

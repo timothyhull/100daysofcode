@@ -1952,3 +1952,10 @@ factory_module = import_module(
 - Application functions properly.
     - Tested passing a dynamic name value to the `NullCar` concrete product class, to display the name of the car that has no matching concrete factory.
     - Further troubleshooting required.
+
+---
+
+### :notebook: 12/9/22
+
+- Unable to find a way to dynamically insert the name of a car without an explicit, named factory into the output string, `Error, unknown car type "Camry"`.
+    - Moving to Abstract factory lesson.
