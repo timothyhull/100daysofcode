@@ -697,8 +697,8 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Break for rest :sleeping:
 - Break for rest :sleeping:
 - Days 83+84bq: [9/26/22](days/_83_84#notebook-92622)
-- Break for rest :sleeping:
-- Break for rest :sleeping:
+- Break for work project :face_exhaling:
+- Break for work project :face_exhaling:
 - Break for rest :sleeping:
 - Break for rest :sleeping:
 - Days 83+84br: [10/1/22](days/_83_84#notebook-10122)
@@ -707,17 +707,17 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Days 83+84bw: [10/4/22](days/_83_84#notebook-10422)
 - Break for rest :sleeping:
 - Days 83+84bx: [10/6/22](days/_83_84#notebook-10622)
-- Break for rest :sleeping:
-- Break for rest :sleeping:
+- Break for work project :face_exhaling:
+- Break for work project :face_exhaling:
 - Break for rest :sleeping:
 - Days 83+84by: [10/10/22](days/_83_84#notebook-101022)
 - Break for rest :sleeping:
+- Break for work project :face_exhaling:
+- Break for work project :face_exhaling:
 - Break for rest :sleeping:
 - Break for rest :sleeping:
-- Break for rest :sleeping:
-- Break for rest :sleeping:
-- Break for rest :sleeping:
-- Break for rest :sleeping:
+- Break for work project :face_exhaling:
+- Break for work project :face_exhaling:
 - Break for rest :sleeping:
 - Break for rest :sleeping:
 - Days 83+84bz: [10/20/22](days/_83_84#notebook-102022)
@@ -729,10 +729,10 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Break for rest :sleeping:
 - Days 83+84ce: [10/27/22](days/_83_84#notebook-102722)
 - Break for rest :sleeping:
-- Break for rest :sleeping:
-- Break for rest :sleeping:
-- Break for rest :sleeping:
-- Break for rest :sleeping:
+- Break for work project :face_exhaling:
+- Break for work project :face_exhaling:
+- Break for work project :face_exhaling:
+- Break for work project :face_exhaling:
 - Break for rest :sleeping:
 - Break for rest :sleeping:
 - Days 83+84cf: [11/3/22](days/_83_84#notebook-11322)
@@ -761,12 +761,15 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Days 83+84cy: [11/30/22](days/_83_84#notebook-113022)
 - Days 83+84cz: [12/1/22](days/_83_84#notebook-12122)
 - Days 83+84da: [12/2/22](days/_83_84#notebook-12222)
-- Break for rest :sleeping:
-- Break for rest :sleeping:
+- Break for work project :face_exhaling:
+- Break for work project :face_exhaling:
 - Break for rest :sleeping:
 - Break for rest :sleeping:
 - Break for rest :sleeping:
 - Break for rest :sleeping:
 - Days 83+84db: [12/9/22](days/_83_84#notebook-12922)
+- Break for rest :sleeping:
+- Break for rest :sleeping:
+- Days 83+84dc: [12/12/22](days/_83_84#notebook-121222)
 
 </details>
