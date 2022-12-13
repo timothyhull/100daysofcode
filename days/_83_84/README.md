@@ -1959,3 +1959,19 @@ factory_module = import_module(
 
 - Unable to find a way to dynamically insert the name of a car without an explicit, named factory into the output string, `Error, unknown car type "Camry"`.
     - Moving to Abstract factory lesson.
+
+---
+
+### :notebook: 12/12/22
+
+- Completed initial watch of the Abstract Factory Pattern Pluralsight videos.
+    - No notes taken, familiarization only.
+
+- Developed initial application framework files including:
+    - [`abstract/__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/__main__.py.)
+    - [`abstract/auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/auto_factory.py.)
+    - [`abstract/autos/__init__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/__init__.py.)
+    - [`abstract/autos/abs_autos.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/abs_autos.py.)
+    - [`abstract/autos/tesla.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/tesla.py.)
+    - [`abstract/factories/__init__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/factories/__init__.py.)
+    - [`abstract/factories/abs_factories.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/factories/abs_factories.py.)
