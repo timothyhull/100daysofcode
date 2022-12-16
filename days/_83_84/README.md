@@ -1,4 +1,4 @@
-# :calendar: Days 83+84: 7/10/2022-12/10/2022
+# :calendar: Days 83+84: 7/10/2022-12/20/2022
 
 ---
 
@@ -1969,16 +1969,23 @@ factory_module = import_module(
 
 - Developed initial application framework files including:
     - [`abstract/__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/__main__.py.)
-    - [`abstract/auto_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/auto_factory.py.)
     - [`abstract/autos/__init__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/__init__.py.)
-    - [`abstract/autos/abs_autos.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/abs_autos.py.)
-    - [`abstract/autos/tesla.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/tesla.py.)
+    - [`abstract/autos/abs_auto.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/abs_auto.py.)
+    - [`abstract/autos/tesla/model_3.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/tesla/model_3.py.)
     - [`abstract/factories/__init__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/factories/__init__.py.)
-    - [`abstract/factories/abs_factories.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/factories/abs_factories.py.)
+    - [`abstract/factories/abs_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/factories/abs_factory.py.)
 
 ---
 
 ### :notebook: 12/14/22
 
 - Re-watched Abstract Factory Pattern Pluralsight videos 1-3.
-    - Added overview and pattern structured Evernote notes.
+    - Added overview and pattern structure Evernote notes.
+
+---
+
+### :notebook: 12/15/22
+
+- Re-watched Abstract Factory Pluralsight video 4.
+    - Expanded application to support three car models for one car manufacturer.
+    - Next step is to expand the application to support three additional car models for one additional car manufacturer, with as little referencing existing materials as possible.
