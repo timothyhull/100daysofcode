@@ -1968,12 +1968,12 @@ factory_module = import_module(
     - No notes taken, familiarization only.
 
 - Developed initial application framework files including:
-    - [`abstract/__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/__main__.py.)
-    - [`abstract/autos/__init__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/__init__.py.)
-    - [`abstract/autos/abs_auto.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/abs_auto.py.)
-    - [`abstract/autos/tesla/model_3.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/tesla/model_3.py.)
-    - [`abstract/factories/__init__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/factories/__init__.py.)
-    - [`abstract/factories/abs_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/factories/abs_factory.py.)
+    - [`abstract/__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/__main__.py)
+    - [`abstract/autos/__init__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/__init__.py)
+    - [`abstract/autos/abs_auto.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/abs_auto.py)
+    - [`abstract/autos/tesla/model_3.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/autos/tesla/model_3.py)
+    - [`abstract/factories/__init__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/factories/__init__.py)
+    - [`abstract/factories/abs_factory.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/factories/abs_factory.py)
 
 ---
 
@@ -1989,3 +1989,11 @@ factory_module = import_module(
 - Re-watched Abstract Factory Pluralsight video 4.
     - Expanded application to support three car models for one car manufacturer.
     - Next step is to expand the application to support three additional car models for one additional car manufacturer, with as little referencing existing materials as possible.
+
+---
+
+### :notebook: 12/16/22
+
+- Expanded the application to support three additional car models (Bolt, Lyriq, & Hummer) for one additional car manufacturer (GM).
+    - Updated [`abstract/__main__.py`](https://github.com/timothyhull/100daysofcode/tree/main/days/_83_84/pluralsight/factory_pattern/abstract/__main__.py) to loop over multiple factory classes (for each manufacturer).
+    - Next step is to review code, add comments, and understand abstract factory interface flow.

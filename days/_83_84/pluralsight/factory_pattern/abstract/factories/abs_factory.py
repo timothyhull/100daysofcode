@@ -16,7 +16,7 @@ class ABSFactory(ABC):
         pass
 
     @abstractmethod
-    def create_sport_car(self):
+    def create_sports_car(self):
         """ Abstract method to create sport cars for many OEMs. """
 
         pass
