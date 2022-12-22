@@ -18,7 +18,9 @@
 
 :white_check_mark: Watch videos 1-5
 
-:white_large_square: Watch videos 6-24
+:white_check_mark: Watch videos 6-9
+
+:white_large_square: Watch videos 10-24
 
 ---
 
@@ -79,7 +81,7 @@ class HomeForm(HomeFormTemplate):
         self.content_panel.clear()
 
     def link_home_click(self, **event_args):
-        """This method is called when the link is clicked"""
+        """This method is called when the 'Home' link is clicked"""
         # Clear page content
         self._clear_content()
 
@@ -88,7 +90,7 @@ class HomeForm(HomeFormTemplate):
         self.content_panel.add_component(HomeDetailsForm())
 
     def link_all_docs_click(self, **event_args):
-        """This method is called when the link is clicked"""
+        """This method is called when the 'All Docs' link is clicked"""
         # Clear page content
         self._clear_content()
 
@@ -97,7 +99,7 @@ class HomeForm(HomeFormTemplate):
         self.content_panel.add_component((AllDocsForm()))
 
     def link_add_doc_click(self, **event_args):
-        """This method is called when the link is clicked"""
+        """This method is called when the link 'Add Doc' is clicked"""
         # Clear page content
         self._clear_content()
 
@@ -105,3 +107,44 @@ class HomeForm(HomeFormTemplate):
         self.label_title.text = 'PyPoint: Add New Doc'
         self.content_panel.add_component(AddDocForm())
 ```
+
+---
+
+### :notebook: 12/21/22
+
+- Watched video 19.
+    - Added form fields and Python content into the **Add Docs** form.
+
+    ```python
+    from ._anvil_designer import AddDocFormTemplate
+    from anvil import *
+
+    class AddDocForm(AddDocFormTemplate):
+    def __init__(self, **properties):
+        # Set Form properties and Data Bindings.
+        self.init_components(**properties)
+
+        # Any code you write here will run before the form opens.
+        # Document categories
+        categories = [
+            'docs',
+            'science',
+            'news',
+            'social'
+        ]
+
+        # Populate default drop-down category menu with a 'None' value
+        self.drop_down_category.items = [
+            # The two-tuple specifies text to display and the value of the entry
+            ('select a category', None),
+        ]
+    
+        # Populate drop-down categories menu with 'categories' values
+        self.drop_down_category.items += [
+            (c, c) for c in categories
+        ]
+
+    def button_create_doc_click(self, **event_args):
+        """This method is called when the 'Create document' button is clicked"""
+        pass
+    ```
