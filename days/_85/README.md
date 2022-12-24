@@ -20,7 +20,11 @@
 
 :white_check_mark: Watch videos 6-9
 
-:white_large_square: Watch videos 10-24
+:white_check_mark: Watch video 10
+
+:white_check_mark: Watch video 11
+
+:white_large_square: Watch videos 12-24
 
 ---
 
@@ -112,7 +116,7 @@ class HomeForm(HomeFormTemplate):
 
 ### :notebook: 12/21/22
 
-- Watched video 19.
+- Watched videos 9-10.
     - Added form fields and Python content into the **Add Docs** form.
 
     ```python
@@ -151,6 +155,205 @@ class HomeForm(HomeFormTemplate):
 
 ---
 
-### :notebook: 12/22/22
+### :notebook: 12/23/22
 
-- TODO
+- Watched video 11.
+    - Added data validation to the **Add Docs** form:
+
+        ```python
+        from ._anvil_designer import AddDocFormTemplate
+        from anvil import *
+
+        class AddDocForm(AddDocFormTemplate):
+            def __init__(self, **properties):
+                # Set Form properties and Data Bindings.
+                self.init_components(**properties)
+
+                # Any code you write here will run before the form opens.
+                # Document categories
+                categories = [
+                    'docs',
+                    'science',
+                    'news',
+                    'social'
+                ]
+
+                # Populate default drop-down category menu with a 'None' value
+                self.drop_down_category.items = [
+                    # The two-tuple specifies text to display and the value of the entry
+                    ('select a category', None),
+                ]
+            
+                # Populate drop-down categories menu with 'categories' values
+                self.drop_down_category.items += [
+                    (c, c) for c in categories
+                ]
+
+            def button_create_doc_click(self, **event_args):
+                """This method is called when the 'Create document' button is clicked"""
+            
+                # Call the 'validate' method
+                errors = self.validate()
+
+                # Display or hide document name errors
+                if errors.get('name'):
+                    self.label_doc_name_error.visible = True
+                else:
+                    self.label_doc_name_error.visible = False
+
+                # Display or hide category errors
+                if errors.get('category'):
+                    self.label_category_error.visible = True
+                else:
+                    self.label_category_error.visible = False
+                
+                # Display or hide contents errors
+                if errors.get('contents'):
+                    self.label_contents_error.visible = True
+                else:
+                    self.label_contents_error.visible = False
+
+            def validate(self):
+                """ Validate data entry.
+
+                    Args:
+                    None.
+                    
+                    Returns:
+                    errors (Dict):
+                        Dict object with data validation error instances.
+                """
+            
+                # Create an 'errors' dictionary with default values
+                errors = dict(
+                    name='',
+                    category='',
+                    contents=''
+                )
+                
+                # Validate the document name entry
+                if not self.text_box_doc_name.text.strip():
+                    errors.update(
+                        {'name': 'Enter a name for the document.'}
+                    )
+            
+                # Validate the category entry
+                if self.drop_down_category.selected_value is None:
+                    errors.update(
+                        {'category': 'Select a document category.'}
+                    )
+            
+                # Validate the document contents
+                if not self.text_area_contents.text.strip():
+                    errors.update(
+                        {'contents': 'Enter the document contents.'}
+                    )
+            
+                return errors
+        ```
+
+    - Originally attempted to use a Typing.NamedTuple object to store input field error status, to allow the use of dot notation (versus using the dict.update method) when displaying data validation.
+        - Client-side Anvil does not support all modules in the Python Standard Library, including the `Typing` module.  **As such, the code below is unusable**.
+
+        ```python
+        from ._anvil_designer import AddDocFormTemplate
+        from anvil import *
+        from typing import Any, NamedTuple
+
+        # NamedTuple object for data validation
+        class InputErrors(NamedTuple):
+        name: str(Any)
+        category: str(Any)
+        contents: str(Any)
+
+        class AddDocForm(AddDocFormTemplate):
+            def __init__(self, **properties):
+                # Set Form properties and Data Bindings.
+                self.init_components(**properties)
+
+                # Any code you write here will run before the form opens.
+                # Document categories
+                categories = [
+                    'docs',
+                    'science',
+                    'news',
+                    'social'
+                ]
+
+                # Populate default drop-down category menu with a 'None' value
+                self.drop_down_category.items = [
+                    # The two-tuple specifies text to display and the value of the entry
+                    ('select a category', None)
+                ]
+
+                # Populate drop-down categories menu with 'categories' values
+                self.drop_down_category.items += [
+                    (c, c) for c in categories
+                ]
+
+            def button_create_doc_click(self, **event_args):
+                """This method is called when the 'Create document' button is clicked"""
+
+                # Call the 'validate' method
+                errors = self.validate()
+
+                # Display or hide document name errors
+                if errors.name:
+                    self.label_doc_name_error.visible = True
+                else:
+                    self.label_doc_name_error.visible = False
+
+                # Display or hide category errors
+                if errors.category:
+                    self.label_category_error.visible = True
+                else:
+                    self.label_category_error.visible = False
+                
+                # Display or hide contents errors
+                if errors.contents:
+                    self.label_contents_error.visible = True
+                else:
+                    self.label_contents_error.visible = False
+
+            def validate(self) -> InputErrors:
+                """ Validate data entry.
+
+                    Args:
+                        None.
+                        
+                    Returns:
+                        errors (InputErrors):
+                        InputErrors NamedTuple object with data validation
+                        error instances.
+                """
+
+                # Create a default errors dictionary
+                _errors_defaults = dict(
+                    name='',
+                    category='',
+                    contents=''
+                )
+
+                # Validate the document name entry
+                if not self.text_box_doc_name.text.strip():
+                    _errors_defaults.update(
+                    {'name': 'Enter a name for the document.'}
+                    )
+
+                # Validate the category entry
+                if self.drop_down_category.selected_value is None:
+                    _errors_defaults.update(
+                    {'category': 'Select a category for the document.'}
+                    )
+
+                # Validate the document contents
+                if not self.text_area_contents.text.strip():
+                    _errors_defaults.update(
+                    {'contents': 'Enter the document contents.'}
+                    )
+
+                # Create the 'errors' InputErrors object to return
+                errors = InputErrors(**_errors_defaults)
+
+                return errors
+        ```
