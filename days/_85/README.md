@@ -1,4 +1,4 @@
-# :calendar: Day 85: 12/26/2022
+# :calendar: Day 85: 12/28/2022
 
 ---
 
@@ -357,3 +357,82 @@ class HomeForm(HomeFormTemplate):
 
                 return errors
         ```
+
+---
+
+### :notebook: 12/24/22
+
+- Updated layout of error fields to improve readability.
+- Added a final data validation check to use before creating a document.
+    - Creates a list comprehension from the `errors` dictionary object and compares it to a list of empty strings.
+    - All empty strings indicates no error messages.
+
+        ```python
+        # Confirm no errors exist or return False
+        if not [error for error in errors.values()] == ['', '', '']:
+            return False
+        ```
+
+- Created `Data Tables` Anvil DB service with two tables, `categories` and `docs`.
+    - Populated `categories` table with category names.
+    - Established **foreign key relationship** between the `name` column in the `categories` table with the `category` column in the `docs` category.
+
+- Wrote Anvil server-side Python to query the `Data Tables` DB.
+
+    ```python
+    import anvil.tables as tables
+    import anvil.tables.query as q
+    from anvil.tables import app_tables
+    import anvil.server
+
+    # Get all documents
+    @anvil.server.callable
+    def all_docs():
+        results = list(app_tables.docs.search(tables.order_by("created", ascending=False)))
+        return results
+
+    # Get all categories
+    @anvil.server.callable
+    def all_categories():
+        results = list(app_tables.categories.search(tables.order_by('name')))
+        return results
+
+    # Get a document by name
+    @anvil.server.callable
+    def doc_by_name(name):
+        return app_tables.docs.get(name=name)
+
+    # Get a category by name
+    @anvil.server.callable
+    def category_by_name(name):
+        return app_tables.categories.get(name=name)
+    ```
+
+- Replaced static categories list in the `AddDocForm` form with results returned from the server-side DB query function `all_categories`.
+
+```python
+# Static document categories
+# categories = [
+#   'Docs',
+#   'Science',
+#   'News',
+#   'Social'
+# ]
+
+# Fetch raw category data from the DB
+raw_categories = anvil.server.call('all_categories')
+
+# Convert raw category data to a list of category names
+categories = [c['name'] for c in raw_categories]
+
+# Populate default drop-down category menu with a 'None' value
+self.drop_down_category.items = [
+  # The two-tuple specifies text to display and the value of the entry
+  ('select a category', None) 
+]
+
+# Populate drop-down categories menu with 'categories' values
+self.drop_down_category.items += [
+  (c, c) for c in categories
+]
+```
