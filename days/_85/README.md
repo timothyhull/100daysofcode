@@ -24,7 +24,11 @@
 
 :white_check_mark: Watch video 11
 
-:white_large_square: Watch videos 12-24
+:white_check_mark: Watch videos 12-13
+
+:white_check_mark: Watch video 14
+
+:white_large_square: Watch videos 15-24
 
 ---
 
@@ -388,14 +392,27 @@ class HomeForm(HomeFormTemplate):
     # Get all documents
     @anvil.server.callable
     def all_docs():
-        results = list(app_tables.docs.search(tables.order_by("created", ascending=False)))
-        return results
+    results = list(
+        app_tables.docs.search(
+            tables.order_by(
+                "created",
+                ascending=False
+            )
+        )
+    )
+    return results
 
     # Get all categories
     @anvil.server.callable
     def all_categories():
-        results = list(app_tables.categories.search(tables.order_by('name')))
-        return results
+    results = list(
+        app_tables.categories.search(
+            tables.order_by(
+                'name'
+            )
+        )
+    )
+    return results
 
     # Get a document by name
     @anvil.server.callable
@@ -436,3 +453,87 @@ self.drop_down_category.items += [
   (c, c) for c in categories
 ]
 ```
+
+---
+
+### :notebook: 12/25/22
+
+- Watched video 14.
+- Added the server code function `add_doc` to insert a new document into the database:
+
+    ```python
+    # Add a new document
+    @anvil.server.callable
+    def add_doc(
+    name: str,
+    category_name: str,
+    contents: str,
+    views: int
+    ):
+    """ Add a new document to the database.
+
+        Args:
+            name (str):
+            Name of the document.
+
+            category_name (str):
+            Category choice for the document.  Must match the name
+            of a table row in the 'categories' table.
+
+            contents (str):
+            Document contents.
+
+            views (int):
+            TODO
+
+        Returns:
+            None.
+    """
+    
+    # Display a status message
+    print(
+        f"Server: creating new document {name}, {category_name}, "
+        f"{contents}, {views}."
+    )
+
+    # Get the row from the category table that matches the form selection
+    # Required for relational table inserts (can't just add text)
+    category = category_by_name(
+        name=category_name
+    )
+
+    # Add the new document to the database
+    app_tables.docs.add_row(
+        name=name,
+        category=category,
+        contents=contents,
+        created=datetime.datetime.now(),
+        views=views
+    )
+
+    # Get the row from the docs table that matches the new doc
+    doc_name = doc_by_name(
+        name=name
+    )
+
+    return doc_name
+
+    ```
+
+- Updated the `AddDocForm` code to call the server `add_doc` function.
+
+    ```python
+    # Add a new document to the DB
+    name = self.text_box_doc_name.text.strip()
+    category_name = self.drop_down_category.selected_value
+    contents = self.text_area_contents.text.strip()
+    views = 0
+    
+    anvil.server.call(
+        'add_doc',
+        name,
+        category_name,
+        contents,
+        views
+    )
+    ```
