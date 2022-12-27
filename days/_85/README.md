@@ -537,3 +537,83 @@ self.drop_down_category.items += [
         views
     )
     ```
+
+---
+
+### :notebook: 12/26/22
+
+- Added **client module** named `client_utilities` in order to make common client-side Python functions available to any other client module.
+
+    ```python
+    import anvil.server
+    import anvil.tables as tables
+    import anvil.tables.query as q
+    from anvil.tables import app_tables
+
+    """ Begin relevant code """
+    # Initialize the `home_form` variable
+    # Value will be assigned by the __init__ method in the HomeForm class
+    home_form = None
+
+    # Define a function to call the HomeForm.link_home_click
+    def go_home():
+        home_form.link_home_click()
+    ```
+
+    """ End relevant code """
+    pass
+
+- Added code to the `HomeForm` **Form** that imports the `client_utilities` module.
+    - Adding `client_utilities.home_form = self` to the `__init__` method creates an instance of the `HomeForm` class and assigns the instance to the client_utilities.home_form object.
+
+        ```python
+        class HomeForm(HomeFormTemplate):
+            def __init__(self, **properties):
+                # Set Form properties and Data Bindings.
+                self.init_components(**properties)
+
+g                self.link_home_click()
+
+                # Set the value of 'utilities.home_form' to be an instance of HomeForm
+                # This provides access to utilities.home_form from any other form
+                client_utilities.home_form = self
+                """ End relevant code. """
+        ```
+
+    - This makes an instance of the `HomeForm` class available to all **client modules** that import the `client_utilities` module.
+        - For the use case of redirecting a browser to the home page, after adding a new document, it is possible for `AddDocForm` to import `client_utilities` and call the `home_form.link_home_click` function after adding a new document.
+
+```python
+# AddDocForm.AddDocForm code snippets
+from .. import client_utilities
+
+class AddDocForm(AddDocFormTemplate):
+    # Code omitted for brevity
+
+    def button_create_doc_click(self, **event_args):
+        """This method is called when the 'Create document' button is clicked"""
+    
+        # Call the 'validate' method
+        errors = self.validate()
+
+        # Code omitted for brevity
+
+        # Add a new document to the DB
+        name = self.text_box_doc_name.text.strip()
+        category_name = self.drop_down_category.selected_value
+        contents = self.text_area_contents.text.strip()
+        views = 0
+
+        anvil.server.call(
+            'add_doc',
+            name,
+            category_name,
+            contents,
+            views
+        )
+
+        """ Begin relevant code. """
+        # Return to the home page
+        client_utilities.go_home()
+        """ End relevant code. """
+```
