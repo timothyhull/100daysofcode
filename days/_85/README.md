@@ -28,7 +28,11 @@
 
 :white_check_mark: Watch video 14
 
-:white_large_square: Watch videos 15-24
+:white_check_mark: Watch video 15
+
+:white_large_square: Watch video 16
+
+:white_large_square: Watch videos 17-24
 
 ---
 
@@ -542,6 +546,7 @@ self.drop_down_category.items += [
 
 ### :notebook: 12/26/22
 
+- Watched video 15.
 - Added **client module** named `client_utilities` in order to make common client-side Python functions available to any other client module.
 
     ```python
@@ -558,10 +563,8 @@ self.drop_down_category.items += [
     # Define a function to call the HomeForm.link_home_click
     def go_home():
         home_form.link_home_click()
-    ```
-
     """ End relevant code """
-    pass
+    ```
 
 - Added code to the `HomeForm` **Form** that imports the `client_utilities` module.
     - Adding `client_utilities.home_form = self` to the `__init__` method creates an instance of the `HomeForm` class and assigns the instance to the client_utilities.home_form object.
@@ -572,8 +575,10 @@ self.drop_down_category.items += [
                 # Set Form properties and Data Bindings.
                 self.init_components(**properties)
 
-g                self.link_home_click()
+                # Any code you write here will run before the form opens.
+                self.link_home_click()
 
+                """ Begin relevant code """
                 # Set the value of 'utilities.home_form' to be an instance of HomeForm
                 # This provides access to utilities.home_form from any other form
                 client_utilities.home_form = self
@@ -617,3 +622,47 @@ class AddDocForm(AddDocFormTemplate):
         client_utilities.go_home()
         """ End relevant code. """
 ```
+
+---
+
+### :notebook: 12/27/22
+
+- Watched first half of video 16.
+    - Added a **Repeating Panel** component to the `AllDocsForm` **Form**, to display results from a database query row-by-row.
+        - Called a server-side database query `all_docs` from the `AllDocsForm` and applied the query results to the `items` property of the **Repeating Panel** object:
+
+            ```python
+            class AllDocsForm(AllDocsFormTemplate):
+                def __init__(self, **properties):
+                    # Set Form properties and Data Bindings.
+                    self.init_components(**properties)
+
+                    # Any code you write here will run before the form opens.
+
+                    """ Begin relevant code. """
+                    # Set repeating panel items using the 'all_docs' DB query results
+                    self.repeating_panel_docs.items = anvil.server.call('all_docs')
+                    """ End relevant code. """
+            ```
+
+        - Set the results of the **Title** column of the **Repeating Panel** to:
+            - `self.item['name']`
+
+    - Added code to the `AllDocsItemPanel` **Repeating Panel** class to format the _Created Date_ for each document explicitly when the document is shown/rendered
+        - Used the `strftime` method to set the results of the **Created** column of the **Repeating Panel** to a visually-friendly version of the created date with:
+            - `self.label_doc_created.text = self.item['created'].strftime('%B %d, %Y')`
+
+            ```python
+            class AllDocsItemPanel(AllDocsItemPanelTemplate):
+                def __init__(self, **properties):
+                    # Set Form properties and Data Bindings.
+                    self.init_components(**properties)
+
+                    # Any code you write here will run before the form opens.
+
+                def label_doc_created_show(self, **event_args):
+                    """This method is called when the Label is shown on the screen"""
+
+                    # Insert the self.item['created'] text with a string time format
+                    self.label_doc_created.text = self.item['created'].strftime('%B %d, %Y')
+            ```
