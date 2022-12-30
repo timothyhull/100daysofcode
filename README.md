@@ -542,63 +542,63 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 
 <details><summary>Days 70-72: Excel Automation with `openpyxl`</summary>
 
-- Days 70+71: [5/17/22](https://github.com/timothyhull/100daysofcode/blob/main/days_70_71)
-- Days 70+71a: [5/18/22](https://github.com/timothyhull/100daysofcode/blob/main/days_70_71/README.md/#notebook-51822)
-- Days 70+71b: [5/19/22](https://github.com/timothyhull/100daysofcode/blob/main/days_70_71/README.md/#notebook-51922)
-- Days 70+71c: [5/20/22](https://github.com/timothyhull/100daysofcode/blob/main/days_70_71/README.md/#notebook-52022)
-- Days 70+71d: [5/21/22](https://github.com/timothyhull/100daysofcode/blob/main/days_70_71/README.md/#notebook-52122)
-- Day 72: [5/22/22](https://github.com/timothyhull/100daysofcode/blob/main/days_72)
-- Day 72a: [5/23/22](https://github.com/timothyhull/100daysofcode/blob/main/days_72/README.md/#notebook-52322)
-- Day 72b: [5/24/22](https://github.com/timothyhull/100daysofcode/blob/main/days_72/README.md/#notebook-52422)
-- Day 72c: [5/25/22](https://github.com/timothyhull/100daysofcode/blob/main/days_72/README.md/#notebook-52522)
-- Day 72d: [5/26/22](https://github.com/timothyhull/100daysofcode/blob/main/days_72/README.md/#notebook-52622)
-- Day 72e: [5/27/22](https://github.com/timothyhull/100daysofcode/blob/main/days_72/README.md/#notebook-52722)
-- Day 72f: [5/28/22](https://github.com/timothyhull/100daysofcode/blob/main/days_72/README.md/#notebook-52822)
+- Days 70+71: [5/17/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_70_71)
+- Days 70+71a: [5/18/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_70_71/README.md/#notebook-51822)
+- Days 70+71b: [5/19/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_70_71/README.md/#notebook-51922)
+- Days 70+71c: [5/20/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_70_71/README.md/#notebook-52022)
+- Days 70+71d: [5/21/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_70_71/README.md/#notebook-52122)
+- Day 72: [5/22/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_72)
+- Day 72a: [5/23/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_72/README.md/#notebook-52322)
+- Day 72b: [5/24/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_72/README.md/#notebook-52422)
+- Day 72c: [5/25/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_72/README.md/#notebook-52522)
+- Day 72d: [5/26/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_72/README.md/#notebook-52622)
+- Day 72e: [5/27/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_72/README.md/#notebook-52722)
+- Day 72f: [5/28/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_72/README.md/#notebook-52822)
 
 </details>
 
 <details><summary>Days 73-75: Automating Tasks With Selenium</summary>
 
-- Day 73: [5/30/22](https://github.com/timothyhull/100daysofcode/blob/main/days_73)
+- Day 73: [5/30/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_73)
 - Break for rest :sleeping:
-- Day 73a: [5/31/22](https://github.com/timothyhull/100daysofcode/blob/main/days_73/README.md/#notebook-53122)
-- Day 73b: [6/1/22](https://github.com/timothyhull/100daysofcode/blob/main/days_73/README.md/#notebook-6122)
-- Day 73c: [6/2/22](https://github.com/timothyhull/100daysofcode/blob/main/days_73/README.md/#notebook-6222)
-- Day 73d: [6/3/22](https://github.com/timothyhull/100daysofcode/blob/main/days_73/README.md/#notebook-6322)
-- Days 74+75: [6/4/22](https://github.com/timothyhull/100daysofcode/blob/main/days_74_75)
-- Days 74+75a: [6/5/22](https://github.com/timothyhull/100daysofcode/blob/main/days_74_75/README.md/#notebook-6/5/22)
-- Days 74+75b: [6/6/22](https://github.com/timothyhull/100daysofcode/blob/main/days_74_75/README.md/#notebook-6/6/22)
-- Days 74+75c: [6/7/22](https://github.com/timothyhull/100daysofcode/blob/main/days_74_75/README.md/#notebook-6/7/22)
-- Days 74+75d: [6/8/22](https://github.com/timothyhull/100daysofcode/blob/main/days_74_75/README.md/#notebook-6/8/22)
-- Days 74+75e: [6/9/22](https://github.com/timothyhull/100daysofcode/blob/main/days_74_75/README.md/#notebook-6/9/22)
-- Days 74+75f: [6/10/22](https://github.com/timothyhull/100daysofcode/blob/main/days_74_75/README.md/#notebook-6/10/22)
-- Days 74+75g: [6/11/22](https://github.com/timothyhull/100daysofcode/blob/main/days_74_75/README.md/#notebook-6/11/22)
-- Days 74+75h: [6/12/22](https://github.com/timothyhull/100daysofcode/blob/main/days_74_75/README.md/#notebook-6/12/22)
-- Days 74+75i: [6/13/22](https://github.com/timothyhull/100daysofcode/blob/main/days_74_75/README.md/#notebook-6/12/22)
+- Day 73a: [5/31/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_73/README.md/#notebook-53122)
+- Day 73b: [6/1/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_73/README.md/#notebook-6122)
+- Day 73c: [6/2/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_73/README.md/#notebook-6222)
+- Day 73d: [6/3/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_73/README.md/#notebook-6322)
+- Days 74+75: [6/4/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_74_75)
+- Days 74+75a: [6/5/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_74_75/README.md/#notebook-6/5/22)
+- Days 74+75b: [6/6/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_74_75/README.md/#notebook-6/6/22)
+- Days 74+75c: [6/7/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_74_75/README.md/#notebook-6/7/22)
+- Days 74+75d: [6/8/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_74_75/README.md/#notebook-6/8/22)
+- Days 74+75e: [6/9/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_74_75/README.md/#notebook-6/9/22)
+- Days 74+75f: [6/10/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_74_75/README.md/#notebook-6/10/22)
+- Days 74+75g: [6/11/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_74_75/README.md/#notebook-6/11/22)
+- Days 74+75h: [6/12/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_74_75/README.md/#notebook-6/12/22)
+- Days 74+75i: [6/13/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_74_75/README.md/#notebook-6/12/22)
 
 </details>
 
 <details><summary>Days 76-78: Getting Started with Python Flask</summary>
 
-- Days 76+77: [6/14/22](https://github.com/timothyhull/100daysofcode/blob/main/days_76_77)
-- Days 76+77a: [6/15/22](https://github.com/timothyhull/100daysofcode/blob/main/days_76_77/README.md/#notebook-61522)
-- Days 76+77b: [6/16/22](https://github.com/timothyhull/100daysofcode/blob/main/days_76_77/README.md/#notebook-61622)
-- Days 76+77c: [6/17/22](https://github.com/timothyhull/100daysofcode/blob/main/days_76_77/README.md/#notebook-61722)
+- Days 76+77: [6/14/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_76_77)
+- Days 76+77a: [6/15/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_76_77/README.md/#notebook-61522)
+- Days 76+77b: [6/16/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_76_77/README.md/#notebook-61622)
+- Days 76+77c: [6/17/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_76_77/README.md/#notebook-61722)
 - Break for rest :sleeping:
-- Day 78: [6/19/22](https://github.com/timothyhull/100daysofcode/blob/main/days_78)
-- Day 78a: [6/20/22](https://github.com/timothyhull/100daysofcode/blob/main/days_79/README.md/#notebook-62022)
+- Day 78: [6/19/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_78)
+- Day 78a: [6/20/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_79/README.md/#notebook-62022)
 
 </details>
 
 <details><summary>Days 79-81: Basic Database Access with SQLite3</summary>
 
-- Days 79+80: [6/21/22](https://github.com/timothyhull/100daysofcode/blob/main/days_79_80)
-- Days 79+80a: [6/22/22](https://github.com/timothyhull/100daysofcode/blob/main/days_79_80/README.md/#notebook-62222)
-- Days 79+80b: [6/23/22](https://github.com/timothyhull/100daysofcode/blob/main/days_79_80/README.md/#notebook-62322)
-- Days 79+80c: [6/24/22](https://github.com/timothyhull/100daysofcode/blob/main/days_79_80/README.md/#notebook-62422)
-- Days 79+80d: [6/25/22](https://github.com/timothyhull/100daysofcode/blob/main/days_79_80/README.md/#notebook-62522)
-- Days 79+80e: [6/26/22](https://github.com/timothyhull/100daysofcode/blob/main/days_79_80/README.md/#notebook-62622)
-- Days 79+80f: [6/27/22](https://github.com/timothyhull/100daysofcode/blob/main/days_79_80/README.md/#notebook-62722)
+- Days 79+80: [6/21/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_79_80)
+- Days 79+80a: [6/22/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_79_80/README.md/#notebook-62222)
+- Days 79+80b: [6/23/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_79_80/README.md/#notebook-62322)
+- Days 79+80c: [6/24/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_79_80/README.md/#notebook-62422)
+- Days 79+80d: [6/25/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_79_80/README.md/#notebook-62522)
+- Days 79+80e: [6/26/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_79_80/README.md/#notebook-62622)
+- Days 79+80f: [6/27/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_79_80/README.md/#notebook-62722)
 - Day 81: [6/27/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_81)
 - Day 81a: [6/28/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/README.md/#notebook-62822)
 - Day 81b: [6/29/22](https://github.com/timothyhull/100daysofcode/blob/main/days/_81/README.md/#notebook-62922)
