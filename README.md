@@ -42,7 +42,7 @@ My log :clipboard: and notes​ :notebook: for the **TalkPython #100DaysOfCode w
 - Day 5: [4/27/21](https://github.com/timothyhull/100daysofcode/blob/main/days/_5/README.md/#notebook-42721)
 - Day 5a: [4/28/21](https://github.com/timothyhull/100daysofcode/blob/main/days/_5/README.md#tasks)
 - Day 5b: [4/29/21](https://github.com/timothyhull/100daysofcode/blob/main/days/_5/README.md#tasks)
-- Day 5c: [4/30/21](https://github.com/timothyhull/100daysofcode/blob/main/days/_5#/README.md#rage-43021)
+- Day 5c: [4/30/21](https://github.com/timothyhull/100daysofcode/blob/main/days/_5/README.md#rage-43021)
 - Day 5d: [5/1/21](https://github.com/timothyhull/100daysofcode/blob/main/days/_5/README.md/#notebook-5121)
 
 </details>
