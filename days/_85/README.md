@@ -768,3 +768,10 @@ class AddDocForm(AddDocFormTemplate):
         # Return to the home page
         client_utilities.go_home()
         ```
+
+---
+
+### :notebook: 12/29/22
+
+- Updated repository root relative URLs with anchor tags in [README.md](/) to work properly.
+    - Required the use of absolute URL paths.
