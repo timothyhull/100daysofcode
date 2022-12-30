@@ -30,9 +30,11 @@
 
 :white_check_mark: Watch video 15
 
-:white_large_square: Watch video 16
+:white_check_mark: Watch video 16
 
-:white_large_square: Watch videos 17-24
+:white_large_square: Watch video 17
+
+:white_large_square: Watch videos 18-24
 
 ---
 
