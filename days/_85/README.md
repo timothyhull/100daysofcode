@@ -742,7 +742,7 @@ class AddDocForm(AddDocFormTemplate):
             client_utilities.home_form = self
         ```
 
-- `AddDocForm` **Form**
+    - `AddDocForm` **Form**
 
         ```python
         # Populate drop-down categories menu with 'categories' values
