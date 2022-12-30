@@ -1,4 +1,4 @@
-# :calendar: Day 85: 12/28/2022
+# :calendar: Day 85: 12/18/2022-12/31/2022
 
 ---
 
@@ -663,6 +663,106 @@ class AddDocForm(AddDocFormTemplate):
                 def label_doc_created_show(self, **event_args):
                     """This method is called when the Label is shown on the screen"""
 
+                    """ Begin relevant code. """
                     # Insert the self.item['created'] text with a string time format
                     self.label_doc_created.text = self.item['created'].strftime('%B %d, %Y')
+                    """ End relevant code. """
             ```
+
+---
+
+### :notebook: 12/28/22
+
+- Refactored server-side database queries to `add_doc` and `all_categories` in the `AddDocForm` to client-side database queries in a way that automatically 'caches' all of the documents and categories when the app starts (on the `HomeForm` **Form**).
+
+    - `client_utilities` client-side code **Form**
+
+        ```python
+        import anvil.server
+        import anvil.tables as tables
+        import anvil.tables.query as q
+        from anvil.tables import app_tables
+
+        # Initialize the `home_form` variable
+        home_form = None
+
+        # Create empty lists to cache documents and categories
+        docs = []
+        categories = []
+
+        # Define a function to call the HomeForm.link_home_click
+        def go_home():
+            home_form.link_home_click()
+            return None
+
+        # Define a function to collect a list of all documents and categories
+        def cache_db_data():
+            # Declare function local variables as references to global variables
+            global docs, categories
+
+            # Fetch all documents from the database
+            docs = anvil.server.call('all_docs')
+            
+            # Fetch raw category data from the DB
+            raw_categories = anvil.server.call('all_categories')
+
+            # Convert raw category data to a list of category names
+            categories = [c['name'] for c in raw_categories]
+
+            return None
+
+        # Call the server-side `add_doc` function
+        def add_doc(name, category, contents, views: int = 0):
+            # Add a new document and refresh the cached lists of docs and categories
+            anvil.server.call('add_doc', name, category, contents, views)
+            cache_db_data()
+
+        return None
+        ```
+
+    - `HomeForm` **Form** `__init__` method
+
+        ```python
+        # HomeForm __init__ method
+        def __init__(self, **properties):
+            # Set Form properties and Data Bindings.
+            self.init_components(**properties)
+
+            # Any code you write here will run before the form opens.
+            #########################################################
+
+            # Make a cached list of all documents available to any form
+            client_utilities.cache_db_data()
+
+            # Display the home form at app launch
+            self.link_home_click()
+            
+            # Set the value of 'utilities.home_form' to be an instance of HomeForm
+            # This provides access to utilities.home_form from any other form
+            client_utilities.home_form = self
+        ```
+
+- `AddDocForm` **Form**
+
+        ```python
+        # Populate drop-down categories menu with 'categories' values
+        self.drop_down_category.items += [
+            (c, c) for c in client_utilities.categories
+        ]
+
+        def button_create_doc_click(self, **event_args):
+        """This method is called when the 'Create document' button is clicked"""
+
+        """ Code omitted for brevity """
+
+        # Add a new document to the DB
+        name = self.text_box_doc_name.text.strip()
+        category_name = self.drop_down_category.selected_value
+        contents = self.text_area_contents.text.strip()
+
+        # Replace the server-side function call with a client-side function call
+        client_utilities.add_doc(name, category_name, contents)
+
+        # Return to the home page
+        client_utilities.go_home()
+        ```
