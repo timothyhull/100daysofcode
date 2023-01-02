@@ -1,4 +1,4 @@
-# :calendar: Day 85: 12/18/2022-12/31/2022
+# :calendar: Day 85: 12/18/2022-1/5/2023
 
 ---
 
@@ -32,7 +32,7 @@
 
 :white_check_mark: Watch video 16
 
-:white_large_square: Watch video 17
+:white_check_mark: Watch video 17
 
 :white_large_square: Watch videos 18-24
 
@@ -775,3 +775,63 @@ class AddDocForm(AddDocFormTemplate):
 
 - Updated repository root relative URLs with anchor tags in [README.md](/) to work properly.
     - Required the use of absolute URL paths.
+
+---
+
+### :notebook: 1/1/23
+
+- Completed watching video 17.
+    - Created the `link_doc_link_click` method in the `AllDocsItemPanel` class, to respond to clicks to the **details** links displayed in the **AllDocsForm** Form.
+
+    ```python
+    def link_doc_link_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    # Call the 'client_utilities.doc_links' function
+    # The 'doc' parameter gets each DB row as an argument (self.item)
+    client_utilities.doc_links(doc=self.item)
+    ```
+
+- Created the `doc_links` function in the `client_utilities` **Client Module**, to pass the document DB row (passed from `self.item` in `AllDocsItemPanel.link_doc_link_click`) to the `HomeForm.doc_links` method.
+
+    ```python
+    # Create links to display document contents
+    def doc_links(doc):
+    """The 'doc' parameter will pass the name of the document to the 
+        HomeForm function that loads document contents."""
+    home_form.doc_links(doc)
+
+    return None
+    ```
+
+- Created the `doc_links` method in the `HomeForm` **Form**, to load the `DocDetailsForm` **Form**, passing the document DB row (passed from the `doc` parameter in `client_utilities.doc_links`) to the `DocDetailsForm` instance created by the `self.content_panel.add_component` function in the `HomeForm.doc_links` method.
+    - The document DB row is passed to the `item` parameter in the `HomeForm.doc_links` method.
+    - When instantiated by the `DocDetailsForm` **Form**, each DB row becomes `self.item`, with corresponding keys that match each DB column (`self.item['category']` for example)
+
+        ```python
+        def doc_links(self, doc, **event_args):
+        """TODO"""
+        # Clear page content
+        self._clear_content()
+
+        # Add the AllDocs component to the HomeForm content panel
+        self.label_title.text = 'PyPoint: Details'
+        self.content_panel.add_component(DocDetailsForm(item=doc))
+        ```
+
+- Created a `print` statement in the `DocDetailsForm` **Form** to display the name of the document clicked on in the `link_doc_link_click` method of the `AllDocsItemPanel` class.
+
+    ```python
+    class DocDetailsForm(DocDetailsFormTemplate):
+    def __init__(self, **properties):
+        # Set Form properties and Data Bindings.
+        self.init_components(**properties)
+
+        # Any code you write here will run before the form opens.
+
+        """ Begin relevant code. """
+        # Output the name of the document that will display its contents
+        print(f'LOADED DOC: {self.item["name"]}')
+        """ End relevant code. """
+    ```
+
+    - Successfully tested all new code for proper functionality.
