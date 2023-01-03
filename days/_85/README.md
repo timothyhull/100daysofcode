@@ -34,7 +34,9 @@
 
 :white_check_mark: Watch video 17
 
-:white_large_square: Watch videos 18-24
+:white_large_square: Watch video 18
+
+:white_large_square: Watch videos 19-24
 
 ---
 
@@ -835,3 +837,115 @@ class AddDocForm(AddDocFormTemplate):
     ```
 
     - Successfully tested all new code for proper functionality.
+
+---
+
+### :notebook: 1/2/23
+
+- Watched video 17.
+
+- Replaced the link label text `details` with a document preview of the first N characters of the document content.
+    - Set the number of display characters using a constant.
+    - Set the text to be italic.
+- Expanded the display format of the `created` column of the DB query in the `AllDocsItemPanel` **Form**.
+    - Set the format using a constant.
+
+    ```python
+    # Constants
+    DISPLAY_CHARS = 25
+    TIME_FORMAT = '%B %d, %Y - %-H:%M:%S %p'
+
+    class AllDocsItemPanel(AllDocsItemPanelTemplate):
+    def __init__(self, **properties):
+        # Set Form properties and Data Bindings.
+        self.init_components(**properties)
+
+        # Any code you write here will run before the form opens.
+
+    def label_doc_created_show(self, **event_args):
+        """This method is called when the Label is shown on the screen"""
+
+        # Insert the self.item['created'] text with a string time format
+        self.label_doc_created.text = self.item['created'].strftime(TIME_FORMAT)
+        
+        # Display the first N document words
+        self.link_doc_link.italic = True
+        self.link_doc_link.text = f'{self.item["contents"][0: DISPLAY_CHARS]}...'
+    ```
+
+- Created a new global variable, `docs_range` in the `client_utilities` **Form**.
+    - Creates a range object from 1 to the total number of items in the `docs` list.
+    - Used for displaying row numbers next to `docs` rows:
+
+        ```python
+        # Collect a list of all documents and categories
+        def cache_db_data():
+        """ Begin relevant code. """
+        # Declare function local variables as references to global variables
+        global docs, docs_range, categories
+        """ End relevant code. """
+
+        # Fetch all documents from the database
+        docs = anvil.server.call('all_docs')
+
+        """ Begin relevant code. """
+        # Assign a range object to docs_range, to use as row numbers
+        docs_range = range(1, len(docs) + 1)
+        """ End relevant code. """
+        
+        # Fetch raw category data from the DB
+        raw_categories = anvil.server.call('all_categories')
+
+        # Convert raw category data to a list of category names
+        categories = [c['name'] for c in raw_categories]
+
+        return None
+        ```
+
+- Created the `AllDocsRowNumberPanel` form for a repeating panel that displays row numbers for each displayed DB result.
+    - Used this repeating panel in the `HomeDetailsForm` and the `AllDocsForm` **Forms**.
+
+        ```python
+        class AllDocsRowNumberPanel(AllDocsRowNumberPanelTemplate):
+        def __init__(self, **properties):
+            # Set Form properties and Data Bindings.
+            self.init_components(**properties)
+
+            # Any code you write here will run before the form opens.
+
+        """ Begin relevant code. """
+        def label_row_number_show(self, **event_args):
+            """This method is called when the Label is shown on the screen"""
+
+            # Display the row number
+            self.label_row_number.text = f'{self.item}.'
+            """ End relevant code. """
+        ```
+
+- Expanded the design of the `HomeDetailsForm` **Form**.
+    - Displays a list of the N most recent documents, sorted by descending date.
+    - Included formatted column headings and repeating panels for row number and documents list.
+    - Added code to populate the row number and documents list repeating panels:
+
+        ```python
+        # Constants
+        RECENT_N_DOCS = 3
+
+        class HomeDetailsForm(HomeDetailsFormTemplate):
+            def __init__(self, **properties):
+            # Set Form properties and Data Bindings.
+            self.init_components(**properties)
+
+            # Any code you write here will run before the form opens.
+
+            # Sort the list of available documents by date
+            docs = sorted(
+                client_utilities.docs,
+                key=lambda doc: doc['created'],
+                reverse=True
+            )
+
+            # List the top N most recent documents
+            self.repeating_panel_row_number.items = client_utilities.docs_range[0: RECENT_N_DOCS]
+            self.repeating_panel_recent_docs.items = docs[0: RECENT_N_DOCS]
+        ```
