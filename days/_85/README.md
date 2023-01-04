@@ -1,4 +1,4 @@
-# :calendar: Day 85: 12/18/2022-1/5/2023
+# :calendar: Day 85: 12/18/2022-1/6/2023
 
 ---
 
@@ -34,7 +34,9 @@
 
 :white_check_mark: Watch video 17
 
-:white_large_square: Watch video 18
+:white_check_mark: Watch video 18
+
+:white_large_square: Watch video 19
 
 :white_large_square: Watch videos 19-24
 
@@ -949,3 +951,127 @@ class AddDocForm(AddDocFormTemplate):
             self.repeating_panel_row_number.items = client_utilities.docs_range[0: RECENT_N_DOCS]
             self.repeating_panel_recent_docs.items = docs[0: RECENT_N_DOCS]
         ```
+
+---
+
+### :notebook: 1/3/23
+
+- Watched video 18.
+
+- Added a 'Category' column to the `HomeForm` and `AllDocsForm` **Forms** to display the document category/tag.
+
+- Added code to support the following as a user types in the filter text box on the `AllDocsForm` **Form**:
+    - Interactive document filtering.
+    - Interactive updating of a 'Total Documents' count **Label**.
+
+- The `text_box_filter_docs_change` function is an event handler that triggers every time the filter text box contents change.
+    - The `__init__` function sets the initial value for the 'Total Documents' display text, based on the data from `client_utilities` that will populate the **Repeating Panel** elements on the page.
+    - Each change updates:
+        - The 'Total Documents' display text.
+        - The **Repeating Panels** for both row numbers and for row content (document properties)
+    - The `doc_to_text` function concatenates a document's title, category, and contents to a single string.
+    - The `filtered_docs` function:
+        - Calls the `doc_to_text` function for each document (row) in the DB.
+        - Searches the concatenated string for filter matches.
+        - Appends all rows that match to the `filtered_docs` list.
+        - Calculates and returns the total number of filter search matches.
+
+    ```python
+    # Constants
+    TOTAL_DOCS = 'Total Documents: '
+
+    class AllDocsForm(AllDocsFormTemplate):
+        def __init__(self, **properties):
+            # Set Form properties and Data Bindings.
+            self.init_components(**properties)
+
+            # Any code you write here will run before the form opens.
+
+            # Set the initial 'Total Documents' value
+            try:
+                self.total_docs = max(client_utilities.docs_range)
+                self.label_docs_count.text = f'{TOTAL_DOCS}{self.total_docs}'
+            except ValueError:
+                self.label_docs_count.text = '0'
+        
+            # Set repeating panel items using the 'all_docs' DB query results
+            self.repeating_panel_docs.items = client_utilities.docs
+            self.repeating_panel_row_number.items = client_utilities.docs_range
+
+        def text_box_filter_docs_change(self, **event_args):
+            """This method is called when the text in this text box is edited"""
+
+            # Call the 'filtered_docs' function to update the docs repeating panel
+            self.repeating_panel_docs.items, \
+            self.repeating_panel_row_number.items = self.filtered_docs()
+
+            # Reset the 'Total Documents' to default if the filter text box is blank
+            if not self.text_box_filter_docs.text:
+                docs_count = self.total_docs
+            else:
+                # Set the 'Total Documents' to the max value in the row number range object
+            try:
+                docs_count = max(self.repeating_panel_row_number.items)
+        
+            # Set 'Total Documents' to 0 if no max value is found
+            except ValueError:
+                docs_count = 0
+
+            # Update the docs count text box
+            self.label_docs_count.text = f'{TOTAL_DOCS}{docs_count}'
+
+        def doc_to_text(self, doc) -> str:
+            """ Concatenate all searchable text for filtering.
+            
+                Args:
+                doc (Dict):
+                    Dictionary of searchable document values including
+                    'name', 'category', and 'contents' of a search
+                    result.
+                    
+                Returns:
+                doc_text (str):
+                    Concatenated string of searchable document values.
+            """
+        
+            # Create a concatenated, lowercase string to search
+            doc_text = (
+            f'{doc["name"]} '
+            f'{doc["category"]["name"]} '
+            f'{doc["contents"]}'
+            ).lower()
+
+            return doc_text
+            
+        def filtered_docs(self):
+            """ Filter the list of documents based on filter text box contents.
+            
+                Args:
+                None.
+                
+                Returns:
+                filtered_docs (List[Dict]):
+                    List of dictionaries with a filtered list of documents.
+
+                filtered_docs_range (range):
+                    range object that provides row numbers to match the length
+                    of the 'filtered_docs' list.
+            """
+            
+            # Define a list for the filtered documents
+            filtered_docs = []
+        
+            # Use a local variable for 'self.text_box_filter_docs.text', for brevity
+            filter_text = self.text_box_filter_docs.text.lower()
+        
+            # Search for filter matches and add results to 'filtered_docs'
+            for doc in client_utilities.docs:
+                doc_text = self.doc_to_text(doc)
+            if filter_text in doc_text:
+                filtered_docs.append(doc)
+            
+            # Create a range object to provide row numbers
+            filtered_docs_range = range(1, len(filtered_docs) + 1)
+            
+            return filtered_docs, filtered_docs_range
+    ```
