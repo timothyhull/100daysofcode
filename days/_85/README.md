@@ -36,9 +36,11 @@
 
 :white_check_mark: Watch video 18
 
-:white_large_square: Watch video 19
+:white_check_mark: Watch video 19
 
-:white_large_square: Watch videos 19-24
+:white_large_square: Watch video 20
+
+:white_large_square: Watch videos 21-24
 
 ---
 
@@ -809,7 +811,7 @@ class AddDocForm(AddDocFormTemplate):
 
 - Created the `doc_links` method in the `HomeForm` **Form**, to load the `DocDetailsForm` **Form**, passing the document DB row (passed from the `doc` parameter in `client_utilities.doc_links`) to the `DocDetailsForm` instance created by the `self.content_panel.add_component` function in the `HomeForm.doc_links` method.
     - The document DB row is passed to the `item` parameter in the `HomeForm.doc_links` method.
-    - When instantiated by the `DocDetailsForm` **Form**, each DB row becomes `self.item`, with corresponding keys that match each DB column (`self.item['category']` for example)
+    - When instantiated by the `DocDetailsForm` **Form**, each DB row becomes `self.item`, with corresponding keys that match each DB column (`self.item['name']` for example)
 
         ```python
         def doc_links(self, doc, **event_args):
@@ -1075,3 +1077,41 @@ class AddDocForm(AddDocFormTemplate):
             
             return filtered_docs, filtered_docs_range
     ```
+
+---
+
+### :notebook: 1/4/23
+
+- Watched video 19.
+
+- Created labels in a layout on `DocDetails` **Form** that host property names (Title, Created, etc.) and blank labels for their corresponding values from the DB.
+    - Added code to `DocDetails` **Form** to populate blank labels:
+
+```python
+# Constants
+TIME_FORMAT = '%B %d, %Y - %-H:%M:%S %p'
+
+class DocDetailsForm(DocDetailsFormTemplate):
+     def __init__(self, **properties):
+        # Set Form properties and Data Bindings.
+        self.init_components(**properties)
+
+        # Any code you write here will run before the form opens.
+
+        """ Assign 'self.item' assigned by `HomeForm` to the 'doc variable.
+        
+            From `HomeForm`:
+            # Add the DocDetailsForm component to the HomeForm content panel
+            self.label_title.text = 'PyPoint: Details'
+            self.content_panel.add_component(DocDetailsForm(item=doc))
+        """
+        doc = self.item
+
+        # Assign `doc` properties to page labels
+        self.label_title.text = doc['name']
+        self.label_category.text = doc['category']['name']
+        self.label_created.text = doc['created'].strftime(TIME_FORMAT)
+        self.label_contents.text = doc['contents']
+```
+
+- Completed demo application and saved Anvil version as _Completed Draft Version 1.0_.
