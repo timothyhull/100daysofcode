@@ -1,4 +1,4 @@
-# :calendar: Day 85: 12/18/2022-1/18/2023
+# :calendar: Day 85: 12/18/2022-1/7/2023
 
 ---
 
@@ -11,8 +11,6 @@
 ## Resources
 
 :star: [Anvil Home Page](https://anvil.works/?anvil_attrib=talk-python-100-days)
-
-:star: [Episode 138 of the TalkPython podcast](https://talkpython.fm/episodes/show/138/anvil-all-web-all-python).
 
 ---
 
@@ -42,11 +40,7 @@
 
 :white_check_mark: Watch videos 20-22
 
-:white_large_square: Watch video 23
-
-:white_large_square: Watch videos 21-24
-
-:white_large_square: Listen to TalkPython podcast episode.
+:white_check_mark: Watch video 23
 
 ---
 
@@ -1130,3 +1124,10 @@ class DocDetailsForm(DocDetailsFormTemplate):
     - Published the app publicly using Anvil's hosting feature.
     - Successfully tested all functions via the public URL.
     - [Episode 138 of the TalkPython podcast](https://talkpython.fm/episodes/show/138/anvil-all-web-all-python) explains the inner workings of Anvil.
+
+---
+
+### :notebook: 1/7/23
+
+- Watched video 20.
+- Started project for 
