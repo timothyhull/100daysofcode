@@ -20,7 +20,9 @@
 
 :white_large_square: Watch videos 23-24
 
-:white_large_square: Listen to TalkPython podcast episode.
+:white_large_square: Create a new Anvil website
+
+:white_large_square: Listen to TalkPython podcast episode
 
 ---
 
@@ -30,3 +32,9 @@
 
 - Watched video 22.
 - Created Anvil project for practice application.
+
+---
+
+### :notebook: 1/8/23
+
+- Started development of the `HomePage` **Form** to use as a layout template for remaining pages.
