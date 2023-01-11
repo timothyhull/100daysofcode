@@ -108,3 +108,30 @@ def button_add_doc_click(self, **event_args):
     """This method is called when the button is clicked"""
     self.load_add_docs_form()
 ```
+
+---
+
+### :notebook: 1/10/23
+
+- Started setup and testing of code that will change the color of the buttons in the `HomeForm` **Form** when navigating between different pages.
+    - One button will be "active" and the others will be inactive.
+    - A simple test showed the viability of the option:
+
+```python
+# Button click methods
+    def button_home_click(self, **event_args):
+        """This method is called when the Home is clicked"""
+        self.load_home_form()
+        self.button_home.foreground = ACTIVE_BUTTON_FG
+        self.button_home.background = ACTIVE_BUTTON_BG
+        self.button_all_docs.foreground = INACTIVE_BUTTON_FG
+        self.button_all_docs.background = INACTIVE_BUTTON_BG    
+        
+    def button_all_docs_click(self, **event_args):
+        """This method is called when the all_docs button is clicked"""
+        self.load_all_docs_form()
+        self.button_all_docs.foreground = ACTIVE_BUTTON_FG
+        self.button_all_docs.background = ACTIVE_BUTTON_BG
+        self.button_home.foreground = INACTIVE_BUTTON_FG
+        self.button_home.background = INACTIVE_BUTTON_BG
+```
