@@ -135,3 +135,12 @@ def button_add_doc_click(self, **event_args):
         self.button_home.foreground = INACTIVE_BUTTON_FG
         self.button_home.background = INACTIVE_BUTTON_BG
 ```
+
+---
+
+### :notebook: 1/11/23
+
+- Continued development of code that will change the color of the buttons in the `HomeForm` **Form** when navigating between different pages.
+    - Moved code to the `client_utilities` module.
+    - Unsuccessfully implemented the functions, because the `self` prefix for variable names in `client_utilities` has no meaning.
+        - The functions are not contained within a class and the button objects are objects in the `HomeForm` **Form**.
