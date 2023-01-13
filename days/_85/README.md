@@ -593,7 +593,7 @@ self.drop_down_category.items += [
                 """ End relevant code. """
         ```
 
-    - This makes an instance of the `HomeForm` class available to all **client modules** that import the `client_utilities` module.
+    - This makes an instance of the `HomeForm` class available to all **client modules** or **Forms** that import the `client_utilities` module.
         - For the use case of redirecting a browser to the home page, after adding a new document, it is possible for `AddDocForm` to import `client_utilities` and call the `home_form.link_home_click` function after adding a new document.
 
 ```python

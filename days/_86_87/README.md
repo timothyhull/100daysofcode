@@ -144,3 +144,13 @@ def button_add_doc_click(self, **event_args):
     - Moved code to the `client_utilities` module.
     - Unsuccessfully implemented the functions, because the `self` prefix for variable names in `client_utilities` has no meaning.
         - The functions are not contained within a class and the button objects are objects in the `HomeForm` **Form**.
+
+---
+
+### :notebook: 1/12/23
+
+- Continued development of code that will change the color of the buttons in the `HomeForm` **Form** when navigating between different pages.
+    - Achieved limited success by creating an `update_buttons` function in `client_utilities` and hard-setting button color values.
+- Created a `home_form` object in `client_utilities` that has an instance of `HomeForm.HomeForm` assigned to it.
+    - This allows any form that imports `client_utilities` to interact with object properties of the `HomeForm` form.
+        - Including button colors.
