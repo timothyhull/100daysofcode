@@ -813,5 +813,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Days 86+87c: [1/10/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_86_87/README.md/#notebook-11023)
 - Days 86+87d: [1/11/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_86_87/README.md/#notebook-11123)
 - Days 86+87e: [1/12/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_86_87/README.md/#notebook-11223)
+- Days 86+87e: [1/13/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_86_87/README.md/#notebook-11323)
 
 </details>
