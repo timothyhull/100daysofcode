@@ -154,3 +154,19 @@ def button_add_doc_click(self, **event_args):
 - Created a `home_form` object in `client_utilities` that has an instance of `HomeForm.HomeForm` assigned to it.
     - This allows any form that imports `client_utilities` to interact with object properties of the `HomeForm` form.
         - Including button colors.
+
+---
+
+### :notebook: 1/17/23
+
+- Continued development of code that will change the color of the buttons in the `HomeForm` **Form** when navigating between different pages.
+    - Tested passing string values of button object names to `client_utilities.update_buttons` to replace object names, which was unsuccessful.
+    - Next step is to test passing button objects or mapped references to button objects themselves.
+
+---
+
+### :notebook: 1/18/23
+
+- Continued development of code that will change the color of the buttons in the `HomeForm` **Form** when navigating between different pages.
+    - Tested passing button objects (`self.button_home`) to `client_utilities.update_buttons` which produced inconsistent results.
+    - Further testing required.
