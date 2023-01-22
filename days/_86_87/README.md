@@ -1,4 +1,4 @@
-# :calendar: Days 86-87: 1/8/2023-1/20/2023
+# :calendar: Days 86-87: 1/8/2023-1/31/2023
 
 ---
 
@@ -303,6 +303,48 @@ def button_add_doc_click(self, **event_args):
                 else:
                     button.foreground = INACTIVE_BUTTON_FG
                     button.background = INACTIVE_BUTTON_BG
+
+            return None
+        ```
+
+---
+
+### :notebook: 1/21/23
+
+- Revised the `update_buttons` function in the `client_utilities` form.
+    - Removed the mouseover/hover effect on the active button/page.
+    - Add the mouseover/hover effect on the inactive buttons
+
+        ```python
+        def update_buttons(active_button):
+            """ Recolor buttons during page navigation.
+
+                Args:
+                    active_button: HomeForm.Button
+                    Button object representing the active
+                    navigation button.
+
+                Returns:
+                    None.
+            """
+
+            # Loop over the set of available buttons to find a match
+            for button in home_form.button_status:
+                # If a match is found, color the button using the 'active' scheme
+                if button.text == active_button.text:
+                    button.foreground = ACTIVE_BUTTON_FG
+                    button.background = ACTIVE_BUTTON_BG
+
+                    # Disable mouseover/hover effect on button
+                    button.role = None
+
+                # If no match is found, color the button using the 'inactive' scheme
+                else:
+                    button.foreground = INACTIVE_BUTTON_FG
+                    button.background = INACTIVE_BUTTON_BG
+
+                    # Enable mouseover/hover effect on button
+                    button.role = 'elevated-button'
 
             return None
         ```
