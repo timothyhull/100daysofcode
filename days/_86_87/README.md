@@ -348,3 +348,10 @@ def button_add_doc_click(self, **event_args):
 
             return None
         ```
+
+---
+
+### :notebook: 1/22/23
+
+- Added labels, text inputs, and dropdowns to `HomeDetailsForm`, `DocDetailsForm`, and `AddDocsForm`.
+    - Applied formatting and added hidden error messages to `AddDocsForm`
