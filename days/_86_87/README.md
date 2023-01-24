@@ -354,4 +354,15 @@ def button_add_doc_click(self, **event_args):
 ### :notebook: 1/22/23
 
 - Added labels, text inputs, and dropdowns to `HomeDetailsForm`, `DocDetailsForm`, and `AddDocsForm`.
-    - Applied formatting and added hidden error messages to `AddDocsForm`
+    - Applied formatting and added hidden error messages to `AddDocsForm`.
+
+---
+
+### :notebook: 1/23/23
+
+- Switched color schemes to _Mykonos Dark_.
+- Added labels to `AllDocsForm`.
+- Added hidden error message label to `DocDetailsForm` to use for document load/display errors.
+- Created database tables **categories** and **docs**.
+    - The _category_ column in the **docs** table is linked, by way of single row selection, to the _name_ column in the **categories** table.
+- Added data validation to the `AddDocsForm`
