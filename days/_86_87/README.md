@@ -366,3 +366,75 @@ def button_add_doc_click(self, **event_args):
 - Created database tables **categories** and **docs**.
     - The _category_ column in the **docs** table is linked, by way of single row selection, to the _name_ column in the **categories** table.
 - Added data validation to the `AddDocsForm`
+
+---
+
+### :notebook: 1/24/23
+
+- Created the **server** module `db_access` to request information from the database.
+    - Created the `get_categories` function to retrieve and modify category data for consumption by **client** modules:
+
+        ```python
+        # Get document categories
+        @anvil.server.callable
+        def get_categories() -> List:
+            """ Get a list of categories from the 'categories' DB table.
+
+                Args:
+                    None.
+
+                Returns:
+                    categories (List):
+                    Alphabetical list of tuples that contain 
+                    categories and descriptions, sorted by the 'name' column.
+            """
+
+            # Query the categories database
+            category_rows = app_tables.categories.search()
+            
+            # Stage the categories and descriptions in a list of tuples
+            categories = [
+                (c['name'], c['description']) for c in category_rows
+            ]
+
+            # Sort the 'categories' list alphabetically, based on the '0' tuple index
+            categories.sort(
+                key=lambda x: x[0]
+            )
+
+            return categories
+        ```
+
+- Added code to `AddDocsForm` that calls the server module function `get_categories`:
+
+    ```python
+    class AddDocsForm(AddDocsFormTemplate):
+        def __init__(self, **properties):
+            # Set Form properties and Data Bindings.
+            self.init_components(**properties)
+
+            """ Begin relevant code """
+            # Any code you write here will run before the form opens.
+            self.categories = anvil.server.call('get_categories')
+            """ End relevant code """
+    ```
+
+- Created a new method in the `AddDocsForm.AddDocsForm` that runs when the 'Category` dropdown appears on screen.
+    - Created a new list, `categories` to host category names only.
+    - Populated `a` with the `categories` list:
+
+```python
+def drop_down_doc_category_show(self, **event_args):
+    """This method is called when the DropDown is shown on the screen"""
+    # Create a list object to populate 'self.drop_down_doc_category.items'
+    categories = [
+        c[0] for c in self.categories
+    ]
+
+    # Populate the category drop down with categories from the DB
+    self.drop_down_doc_category.items = categories
+```
+
+- Next step is to move the server-side database query to a persistent value in the `client_utilities` **client** module.
+    - Limits unnecessary calls to the database.
+    - Shares access of the DB query to all **client** modules.
