@@ -365,7 +365,7 @@ def button_add_doc_click(self, **event_args):
 - Added hidden error message label to `DocDetailsForm` to use for document load/display errors.
 - Created database tables **categories** and **docs**.
     - The _category_ column in the **docs** table is linked, by way of single row selection, to the _name_ column in the **categories** table.
-- Added data validation to the `AddDocsForm`
+- Added data validation to the `AddDocsForm`.
 
 ---
 
@@ -438,3 +438,12 @@ def drop_down_doc_category_show(self, **event_args):
 - Next step is to move the server-side database query to a persistent value in the `client_utilities` **client** module.
     - Limits unnecessary calls to the database.
     - Shares access of the DB query to all **client** modules.
+
+---
+
+### :notebook: 1/25/23
+
+- Moved server-side database query for document categories in `AddDocsForm` to the `client_utilities` form:
+    - Requires the categories to load from the database only one time, using the `client_utilities.get_categories` function.
+    - Uses the line `cu.get_categories()` in the `__init__` method of `HomeForm.HomeForm` to run to cache the category data.
+- Next step is to setup `AddDocsForm` to add new document entries into the DB.
