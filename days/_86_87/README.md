@@ -447,3 +447,121 @@ def drop_down_doc_category_show(self, **event_args):
     - Requires the categories to load from the database only one time, using the `client_utilities.get_categories` function.
     - Uses the line `cu.get_categories()` in the `__init__` method of `HomeForm.HomeForm` to run to cache the category data.
 - Next step is to setup `AddDocsForm` to add new document entries into the DB.
+
+---
+
+### :notebook: 1/26/23
+
+- Added the `add_document` function to the `db_access` server module.
+    - Intended to add a document to the database, for now the result of the function prints all user input.
+
+        ```python
+        @anvil.server.callable
+        def add_document(
+            title: str,
+            category: str,
+            content: str,
+            created: datetime = datetime.now(),
+            views: int = 0
+        ) -> None:
+            """ Add new documents to the database.
+
+                Args:
+                    title (str):
+                        Document title.
+
+                    category (str):
+                        Document category, selected by dropdown menu populated by the 'categories' table
+
+                    content (str):
+                        Document contents.
+
+                    views (int):
+                        Number of total document views.
+
+                    created (datetime.datetime.now()):
+                        Insert a timestamp for the creation instant of a document.
+
+                Returns:
+                    None.
+            """
+
+            print(
+                f'Added "{title}" in the "{category}" category.\n'
+                f'Added at {created}.'
+            )
+
+            return None
+        ```
+
+- Refactored the `AddDocsForm._validate_input` method in the `AddDocsForm` form.
+    - Added the `dict` object `valid_input` to track the validity of each form element.
+        - The database insert operation is only called when `False` is not present in `valid_input`.
+
+            ```python
+            def _validate_input(self) -> List:
+                """ Validate data entry.
+
+                    Displays error messages for invalid inputs.
+
+                    Args:
+                        None.
+
+                    Returns:
+                        valid_input (List):
+                            List object of dict_values.
+                """
+                # Create a dictionary object to track validity state of each form element
+                valid_input = dict(
+                    title=False,
+                    category=False,
+                    contents=False
+                )
+
+                # Title input and validation
+                if self.text_box_doc_title.text == '':
+                    self.label_doc_title_error.visible = True
+                    valid_input.update({'title': False})
+                else:
+                    self.label_doc_title_error.visible = False
+                    valid_input.update({'title': True})
+
+                # Category input and validation
+                if self.drop_down_doc_category.selected_value is None:
+                    self.label_doc_category_error.visible = True
+                    valid_input.update({'category': False})
+                else:
+                    self.label_doc_category_error.visible = False
+                    valid_input.update({'category': True})
+
+                # Contents input and validation
+                if self.text_area_doc_contents.text == '':
+                    self.label_doc_contents_error.visible = True
+                    valid_input.update({'contents': False})
+                else:
+                    self.label_doc_contents_error.visible = False
+                    valid_input.update({'contents': True})
+
+                return valid_input.values()
+            
+            def drop_down_doc_category_show(self, **event_args):
+                """This method is called when the DropDown is shown on the screen"""
+                # Apply a list of values to populate 'self.drop_down_doc_category.items'
+                self.drop_down_doc_category.items = cu.categories
+            
+            def outlined_button_add_doc_click(self, **event_args):
+                """This method is called when the button is clicked"""
+                # Data input validation
+                valid_input = self._validate_input()
+
+                # Add the document to the database only if entries are valid
+                if False not in valid_input:
+                    anvil.server.call(
+                        'add_document',
+                        title=self.text_box_doc_title.text,
+                        category=self.drop_down_doc_category.selected_value,
+                        content=self.text_area_doc_contents.text
+                 )
+            ```
+
+- Next step is to insert docs into the database.
