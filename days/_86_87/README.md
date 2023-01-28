@@ -565,3 +565,60 @@ def drop_down_doc_category_show(self, **event_args):
             ```
 
 - Next step is to insert docs into the database.
+
+---
+
+### :notebook: 1/27/23
+
+- Wrote server module code to insert a new document into the database from the `AddDocsForm` form.
+    - This implementation is a bit clunky and would benefit from refactoring.
+        - Figure out a cleaner way to reference a row from the `categories` table when populating the `category` field in the `documents` table.
+
+        ```python
+        @anvil.server.callable
+        def add_document(
+            title: str,
+            category: str,
+            content: str,
+            created: datetime = datetime.now(),
+            views: int = 0
+        ) -> None:
+            """ Add new documents to the database.
+
+                Args:
+                    title (str):
+                        Document title.
+
+                    category (str):
+                        Document category, selected by dropdown menu populated by the 'categories' table
+
+                    content (str):
+                        Document contents.
+
+                    views (int):
+                        Number of total document views.
+
+                    created (datetime.datetime.now()):
+                        Insert a timestamp for the creation instant of a document.
+
+                Returns:
+                    None.
+            """
+
+            print(
+                f'Added "{title}" in the "{category}" category.\n'
+                f'Added at {created}.'
+            )
+
+        # Insert a document into the database
+        category_row = app_tables.categories.get(name=category) or None
+        app_tables.docs.add_row(
+            title=title,
+            category=category_row
+            content=content,
+            views=views,
+            created=created
+        )
+        
+        return None
+        ```
