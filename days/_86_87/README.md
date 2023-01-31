@@ -589,8 +589,9 @@ def drop_down_doc_category_show(self, **event_args):
                     title (str):
                         Document title.
 
-                    category (str):
-                        Document category, selected by dropdown menu populated by the 'categories' table
+                    category (anvil._server.LiveObjectProxy):
+                        Document category, selected by dropdown menu populated by the
+                        'categories' table.
 
                     content (str):
                         Document contents.
@@ -622,3 +623,46 @@ def drop_down_doc_category_show(self, **event_args):
         
         return None
         ```
+
+---
+
+### :notebook: 1/30/23
+
+- Added a call to `client_utilities.go_home` (aliased as `cu.go_home`) to the `outlined_button_add_doc_click` method in the `AddDocForm` form.
+    - Redirects clients to the `HomeDetailsForm` form after adding a document into the database.
+
+        ```python
+        def outlined_button_add_doc_click(self, **event_args):
+            """This method is called when the button is clicked"""
+            # Data input validation
+            valid_input = self._validate_input()
+
+            # Add the document to the database only if entries are valid
+            if False not in valid_input:
+                anvil.server.call(
+                'add_document',
+                title=self.text_box_doc_title.text,
+                category=self.drop_down_doc_category.selected_value,
+                content=self.text_area_doc_contents.text
+            )
+
+                # Return to the home page
+                cu.go_home()
+        ```
+
+- Worked through using a **Repeating Panel** component to display document names in `HomeDetailsForm`.
+    - Creating a **Repeating Panel** also creates a reusable, across other forms, formatting template.
+    - Displaying results required the addition of the following line of code in the `HomeDetailsForm.HomeDetailsForm.__init__` method:
+        - `self.repeating_panel_docs.items = anvil.server.call('get_docs')`
+
+            ```python
+            class HomeDetailsForm(HomeDetailsFormTemplate):
+            def __init__(self, **properties):
+                # Set Form properties and Data Bindings.
+                self.init_components(**properties)
+
+                # Any code you write here will run before the form opens.
+                self.repeating_panel_docs.items = anvil.server.call('get_docs')
+            ```
+
+        - After including this line I was able to specify a **Data Binding** for `self.label_doc_title` in the `DocsDisplayTemplate`, and display a list of document titles.
