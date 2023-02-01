@@ -1,4 +1,4 @@
-# #100DaysOfCode with Python
+# \#100DaysOfCode with Python
 
 My log :clipboard: and notes​ :notebook: for the **TalkPython #100DaysOfCode with Python** :snake: course.
 
@@ -831,5 +831,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Break for illness :sneezing_face:
 - Break for illness :sneezing_face:
 - Days 86+87o: [1/30/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_86_87/README.md/#notebook-13023)
+- Days 86+87p: [1/31/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_86_87/README.md/#notebook-13123)
 
 </details>
