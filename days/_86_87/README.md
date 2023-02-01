@@ -1,4 +1,4 @@
-# :calendar: Days 86-87: 1/8/2023-1/31/2023
+# :calendar: Days 86-87: 1/8/2023-2/15/2023
 
 ---
 
@@ -666,3 +666,94 @@ def drop_down_doc_category_show(self, **event_args):
             ```
 
         - After including this line I was able to specify a **Data Binding** for `self.label_doc_title` in the `DocsDisplayTemplate`, and display a list of document titles.
+
+---
+
+### :notebook: 1/31/23
+
+- Populated repeating fields in `DocsDisplayTemplate`, to display recently added documents.
+    - Wrote a function that appropriately truncates and displays preview text and tooltips:
+
+        ```python
+        TEXT_PREVIEW_MAX = 30
+        TOOLTIP_PREVIEW_MAX = 50
+        PREVIEW_OFFSET = 5
+
+        def doc_preview(
+            self,
+            doc_content: str
+        ):
+            """ Formats previews of document link text and tooltip.
+            
+                Args:
+                    doc_content (str):
+                        Document content for preview formatting.            
+
+                Returns:
+                    text_preview, tooltip_preview (Tuple):
+                        Two-tuple of strings for display text and tooltip text.
+            """
+
+            # Created a truncated text preview for strings longer than TEXT_PREVIEW_MAX
+            if len(doc_content) >= TEXT_PREVIEW_MAX:
+                text_preview = f'{doc_content[:TEXT_PREVIEW_MAX - PREVIEW_OFFSET]}...'
+            else:
+                text_preview = doc_content
+
+            # Created a truncated tooltip for strings longer than TOOLTIP_PREVIEW_MAX
+            if len(doc_content) >= TOOLTIP_PREVIEW_MAX:
+                tooltip_preview = f'{doc_content[:TOOLTIP_PREVIEW_MAX - PREVIEW_OFFSET]}...'
+            else:
+                tooltip_preview = doc_content 
+
+            return (text_preview, tooltip_preview)
+        ```
+
+    - Wrote a date format string to display a user friendly date object:
+
+        ```python
+        # Formatting reference
+        """ %Y  Year with century as a decimal number.
+        %m  Month as a decimal number [01,12].
+        %d  Day of the month as a decimal number [01,31].
+        %H  Hour (24-hour clock) as a decimal number [00,23].
+        %M  Minute as a decimal number [00,59].
+        %S  Second as a decimal number [00,61].
+        %z  Time zone offset from UTC.
+        %a  Locale's abbreviated weekday name.
+        %A  Locale's full weekday name.
+        %b  Locale's abbreviated month name.
+        %B  Locale's full month name.
+        %c  Locale's appropriate date and time representation.
+        %I  Hour (12-hour clock) as a decimal number [01,12].
+        %p  Locale's equivalent of either AM or PM."""
+
+        DATE_FORMAT = f'%a %b %d, %Y - %-I:%M:%S %p'
+        ```
+
+    - Set the formatted values for individual rows:
+
+        ```python
+        # Set values for 'self.repeating_panel_docs'
+        # Title
+        self.label_doc_title.text = self.item['title']
+
+        # Created date
+        created_date = self.item['created']
+        self.label_doc_created.text = created_date.strftime(DATE_FORMAT)
+
+        # Category
+        self.label_doc_category.text = self.item['category']['name']
+        self.label_doc_category.tooltip = self.item['category']['description']
+
+        # Preview & link
+        text_preview, tooltip_preview = self.doc_preview(
+            doc_content=self.item['content']
+        )
+        self.link_doc_preview.text = text_preview
+        self.link_doc_preview.tooltip = tooltip_preview
+        ```
+
+    - Next steps are:
+        - Move repeating server-side database queries to a the `client_utilities` module.
+        - Add code to display a document using a preview link.
