@@ -832,5 +832,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Break for illness :sneezing_face:
 - Days 86+87o: [1/30/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_86_87/README.md/#notebook-13023)
 - Days 86+87p: [1/31/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_86_87/README.md/#notebook-13123)
+- Days 86+87q: [2/1/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_86_87/README.md/#notebook-2123)
 
 </details>
