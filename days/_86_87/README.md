@@ -754,6 +754,95 @@ def drop_down_doc_category_show(self, **event_args):
         self.link_doc_preview.tooltip = tooltip_preview
         ```
 
-    - Next steps are:
-        - Move repeating server-side database queries to a the `client_utilities` module.
-        - Add code to display a document using a preview link.
+- Next steps are:
+    - Move repeating server-side database queries to the `client_utilities` module.
+    - Add code to display a document using a preview link.
+
+---
+
+### :notebook: 2/1/23
+
+- Worked on moving the repeating server-side database queries to the `client_utilities` module.
+    - More development required.
+
+---
+
+### :notebook: 2/2/23
+
+- Moved the repeating server-side database queries to the `client_utilities` module.
+    - The database query `anvil.server.call("get_docs")` takes place when the `HomeForm` form initially loads, by way of a call to the `client_utilities.get_documents` function.
+    - The response is a client object (`client_utilities.documents`) available to all sub-forms.
+
+        ```python
+        class HomeForm(HomeFormTemplate):
+        def __init__(self, **properties):
+            # Set Form properties and Data Bindings.
+            self.init_components(**properties)
+
+            # Any code you write here will run before the form opens
+
+            # Assign a 'HomeForm' instance to 'client_utilities.home_form'
+            # Enables access to 'HomeForm' methods by other forms
+            cu.home_form = self
+
+            """ Begin relevant code. """
+            # Cache a list of sorted categories from the database
+            cu.get_categories()
+            """ End relevant code. """
+
+            # Cache a list of sorted documents from the database
+            cu.get_documents()
+        ```
+
+        ```python
+        def get_documents() -> None:
+        """ Get a list of documents from the 'docs' table in the database.
+
+            Assign the list of categories to the global 'documents' variable.
+
+            Args:
+                None.
+
+            Returns:
+                None.
+        """
+
+        # TODO
+        global documents
+
+        # TODO
+        db_documents = anvil.server.call('get_docs')
+
+        # TODO
+        documents = [d for d in db_documents]
+        
+        return None
+        ```
+
+    - The `AddDocsForm.AddDocsForm.outlined_button_add_doc_click` method also calls the `client_utilities.get_documents` function after inserting a new document into the database.
+        - Effectively refreshes the cache.
+
+        ```python
+        def outlined_button_add_doc_click(self, **event_args):
+            """This method is called when the button is clicked"""
+            # Data input validation
+            valid_input = self._validate_input()
+
+            # Add the document to the database only if entries are valid
+            if False not in valid_input:
+                anvil.server.call(
+                    'add_document',
+                    title=self.text_box_doc_title.text,
+                    category=self.drop_down_doc_category.selected_value,
+                    content=self.text_area_doc_contents.text
+            )
+
+            # Refresh the cached documents content
+            cu.get_documents()
+            
+            # Return to the home page
+            cu.go_home()
+        ```
+
+- Next steps are:
+    - Add code to display a document using a preview link.
