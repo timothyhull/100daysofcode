@@ -846,3 +846,10 @@ def drop_down_doc_category_show(self, **event_args):
 
 - Next steps are:
     - Add code to display a document using a preview link.
+
+---
+
+### :notebook: 2/3/23
+
+- Reviewed code in the `HomeDetailsForm` form to determine how to reuse the `DocsDisplayTemplate` to populate the `AllDocsForm` form.
+    - Further analysis required.
