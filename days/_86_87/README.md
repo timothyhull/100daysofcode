@@ -853,3 +853,281 @@ def drop_down_doc_category_show(self, **event_args):
 
 - Reviewed code in the `HomeDetailsForm` form to determine how to reuse the `DocsDisplayTemplate` to populate the `AllDocsForm` form.
     - Further analysis required.
+
+---
+
+### :notebook: 2/4/23
+
+- Successfully reused the `DocsDisplayTemplate` to populate the `AllDocsForm` form (was already populating `HomeDetailsForm`).
+    - Required the following steps:
+
+        1. Add a new **Repeating Panel** component to `AllDocsForm` and do not add labels.
+        2. From the **Design** view, select and name the new **Repeating Panel** using the **Properties** menu.
+        3. Locate the **item_template** field in the **Properties** menu and choose the name of the template already in use by `HomeDetailsForm`.
+
+- Added code to `DocDetailsForm` to display the contents of a database document row.
+    - `DocDetailsForm` will hide all labels and display an error message if directly navigated to, without selecting a document from a preview link.
+
+    ```python
+    from ._anvil_designer import DocDetailsFormTemplate
+    from anvil import *
+    import anvil.tables as tables
+    import anvil.tables.query as q
+    from anvil.tables import app_tables
+    import anvil.server
+
+    from . import client_utilities as cu
+
+    # Constants
+    NO_DOC_ERROR = 'No document specified to load'
+
+    class DocDetailsForm(DocDetailsFormTemplate):
+    def __init__(self, **properties):
+        # Set Form properties and Data Bindings.
+        self.init_components(**properties)
+        # Any code you write here will run before the form opens.
+
+        # Display an error message if no document is available to load
+        if cu.home_form.doc is None:
+            self.label_error_msg.text = NO_DOC_ERROR
+            self.label_error_msg.visible = True
+
+            # Hide labels for unused fields
+            self._label_doc_title.visible = False
+            self._label_doc_created.visible = False
+            self._label_doc_category.visible = False
+            self._label_doc_contents.visible = False
+
+        # Load document details
+        else:
+            self.label_doc_title.text = cu.home_form.doc['title']
+            self.label_doc_created.text = cu.format_date(
+                date=cu.home_form.doc['created']
+            )
+            self.label_doc_category.text = cu.home_form.doc['category']['name']
+            self.label_doc_contents.text = cu.home_form.doc['content']
+
+    # Print debug-like output
+    print(f'Loaded "{cu.home_form.doc}"')
+    ```
+
+- Added on-click actions to document previews links in `HomeDetailsForm` and `DocDetailsForm` to display document details in the `DocDetailsForm` form.
+    - The code for the preview links is configured in the `DocsDisplayTemplate`.
+
+        ```python
+        from ._anvil_designer import DocsDisplayTemplateTemplate
+        from anvil import *
+        import anvil.server
+        import anvil.tables as tables
+        import anvil.tables.query as q
+        from anvil.tables import app_tables
+
+        from ... import client_utilities as cu
+
+        # Constants
+        TEXT_PREVIEW_MAX = 30
+        TOOLTIP_PREVIEW_MAX = 50
+        PREVIEW_OFFSET = 5
+
+        class DocsDisplayTemplate(DocsDisplayTemplateTemplate):
+        def __init__(self, **properties):
+            # Set Form properties and Data Bindings.
+            self.init_components(**properties)
+
+            # Set values for 'self.repeating_panel_docs'
+            # Title
+            self.label_doc_title.text = self.item['title']
+
+            # Created date
+            created_date = self.item['created']
+            self.label_doc_created.text = cu.format_date(
+                date=created_date
+            )
+
+            # Category
+            self.label_doc_category.text = self.item['category']['name']
+            self.label_doc_category.tooltip = self.item['category']['description']
+
+            # Preview & link
+            text_preview, tooltip_preview = self.doc_preview(
+                doc_content=self.item['content']
+            )
+            self.link_doc_preview.text = text_preview
+            self.link_doc_preview.tooltip = tooltip_preview
+
+        def doc_preview(
+            self,
+            doc_content: str
+        ):
+            """ Formats previews of document link text and tooltip.
+            
+                Args:
+                    doc_content (str):
+                    Document content for preview formatting.            
+
+                Returns:
+                t   ext_preview, tooltip_preview (Tuple):
+                    Two-tuple of strings for display text and tooltip text.
+            """
+
+            # Created a truncated text preview for strings longer than TEXT_PREVIEW_MAX
+            if len(doc_content) >= TEXT_PREVIEW_MAX:
+                text_preview = f'{doc_content[:TEXT_PREVIEW_MAX - PREVIEW_OFFSET]}...'
+            else:
+                text_preview = doc_content
+
+            # Created a truncated tooltip for strings longer than TOOLTIP_PREVIEW_MAX
+            if len(doc_content) >= TOOLTIP_PREVIEW_MAX:
+                tooltip_preview = f'{doc_content[:TOOLTIP_PREVIEW_MAX - PREVIEW_OFFSET]}...'
+            else:
+                tooltip_preview = doc_content 
+
+            return (text_preview, tooltip_preview)
+
+        def link_doc_preview_click(self, **event_args):
+            """This method is called when the link is clicked"""
+
+            # Pass the value of the current table row as an argument to 'DocDetailsForm'
+            cu.home_form.load_doc_details_form(doc=self.item)
+        ```
+
+- Moved the `format_date` function from the `DocsDisplayTemplate` form to `client_utilities` module:
+    - Allows reuse of the `format_date` function by the `DocDetailsForm` form.
+
+        ```python
+        from datetime import datetime as dt
+        DATE_FORMAT = f'%a %b %d, %Y - %-I:%M:%S %p'
+
+        def format_date(
+            date: dt
+        ) -> str:
+            """ TODO """
+
+            f_date = date.strftime(DATE_FORMAT)
+            
+            return f_date
+        ```
+
+- Added logic to the `HomeForm` form to prevent navigation buttons from reloading the the same form in `HomeForm.content_panel` that is already in `HomeForm.content_panel`.
+
+    ```python
+    from ._anvil_designer import HomeFormTemplate
+    from anvil import *
+    import anvil.tables as tables
+    import anvil.tables.query as q
+    from anvil.tables import app_tables
+    import anvil.server
+    from ..AddDocsForm import AddDocsForm
+    from ..AllDocsForm import AllDocsForm
+    from ..DocDetailsForm import DocDetailsForm
+    from ..HomeDetailsForm import HomeDetailsForm
+
+    from .. import client_utilities as cu
+
+
+    class HomeForm(HomeFormTemplate):
+    def __init__(self, **properties):
+        # Set Form properties and Data Bindings.
+        self.init_components(**properties)
+
+        # Any code you write here will run before the form opens
+
+        # Assign a 'HomeForm' instance to 'client_utilities.home_form'
+        # Enables access to 'HomeForm' methods by other forms
+        cu.home_form = self
+
+        # Cache a list of sorted categories from the database
+        cu.get_categories()
+
+        # Cache a list of sorted documents from the database
+        cu.get_documents()
+        
+        # Create a set object to declare button states
+        self.button_status = {
+            self.button_add_doc,
+            self.button_all_docs,
+            self.button_doc_details,
+            self.button_home
+        }
+
+        # Set the name of the active form and load the home form
+        self.active_form = 'HomeDetailsForm'
+        self.load_home_form()
+
+    def _clear_content_panel(self):
+        """ Clear the main content panel. """
+        self.content_panel.clear()
+
+    # Form load action methods
+    def load_home_form(self):
+        """ Load HomeForm in the main content panel"""
+        form_name = 'HomeDetailsForm'
+        if self.active_form != form_name:
+            self.active_form = form_name
+            self._clear_content_panel()
+            cu.update_buttons(active_button=self.button_home)
+            self.content_panel.add_component(HomeDetailsForm())
+
+    def load_add_docs_form(self):
+        """ Load AddDocsForm in the main content panel"""
+        form_name = 'AddDocForm'
+        if self.active_form != form_name:
+            self.active_form = form_name
+            self._clear_content_panel()
+            cu.update_buttons(active_button=self.button_add_doc)
+            self.content_panel.add_component(AddDocsForm())
+
+    def load_all_docs_form(self):
+        """ Load AddDocsForm in the main content panel"""
+        form_name = 'AllDocsForm'
+        if self.active_form != form_name:
+            self.active_form = form_name
+            self._clear_content_panel()
+            cu.update_buttons(active_button=self.button_all_docs)
+            self.content_panel.add_component(AllDocsForm())
+
+    def load_doc_details_form(
+        self,
+        doc
+    ):
+        """ Load AddDocsForm in the main content panel. 
+        
+            Args:
+                doc (anvil.LiveObjectProxy) or None:
+                Database table row with specified document information.
+                a `None` value will display an error message.
+
+            Returns:
+                None.
+        """
+        form_name = 'DocDetailsForm'
+        if self.active_form != form_name:
+            # Load the form and trigger the error message to be visible
+            self.active_form = form_name
+            self._clear_content_panel()
+            cu.update_buttons(active_button=self.button_doc_details)
+
+            # Pass document information to the 'DocDetailsForm'
+            self.doc = doc
+            print(f'Loading "{doc}"')
+            self.content_panel.add_component(DocDetailsForm())
+
+        return None
+
+    # Button click action methods
+    def button_home_click(self, **event_args):
+        """This method is called when the Home is clicked"""
+        self.load_home_form()
+
+    def button_all_docs_click(self, **event_args):
+        """This method is called when the all_docs button is clicked"""
+        self.load_all_docs_form()
+
+    def button_doc_details_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        self.load_doc_details_form(doc=None)
+
+    def button_add_doc_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        self.load_add_docs_form()
+    ```
