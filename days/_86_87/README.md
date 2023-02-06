@@ -1,4 +1,4 @@
-# :calendar: Days 86-87: 1/8/2023-2/15/2023
+# :calendar: Days 86-87: 1/8/2023-2/5/2023
 
 ---
 
@@ -18,9 +18,9 @@
 
 :white_check_mark: Watch video 22
 
-:white_large_square: Watch videos 23-24
+:white_check_mark: Watch videos 23-24
 
-:white_large_square: Create a new Anvil website
+:white_check_mark: Create a new Anvil website
 
 :white_large_square: Listen to TalkPython podcast episode
 
@@ -1131,3 +1131,45 @@ def drop_down_doc_category_show(self, **event_args):
         """This method is called when the button is clicked"""
         self.load_add_docs_form()
     ```
+
+---
+
+### :notebook: 2/5/23
+
+- Corrected a bug in `HomeForm.HomeForm.__init__` that prevented the `HomeDetailedForm` from loading at initial app launch.
+
+```python
+class HomeForm(HomeFormTemplate):
+    def __init__(self, **properties):
+        # Set Form properties and Data Bindings.
+        self.init_components(**properties)
+
+        # Any code you write here will run before the form opens
+
+        # Assign a 'HomeForm' instance to 'client_utilities.home_form'
+        # Enables access to 'HomeForm' methods by other forms
+        cu.home_form = self
+
+        # Cache a list of sorted categories from the database
+        cu.get_categories()
+
+        # Cache a list of sorted documents from the database
+        cu.get_documents()
+        
+        # Create a set object to declare button states
+        self.button_status = {
+            self.button_add_doc,
+            self.button_all_docs,
+            self.button_doc_details,
+            self.button_home
+        }
+
+        """ Begin Relevant code. """
+        # Set 'self.active_form' to 'None' and load the home form
+        self.active_form = None
+        self.load_home_form()
+        """ End Relevant code. """
+```
+
+- Temporarily published application to a private link to verify functionality.
+    - Application performed as-expected.
