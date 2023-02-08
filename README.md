@@ -843,5 +843,6 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 <details><summary>Days 88-90: Home Inventory App</summary>
 
 - Day 88: [2/6/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_88)
+- Day 88a: [2/7/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_88/README.md/#notebook-2723)
 
 </details>
