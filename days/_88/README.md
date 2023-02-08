@@ -33,16 +33,16 @@
 - Watched videos 1, 2, and 2:34 of video 3.
 - Started developing home inventory application framework and main menu:
     - Created the following files:
-        - [`days/_88/inventory_app/__init__.py`](days/_88/inventory_app/__init__.py) - package initialization file.
-        - [`days/_88/inventory_app/__main__.py`](days/_88/inventory_app/__main__.py) - main package file.
-        - [`days/_88/inventory_app/home_inventory/home_inventory.py`](days/_88/inventory_app/home_inventory/home_inventory.py) - classes, functions, variables, etc. that comprise the application functionality.
+        - [`days/_88/inventory_app/__init__.py`](__init__.py) - package initialization file.
+        - [`days/_88/inventory_app/__main__.py`](__main__.py) - main package file.
+        - [`days/_88/inventory_app/home_inventory/home_inventory.py`](home_inventory.py) - classes, functions, variables, etc. that comprise the application functionality.
 
     - Experimented with several different methods of creating a main menu:
         - A `typing.NamedTuple` object could work although it seems to be overcomplicated.
         - A `list` or `tuple` object would work although the relationship between index and value is less readable than ideal.
         - A `dict` object seems to be the best choice.
 
-    - Created the `MAIN_MENU` constant in [`days/_88/inventory_app/home_inventory/home_inventory.py`](days/_88/inventory_app/home_inventory/home_inventory.py) to provide a dictionary of menu options.
+    - Created the `MAIN_MENU` constant in [`days/_88/inventory_app/home_inventory/home_inventory.py`](home_inventory.py) to provide a dictionary of menu options.
 
         ```python
         MAIN_MENU = {
@@ -53,3 +53,60 @@
             '5': 'Exit'
         }
         ```
+
+---
+
+### :notebook: 2/7/23
+
+- Refactored/restructured [`days/_88/inventory_app/home_inventory/home_inventory.py`](home_inventory.py) such that the top-level object is a class (`HomeInventory`) with methods that perform different operations within an instance of the class:
+
+    ```python
+    class HomeInventory:
+        """ Home inventory application main object class. """
+
+        def __init__(self) -> None:
+            """ Initialization function.
+
+                Args:
+                    None.
+
+                Returns:
+                    None.
+            """
+
+            # Create a main menu object during class object instantiation
+            self.create_main_menu()
+
+            return None
+
+        def create_main_menu(
+            self,
+            menu_items: Dict = MAIN_MENU
+        ) -> None:
+            """ Create a main menu object.
+
+                No transformation between the start and end of the method
+                take place at this time.  Method is capable of object
+                manipulation within this function.
+
+                Args:
+                    menu_items (Dict, optional):
+                        Dictionary with numeric string input keys and
+                        descriptive values for each key. Example:
+
+                        menu = {
+                            '1': 'Option 1',
+                            '2': 'Option 2',
+                            '3': 'Option 3',
+                            '4': 'Exit'
+                        }
+
+                Returns:
+                    None.
+            """
+
+            # Create a dictionary object and populate it with default values.
+            self.main_menu = dict(**menu_items)
+
+            return None
+    ```
