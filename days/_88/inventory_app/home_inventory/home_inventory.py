@@ -18,42 +18,55 @@ MENU_WELCOME = 'Enter a menu option: '
 class HomeInventory:
     """ Home inventory application main object class. """
 
-    def __init__(self) -> None:
-        """ Initialization function.
-
-            Args:
-                None.
-
-            Returns:
-                None.
-        """
-
-        # Create a main menu object during class object instantiation
-        self.create_main_menu()
-
-        return None
-
-    def create_main_menu(
+    def __init__(
         self,
         menu_items: Dict = MAIN_MENU
     ) -> None:
-        """ Create a main menu object.
-
-            No transformation between the start and end of the method
-            take place at this time.  Method is capable of object
-            manipulation within this function.
+        """ Initialization function.
 
             Args:
                 menu_items (Dict, optional):
                     Dictionary with numeric string input keys and
                     descriptive values for each key. Example:
 
-                    menu = {
-                        '1': 'Option 1',
-                        '2': 'Option 2',
-                        '3': 'Option 3',
-                        '4': 'Exit'
-                    }
+                menu = {
+                    '1': 'Option 1',
+                    '2': 'Option 2',
+                    '3': 'Option 3',
+                    '4': 'Exit'
+                }
+
+            Returns:
+                None.
+        """
+
+        # Create a main menu object during class object instantiation
+        self.create_main_menu(
+            menu_items=menu_items
+        )
+
+        return None
+
+    def create_main_menu(
+        self,
+        menu_items: Dict
+    ) -> None:
+        """ Create a main menu object.
+
+            This method provides the option of manipulating the
+            data within the menu object.
+
+            Args:
+                menu_items (Dict):
+                    Dictionary with numeric string input keys and
+                    descriptive values for each key. Example:
+
+                menu = {
+                    '1': 'Option 1',
+                    '2': 'Option 2',
+                    '3': 'Option 3',
+                    '4': 'Exit'
+                }
 
             Returns:
                 None.
