@@ -18,9 +18,11 @@
 
 :white_check_mark: Watch videos 1-2
 
-:white_large_square: Create application framework
+:white_check_mark: Create application framework
 
 :white_large_square: Build initial main menu functionality
+
+:white_large_square: Write automated tests for main menu functionality
 
 :white_large_square: Watch video 3
 
@@ -70,3 +72,14 @@
 ### :notebook: 2/8/23
 
 - Refactored `HomeInventory` class in [`days/_88/inventory_app/home_inventory/home_inventory.py`](home_inventory.py) to function properly with both default and custom values for the `self.main_menu` object.
+
+---
+
+### :notebook: 2/9/23
+
+- Added functionality to the `HomeInventory` class in [`days/_88/inventory_app/home_inventory/home_inventory.py`](home_inventory.py):
+    - Created the `format_menu_prompt` method to normalize the input prompt suffix format (to ': ').
+
+- Refactored `HomeInventory` class in [`days/_88/inventory_app/home_inventory/home_inventory.py`](home_inventory.py):
+    - Updated `__init__` method to automatically set the `self.input_prompt` value.
+    - Updated doc strings.

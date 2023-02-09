@@ -12,7 +12,8 @@ MAIN_MENU = {
     '4': 'Total Value',
     '5': 'Exit'
 }
-MENU_WELCOME = 'Enter a menu option: '
+MENU_PROMPT_DEFAULT = 'Enter a menu option: '
+PROMPT_SUFFIX = ': '
 
 
 class HomeInventory:
@@ -20,29 +21,41 @@ class HomeInventory:
 
     def __init__(
         self,
-        menu_items: Dict = MAIN_MENU
+        menu_items: Dict = MAIN_MENU,
+        input_prompt: str = MENU_PROMPT_DEFAULT
     ) -> None:
         """ Initialization function.
 
             Args:
                 menu_items (Dict, optional):
                     Dictionary with numeric string input keys and
-                    descriptive values for each key. Example:
+                    descriptive values for each key.
+                    Default is MAIN_MENU.
 
-                menu = {
-                    '1': 'Option 1',
-                    '2': 'Option 2',
-                    '3': 'Option 3',
-                    '4': 'Exit'
-                }
+                    Example:
+
+                    menu = {
+                        '1': 'Option 1',
+                        '2': 'Option 2',
+                        '3': 'Option 3',
+                        '4': 'Exit'
+                    }
+
+                input_prompt (str, optional):
+                    str value to display as prompt for user input.
 
             Returns:
                 None.
         """
 
-        # Create a main menu object during class object instantiation
+        # Create a main menu object
         self.create_main_menu(
             menu_items=menu_items
+        )
+
+        # Create a menu prompt
+        self.format_menu_prompt(
+            input_prompt=input_prompt
         )
 
         return None
@@ -59,14 +72,16 @@ class HomeInventory:
             Args:
                 menu_items (Dict):
                     Dictionary with numeric string input keys and
-                    descriptive values for each key. Example:
+                    descriptive values for each key.
 
-                menu = {
-                    '1': 'Option 1',
-                    '2': 'Option 2',
-                    '3': 'Option 3',
-                    '4': 'Exit'
-                }
+                    Example:
+
+                    menu = {
+                        '1': 'Option 1',
+                        '2': 'Option 2',
+                        '3': 'Option 3',
+                        '4': 'Exit'
+                    }
 
             Returns:
                 None.
@@ -74,5 +89,50 @@ class HomeInventory:
 
         # Create a dictionary object and populate it with default values.
         self.main_menu = dict(**menu_items)
+
+        return None
+
+    def format_menu_prompt(
+        self,
+        input_prompt: str = MENU_PROMPT_DEFAULT
+    ) -> None:
+        """ Check and format the CLI menu input prompt.
+
+            Args:
+                input_prompt (str, optional):
+                    str value to display as prompt for user input.
+                    This method will add a colon and a single space
+                    suffix to the prompt, if not already present,
+                    for readability.  Default is MENU_PROMPT_DEFAULT.
+
+                    Example:
+
+                    1. 'Enter option' becomes 'Enter option: `
+                    2. 'Enter option:' becomes 'Enter option: `
+                    3. 'Enter option: ' does not change.
+
+            Returns:
+                None.
+        """
+
+        # Remove any leading spaces in 'input_prompt'
+        input_prompt = input_prompt.lstrip()
+
+        # Determine if 'input_prompt' the correct suffix
+        if input_prompt.endswith(PROMPT_SUFFIX, -2) is False:
+            # Remove any trailing spaces
+            input_prompt = input_prompt.rstrip()
+
+            # Determine if 'input_prompt' ends with a colon
+            if input_prompt.endswith(PROMPT_SUFFIX[0]) is True:
+                # Add a space character
+                input_prompt += PROMPT_SUFFIX[1]
+
+            # If 'input_prompt' does not end with a colon, add the suffix
+            else:
+                input_prompt += PROMPT_SUFFIX
+
+        # Set the self.user_input value
+        self.input_prompt = input_prompt
 
         return None
