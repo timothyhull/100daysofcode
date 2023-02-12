@@ -83,3 +83,11 @@
 - Refactored `HomeInventory` class in [`days/_88/inventory_app/home_inventory/home_inventory.py`](home_inventory.py):
     - Updated `__init__` method to automatically set the `self.input_prompt` value.
     - Updated doc strings.
+
+---
+
+### :notebook: 2/10/23
+
+- Created the `pytest` file [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to perform testing of [`days/_88/inventory_app/home_inventory/home_inventory.py`](home_inventory.py).
+    - Created initial constant variable objects while setting up automation mock test data.
+    - Created the test file `test_format_menu_prompt`, to test the `HomeInventory.format_menu_prompt` method.

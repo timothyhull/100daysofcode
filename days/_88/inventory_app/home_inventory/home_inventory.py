@@ -115,22 +115,27 @@ class HomeInventory:
                 None.
         """
 
-        # Remove any leading spaces in 'input_prompt'
-        input_prompt = input_prompt.lstrip()
+        # Ensure the 'input_prompt' argument is a string
+        if isinstance(input_prompt, str) is True:
 
-        # Determine if 'input_prompt' the correct suffix
-        if input_prompt.endswith(PROMPT_SUFFIX, -2) is False:
-            # Remove any trailing spaces
-            input_prompt = input_prompt.rstrip()
+            print(input_prompt)
 
-            # Determine if 'input_prompt' ends with a colon
-            if input_prompt.endswith(PROMPT_SUFFIX[0]) is True:
-                # Add a space character
-                input_prompt += PROMPT_SUFFIX[1]
+            # Remove any leading spaces in 'input_prompt'
+            input_prompt = input_prompt.lstrip()
 
-            # If 'input_prompt' does not end with a colon, add the suffix
-            else:
-                input_prompt += PROMPT_SUFFIX
+            # Determine if 'input_prompt' the correct suffix
+            if input_prompt.endswith(PROMPT_SUFFIX, -2) is False:
+                # Remove any trailing spaces
+                input_prompt = input_prompt.rstrip()
+
+                # Determine if 'input_prompt' ends with a colon
+                if input_prompt.endswith(PROMPT_SUFFIX[0]) is True:
+                    # Add a space character
+                    input_prompt += PROMPT_SUFFIX[1]
+
+                # If 'input_prompt' does not end with a colon, add the suffix
+                else:
+                    input_prompt += PROMPT_SUFFIX
 
         # Set the self.user_input value
         self.input_prompt = input_prompt
