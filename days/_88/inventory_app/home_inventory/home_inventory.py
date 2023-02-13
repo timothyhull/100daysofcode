@@ -118,7 +118,8 @@ class HomeInventory:
         # Ensure the 'input_prompt' argument is a string
         if isinstance(input_prompt, str) is True:
 
-            print(input_prompt)
+            print(f'Prompt={input_prompt}')
+            print(f'Type={type(input_prompt)}')
 
             # Remove any leading spaces in 'input_prompt'
             input_prompt = input_prompt.lstrip()

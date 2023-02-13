@@ -90,4 +90,14 @@
 
 - Created the `pytest` file [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to perform testing of [`days/_88/inventory_app/home_inventory/home_inventory.py`](home_inventory.py).
     - Created initial constant variable objects while setting up automation mock test data.
-    - Created the test file `test_format_menu_prompt`, to test the `HomeInventory.format_menu_prompt` method.
+    - Created the test function `test_format_menu_prompt`, to test the `HomeInventory.format_menu_prompt` method.
+
+---
+
+### :notebook: 2/11/23
+
+- Reviewed failed `pytest` from `days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to determine how to refactor [`days/_88/inventory_app/home_inventory/home_inventory.py`](home_inventory.py).
+    - Failing tests when mock input is:
+        - `None`
+        - `False`
+        - `''`

@@ -12,7 +12,7 @@ from _88.inventory_app.home_inventory.home_inventory import (
 # Constants
 MOCK_MENU_PROMPT_INPUT = [
     MENU_PROMPT_DEFAULT,            # Default input
-    '',                              # Empty string
+    '',                             # Empty string
     None,                           # NoneType object
     False,                          # Boolean object
     '  Enter a menu option',        # Leading spaces
