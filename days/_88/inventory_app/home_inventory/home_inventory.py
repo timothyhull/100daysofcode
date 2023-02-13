@@ -115,8 +115,8 @@ class HomeInventory:
                 None.
         """
 
-        # Ensure the 'input_prompt' argument is a string
-        if isinstance(input_prompt, str) is True:
+        # Ensure the 'input_prompt' argument is a non-blank string
+        if isinstance(input_prompt, str) is True and input_prompt:
 
             print(f'Prompt={input_prompt}')
             print(f'Type={type(input_prompt)}')
@@ -137,6 +137,10 @@ class HomeInventory:
                 # If 'input_prompt' does not end with a colon, add the suffix
                 else:
                     input_prompt += PROMPT_SUFFIX
+
+        # TODO
+        else:
+            input_prompt = MENU_PROMPT_DEFAULT
 
         # Set the self.user_input value
         self.input_prompt = input_prompt

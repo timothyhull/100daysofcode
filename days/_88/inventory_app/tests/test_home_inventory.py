@@ -21,15 +21,9 @@ MOCK_MENU_PROMPT_INPUT = [
     'Enter a menu option:  : ',     # Colon and trailing space mixture
 ]
 MOCK_MENU_EXPECTED_VALUE = [
-    MENU_PROMPT_DEFAULT,            # Default input
-    MENU_PROMPT_DEFAULT,            # Default input
-    MENU_PROMPT_DEFAULT,            # Default input
-    MENU_PROMPT_DEFAULT,            # Default input
-    MENU_PROMPT_DEFAULT,            # Default input
-    MENU_PROMPT_DEFAULT,            # Default input
-    MENU_PROMPT_DEFAULT             # Default input
+    # List of expected results equal to # of items in `MOCK_MENU_PROMPT_INPUT`
+    MENU_PROMPT_DEFAULT for _ in MOCK_MENU_PROMPT_INPUT
 ]
-
 
 # TODO: test HomeInventory.__init__
 

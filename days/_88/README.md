@@ -1,4 +1,4 @@
-# :calendar: Day 88: 2/6/2023-2/13/2023
+# :calendar: Day 88: 2/6/2023-2/15/2023
 
 ---
 
@@ -96,8 +96,49 @@
 
 ### :notebook: 2/11/23
 
-- Reviewed failed `pytest` from `days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to determine how to refactor [`days/_88/inventory_app/home_inventory/home_inventory.py`](home_inventory.py).
+- Reviewed failed `pytest` from [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to determine how to refactor [`days/_88/inventory_app/home_inventory/home_inventory.py`](home_inventory.py).
     - Failing tests when mock input is:
         - `None`
         - `False`
         - `''`
+
+---
+
+### :notebook: 2/12/23
+
+- Updated code in the `pytest` file [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py):
+    - Refactored the `MOCK_MENU_EXPECTED_VALUE` list by converting list items from static input to dynamic auto-generation.
+        - Geberates an expected result list item for each entry in `MOCK_MENU_PROMPT_INPUT`.
+        - Adding more test input prompts automatically adds a new expected result using the value from `HomeInventory.MENU_PROMPT_DEFAULT`.
+
+            ```python
+            # Old, static list syntax:
+            MOCK_MENU_EXPECTED_VALUE = [
+                MENU_PROMPT_DEFAULT,            # Default input
+                MENU_PROMPT_DEFAULT,            # Default input
+                MENU_PROMPT_DEFAULT,            # Default input
+                MENU_PROMPT_DEFAULT,            # Default input
+                MENU_PROMPT_DEFAULT,            # Default input
+                MENU_PROMPT_DEFAULT,            # Default input
+                MENU_PROMPT_DEFAULT             # Default input
+            ]
+
+            # New syntax:
+            MOCK_MENU_EXPECTED_VALUE = [
+                MENU_PROMPT_DEFAULT for _ in MOCK_MENU_PROMPT_INPUT
+            ]
+            ```
+
+- Continued refactoring of the `pytest` file [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py):
+    - Updated the `if isinstance(input_prompt, str)` function to also check for blank strings.
+
+        ```python
+        # Old syntax
+        if isinstance(input_prompt, str) is True:
+
+        # New syntax
+        if isinstance(input_prompt, str) is True and input_prompt:
+        ```
+
+    - Passing 7 of 8 `pytest` tests.
+    - Remaining test to refactor for is with the input value `Enter a menu option:  : `.
