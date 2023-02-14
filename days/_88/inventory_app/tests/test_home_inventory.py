@@ -3,6 +3,7 @@
 
 # Imports - Third-Party
 from pytest import mark
+from typing import Any
 
 # Imports - Local
 from _88.inventory_app.home_inventory.home_inventory import (
@@ -31,34 +32,45 @@ MOCK_MENU_EXPECTED_VALUE = [
 # TODO: test HomeInventory.create_main_menu
 
 
-# TODO: test HomeInventory.format_menu_prompt
 @mark.parametrize(
-    # TODO
+    # Specify argument names for the test `test_format_menu_prompt` arguments
     argnames=[
         'mock_input',
         'expected_value'
     ],
     argvalues=zip(
-        # TODO
+        # Specify and ZIP the argument input and expected values
         MOCK_MENU_PROMPT_INPUT,
         MOCK_MENU_EXPECTED_VALUE
     )
 )
 def test_format_menu_prompt(
-    mock_input: str,
-    expected_value: str
+    mock_input: Any,
+    expected_value: Any
 ) -> None:
-    """ TODO """
+    """ Tests for the `HomeInventory.format_menu_prompt` method.
 
-    print(f'Mock Input: {mock_input}')
-    print(f'Expected Value: {expected_value}')
+        Args:
+            mock_input (Any):
+                pytest.mark.parameterize input test values.
 
-    # TODO
+            expected_value (Any):
+                pytest.mark.parameterize expected values for each
+                input test value.
+
+        Returns:
+            None.
+    """
+
+    # print(f'Mock Input: {mock_input}')
+    # print(f'Expected Value: {expected_value}')
+
+    # Create a HomeInventory class instance with each parameterized value
     hi = HomeInventory(
         input_prompt=mock_input
     )
 
-    # TODO
+    # Assert the `input_prompt` of the class instance matches `expected_value`
     assert hi.input_prompt == expected_value
 
     return None

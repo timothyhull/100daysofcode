@@ -108,7 +108,7 @@
 
 - Updated code in the `pytest` file [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py):
     - Refactored the `MOCK_MENU_EXPECTED_VALUE` list by converting list items from static input to dynamic auto-generation.
-        - Geberates an expected result list item for each entry in `MOCK_MENU_PROMPT_INPUT`.
+        - Generates an expected result list item for each entry in `MOCK_MENU_PROMPT_INPUT`.
         - Adding more test input prompts automatically adds a new expected result using the value from `HomeInventory.MENU_PROMPT_DEFAULT`.
 
             ```python
@@ -142,3 +142,12 @@
 
     - Passing 7 of 8 `pytest` tests.
     - Remaining test to refactor for is with the input value `Enter a menu option:  : `.
+
+---
+
+### :notebook: 2/13/23
+
+- Replaced `TODO` docstring placeholders to [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) and [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
+
+- Conducted initial logic research to test string to solve for est cases.
+    - Using the `str.find` method to locate the first instance of `; ` and the end of the string.Í

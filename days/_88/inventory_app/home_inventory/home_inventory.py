@@ -118,8 +118,8 @@ class HomeInventory:
         # Ensure the 'input_prompt' argument is a non-blank string
         if isinstance(input_prompt, str) is True and input_prompt:
 
-            print(f'Prompt={input_prompt}')
-            print(f'Type={type(input_prompt)}')
+            # print(f'Prompt={input_prompt}')
+            # print(f'Type={type(input_prompt)}')
 
             # Remove any leading spaces in 'input_prompt'
             input_prompt = input_prompt.lstrip()
@@ -138,7 +138,7 @@ class HomeInventory:
                 else:
                     input_prompt += PROMPT_SUFFIX
 
-        # TODO
+        # Use the default prompt when `input_prompt` is not str or a blank str
         else:
             input_prompt = MENU_PROMPT_DEFAULT
 
