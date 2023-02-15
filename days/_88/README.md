@@ -149,5 +149,19 @@
 
 - Replaced `TODO` docstring placeholders to [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) and [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
 
-- Conducted initial logic research to test string to solve for est cases.
-    - Using the `str.find` method to locate the first instance of `; ` and the end of the string.Í
+- Conducted initial logic research to test string to solve for the remaining unsolved `pytest` test case - multiple trailing `: ` instances.
+    - Using the `str.find` method to locate the first instance of `: ` and its position relative to the end of the prompt string.
+    - Further testing required.
+
+---
+
+### :notebook: 2/14/23
+
+- Tested several string methods to determine the best way to detect and properly format multiple instances of `: ` in an input prompt string, including:
+    - `str.count`
+    - `str.index` == `s.find`(equivalent results)
+    - `str.rindex` and `s.rfind` (equivalent results)
+    - `str.partition`
+
+    - Determined that `str.partition` is the most effective choice to resolve multiple instances of `: ` in a string prompt.
+    - Tested using `str.partition` in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py) although a logic error at line #133 requires tuning for proper functionality.

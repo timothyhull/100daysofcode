@@ -131,8 +131,13 @@ class HomeInventory:
 
                 # Determine if 'input_prompt' ends with a colon
                 if input_prompt.endswith(PROMPT_SUFFIX[0]) is True:
-                    # Add a space character
-                    input_prompt += PROMPT_SUFFIX[1]
+                    # input_prompt += PROMPT_SUFFIX[1]
+
+                    # Split the prompt string from instances of PROMPT_SUFFIX
+                    prompt_parts = input_prompt.partition(PROMPT_SUFFIX[0])
+
+                    # Format input_string with one instance of PROMPT_SUFFIX
+                    input_prompt = prompt_parts[0] + PROMPT_SUFFIX
 
                 # If 'input_prompt' does not end with a colon, add the suffix
                 else:
@@ -142,7 +147,7 @@ class HomeInventory:
         else:
             input_prompt = MENU_PROMPT_DEFAULT
 
-        # Set the self.user_input value
+        # Set the self.user_input value to the formatted prompt
         self.input_prompt = input_prompt
 
         return None
