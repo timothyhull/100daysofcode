@@ -1,4 +1,4 @@
-# :calendar: Day 88: 2/6/2023-2/15/2023
+# :calendar: Day 88: 2/6/2023-2/20/2023
 
 ---
 
@@ -165,3 +165,71 @@
 
     - Determined that `str.partition` is the most effective choice to resolve multiple instances of `: ` in a string prompt.
     - Tested using `str.partition` in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py) although a logic error at line #133 requires tuning for proper functionality.
+
+---
+
+### :notebook: 2/15/23
+
+- Refactored the `HomeInventory.format_menu_prompt` method in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py) to successfully pass the `test_format_menu_prompt` test in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py):
+
+    ```python
+    def format_menu_prompt(
+        self,
+        input_prompt: str = MENU_PROMPT_DEFAULT
+    ) -> None:
+        """ Check and format the CLI menu input prompt.
+
+            Args:
+                input_prompt (str, optional):
+                    str value to display as prompt for user input.
+                    This method will add a colon and a single space
+                    suffix to the prompt, if not already present,
+                    for readability.  Default is MENU_PROMPT_DEFAULT.
+
+                    Example:
+
+                    1. 'Enter option' becomes 'Enter option: `
+                    2. 'Enter option:' becomes 'Enter option: `
+                    3. 'Enter option: ' does not change.
+
+            Returns:
+                None.
+        """
+
+        # Ensure the 'input_prompt' argument is a non-blank string
+        if isinstance(input_prompt, str) is True \
+            and input_prompt != '':
+
+            # Remove any leading spaces in 'input_prompt'
+            input_prompt = input_prompt.lstrip()
+
+            # Check 'input_prompt' for the correct suffix
+            if input_prompt.endswith(PROMPT_SUFFIX) is False:
+                # Remove any trailing spaces
+                input_prompt = input_prompt.rstrip()
+
+                # Add the correct suffix
+                if input_prompt.endswith(PROMPT_SUFFIX[0]):
+                    # Add a blank space if the string ends with ':'
+                    input_prompt += PROMPT_SUFFIX[1]
+                else:
+                    # Add the full suffix if the string does not end with ':'
+                    input_prompt += PROMPT_SUFFIX
+
+            # Remove any excess instances of the correct suffix
+            if input_prompt.count(PROMPT_SUFFIX) != 1:
+                # Split the prompt string from instances of PROMPT_SUFFIX
+                prompt_parts = input_prompt.partition(PROMPT_SUFFIX[0])
+
+                # Format input_string with one instance of PROMPT_SUFFIX
+                input_prompt = prompt_parts[0] + PROMPT_SUFFIX
+
+        else:
+            # Use the default prompt when `input_prompt` is a blank string
+            input_prompt = MENU_PROMPT_DEFAULT
+
+        # Set the self.user_input value to the formatted prompt
+        self.input_prompt = input_prompt
+
+        return None
+    ```

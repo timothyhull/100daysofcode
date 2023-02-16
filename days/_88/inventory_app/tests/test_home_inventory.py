@@ -62,9 +62,6 @@ def test_format_menu_prompt(
             None.
     """
 
-    # print(f'Mock Input: {mock_input}')
-    # print(f'Expected Value: {expected_value}')
-
     # Create a HomeInventory class instance with each parameterized value
     hi = HomeInventory(
         input_prompt=mock_input
