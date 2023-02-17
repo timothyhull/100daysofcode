@@ -3,8 +3,10 @@
 
 # Imports - Python Standard Library
 from typing import Dict
+from sys import exit
 
 # Constants
+KEYBOARD_INTERRUPT_MESSAGE = 'User-initiated application shutdown.'
 MAIN_MENU = {
     '1': 'Add Room',
     '2': 'Add Inventory',
@@ -12,8 +14,10 @@ MAIN_MENU = {
     '4': 'Total Value',
     '5': 'Exit'
 }
+MAIN_MENU_BANNER = '** Home Inventory App - Main Menu **'
 MENU_PROMPT_DEFAULT = 'Enter a menu option: '
 PROMPT_SUFFIX = ': '
+USER_INPUT_ERROR_MESSAGE = 'Invalid input, please try again.'
 
 
 class HomeInventory:
@@ -151,3 +155,51 @@ class HomeInventory:
         self.input_prompt = input_prompt
 
         return None
+
+    def display_main_menu(self) -> str:
+        """ Display the main menu, collect user input, run methods.
+
+            Args:
+                None.
+
+            Returns:
+                user_input (str):
+                    Valid user input selection.
+        """
+
+        # TODO: Collect and validate user input
+        while True:
+            # Display the menu and prompt
+            print(f'\n{MAIN_MENU_BANNER}\n')
+            for key, value in self.main_menu.items():
+                print(f'{key}. {value}')
+
+            try:
+                print()
+                user_input = input(self.input_prompt)
+
+            # Exception handling for KeyboardInterrupt exceptions
+            except KeyboardInterrupt:
+                # Display friendly message
+                print(f'\n{KEYBOARD_INTERRUPT_MESSAGE}\n')
+
+                # Gracefully close the application
+                exit()
+
+            # Validate user input
+            if user_input.strip() in self.main_menu.keys():
+                print(
+                    f'\nUser selects option {user_input}, '
+                    f'"{self.main_menu.get(user_input)}"\n'
+                )
+
+                break
+
+            # Display an invalid input message and go to next loop iteration
+            print(f'{USER_INPUT_ERROR_MESSAGE}')
+
+        # TODO: Call methods based on input
+
+        # TODO: Return some value
+
+        return user_input

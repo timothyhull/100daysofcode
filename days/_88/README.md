@@ -233,3 +233,20 @@
 
         return None
     ```
+
+- All `pytest` tests pass.
+
+---
+
+### :notebook: 2/16/23
+
+- Created the method `HomeInventory.display_main_menu` in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
+    - Performs the following functions:
+        - Display the main menu.
+        - Collect user input.
+        - Call methods that perform functions, based on user input selection.
+    - Proper return value undetermined.
+
+- Created the method `test_display_main_menu` in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to test the `HomeInventory.display_main_menu` method in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
+    - Created constants, `MOCK_MAIN_MENU_INPUT` and `MOCK_MAIN_MENU_EXPECTED_VALUE` to test multiple input strings.
+    - Need to migrate decorator function from `@mark.parameterize` to the use of the `capsys` pytest fixture, to capture the result of user input
