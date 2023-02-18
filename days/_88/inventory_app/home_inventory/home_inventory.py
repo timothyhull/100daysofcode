@@ -193,6 +193,7 @@ class HomeInventory:
                     f'"{self.main_menu.get(user_input)}"\n'
                 )
 
+                # Break the loop after a successful menu selection
                 break
 
             # Display an invalid input message and go to next loop iteration

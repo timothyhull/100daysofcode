@@ -247,6 +247,16 @@
         - Call methods that perform functions, based on user input selection.
     - Proper return value undetermined.
 
-- Created the method `test_display_main_menu` in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to test the `HomeInventory.display_main_menu` method in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
+- Created the method `test_display_main_menu` in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to test the `HomeInventory.display_main_menu` return value in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
     - Created constants, `MOCK_MAIN_MENU_INPUT` and `MOCK_MAIN_MENU_EXPECTED_VALUE` to test multiple input strings.
-    - Need to migrate decorator function from `@mark.parameterize` to the use of the `capsys` pytest fixture, to capture the result of user input
+    - Need to migrate decorator function from `@mark.parameterize` to the use of the `capsys` pytest fixture, to capture the result of user input.
+
+---
+
+### :notebook: 2/17/23
+
+- Created the method `test_display_main_menu_output` in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to test the `HomeInventory.display_main_menu` `STDOUT` value in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
+    - Tested combining the `@mark.parameterize` and `@unittest.mock.patch` decorators with the `capsys` pytest fixture, to automatically input/mock parameterized values when a `pytest` encounters an instance of a `builtins.input` prompt, and compare the input value with the expected `STDOUT` output.
+        - This is in contrast to having to loop over `side_effect` values defined in the `@unittest.mock.patch` decorator, within the `pytest` function (`test_display_main_menu_output`).
+    - The collected `STDOUT` output continues to be `''` even though printed output is displayed during `pytest` runs.
+        - Further testing required.
