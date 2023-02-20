@@ -255,8 +255,17 @@
 
 ### :notebook: 2/17/23
 
-- Created the method `test_display_main_menu_output` in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to test the `HomeInventory.display_main_menu` `STDOUT` value in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
+- Created the function `test_display_main_menu_output` in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to test the `HomeInventory.display_main_menu` `STDOUT` value in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
     - Tested combining the `@mark.parameterize` and `@unittest.mock.patch` decorators with the `capsys` pytest fixture, to automatically input/mock parameterized values when a `pytest` encounters an instance of a `builtins.input` prompt, and compare the input value with the expected `STDOUT` output.
         - This is in contrast to having to loop over `side_effect` values defined in the `@unittest.mock.patch` decorator, within the `pytest` function (`test_display_main_menu_output`).
     - The collected `STDOUT` output continues to be `''` even though printed output is displayed during `pytest` runs.
         - Further testing required.
+
+---
+
+### :notebook: 2/18/23
+
+- Conducted additional testing with the `test_display_main_menu_output` function in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py).
+    - Tested using `unittest.mock.patch` with a context manager instead of as a decorator, although the `STDOUT` output remains blank.
+    - Tested using `unittest.mock.patch` without the `pytest.mark.parameterize` decorator, and the `STDOUT` output works correctly.
+    - Further testing required.

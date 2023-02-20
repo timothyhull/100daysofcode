@@ -137,18 +137,18 @@ def test_main_menu(
 #     # Send values to prompts for user input during the test
 #     target='builtins.input'
 # )
-@mark.parametrize(
-    # Specify argument names for the test `test_format_menu_prompt` arguments
-    argnames=[
-        'mock_input',
-        'expected_value'
-    ],
-    argvalues=zip(
-        # Specify and ZIP the argument input and expected values
-        MOCK_MAIN_MENU_INPUT,
-        MOCK_MAIN_MENU_EXPECTED_VALUE
-    )
-)
+# @mark.parametrize(
+#     # Specify argument names for the test `test_format_menu_prompt` arguments
+#     argnames=[
+#         'mock_input',
+#         'expected_value'
+#     ],
+#     argvalues=zip(
+#         # Specify and ZIP the argument input and expected values
+#         MOCK_MAIN_MENU_INPUT,
+#         MOCK_MAIN_MENU_EXPECTED_VALUE
+#     )
+# )
 @patch(
     # Send values to prompts for user input during the test
     target='builtins.input'

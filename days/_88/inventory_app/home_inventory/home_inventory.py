@@ -186,6 +186,8 @@ class HomeInventory:
                 # Gracefully close the application
                 exit()
 
+            print(f'*****{user_input.strip()}')
+
             # Validate user input
             if user_input.strip() in self.main_menu.keys():
                 print(
