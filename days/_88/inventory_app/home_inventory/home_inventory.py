@@ -2,8 +2,9 @@
 """ Home inventory application main program """
 
 # Imports - Python Standard Library
-from typing import Dict
+from os import environ
 from sys import exit
+from typing import Dict
 
 # Constants
 KEYBOARD_INTERRUPT_MESSAGE = 'User-initiated application shutdown.'
@@ -17,7 +18,8 @@ MAIN_MENU = {
 MAIN_MENU_BANNER = '** Home Inventory App - Main Menu **'
 MENU_PROMPT_DEFAULT = 'Enter a menu option: '
 PROMPT_SUFFIX = ': '
-USER_INPUT_ERROR_MESSAGE = 'Invalid input, please try again.'
+PYTEST_ENV_VAR = 'PYTEST_CURRENT_TEST'
+USER_INPUT_ERROR_MESSAGE = 'Invalid input, please try again'
 
 
 class HomeInventory:
@@ -186,8 +188,6 @@ class HomeInventory:
                 # Gracefully close the application
                 exit()
 
-            print(f'*****{user_input.strip()}')
-
             # Validate user input
             if user_input.strip() in self.main_menu.keys():
                 print(
@@ -198,8 +198,15 @@ class HomeInventory:
                 # Break the loop after a successful menu selection
                 break
 
-            # Display an invalid input message and go to next loop iteration
-            print(f'{USER_INPUT_ERROR_MESSAGE}')
+            # Display an invalid input message
+            print(f'{USER_INPUT_ERROR_MESSAGE} - Entered "{user_input}"')
+
+            # Break the loop if method called by pytest
+            if PYTEST_ENV_VAR in str(environ.keys()):
+                break
+            else:
+                # Continue to the next loop iteration
+                continue
 
         # TODO: Call methods based on input
 

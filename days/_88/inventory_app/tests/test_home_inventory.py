@@ -47,6 +47,7 @@ MOCK_MAIN_MENU_EXPECTED_VALUE = [
     USER_INPUT_ERROR_MESSAGE,
     USER_INPUT_ERROR_MESSAGE,
     USER_INPUT_ERROR_MESSAGE,
+    USER_INPUT_ERROR_MESSAGE,
     USER_INPUT_ERROR_MESSAGE
 ]
 
@@ -97,46 +98,6 @@ def test_format_menu_prompt(
     return None
 
 
-@mark.parametrize(
-    # Specify argument names for the test `test_format_menu_prompt` arguments
-    argnames=[
-        'mock_input',
-        'expected_value'
-    ],
-    argvalues=zip(
-        # Specify and ZIP the argument input and expected values
-        MOCK_MAIN_MENU_INPUT,
-        MOCK_MAIN_MENU_EXPECTED_VALUE
-    )
-)
-def test_main_menu(
-    mock_input: Any,
-    expected_value: Any
-) -> None:
-    """ Tests for the `HomeInventory.format_menu_prompt` method.
-
-        Args:
-            mock_input (Any):
-                pytest.mark.parameterize input test values.
-
-            expected_value (Any):
-                pytest.mark.parameterize expected values for each
-                input test value.
-
-        Returns:
-            None.
-    """
-
-    # hi = HomeInventory
-    # assert TODO
-
-    return None
-
-
-# @patch(
-#     # Send values to prompts for user input during the test
-#     target='builtins.input'
-# )
 # @mark.parametrize(
 #     # Specify argument names for the test `test_format_menu_prompt` arguments
 #     argnames=[
@@ -149,17 +110,46 @@ def test_main_menu(
 #         MOCK_MAIN_MENU_EXPECTED_VALUE
 #     )
 # )
-@patch(
-    # Send values to prompts for user input during the test
-    target='builtins.input'
+# def test_main_menu(
+#     mock_input: Any,
+#     expected_value: Any
+# ) -> None:
+#     """ Tests for the `HomeInventory.format_menu_prompt` method.
+
+#         Args:
+#             mock_input (Any):
+#                 pytest.mark.parameterize input test values.
+
+#             expected_value (Any):
+#                 pytest.mark.parameterize expected values for each
+#                 input test value.
+
+#         Returns:
+#             None.
+#     """
+
+#     # hi = HomeInventory
+#     # assert TODO
+
+#     return None
+
+
+@mark.parametrize(
+    # Specify argument names for the test `test_format_menu_prompt` arguments
+    argnames=[
+        'mock_input',
+        'expected_value'
+    ],
+    argvalues=zip(
+        # Specify and ZIP the argument input and expected values
+        MOCK_MAIN_MENU_INPUT,
+        MOCK_MAIN_MENU_EXPECTED_VALUE
+    )
 )
 def test_main_menu_output(
-    # TODO - set side_effect variable type
-    side_effect: None,
-    # capsys: CaptureFixture,
+    capsys: CaptureFixture,
     mock_input: Any,
-    expected_value: Any,
-    capsys: CaptureFixture
+    expected_value: Any
 ) -> None:
     """ Tests for the `HomeInventory.format_menu_prompt` method.
 
@@ -171,15 +161,20 @@ def test_main_menu_output(
             None.
     """
 
-    side_effect.side_effect = mock_input
+    # Send values to prompts for user input during the test
+    with patch(
+        target='builtins.input',
+        side_effect=mock_input
+    ):
 
-    # Assign STDOUT text to a variable
-    stdout = capsys.readouterr().out
+        # Create a HomeInventory instance and prompt for user input
+        hi = HomeInventory()
+        hi.display_main_menu()
 
-    # Create a HomeInventory instance and prompt for user input
-    hi = HomeInventory()
-    hi.display_main_menu()
+        # Assign STDOUT text to a variable
+        stdout = capsys.readouterr().out
+        # print(f'{stdout}')
 
-    assert expected_value in stdout
+        assert expected_value in stdout
 
     return None
