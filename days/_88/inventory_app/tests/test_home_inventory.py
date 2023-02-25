@@ -36,7 +36,7 @@ MOCK_MAIN_MENU_INPUT = [
     '3  ',      # Trailing spaces
     ' ',        # Blank space
     '',         # Empty string
-    'invalid',  # Invalid input
+    'wrong',    # Invalid input
     None,       # NoneType object
     # 'False'     # Boolean object
 ]
@@ -55,8 +55,8 @@ MOCK_MAIN_MENU_EXPECTED_VALUE = [
 
 # TODO: test HomeInventory.__init__
 
-
 # TODO: test HomeInventory.create_main_menu
+
 
 @mark.parametrize(
     # Specify argument names for the test `test_format_menu_prompt` arguments
@@ -174,7 +174,7 @@ def test_main_menu_output(
 
         # Assign STDOUT text to a variable
         stdout = capsys.readouterr().out
-        # print(f'{stdout}')
+        print(f'{stdout}')
 
         assert expected_value in stdout
 

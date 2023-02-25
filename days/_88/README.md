@@ -395,3 +395,10 @@
     - Determined test case is not necessary.
 
 - The last remaining test case that fails is an input value of `''`, which produces a `StopIteration` error.
+
+---
+
+### :notebook: 2/24/23
+
+- Continued testing, unable to determine why an input value of `''` produces a `StopIteration` error during a `pytest` test of [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py).
+    - Web research required to determine why an empty string mock input value causes a `StopIteration` exception.
