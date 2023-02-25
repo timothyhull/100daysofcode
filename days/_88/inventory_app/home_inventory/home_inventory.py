@@ -19,7 +19,7 @@ MAIN_MENU_BANNER = '** Home Inventory App - Main Menu **'
 MENU_PROMPT_DEFAULT = 'Enter a menu option: '
 PROMPT_SUFFIX = ': '
 PYTEST_ENV_VAR = 'PYTEST_CURRENT_TEST'
-USER_INPUT_ERROR_MESSAGE = 'Invalid input, please try again'
+USER_INPUT_ERROR_MESSAGE = 'Invalid input "{}", please try again'
 
 
 class HomeInventory:
@@ -199,7 +199,7 @@ class HomeInventory:
                 break
 
             # Display an invalid input message
-            print(f'{USER_INPUT_ERROR_MESSAGE} - Entered "{user_input}"')
+            print(f'\n{USER_INPUT_ERROR_MESSAGE.format(user_input)}')
 
             # Break the loop if method called by pytest
             if PYTEST_ENV_VAR in str(environ.keys()):

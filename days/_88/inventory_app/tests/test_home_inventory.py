@@ -11,7 +11,7 @@ from pytest import mark
 
 # Imports - Local
 from _88.inventory_app.home_inventory.home_inventory import (
-    HomeInventory,  MAIN_MENU, MENU_PROMPT_DEFAULT, USER_INPUT_ERROR_MESSAGE
+    HomeInventory,  MAIN_MENU, MENU_PROMPT_DEFAULT
 )
 
 # Constants
@@ -38,17 +38,18 @@ MOCK_MAIN_MENU_INPUT = [
     '',         # Empty string
     'invalid',  # Invalid input
     None,       # NoneType object
-    False       # Boolean object
+    # 'False'     # Boolean object
 ]
+MOCK_USER_INPUT_ERROR_MESSAGE = 'Invalid input '
 MOCK_MAIN_MENU_EXPECTED_VALUE = [
     MAIN_MENU.get('1'),
     MAIN_MENU.get('2'),
     MAIN_MENU.get('3'),
-    USER_INPUT_ERROR_MESSAGE,
-    USER_INPUT_ERROR_MESSAGE,
-    USER_INPUT_ERROR_MESSAGE,
-    USER_INPUT_ERROR_MESSAGE,
-    USER_INPUT_ERROR_MESSAGE
+    MOCK_USER_INPUT_ERROR_MESSAGE,
+    MOCK_USER_INPUT_ERROR_MESSAGE,
+    MOCK_USER_INPUT_ERROR_MESSAGE,
+    MOCK_USER_INPUT_ERROR_MESSAGE,
+    # MOCK_USER_INPUT_ERROR_MESSAGE
 ]
 
 

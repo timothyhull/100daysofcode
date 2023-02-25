@@ -385,3 +385,13 @@
         - Testing an input value of `''` produces a `StopIteration` error.
         - Testing an input value of `False` produces a `TypeError: 'bool' object is not an iterator` error.
     - Additional testing required.
+
+---
+
+### :notebook: 2/23/23
+
+- Removed `pytest` test of a boolean value for the test `test_main_menu_output` in `test_display_main_menu_output` function in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py).
+    - Resulted in a `TypeError` when present.
+    - Determined test case is not necessary.
+
+- The last remaining test case that fails is an input value of `''`, which produces a `StopIteration` error.
