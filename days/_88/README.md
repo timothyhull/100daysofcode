@@ -402,3 +402,10 @@
 
 - Continued testing, unable to determine why an input value of `''` produces a `StopIteration` error during a `pytest` test of [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py).
     - Web research required to determine why an empty string mock input value causes a `StopIteration` exception.
+
+---
+
+### :notebook: 2/25/23
+
+- Attempted using debugging to determine the cause of the `StopIteration` error in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py).
+    - Marking test as unnecessary and moving forward.

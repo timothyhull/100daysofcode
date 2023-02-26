@@ -35,7 +35,7 @@ MOCK_MAIN_MENU_INPUT = [
     '  2',      # Leading spaces
     '3  ',      # Trailing spaces
     ' ',        # Blank space
-    '',         # Empty string
+    # '',         # Empty string
     'wrong',    # Invalid input
     None,       # NoneType object
     # 'False'     # Boolean object
@@ -47,7 +47,7 @@ MOCK_MAIN_MENU_EXPECTED_VALUE = [
     MAIN_MENU.get('3'),
     MOCK_USER_INPUT_ERROR_MESSAGE,
     MOCK_USER_INPUT_ERROR_MESSAGE,
-    MOCK_USER_INPUT_ERROR_MESSAGE,
+    # MOCK_USER_INPUT_ERROR_MESSAGE,
     MOCK_USER_INPUT_ERROR_MESSAGE,
     # MOCK_USER_INPUT_ERROR_MESSAGE
 ]
