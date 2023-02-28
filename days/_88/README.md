@@ -1,4 +1,4 @@
-# :calendar: Day 88: 2/6/2023-2/20/2023
+# :calendar: Day 88: 2/6/2023-3/10/2023
 
 ---
 
@@ -20,9 +20,9 @@
 
 :white_check_mark: Create application framework
 
-:white_large_square: Build initial main menu functionality
+:white_check_mark: Build initial main menu functionality
 
-:white_large_square: Write automated tests for main menu functionality
+:white_check_mark: Write automated tests for main menu functionality
 
 :white_large_square: Watch video 3
 
@@ -409,3 +409,24 @@
 
 - Attempted using debugging to determine the cause of the `StopIteration` error in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py).
     - Marking test as unnecessary and moving forward.
+
+---
+
+### :notebook: 2/27/23
+
+- Reviewed methods, attributes, and default values of the `HomeInventory` class in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
+
+- Used the `sorted` method to display the main menu in the order of the dictionary keys:
+
+    ```python
+    # Collect and validate user input
+    while True:
+        # Display the menu, sorted by key, and input prompt
+        print(f'\n{MAIN_MENU_BANNER}\n')
+        for key, value in sorted(self.main_menu.items()):
+            print(f'{key}. {value}')
+    ```
+
+- Next steps are to:
+    - Create methods for each menu option.
+    - Create a method that calls each menu option.

@@ -3,8 +3,8 @@
 
 # Imports - Python Standard Library
 from os import environ
-from sys import exit
 from typing import Dict
+import sys
 
 # Constants
 KEYBOARD_INTERRUPT_MESSAGE = 'User-initiated application shutdown.'
@@ -72,8 +72,8 @@ class HomeInventory:
     ) -> None:
         """ Create a main menu object.
 
-            This method provides the option of manipulating the
-            data within the menu object.
+            This method provides the option of creating a custom
+            menu object.
 
             Args:
                 menu_items (Dict):
@@ -88,6 +88,8 @@ class HomeInventory:
                         '3': 'Option 3',
                         '4': 'Exit'
                     }
+
+                    The constant '_MENU' contains the default menu.
 
             Returns:
                 None.
@@ -169,11 +171,11 @@ class HomeInventory:
                     Valid user input selection.
         """
 
-        # TODO: Collect and validate user input
+        # Collect and validate user input
         while True:
-            # Display the menu and prompt
+            # Display the menu, sorted by key, and input prompt
             print(f'\n{MAIN_MENU_BANNER}\n')
-            for key, value in self.main_menu.items():
+            for key, value in sorted(self.main_menu.items()):
                 print(f'{key}. {value}')
 
             try:
@@ -186,7 +188,7 @@ class HomeInventory:
                 print(f'\n{KEYBOARD_INTERRUPT_MESSAGE}\n')
 
                 # Gracefully close the application
-                exit()
+                sys.exit()
 
             # Validate user input
             if user_input.strip() in self.main_menu.keys():
@@ -209,7 +211,5 @@ class HomeInventory:
                 continue
 
         # TODO: Call methods based on input
-
-        # TODO: Return some value
 
         return user_input
