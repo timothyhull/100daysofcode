@@ -24,7 +24,9 @@
 
 :white_check_mark: Write automated tests for main menu functionality
 
-:white_large_square: Watch video 3
+:white_check_mark: Watch video 3
+
+:white_large_square: Watch video 4
 
 ---
 
@@ -430,3 +432,25 @@
 - Next steps are to:
     - Create methods for each menu option.
     - Create a method that calls each menu option.
+
+---
+
+### :notebook: 2/28/23
+
+- Created the following un-configured/blank methods to [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py):
+    - `_add_room`
+    - `_add_inventory`
+    - `_view_inventory`
+    - `_total_value`
+    - `_exit`
+
+- Created the following un-configured `pytest` tests in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to test the new methods.
+    - `test__add_room`
+    - `test__add_inventory`
+    - `test__view_inventory`
+    - `test__total_value`
+    - `test__exit`
+
+- Created the `_test_create_main_menu` test in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to test the `create_main_menu` method in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
+
+- All `pytest` tests pass.

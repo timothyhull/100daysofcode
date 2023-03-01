@@ -213,3 +213,58 @@ class HomeInventory:
         # TODO: Call methods based on input
 
         return user_input
+
+    def _add_room(self) -> None:
+        """ TODO
+
+            Args:
+                TODO
+
+            Returns:
+                TODO
+        """
+        pass
+
+    def _add_inventory(self) -> None:
+        """ TODO
+
+            Args:
+                TODO
+
+            Returns:
+                TODO
+        """
+        pass
+
+    def _view_inventory(self) -> None:
+        """ TODO
+
+            Args:
+                TODO
+
+            Returns:
+                TODO
+        """
+        pass
+
+    def _total_value(self) -> None:
+        """ TODO
+
+            Args:
+                TODO
+
+            Returns:
+                TODO
+        """
+        pass
+
+    def _exit(self) -> None:
+        """ TODO
+
+            Args:
+                TODO
+
+            Returns:
+                TODO
+        """
+        pass
