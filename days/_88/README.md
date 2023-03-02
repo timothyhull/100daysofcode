@@ -454,3 +454,56 @@
 - Created the `_test_create_main_menu` test in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to test the `create_main_menu` method in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 3/1/23
+
+- Created the method `input_action` in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py) to call the "action" methods (`_add_room`, `_add_inventory`, etc.) based on user input.
+    - Attempting to create a dictionary that "maps" an input value to a specific method, to avoid lengthy conditional logic:
+
+        ```python
+        # Example of what I don't want
+        user_input = input()
+        if user_input == '1':
+            result = _add_room()
+        if user_input == '2':
+            result = _add_inventory()
+        if user_input == '3':
+            result = _view_inventory()
+
+        # Example of what I would like to do
+        user_input = input()
+        input_mapping = {
+            '1': _add_room(),
+            '2': _add_inventory(),
+            '3': _view_inventory()
+        }
+        result = input_mapping.get(user_input)
+        ```
+
+    - I attempted to make the `input_mapping` values string objects, and somehow call them using the `getattr` function and the symbol table returned by `globals()`, although these attempts have not been successful.
+
+        ```python
+        input_mapping = {
+            '1': '_add_room',
+            '2': '_add_inventory',
+            '3': '_view_inventory'
+        }
+
+        get_attr(globals(), input_mapping.get(user_input))
+
+        # Results in a TypeError exception
+        # TypeError: 'str' object is not callable
+        ```
+
+    - My next attempt will be to make the input_mapping values the actual methods, instead of strings.
+
+        ```python
+        input_mapping = {
+            '1': _add_room(),
+            '2': _add_inventory(),
+            '3': _view_inventory()
+        }
+        result = input_mapping.get(user_input)
+        ```
