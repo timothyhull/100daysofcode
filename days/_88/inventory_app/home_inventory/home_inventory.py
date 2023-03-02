@@ -214,6 +214,26 @@ class HomeInventory:
 
         return user_input
 
+    def input_action(
+        self,
+        user_input: str
+    ) -> None:
+        """ Calls a method based on the user input value.
+
+            Args:
+                user_input (str):
+                    Menu option user input.
+
+            Returns:
+                TODO
+        """
+
+        input_mapping = {
+            '1': '_add_room'
+        }
+
+        return None
+
     def _add_room(self) -> None:
         """ TODO
 
@@ -223,7 +243,8 @@ class HomeInventory:
             Returns:
                 TODO
         """
-        pass
+
+        return None
 
     def _add_inventory(self) -> None:
         """ TODO
@@ -234,7 +255,8 @@ class HomeInventory:
             Returns:
                 TODO
         """
-        pass
+
+        return None
 
     def _view_inventory(self) -> None:
         """ TODO
@@ -245,7 +267,8 @@ class HomeInventory:
             Returns:
                 TODO
         """
-        pass
+
+        return None
 
     def _total_value(self) -> None:
         """ TODO
@@ -256,7 +279,8 @@ class HomeInventory:
             Returns:
                 TODO
         """
-        pass
+
+        return None
 
     def _exit(self) -> None:
         """ TODO
@@ -267,4 +291,5 @@ class HomeInventory:
             Returns:
                 TODO
         """
-        pass
+
+        return None
