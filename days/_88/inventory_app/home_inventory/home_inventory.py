@@ -210,11 +210,9 @@ class HomeInventory:
                 # Continue to the next loop iteration
                 continue
 
-        # TODO: Call methods based on input
-
         return user_input
 
-    def input_action(
+    def call_input_method(
         self,
         user_input: str
     ) -> None:
@@ -225,11 +223,15 @@ class HomeInventory:
                     Menu option user input.
 
             Returns:
-                TODO
         """
 
-        input_mapping = {
-            '1': '_add_room'
+        # Create a dictionary that maps user inputs to methods
+        input_map = {
+            '1': self._add_room(),
+            '2': self._add_inventory(),
+            '3': self._view_inventory(),
+            '4': self._add_room(),
+            '5': self._exit()
         }
 
         return None
