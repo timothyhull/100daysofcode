@@ -163,13 +163,17 @@ def test_main_menu_output(
 
         # Create a HomeInventory class instance and prompt for user input
         hi = HomeInventory()
-        hi.display_main_menu()
+        user_input = hi.display_main_menu()
 
         # Assign STDOUT text to a variable
         stdout = capsys.readouterr().out
         print(f'{stdout}')
 
+        # Assert the expected STDOUT output is present
         assert expected_value in stdout
+
+        # Assert the user input selection is a key in the Main Menu dictionary
+        assert user_input in MAIN_MENU.keys()
 
     return None
 

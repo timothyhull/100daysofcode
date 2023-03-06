@@ -497,7 +497,7 @@
         # TypeError: 'str' object is not callable
         ```
 
-    - My next attempt will be to make the input_mapping values the actual methods, instead of strings.
+    - My next attempt will be to make the `input_mapping` values the actual methods, instead of strings.
 
         ```python
         input_mapping = {
@@ -507,3 +507,9 @@
         }
         result = input_mapping.get(user_input)
         ```
+
+---
+
+### :notebook: 3/3/23
+
+- Successfully Tested making the `input_mapping` values the `home_inventory.HomeInventory` methods, instead of strings.
