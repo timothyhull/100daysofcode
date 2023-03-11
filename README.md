@@ -872,6 +872,8 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Break for rest :sleeping:
 - Break for rest :sleeping:
 - Break for rest :sleeping:
-- Day 88u: [3/8/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_88/README.md/#notebook-3823)
+- Break for rest :sleeping:
+- Break for rest :sleeping:
+- Day 88u: [3/10/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_88/README.md/#notebook-3103)
 
 </details>
