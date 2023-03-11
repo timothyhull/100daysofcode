@@ -513,3 +513,18 @@
 ### :notebook: 3/3/23
 
 - Successfully Tested making the `input_mapping` values the `home_inventory.HomeInventory` methods, instead of strings.
+
+---
+
+### :notebook: 3/10/23
+
+- Performed `pytest` tests using [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) and encountered multiple failures:
+
+    ```bash
+    FAILED tests/test_home_inventory.py::test_main_menu_output[ 2-Add Inventory] - AssertionError: assert ' ' in dict_keys(['1', '2', '3', '4', '5'])
+    FAILED tests/test_home_inventory.py::test_main_menu_output[ -Invalid input ] - AssertionError: assert ' ' in dict_keys(['1', '2', '3', '4', '5'])
+    FAILED tests/test_home_inventory.py::test_main_menu_output[wrong-Invalid input ] - AssertionError: assert 'w' in dict_keys(['1', '2', '3', '4', '5'])
+    FAILED tests/test_home_inventory.py::test_main_menu_output[None-Invalid input ] - AssertionError: assert <MagicMock name='input()' id='281473103647680'> in dict_keys(['1', '2', '3', '4', '5'])
+    ```
+
+    - Further testing required to determine purpose of failing tests and cause(s) of failure.

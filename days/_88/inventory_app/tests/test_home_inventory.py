@@ -155,19 +155,19 @@ def test_main_menu_output(
             None.
     """
 
+    # Create a HomeInventory class instance and prompt for user input
+    hi = HomeInventory()
+
     # Send values to prompts for user input during the test
     with patch(
         target='builtins.input',
         side_effect=mock_input
     ):
 
-        # Create a HomeInventory class instance and prompt for user input
-        hi = HomeInventory()
         user_input = hi.display_main_menu()
 
         # Assign STDOUT text to a variable
         stdout = capsys.readouterr().out
-        print(f'{stdout}')
 
         # Assert the expected STDOUT output is present
         assert expected_value in stdout
