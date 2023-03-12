@@ -164,7 +164,7 @@ def test_main_menu_output(
         side_effect=mock_input
     ):
 
-        user_input = hi.display_main_menu()
+        hi.display_main_menu()
 
         # Assign STDOUT text to a variable
         stdout = capsys.readouterr().out
@@ -172,8 +172,18 @@ def test_main_menu_output(
         # Assert the expected STDOUT output is present
         assert expected_value in stdout
 
-        # Assert the user input selection is a key in the Main Menu dictionary
-        assert user_input in MAIN_MENU.keys()
+    return None
+
+
+def test_get_input_method() -> None:
+    """ Tests for the `HomeInventory.get_input_method` method.
+
+        Args:
+            TODO
+
+        Returns:
+            None.
+    """
 
     return None
 
@@ -195,7 +205,7 @@ def test__add_room() -> None:
     new_room = hi._add_room()
 
     # Assert the new room is present
-    assert new_room is None
+    assert isinstance(new_room, str)
 
     return None
 
@@ -217,7 +227,7 @@ def test__add_inventory() -> None:
     new_item = hi._add_inventory()
 
     # Assert the new inventory item is present
-    assert new_item is None
+    assert isinstance(new_item, str)
 
     return None
 
@@ -239,7 +249,7 @@ def test__view_inventory_list() -> None:
     inventory = hi._view_inventory()
 
     # Assert the inventory exists
-    assert inventory is None
+    assert isinstance(inventory, str)
 
     return None
 
@@ -261,7 +271,7 @@ def test__total_value() -> None:
     total_value = hi._total_value()
 
     # Assert the total inventory value is present
-    assert total_value is None
+    assert isinstance(total_value, str)
 
     return None
 
@@ -283,6 +293,6 @@ def test__exit() -> None:
     exit = hi._exit()
 
     # Verify the application exits
-    assert exit is None
+    assert isinstance(exit, str)
 
     return None

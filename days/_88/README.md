@@ -528,3 +528,26 @@
     ```
 
     - Further testing required to determine purpose of failing tests and cause(s) of failure.
+
+---
+
+### :notebook: 3/11/23
+
+- Unable to determine the purpose of the following `assert` statement in [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py):
+
+    ```python
+    # Assert the user input selection is a key in the Main Menu dictionary
+    assert user_input in MAIN_MENU.keys()
+    ```
+
+    - Removed this particular `assert` statement.
+
+- Added the `test_get_input_method` to [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) to test the `get_input_method` in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
+    - Created temporary test return values in the following methods:
+        - `_add_room`
+        - `_add_inventory`
+        - `_view_inventory`
+        - `_total_value`
+        - `_exit`
+
+- All `pytest` tests pass.

@@ -3,7 +3,7 @@
 
 # Imports - Python Standard Library
 from os import environ
-from typing import Dict
+from typing import Callable, Dict, Union
 import sys
 
 # Constants
@@ -53,6 +53,15 @@ class HomeInventory:
             Returns:
                 None.
         """
+
+        # Map valid user input options to methods
+        self.user_input_map = {
+            '1': self._add_room(),
+            '2': self._add_inventory(),
+            '3': self._view_inventory(),
+            '4': self._add_room(),
+            '5': self._exit()
+        }
 
         # Create a main menu object
         self.create_main_menu(
@@ -212,31 +221,42 @@ class HomeInventory:
 
         return user_input
 
-    def call_input_method(
+    def get_input_method(
         self,
-        user_input: str
-    ) -> None:
-        """ Calls a method based on the user input value.
+        user_input: Union[int, str]
+    ) -> Callable:
+        """ Gets a method based on the user input value.
 
             Args:
-                user_input (str):
+                user_input (Union[int, str]):
                     Menu option user input.
 
             Returns:
+                input_method (Callable):
+                    Method that corresponds with the 'user_input'
+                    argument value.
         """
 
-        # Create a dictionary that maps user inputs to methods
-        input_map = {
-            '1': self._add_room(),
-            '2': self._add_inventory(),
-            '3': self._view_inventory(),
-            '4': self._add_room(),
-            '5': self._exit()
-        }
+        # Ensure the value of 'user_input' is a string:
+        user_input = str(user_input)
 
-        return None
+        # Determine if the value in 'user_input' is valid
+        if user_input not in self.user_input_map.keys():
+            raise ValueError(
+                'user_input parameter must be one of '
+                f'{", ".join(self.user_input_map)}'
+            )
+        else:
+            input_method = self.user_input_map.get(
+                user_input
+            )
+            print(self.user_input_map.get(
+                user_input
+            ))
 
-    def _add_room(self) -> None:
+        return input_method
+
+    def _add_room(self) -> str:
         """ TODO
 
             Args:
@@ -246,9 +266,9 @@ class HomeInventory:
                 TODO
         """
 
-        return None
+        return '_add_room'
 
-    def _add_inventory(self) -> None:
+    def _add_inventory(self) -> str:
         """ TODO
 
             Args:
@@ -258,9 +278,9 @@ class HomeInventory:
                 TODO
         """
 
-        return None
+        return '_add_inventory'
 
-    def _view_inventory(self) -> None:
+    def _view_inventory(self) -> str:
         """ TODO
 
             Args:
@@ -270,9 +290,9 @@ class HomeInventory:
                 TODO
         """
 
-        return None
+        return '_view_inventory'
 
-    def _total_value(self) -> None:
+    def _total_value(self) -> str:
         """ TODO
 
             Args:
@@ -282,9 +302,9 @@ class HomeInventory:
                 TODO
         """
 
-        return None
+        return '_total_value'
 
-    def _exit(self) -> None:
+    def _exit(self) -> str:
         """ TODO
 
             Args:
@@ -294,4 +314,4 @@ class HomeInventory:
                 TODO
         """
 
-        return None
+        return '_exit'
