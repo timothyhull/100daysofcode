@@ -250,9 +250,11 @@ class HomeInventory:
             input_method = self.user_input_map.get(
                 user_input
             )
-            print(self.user_input_map.get(
-                user_input
-            ))
+            print(
+                self.user_input_map.get(
+                    user_input
+                )
+            )
 
         return input_method
 

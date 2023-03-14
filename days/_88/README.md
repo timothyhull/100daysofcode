@@ -551,3 +551,10 @@
         - `_exit`
 
 - All `pytest` tests pass.
+
+---
+
+### :notebook: 3/13/23
+
+- Added code to the `test_get_input_method` to [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) and successfully performed a single test.
+    - Next step is to determine how to loop over the `MOCK_USER_INPUT_METHOD` list, to test different values, including a value that triggers the `raise ValueError()` code part in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).

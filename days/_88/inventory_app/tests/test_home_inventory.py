@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 # Imports - Third-Party
 from _pytest.capture import CaptureFixture
-from pytest import mark
+from pytest import mark, raises
 
 # Imports - Local
 from _88.inventory_app.home_inventory.home_inventory import (
@@ -57,6 +57,12 @@ MOCK_MAIN_MENU_EXPECTED_VALUE = [
     # MOCK_USER_INPUT_ERROR_MESSAGE,
     MOCK_USER_INPUT_ERROR_MESSAGE,
     # MOCK_USER_INPUT_ERROR_MESSAGE
+]
+MOCK_USER_INPUT_METHOD = [
+    '1',
+    '2',
+    '3',
+    'Bad option'
 ]
 
 
@@ -184,6 +190,15 @@ def test_get_input_method() -> None:
         Returns:
             None.
     """
+
+    # Create a HomeInventory class instance and prompt for user input
+    hi = HomeInventory()
+
+    # TODO
+    assert hi.get_input_method(
+        user_input=MOCK_USER_INPUT_METHOD[0]
+    ) == \
+        hi.user_input_map[MOCK_USER_INPUT_METHOD[0]]
 
     return None
 
