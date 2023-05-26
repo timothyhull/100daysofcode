@@ -1,4 +1,4 @@
-# :calendar: Day 88: 2/6/2023-4/1/2023
+# :calendar: Day 88: 2/6/2023-6/1/2023
 
 ---
 
@@ -558,3 +558,23 @@
 
 - Added code to the `test_get_input_method` to [`days/_88/inventory_app/tests/test_home_inventory.py`](test_home_inventory.py) and successfully performed a single test.
     - Next step is to determine how to loop over the `MOCK_USER_INPUT_METHOD` list, to test different values, including a value that triggers the `raise ValueError()` code part in [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
+
+---
+
+### :notebook: 5/25//23
+
+- Resetting my progress after an extended mental health break (73 days):
+
+    ```python
+    # Calculate the mental health break duration
+    from datetime import datetime
+
+    today = datetime(2023, 5, 25)
+    previous_study_day = datetime(2023, 3, 13)
+
+    mental_health_break = today - previous_study_day
+
+    print(f'\nMental health break duration: {mental_health_break.days} days.\n')
+    ```
+
+    - Re-familiarized with development environment.
