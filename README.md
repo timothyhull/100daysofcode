@@ -881,6 +881,7 @@ print(f'\n#100DaysofCode coding streak #1 lasted {streak_length} days.\n')
 - Break for mental health recovery :pleading_face:
 - Day 88x: [5/25/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_88/README.md/#notebook-52523)
 - Break for rest :sleeping:
-- Day 88y: [5/25/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_88/README.md/#notebook-52723)
+- Day 88y: [5/27/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_88/README.md/#notebook-52723)
+- Day 88z: [5/28/23](https://github.com/timothyhull/100daysofcode/blob/main/days/_88/README.md/#notebook-52823)
 
 </details>
