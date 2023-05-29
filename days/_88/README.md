@@ -561,7 +561,7 @@
 
 ---
 
-### :notebook: 5/25//23
+### :notebook: 5/25/23
 
 - Resetting my progress after an extended mental health break (73 days):
 
@@ -577,4 +577,23 @@
     print(f'\nMental health break duration: {mental_health_break.days} days.\n')
     ```
 
-    - Re-familiarized with development environment.
+    ```bash
+    # Python code output
+    Mental health break duration: 73 days.
+    ```
+
+- Re-familiarized with development environment.
+
+---
+
+### :notebook: 5/27/23
+
+- Refreshed development container and Python packages.
+- All `pytest` tests pass.
+
+---
+
+### :notebook: 5/28/23
+
+- Performed code review of [`days/_88/inventory app/home_inventory/home_inventory.py`](home_inventory.py).
+- All `pytest` tests pass.

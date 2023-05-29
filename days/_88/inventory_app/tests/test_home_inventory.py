@@ -94,7 +94,7 @@ def test_create_main_menu() -> None:
 
 
 @mark.parametrize(
-    # Specify argument names for the test `test_format_menu_prompt` arguments
+    # Specify argument names for the test `test_format_menu_prompts` arguments
     argnames=[
         'mock_input',
         'expected_value'
@@ -105,7 +105,7 @@ def test_create_main_menu() -> None:
         MOCK_MENU_EXPECTED_VALUE
     )
 )
-def test_format_menu_prompt(
+def test_format_menu_prompts(
     mock_input: Any,
     expected_value: Any
 ) -> None:

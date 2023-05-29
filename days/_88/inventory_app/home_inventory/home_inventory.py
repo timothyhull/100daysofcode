@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Home inventory application main program """
+""" Home inventory application classes and methods. """
 
 # Imports - Python Standard Library
 from os import environ
@@ -19,7 +19,7 @@ MAIN_MENU_BANNER = '** Home Inventory App - Main Menu **'
 MENU_PROMPT_DEFAULT = 'Enter a menu option: '
 PROMPT_SUFFIX = ': '
 PYTEST_ENV_VAR = 'PYTEST_CURRENT_TEST'
-USER_INPUT_ERROR_MESSAGE = 'Invalid input "{}", please try again'
+USER_INPUT_ERROR_MESSAGE = 'Invalid input "{}", please try again.'
 
 
 class HomeInventory:
@@ -36,7 +36,7 @@ class HomeInventory:
                 menu_items (Dict, optional):
                     Dictionary with numeric string input keys and
                     descriptive values for each key.
-                    Default is MAIN_MENU.
+                    Default value is MAIN_MENU.
 
                     Example:
 
@@ -49,6 +49,7 @@ class HomeInventory:
 
                 input_prompt (str, optional):
                     str value to display as prompt for user input.
+                    Default value is MENU_PROMPT_DEFAULT.
 
             Returns:
                 None.
@@ -69,7 +70,7 @@ class HomeInventory:
         )
 
         # Create a menu prompt
-        self.format_menu_prompt(
+        self.format_menu_prompts(
             input_prompt=input_prompt
         )
 
@@ -98,18 +99,18 @@ class HomeInventory:
                         '4': 'Exit'
                     }
 
-                    The constant '_MENU' contains the default menu.
+                    The constant 'MAIN_MENU' contains a default menu.
 
             Returns:
                 None.
         """
 
-        # Create a dictionary object and populate it with default values.
+        # Create a dictionary object and populate it user-supplied values.
         self.main_menu = dict(**menu_items)
 
         return None
 
-    def format_menu_prompt(
+    def format_menu_prompts(
         self,
         input_prompt: str = MENU_PROMPT_DEFAULT
     ) -> None:
@@ -120,12 +121,13 @@ class HomeInventory:
                     str value to display as prompt for user input.
                     This method will add a colon and a single space
                     suffix to the prompt, if not already present,
-                    for readability.  Default is MENU_PROMPT_DEFAULT.
+                    for readability.  Default value is
+                    MENU_PROMPT_DEFAULT.
 
                     Example:
 
-                    1. 'Enter option' becomes 'Enter option: `
-                    2. 'Enter option:' becomes 'Enter option: `
+                    1. 'Enter option' becomes 'Enter option: '
+                    2. 'Enter option:' becomes 'Enter option: '
                     3. 'Enter option: ' does not change.
 
             Returns:
